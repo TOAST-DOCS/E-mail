@@ -163,7 +163,7 @@
     "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"},
     "receiverList" : [
         {
-            "receiveMailAddr" : "test1@nhnent.com",
+            "receiveMailAddr" : "customer1@nhnent.com",
             "receiveType" : "MRT0"
         }
 
