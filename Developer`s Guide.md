@@ -160,7 +160,7 @@
 {
     "senderAddress" : "support@nhnent.com",
     "templateId": "template1",
-    "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"}
+    "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"},
     "receiverList" : [
         {
             "receiveMailAddr" : "jeongin.kim@nhnent.com",
