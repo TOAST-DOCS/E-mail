@@ -42,7 +42,7 @@
 |templateId|	String|	X|	발송 템플릿 아이디|
 |templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |- #key#|	String|	X|	치환 키 (##key##)|
-|- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
+|- #value#|	Object|	X|	치환 키에 매핑되는 Value값 |
 |receiverList|	List|	O|	수신자 리스트|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
@@ -163,7 +163,7 @@
     "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"},
     "receiverList" : [
         {
-            "receiveMailAddr" : "jeongin.kim@nhnent.com",
+            "receiveMailAddr" : "test1@nhnent.com",
             "receiveType" : "MRT0"
         }
 
@@ -179,11 +179,11 @@
     "templateId": "template1",
     "receiverList" : [
         {
-            "receiveMailAddr" : "test1@nhnent.com",
+            "receiveMailAddr" : "customer1@nhnent.com",
             "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"}
         },
         {
-            "receiveMailAddr" : "jeongin.kim@nhnent.com",
+            "receiveMailAddr" : "customer2@nhnent.com",
             "templateParameter" : {"title_name": "클라우드고객2", "body_content": "test2"}
         }
 
