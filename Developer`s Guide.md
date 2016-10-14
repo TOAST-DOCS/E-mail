@@ -49,7 +49,7 @@
 |- receiveTypeName|	String|	X|	수신자 이름|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
-주의 : template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+[주의] : template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
 
 #### 응답
 
@@ -115,7 +115,7 @@
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
-`주의` : template을 사용 할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+[주의] : template을 사용 할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
 
 #### 응답
 
