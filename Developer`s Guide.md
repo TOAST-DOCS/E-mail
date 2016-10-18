@@ -34,7 +34,7 @@
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
-|senderName|	String|	x|	발신자 이름|
+|senderName|	String|	X|	발신자 이름|
 |requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
@@ -125,7 +125,7 @@
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
-|senderName|	String|	x|	발신자 이름|
+|senderName|	String|	X|	발신자 이름|
 |requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
@@ -264,16 +264,16 @@
 |---|---|---|---|
 |requestId|	String|	O|	요청 아이디|
 |startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	x|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	X|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |senderMail|	String|	X|	발신메일 주소|
 |senderName|	String|	X|	발신자 이름|
 |receiveMail|	String|	X|	수신메일 주소|
-|templateId|	String|	x|	템플릿번호|
-|sendStatus|	String|	x|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|pageNum|	Integer|	x|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	x|	조회 건수(Default : 15)|
+|templateId|	String|	X|	템플릿번호|
+|sendStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
 
 #### 응답
 
@@ -471,9 +471,9 @@
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|fileName|	String|	필수|	파일이름|
-|fileBody|	Byte[]|	필수|	파일의 Byte[] 값|
-|createUser|	String|	필수|	파일 업로드 유저 정보|
+|fileName|	String|	O|	파일이름|
+|fileBody|	Byte[]|	O|	파일의 Byte[] 값|
+|createUser|	String|	O|	파일 업로드 유저 정보|
 
 #### 응답
 
@@ -526,11 +526,11 @@
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|categoryId|	Integer|	옵션|	카테고리 아이디|
-|useYn|	String|	옵션|	사용 여부(Y/N)|
-|pageNum|	Integer|	옵션|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	옵션|	조회 건수(Default : 15)|
-|all|	Boolean|	옵션|	전체 조회 여부|
+|categoryId|	Integer|	X|	카테고리 아이디|
+|useYn|	String|	X|	사용 여부(Y/N)|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|all|	Boolean|	X|	전체 조회 여부|
 
 #### 응답
 
