@@ -34,6 +34,7 @@
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
+|senderName|	String|	X|	발신자 이름|
 |requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
@@ -47,6 +48,32 @@
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |- receiveTypeName|	String|	X|	수신자 이름|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
+
+[주의] : template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+
+[Request body 예시]
+
+```
+{
+    "senderAddress" : "support@nhnent.com",
+    "senderName" : "발송자이름",
+    "title" : "샘플 타이틀",
+    "body" : "샘플 내용",
+    "attachFileIdList": ["첨부파일_ID"],
+    "receiverList" : [
+        {
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveType" : "MRT0"
+        },
+        {
+            "receiveMailAddr" : "customer2@nhnent.com",
+            "receiveType" : "MRT1"
+        }
+
+    ],
+    "userId" : "XXXXX"
+}
+```
 
 #### 응답
 
@@ -98,6 +125,7 @@
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
+|senderName|	String|	X|	발신자 이름|
 |requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
@@ -110,6 +138,27 @@
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
+
+[주의] : template을 사용 할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+
+[Request body 예시]
+
+```
+{
+    "senderAddress" : "support@nhnent.com",
+    "senderName" : "발송자이름",
+    "title" : "샘플 타이틀",
+    "body" : "샘플 내용",
+    "attachFileIdList": ["첨부파일_ID"],
+    "receiverList" : [
+        {
+            "receiveMailAddr" : "customer1@nhnent.com"
+        }
+
+    ],
+    "userId" : "XXXXX"
+}
+```
 
 #### 응답
 
@@ -140,6 +189,59 @@
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
+
+### 메일 내용 치환기능 예시
+
+#### 메일작성 예시
+
+```
+* title : ##title_name## 님 안녕하세요 !!
+* body : ##body_content## 발송 합니다.
+```
+
+#### 개별메일요청 예시
+```
+{
+    "senderAddress" : "support@nhnent.com",
+    "templateId": "template1",
+    "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"},
+    "receiverList" : [
+        {
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveType" : "MRT0"
+        }
+
+    ],
+    "userId" : "tester"
+}
+```
+
+#### 일반메일요청 예시
+```
+{
+    "senderAddress" : "support@nhnent.com",
+    "templateId": "template1",
+    "receiverList" : [
+        {
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "templateParameter" : {"title_name": "클라우드고객1", "body_content": "test1"}
+        },
+        {
+            "receiveMailAddr" : "customer2@nhnent.com",
+            "templateParameter" : {"title_name": "클라우드고객2", "body_content": "test2"}
+        }
+
+    ],
+    "userId" : "tester"
+}
+```
+
+#### 결과 예시
+```
+* title : 클라우드고객1 님 안녕하세요!!
+* body : test2 발송 합니다.
+```
+
 ### 메일 발송리스트 조회
 
 #### 요청
@@ -160,18 +262,18 @@
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	조건 필수|	요청 아이디|
-|startSendDate|	String|	조건 필수|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	조건 필수|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|requestId|	String|	O|	요청 아이디|
+|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	X|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |senderMail|	String|	X|	발신메일 주소|
 |senderName|	String|	X|	발신자 이름|
 |receiveMail|	String|	X|	수신메일 주소|
-|templateId|	String|	옵션|	템플릿번호|
-|sendStatus|	String|	옵션|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|pageNum|	Integer|	옵션|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	옵션|	조회 건수(Default : 15)|
+|templateId|	String|	X|	템플릿번호|
+|sendStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
 
 #### 응답
 
@@ -369,9 +471,9 @@
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|fileName|	String|	필수|	파일이름|
-|fileBody|	Byte[]|	필수|	파일의 Byte[] 값|
-|createUser|	String|	필수|	파일 업로드 유저 정보|
+|fileName|	String|	O|	파일이름|
+|fileBody|	Byte[]|	O|	파일의 Byte[] 값|
+|createUser|	String|	O|	파일 업로드 유저 정보|
 
 #### 응답
 
@@ -424,11 +526,11 @@
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|categoryId|	Integer|	옵션|	카테고리 아이디|
-|useYn|	String|	옵션|	사용 여부(Y/N)|
-|pageNum|	Integer|	옵션|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	옵션|	조회 건수(Default : 15)|
-|all|	Boolean|	옵션|	전체 조회 여부|
+|categoryId|	Integer|	X|	카테고리 아이디|
+|useYn|	String|	X|	사용 여부(Y/N)|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|all|	Boolean|	X|	전체 조회 여부|
 
 #### 응답
 
