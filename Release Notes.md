@@ -1,5 +1,13 @@
 ## Upcoming Products > Email > Release Notes
 
+### 2016.10.20
+
+#### 기능개선/변경
+* [Document] Developer's Guide 문서에 추가 설명과 예제를 추가하였습니다.
+    * 일반 메일 발송/개별 메일 발송 API의 [Request body]에 요청 예제를 추가하였습니다.
+    * 치환 기능을 이용할 경우, 메일 내용 작성 방법과 API의 [Request body]에 요청 예제를 추가하였습니다.
+* [Document] Developer's Guide > 메일 발송의 [Request body]에 senderName 파라미터를 추가하였습니다.
+
 ### 2016.10.06
 
 #### 버그 수정
@@ -34,10 +42,3 @@
 #### 버그 수정
 * [Console] 수신자 리스트 파일을 2회 이상 업로드 시도 시 Progress loadbar 무한로딩되는 현상수정
 
-### 2016.10.20
-
-#### 기능개선/변경
-* [Document] Developer's Guide 문서에 추가 설명과 예제를 추가하였습니다.
-    * 일반 메일 발송/개별 메일 발송 API의 [Request body]에 요청 예제를 추가하였습니다.
-    * 치환 기능을 이용할 경우, 메일 내용 작성 방법과 API의 [Request body]에 요청 예제를 추가하였습니다.
-* [Document] Developer's Guide > 메일 발송의 [Request body]에 senderName 파라미터를 추가하였습니다.
