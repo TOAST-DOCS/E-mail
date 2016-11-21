@@ -629,7 +629,7 @@
             "serviceId": Integer,
             "categoryId": Integer,
             "categoryName": String,
-            “templateName": String,
+            "templateName": String,
             "templateDesc": String,
             "useYn": String,
             "sendMailAddress": String,
