@@ -1,5 +1,12 @@
 ## Upcoming Products > Email > Release Notes
 
+### 2016.12.08
+#### 버그 수정
+* [Console] 메일 발송 탭에서 템플릿 적용 시 첨부파일이 제한 개수(3개)를 초과하여 발송 가능하던 현상 수정 
+    * 메일 발송 탭에서 메일 발송 시 템플릿 파일을 적용 할 경우 기존 첨부파일을 초기화하고 템플릿 파일이 우선 적용되도록 변경되었습니다.   
+* [API] 파일 업로드 API로 파일 업로드 시 리턴 결과에 fileId가 null로 표시되고 requestId 값으로 넘어오던 현상이 수정되었습니다.
+
+
 ### 2016.11.24
 #### 기능 개선/변경
 * [Console] 대량 발송 기능 개선 
@@ -52,10 +59,3 @@
 #### 버그 수정
 * [Console] 수신자 리스트 파일을 2회 이상 업로드 시도 시 Progress loadbar 무한로딩되는 현상수정
 
-### 2016.10.20
-
-#### 기능개선/변경
-* [Document] Developer's Guide 문서에 추가 설명과 예제를 추가하였습니다.
-    * 일반 메일 발송/개별 메일 발송 API의 [Request body]에 요청 예제를 추가하였습니다.
-    * 치환 기능을 이용할 경우, 메일 내용 작성 방법과 API의 [Request body]에 요청 예제를 추가하였습니다.
-* [Document] Developer's Guide > 메일 발송의 [Request body]에 senderName 파라미터를 추가하였습니다.
