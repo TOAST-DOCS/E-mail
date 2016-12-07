@@ -46,7 +46,6 @@
 |receiverList|	List|	O|	수신자 리스트|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
-|- receiveTypeName|	String|	X|	수신자 이름|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
 [주의] : template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
@@ -133,7 +132,6 @@
 |templateId|	String|	X|	발송 템플릿 아이디|
 |receiverList|	List|	O|	수신자 리스트|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
-|- receiveTypeName|	String|	X|	수신자 이름|
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
@@ -199,7 +197,7 @@
 * body : ##body_content## 발송 합니다.
 ```
 
-#### 개별메일요청 예시
+#### 일반메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
@@ -216,7 +214,7 @@
 }
 ```
 
-#### 일반메일요청 예시
+#### 개별메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
