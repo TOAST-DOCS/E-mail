@@ -11,7 +11,7 @@
 |---|---|
 |Real|	https://api-mail.cloud.toast.com|
 
-### 일반메일발송 
+### 일반 메일발송 
 
 #### 요청
 
@@ -33,7 +33,7 @@
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
 |senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
+|requestDate|	String|	X|	발송 일자 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss) |
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
 |attachFileIdList|	List:String|	X|	업로드한 첨부파일 id|
@@ -101,7 +101,7 @@
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-### 개별메일발송
+### 개별 메일발송
 
 * 다중 수신자에 대해서 수신자 각각에게 메일을 발송하는 기능. 수신자는 수신인이 한명으로 보인다.
 
@@ -125,7 +125,7 @@
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
 |senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
+|requestDate|	String|	X|	발송 일자, 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
 |attachFileIdList|	List:String|	X|	업로드한 첨부파일 id|
@@ -251,16 +251,16 @@
 |-- filePath|	String|	첨부파일 기본Path <br/> (https://domain/attachFile/filePath/fileName)|
 
 
-### 메일 제목/본문 치환
+### 제목/본문 치환
 
-#### 치환 기능 메일작성 예시
+#### 치환기능 메일작성 예시
 
 ```
 * title : ##title_name## 님 안녕하세요 !!
 * body : ##body_content## 발송 합니다.
 ```
 
-#### 일반메일요청 예시
+#### 일반 메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
@@ -277,7 +277,7 @@
 }
 ```
 
-#### 개별메일요청 예시
+#### 개별 메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
