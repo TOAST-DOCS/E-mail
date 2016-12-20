@@ -3,7 +3,7 @@
 > ※ 본 문서는 alpha 개발 단계의 문서입니다.
 > 사용에 관심이 있으신 분은 **support@cloud.toast.com**으로 문의해 주시기 바랍니다.
 
-## Mail 발송
+## 메일발송
 
 [API 도메인]
 
@@ -11,9 +11,7 @@
 |---|---|
 |Real|	https://api-mail.cloud.toast.com|
 
-### 메일 발송
-
-#### 일반 메일 발송
+### 일반 메일발송 
 
 #### 요청
 
@@ -35,7 +33,7 @@
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
 |senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
+|requestDate|	String|	X|	발송 일자 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss) |
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
 |attachFileIdList|	List:String|	X|	업로드한 첨부파일 id|
@@ -103,7 +101,9 @@
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-#### 개별 메일 발송
+### 개별 메일발송
+
+* 다중 수신자에 대해서 수신자 각각에게 메일을 발송하는 기능. 수신자는 수신인이 한명으로 보인다.
 
 #### 요청
 
@@ -125,7 +125,7 @@
 |---|---|---|---|
 |​senderAddress|	String|	O|	발신자 메일|
 |senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자 (미입력시 : 현재 시간으로 발송)|
+|requestDate|	String|	X|	발송 일자, 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss)|
 |title|	String|	O|	제목|
 |body|	String|	O|	내용|
 |attachFileIdList|	List:String|	X|	업로드한 첨부파일 id|
@@ -187,17 +187,80 @@
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
+### 첨부파일 업로드
 
-### 메일 내용 치환기능 예시
+#### 요청
 
-#### 메일작성 예시
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/attachfile/binaryUpload|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+```
+{
+    "fileName": String,
+    "createUser": String,
+    "fileBody": Byte[]
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|fileName|	String|	O|	파일이름|
+|fileBody|	Byte[]|	O|	파일의 Byte[] 값|
+|createUser|	String|	O|	파일 업로드 유저 정보|
+
+#### 응답
+
+```
+{
+  "header": {
+    "isSuccessful":  Bollean,
+    "resultCode": Integer,
+    "resultMessage": String
+  },
+  "body": {
+    "data": {
+      "requestId": String,
+      "fileName": String,
+      "filePath": String
+    }
+  }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	Object|	데이터 영역|
+|-- requestId|	String|	임시 request Id|
+|-- fileName|	String|	파일명|
+|-- filePath|	String|	첨부파일 기본Path <br/> (https://domain/attachFile/filePath/fileName)|
+
+
+### 제목/본문 치환
+
+#### 치환기능 메일작성 예시
 
 ```
 * title : ##title_name## 님 안녕하세요 !!
 * body : ##body_content## 발송 합니다.
 ```
 
-#### 일반메일요청 예시
+#### 일반 메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
@@ -214,7 +277,7 @@
 }
 ```
 
-#### 개별메일요청 예시
+#### 개별 메일요청 예시
 ```
 {
     "senderAddress" : "support@nhnent.com",
@@ -239,6 +302,8 @@
 * title : 클라우드고객1 님 안녕하세요!!
 * body : test2 발송 합니다.
 ```
+
+## 메일 조회 
 
 ### 메일 발송리스트 조회
 
@@ -342,7 +407,7 @@
 |-- mailStatusName|	String|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
 |-- requestDate|	String|	발송 요청일시|
 
-### 메일 발송 상세 조회
+### 메일발송 상세조회
 
 #### 요청
 
@@ -441,68 +506,7 @@
 |---createDate-|	String|	생성일시|
 |--updateDate|	String|	수정일시|
 
-### 첨부파일 업로드
-
-#### 요청
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/attachfile/binaryUpload|
-
-[Path parameter]
-
-|값|	타입|	설명|
-|---|---|---|
-|appKey|	String|	고유의 appKey|
-
-[Request body]
-
-```
-{
-    "fileName": String,
-    "createUser": String,
-    "fileBody": Byte[]
-}
-```
-
-|값|	타입|	필수|	설명|
-|---|---|---|---|
-|fileName|	String|	O|	파일이름|
-|fileBody|	Byte[]|	O|	파일의 Byte[] 값|
-|createUser|	String|	O|	파일 업로드 유저 정보|
-
-#### 응답
-
-```
-{
-  "header": {
-    "isSuccessful":  Bollean,
-    "resultCode": Integer,
-    "resultMessage": String
-  },
-  "body": {
-    "data": {
-      "requestId": String,
-      "fileName": String,
-      "filePath": String
-    }
-  }
-}
-```
-
-|값|	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- data|	Object|	데이터 영역|
-|-- requestId|	String|	임시 request Id|
-|-- fileName|	String|	파일명|
-|-- filePath|	String|	첨부파일 기본Path <br/> (https://domain/attachFile/filePath/fileName)|
+## 템플릿 조회 
 
 ### 템플릿 리스트 조회
 
