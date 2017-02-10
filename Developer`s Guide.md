@@ -11,7 +11,7 @@
 |---|---|
 |Real|	https://api-mail.cloud.toast.com|
 
-### 일반 메일발송 
+### 일반 메일발송
 
 #### 요청
 
@@ -303,7 +303,7 @@
 * body : test2 발송 합니다.
 ```
 
-## 메일 조회 
+## 메일 조회
 
 ### 메일 발송리스트 조회
 
@@ -368,8 +368,7 @@
             "mailStatusName": String,
             "requestDate": String,
             "receiverMail": String,
-            "receiveType": String,
-            "receiverName": String
+            "receiveType": String
         }]
     }
 }
@@ -400,7 +399,6 @@
 |-- senderName|	String|	발신자 이름|
 |-- receiverMail|	String|	수신자 메일주소|
 |-- receiveType|	String|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
-|-- receiverName|	String|	수신자 이름|
 |-- resultId|	String|	발송결과 ID|
 |-- resultDate|	String|	발송 완료 일시|
 |-- mailStatusCode|	String|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
@@ -506,7 +504,7 @@
 |---createDate-|	String|	생성일시|
 |--updateDate|	String|	수정일시|
 
-## 템플릿 조회 
+## 템플릿 조회
 
 ### 템플릿 리스트 조회
 
