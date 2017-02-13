@@ -16,7 +16,7 @@ Console에 접속하여 Email을 활성화 시킵니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_02.jpg)
 
-수신자 및 참조수신자는 이름<메일주소>, 메일주소 형태로 작성 가능합니다.  
+수신자 및 참조수신자는 메일주소 형태로 작성 가능합니다.  
 
 ![](http://static.toastoven.net/prod_email/email_getting_03.jpg)
 
