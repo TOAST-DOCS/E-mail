@@ -41,7 +41,7 @@
 |templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |- #key#|	String|	X|	치환 키 (##key##)|
 |- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|receiverList|	List|	O|	수신자 리스트|
+|receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능(받는사람, 참조자 포함)|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
@@ -130,7 +130,7 @@
 |body|	String|	O|	내용|
 |attachFileIdList|	List:String|	X|	업로드한 첨부파일 id|
 |templateId|	String|	X|	발송 템플릿 아이디|
-|receiverList|	List|	O|	수신자 리스트|
+|receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
