@@ -498,8 +498,8 @@
 |---receiveTypeName|	String|	수신자 타입명|
 |---receiveName|	String|	수신자 이름|
 |---receiveMailAddr|	String|	수신 메일 주소|
-|---readYn| String| 읽음 여부 |
-|---readDate| String| 읽은 날짜(yyyy-MM-dd HH:mm:ss.SSS)|
+|---readYn| String| 수신 여부 |
+|---readDate| String| 수신 날짜(yyyy-MM-dd HH:mm:ss.SSS)|
 |--attachFileList|	List|	첨부파일 리스트|
 |---filePath|	String|	첨부파일 경로|
 |---fileName|	String|	첨부파일 이름|
