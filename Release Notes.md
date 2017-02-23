@@ -1,6 +1,6 @@
 ## Upcoming Products > Email > Release Notes
 
-### 2017.2.23
+### 2017.02.23
 #### 기능 추가
 * [Console] 메일 요청별 조회 -> 메일 상세 조회 화면에서 수신 확인 여부 표시
 * [API] 메일발송 상세조회 API의 Response 필드 추가 (<a href="/ko/Upcoming%20Products/E-mail/Developer%60s%20Guide/#_20" target="_blank">문서링크</a>)
