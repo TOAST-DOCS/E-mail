@@ -1,5 +1,20 @@
 ## Upcoming Products > Email > Release Notes
 
+### 2017.03.23
+#### DB 작업
+* DBMS 변경작업에 따라 다음과 같은 변경 사항이 있습니다.
+    * 일반/개별/대량 메일 발송 시 발급되는 request_id 길이가 변경됩니다.
+        * AS-iS : yyyyMMddHHmmssXXXXT (18,19글자)
+            * yyyyMMddHHmmss : 년/월/일/시/분/초
+            * XXXX : 0 ~ 9999 시퀀스
+            * T : 타입(예약 발송시에만 추가)
+        * TO-BE : yyyyMMddHHmmssXXXXAAAT (22글자)
+            * yyyyMMddHHmmss : 년/월/일/시/분/초
+            * XXXX : 0 ~ 9999 시퀀스
+            * AAA : 인스턴스당 고유 번호
+            * T : 타입(0:일반, 1:예약, 2:대량, 3:임시첨부파일)
+
+
 ### 2017.02.23
 #### 기능 추가
 * [Console] 메일 요청별 조회 -> 메일 상세 조회 화면에서 수신 확인 여부 표시
