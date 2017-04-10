@@ -1,4 +1,4 @@
-## Upcoming Products > Email > Release Notes
+## Notification > Email > Release Notes
 
 ###  2017.04.20
 
