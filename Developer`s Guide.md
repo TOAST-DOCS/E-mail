@@ -43,6 +43,7 @@
 |- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능(받는사람, 참조자 포함)|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
+|- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
@@ -60,10 +61,12 @@
     "receiverList" : [
         {
             "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveName" : "고객1",
             "receiveType" : "MRT0"
         },
         {
             "receiveMailAddr" : "customer2@nhnent.com",
+            "receiveName" : "고객2",
             "receiveType" : "MRT1"
         }
 
@@ -132,6 +135,7 @@
 |templateId|	String|	X|	발송 템플릿 아이디|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
+|- receiveName|	String|	X|	수신자 명|
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
@@ -150,7 +154,8 @@
     "attachFileIdList": ["첨부파일_ID"],
     "receiverList" : [
         {
-            "receiveMailAddr" : "customer1@nhnent.com"
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveName" : "고객1"
         }
 
     ],
