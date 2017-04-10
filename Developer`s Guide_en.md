@@ -1,8 +1,6 @@
 Notification &gt; Email &gt; Developer's Guide
 ---------------------------------------------------
 
-> ※ This document contains information on alpha development in process. For those interested in use, please contact **support@cloud.toast.com**.
-
 Send Mail
 ---------
 
