@@ -125,6 +125,7 @@ Console에 접속하여 Email을 활성화 시킵니다.
 
 통계 조회 탭에서 일별/월별 통계 조회가 가능합니다.
 항목은 날짜, 발송 타입, (메일 타입), (템플릿), 시간, 합계 순으로 되어있습니다.
+통계는 수신자 단위로 집계 됩니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0420_20.png)
 
