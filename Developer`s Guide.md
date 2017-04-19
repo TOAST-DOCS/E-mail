@@ -1,7 +1,4 @@
-## Upcoming Products > Email > Developer's Guide
-
-> ※ 본 문서는 alpha 개발 단계의 문서입니다.
-> 사용에 관심이 있으신 분은 **support@cloud.toast.com**으로 문의해 주시기 바랍니다.
+## Notification > Email > Developer's Guide
 
 ## 메일발송
 
@@ -43,6 +40,7 @@
 |- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능(받는사람, 참조자 포함)|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
+|- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
@@ -60,10 +58,12 @@
     "receiverList" : [
         {
             "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveName" : "고객1",
             "receiveType" : "MRT0"
         },
         {
             "receiveMailAddr" : "customer2@nhnent.com",
+            "receiveName" : "고객2",
             "receiveType" : "MRT1"
         }
 
@@ -132,6 +132,7 @@
 |templateId|	String|	X|	발송 템플릿 아이디|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
+|- receiveName|	String|	X|	수신자 명|
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
@@ -150,7 +151,8 @@
     "attachFileIdList": ["첨부파일_ID"],
     "receiverList" : [
         {
-            "receiveMailAddr" : "customer1@nhnent.com"
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "receiveName" : "고객1"
         }
 
     ],
@@ -695,3 +697,210 @@
 |---createUser|	String|	생성자|
 |---updateDate|	String|	수정일시|
 |---updateUser|	String|	수정자|
+
+## 통계 조회
+
+### 일별 통계 조회
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/statistics/daily?from={from}&to={to}&type={type}&filters={filters}&filters={filters}
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|from|	String|	통계 조회 시작 날짜(년-월-일)<br/>(yyyy-MM-dd) |
+|to| String| 통계 조회 종료 날짜(년-월-일)<br/>(yyyy-MM-dd) |
+|type| String| 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|filters| String| 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
+```
+{
+    "isSuccessful": Boolean,
+    "resultCode": Integer,
+    "resultMessage": String
+},
+    "body" : {
+        "data" : [
+        {
+            "ymd" :  String,
+            "appKey" :  String,
+            "type" :  String,
+            "mailType" :  String,
+            "templateId" :  String,
+            "templateName" :  String,
+            "tm00" :  int,
+            "tm01" :  int,
+            "tm02" :  int,
+            "tm03" :  int,
+            "tm04" :  int,
+            "tm05" :  int,
+            "tm06" :  int,
+            "tm07" :  int,
+            "tm08" :  int,
+            "tm09" :  int,
+            "tm10" :  int,
+            "tm11" :  int,
+            "tm12" :  int,
+            "tm13" :  int,
+            "tm14" :  int,
+            "tm15" :  int,
+            "tm16" :  int,
+            "tm17" :  int,
+            "tm18" :  int,
+            "tm19" :  int,
+            "tm20" :  int,
+            "tm21" :  int,
+            "tm22" :  int,
+            "tm23" :  int,
+            "sum" : int
+        }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|-data|	List|	데이터 영역|
+|--ymd| String| 통계 날짜(yyyyMMdd)|
+|--appKey| String| appKey|
+|--type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|--mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
+|--templateId| String| 템플릿아이디|
+|--templateName| String| 템플릿명|
+|--tm00| int| 00:00:00 ~ 00:59:59|
+|--tm01| int| 01:00:00 ~ 01:59:59|
+|--tm02| int| 02:00:00 ~ 02:59:59|
+|--tm03| int| 03:00:00 ~ 03:59:59|
+|--tm04| int| 04:00:00 ~ 04:59:59|
+|--tm05| int| 05:00:00 ~ 05:59:59|
+|--tm06| int| 06:00:00 ~ 06:59:59|
+|--tm07| int| 07:00:00 ~ 07:59:59|
+|--tm08| int| 08:00:00 ~ 08:59:59|
+|--tm09| int| 09:00:00 ~ 09:59:59|
+|--tm10| int| 10:00:00 ~ 10:59:59|
+|--tm11| int| 11:00:00 ~ 11:59:59|
+|--tm12| int| 12:00:00 ~ 12:59:59|
+|--tm13| int| 13:00:00 ~ 13:59:59|
+|--tm14| int| 14:00:00 ~ 14:59:59|
+|--tm15| int| 15:00:00 ~ 15:59:59|
+|--tm16| int| 16:00:00 ~ 16:59:59|
+|--tm17| int| 17:00:00 ~ 17:59:59|
+|--tm18| int| 18:00:00 ~ 18:59:59|
+|--tm19| int| 19:00:00 ~ 19:59:59|
+|--tm20| int| 20:00:00 ~ 20:59:59|
+|--tm21| int| 21:00:00 ~ 21:59:59|
+|--tm22| int| 22:00:00 ~ 22:59:59|
+|--tm23| int| 23:00:00 ~ 23:59:59|
+|--sum| int| 합계|
+
+### 월별 통계 조회
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/statistics/monthly?from={from}&to={to}&type={type}&filters={filters}&filters={filters}
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|from|	String|	통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
+|to| String| 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
+|type| String| 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|filters| String| 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
+```json
+{
+    "isSuccessful": Boolean,
+    "resultCode": Integer,
+    "resultMessage": String
+},
+    "body" : {
+        "data" : [
+        {
+            "ymd" :  String,
+            "appKey" :  String,
+            "type" :  String,
+            "mailType" :  String,
+            "templateId" :  String,
+            "templateName" :  String,
+            "tm00" :  int,
+            "tm01" :  int,
+            "tm02" :  int,
+            "tm03" :  int,
+            "tm04" :  int,
+            "tm05" :  int,
+            "tm06" :  int,
+            "tm07" :  int,
+            "tm08" :  int,
+            "tm09" :  int,
+            "tm10" :  int,
+            "tm11" :  int,
+            "tm12" :  int,
+            "tm13" :  int,
+            "tm14" :  int,
+            "tm15" :  int,
+            "tm16" :  int,
+            "tm17" :  int,
+            "tm18" :  int,
+            "tm19" :  int,
+            "tm20" :  int,
+            "tm21" :  int,
+            "tm22" :  int,
+            "tm23" :  int,
+            "sum" : int
+        }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|-data|	List|	데이터 영역|
+|--ymd| String| 통계 날짜(yyyyMMdd)|
+|--appKey| String| appKey|
+|--type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|--mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
+|--templateId| String| 템플릿아이디|
+|--templateName| String| 템플릿명|
+|--tm00| int| 00:00:00 ~ 00:59:59|
+|--tm01| int| 01:00:00 ~ 01:59:59|
+|--tm02| int| 02:00:00 ~ 02:59:59|
+|--tm03| int| 03:00:00 ~ 03:59:59|
+|--tm04| int| 04:00:00 ~ 04:59:59|
+|--tm05| int| 05:00:00 ~ 05:59:59|
+|--tm06| int| 06:00:00 ~ 06:59:59|
+|--tm07| int| 07:00:00 ~ 07:59:59|
+|--tm08| int| 08:00:00 ~ 08:59:59|
+|--tm09| int| 09:00:00 ~ 09:59:59|
+|--tm10| int| 10:00:00 ~ 10:59:59|
+|--tm11| int| 11:00:00 ~ 11:59:59|
+|--tm12| int| 12:00:00 ~ 12:59:59|
+|--tm13| int| 13:00:00 ~ 13:59:59|
+|--tm14| int| 14:00:00 ~ 14:59:59|
+|--tm15| int| 15:00:00 ~ 15:59:59|
+|--tm16| int| 16:00:00 ~ 16:59:59|
+|--tm17| int| 17:00:00 ~ 17:59:59|
+|--tm18| int| 18:00:00 ~ 18:59:59|
+|--tm19| int| 19:00:00 ~ 19:59:59|
+|--tm20| int| 20:00:00 ~ 20:59:59|
+|--tm21| int| 21:00:00 ~ 21:59:59|
+|--tm22| int| 22:00:00 ~ 22:59:59|
+|--tm23| int| 23:00:00 ~ 23:59:59|
+|--sum| int| 합계|
