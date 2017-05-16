@@ -18,12 +18,12 @@
 * [Console] <b>수신자명<이메일주소></b> 형식으로 발송이 가능
     * 발신자 주소에만 사용할 수 있었던 <b>수신자명<이메일주소></b> 형식을 수신자 주소에서도 사용이 가능합니다.
 * [API] 수신자명 지원
-    * API에서도 수신자명 필드가 추가되었습니다. 자세한 사항은 [<a href="/ko/Notification/E-mail/Developer%60s%20Guide/#_2" target="_blank">메일 발송 문서</a>]를 참고해주세요.
+    * API에서도 수신자명 필드가 추가되었습니다. 자세한 사항은 [<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_2" target="_blank">메일 발송 문서</a>]를 참고해주세요.
 * [Console] 통계 화면 제공
     * 일별/월별 통계 화면이 제공됩니다.
     * 통계 정보는 2017년 4월 1일부터 수집됩니다.
 * [API] 통계 조회 기능 제공
-    * 일별/월별 통계 조회 API가 제공됩니다. 자세한 사항은 [<a href="/ko/Notification/E-mail/Developer%60s%20Guide/#_31" target="_blank">통계 조회 문서</a>]를 참고해주세요.
+    * 일별/월별 통계 조회 API가 제공됩니다. 자세한 사항은 [<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_31" target="_blank">통계 조회 문서</a>]를 참고해주세요.
 
 #### 기능 개선
 * [Console] 메일 발송 화면에 SPF 등록 안내 문구 추가
@@ -48,7 +48,7 @@
 ### 2017.02.23
 #### 기능 추가
 * [Console] 메일 요청별 조회 -> 메일 상세 조회 화면에서 수신 확인 여부 표시
-* [API] 메일발송 상세조회 API의 Response 필드 추가 (<a href="/ko/Notification/E-mail/Developer%60s%20Guide/#_20" target="_blank">문서링크</a>)
+* [API] 메일발송 상세조회 API의 Response 필드 추가 (<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_20" target="_blank">문서링크</a>)
     * 수신자 리스트(receivers) 항목의 수신여부(readYn), 수신날짜(readDate)
 
 
