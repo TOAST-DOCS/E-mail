@@ -189,6 +189,26 @@
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
+### 광고성 일반 메일발송
+
+* URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일발송과 동일하다.
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/sender/ad-mail|
+
+### 광고성 개별 메일발송
+
+* URL의 끝에만 ad-eachMail로 바뀌며 나머지는 개별 메일발송과 동일하다.
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/sender/ad-eachMail |
+
 ### 첨부파일 업로드
 
 #### 요청
@@ -813,7 +833,7 @@
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/statistics/monthly?from={from}&to={to}&type={type}&filters={filters}&filters={filters}
+|GET|	/email/v1.0/appKeys/{appKey}/statistics/monthly?from={from}&to={to}&type={type}&filters={filters}&filters={filters} |
 
 [Path parameter]
 
@@ -921,7 +941,7 @@
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/statistics/view?from={from}&to={to}&searchType={searchType}&mailTypes={mailTypes}&templateId={templateId}
+|GET|	/email/v1.0/appKeys/{appKey}/statistics/view?from={from}&to={to}&searchType={searchType}&mailTypes={mailTypes}&templateId={templateId} |
 
 [Path parameter]
 
@@ -974,3 +994,152 @@
 |-- openedCount | Long | 오픈 카운트 |
 |-- sentRate | String | 발송율 |
 |-- openedRate | String | 오픈율 |
+
+## 수신 거부 관리
+
+### 수신 거부 조회
+
+#### 요청
+
+|Http method|	URI|
+|---|---|
+| GET |	/appKeys/{appKey}/block-receivers?mailAddress={mailAddress}&pageNum={pageNum}&pageSize={pageSize} |
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수| 설명|
+|---|---|---|---|
+|mailAddress|	String|	X| 수신거부 이메일 주소 필터|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+
+#### 응답
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "totalCount": Integer,
+        "data": [
+            {
+                "mailAddress": String,
+                "blockDate": String
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- mailAddress | String | 수신거부 이메일 주소 |
+|-- blockDate | String | 수신거부 날짜 (yyyy-MM-dd HH:mm:ss.S)
+
+### 수신 거부 등록
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+| POST |	/appKeys/{appKey}/block-receivers |
+
+[Request body]
+```json
+{
+  "blockReceiveList" :
+  [
+  {
+    "mailAddress" :  String,
+    "blockDate" :  String
+  }
+  ]
+}
+```
+
+|값|	타입|	필수 | 설명|
+|---|---|---|---|
+| blockReceiverList |  ㅣList | O | 수신거부 리스트 |
+| - mailAddress | String | O | 수신거부 이메일 주소 |
+| - blockDate | String | X | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss) |
+
+#### 응답
+```
+{
+  "header": {
+    "isSuccessful":  Bollean,
+    "resultCode": Integer,
+    "resultMessage": String
+  }
+}
+```
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 수신 거부 삭제
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+| PUT |	/appKeys/{appKey}/block-receivers |
+
+[Request body]
+```json
+{
+  "deleted":Boolean,
+  "blockReceiverList" :
+  [
+  {
+    "mailAddress" :  String
+  }
+  ]
+}
+```
+
+|값|	타입|	필수 | 설명|
+|---|---|---|---|
+| deleted | Boolean | O | 수신 거부 삭제를 명시하는 필드 |
+| blockReceiverList |  ㅣList | O | 수신거부 리스트 |
+| - mailAddress | String | O | 수신거부 이메일 주소 |
+
+#### 응답
+```
+{
+  "header": {
+    "isSuccessful":  Bollean,
+    "resultCode": Integer,
+    "resultMessage": String
+  }
+}
+```
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
