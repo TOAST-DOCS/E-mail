@@ -712,10 +712,15 @@
 |값|	타입|	설명|
 |---|---|---|
 |appKey|	String|	고유의 appKey|
-|from|	String|	통계 조회 시작 날짜(년-월-일)<br/>(yyyy-MM-dd) |
-|to| String| 통계 조회 종료 날짜(년-월-일)<br/>(yyyy-MM-dd) |
-|type| String| 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
-|filters| String| 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
+
+[Query parameter]
+
+|값|	타입|	필수| 설명|
+|---|---|---|---|
+|from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
+|to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
+|type| String| X | 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
 ```
 {
     "isSuccessful": Boolean,
@@ -769,38 +774,38 @@
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
-|-data|	List|	데이터 영역|
-|--ymd| String| 통계 날짜(yyyyMMdd)|
-|--appKey| String| appKey|
-|--type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
-|--mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
-|--templateId| String| 템플릿아이디|
-|--templateName| String| 템플릿명|
-|--tm00| int| 00:00:00 ~ 00:59:59|
-|--tm01| int| 01:00:00 ~ 01:59:59|
-|--tm02| int| 02:00:00 ~ 02:59:59|
-|--tm03| int| 03:00:00 ~ 03:59:59|
-|--tm04| int| 04:00:00 ~ 04:59:59|
-|--tm05| int| 05:00:00 ~ 05:59:59|
-|--tm06| int| 06:00:00 ~ 06:59:59|
-|--tm07| int| 07:00:00 ~ 07:59:59|
-|--tm08| int| 08:00:00 ~ 08:59:59|
-|--tm09| int| 09:00:00 ~ 09:59:59|
-|--tm10| int| 10:00:00 ~ 10:59:59|
-|--tm11| int| 11:00:00 ~ 11:59:59|
-|--tm12| int| 12:00:00 ~ 12:59:59|
-|--tm13| int| 13:00:00 ~ 13:59:59|
-|--tm14| int| 14:00:00 ~ 14:59:59|
-|--tm15| int| 15:00:00 ~ 15:59:59|
-|--tm16| int| 16:00:00 ~ 16:59:59|
-|--tm17| int| 17:00:00 ~ 17:59:59|
-|--tm18| int| 18:00:00 ~ 18:59:59|
-|--tm19| int| 19:00:00 ~ 19:59:59|
-|--tm20| int| 20:00:00 ~ 20:59:59|
-|--tm21| int| 21:00:00 ~ 21:59:59|
-|--tm22| int| 22:00:00 ~ 22:59:59|
-|--tm23| int| 23:00:00 ~ 23:59:59|
-|--sum| int| 합계|
+|- data|	List|	데이터 영역|
+|-- ymd| String| 통계 날짜(yyyyMMdd)|
+|-- appKey| String| appKey|
+|-- type| String| 통계 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>OPENER:오픈 |
+|-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
+|-- templateId| String| 템플릿아이디|
+|-- templateName| String| 템플릿명|
+|-- tm00| int| 00:00:00 ~ 00:59:59|
+|-- tm01| int| 01:00:00 ~ 01:59:59|
+|-- tm02| int| 02:00:00 ~ 02:59:59|
+|-- tm03| int| 03:00:00 ~ 03:59:59|
+|-- tm04| int| 04:00:00 ~ 04:59:59|
+|-- tm05| int| 05:00:00 ~ 05:59:59|
+|-- tm06| int| 06:00:00 ~ 06:59:59|
+|-- tm07| int| 07:00:00 ~ 07:59:59|
+|-- tm08| int| 08:00:00 ~ 08:59:59|
+|-- tm09| int| 09:00:00 ~ 09:59:59|
+|-- tm10| int| 10:00:00 ~ 10:59:59|
+|-- tm11| int| 11:00:00 ~ 11:59:59|
+|-- tm12| int| 12:00:00 ~ 12:59:59|
+|-- tm13| int| 13:00:00 ~ 13:59:59|
+|-- tm14| int| 14:00:00 ~ 14:59:59|
+|-- tm15| int| 15:00:00 ~ 15:59:59|
+|-- tm16| int| 16:00:00 ~ 16:59:59|
+|-- tm17| int| 17:00:00 ~ 17:59:59|
+|-- tm18| int| 18:00:00 ~ 18:59:59|
+|-- tm19| int| 19:00:00 ~ 19:59:59|
+|-- tm20| int| 20:00:00 ~ 20:59:59|
+|-- tm21| int| 21:00:00 ~ 21:59:59|
+|-- tm22| int| 22:00:00 ~ 22:59:59|
+|-- tm23| int| 23:00:00 ~ 23:59:59|
+|-- sum| int| 합계|
 
 ### 월별 통계 조회
 
@@ -815,10 +820,16 @@
 |값|	타입|	설명|
 |---|---|---|
 |appKey|	String|	고유의 appKey|
-|from|	String|	통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
-|to| String| 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
-|type| String| 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
-|filters| String| 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
+
+[Query parameter]
+
+|값|	타입|	필수| 설명|
+|---|---|---|---|
+|from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
+|to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
+|type| String| X | 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>OPENER:오픈 |
+|filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
+
 ```json
 {
     "isSuccessful": Boolean,
@@ -872,35 +883,94 @@
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
-|-data|	List|	데이터 영역|
-|--ymd| String| 통계 날짜(yyyyMMdd)|
-|--appKey| String| appKey|
-|--type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
-|--mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
-|--templateId| String| 템플릿아이디|
-|--templateName| String| 템플릿명|
-|--tm00| int| 00:00:00 ~ 00:59:59|
-|--tm01| int| 01:00:00 ~ 01:59:59|
-|--tm02| int| 02:00:00 ~ 02:59:59|
-|--tm03| int| 03:00:00 ~ 03:59:59|
-|--tm04| int| 04:00:00 ~ 04:59:59|
-|--tm05| int| 05:00:00 ~ 05:59:59|
-|--tm06| int| 06:00:00 ~ 06:59:59|
-|--tm07| int| 07:00:00 ~ 07:59:59|
-|--tm08| int| 08:00:00 ~ 08:59:59|
-|--tm09| int| 09:00:00 ~ 09:59:59|
-|--tm10| int| 10:00:00 ~ 10:59:59|
-|--tm11| int| 11:00:00 ~ 11:59:59|
-|--tm12| int| 12:00:00 ~ 12:59:59|
-|--tm13| int| 13:00:00 ~ 13:59:59|
-|--tm14| int| 14:00:00 ~ 14:59:59|
-|--tm15| int| 15:00:00 ~ 15:59:59|
-|--tm16| int| 16:00:00 ~ 16:59:59|
-|--tm17| int| 17:00:00 ~ 17:59:59|
-|--tm18| int| 18:00:00 ~ 18:59:59|
-|--tm19| int| 19:00:00 ~ 19:59:59|
-|--tm20| int| 20:00:00 ~ 20:59:59|
-|--tm21| int| 21:00:00 ~ 21:59:59|
-|--tm22| int| 22:00:00 ~ 22:59:59|
-|--tm23| int| 23:00:00 ~ 23:59:59|
-|--sum| int| 합계|
+|- data|	List|	데이터 영역|
+|-- ymd| String| 통계 날짜(yyyyMMdd)|
+|-- appKey| String| appKey|
+|-- type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
+|-- templateId| String| 템플릿아이디|
+|-- templateName| String| 템플릿명|
+|-- tm00| int| 00:00:00 ~ 00:59:59|
+|-- tm01| int| 01:00:00 ~ 01:59:59|
+|-- tm02| int| 02:00:00 ~ 02:59:59|
+|-- tm03| int| 03:00:00 ~ 03:59:59|
+|-- tm04| int| 04:00:00 ~ 04:59:59|
+|-- tm05| int| 05:00:00 ~ 05:59:59|
+|-- tm06| int| 06:00:00 ~ 06:59:59|
+|-- tm07| int| 07:00:00 ~ 07:59:59|
+|-- tm08| int| 08:00:00 ~ 08:59:59|
+|-- tm09| int| 09:00:00 ~ 09:59:59|
+|-- tm10| int| 10:00:00 ~ 10:59:59|
+|-- tm11| int| 11:00:00 ~ 11:59:59|
+|-- tm12| int| 12:00:00 ~ 12:59:59|
+|-- tm13| int| 13:00:00 ~ 13:59:59|
+|-- tm14| int| 14:00:00 ~ 14:59:59|
+|-- tm15| int| 15:00:00 ~ 15:59:59|
+|-- tm16| int| 16:00:00 ~ 16:59:59|
+|-- tm17| int| 17:00:00 ~ 17:59:59|
+|-- tm18| int| 18:00:00 ~ 18:59:59|
+|-- tm19| int| 19:00:00 ~ 19:59:59|
+|-- tm20| int| 20:00:00 ~ 20:59:59|
+|-- tm21| int| 21:00:00 ~ 21:59:59|
+|-- tm22| int| 22:00:00 ~ 22:59:59|
+|-- tm23| int| 23:00:00 ~ 23:59:59|
+|-- sum| int| 합계|
+
+### 통합 통계 조회
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/statistics/view?from={from}&to={to}&searchType={searchType}&mailTypes={mailTypes}&templateId={templateId}
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수| 설명|
+|---|---|---|---|
+|from|	String|	O | 통계 조회 시작 날짜<br/> yyyy-mm-dd HH:mm|
+|to|	String|	O | 통계 조회 종료 날짜<br/> yyyy-mm-dd HH:mm|
+|searchType| String | O | 통계 구분<br/>DATE:날짜별, TIME:시간별, DAY:요일별 |
+|mailTypes | String | X | 메일 타입<br/>NORMAL:일반, MASS:대량<br/>복수 입력 가능(mailTypes=NORMAL&mailTypes=MASS) |
+|templateId | String | X | 템플릿 아이디 |
+
+```json
+{
+    "isSuccessful": Boolean,
+    "resultCode": Integer,
+    "resultMessage": String
+},
+    "body" : {
+        "data" : [
+          {
+                  "divisionName": String,
+                  "requestedCount": long,
+                  "sentCount": long,
+                  "openedCount": long,
+                  "sentRate": String,
+                  "openedRate": String
+        }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- divisionName | String | 통계 기준(날짜/시간/요일) |
+|-- requestedCount | Long | 발송 요청 카운트 |
+|-- sentCount | Long | 발송 카운트 |
+|-- openedCount | Long | 오픈 카운트 |
+|-- sentRate | String | 발송율 |
+|-- openedRate | String | 오픈율 |
