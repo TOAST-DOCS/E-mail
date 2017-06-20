@@ -1,5 +1,34 @@
 ## Notification > Email > Release Notes
 
+###  2017.06.22
+#### 기능 추가
+* [Console] 광고성 메일 발송 기능 추가
+    * 이제 이메일 상품에서 광고성 메일 발송이 가능합니다.
+    * 광고성 메일 발송을 위한 기능을 아래와같이 제공합니다.
+        * 메일 제목에 "(광고)" 문구 추가
+        * 메일 본문에 수신거부 링크 삽입
+        * 수신 거부 링크 클릭 시 수신거부 할 수 있는 화면 제공
+        * 수신 거부된 대상자들에게 광고성 메일 발송 차단하는 기능 제공
+        * 수신 거부 대상자를 관리할 수 있는 화면 제공(다운로드 기능은 추후 제공 예정)
+    * 자세항 사항은 [<a href="/zh/Notification/E-mail/zh/Getting%20Started/#_3" target="_blank">광고성 메일발송</a>] [<a href="/zh/Notification/E-mail/zh/Getting%20Started/#_9" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+* [API] 광고성 메일 발송 기능 추가
+    * 광고성 메일인 경우 별도로 제공되는 API를 사용할 수 있습니다.
+    * 다음과 같은 기능을 제공합니다.
+        * 제목에 "(광고)"가 필수로 들어가야 합니다.
+        * 수신거부로 등록된 대상자에게는 메일 발송을 하지 않습니다.
+* [API] 수신거부 관리 기능 추가
+    * 수신 거부 유저를 조회/등록/삭제 할 수 있는 API를 제공합니다.
+    * 자세항 사항은 [<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_36" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+* [API] 통합 통계 조회 기능 추가
+    * 날짜별/시간대별/요일별로 조회 할수 있는 API가 추가됩니다.
+    * 자세항 사항은 [<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_36" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+
+#### 기능 개선
+* [Console]통계 화면 개선
+    * 통계 화면이 개선되었습니다.
+    * 이제 날짜별, 시간대별, 요일별로 조회가 가능합니다.
+    * 자세항 사항은 [<a href="/zh/Notification/E-mail/zh/Developer%60s%20Guide/#_35" target="_blank">통합 통계 조회</a>]를 참고해주세요.
+
 ###  2017.05.25
 
 #### 기능 추가
