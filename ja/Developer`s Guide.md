@@ -1,12 +1,17 @@
 ## Notification > Email > Developer's Guide
 
-## 메일발송
-
 [API 도메인]
 
 |환경|	도메인|
 |---|---|
-|Real|	https://api-mail.cloud.toast.com|
+|Real|	https://api-mail.cloud.toast.com |
+
+[Header]
+```
+Content-Type: application/json;charset=UTF-8
+```
+
+## 메일발송
 
 ### 일반 메일발송
 
