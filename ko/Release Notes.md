@@ -4,7 +4,7 @@
 #### 버그 수정
 * [Console] 템플릿에서 이미지 가져올 시 비정상적으로 커지는 문제 수정
     * 템플릿 본문에 이미지 태그를 넣은 경우, Console에서 템플릿 선택하여 가져올 시 비정상적으로 커지는 문제가 수정되었습니다.
-    
+
 ### 2017.07.20
 #### 기능 추가
 * [Console] 수신거부 리스트 다운로드 기능 추가
@@ -33,7 +33,7 @@
         * 수신 거부 링크 클릭 시 수신거부 할 수 있는 화면 제공
         * 수신 거부된 대상자들에게 광고성 메일 발송 차단하는 기능 제공
         * 수신 거부 대상자를 관리할 수 있는 화면 제공(다운로드 기능은 추후 제공 예정)
-    * 자세항 사항은 [<a href="/ko/Notification/E-mail/ko/Getting%20Started/#_3" target="_blank">광고성 메일발송</a>] [<a href="/ko/Notification/E-mail/ko/Getting%20Started/#_9" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+    * 자세항 사항은 [[수신 거부 관리](./Getting%20Started/#_3)]를 참고해주세요.
 * [API] 광고성 메일 발송 기능 추가
     * 광고성 메일인 경우 별도로 제공되는 API를 사용할 수 있습니다.
     * 다음과 같은 기능을 제공합니다.
@@ -41,16 +41,16 @@
         * 수신거부로 등록된 대상자에게는 메일 발송을 하지 않습니다.
 * [API] 수신거부 관리 기능 추가
     * 수신 거부 유저를 조회/등록/삭제 할 수 있는 API를 제공합니다.
-    * 자세항 사항은 [<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_36" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+    * 자세항 사항은 [[수신 거부 관리](./Developer%60s%20Guide/#_36)]를 참고해주세요.
 * [API] 통합 통계 조회 기능 추가
     * 날짜별/시간대별/요일별로 조회 할수 있는 API가 추가됩니다.
-    * 자세항 사항은 [<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_36" target="_blank">수신 거부 관리</a>]를 참고해주세요.
+    * 자세항 사항은 [[통합 통계 조회](./Developer%60s%20Guide/#_35)]를 참고해주세요.
 
 #### 기능 개선
 * [Console]통계 화면 개선
     * 통계 화면이 개선되었습니다.
     * 이제 날짜별, 시간대별, 요일별로 조회가 가능합니다.
-    * 자세항 사항은 [<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_35" target="_blank">통합 통계 조회</a>]를 참고해주세요.
+    * 자세항 사항은 [[통계 정보 조회](./Getting%20Started/#_13)]를 참고해주세요.
 
 ###  2017.05.25
 
@@ -70,12 +70,12 @@
 * [Console] <b>수신자명<이메일주소></b> 형식으로 발송이 가능
     * 발신자 주소에만 사용할 수 있었던 <b>수신자명<이메일주소></b> 형식을 수신자 주소에서도 사용이 가능합니다.
 * [API] 수신자명 지원
-    * API에서도 수신자명 필드가 추가되었습니다. 자세한 사항은 [<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_2" target="_blank">메일 발송 문서</a>]를 참고해주세요.
+    * API에서도 수신자명 필드가 추가되었습니다. 자세한 사항은 [[메일 발송 문서](./Developer%60s%20Guide/#_2)]를 참고해주세요.
 * [Console] 통계 화면 제공
     * 일별/월별 통계 화면이 제공됩니다.
     * 통계 정보는 2017년 4월 1일부터 수집됩니다.
 * [API] 통계 조회 기능 제공
-    * 일별/월별 통계 조회 API가 제공됩니다. 자세한 사항은 [<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_31" target="_blank">통계 조회 문서</a>]를 참고해주세요.
+    * 일별/월별 통계 조회 API가 제공됩니다. 자세한 사항은 [[통계 조회 문서](./Developer%60s%20Guide/#_31)]를 참고해주세요.
 
 #### 기능 개선
 * [Console] 메일 발송 화면에 SPF 등록 안내 문구 추가
@@ -100,7 +100,7 @@
 ### 2017.02.23
 #### 기능 추가
 * [Console] 메일 요청별 조회 -> 메일 상세 조회 화면에서 수신 확인 여부 표시
-* [API] 메일발송 상세조회 API의 Response 필드 추가 (<a href="/ko/Notification/E-mail/ko/Developer%60s%20Guide/#_20" target="_blank">문서링크</a>)
+* [API] 메일발송 상세조회 API의 Response 필드 추가 ([문서링크](./Developer%60s%20Guide/#_20))
     * 수신자 리스트(receivers) 항목의 수신여부(readYn), 수신날짜(readDate)
 
 
