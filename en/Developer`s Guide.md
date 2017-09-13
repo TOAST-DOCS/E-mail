@@ -744,7 +744,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
 |to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
-|type| String| X | 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENER:오픈 |
+|type| String| X | 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENED:오픈 |
 |filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
 ```
 {
@@ -802,7 +802,7 @@ Content-Type: application/json;charset=UTF-8
 |- data|	List|	데이터 영역|
 |-- ymd| String| 통계 날짜(yyyyMMdd)|
 |-- appKey| String| appKey|
-|-- type| String| 통계 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED:수신<br/>OPENER:오픈 |
+|-- type| String| 통계 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED:수신<br/>OPENED:오픈 |
 |-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
 |-- templateId| String| 템플릿아이디|
 |-- templateName| String| 템플릿명|
@@ -852,7 +852,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
 |to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
-|type| String| X | 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED :수신<br/>OPENER:오픈 |
+|type| String| X | 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED :수신<br/>OPENED:오픈 |
 |filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
 
 ```json
@@ -911,7 +911,7 @@ Content-Type: application/json;charset=UTF-8
 |- data|	List|	데이터 영역|
 |-- ymd| String| 통계 날짜(yyyyMMdd)|
 |-- appKey| String| appKey|
-|-- type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENER:오픈 |
+|-- type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENED:오픈 |
 |-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
 |-- templateId| String| 템플릿아이디|
 |-- templateName| String| 템플릿명|
