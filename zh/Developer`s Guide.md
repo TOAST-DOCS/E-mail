@@ -744,7 +744,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
 |to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
-|type| String| X | 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|type| String| X | 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENER:오픈 |
 |filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
 ```
 {
@@ -802,7 +802,7 @@ Content-Type: application/json;charset=UTF-8
 |- data|	List|	데이터 영역|
 |-- ymd| String| 통계 날짜(yyyyMMdd)|
 |-- appKey| String| appKey|
-|-- type| String| 통계 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>OPENER:오픈 |
+|-- type| String| 통계 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED:수신<br/>OPENER:오픈 |
 |-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
 |-- templateId| String| 템플릿아이디|
 |-- templateName| String| 템플릿명|
@@ -852,7 +852,7 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |from|	String|	O | 통계 조회 시작 날짜(년-월)<br/>(yyyy-MM) |
 |to| String| O | 통계 조회 종료 날짜(년-월)<br/>(yyyy-MM) |
-|type| String| X | 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>OPENER:오픈 |
+|type| String| X | 조회 타입<br/>REQUEST:요청<br/>SENT:발송<br/>RECEIVED :수신<br/>OPENER:오픈 |
 |filters| String| X | 검색 조건(다중 파라미터 가능)<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계 |
 
 ```json
@@ -911,7 +911,7 @@ Content-Type: application/json;charset=UTF-8
 |- data|	List|	데이터 영역|
 |-- ymd| String| 통계 날짜(yyyyMMdd)|
 |-- appKey| String| appKey|
-|-- type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* OPENER:오픈 |
+|-- type| String| 통계 조회 타입<br/>* REQUEST:요청<br/>* SENT:발송<br/>* RECEIVED :수신<br/>* OPENER:오픈 |
 |-- mailType| String| 메일 타입<br/>* MAILTYPE:메일타입별(일반/대량) 통계<br/>* TEMPLATE:템플릿별 통계|
 |-- templateId| String| 템플릿아이디|
 |-- templateName| String| 템플릿명|
@@ -976,8 +976,10 @@ Content-Type: application/json;charset=UTF-8
                   "divisionName": String,
                   "requestedCount": long,
                   "sentCount": long,
+                  "receivedCount": long,
                   "openedCount": long,
                   "sentRate": String,
+                  "receivedRate": String,
                   "openedRate": String
         }
         ]
@@ -996,8 +998,10 @@ Content-Type: application/json;charset=UTF-8
 |-- divisionName | String | 통계 기준(날짜/시간/요일) |
 |-- requestedCount | Long | 발송 요청 카운트 |
 |-- sentCount | Long | 발송 카운트 |
+|-- receivedCount | Long | 수신 카운트 |
 |-- openedCount | Long | 오픈 카운트 |
 |-- sentRate | String | 발송율 |
+|-- receivedRate | String | 수신율 |
 |-- openedRate | String | 오픈율 |
 
 ## 수신 거부 관리
