@@ -49,7 +49,9 @@ Content-Type: application/json;charset=UTF-8
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
-[주의] : template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+[주의]
+- template을 사용 할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+- templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
 [Request body 예시]
 
@@ -143,7 +145,9 @@ Content-Type: application/json;charset=UTF-8
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
-[주의] : template을 사용 할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+[주의]
+- template을 사용 할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+- templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
 [Request body 예시]
 
@@ -429,7 +433,7 @@ Content-Type: application/json;charset=UTF-8
 |-- resultId|	String|	발송결과 ID|
 |-- resultDate|	String|	발송 완료 일시|
 |-- mailStatusCode|	String|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|-- mailStatusName|	String|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusName|	String|	발송상태명|
 |-- requestDate|	String|	발송 요청일시|
 
 ### 메일발송 상세조회
@@ -516,7 +520,7 @@ Content-Type: application/json;charset=UTF-8
 |--title|	String|	메일 제목|
 |--body|	String|	메일 내용|
 |--attachFileYn|	String|	첨부파일 여부|
-|--resultId|	String|	메일 발송 아이디비|
+|--resultId|	String|	메일 발송 ID|
 |--resultDate|	String|	발송완료일시|
 |--receivers|	List|	수신자 리스트|
 |---requestId|	String|	요청ID|
@@ -561,7 +565,7 @@ Content-Type: application/json;charset=UTF-8
 |useYn|	String|	X|	사용 여부(Y/N)|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15)|
-|all|	Boolean|	X|	전체 조회 여부|
+|all|	Boolean|	X|	전체 템플릿 목록 조회 여부|
 
 #### 응답
 
@@ -1012,7 +1016,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-| GET |	/appKeys/{appKey}/block-receivers?mailAddress={mailAddress}&pageNum={pageNum}&pageSize={pageSize} |
+| GET |	/email/v1.0/appKeys/{appKey}/block-receivers?mailAddress={mailAddress}&pageNum={pageNum}&pageSize={pageSize} |
 
 [Path parameter]
 
@@ -1024,7 +1028,7 @@ Content-Type: application/json;charset=UTF-8
 
 |값|	타입|	필수| 설명|
 |---|---|---|---|
-|mailAddress|	String|	X| 수신거부 이메일 주소 필터|
+|mailAddress|	String|	X| 수신거부 목록에 등록되어 있는 이메일 주소|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15)|
 
@@ -1070,7 +1074,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-| POST |	/appKeys/{appKey}/block-receivers |
+| POST |	/email/v1.0/appKeys/{appKey}/block-receivers |
 
 [Request body]
 ```json
@@ -1115,7 +1119,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-| PUT |	/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v1.0/appKeys/{appKey}/block-receivers |
 
 [Request body]
 ```json
