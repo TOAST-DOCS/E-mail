@@ -50,7 +50,9 @@ Content-Type: application/json;charset=UTF-8
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
 [주의]
+
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
 [Request body 예시]
@@ -146,7 +148,9 @@ Content-Type: application/json;charset=UTF-8
 |userId|	String|	X|	요청자 아이디(페이코 UUID)|
 
 [주의]
+
 * template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
 [Request body 예시]
