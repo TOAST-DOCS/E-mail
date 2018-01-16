@@ -222,6 +222,106 @@ Content-Type: application/json;charset=UTF-8
 |---|---|
 |POST|	/email/v1.0/appKeys/{appKey}/sender/ad-eachMail |
 
+### 태그 메일발송
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/sender/tagMail|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+```
+{
+    "senderAddress": String,
+    "senderName": String,
+    "requestDate": String,
+    "title": String,
+    "body": String,
+    "templateId": String,
+    "adYn": String,
+    "autoSendYn": String,
+    "attachFileIdList": List:String,
+    "tagExpression": List:String,
+    "userId": String
+}
+```
+
+|값|	타입|	필수|	설명|
+| - | - | - | - |
+| senderAddress  | String | O|발신자 주소 |
+| senderName | String | X|발신자명 |
+| requestDate | String | X|발송 일자 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss) |
+| title  | String | O|제목 |
+| body  | String | O|내용 |
+| templateId  | String | X|템플릿 아이디 |
+| adYn  | String | X|광고 여부 (default 'N') |
+| autoSendYn  | String | X|자동 발송 여부 (default 'Y') |
+| attachFileIdList  | List.String | X|첨부파일 리스트 |
+| tagExpression  | List.String | O|태그 표현식 |
+| userId  | String | X|유저 아이디 (toast uuid) |
+
+[주의]
+
+* template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+* templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
+
+[Request body 예시]
+
+```
+{
+    "senderAddress": "support@nhnent.com",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
+    "attachFileIdList": [
+        "첨부파일_ID"
+    ],
+    "tagExpression": [
+        "tag1",
+        "AND",
+        "tag2"
+    ],
+    "userId": "XXXXX"
+}
+```
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful":boolean,
+        "resultCode":Integer,
+        "resultMessage":String
+    },
+    "body": {
+        "data": {
+            "requestId":String
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	Object|	데이터 영역|
+|-- requestId|	String|	요청 아이디|
+
 ### 첨부파일 업로드
 
 #### 요청
@@ -259,7 +359,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-    "isSuccessful":  Bollean,
+    "isSuccessful":  Boolean,
     "resultCode": Integer,
     "resultMessage": String
   },
@@ -543,6 +643,304 @@ Content-Type: application/json;charset=UTF-8
 |---createDate-|	String|	생성일시|
 |--updateDate|	String|	수정일시|
 
+### 태그 메일 발송 요청 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/tagMails|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|requestId|	String|	O|	요청 아이디|
+|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	발신메일 주소|
+|senderName|	String|	X|	발신자 이름|
+|templateId|	String|	X|	템플릿 ID|
+|sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+
+[주의]
+
+* requestId가 있는 경우, startSendDate와 endSendDate는 필수 값이 아닙니다.
+* startSendDate와 endSendDate가 있는 경우, requestId는 필수 값이 아닙니다.
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "pageNum": Integer,
+        "pageSize": Integer,
+        "totalCount": Integer,
+        "data": [
+            {
+                "requestId": String,
+                "requestIp": String,
+                "requestDate": String,
+                "tagSendStatus": String,
+                "tagExpression": List:String,
+                "templateId": String,
+                "templateName": String,
+                "senderName": String,
+                "senderMailAddress": String,
+                "title": String,
+                "body": String,
+                "attachYn": String,
+                "adYn": String,
+                "createUser": String,
+                "createDate": String,
+                "updateUser": String,
+                "updateDate": String
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId | String  | 요청 아이디 |
+|-- requestIp |  String  | 요청 아이피 |
+|-- requestDate |  String  | 요청 시간 |
+|-- tagSendStatus |  String  | 발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소 |
+|-- tagExpression |  List:String  | 태그 표현식 |
+|-- templateId |  String  | 템플릿 아이디 |
+|-- templateName |  String  | 템플릿명 |
+|-- senderName |  String  | 발신자명 |
+|-- senderMail |  String  | 발신자주소 |
+|-- title |  String  | 제목 |
+|-- body |  String  | 내용 |
+|-- attachYn |  String  | 첨부파일여부 |
+|-- adYn |  String  | 광고여부 |
+|-- createUser |  String  | 생성자 |
+|-- createDate |  String  | 생성일시 |
+|-- updateUser |  String  | 수정자 |
+|-- updateDate |  String  | 수정일시 |
+
+### 태그 메일 발송 수신자 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/tagMails/{requestId}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 아이디|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|receiveMail|	String|	X|	수신 메일 주소|
+|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|receiveStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "pageNum": Integer,
+        "pageSize": Integer,
+        "totalCount": Integer,
+        "data": [
+            {
+                "requestId": String,
+                "mailSequence": Integer,
+                "receiveMail": String,
+                "mailStatusCode": String,
+                "mailStatusName": String,
+                "resultId": String,
+                "resultDate": String,
+                "readYn": String,
+                "readDate": String,
+                "createUser": String,
+                "createDate": String,
+                "updateUser": String,
+                "updateDate": String
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId | String  | 요청 아이디 |
+|-- mailSequence | Integer  | 메일 순번 |
+|-- receiveMail | String  | 수신자주소 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusName | String  | 메일 상태명 |
+|-- resultId | String  | SMTP ID |
+|-- resultDate | String  | 실제 발송 시간 |
+|-- readYn | String  | 읽음 여부 |
+|-- readDate | String  | 읽은 시간 |
+|-- createUser |  String  | 생성자 |
+|-- createDate |  String  | 생성일시 |
+|-- updateUser |  String  | 수정자 |
+|-- updateDate |  String  | 수정일시 |
+
+### 태그 메일 발송 상세 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 아이디|
+|mailSequence|	Integer|	메일 순번|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "data": {
+            "requestId": String,
+            "requestIp": String,
+            "templateId": String,
+            "templateName": String,
+            "mailStatusCode": String,
+            "mailStatusName": String,
+            "requestDate": String,
+            "resultDate": String,
+            "senderName": String,
+            "senderMail": String",
+            "resultId": String,
+            "title": String,
+            "body": String",
+            "receivers": [
+                {
+                    "requestId": String
+                    "mailSequence": String
+                    "receiveType": String
+                    "receiveTypeName": String
+                    "receiveMailAddr": String
+                    "readYn": String
+                    "readDate": String
+                }
+            ],
+            "attachFileList": [
+                {
+                    "filePath": String
+                    "fileName": String
+                    "fileSize": Integer,
+                    "fileSequence": Integer,
+                    "createDate": String
+                    "updateDate": String
+                }
+            ]
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId  | String  | 요청 ID |
+|-- requestIp | String  | 요청 IP |
+|-- templateId | String  | 템플릿 ID |
+|-- templateName | String  | 템플릿 명 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패 |
+|-- mailStatusName | String  | 메일 상태 명 |
+|-- requestDate | String  | 요청 시간 |
+|-- resultDate | String  | 결과 시간 |
+|-- senderName | String  | 발신자 명 |
+|-- senderMail | String  | 발신자 주소 |
+|-- resultId | String  | SMTP ID |
+|-- title | String  | 제목 |
+|-- body | String  | 내용 |
+|-- receivers | List| 수신자 리스트|
+|--- requestId | String  | 요청 아이디 |
+|--- mailSequence | Integer  | 메일 순번 |
+|--- receiveType | String  | 수신 타입 (MRT0: 받는사람 , MRT1 : 참조자) |
+|--- receiveTypeName | String  | 수신 타입명 |
+|--- receiveMailAddr | String  | 수신자 메일 주소 |
+|--- readYn | String  | 읽음 여부 |
+|--- readDate | String  | 읽은 시간 |
+|-- attachFileList | List  | 첨부파일 리스트 |
+|--- filePath | String  | 파일 경로 |
+|--- fileName | String  | 파일 명 |
+|--- fileSize | Long  | 파일 사이즈 |
+|--- fileSequence | Integer  | 파일 번호 |
+|--- createDate | String  | 파일 생성일시 |
+|--- updateDate | String  | 파일 수정일시 |
+
+
 ## 템플릿 조회
 
 ### 템플릿 리스트 조회
@@ -730,6 +1128,544 @@ Content-Type: application/json;charset=UTF-8
 |---createUser|	String|	생성자|
 |---updateDate|	String|	수정일시|
 |---updateUser|	String|	수정자|
+
+## 태그 관리
+
+### 태그 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/tags|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "pageNum": Integer,
+        "pageSize": Integer,
+        "totalCount": Integer,
+        "data": [
+            {
+                "tagId": String,
+                "tagName": String,
+                "createdDate": String,
+                "updatedDate": String
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- tagId | String | 태그 ID |
+|-- tagName | String | 태그 이름 |
+|-- createdDate | String | 생성일시 |
+|-- updatedDate | String | 수정일시 |
+
+### 태그 등록
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/tags|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+```
+{
+    "tagName": String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|tagName|	String|	O|	태그 이름|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "data": {
+            "tagId": String
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- tagId | String | 태그 ID |
+
+### 태그 수정
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT|	/email/appKeys/{appKey}/tags/{tagId}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|tagId|	String|	태그 ID|
+
+[Request body]
+
+```
+{
+    "tagName": String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|tagName|	String|	O|	태그 이름|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 태그 삭제
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|DELETE|	/email/appKeys/{appKey}/tags/{tagId}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|tagId|	String|	태그 ID|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+## UID 관리
+
+### UID 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/uids|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|wheres|	List:String|	X|	조회 조건.</br> 알파뱃, 숫자, 괄호로 이루어진 문자열 배열. </br>괄호는 1개, AND, OR은 3개까지 사용할 수 있다.</br> (예시) tag1,AND,tag2|
+|offsetUid|	String|	X|	offset UID|
+|offset|	Integer|	X| offset(Default : 0)|
+|limit|	Integer|	X|	조회 건수(Default : 15)|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "data": {
+            "uids": [
+                {
+                    "uid": String,
+                    "tags": [
+                        {
+                            "tagId": String,
+                            "tagName": String,
+                            "createDate": String,
+                            "updateDate": String
+                        }
+                    ],
+                    "contacts": [
+                        {
+                            "contactType": String,
+                            "contact": String,
+                            "createDate": String"
+                        }
+                    ]
+                }
+            ],
+            "isLast": Boolean,
+            "totalCount": Integer
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- uids|	List|	UID 목록|
+|--- uid | String  | UID |
+|--- tags | List | 태그 정보 리스트 | 
+|---- tagId | String | 태그 ID |
+|---- tagName | String | 태그 이름 |
+|---- createDate | String | 태그 생성일시 |
+|---- updateDate | String | 태그 수정일시 |
+|--- contacts | List | 연락처 리스트 |
+|---- contactType | String | 연락처 타입 (EMAIL_ADDRESS)|
+|---- contact | String | 연락처 (메일 주소)) |
+|---- createDate | String | 연락처 생성일시 |
+|-- isLast | Boolean | 마지막 리스트 여부 |
+|-- totalCount | Integer | 총 데이터 건수  |
+
+### UID 단건 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.0/appKeys/{appKey}/uids/{uid}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|uid|	String|	UID |
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": String,
+        "resultCode": Integer,
+        "resultMessage": String
+    },
+    "body": {
+        "data": {
+            "uid": "",
+            "tags": [
+                {
+                    "tagId": String,
+                    "tagName": String,
+                    "createDate": String,
+                    "updateDate": String
+                }
+            ],
+            "contacts": [
+                {
+                    "contactType": String,
+                    "contact": String,
+                    "createDate": String
+                }
+            ]
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- uid | String  | UID |
+|-- tags | List | 태그 정보 리스트 | 
+|--- tagId | String | 태그 ID |
+|--- tagName | String | 태그 이름 |
+|--- createDate | String | 태그 생성일시 |
+|--- updateDate | String | 태그 수정일시 |
+|-- contacts | List | 연락처 리스트 |
+|--- contactType | String | 연락처 타입 |
+|--- contact | String | 연락처 (메일 주소)) |
+|--- createDate | String | 연락처 생성일시 |
+
+### UID 등록
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/uids|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+```
+{
+    "uids": [
+        {
+            "uid": String,
+            "tagIds": List:String,
+            "contacts": List:String
+        }
+    ]
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|uid|	String|	O|	UID|
+|tagIds|	String|	O|	태그 ID 목록|
+|contacts|	String|	O|	메일 주소 목록 |
+
+[주의]
+
+* tagIds가 주어지는 경우 contacts는 필수 값이 아니다.
+* contacts가 주어지는 경우 tagIds는 필수 값이 아니다.
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### UID 삭제
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|DELETE|	/email/v1.0/appKeys/{appKey}/uids/{uid}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|uid|	String|	UID|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 메일 주소 등록
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|uid|	String|	UID|
+
+[Request body]
+
+```
+{
+    "emailAddress" : String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|emailAddress|	String|	O|	메일 주소|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 메일 주소 삭제
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|DELETE|	/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|uid|	String|	UID|
+|emailAddress|	String|	메일 주소|
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
 
 ## 통계 조회
 
@@ -1103,7 +2039,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-    "isSuccessful":  Bollean,
+    "isSuccessful":  Boolean,
     "resultCode": Integer,
     "resultMessage": String
   }
@@ -1148,7 +2084,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 {
   "header": {
-    "isSuccessful":  Bollean,
+    "isSuccessful":  Boolean,
     "resultCode": Integer,
     "resultMessage": String
   }
