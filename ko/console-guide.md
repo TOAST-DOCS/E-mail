@@ -5,6 +5,7 @@
 Console에 접속하여 서비스 선택 > Notification > Email을 활성화 시킵니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0122_01.png)
+
 <center>[그림 1] 이메일 상품 Enable </center>
 
 ### 일반 메일발송
