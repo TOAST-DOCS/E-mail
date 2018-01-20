@@ -203,8 +203,11 @@ Content-Type: application/json;charset=UTF-8
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
 ### 광고성 일반 메일발송
-
 * URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일발송과 동일하다.
+
+#### 광고메일 전송 시 유의 사항
+* 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있다.
+* 자세한 내용은 [[광고성 메일 발송](./console-guide/#_3)]를 참고한다.
 
 [URL]
 
