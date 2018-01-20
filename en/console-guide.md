@@ -1,10 +1,11 @@
-## Notification > Email > Console Guide
+## Notification > Email > 콘솔 사용 가이드
 
 ### 상품 활성화
 
 Console에 접속하여 서비스 선택 > Notification > Email을 활성화 시킵니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0122_01.png)
+
 <center>[그림 1] 이메일 상품 Enable </center>
 
 ### 일반 메일발송
@@ -228,47 +229,55 @@ Console에 접속하여 서비스 선택 > Notification > Email을 활성화 시
 ### UID 관리
 
 UID와 메일 주소를 관리할 수 있습니다.
-등록한 UID는 태그에 등록하여 다수의 대상자에게 쉽게 메일을 발송할 수 있습니다.
+<br>등록한 UID는 태그에 등록하여 다수의 대상자에게 쉽게 메일을 발송할 수 있습니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0122_12.png)
 <center>[그림 31] UID 조회 화면 </center>
 
-UID는 같은 프로젝트 내에서 공유할 수 있습니다.
-UID 관리 탭에서 생성/삭제한 작업은 다른 Notification 상품에도 동일하게 적용됩니다.
+UID 등록을 클릭하면 CSV 파일로 다수의 UID와 메일 주소를 입력할 수 있습니다.
+
+![](http://static.toastoven.net/prod_email/email_getting_0122_13.png)
+<center>[그림 32] UID 등록 화면 </center>
+
+템플릿을 다운받은 후 아래 형식과 같이 첫번째 열에는 UID, 두번째 열에는 메일 주소를 입력합니다.
+<br>입력한 파일을 저장한 후 업로드를 하면 등록이 완료됩니다.
+
+![](http://static.toastoven.net/prod_email/email_getting_0122_14.png)
+<center>[그림 33] UID CSV 입력 화면 </center>
 
 ### 메일 요청별 조회
 
 메일 요청별 조회 탭을 이용하여 발송 일시, 수신 일시, 템플릿, 발송상태 등의 조건을 이용하여 발송 된 메일을 조회 할 수 있습니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_18.jpg)
-<center>[그림 32] 메일 요청별 조회 화면 </center>
+<center>[그림 34] 메일 요청별 조회 화면 </center>
 
 리스트에 노출된 메일내용을 클릭하면 상세 발송 내용을 확인 할 수 있습니다.
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_19.jpg)
-<center>[그림 33] 메일 상세 보기 화면 </center>
+<center>[그림 35] 메일 상세 보기 화면 </center>
 
 ### 수신 거부 관리
 
 수신 거부를 관리할 수 있는 페이지입니다.
 현재까지 수신거부로 등록된 유저를 조회할 수 있으며, 수동 등록 및 삭제가 가능합니다.
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_26.jpg)
-<center>[그림 34] 수신 거부 관리 화면 </center>
+<center>[그림 36] 수신 거부 관리 화면 </center>
 
 #### 수신거부 직접 입력으로 등록
 
 수신 거부 등록 버튼 클릭
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_27.jpg)
-<center>[그림 35] 수신 거부 등록 화면 </center>
+<center>[그림 37] 수신 거부 등록 화면 </center>
 
 수신 거부 이메일 주소 입력
 추가 버튼 클릭하여 최대 10명까지 등록할 수 있습니다.
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_28.jpg)
-<center>[그림 36] 수신 거부 수동 등록 화면 </center>
+<center>[그림 38] 수신 거부 수동 등록 화면 </center>
 
 등록 버튼 클릭 후 등록된 리스트 확인
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_29.jpg)
-<center>[그림 37] 수신 거부 수동 등록 완료 화면 </center>
+<center>[그림 39] 수신 거부 수동 등록 완료 화면 </center>
 
 #### 수신거부 파일 업로드로 등록
 
@@ -276,40 +285,40 @@ UID 관리 탭에서 생성/삭제한 작업은 다른 Notification 상품에도
 메일 주소 일괄 등록을 클릭하여 파일 업로드(.csv .txt .xlsx)
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_30.jpg)
-<center>[그림 38] 수신 거부 엑셀 등록 화면 </center>
+<center>[그림 40] 수신 거부 엑셀 등록 화면 </center>
 
 csv 파일
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_31.jpg)
-<center>[그림 39] 업로드에 사용된 csv 파일 </center>
+<center>[그림 41] 업로드에 사용된 csv 파일 </center>
 
 업로드 완료 후 등록 버튼 클릭
 정상적으로 업로드된 경우 "총 x개의 메일 주소가 확인되었습니다"문구 노출
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_32.jpg)
-<center>[그림 40] 유효성 검사 완료 화면 </center>
+<center>[그림 42] 유효성 검사 완료 화면 </center>
 
 업로드 완료 모습
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_33.jpg)
-<center>[그림 41] 업로드 완료 화면 </center>
+<center>[그림 43] 업로드 완료 화면 </center>
 
 #### 수신 거부 삭제
 
 삭제할 수신거부를 선택한 후 수신 거부 삭제 버튼 클릭
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_34.jpg)
-<center>[그림 42] 수신 거부 삭제 화면 </center>
+<center>[그림 44] 수신 거부 삭제 화면 </center>
 
 팝업 내용 확인 후 "확인" 버튼 클릭
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_35.jpg)
-<center>[그림 43] 수신 거부 삭제 팝업 화면 </center>
+<center>[그림 45] 수신 거부 삭제 팝업 화면 </center>
 
 삭제 완료
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_36.jpg)
-<center>[그림 44] 수신 거부 삭제 완료 화면 </center>
+<center>[그림 46] 수신 거부 삭제 완료 화면 </center>
 
 ### 통계 정보 조회
 
@@ -319,15 +328,15 @@ csv 파일
 
 날짜별
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_20.jpg)
-<center>[그림 45] 날짜별 통계 화면 </center>
+<center>[그림 47] 날짜별 통계 화면 </center>
 
 시간대별
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_21.jpg)
-<center>[그림 46] 시간대별 통계 화면 </center>
+<center>[그림 48] 시간대별 통계 화면 </center>
 
 요일별
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_22.jpg)
-<center>[그림 47] 요일별 통계 화면 </center>
+<center>[그림 49] 요일별 통계 화면 </center>
 
 ### 개인정보 수탁사 고지 안내
 '고객'이 TOAST Cloud > Email 상품 이용 시, '고객' - '당사' 간 개인정보 처리에 관한 업무 위수탁 관계가 발생하는 바 정보통신망법 및 개인정보보호법에 따라 위탁자인 '고객'은 개인정보처리방침을 통해 '당사'에 개인정보를 위탁한 현황(수탁자 및 업무의내용)을 공개하여야 합니다.<br/>
