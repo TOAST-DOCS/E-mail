@@ -1,4 +1,4 @@
-## Notification > Email > Overview
+## Notification > Email > 
 
 메일 발송, 예약 발송, 조회, 템플릿 관리까지 아우르는 메일 발송 시스템입니다.
 <br>손쉬운 연동을 위한 RESTful API를 제공합니다.
