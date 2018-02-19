@@ -1,5 +1,6 @@
 ## Notification > Email > 오류 코드
 
+### 오류 코드
 |service|isSuccessful|resultCode|resultMessage|
 |-|-|-|-|
 |공통|true|0|SUCCESS|

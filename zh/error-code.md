@@ -1,6 +1,6 @@
 ## Notification > Email > Error Code
 
-
+### Error code
 |service|isSuccessful|resultCode|resultMessage|
 |-|-|-|-|
 |공통|true|0|SUCCESS|
