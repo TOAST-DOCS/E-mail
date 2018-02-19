@@ -30,6 +30,11 @@
 |발송|false|-2022|Invalid provisioned resource.|
 |발송|false|-2023|In the case of an advertising mail, the phrase '(광고)' must be placed in front of the title.|
 |발송|false|-2024|Invalid file extension.|
+|발송|false|-2025|The 'userId' can not be empty.|
+|발송|false|-2026|The file is not exist.|
+|발송|false|-2027|The file was expired.|
+|발송|false|-2028|Limit of rows is exceeded. It can handle up to 50,000 rows.|
+|발송|false|-2029|The 'summary' property can not exceed 200 characters.|
 |템플릿|false|-2100|The 'templateId' can not be empty.|
 |템플릿|false|-2101|Already existed templateId.|
 |템플릿|false|-2102|The 'templateName' can not be empty.|
@@ -77,10 +82,9 @@
 |태그|false|-7001|Invalid parameter.|
 |태그|false|-7002|The tag expression can not be empty.|
 |태그|false|-7003|Uploaded file is empty.|
+|태그|false|-7004|The UID can not be empty, and can not contain the comma character(,).|
+|태그|false|-7005|Invalid email address.|
+|태그|false|-8000|It failed to read that files|
 |태그|false|-6001|This request can't update status. Check status of this request.|
 |대량|false|-6000|This request can't update status. Check status of this request.|
-
-
-
-
 
