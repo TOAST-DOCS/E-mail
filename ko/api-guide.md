@@ -1513,7 +1513,12 @@ Content-Type: application/json;charset=UTF-8
         {
             "uid": String,
             "tagIds": List:String,
-            "contacts": List:String
+            "contacts": [
+                {
+                    "contactType": String,
+                    "contact": String
+                }
+            ]
         }
     ]
 }
@@ -1523,12 +1528,15 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |uid|	String|	O|	UID|
 |tagIds|	String|	O|	태그 ID 목록|
-|contacts|	String|	O|	메일 주소 목록 |
+|contacts|	Object|	O|	메일 주소 목록 |
+|-contactType| String| O| 연락처 타입 |
+|-contact| String| O| 메일 주소 |
 
 [주의]
 
 * tagIds가 주어지는 경우 contacts는 필수 값이 아니다.
 * contacts가 주어지는 경우 tagIds는 필수 값이 아니다.
+* 본 상품의 경우, contactType은 반드시 "EMAIL_ADDRESS" 값으로 요청해야 한다.
 
 #### 응답
 
