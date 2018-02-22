@@ -1528,9 +1528,9 @@ Content-Type: application/json;charset=UTF-8
 |---|---|---|---|
 |uid|	String|	O|	UID|
 |tagIds|	String|	O|	태그 ID 목록|
-|contacts|	Object|	O|	메일 주소 목록 |
+|contacts|	List|	O|	메일 주소 목록 |
 |-contactType| String| O| 연락처 타입 |
-|-contact| String| O| 메일 주소 |
+|-contact| String| O| 연락처 (메일 주소)) |
 
 [주의]
 
