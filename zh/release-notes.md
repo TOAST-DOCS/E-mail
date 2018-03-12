@@ -1,5 +1,9 @@
 ## Notification > Email > Release Notes
 
+### 2018.03.22
+#### 기능 추가
+* [Console] 탭 UI 변경
+
 ### 2018.02.22
 #### 기능 추가
 * [Console] 태그 메일 발송 기능 추가
