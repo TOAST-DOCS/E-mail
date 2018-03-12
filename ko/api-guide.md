@@ -47,7 +47,7 @@ Content-Type: application/json;charset=UTF-8
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
-|userId|	String|	X|	요청자 아이디(페이코 UUID)|
+|userId|	String|	X|	발송 구분자 ex)admin,system|
 
 [주의]
 
@@ -145,7 +145,7 @@ Content-Type: application/json;charset=UTF-8
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|userId|	String|	X|	요청자 아이디(페이코 UUID)|
+|userId|	String|	X|	발송 구분자 ex)admin,system|
 
 [주의]
 
@@ -271,7 +271,7 @@ Content-Type: application/json;charset=UTF-8
 | autoSendYn  | String | X|자동 발송 여부 (default 'Y') |
 | attachFileIdList  | List.String | X|첨부파일 리스트 |
 | tagExpression  | List.String | O|태그 표현식 |
-| userId  | String | X|유저 아이디 (toast uuid) |
+| userId  | String | X|발송 구분자 ex)admin,system |
 
 [주의]
 
@@ -1527,10 +1527,10 @@ Content-Type: application/json;charset=UTF-8
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |uid|	String|	O|	UID|
-|tagIds|	String|	O|	태그 ID 목록|
+|tagIds|	List:String|	O|	태그 ID 목록|
 |contacts|	List|	O|	메일 주소 목록 |
 |-contactType| String| O| 연락처 타입 |
-|-contact| String| O| 연락처 (메일 주소)) |
+|-contact| String| O| 연락처 (메일 주소) |
 
 [주의]
 
