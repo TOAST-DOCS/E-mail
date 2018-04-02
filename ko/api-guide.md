@@ -641,7 +641,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	O|	요청 아이디|펭
+|requestId|	String|	O|	요청 아이디|
 |startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |senderMail|	String|	X|	발신메일 주소|
