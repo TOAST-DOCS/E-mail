@@ -641,7 +641,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	O|	요청 아이디|펭
+|requestId|	String|	O|	요청 아이디|
 |startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |senderMail|	String|	X|	발신메일 주소|
@@ -1696,6 +1696,9 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 ## 통계 조회
 
 ### 일별 통계 조회
+
+#### 요청
+
 [URL]
 
 |Http method|	URI|
@@ -1721,6 +1724,8 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/daily?from=2018-03-01&to=2018-03-07&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
 ```
+
+#### 응답
 
 ```
 {
@@ -1810,6 +1815,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 ### 월별 통계 조회
 
+#### 요청
+
 [URL]
 
 |Http method|	URI|
@@ -1835,6 +1842,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/monthly?from=2018-03&to=2018-04&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
 ```
+
+#### 응답
 
 ```json
 {
@@ -1923,6 +1932,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- sum| int| 합계|
 
 ### 통합 통계 조회
+
+#### 요청
+
 [URL]
 
 |Http method|	URI|
@@ -1949,6 +1961,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&templateId=templateId1"
 ```
+
+#### 응답
 
 ```json
 {
@@ -1996,9 +2010,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 요청
 
+[URL]
+
 |Http method|	URI|
 |---|---|
-| GET |	/email/v1.0/appKeys/{appKey}/block-receivers?mailAddress={mailAddress}&pageNum={pageNum}&pageSize={pageSize} |
+| GET |	/email/v1.0/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
