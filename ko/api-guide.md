@@ -246,7 +246,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | autoSendYn  | String | X|자동 발송 여부 (default 'Y') |
 | attachFileIdList  | List.String | X|첨부파일 리스트 |
 | tagExpression  | List.String | O|태그 표현식 |
-| userId  | String | X|발송 구분자 ex)admin,system |
+| userId  | String | X|발송 구분자 ex)admin,system|
 
 [주의]
 
