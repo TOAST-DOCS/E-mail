@@ -1,6 +1,6 @@
 ## Notification > Email > Error Code
 
-### Error code
+### 오류 코드
 |service|isSuccessful|resultCode|resultMessage|
 |-|-|-|-|
 |공통|true|0|SUCCESS|
@@ -8,8 +8,8 @@
 |공통|false|-1001|Service is not exist.|
 |공통|false|-1002|Service is disabled.|
 |발송|false|-2000|Date format error.|
-|발송|false|-2001|ReceiverList is not null.|
-|발송|false|-2002|senderAddress is not null.|
+|발송|false|-2001|The 'receiverList' is null or empty.|
+|발송|false|-2002|The 'senderAddress' is null.|
 |발송|false|-2003|Invalid attach file name.|
 |발송|false|-2004|Not exist file.|
 |발송|false|-2006|Not exist data.|
@@ -88,4 +88,5 @@
 |태그|false|-8000|It failed to read that files|
 |태그|false|-6001|This request can't update status. Check status of this request.|
 |대량|false|-6000|This request can't update status. Check status of this request.|
+|공통|false|-9999|Internal Error.|
 
