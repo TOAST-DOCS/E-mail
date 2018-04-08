@@ -12,6 +12,7 @@
 |발송|false|-2002|The 'senderAddress' is null.|
 |발송|false|-2003|Invalid attach file name.|
 |발송|false|-2004|Not exist file.|
+|발송|false|-2005|Invalid template type.|
 |발송|false|-2006|Not exist data.|
 |발송|false|-2007|Invalid requestId.|
 |발송|false|-2008|Upload attach file error.|
@@ -50,9 +51,9 @@
 |통계|false|-2200|Invalid statistics search parameter.|
 |통계|false|-2201|Invalid search period.|
 |통계|false|-2202|Invalid duration time.|
-|수신 거부|false|-2300|Invalid statistics search parameter.|
-|수신 거부|false|-2301|Invalid search period.|
-|수신 거부|false|-2302|Invalid duration time.|
+|수신 거부|false|-2300|Parameter can not be empty.|
+|수신 거부|false|-2301|Parameter size is invalid.|
+|수신 거부|false|-2302|Parameter value is invalid.|
 |수신 거부|false|-2303|The size of list must be 1000 or fewer.|
 |수신 거부|false|-2304|It is already registered number.|
 |수신 거부|false|-2305|The list can not be empty.|
