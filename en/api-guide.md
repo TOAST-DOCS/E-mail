@@ -11,7 +11,9 @@
 Content-Type: application/json;charset=UTF-8
 ```
 
+
 [curl 예시 주의 사항]
+
 * Windows cmd 사용자는 escaping 한 데이터로 요청해야 합니다.
 
 ## 메일발송
