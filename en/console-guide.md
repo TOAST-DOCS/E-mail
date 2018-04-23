@@ -140,6 +140,7 @@ TOAST는 정보통신망법을 준수할 수 있도록, '광고 메일'에 대�
 
 템플릿 데이터에 오류가 있는 경우, 오류 내용을 확인 후 수정을 해주세요.
 오류는 총 오류 건수와 내용(최대 10건)을 표시합니다.
+또한, 템플릿 데이터를 담은 파일은 최대 1만 명 그리고 3MB 까지 업로드할 수 있습니다.
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_11.jpg)
 <center>[그림 19] 오류 화면 </center>
 
@@ -299,7 +300,7 @@ UID 등록을 클릭하면 CSV 파일로 다수의 UID와 메일 주소를 입�
 #### 수신거부 파일 업로드로 등록
 
 수신 거부 파일은 csv, 텍스트(.txt) 엑셀(.xlsx)로 업로드가 가능합니다.
-메일 주소 일괄 등록을 클릭하여 파일 업로드(.csv .txt .xlsx)
+메일 주소 일괄 등록을 클릭하여 파일 업로드(.csv .txt .xlsxㅇ)
 
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_30.jpg)
 <center>[그림 40] 수신 거부 엑셀 등록 화면 </center>

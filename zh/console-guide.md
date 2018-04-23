@@ -140,6 +140,7 @@ TOAST는 정보통신망법을 준수할 수 있도록, '광고 메일'에 대�
 
 템플릿 데이터에 오류가 있는 경우, 오류 내용을 확인 후 수정을 해주세요.
 오류는 총 오류 건수와 내용(최대 10건)을 표시합니다.
+또한, 템플릿 데이터를 담은 파일은 최대 1만 명 그리고 3MB 까지 업로드할 수 있습니다.
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_11.jpg)
 <center>[그림 19] 오류 화면 </center>
 
@@ -347,7 +348,7 @@ csv 파일
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_20.jpg)
 <center>[그림 47] 날짜별 통계 화면 </center>
 
-시간대별
+시간대별ㅇ
 ![](http://static.toastoven.net/prod_email/email_getting_0622_2_21.jpg)
 <center>[그림 48] 시간대별 통계 화면 </center>
 
