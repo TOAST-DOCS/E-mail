@@ -51,7 +51,7 @@ Content-Type: application/json;charset=UTF-8
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능(받는사람, 참조자 포함)|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
-|- receiveType|	String|	O|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
+|- receiveType|	String|	O|	수신자 타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |userId|	String|	X|	발송 구분자 ex)admin,system|
 
 
@@ -511,7 +511,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- senderMail|	String|	발신자 메일주소|
 |-- senderName|	String|	발신자 이름|
 |-- receiverMail|	String|	수신자 메일주소|
-|-- receiveType|	String|	발신자타입 (MRT0: 받는사람 , MRT1 : 참조자)|
+|-- receiveType|	String|	수신자 타입 (MRT0: 받는사람 , MRT1 : 참조자)|
 |-- resultId|	String|	발송결과 ID|
 |-- resultDate|	String|	발송 완료 일시|
 |-- mailStatusCode|	String|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
@@ -925,8 +925,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- receivers | List| 수신자 리스트|
 |--- requestId | String  | 요청 아이디 |
 |--- mailSequence | Integer  | 메일 순번 |
-|--- receiveType | String  | 수신 타입 (MRT0: 받는사람 , MRT1 : 참조자) |
-|--- receiveTypeName | String  | 수신 타입명 |
+|--- receiveType | String  | 수신자 타입 (MRT0: 받는사람 , MRT1 : 참조자) |
+|--- receiveTypeName | String  | 수신자 타입명 |
 |--- receiveMailAddr | String  | 수신자 메일 주소 |
 |--- readYn | String  | 읽음 여부 |
 |--- readDate | String  | 읽은 시간 |
