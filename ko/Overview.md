@@ -59,3 +59,34 @@
 #### 다른 상품의 태그 기능과의 관계
 * 만약 같은 프로젝트에서 Push 또는 SMS 상품을 사용하고 있다면, Email에서 사용하고 있는 태그와 UID 정보를 재등록 없이 함께 사용할 수 있습니다.
 * 각 상품의 콘솔을 통해 같은 UID에 다른 연락처 정보를 추가할 수 있습니다.
+
+### 사용자 지정 헤더 (Custom header)
+
+* 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
+* Toast Email 서비스는 아래 명시된 헤더를 제외한 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)에 설명된 형식을 따르는 헤더를 허용합니다.
+
+#### 요청할 수 없는 헤더
+
+* From
+* To
+* Cc
+* Bcc
+* Date
+* Subject
+* Content-Disposition
+* Message-ID
+* Sender
+* Reply-To
+* Newsgroups
+* Content-ID
+* Content-MD5
+* MIME-Version
+* Content-Transfer-Encoding
+* Content-Description
+
+#### 구성
+
+| 용어 | 설명 |
+|---|---|
+|헤더 이름| 추가할 헤더의 이름. <br>영숫자(a-z, A-Z, 0-9)와 대시만 사용해 1-50자 사이로 작성합니다.|
+|헤더 값| 추가할 헤더의 값. <br>1-1000 byte 사이로 작성합니다. <br>ASCII가 아닌 문자는 Base64로 인코딩 후 발송합니다.|
