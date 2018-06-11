@@ -1,5 +1,12 @@
 ## Notification > Email > Release Notes
 
+### 2018.06.26
+#### 기능 추가
+* [API] 사용자 지정 헤더 기능 추가
+    * 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
+    * Toast Mail에서 제공하는 모든 발송 API에 추가하여 사용할 수 있습니다.
+    * 자세한 내용은 [[사용자 지정 헤더 (Custom header)](./Overview/#custom-header)]를 참고해주세요.
+
 ### 2018.04.24
 #### 기능 추가
 * [Console] 대량 발송 수신자 엑셀/CSV 업로드 파일 크기 제한

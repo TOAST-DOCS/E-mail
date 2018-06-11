@@ -52,7 +52,7 @@ Content-Type: application/json;charset=UTF-8
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	수신자 타입 (MRT0: 받는사람 , MRT1 : 참조자)|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#_4)|
+|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
 |userId|	String|	X|	발송 구분자 ex)admin,system|
 
 
@@ -131,7 +131,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#_4)|
+|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
 |userId|	String|	X|	발송 구분자 ex)admin,system|
 
 [주의]
@@ -253,7 +253,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | autoSendYn  | String | X|자동 발송 여부 (default 'Y') |
 | attachFileIdList  | List:String | X|첨부파일 리스트 |
 | tagExpression  | List:String | O|태그 표현식 |
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#_4)|
+|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
 
 [주의]
