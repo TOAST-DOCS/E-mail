@@ -416,7 +416,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 ## 메일 조회
 
-### 메일 발송리스트 조회
+### 메일 발송 리스트 조회
 
 #### 요청
 
@@ -507,7 +507,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- resultDate|	String|	수신일시|
 |-- templateId|	String|	템플릿아이디|
 |-- templateName|	String|	템플릿명|
-|-- masterStatusCode|	String|	메일 발송 준비 상태코드 ( “Y” : 발송준비 , “N” : 발송실패)|
+|-- masterStatusCode|	String|	메일 발송 준비 상태코드 ( "Y" : 발송준비 , "N" : 발송실패)|
 |-- mailSeq|	String|	메일 순번|
 |-- body|	String|	본문내용|
 |-- title|	String|	메일 제목|
@@ -521,7 +521,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- mailStatusName|	String|	발송상태명|
 |-- requestDate|	String|	발송 요청일시|
 
-### 메일발송 상세조회
+### 메일 발송 상세 조회
 
 #### 요청
 
@@ -529,7 +529,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v1.1/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -587,7 +587,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "fileSequence": Integer,
                 "createDate": String,
                 "updateDate": String
-            }]
+            }],
+            "customHeaders": Map
         }
     }
 }
@@ -601,33 +602,34 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
 |- data|	Object|	데이터 영역|
-|--mailStatusCode|	String|	발송상태|
-|--mailStatusName|	String|	발송상태명|
-|--templateId|	String|	템플릿ID|
-|--templateName|	String|	템플릿 명|
-|--senderName|	String|	발신자 이름|
-|--senderMail|	String|	발신 메일주소|
-|--title|	String|	메일 제목|
-|--body|	String|	메일 내용|
-|--attachFileYn|	String|	첨부파일 여부|
-|--resultId|	String|	메일 발송 ID|
-|--resultDate|	String|	발송완료일시|
-|--receivers|	List|	수신자 리스트|
-|---requestId|	String|	요청ID|
-|---mailSequence|	Integer|	메일 순번|
-|---receiveType|	String|	수신자 타입|
-|---receiveTypeName|	String|	수신자 타입명|
-|---receiveName|	String|	수신자 이름|
-|---receiveMailAddr|	String|	수신 메일 주소|
-|---readYn| String| 수신 여부 |
-|---readDate| String| 수신 날짜(yyyy-MM-dd HH:mm:ss.SSS)|
-|--attachFileList|	List|	첨부파일 리스트|
-|---filePath|	String|	첨부파일 경로|
-|---fileName|	String|	첨부파일 이름|
-|---fileSize|	Integer|	첨부파일 크기|
-|---fileSequence|	Integer|	첨부파일 순번|
-|---createDate-|	String|	생성일시|
-|--updateDate|	String|	수정일시|
+|-- mailStatusCode|	String|	발송상태|
+|-- mailStatusName|	String|	발송상태명|
+|-- templateId|	String|	템플릿ID|
+|-- templateName|	String|	템플릿 명|
+|-- senderName|	String|	발신자 이름|
+|-- senderMail|	String|	발신 메일주소|
+|-- title|	String|	메일 제목|
+|-- body|	String|	메일 내용|
+|-- attachFileYn|	String|	첨부파일 여부|
+|-- resultId|	String|	메일 발송 ID|
+|-- resultDate|	String|	발송완료일시|
+|-- receivers|	List|	수신자 리스트|
+|--- requestId|	String|	요청ID|
+|--- mailSequence|	Integer|	메일 순번|
+|--- receiveType|	String|	수신자 타입|
+|--- receiveTypeName|	String|	수신자 타입명|
+|--- receiveName|	String|	수신자 이름|
+|--- receiveMailAddr|	String|	수신 메일 주소|
+|--- readYn| String| 수신 여부 |
+|--- readDate| String| 수신 날짜(yyyy-MM-dd HH:mm:ss.SSS)|
+|-- attachFileList|	List|	첨부파일 리스트|
+|--- filePath|	String|	첨부파일 경로|
+|--- fileName|	String|	첨부파일 이름|
+|--- fileSize|	Integer|	첨부파일 크기|
+|--- fileSequence|	Integer|	첨부파일 순번|
+|--- createDate|	String|	생성일시|
+|--- updateDate|	String|	수정일시|
+|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) (v1.1부터 필드 추가) |
 
 ### 태그 메일 발송 요청 조회
 
@@ -836,7 +838,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v1.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path parameter]
 
@@ -895,7 +897,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                     "createDate": String
                     "updateDate": String
                 }
-            ]
+            ],
+            "customHeaders": Map
         }
     }
 }
@@ -940,6 +943,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- fileSequence | Integer  | 파일 번호 |
 |--- createDate | String  | 파일 생성일시 |
 |--- updateDate | String  | 파일 수정일시 |
+|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) (v1.1부터 필드 추가) |
 
 
 ## 템플릿 조회
@@ -997,17 +1001,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "templateName": String,
             "templateDesc": String,
             "useYn": String,
-            "sendMailAddress”: String,
-            “sendType”: String,
-            “sendTypeName”: String,
-            “title”: String,
-            “body”: String,
-            “attachFileYn”: String,
-            “delYn”: String,
-            “createDate”: String,
-            “createUser”: String,
-            “updateDate”: String,
-            “updateUser”: String,
+            "sendMailAddress": String,
+            "sendType": String,
+            "sendTypeName": String,
+            "title": String,
+            "body": String,
+            "attachFileYn": String,
+            "delYn": String,
+            "createDate": String,
+            "createUser": String,
+            "updateDate": String,
+            "updateUser": String,
 }]
     }
 }
@@ -1077,28 +1081,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "serviceId": Integer,
             "categoryId": Integer,
             "categoryName": String,
-            “templateName": String,
+            "templateName": String,
             "templateDesc": String,
             "useYn": String,
             "sendMailAddress": String,
             "title": String,
             "body": String,
-            “delYn": String,
+            "delYn": String,
             "createDate": String,
             "createUser": String,
             "updateDate": String,
             "updateUser": String,
             "attachFileList": [{
                 "fileId": Integer,
-                “serviceId” : Integer,
+                "serviceId" : Integer,
                 "templateId": String,
                 "filePath": String,
                 "fileName": String,
-                “fileSize” : Integer,
+                "fileSize" : Integer,
                 "createDate": String,
                 "createUser": String,
-                “updateDate” : String,
-                “updateUser” : String
+                "updateDate" : String,
+                "updateUser" : String
             }]
         }]
     }
