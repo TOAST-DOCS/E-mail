@@ -507,7 +507,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- resultDate|	String|	수신일시|
 |-- templateId|	String|	템플릿아이디|
 |-- templateName|	String|	템플릿명|
-|-- masterStatusCode|	String|	메일 발송 준비 상태코드 ( “Y” : 발송준비 , “N” : 발송실패)|
+|-- masterStatusCode|	String|	메일 발송 준비 상태코드 ( "Y" : 발송준비 , "N" : 발송실패)|
 |-- mailSeq|	String|	메일 순번|
 |-- body|	String|	본문내용|
 |-- title|	String|	메일 제목|
@@ -834,7 +834,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 요청
 
-[URL]회
+[URL]
 
 |Http method|	URI|
 |---|---|
@@ -1001,17 +1001,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "templateName": String,
             "templateDesc": String,
             "useYn": String,
-            "sendMailAddress”: String,
-            “sendType”: String,
-            “sendTypeName”: String,
-            “title”: String,
-            “body”: String,
-            “attachFileYn”: String,
-            “delYn”: String,
-            “createDate”: String,
-            “createUser”: String,
-            “updateDate”: String,
-            “updateUser”: String,
+            "sendMailAddress": String,
+            "sendType": String,
+            "sendTypeName": String,
+            "title": String,
+            "body": String,
+            "attachFileYn": String,
+            "delYn": String,
+            "createDate": String,
+            "createUser": String,
+            "updateDate": String,
+            "updateUser": String,
 }]
     }
 }
@@ -1081,28 +1081,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "serviceId": Integer,
             "categoryId": Integer,
             "categoryName": String,
-            “templateName": String,
+            "templateName": String,
             "templateDesc": String,
             "useYn": String,
             "sendMailAddress": String,
             "title": String,
             "body": String,
-            “delYn": String,
+            "delYn": String,
             "createDate": String,
             "createUser": String,
             "updateDate": String,
             "updateUser": String,
             "attachFileList": [{
                 "fileId": Integer,
-                “serviceId” : Integer,
+                "serviceId" : Integer,
                 "templateId": String,
                 "filePath": String,
                 "fileName": String,
-                “fileSize” : Integer,
+                "fileSize" : Integer,
                 "createDate": String,
                 "createUser": String,
-                “updateDate” : String,
-                “updateUser” : String
+                "updateDate" : String,
+                "updateUser" : String
             }]
         }]
     }
