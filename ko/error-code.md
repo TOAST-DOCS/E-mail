@@ -37,17 +37,8 @@
 |발송|false|-2027|The file was expired.|
 |발송|false|-2028|Limit of rows is exceeded. It can handle up to 50,000 rows.|
 |발송|false|-2029|The 'summary' property can not exceed 200 characters.|
+|발송|false|-2030|The 'customHeaders' contains an invalid name or body.|
 |템플릿|false|-2100|The 'templateId' can not be empty.|
-|템플릿|false|-2101|Already existed templateId.|
-|템플릿|false|-2102|The 'templateName' can not be empty.|
-|템플릿|false|-2103|Send mail address can not be empty.|
-|템플릿|false|-2104|SendType can not be empty.(0-sms, 1-mms, 2-auth)|
-|템플릿|false|-2105|Body can not be empty.|
-|템플릿|false|-2106|UseYn is invalid.|
-|템플릿|false|-2107|Invalid template.|
-|템플릿|false|-2108|The 'categoryId' can not be empty.|
-|템플릿|false|-2109|Invalid Api Request. Check the replace parameter.|
-|템플릿|false|-2110|TemplateId must be 10 characters or less.|
 |통계|false|-2200|Invalid statistics search parameter.|
 |통계|false|-2201|Invalid search period.|
 |통계|false|-2202|Invalid duration time.|
@@ -62,24 +53,6 @@
 |수신 거부|false|-2308|Invalid email address.|
 |수신 거부|false|-2309|Not found file.|
 |수신 거부|false|-2400|Invalid parameter.|
-|수신 거부|false|-2401|Parameter convert failed.|
-|카테고리|false|-3000|Invalid add category parameter.(categoryName, useYn)|
-|카테고리|false|-3001|Invalid category|
-|카테고리|false|-3002|Invalid modify category parameter.(categoryId, categoryName, useYn)|
-|엑셀 업로드|false|-4000|Not found excel file.|
-|엑셀 업로드|false|-4001|Required excel file => **.xlsx|
-|엑셀 업로드|false|-4002|Not duplicated recipient_no.|
-|엑셀 업로드|false|-4003|Token create failed.|
-|엑셀 업로드|false|-4010|Not found csv file.|
-|상품|false|-5000|Invalid parameter|
-|상품|false|-5001|Already activated appkey.|
-|상품|false|-5002|Not activated appkey.|
-|상품|false|-5003|Not exist appkey.|
-|상품|false|-5004|Fail to make provisioned resource.|
-|상품|false|-5005|The 'projectId' is invalid.|
-|상품|false|-6000|Already provisioned resource.|
-|상품|false|-6001|Invalid provisioned resource.|
-|상품|false|-6002|Invalid provisioned parameter.|
 |태그|false|-7000|Fail to call Tag API.|
 |태그|false|-7001|Invalid parameter.|
 |태그|false|-7002|The tag expression can not be empty.|
@@ -88,6 +61,4 @@
 |태그|false|-7005|Invalid email address.|
 |태그|false|-8000|It failed to read that files|
 |태그|false|-6001|This request can't update status. Check status of this request.|
-|대량|false|-6000|This request can't update status. Check status of this request.|
 |공통|false|-9999|Internal Error.|
-
