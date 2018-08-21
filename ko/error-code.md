@@ -21,7 +21,7 @@
 |발송|false|-2011|Receiver Email Format is wrong.|
 |발송|false|-2012|The maximum number of recipients is 1000.|
 |발송|false|-2013|The file size is less than 10M.|
-|발송|false|-2014|The number of attachments should be less than 4.|
+|발송|false|-2014|Up to 3 attachments including the template's are allowed.|
 |발송|false|-2015|Title can not be empty.|
 |발송|false|-2016|Body can not be empty.|
 |발송|false|-2017|The 'receiveMailAddress' can not be empty.|
