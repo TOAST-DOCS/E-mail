@@ -660,6 +660,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 * response의 항목이 변경되었습니다.
 * v1.0 첨부 파일 업로드 API에서는 String 형태의 `requestId`를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 `fileId`를 반환합니다.
 * `fileId`는 v1.2 발송 API의 `attachFileIdList`에 다수 개로 입력하여 사용할 수 있습니다.
+* 동일한 버전의 발송 API와 조회 API를 사용해야 첨부 파일에 대한 정상적인 응답을 받을 수 있습니다.
+  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 `attachFileIdList`의 `fileType`과 `fileId`가 null로 반환됩니다.
+  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 `attachFileIdList`에 첨부 파일이 나타나지 않습니다.
 
 ### 태그 메일 발송 요청 조회
 
@@ -984,6 +987,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 * response의 항목이 변경되었습니다.
 * v1.0 첨부 파일 업로드 API에서는 String 형태의 `requestId`를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 `fileId`를 반환합니다.
 * `fileId`는 v1.2 발송 API의 `attachFileIdList`에 다수 개로 입력하여 사용할 수 있습니다.
+* 동일한 버전의 발송 API와 조회 API를 사용해야 첨부 파일에 대한 정상적인 응답을 받을 수 있습니다.
+  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 `attachFileIdList`의 `fileType`과 `fileId`가 null로 반환됩니다.
+  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 `attachFileIdList`에 첨부 파일이 나타나지 않습니다.
 
 
 ## 템플릿 조회
