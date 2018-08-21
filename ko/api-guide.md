@@ -61,11 +61,11 @@ Content-Type: application/json;charset=UTF-8
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
-* `attachFileIdList`의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
+* **attachFileIdList**의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
 * v1.0 발송 API에서는 한 번 발송한 첨부파일 ID(attachFileId)를 재사용할 수 없었지만, v1.2 발송 API 부터 가능합니다.
-* `attachFileIdList`에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
+* **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
 
 [예시]
@@ -145,11 +145,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
-* `attachFileIdList`의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
+* **attachFileIdList**의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
 * v1.0 발송 API에서는 한 번 발송한 첨부파일 ID(attachFileId)를 재사용할 수 없었지만, v1.2 발송 API 부터 가능합니다.
-* `attachFileIdList`에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
+* **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
 [예시]
 ```
@@ -272,11 +272,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
-* `attachFileIdList`의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
+* **attachFileIdList**의 데이터 타입이 List:String 에서 List:Integer 로 변경되었습니다.
 * v1.0 발송 API에서는 한 번 발송한 첨부파일 ID(attachFileId)를 재사용할 수 없었지만, v1.2 발송 API 부터 가능합니다.
-* `attachFileIdList`에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
+* **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
 [예시]
 ```
@@ -376,11 +376,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- fileId|	String|	파일 ID|
 |-- fileName|	String|	파일명|
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
 * response의 항목이 변경되었습니다.
-* v1.0 첨부 파일 업로드 API에서는 String 형태의 `requestId`를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 `fileId`를 반환합니다.
-* `fileId`는 v1.2 발송 API의 `attachFileIdList`에 다수 개로 입력하여 사용할 수 있습니다.
+* v1.0 첨부 파일 업로드 API에서는 String 형태의 **requestId**를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 **attachFileIdList**를 반환합니다.
+* **attachFileIdList**는 v1.2 발송 API의 **attachFileIdList**에 다수 개로 입력하여 사용할 수 있습니다.
 
 ### 제목/본문 치환
 
@@ -651,18 +651,18 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- createDate|	String|	생성일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 
-[v1.1의 달라진 사항]
+#### v1.1의 달라진 사항
 
-* 사용자 지정 헤더를 나타내는 `customHeaders` 항목이 추가되었습니다.
+* 사용자 지정 헤더를 나타내는 **customHeaders** 항목이 추가되었습니다.
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
 * response의 항목이 변경되었습니다.
-* v1.0 첨부 파일 업로드 API에서는 String 형태의 `requestId`를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 `fileId`를 반환합니다.
-* `fileId`는 v1.2 발송 API의 `attachFileIdList`에 다수 개로 입력하여 사용할 수 있습니다.
+* v1.0 첨부 파일 업로드 API에서는 String 형태의 **requestId**를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 **attachFileIdList**를 반환합니다.
+* **attachFileIdList**는 v1.2 발송 API의 **attachFileIdList**에 다수 개로 입력하여 사용할 수 있습니다.
 * 동일한 버전의 발송 API와 조회 API를 사용해야 첨부 파일에 대한 정상적인 응답을 받을 수 있습니다.
-  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 `attachFileIdList`의 `fileType`과 `fileId`가 null로 반환됩니다.
-  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 `attachFileIdList`에 첨부 파일이 나타나지 않습니다.
+  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 **attachFileIdList**의 **fileType**과 **attachFileIdList**가 null로 반환됩니다.
+  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 **attachFileIdList**에 첨부 파일이 나타나지 않습니다.
 
 ### 태그 메일 발송 요청 조회
 
@@ -978,18 +978,18 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- createDate|	String|	생성일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 
-[v1.1의 달라진 사항]
+#### v1.1의 달라진 사항
 
-* 사용자 지정 헤더를 나타내는 `customHeaders` 항목이 추가되었습니다.
+* 사용자 지정 헤더를 나타내는 **customHeaders** 항목이 추가되었습니다.
 
-[v1.2의 달라진 사항]
+#### v1.2의 달라진 사항
 
 * response의 항목이 변경되었습니다.
-* v1.0 첨부 파일 업로드 API에서는 String 형태의 `requestId`를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 `fileId`를 반환합니다.
-* `fileId`는 v1.2 발송 API의 `attachFileIdList`에 다수 개로 입력하여 사용할 수 있습니다.
+* v1.0 첨부 파일 업로드 API에서는 String 형태의 **requestId**를 반환하여 발송에 사용하였지만, v1.2 첨부 파일 업로드 API에서는 Integer 형태의 **attachFileIdList**를 반환합니다.
+* **attachFileIdList**는 v1.2 발송 API의 **attachFileIdList**에 다수 개로 입력하여 사용할 수 있습니다.
 * 동일한 버전의 발송 API와 조회 API를 사용해야 첨부 파일에 대한 정상적인 응답을 받을 수 있습니다.
-  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 `attachFileIdList`의 `fileType`과 `fileId`가 null로 반환됩니다.
-  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 `attachFileIdList`에 첨부 파일이 나타나지 않습니다.
+  * v1.0 발송 API를 사용하여 발송한 메일을 v1.2 조회 API를 사용하여 조회하는 경우 **attachFileIdList**의 **fileType**과 **attachFileIdList**가 null로 반환됩니다.
+  * v1.2 발송 API를 사용하여 발송한 메일을 v1.0 또는 v1.1 조회 API를 사용하여 조회하는 경우 **attachFileIdList**에 첨부 파일이 나타나지 않습니다.
 
 
 ## 템플릿 조회
