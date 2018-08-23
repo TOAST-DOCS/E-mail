@@ -1,4 +1,4 @@
-## Notification > Email > API Guide
+## Notification > Email > API v1.2 Guide
 
 [API 도메인]
 
