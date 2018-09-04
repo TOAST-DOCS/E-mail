@@ -16,9 +16,9 @@ Content-Type: application/json;charset=UTF-8
 
 * Windows cmd 에서는 curl 예시가 정상적으로 요청되지 않을 수 있습니다.
 
-## 메일발송
+## 메일 발송
 
-### 일반 메일발송
+### 일반 메일 발송
 
 #### 요청
 
@@ -102,7 +102,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-### 개별 메일발송
+### 개별 메일 발송
 
 * 다중 수신자에 대해서 수신자 각각에게 메일을 발송하는 기능. 수신자는 수신인이 한명으로 보인다.
 
@@ -185,8 +185,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-### 광고성 일반 메일발송
-* URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일발송과 동일하다.
+### 광고성 일반 메일 발송
+* URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일 발송과 동일하다.
 
 #### 광고메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있다.
@@ -203,9 +203,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
-### 광고성 개별 메일발송
+### 광고성 개별 메일 발송
 
-* URL의 끝에만 ad-eachMail로 바뀌며 나머지는 개별 메일발송과 동일하다.
+* URL의 끝에만 ad-eachMail로 바뀌며 나머지는 개별 메일 발송과 동일하다.
 
 [URL]
 
@@ -218,7 +218,86 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
-### 태그 메일발송
+### 인증 메일 발송
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|POST|	/email/v1.2/appKeys/{appKey}/sender/auth-mail||
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|​senderAddress|	String|	O|	발신자 메일|
+|senderName|	String|	X|	발신자 이름|
+|requestDate|	String|	X|	발송 일자, 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss)|
+|title|	String|	O|	제목|
+|body|	String|	O|	내용|
+|templateId|	String|	X|	발송 템플릿 아이디|
+|receiver|	Object|	O|	수신자 |
+|- receiveMailAddr|	String|	O|	수신자 메일주소|
+|- receiveName|	String|	X|	수신자 명|
+|- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
+|-- #key#|	String|	X|	치환 키 (##key##)|
+|-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
+|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
+|userId|	String|	X|	발송 구분자 ex)admin,system|
+
+[주의]
+
+* template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+* templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
+
+#### 일반 메일과 다른 점
+인증 메일 성격상 다음과 같이 다른 특성들이 있습니다.
+* 단건 발송(1명의 수신자)만 가능합니다.
+* 첨부 파일 기능을 지원하지 않습니다.
+
+[예시]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+#### 응답
+
+```
+{
+    "header": {
+        "isSuccessful":boolean,
+        "resultCode":Integer,
+        "resultMessage":String
+    },
+    "body": {
+        "data": {
+            "requestId":String,
+            "statusCode":String
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	Object|	데이터 영역|
+|-- requestId|	String|	요청 아이디|
+|-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
+
+### 태그 메일 발송
 
 #### 요청
 
