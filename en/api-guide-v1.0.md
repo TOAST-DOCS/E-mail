@@ -16,9 +16,9 @@ Content-Type: application/json;charset=UTF-8
 
 * Windows cmd 에서는 curl 예시가 정상적으로 요청되지 않을 수 있습니다.
 
-## 메일발송
+## 메일 발송
 
-### 일반 메일발송
+### 일반 메일 발송
 
 #### 요청
 
@@ -60,9 +60,14 @@ Content-Type: application/json;charset=UTF-8
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
 ```
 
 #### 응답
@@ -94,7 +99,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-### 개별 메일발송
+### 개별 메일 발송
 
 * 다중 수신자에 대해서 수신자 각각에게 메일을 발송하는 기능. 수신자는 수신인이 한명으로 보인다.
 
@@ -136,9 +141,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
 * templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":["첨부파일_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"}],"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
 ```
 
 #### 응답
@@ -170,8 +180,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- requestId|	String|	요청 아이디|
 |-- statusCode|	String|	요청 상태 코드 (Y: 발송준비 , N : 발송준비실패)|
 
-### 광고성 일반 메일발송
-* URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일발송과 동일하다.
+### 광고성 일반 메일 발송
+* URL의 끝에만 ad-mail로 바뀌며 나머지는 일반 메일 발송과 동일하다.
 
 #### 광고메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있다.
@@ -183,14 +193,19 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|
 |POST|	/email/v1.0/appKeys/{appKey}/sender/ad-mail|
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
 ```
 
-### 광고성 개별 메일발송
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+```
 
-* URL의 끝에만 ad-eachMail로 바뀌며 나머지는 개별 메일발송과 동일하다.
+### 광고성 개별 메일 발송
+
+* URL의 끝에만 ad-eachMail로 바뀌며 나머지는 개별 메일 발송과 동일하다.
 
 [URL]
 
@@ -198,12 +213,17 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|
 |POST|	/email/v1.0/appKeys/{appKey}/sender/ad-eachMail |
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":["첨부파일_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"}],"userId":"XXXXX"}'
 ```
 
-### 태그 메일발송
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
+```
+
+### 태그 메일 발송
 
 #### 요청
 
@@ -254,11 +274,15 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 [주의]
 
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
-* templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":["첨부파일_ID"],"tagExpression":["tag1","AND","tag2"],"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"XXXXX"}'
 ```
 
 #### 응답

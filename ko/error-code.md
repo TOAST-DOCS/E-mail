@@ -38,7 +38,9 @@
 |발송|false|-2028|Limit of rows is exceeded. It can handle up to 50,000 rows.|
 |발송|false|-2029|The 'summary' property can not exceed 200 characters.|
 |발송|false|-2030|The 'customHeaders' contains an invalid name or body.|
+|발송|false|-2031|You can not send in past than requested. Please update the 'requestDate'.|
 |템플릿|false|-2100|The 'templateId' can not be empty.|
+|템플릿|false|-2107|There is no template with template ID.|
 |통계|false|-2200|Invalid statistics search parameter.|
 |통계|false|-2201|Invalid search period.|
 |통계|false|-2202|Invalid duration time.|

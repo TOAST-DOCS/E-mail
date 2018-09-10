@@ -68,9 +68,14 @@ Content-Type: application/json;charset=UTF-8
 * **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### 응답
@@ -151,10 +156,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * v1.0 발송 API에서는 한 번 발송한 첨부파일 ID(attachFileId)를 재사용할 수 없었지만, v1.2 발송 API 부터 가능합니다.
 * **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
 
 #### 응답
 
@@ -198,9 +209,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|
 |POST|	/email/v1.2/appKeys/{appKey}/sender/ad-mail|
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"고객2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 ### 광고성 개별 메일 발송
@@ -213,9 +229,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|
 |POST|	/email/v1.2/appKeys/{appKey}/sender/ad-eachMail |
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 ### 인증 메일 발송
@@ -263,9 +284,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * 단건 발송(1명의 수신자)만 가능합니다.
 * 첨부 파일 기능을 지원하지 않습니다.
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1"},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### 응답
@@ -349,7 +375,6 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 [주의]
 
 * template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
-* templateParameter 인자를 사용 시에는 templateId 인자를 필수로 입력
 
 #### v1.2의 달라진 사항
 
@@ -357,9 +382,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 * v1.0 발송 API에서는 한 번 발송한 첨부파일 ID(attachFileId)를 재사용할 수 없었지만, v1.2 발송 API 부터 가능합니다.
 * **attachFileIdList**에 입력할 ID는 [v1.2 첨부파일 API](./api-guide/#_14)를 사용하여 업로드한 파일의 ID를 말합니다.
 
-[예시]
+[예시 1]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+```
+
+[예시 2 - 템플릿 사용]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.2/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### 응답
