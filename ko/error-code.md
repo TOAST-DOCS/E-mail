@@ -41,6 +41,7 @@
 |발송|false|-2031|You can not send in past than requested. Please update the 'requestDate'.|
 |템플릿|false|-2100|The 'templateId' is required.|
 |템플릿|false|-2107|There is no template with template ID.|
+|템플릿|false|-2111|A template with attachments is not supported. templateId : {}|
 |통계|false|-2200|Invalid statistics search parameter.|
 |통계|false|-2201|Invalid search period.|
 |통계|false|-2202|Invalid duration time.|
