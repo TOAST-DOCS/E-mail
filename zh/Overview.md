@@ -1,71 +1,68 @@
 ## Notification > Email > Overview
 
-메일 발송, 예약 발송, 조회, 템플릿 관리까지 아우르는 메일 발송 시스템입니다.
-<br>손쉬운 연동을 위한 RESTful API를 제공합니다.
+With Email, you can send mails, send by schedule, query delivery history, and manage templates. 
+<br>RESTful API is also available for easy integration. 
 
-## 특징
+## Main Features
 
-- 대량 발송 지원
-	\- 엑셀 파일로 수신자 목록을 입력하고 대량으로 메일을 발송할 수 있습니다.
-- 태그 발송 지원
-	\- 태그를 사용하여 수신자 목록을 입력하고 대량으로 메일을 발송할 수 있습니다.
-- 예약 발송
-	\-	원하는 시간에 메일을 발송할 수 있습니다.
-- 치환 태그 제공
-	\- 치환태그를 이용하여 수신자별 개별화 된 메일 내용을 발송할 수 있습니다.
-- 템플릿 기능 제공
-	\- 자주 사용하는 메일은 템플릿으로 등록하여 사용이 가능합니다.
+- Send Mass Mails
+  - Enter the list of recipients in excel and send mass mails.  
+- Send by Tags 
+  \-  Enter the list of recipients using tags and send mass mails.
+- Schedule Delivery
+  \- Send mails in time of your schedule. 
+- Provide Replacement Tags 
+  \- Send personalized mails for each recipient with replacement tags.
+- Support Template Functions 
+  \- Register frequently-used mails as templates. 
 
-## 주요 기능
-
-- 고객의 어플리케이션에서 사용할 수 있는 메일발송과 조회 RESTful API를 제공합니다.
-- 메일 발송, 조회, 템플릿 관리 기능을 UI에서 제공합니다.
+- Sending mails  and query of RESTful API are also available on your application. 
 
 
-## 참고
+## Reference
 
-### 태그와 UID
+### Tags and UIDs
 
-#### 서비스 용어
-|용어|	설명|
+#### Glossary
+|Glossary| Description |
 |---|---|
-|태그(tag)|UID를 분류하는 체계. <br>UID에 여러 개의 태그를 붙여 사용자가 쉽게 UID 정보를 검색하고 사용할 수 있습니다.|
-|UID|사용자를 구분하는 ID(식별자). <br>하나의 UID에는 여러 개의 연락처를 등록하여 발송에 사용할 수 있습니다. |
-|연락처(contact)|연락을 하기 위해 정해둔 곳. <br>Notification에서는 Push, Email, SMS, 총 3개의 상품에서 연락처를 등록할 수 있습니다. <br>Push는 토큰, Email은 메일 주소, SMS는 전화번호를 말합니다.|
+|Tag|A system that classifies UID. <br>Many tags can be attached to an UID so as to help users to easily search and use UID information.|
+|UID|ID (identifier) that classifies users. <br>One UID can have multiple contacts to be applied for delivery. |
+|Contact|A specified location to contact. <br>Notification provides three products to register contact: Push, Email, and SMS. <br />Push regards to tokens; Email to mail addresses; and, SMS to phone numbers.|
 
-#### 태그를 사용하여 발송하기
-* 수신자 정보인 메일 주소 대신, 태그를 선택하여 메일을 발송할 수 있는 기능을 말합니다.
+#### Use Tags to Send Mails 
+* You can send mails by selecting tags, instead of mail addresses, as recipient information. 
 
-1) UID를 등록합니다.
+1. Register UID.
 
-* [UID 관리]탭에서 UID와 한 개, 또는 여러 개의 메일 주소를 등록합니다.
-* 자세한 내용은 [[UID 관리](./console-guide/#uid)]를 참고해주세요.
+* Go to **Manage UIDs** and register UID and one or many mail addresses. 
+* For more details, refer to [Manage UIDs](./console-guide/#uid). 
 
-2) 태그를 등록합니다.
+2. Register tags.
 
-* [태그 관리]탭에서 태그를 등록합니다.
-* 자세한 내용은 [[태그 관리](./console-guide/#_11)]를 참고해주세요.
+* Go to **Manage Tags** and register tags.
+* For more details, refer to [Manage Tags](./console-guide/#_11). 
 
-3) 태그에 UID를 등록합니다.
+3.  Register UID to a tag.
 
-* [태그 관리]탭에서 등록한 태그에 UID를 등록합니다.
+* Go to **Manage Tags** and register UID to a registered tag.
 
-4) 태그를 선택한 후 메일을 발송합니다.
+4. Select tags to send mails. 
 
-* [메일 발송]탭에서 메일 주소 대신 [태그 발송]을 선택하여 태그를 등록합니다.
-* 메일은 태그에 등록된 UID의 메일 주소로 발송됩니다.
-* 자세한 내용은 [[태그를 사용한 메일발송](./console-guide/#_6)]를 참고해주세요.
+* Go to **Send Mails** and Select **Send Tags**, instead of mail addresses, and register tags. 
+* Mails are to be sent to mail addresses of UID which is registered to a tag. 
+* For more details, refer to [Send Mails using Tags](./console-guide/#_6).
 
-#### 다른 상품의 태그 기능과의 관계
-* 만약 같은 프로젝트에서 Push 또는 SMS 상품을 사용하고 있다면, Email에서 사용하고 있는 태그와 UID 정보를 재등록 없이 함께 사용할 수 있습니다.
-* 각 상품의 콘솔을 통해 같은 UID에 다른 연락처 정보를 추가할 수 있습니다.
+#### Tags of Other Products 
+* You can share your tag and UID information of Email with Push or SMS, without the need of re-registration. 
+* Other contacts can be added to a same UID of each product console. 
 
-### 사용자 지정 헤더 (Custom header)
+### Custom Header
 
-* 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
-* Toast Email 서비스는 아래 명시된 헤더를 제외한 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)에 설명된 형식을 따르는 헤더를 허용합니다.
+* Custom header can be added to a receiving email for delivery. 
+* TOAST Email Service adopts the headers following the format as described in [RFC 822](https://www.ietf.org/rfc/rfc0822.txt), except below: 
 
-#### 요청할 수 없는 헤더
+#### Headers Unavailable to Request
 
 * From
 * To
@@ -84,15 +81,9 @@
 * Content-Transfer-Encoding
 * Content-Description
 
-#### 구성
+#### Composition 
 
-| 용어 | 설명 |
+| Term | Description |
 |---|---|
-|헤더 이름| 추가할 헤더의 이름. <br>영숫자(a-z, A-Z, 0-9)와 대시만 사용해 1-50자 사이로 작성합니다.|
-|헤더 값| 추가할 헤더의 값. <br>1-1000 byte 사이로 작성합니다. <br>ASCII가 아닌 문자는 Base64로 인코딩 후 발송합니다.|
-
-#### 유의 사항
-
-* Content-Type에 **text/plain**을 사용하는 경우, html을 지원하지 않기 때문에 수신 확인을 할 수 없습니다.
-  1) 메일 단건 상세 조회에서 수신 확인이 업데이트되지 않습니다.
-  2) 통계의 오픈 건수에 반영되지 않습니다. 
+|Header Name| Name of a header to add. <br>Comprised of between 1 and 50 letters, in English and numbers (a-z, A-Z, 0-9), and hyphen only. |
+|Header Value| Value of a header to add. <br>Composed of between 1 and 1000 bytes. <br>Non-ASCII characters are encoded in Base64 before delivered. |
