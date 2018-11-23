@@ -3,7 +3,8 @@
 ### 오류 코드
 |service|isSuccessful|resultCode|resultMessage|
 |-|-|-|-|
-|공통|true|0|SUCCESS|
+|공통|true|0|success|
+|공통|true|1000|Some of your requests are successful.|
 |공통|false|-1000|Invalid appKey.|
 |공통|false|-1001|Service is not exist.|
 |공통|false|-1002|Service is disabled.|
@@ -21,7 +22,7 @@
 |발송|false|-2011|Receiver Email Format is wrong.|
 |발송|false|-2012|The maximum number of recipients is 1000.|
 |발송|false|-2013|The file size is less than 10M.|
-|발송|false|-2014|Up to 3 attachments including the template's are allowed.|
+|발송|false|-2014|Up to 5 attachments including the template's are allowed.|
 |발송|false|-2015|The 'title' is required.|
 |발송|false|-2016|The 'body' is required.|
 |발송|false|-2017|The 'receiveMailAddress' is required.|
@@ -39,12 +40,26 @@
 |발송|false|-2029|The 'summary' property can not exceed 200 characters.|
 |발송|false|-2030|The 'customHeaders' contains an invalid name or body.|
 |발송|false|-2031|You can not send in past than requested. Please update the 'requestDate'.|
+|발송|false|-2032| All of receivers are failed to send.|
+|발송|false|-2033| The date you are searching is before storage period. (90 days)|
+|발송|false|-2034| The 'title' exceeds maximum length. (400 chars)|
+|발송|false|-2035| The 'userId' exceeds maximum length. (50 chars)|
+|발송|false|-2036| The 'templateId' exceeds maximum length. (10 chars)|
+|발송|false|-2037| The 'senderName' exceeds maximum length. (100 chars)|
+|발송|false|-2038| The 'senderAddress' exceeds maximum length. (100 chars)|
+|발송|false|-2039| The 'senderName' exceeds maximum length. (100 chars)|
+|발송|false|-2040| The 'senderAddress' exceeds maximum length. (100 chars)|
+|발송|false|-2041| The 'fileName' exceeds maximum length. (100 chars)|
+|발송|false|-2042| The 'createUser' exceeds maximum length. (50 chars)|
+|발송|false|-2043| There are too much mail at this time. Please send it at another time.|
 |템플릿|false|-2100|The 'templateId' is required.|
 |템플릿|false|-2107|There is no template with template ID.|
 |템플릿|false|-2111|A template with attachments is not supported. templateId : {}|
 |통계|false|-2200|Invalid statistics search parameter.|
-|통계|false|-2201|Invalid search period.|
+|통계|false|-2201|The 'from' must be before 'to'|
 |통계|false|-2202|Invalid duration time.|
+|통계|false|-2203|The 'from' and 'to' are required.|
+|통계|false|-2204|The 'searchType' is required.|
 |수신 거부|false|-2300|The 'id' is required.|
 |수신 거부|false|-2301|Parameter size is invalid.|
 |수신 거부|false|-2302|Parameter value is invalid.|

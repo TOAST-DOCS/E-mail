@@ -41,6 +41,17 @@
 |발송|false|-2030|The 'customHeaders' contains an invalid name or body.|
 |발송|false|-2031|You can not send in past than requested. Please update the 'requestDate'.|
 |발송|false|-2032| All of receivers are failed to send.|
+|발송|false|-2033| The date you are searching is before storage period. (90 days)|
+|발송|false|-2034| The 'title' exceeds maximum length. (400 chars)|
+|발송|false|-2035| The 'userId' exceeds maximum length. (50 chars)|
+|발송|false|-2036| The 'templateId' exceeds maximum length. (10 chars)|
+|발송|false|-2037| The 'senderName' exceeds maximum length. (100 chars)|
+|발송|false|-2038| The 'senderAddress' exceeds maximum length. (100 chars)|
+|발송|false|-2039| The 'senderName' exceeds maximum length. (100 chars)|
+|발송|false|-2040| The 'senderAddress' exceeds maximum length. (100 chars)|
+|발송|false|-2041| The 'fileName' exceeds maximum length. (100 chars)|
+|발송|false|-2042| The 'createUser' exceeds maximum length. (50 chars)|
+|발송|false|-2043| There are too much mail at this time. Please send it at another time.|
 |템플릿|false|-2100|The 'templateId' is required.|
 |템플릿|false|-2107|There is no template with template ID.|
 |템플릿|false|-2111|A template with attachments is not supported. templateId : {}|
