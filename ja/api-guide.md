@@ -510,7 +510,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 * v1.4부터 발송 API에 추가된 **templateType**따라 다른 방식으로 제목과 본문이 가공됩니다.
 #### 기본 타입
-* ##치환 Key## 형식으로 입력하면 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
+* (##치환 Key##) 형식으로 입력하면 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
 ```
 * title : ##title_name##님 안녕하세요 !!
 * body : ##body_content## 발송합니다.
