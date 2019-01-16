@@ -44,7 +44,7 @@
 |발송|false|-2033| The date you are searching is before storage period. (90 days)|
 |발송|false|-2034| The 'title' exceeds maximum length. (400 chars)|
 |발송|false|-2035| The 'userId' exceeds maximum length. (50 chars)|
-|발송|false|-2036| The 'templateId' exceeds maximum length. (10 chars)|
+|발송|false|-2036| The 'templateId' exceeds maximum length. (50 chars)|
 |발송|false|-2037| The 'senderName' exceeds maximum length. (100 chars)|
 |발송|false|-2038| The 'senderAddress' exceeds maximum length. (100 chars)|
 |발송|false|-2039| The 'senderName' exceeds maximum length. (100 chars)|
