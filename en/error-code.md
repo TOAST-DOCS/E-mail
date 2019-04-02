@@ -1,6 +1,6 @@
 ## Notification > Email > Error Code
 
-### 오류 코드
+### Error Code
 |service|isSuccessful|resultCode|resultMessage|
 |-|-|-|-|
 |공통|true|0|success|
@@ -13,7 +13,6 @@
 |발송|false|-2002|The 'senderAddress' is required.|
 |발송|false|-2003|Invalid attach file name.|
 |발송|false|-2004|Not exist file.|
-|발송|false|-2005|Invalid template type.|
 |발송|false|-2006|Not exist data.|
 |발송|false|-2007|Invalid requestId.|
 |발송|false|-2008|Upload attach file error.|
@@ -30,7 +29,6 @@
 |발송|false|-2019|The 'receiveType' is invalid.|
 |발송|false|-2020|The 'fileId' is invalid.|
 |발송|false|-2021|The size of total files is too large.|
-|발송|false|-2022|Invalid provisioned resource.|
 |발송|false|-2023|In the case of an advertising mail, the phrase '(광고)' must be placed in front of the title.|
 |발송|false|-2024|Invalid file extension.|
 |발송|false|-2025|The 'userId' is required.|
@@ -41,7 +39,6 @@
 |발송|false|-2030|The 'customHeaders' contains an invalid name or body.|
 |발송|false|-2031|You can not send in past than requested. Please update the 'requestDate'.|
 |발송|false|-2032| All of receivers are failed to send.|
-|발송|false|-2033| The date you are searching is before storage period. (90 days)|
 |발송|false|-2034| The 'title' exceeds maximum length. (400 chars)|
 |발송|false|-2035| The 'userId' exceeds maximum length. (50 chars)|
 |발송|false|-2036| The 'templateId' exceeds maximum length. (50 chars)|
@@ -77,6 +74,5 @@
 |태그|false|-7003|Uploaded file is empty.|
 |태그|false|-7004|The 'uid' is required, and can not contain the comma character(,).|
 |태그|false|-7005|Invalid email address.|
-|태그|false|-8000|It failed to read that files|
-|태그|false|-6001|This request can't update status. Check status of this request.|
+|태그|false|-7006|The 'uids' is required|
 |공통|false|-9999|Internal Error.|
