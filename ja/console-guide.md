@@ -310,5 +310,5 @@ When the Customer uses TOAST > Email Service, assignment of personal information
 
 [Notice of Personal Information Assignor] To use TOAST Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
 
-Assignor: NHN Corporation
+Assignor: NHN
 Content of Business: Send emails in lieu of customers
