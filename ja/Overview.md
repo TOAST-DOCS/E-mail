@@ -1,68 +1,68 @@
-## Notification > Email > Overview
+﻿## Notification > Email > 概要
 
-With Email, you can send mails, send by schedule, query delivery history, and manage templates. 
-<br>RESTful API is also available for easy integration. 
+Emailを使用すると、メール送信、予約送信、送信履歴照会、テンプレート管理機能を使用できます。
+<br>簡単に連携できるようにRESTful APIで使用できます。
 
-## Main Features
+## 主な機能
 
-- Send Mass Mails
-  - Enter the list of recipients in excel and send mass mails.  
-- Send by Tags 
-  \-  Enter the list of recipients using tags and send mass mails.
-- Schedule Delivery
-  \- Send mails in time of your schedule. 
-- Provide Replacement Tags 
-  \- Send personalized mails for each recipient with replacement tags.
-- Support Template Functions 
-  \- Register frequently-used mails as templates. 
+- 大量送信サポート
+	\- Excelファイルで受信者リストを入力し、大量にメールを送信できます。
+- タグ送信サポート
+	\- タグを使用して受信者リストを入力し、大量にメールを送信できます。
+- 予約送信
+	\- 希望する時間にメールを送信できます。
+- 置換タグの提供
+	\- 置換タグを利用して、受信者ごとにパーソナライズされたメールを送信できます。
+- テンプレート機能の提供
+	\- よく使用するメールはテンプレートに登録して使用できます。
 
-- Sending mails  and query of RESTful API are also available on your application. 
+- 顧客のアプリケーションで使用できるメール送信と照会RESTful APIを使用できます。
 
 
-## Reference
+## 参考
 
-### Tags and UIDs
+### タグとUID
 
-#### Glossary
-|Glossary| Description |
+#### サービス用語
+|用語|	説明|
 |---|---|
-|Tag|A system that classifies UID. <br>Many tags can be attached to an UID so as to help users to easily search and use UID information.|
-|UID|ID (identifier) that classifies users. <br>One UID can have multiple contacts to be applied for delivery. |
-|Contact|A specified location to contact. <br>Notification provides three products to register contact: Push, Email, and SMS. <br />Push regards to tokens; Email to mail addresses; and, SMS to phone numbers.|
+|タグ(tag)|UIDを分類するシステム。<br>UIDに複数のタグをつけてユーザーが容易にUID情報を検索して使用できます。|
+|UID|ユーザーを区分するID(識別子)。<br>1つのUIDには複数の連絡先を登録して送信に使用できます。 |
+|連絡先(contact)|連絡をするために決めておいた場所。<br>Notificationでは、Push、Email、SMSの3つのサービスで連絡先を登録できます。 <br>Pushはトークン、Emailはメールアドレス、SMSは電話番号です。|
 
-#### Use Tags to Send Mails 
-* You can send mails by selecting tags, instead of mail addresses, as recipient information. 
+#### タグを使用して送信
+* 受信者情報であるメールアドレスの代わりに、タグを選択してメールを送信できる機能です。
 
-1. Register UID.
+1. UIDを登録します。
 
-* Go to **Manage UIDs** and register UID and one or many mail addresses. 
-* For more details, refer to [Manage UIDs](./console-guide/#uid). 
+* **UID管理**タブで、UIDと1つまたは複数のメールアドレスを登録します。
+* 詳細は[UID管理](./console-guide/#uid)を参照してください。
 
-2. Register tags.
+2. タグを登録します。
 
-* Go to **Manage Tags** and register tags.
-* For more details, refer to [Manage Tags](./console-guide/#_11). 
+* **タグ管理**タブでタグを登録します。
+* 詳細は[タグ管理](./console-guide/#_11)を参照してください。
 
-3.  Register UID to a tag.
+3. タグにUIDを登録します。
 
-* Go to **Manage Tags** and register UID to a registered tag.
+* **タグ管理**タブで登録したタグにUIDを登録します。
 
-4. Select tags to send mails. 
+4. タグを選択し、メールを送信します。
 
-* Go to **Send Mails** and Select **Send Tags**, instead of mail addresses, and register tags. 
-* Mails are to be sent to mail addresses of UID which is registered to a tag. 
-* For more details, refer to [Send Mails using Tags](./console-guide/#_6).
+* **メール送信**タブで、メールアドレスの代わりに**タグ送信**を選択してタグを登録します。
+* メールはタグに登録されたUIDのメールアドレスで送信されます。
+* 詳細は[タグを使用したメール送信](./console-guide/#_6)を参照してください。
 
-#### Tags of Other Products 
-* You can share your tag and UID information of Email with Push or SMS, without the need of re-registration. 
-* Other contacts can be added to a same UID of each product console. 
+#### 他のサービスのタグ機能との関係
+* 同じプロジェクトでPushまたはSMSサービスを使用している場合は、Emailで使用しているタグとUID情報を再登録せずに一緒に使用できます。
+* 各サービスのコンソールで同じUIDに他の連絡先を追加できます。
 
-### Custom Header
+### ユーザー指定ヘッダ(Custom header)
 
-* Custom header can be added to a receiving email for delivery. 
-* TOAST Email Service adopts the headers following the format as described in [RFC 822](https://www.ietf.org/rfc/rfc0822.txt), except below: 
+* 受信メールにユーザー指定ヘッダを追加して送信できます。
+* TOAST Emailサービスでは、[RFC 822](https://www.ietf.org/rfc/rfc0822.txt)で説明されている形式に沿ったヘッダを使用できます。
 
-#### Headers Unavailable to Request
+#### リクエストできないヘッダ
 
 * From
 * To
@@ -81,9 +81,9 @@ With Email, you can send mails, send by schedule, query delivery history, and ma
 * Content-Transfer-Encoding
 * Content-Description
 
-#### Composition 
+#### 構成
 
-| Term | Description |
+| 用語 | 説明 |
 |---|---|
-|Header Name| Name of a header to add. <br>Comprised of between 1 and 50 letters, in English and numbers (a-z, A-Z, 0-9), and hyphen only. |
-|Header Value| Value of a header to add. <br>Composed of between 1 and 1000 bytes. <br>Non-ASCII characters are encoded in Base64 before delivered. |
+|ヘッダ名| 追加するヘッダの名前。<br>英数字(a-z、A-Z、0-9)、ハイフン(-)のみ使用して1-50文字で作成します。 |
+|ヘッダ値| 追加するヘッダの値。 <br>1-1000バイトで作成します。<br>ASCIIではない文字はBase64にエンコードして送信します。 |

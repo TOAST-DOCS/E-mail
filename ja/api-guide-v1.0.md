@@ -1,10 +1,10 @@
-## Notification > Email > API v1.0 Guide
+﻿## Notification > Email > API v1.0ガイド
 
-[API Domain]
+[APIドメイン]
 
-| Environment | Domain                           |
-| ----------- | -------------------------------- |
-| Real        | https://api-mail.cloud.toast.com |
+| 環境 | ドメイン                        |
+| ---- | -------------------------------- |
+| リアル | https://api-mail.cloud.toast.com |
 
 [Header]
 ```
@@ -12,67 +12,67 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 
-[Caution for curl Example]
+[curl例注意事項]
 
-* Curl example may not be properly requested in Windows cmd. 
+* Windows cmdでは、curlの例が正常にリクエストされないことがあります。
 
-## Send Mails 
+## メールの送信
 
-### Send General Mails 
+### 一般メールの送信
 
-#### Request 
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/sender/mail|
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| POST        | /email/v1.0/appKeys/{appKey}/sender/mail |
 
 [Path parameter]
 
-|값|	타입|	설명|
-|---|---|---|
-|appKey|	String|	고유의 appKey|
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
-| Value             | Type        | Required | Description                                                  |
-| ----------------- | ----------- | -------- | ------------------------------------------------------------ |
-| senderAddress     | String      | O        | Sender's address                                             |
-| senderName        | String      | X        | Sender's name                                                |
-| requestDate       | String      | X        | Enter the current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
-| title             | String      | O        | Title                                                        |
-| body              | String      | O        | Body                                                         |
-| attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
-| templateId        | String      | X        | ID of delivery template                                      |
-| templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
-| - #key#           | String      | X        | Replacement key (##key##)                                    |
-| - #value#         | Object      | X        | Mapped value for replacement key                             |
-| receiverList      | List        | O        | List of recipients <br/>Send up to 1,000 persons (including recipients and Cc recipients) |
-| - receiveMailAddr | String      | O        | Recipients's email address                                   |
-| - receiveName     | String      | X        | Recipient's name                                             |
-| - receiveType     | String      | O        | Recipient type (MRT0: recipient, MRT1: Cc, MRT2: Bcc)        |
-| customHeaders     | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
-| userId            | String      | X        | Delimiter of delivery e.g) admin, system                     |
+| 値                 | タイプ          | 必須   | 説明                                       |
+| ----------------- | ----------- | ---- | ---------------------------------------- |
+| ​senderAddress    | String      | O    | 送信者のメール                             |
+| senderName        | String      | X    | 送信者名                             |
+| requestDate       | String      | X    | 送信日時が未入力の時は現在時間で送信(yyyy-MM-dd HH:mm:ss) |
+| title             | String      | O    | タイトル                                 |
+| body              | String      | O    | 内容                                 |
+| attachFileIdList  | List:String | X    | アップロードした添付ファイルID                            |
+| templateId        | String      | X    | 送信テンプレートID                                |
+| templateParameter | Object      | X    | 置換パラメータ(メールのタイトル/内容置換時に入力)                |
+| - #key#           | String      | X    | 置換キー(##key##)                            |
+| - #value#         | Object      | X    | 置換キーにマッピングされるValue値                  |
+| receiverList      | List        | O    | 受信者リスト<br/>最大1,000人まで送信可能(受信者、CC含む) |
+| - receiveMailAddr | String      | O    | 受信者のメールアドレス                          |
+| - receiveName     | String      | X    | 受信者名                             |
+| - receiveType     | String      | O    | 受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) |
+| userId            | String      | X    | 送信セパレータ例) admin, system                  |
 
 
-[Caution]
+[注意]
 
-* To use a template, title and body are not required (entered values, if available, precede the template value).
+* templateを使用する場合、title、bodyは必須入力から除外(入力時、入力された値がtemplateより優先適用)
 
-* The templateId parameter is required to use templateParameter.
+* templateParameter引数を使用する時は、templateId引数を必ず入力
 
-[Example 1]
+[例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
-```
-
-[Example 2 - Using template]
-```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"XXXXX"}'
 ```
 
-#### Response 
+[例2 - テンプレートの使用]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+```
+
+
+#### レスポンス
 
 ```
 {
@@ -90,71 +90,71 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | Object  | Data area                                                    |
-| -- requestId    | String  | Request ID                                                   |
-| -- statusCode   | String  | Request status code  (Y: preparing delivery, N: preparing delivery failed) |
+| 値         | タイプ | 説明                      |
+| --------------- | ------- | ----------------------------- |
+| header          | Object  | ヘッダ領域                   |
+| - isSuccessful  | Boolean | 成否                    |
+| - resultCode    | Integer | 失敗コード                   |
+| - resultMessage | String  | 失敗メッセージ                  |
+| body            | Object  | 本文領域                   |
+| - data          | Object  | データ領域                  |
+| -- requestId    | String  | リクエストID                         |
+| -- statusCode   | String  | リクエストステータスコード(Y：送信準備、N：送信準備失敗) |
 
-### Send Individual Mails 
+### 個別メール送信
 
-* Send mails to each of the many recipients. Each recipient can see no other recipients but himself.  
+* 受信者が複数の時、それぞれの受信者にメールを送信する機能。受信者には受信者が一人に見えます。
 
-#### Request 
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/sender/eachMail||
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| POST        | /email/v1.0/appKeys/{appKey}/sender/eachMail |
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値 | タイプ | 説明 |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
-| Value               | Type        | Required | Description                                                  |
-| ------------------- | ----------- | -------- | ------------------------------------------------------------ |
-| senderAddress       | String      | O        | Sender's address                                             |
-| senderName          | String      | X        | Sender's name                                                |
-| requestDate         | String      | X        | Enter the current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
-| title               | String      | O        | Title                                                        |
-| body                | String      | O        | Body                                                         |
-| attachFileIdList    | List:String | X        | ID of uploaded attachment                                    |
-| templateId          | String      | X        | ID of delivery template                                      |
-| receiverList        | List        | O        | List of recipients <br/>Send up to 1,000 persons             |
-| - receiveMailAddr   | String      | O        | Sender's mail address                                        |
-| - receiveName       | String      | X        | Sender's name                                                |
-| - templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
-| -- #key#            | String      | X        | Replacement key (##key##)                                    |
-| -- #value#          | Object      | X        | Mapped value for replacement key                             |
-| customHeaders       | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
-| userId              | String      | X        | Delimiter of delivery e.g) admin, system                     |
+| 値            | タイプ  | 必須 | 説明                                                   |
+| ------------------- | ----------- | ---- | ------------------------------------------------------------ |
+| ​senderAddress       | String      | O    | 送信者メール                                            |
+| senderName          | String      | X    | 送信者名                                            |
+| requestDate         | String      | X    | 送信日時。未入力の時は現在時間で送信(yyyy-MM-dd HH:mm:ss) |
+| title               | String      | O    | タイトル                                                   |
+| body                | String      | O    | 内容                                                   |
+| attachFileIdList    | List:String | X    | アップロードした添付ファイルID                                        |
+| templateId          | String      | X    | 送信テンプレートID                                               |
+| receiverList        | List        | O    | 受信者リスト<br/>最大1,000人まで送信可能             |
+| - receiveMailAddr   | String      | O    | 受信者のメールアドレス                                       |
+| - receiveName       | String      | X    | 受信者名                                            |
+| - templateParameter | Object      | X    | 置換パラメータ(メールのタイトル/内容置換時の入力)                   |
+| -- #key#            | String      | X    | 置換キー(##key##)                                             |
+| -- #value#          | Object      | X    | 置換キーにマッピングされる値                                  |
+| userId              | String      | X    | 送信セパレータ例) admin, system                                |
 
-[Caution]
+[注意]
 
-* To use a template, title and body are not required (entered values, if available, precede the template value) 
-* The templateId parameter is required to use templateParameter 
+* templateを使用する場合、title、bodyは必須から除外(入力時、入力された値がtemplateより優先適用)
 
-[Example 1]
+* templateParameter引数を使用する時は、templateId引数を必ず入力
+
+[例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":["첨부파일_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"XXXXX"}'
-```
-
-[Example 2 - Using template]
-```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":["添付ファイル_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"XXXXX"}'
 ```
 
-#### Response
+[例2 - テンプレート使用]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
+```
+
+#### レスポンス
 
 ```
 {
@@ -172,23 +172,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | Object  | Data area                                                    |
-| -- requestId    | String  | Request ID                                                   |
-| -- statusCode   | String  | Delivery status code (Y: preparing delivery, N: preparing delivery failed) |
+| 値         | タイプ | 説明                       |
+| --------------- | ------- | ------------------------------ |
+| header          | Object  | ヘッダ領域                    |
+| - isSuccessful  | Boolean | 成否                     |
+| - resultCode    | Integer | 失敗コード                    |
+| - resultMessage | String  | 失敗メッセージ                   |
+| body            | Object  | 本文領域                    |
+| - data          | Object  | データ領域                   |
+| -- requestId    | String  | リクエストID                          |
+| -- statusCode   | String  | リクエストステータスコード(Y：送信準備、N：送信準備失敗) |
 
-### Send General Advertising Mails 
-* The URL-end changes to ad-mail, while the others are same as sending general mails. 
+### 広告性一般メール送信
+* URLの最後のみad-mailに変わり、残りは一般メール送信と同じです。
 
-#### Caution for Sending Ad Mails
-* The title must include the (AD) phrase.
-* For more details, refer to [Send Ad Mails](./console-guide/#_3).
+#### 広告メール送信時の注意事項
+* タイトルに必ず(広告)文言を挿入します。
+* 詳細な内容は、[広告性メール送信](./console-guide/#_3)を参照してください。
 
 [URL]
 
@@ -196,51 +196,51 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | ----------- | ---------------------------------------- |
 | POST        | /email/v1.0/appKeys/{appKey}/sender/ad-mail |
 
-[Example 1]
+[例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
-```
-
-[Example 2 - Using template]
-```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"XXXXX"}'
 ```
 
-### Send Individual Advertising Mails
+[例2 - テンプレート使用]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"XXXXX"}'
+```
 
-* The URL-end changes into ad-mail, while the others are same as sending general mails. 
+### 広告性個別メール送信
+
+* URLの最後のみad-eachMailに変わり、残りは個別メール送信と同じです。
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/sender/ad-eachMail |
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| POST        | /email/v1.0/appKeys/{appKey}/sender/ad-eachMail |
 
-[Example 1]
+[例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":["첨부파일_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"XXXXX"}'
-```
-
-[Example 2 - Using template]
-```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":["添付ファイル_ID"],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"XXXXX"}'
 ```
 
-### Send Tagged Mails
+[例2 - テンプレート使用]
+```
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"XXXXX"}'
+```
 
-#### Request
+### タグメールの送信
+
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/sender/tagMail|
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| POST        | /email/v1.0/appKeys/{appKey}/sender/tagMail |
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
@@ -260,37 +260,36 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value            | Type        | Required | Description                                                  |
-| ---------------- | ----------- | -------- | ------------------------------------------------------------ |
-| senderAddress    | String      | O        | Sender's address                                             |
-| senderName       | String      | X        | Sender's name                                                |
-| requestDate      | String      | X        | Enter the current time if delivery time is missing (yyyy-MM-dd HH:mm:ss) |
-| title            | String      | O        | Title                                                        |
-| body             | String      | O        | Body                                                         |
-| templateId       | String      | X        | Template ID                                                  |
-| adYn             | String      | X        | Advertisement or not (default is 'N')                        |
-| autoSendYn       | String      | X        | Automatic delivery or not (default is 'Y')                   |
-| attachFileIdList | List:String | X        | List of attached files                                       |
-| tagExpression    | List:String | O        | Tag expression                                               |
-| customHeaders    | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
-| userId           | String      | X        | Delimiter of delivery<br />e.g.) admin, system               |
+| 値          | タイプ    | 必須   | 説明                                 |
+| ---------------- | ----------- | ---- | ---------------------------------------- |
+| senderAddress    | String      | O    | 送信者のアドレス                             |
+| senderName       | String      | X    | 送信者名                             |
+| requestDate      | String      | X    | 送信日時が未入力の時は現在時間で送信(yyyy-MM-dd HH:mm:ss) |
+| title            | String      | O    | タイトル                                 |
+| body             | String      | O    | 内容                                 |
+| templateId       | String      | X    | テンプレートID                                   |
+| adYn             | String      | X    | 広告かどうか(デフォルト値'N')                           |
+| autoSendYn       | String      | X    | 自動送信するかどうか(デフォルト値'Y')                        |
+| attachFileIdList | List:String | X    | 添付ファイルリスト                           |
+| tagExpression    | List:String | O    | タグ表現式                             |
+| userId           | String      | X    | 送信セパレータ<br />例) admin, system             |
 
-[Caution]
+[注意]
 
-* To use a template, title and body are not required (entered values, if available, precede the template value).
+* templateを使用する場合、title、bodyは必須入力から除外(入力時、入力された値がtemplateより優先適用)
+* templateParameter引数を使用する時は、templateId引数を必ず入力
 
-
-[Example 1]
+[例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":["첨부파일_ID"],"tagExpression":["tag1","AND","tag2"],"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":["添付ファイル_ID"],"tagExpression":["tag1","AND","tag2"],"userId":"XXXXX"}'
 ```
 
-[Example 2 - Using template]
+[例2 - テンプレートの使用]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"XXXXX"}'
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -307,31 +306,31 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
-| body            | Object  | Body area         |
-| - data          | Object  | Data areaee       |
-| -- requestId    | String  | Request ID        |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
+| body            | Object  | 本文領域 |
+| - data          | Object  | データ領域 |
+| -- requestId    | String  | リクエストID  |
 
-### Upload Attachments 
+### 添付ファイルのアップロード
 
-#### Request
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|POST|	/email/v1.0/appKeys/{appKey}/attachfile/binaryUpload|
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| POST        | /email/v1.0/appKeys/{appKey}/attachfile/binaryUpload |
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
@@ -343,18 +342,18 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value      | Type   | Required | Description               |
-| ---------- | ------ | -------- | ------------------------- |
-| fileName   | String | O        | File name                 |
-| fileBody   | Byte[] | O        | Byte[] value of a file    |
-| createUser | String | O        | File uploader information |
+| 値          | タイプ     | 必須   | 説明            |
+| ---------- | ------ | ---- | ------------- |
+| fileName   | String | O    | ファイル名   |
+| fileBody   | Byte[] | O    | ファイルのByte[]値 |
+| createUser | String | O    | ファイルアップロードユーザー情報 |
 
-[Example]
+[例]
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"XXXXX","fileBody":[]}'
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -373,37 +372,37 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | Object  | Data area                                                    |
-| -- requestId    | String  | Temporary request ID                                         |
-| -- fileName     | String  | File name                                                    |
-| -- filePath     | String  | Basic path of attached file <br/>(https://domain/attachFile/filePath/fileName) |
+| 値         | タイプ      | 説明                                       |
+| --------------- | ------- | ---------------------------------------- |
+| header          | Object  | ヘッダ領域                              |
+| - isSuccessful  | Boolean | 成否                               |
+| - resultCode    | Integer | 失敗コード                              |
+| - resultMessage | String  | 失敗メッセージ                             |
+| body            | Object  | 本文領域                              |
+| - data          | Object  | データ領域                             |
+| -- requestId    | String  | 臨時request ID                            |
+| -- fileName     | String  | ファイル名                              |
+| -- filePath     | String  | 添付ファイル基本パス <br/>(https://domain/attachFile/filePath/fileName) |
 
 
-### Title/Body Replacement 
+### タイトル/本文置換
 
-#### Example of Writing a Mail with Replacement
+#### 置換機能メールの作成例
 
 ```
-* title : Hello, ##title_name## !!
-* body : We send ##body_content##.
+* title：##title_name##さん、こんにちは！
+* body：##body_content## 送信します。
 ```
 
-#### Example of General Mail Request 
+#### 一般メールのリクエスト例
 ```
 {
-    "senderAddress" : "support@nhn.com",
+    "senderAddress" : "support@nhnent.com",
     "templateId": "template1",
-    "templateParameter" : {"title_name": "cloud customer1", "body_content": "test1"},
+    "templateParameter" : {"title_name": "クラウド顧客1", "body_content": "test1"},
     "receiverList" : [
         {
-            "receiveMailAddr" : "customer1@nhn.com",
+            "receiveMailAddr" : "customer1@nhnent.com",
             "receiveType" : "MRT0"
         }
 
@@ -412,19 +411,19 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-#### Example of Individual Mail Request
+#### 個別メールのリクエスト例
 ```
 {
-    "senderAddress" : "support@nhn.com",
+    "senderAddress" : "support@nhnent.com",
     "templateId": "template1",
     "receiverList" : [
         {
-            "receiveMailAddr" : "customer1@nhn.com",
-            "templateParameter" : {"title_name": "cloud customer1", "body_content": "test1"}
+            "receiveMailAddr" : "customer1@nhnent.com",
+            "templateParameter" : {"title_name": "クラウド顧客1", "body_content": "test1"}
         },
         {
-            "receiveMailAddr" : "customer2@nhn.com",
-            "templateParameter" : {"title_name": "cloud customer2", "body_content": "test2"}
+            "receiveMailAddr" : "customer2@nhnent.com",
+            "templateParameter" : {"title_name": "クラウド顧客2", "body_content": "test2"}
         }
 
     ],
@@ -432,53 +431,53 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-#### Example of Result
+#### 結果例
 ```
-* title : Hello, Cloud customer 1 !!
-* body : We send test2.
+* title：クラウド顧客1さん、こんにちは！
+* body：test2送信します。
 ```
 
-## Query Mails 
+## メール照会
 
-### Query List of Mail Deliveries
+### メール送信リストの照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/sender/mails|
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| GET         | /email/v1.0/appKeys/{appKey}/sender/mails |
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value            | Type    | Required | Description                                                  |
-| ---------------- | ------- | -------- | ------------------------------------------------------------ |
-| requestId        | String  | O        | Request ID                                                   |
-| startSendDate    | String  | O        | Delivery start date (yyyy-MM-dd HH:mm:ss)                    |
-| endSendDate      | String  | X        | Delivery end date (yyyy-MM-dd HH:mm:ss)                      |
-| startReceiveDate | String  | X        | Receiving start date (yyyy-MM-dd HH:mm:ss)                   |
-| endReceiveDate   | String  | X        | Receiving end date (yyyy-MM-dd HH:mm:ss)                     |
-| senderMail       | String  | X        | Sender's mail address                                        |
-| senderName       | String  | X        | Sender's name                                                |
-| receiveMail      | String  | X        | Recipient's mail address                                     |
-| templateId       | String  | X        | Template number                                              |
-| sendStatus       | String  | X        | Delivery status code <br/> SST0: Preparing delivery, SST1: Delivering,  <br/> SST2: Delivery completed, SST3 :Delivery failed |
-| pageNum          | Integer | X        | Page number (default: 1) Page number                         |
-| pageSize         | Integer | X        | Number of queries (default: 15)                              |
+| 値                | タイプ      | 必須   | 説明                                       |
+| ---------------- | ------- | ---- | ---------------------------------------- |
+| requestId        | String  | O    | リクエストID                                    |
+| startSendDate    | String  | O    | 送信日の開始値(yyyy-MM-dd HH:mm:ss)           |
+| endSendDate      | String  | X    | 送信日の終了値(yyyy-MM-dd HH:mm:ss)           |
+| startReceiveDate | String  | X    | 受信日の開始値(yyyy-MM-dd HH:mm:ss)           |
+| endReceiveDate   | String  | X    | 受信日の終了値(yyyy-MM-dd HH:mm:ss)           |
+| senderMail       | String  | X    | 送信メールアドレス                           |
+| senderName       | String  | X    | 送信者名                             |
+| receiveMail      | String  | X    | 受信メールアドレス                           |
+| templateId       | String  | X    | テンプレート番号                             |
+| sendStatus       | String  | X    | 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+| pageNum          | Integer | X    | ページ番号(デフォルト値：1)                           |
+| pageSize         | Integer | X    | 照会数(デフォルト値：15)                            |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -514,61 +513,61 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| -pageSize           | Integer | Number of queried data                                       |
-| - totalCount        | Integer | Number of total data                                         |
-| - data              | List    | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- requestDate      | String  | Date and time of delivery                                    |
-| -- requestIp        | String  | Delivery server IP                                           |
-| -- resultDate       | String  | Date and time of receiving                                   |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Name of template                                             |
-| -- masterStatusCode | String  | Status code for mail delivery (Y: Preparing delivery, N: delivery failed) |
-| -- mailSeq          | String  | Mail sequence                                                |
-| -- body             | String  | Body                                                         |
-| -- title            | String  | Title                                                        |
-| -- senderMail       | String  | Sender's mail address                                        |
-| -- senderName       | String  | Sender's name                                                |
-| -- receiverMail     | String  | Recipient's mail address                                     |
-| -- receiveType      | String  | Recipient type (MRT0: recipient, MRT1: cc, MRT2: bcc)        |
-| -- resultId         | String  | Delivery result ID                                           |
-| -- resultDate       | String  | Date and time of delivery completed                          |
-| -- mailStatusCode   | String  | Delivery status code <br/> SST0: preparing delivery, SST1:delivering,  <br/> SST2: delivery completed, SST3: delivery failed |
-| -- mailStatusName   | String  | Name of delivery status                                      |
-| -- requestDate      | String  | Date and time of delivery requested                          |
+| 値             | タイプ | 説明                                 |
+| ------------------- | ------- | ---------------------------------------- |
+| header              | Object  | ヘッダ領域                              |
+| - isSuccessful      | Boolean | 成否                               |
+| - resultCode        | Integer | 失敗コード                              |
+| - resultMessage     | String  | 失敗メッセージ                             |
+| body                | Object  | 本文領域                              |
+| - pageNum           | Integer | 現在のページ番号                          |
+| -pageSize           | Integer | 照会されたデータ数                           |
+| - totalCount        | Integer | 総データ数                             |
+| - data              | List    | データ領域                             |
+| -- requestId        | String  | リクエストID                                    |
+| -- requestDate      | String  | 送信日時                              |
+| -- requestIp        | String  | 送信サーバーIP                                 |
+| -- resultDate       | String  | 受信日時                              |
+| -- templateId       | String  | テンプレートID                                   |
+| -- templateName     | String  | テンプレート名                                |
+| -- masterStatusCode | String  | メール送信準備ステータスコード(Y：送信準備、N：送信失敗)        |
+| -- mailSeq          | String  | メールの順番                               |
+| -- body             | String  | 本文内容                              |
+| -- title            | String  | メールのタイトル                              |
+| -- senderMail       | String  | 送信者のメールアドレス                          |
+| -- senderName       | String  | 送信者名                             |
+| -- receiverMail     | String  | 受信者のメールアドレス                          |
+| -- receiveType      | String  | 受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) |
+| -- resultId         | String  | 送信結果ID                                 |
+| -- resultDate       | String  | 送信完了日時                           |
+| -- mailStatusCode   | String  | 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+| -- mailStatusName   | String  | 送信ステータス名                           |
+| -- requestDate      | String  | 送信リクエスト日時                           |
 
-### Query Mail Delivery Details
+### メール送信詳細の照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|GET|	/email/v1.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+| Http method | URI                                      |
+| ----------- | ---------------------------------------- |
+| GET         | /email/v1.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq} |
 
 [Path parameter]
 
-| Value     | Type    | Description     |
-| --------- | ------- | --------------- |
-| appKey    | String  | Original Appkey |
-| requestId | String  | Request ID      |
-| mailSeq   | Integer | Mail sequence   |
+| 値         | タイプ      | 説明     |
+| --------- | ------- | ------ |
+| appKey    | String  | 固有のアプリケーションキー |
+| requestId | String  | リクエストID  |
+| mailSeq   | Integer | メールの順番 |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -617,46 +616,45 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- mailStatusCode   | String  | Delivery status                                              |
-| -- mailStatusName   | String  | Delivery status name                                         |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- senderName       | String  | Sender's name                                                |
-| -- senderMail       | String  | Sender's mail address                                        |
-| -- title            | String  | Title                                                        |
-| -- body             | String  | Body                                                         |
-| -- attachFileYn     | String  | Attached  or not                                             |
-| -- resultId         | String  | Mail delivery ID                                             |
-| -- resultDate       | String  | Date and time of delivery completed                          |
-| -- receivers        | List    | List of recipients                                           |
-| --- requestId       | String  | Request ID                                                   |
-| --- mailSequence    | Integer | Mail sequence                                                |
-| --- receiveType     | String  | Recipient type                                               |
-| --- receiveTypeName | String  | Recipient type name                                          |
-| --- receiveName     | String  | Recipient's name                                             |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- readYn          | String  | Received or not                                              |
-| --- readDate        | String  | Received date (yyyy-MM-dd HH:mm:ss.SSS)                      |
-| -- attachFileList   | List    | List of attached files                                       |
-| --- filePath        | String  | Path of attached file                                        |
-| --- fileName        | String  | Name of attached file                                        |
-| --- fileSize        | Integer | Size of attached file                                        |
-| --- fileSequence    | Integer | Sequence of attached files                                   |
-| --- createDate      | String  | Date and time of creation                                    |
-| --- updateDate      | String  | Date and time of modification                                |
-| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)(field added since v1.1) |
+| 値             | タイプ      | 説明                                 |
+| ------------------- | ------- | ---------------------------------------- |
+| header              | Object  | ヘッダ領域                              |
+| - isSuccessful      | Boolean | 成否                               |
+| - resultCode        | Integer | 失敗コード                              |
+| - resultMessage     | String  | 失敗メッセージ                             |
+| body                | Object  | 本文領域                              |
+| - data              | Object  | データ領域                             |
+| -- mailStatusCode   | String  | 送信ステータス                            |
+| -- mailStatusName   | String  | 送信ステータス名                           |
+| -- templateId       | String  | テンプレートID                                   |
+| -- templateName     | String  | テンプレート名                             |
+| -- senderName       | String  | 送信者名                             |
+| -- senderMail       | String  | 送信メールアドレス                           |
+| -- title            | String  | メールのタイトル                              |
+| -- body             | String  | メール内容                              |
+| -- attachFileYn     | String  | 添付ファイルの有無                            |
+| -- resultId         | String  | メール送信ID                                 |
+| -- resultDate       | String  | 送信完了日時                           |
+| -- receivers        | List    | 受信者リスト                             |
+| --- requestId       | String  | リクエストID                                     |
+| --- mailSequence    | Integer | メールの順番                               |
+| --- receiveType     | String  | 受信者タイプ                             |
+| --- receiveTypeName | String  | 受信者タイプ名                             |
+| --- receiveName     | String  | 受信者名                             |
+| --- receiveMailAddr | String  | 受信メールアドレス                           |
+| --- readYn          | String  | 受信成否                               |
+| --- readDate        | String  | 受信日(yyyy-MM-dd HH:mm:ss.SSS)           |
+| -- attachFileList   | List    | 添付ファイルリスト                           |
+| --- filePath        | String  | 添付ファイルのパス                           |
+| --- fileName        | String  | 添付ファイル名                           |
+| --- fileSize        | Integer | 添付ファイルのサイズ                           |
+| --- fileSequence    | Integer | 添付ファイルの順番                            |
+| --- createDate      | String  | 作成日時                              |
+| --- updateDate      | String  | 修正日時                              |
 
-### Query Request of Tagged Mail Delivery 
+### タグメール送信リクエストの照会
 
-#### Request 
+#### リクエスト
 
 [URL]
 
@@ -666,35 +664,35 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value         | Type    | Required | Description                                                  |
-| ------------- | ------- | -------- | ------------------------------------------------------------ |
-| requestId     | String  | O        | Request ID                                                   |
-| startSendDate | String  | O        | Start date of delivery (yyyy-MM-dd HH:mm:ss)                 |
-| endSendDate   | String  | O        | End date of delivery (yyyy-MM-dd HH:mm:ss)                   |
-| senderMail    | String  | X        | Sender's mail address                                        |
-| senderName    | String  | X        | Sender's name                                                |
-| templateId    | String  | X        | Template ID                                                  |
-| sendStatus    | String  | X        | Delivery status code <br/>WAIT: Waiting, READY: Preparing delivery, <br/>SENDREADY: Preparing delivery completed, SENDWAIT: Waiting delivery, <br/>SENDING: Delivering, COMPLETE: Delivery completed, <br/>FAIL: Delivery failed, CANCEL: Delivery cancelled |
-| pageNum       | Integer | X        | Page number (default: 1)                                     |
-| pageSize      | Integer | X        | Number of queries (default: 15)                              |
+| 値             | タイプ      | 必須   | 説明                                       |
+| ------------- | ------- | ---- | ---------------------------------------- |
+| requestId     | String  | O    | リクエストID                                    |
+| startSendDate | String  | O    | 送信日の開始値(yyyy-MM-dd HH:mm:ss)           |
+| endSendDate   | String  | O    | 送信日の終了値(yyyy-MM-dd HH:mm:ss)           |
+| senderMail    | String  | X    | 送信メールアドレス                          |
+| senderName    | String  | X    | 送信者名                             |
+| templateId    | String  | X    | テンプレートID                                   |
+| sendStatus    | String  | X    | 送信ステータスコード<br/> WAIT：待機、READY：送信準備、<br/>SENDREADY：送信準備完了、SENDWAIT：送信待機、<br/>SENDING：送信中、COMPLETE：送信完了、<br/>FAIL：送信失敗、CANCEL：送信取消 |
+| pageNum       | Integer | X    | ページ番号(デフォルト値：1)                           |
+| pageSize      | Integer | X    | 照会数(デフォルト値：15)                            |
 
-[Caution]
+[注意]
 
-* If requestId is available, startSendDate and endSendDate are not required.
-* If startSendDate and endSendDate are available, requestId is not required. 
+* requestIdがある場合、startSendDateとendSendDateは必須値ではありません。
+* startSendDateとendSendDateがある場合、requestIdは必須値ではありません。
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
-#### Response 
+#### レスポンス
 
 ```
 {
@@ -732,38 +730,38 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value            | Type        | Description                                                  |
+| 値               | タイプ        | 説明                                                         |
 | ---------------- | ----------- | ------------------------------------------------------------ |
-| header           | Object      | Header area                                                  |
-| - isSuccessful   | Boolean     | Successful or not                                            |
-| - resultCode     | Integer     | Failure code                                                 |
-| - resultMessage  | String      | Failure message                                              |
-| body             | Object      | Body area                                                    |
-| - pageNum        | Integer     | Current page number                                          |
-| -pageSize        | Integer     | Number of queried data                                       |
-| - totalCount     | Integer     | Total number of data                                         |
-| - data           | List        | Data area                                                    |
-| -- requestId     | String      | Request ID                                                   |
-| -- requestIp     | String      | Request IP                                                   |
-| -- requestDate   | String      | Request time                                                 |
-| -- tagSendStatus | String      | Delivery status code <br/>WAIT: Waiting, READY: Preparing delivery, <br/>SENDREADY: Preparing delivery completed, SENDWAIT: Waiting delivery, <br/>SENDING: Delivering, COMPLETE: Delivery completed, <br/>FAIL: Delivery failed, CANCEL: Delivery cancelled |
-| -- tagExpression | List:String | Tag expression                                               |
-| -- templateId    | String      | Template ID                                                  |
-| -- templateName  | String      | Template name                                                |
-| -- senderName    | String      | Sender's name                                                |
-| -- senderMail    | String      | Sender's mail address                                        |
-| -- title         | String      | Title                                                        |
-| -- body          | String      | Body                                                         |
-| -- attachYn      | String      | Attached file or not                                         |
-| -- adYn          | String      | Advertisement or not                                         |
-| -- createUser    | String      | Creator                                                      |
-| -- createDate    | String      | Date and time of creation                                    |
-| -- updateUser    | String      | Modifier                                                     |
-| -- updateDate    | String      | Date and time of modification                                |
+| header           | Object      | ヘッダ領域                                              |
+| - isSuccessful   | Boolean     | 成否                                               |
+| - resultCode     | Integer     | 失敗コード                                              |
+| - resultMessage  | String      | 失敗メッセージ                                            |
+| body             | Object      | 本文領域                                              |
+| - pageNum        | Integer     | 現在のページ番号                                       |
+| -pageSize        | Integer     | 照会されたデータ数                                        |
+| - totalCount     | Integer     | 総データ数                                            |
+| - data           | List        | データ領域                                            |
+| -- requestId     | String      | リクエストID                                                      |
+| -- requestIp     | String      | リクエストIP                                                      |
+| -- requestDate   | String      | リクエスト時間                                              |
+| -- tagSendStatus | String      | 送信ステータスコード<br/>WAIT：待機、READY：送信準備、<br/>SENDREADY：送信準備完了、SENDWAIT：送信待機、<br/>SENDING：送信中、COMPLETE：送信完了、<br/>FAIL：送信失敗、CANCEL：送信取消 |
+| -- tagExpression | List:String | タグ表現式                                            |
+| -- templateId    | String      | テンプレートID                                                    |
+| -- templateName  | String      | テンプレート名                                                |
+| -- senderName    | String      | 送信者名                                            |
+| -- senderMail    | String      | 送信者のアドレス                                             |
+| -- title         | String      | タイトル                                                   |
+| -- body          | String      | 内容                                                   |
+| -- attachYn      | String      | 添付ファイルの有無                                          |
+| -- adYn          | String      | 広告かどうか                                               |
+| -- createUser    | String      | 作成者                                                  |
+| -- createDate    | String      | 作成日時                                              |
+| -- updateUser    | String      | 修正者                                                  |
+| -- updateDate    | String      | 修正日                                              |
 
-### Query Recipients of Tagged Mail Delivery
+### タグメールの送信受信者照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -773,28 +771,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value     | Type   | Description     |
-| --------- | ------ | --------------- |
-| appKey    | String | Original Appkey |
-| requestId | String | Request ID      |
+| 値         | タイプ     | 説明     |
+| --------- | ------ | ------ |
+| appKey    | String | 固有のアプリケーションキー |
+| requestId | String | リクエストID  |
 
 [Query parameter]
 
-| Value            | Type    | Required | Description                                                  |
-| ---------------- | ------- | -------- | ------------------------------------------------------------ |
-| receiveMail      | String  | X        | Recipient's mail address                                     |
-| startReceiveDate | String  | X        | Start date of receiving (yyyy-MM-dd HH:mm:ss)                |
-| endReceiveDate   | String  | X        | End date of receiving (yyyy-MM-dd HH:mm:ss)                  |
-| receiveStatus    | String  | X        | Delivery status code <br/> SST0: Preparing delivery, SST1: Delivering,  <br/> SST2: Delivery completed, SST3 : Delivery failed |
-| pageNum          | Integer | X        | Page number (default: 1)                                     |
-| pageSize         | Integer | X        | Number of queries (default: 15)                              |
+| 値                | タイプ      | 必須   | 説明                                       |
+| ---------------- | ------- | ---- | ---------------------------------------- |
+| receiveMail      | String  | X    | 受信メールアドレス                           |
+| startReceiveDate | String  | X    | 受信日の開始値(yyyy-MM-dd HH:mm:ss)           |
+| endReceiveDate   | String  | X    | 受信日の終了値(yyyy-MM-dd HH:mm:ss)           |
+| receiveStatus    | String  | X    | 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+| pageNum          | Integer | X    | ページ番号(デフォルト値：1)                           |
+| pageSize         | Integer | X    | 照会数(デフォルト値：15)                            |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -828,55 +826,55 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value             | Type    | Description                                                  |
-| ----------------- | ------- | ------------------------------------------------------------ |
-| header            | Object  | Header area                                                  |
-| - isSuccessful    | Boolean | Successful or not                                            |
-| - resultCode      | Integer | Failure code                                                 |
-| - resultMessage   | String  | Failure message                                              |
-| body              | Object  | Body area                                                    |
-| - pageNum         | Integer | Current page number                                          |
-| -pageSize         | Integer | Number of queried data                                       |
-| - totalCount      | Integer | Total number of data                                         |
-| - data            | List    | Data area                                                    |
-| -- requestId      | String  | Request ID                                                   |
-| -- mailSequence   | Integer | Mail sequence                                                |
-| -- receiveMail    | String  | Recipient's mail address                                     |
-| -- mailStatusCode | String  | Delivery status code <br/> SST0: Preparing delivery, SST1: Delivering,  <br/> SST2: Delivery completed, SST3 : Delivery failed |
-| -- mailStatusName | String  | Mail status name                                             |
-| -- resultId       | String  | SMTP ID                                                      |
-| -- resultDate     | String  | Actual time of delivery                                      |
-| -- readYn         | String  | Read or not                                                  |
-| -- readDate       | String  | Read time                                                    |
-| -- createUser     | String  | Creator                                                      |
-| -- createDate     | String  | Date and time of creation                                    |
-| -- updateUser     | String  | Modifier                                                     |
-| -- updateDate     | String  | Date and time of modification                                |
+| 値                 | タイプ      | 説明                                       |
+| ----------------- | ------- | ---------------------------------------- |
+| header            | Object  | ヘッダ領域                              |
+| - isSuccessful    | Boolean | 成否                               |
+| - resultCode      | Integer | 失敗コード                              |
+| - resultMessage   | String  | 失敗メッセージ                             |
+| body              | Object  | 本文領域                              |
+| - pageNum         | Integer | 現在のページ番号                          |
+| -pageSize         | Integer | 照会されたデータ数                           |
+| - totalCount      | Integer | 総データ数                             |
+| - data            | List    | データ領域                             |
+| -- requestId      | String  | リクエストID                                    |
+| -- mailSequence   | Integer | メールの順番                               |
+| -- receiveMail    | String  | 受信者のアドレス                             |
+| -- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+| -- mailStatusName | String  | メールのステータス名                           |
+| -- resultId       | String  | SMTP ID                                  |
+| -- resultDate     | String  | 実際の送信時間                           |
+| -- readYn         | String  | 既読かどうか                                |
+| -- readDate       | String  | 読んだ時間                              |
+| -- createUser     | String  | 作成者                                 |
+| -- createDate     | String  | 作成日時                              |
+| -- updateUser     | String  | 修正者                                 |
+| -- updateDate     | String  | 修正日時                              |
 
-### Query Details of Tagged Mail Delivery 
+### タグメール送信詳細照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
 | Http method | URI                                      |
 | ----------- | ---------------------------------------- |
-| GET         | /email/v1.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence} |
+| GET         | /email/v1.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence} |
 
 [Path parameter]
 
-| Value        | Type    | Description     |
-| ------------ | ------- | --------------- |
-| appKey       | String  | Original Appkey |
-| requestId    | String  | Request ID      |
-| mailSequence | Integer | Mail sequence   |
+| 値            | タイプ      | 説明     |
+| ------------ | ------- | ------ |
+| appKey       | String  | 固有のアプリケーションキー |
+| requestId    | String  | リクエストID  |
+| mailSequence | Integer | メールの順番 |
 
-[Example]
+[例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
 ```
 
-#### Request 
+#### レスポンス
 
 ```
 {
@@ -920,60 +918,57 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                     "createDate": String
                     "updateDate": String
                 }
-            ],
-            "customHeaders": Map
+            ]
         }
     }
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| -pageSize           | Integer | Number of queried page                                       |
-| - totalCount        | Integer | Total number of data                                         |
-| - data              | List    | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- requestIp        | String  | Request IP                                                   |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- mailStatusCode   | String  | Delivery status code <br/> SST0: Preparing delivery, SST1: Delivering,  <br/> SST2: Delivery completed, SST3 : Delivery failed |
-| -- mailStatusName   | String  | Mail status name                                             |
-| -- requestDate      | String  | Request time                                                 |
-| -- resultDate       | String  | Result time                                                  |
-| -- senderName       | String  | Sender's name                                                |
-| -- senderMail       | String  | Sender's mail address                                        |
-| -- resultId         | String  | SMTP ID                                                      |
-| -- title            | String  | Title                                                        |
-| -- body             | String  | Body                                                         |
-| -- receivers        | List    | List of recipients                                           |
-| --- requestId       | String  | Request ID                                                   |
-| --- mailSequence    | Integer | Mail sequence                                                |
-| --- receiveType     | String  | Recipient type (MRT0: recipient, MRT1: cc, MRT2: bcc)        |
-| --- receiveTypeName | String  | Name of recipient type                                       |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- readYn          | String  | Read or not                                                  |
-| --- readDate        | String  | Read time                                                    |
-| -- attachFileList   | List    | List of attached files                                       |
-| --- filePath        | String  | File path                                                    |
-| --- fileName        | String  | File name                                                    |
-| --- fileSize        | Long    | File size                                                    |
-| --- fileSequence    | Integer | File number                                                  |
-| --- createDate      | String  | Date and time of file creation                               |
-| --- updateDate      | String  | Date and time of file modification                           |
-| -- customHeaders    | Map     | [Custome Header](./Overview/#custom-header) (field added since v1.1) |
+| 値             | タイプ      | 説明                                 |
+| ------------------- | ------- | ---------------------------------------- |
+| header              | Object  | ヘッダ領域                              |
+| - isSuccessful      | Boolean | 成否                               |
+| - resultCode        | Integer | 失敗コード                              |
+| - resultMessage     | String  | 失敗メッセージ                             |
+| body                | Object  | 本文領域                              |
+| - pageNum           | Integer | 現在のページ番号                          |
+| -pageSize           | Integer | 照会されたデータ数                           |
+| - totalCount        | Integer | 総データ数                             |
+| - data              | List    | データ領域                             |
+| -- requestId        | String  | リクエストID                                    |
+| -- requestIp        | String  | リクエストIP                                    |
+| -- templateId       | String  | テンプレートID                                   |
+| -- templateName     | String  | テンプレート名                             |
+| -- mailStatusCode   | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+| -- mailStatusName   | String  | メールのステータス名                           |
+| -- requestDate      | String  | リクエスト時間                              |
+| -- resultDate       | String  | 結果時間                              |
+| -- senderName       | String  | 送信者名                             |
+| -- senderMail       | String  | 送信者のアドレス                             |
+| -- resultId         | String  | SMTP ID                                  |
+| -- title            | String  | タイトル                                 |
+| -- body             | String  | 内容                                 |
+| -- receivers        | List    | 受信者リスト                             |
+| --- requestId       | String  | リクエストID                                    |
+| --- mailSequence    | Integer | メールの順番                               |
+| --- receiveType     | String  | 受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) |
+| --- receiveTypeName | String  | 受信者タイプ名                          |
+| --- receiveMailAddr | String  | 受信者のメールアドレス                          |
+| --- readYn          | String  | 既読かどうか                               |
+| --- readDate        | String  | 読んだ時間                              |
+| -- attachFileList   | List    | 添付ファイルリスト                           |
+| --- filePath        | String  | ファイルパス                              |
+| --- fileName        | String  | ファイル名                                |
+| --- fileSize        | Long    | ファイルサイズ                             |
+| --- fileSequence    | Integer | ファイル番号                              |
+| --- createDate      | String  | ファイル作成日時                           |
+| --- updateDate      | String  | ファイル修正日時                           |
 
+## テンプレートの照会
 
-## Query Templates
+### テンプレートリストの照会
 
-### Query List of Templates
-
-#### Request		
+#### リクエスト
 
 [URL]
 
@@ -983,26 +978,26 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value      | Type    | Required | Description                        |
-| ---------- | ------- | -------- | ---------------------------------- |
-| categoryId | Integer | X        | Category ID                        |
-| useYn      | String  | X        | Use or not (Y/N)                   |
-| pageNum    | Integer | X        | Page number (default: 1)           |
-| pageSize   | Integer | X        | Number of queries (default: 15)    |
-| all        | Boolean | X        | Query list of all templates or not |
+| 値          | タイプ      | 必須   | 説明              |
+| ---------- | ------- | ---- | --------------- |
+| categoryId | Integer | X    | カテゴリーID         |
+| useYn      | String  | X    | 使用有無(Y/N)      |
+| pageNum    | Integer | X    | ページ番号(デフォルト値：1)  |
+| pageSize   | Integer | X    | 照会数(デフォルト値：15)   |
+| all        | Boolean | X    | 全てのテンプレートリストを照会するかどうか |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1040,36 +1035,36 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value             | Type    | Description                    |
-| ----------------- | ------- | ------------------------------ |
-| header            | Object  | Header area                    |
-| - isSuccessful    | Boolean | Successful or not              |
-| - resultCode      | Integer | Failure code                   |
-| - resultMessage   | String  | Failure message                |
-| body              | Object  | Body area                      |
-| - pageNum         | Integer | Current page number            |
-| -pageSize         | Integer | Number of queried data         |
-| - totalCount      | Integer | Total number of data           |
-| -data             | List    | Data area                      |
-| --templateId      | String  | Template ID                    |
-| --serviceId       | Integer | Service ID                     |
-| --categoryId      | Integer | Category ID                    |
-| --categoryName    | String  | Category name                  |
-| --sort            | Integer | Sequence                       |
-| --templateName    | String  | Template name                  |
-| --templateDesc    | String  | Template description           |
-| -- useYn          | String  | Use or not                     |
-| --sendMailAddress | String  | Template sender's mail address |
-| --title           | String  | Title                          |
-| --body            | String  | Body                           |
-| --attachFileYn    | String  | Attach template or not         |
-| --delYn           | String  | Delete or not                  |
-| --createDate      | String  | Date and time of creation      |
-| --updateDate      | String  | Date and time of modification  |
+| 値                 | タイプ      | 説明              |
+| ----------------- | ------- | --------------- |
+| header            | Object  | ヘッダ領域     |
+| - isSuccessful    | Boolean | 成否      |
+| - resultCode      | Integer | 失敗コード     |
+| - resultMessage   | String  | 失敗メッセージ    |
+| body              | Object  | 本文領域     |
+| - pageNum         | Integer | 現在のページ番号 |
+| -pageSize         | Integer | 照会されたデータ数  |
+| - totalCount      | Integer | 総データ数    |
+| -data             | List    | データ領域    |
+| --templateId      | String  | テンプレートID          |
+| --serviceId       | Integer | サービスID          |
+| --categoryId      | Integer | カテゴリーID         |
+| --categoryName    | String  | カテゴリー名   |
+| --sort            | Integer | 順序        |
+| --templateName    | String  | テンプレート名    |
+| --templateDesc    | String  | テンプレートの説明    |
+| -- useYn          | String  | 使用有無       |
+| --sendMailAddress | String  | テンプレート送信メールアドレス |
+| --title           | String  | メールのタイトル     |
+| --body            | String  | メール本文     |
+| --attachFileYn    | String  | テンプレート添付ファイルの追加有無 |
+| --delYn           | String  | 削除されているかどうか       |
+| --createDate      | String  | 作成日時     |
+| --updateDate      | String  | 修正日時     |
 
-### Query Template Details 
+### テンプレート詳細照会
 
-#### Request	
+#### リクエスト
 
 [URL]
 
@@ -1079,17 +1074,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value      | Type   | Description     |
-| ---------- | ------ | --------------- |
-| appKey     | String | Original Appkey |
-| templateId | String | Template ID     |
+| 値    | タイプ | 説明 |
+| ---------- | ------ | ------ |
+| appKey     | String | 固有のアプリケーションキー |
+| templateId | String | テンプレートID |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/templates/{templateId}"
 ```
 
-#### Response 
+#### レスポンス
 
 ```
 {
@@ -1132,46 +1127,46 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value             | Type    | Description                    |
-| ----------------- | ------- | ------------------------------ |
-| header            | Object  | Header area                    |
-| - isSuccessful    | Boolean | Successful or not              |
-| - resultCode      | Integer | Failure code                   |
-| - resultMessage   | String  | Failure message                |
-| body              | Object  | Body area                      |
-| -data             | List    | Data area                      |
-| --templateId      | String  | Template ID                    |
-| --serviceId       | Integer | Service ID                     |
-| --categoryId      | Integer | Category ID                    |
-| --categoryName    | String  | Category name                  |
-| --templateName    | String  | Template name                  |
-| --templateDesc    | String  | Template description           |
-| --useYn           | String  | Use or not (Y: Use, N:Not use) |
-| --sendMailAddress | String  | Sender's mail address          |
-| --title           | String  | Title                          |
-| --body            | String  | Body                           |
-| --delYn           | String  | Delete or not                  |
-| --createDate      | String  | Date and time of creation      |
-| --createUser      | String  | Creator                        |
-| --updateDate      | String  | Date and time of modification  |
-| --updateUser      | String  | Modifier                       |
-| --attachFileList  | List    | List of attached files         |
-| ---fileId         | Integer | Attachment ID                  |
-| ---serviceId      | Integer | Service ID                     |
-| ---templateId     | String  | Template ID                    |
-| ---filePath       | String  | Path of attached file          |
-| ---fileName       | String  | Name of attached file          |
-| ---fileSize       | Integer | Size of attached file          |
-| ---createDate     | String  | Date and time of creation      |
-| ---createUser     | String  | Creator                        |
-| ---updateDate     | String  | Date and time of modification  |
-| ---updateUser     | String  | Modifier                       |
+| 値                 | タイプ      | 説明                       |
+| ----------------- | ------- | ------------------------ |
+| header            | Object  | ヘッダ領域              |
+| - isSuccessful    | Boolean | 成否               |
+| - resultCode      | Integer | 失敗コード              |
+| - resultMessage   | String  | 失敗メッセージ             |
+| body              | Object  | 本文領域              |
+| -data             | List    | データ領域             |
+| --templateId      | String  | テンプレートID                   |
+| --serviceId       | Integer | サービスID                   |
+| --categoryId      | Integer | カテゴリーID                  |
+| --categoryName    | String  | カテゴリー名            |
+| --templateName    | String  | テンプレート名             |
+| --templateDesc    | String  | テンプレート説明             |
+| --useYn           | String  | 使用有無(Y：使用中、N：使用しない) |
+| --sendMailAddress | String  | 送信メールアドレス          |
+| --title           | String  | メールアドレス              |
+| --body            | String  | メール内容              |
+| --delYn           | String  | 削除されているかどうか                |
+| --createDate      | String  | 作成日時              |
+| --createUser      | String  | 作成者                 |
+| --updateDate      | String  | 修正日時              |
+| --updateUser      | String  | 修正者                 |
+| --attachFileList  | List    | 添付ファイルリスト           |
+| ---fileId         | Integer | 添付ファイルID                 |
+| ---serviceId      | Integer | サービスID                   |
+| ---templateId     | String  | テンプレートID                   |
+| ---filePath       | String  | 添付ファイルのパス           |
+| ---fileName       | String  | 添付ファイル名           |
+| ---fileSize       | Integer | 添付ファイルのサイズ           |
+| ---createDate     | String  | 作成日時              |
+| ---createUser     | String  | 作成者                 |
+| ---updateDate     | String  | 修正日時              |
+| ---updateUser     | String  | 修正者                 |
 
-## Manage Tags	
+## タグ管理
 
-### Query Tags
+### タグ照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1181,23 +1176,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value    | Type    | Required | Description                     |
-| -------- | ------- | -------- | ------------------------------- |
-| pageNum  | Integer | X        | Page number (default: 1)        |
-| pageSize | Integer | X        | Number of queries (default: 15) |
+| 値  | タイプ | 必須 | 説明       |
+| -------- | ------- | ---- | -------------- |
+| pageNum  | Integer | X    | ページ番号(デフォルト値：1) |
+| pageSize | Integer | X    | 照会数(デフォルト値：15)  |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1222,22 +1217,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                   |
-| --------------- | ------- | ----------------------------- |
-| header          | Object  | Header area                   |
-| - isSuccessful  | Boolean | Successful or not             |
-| - resultCode    | Integer | Failure code                  |
-| - resultMessage | String  | Failure message               |
-| body            | Object  | Body area                     |
-| - data          | List    | Data area                     |
-| -- tagId        | String  | Tag ID                        |
-| -- tagName      | String  | Tag name                      |
-| -- createdDate  | String  | Date and time of creation     |
-| -- updatedDate  | String  | Date and time of modification |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
+| body            | Object  | 本文領域 |
+| - data          | List    | データ領域 |
+| -- tagId        | String  | タグID  |
+| -- tagName      | String  | タグ名 |
+| -- createdDate  | String  | 作成日時 |
+| -- updatedDate  | String  | 修正日時 |
 
-### Register  Tags
+### タグ登録
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1247,22 +1242,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
-| Value   | Type   | Required | Description |
-| ------- | ------ | -------- | ----------- |
-| tagName | String | O        | Tag name    |
+| 値       | タイプ     | 必須   | 説明    |
+| ------- | ------ | ---- | ----- |
+| tagName | String | O    | タグ名 |
 
-[Example]
+[例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags -d '{"tagName":"sample tag"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags -d '{"tagName":"サンプルタグ"}'
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1279,19 +1274,19 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
-| body            | Object  | Body area         |
-| - data          | List    | Data area         |
-| -- tagId        | String  | Tag ID            |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
+| body            | Object  | 本文領域 |
+| - data          | List    | データ領域 |
+| -- tagId        | String  | タグID  |
 
-### Modify Tags
+### タグの修正
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1301,23 +1296,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
-| tagId  | String | Tag ID          |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
+| tagId  | String | タグID  |
 
 [Request body]
 
-| Value   | Type   | Required | Description |
-| ------- | ------ | -------- | ----------- |
-| tagName | String | O        | Tag name    |
+| 値       | タイプ     | 必須   | 説明    |
+| ------- | ------ | ---- | ----- |
+| tagName | String | O    | タグ名 |
 
-[Example]
+[例]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"sample tag2"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"サンプルタグ2"}'
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1329,16 +1324,16 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-### Delete Tags
+### タグの削除
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1348,17 +1343,17 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
-| tagId  | String | Tag ID          |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
+| tagId  | String | タグID  |
 
-[Example]
+[例]
 ```
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/tags/{tagId}
 ```
 
-#### Response		
+#### レスポンス
 
 ```
 {
@@ -1370,18 +1365,18 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-## Manage UIDs
+## UIDの管理
 
-### Query UIDs
+### UIDの照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1391,25 +1386,25 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value     | Type        | Required | Description                                                  |
-| --------- | ----------- | -------- | ------------------------------------------------------------ |
-| wheres    | List:String | X        | Query conditions.</br> Character strings comprised of alphabets, numbers, and parentheses. </br> Allows one parenthesis, and up to three AND or ORs.</br> e.g.) tagId1,AND,tagId2 |
-| offsetUid | String      | X        | offset UID                                                   |
-| offset    | Integer     | X        | offset (default: 0)                                          |
-| limit     | Integer     | X        | Number of queries (default: 15)                              |
+| 値   | タイプ    | 必須 | 説明                                 |
+| --------- | ----------- | ---- | ---------------------------------------- |
+| wheres    | List:String | X    | 照会条件。</br>英数字、括弧で構成された文字列。</br>括弧は1個、AND、ORは3個まで使用できる。</br>例) tagId1,AND,tagId2 |
+| offsetUid | String      | X    | offset UID                               |
+| offset    | Integer     | X    | offset(デフォルト値：0)                           |
+| limit     | Integer     | X    | 照会数(デフォルト値：15)                            |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1447,31 +1442,31 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value            | Type    | Description                       |
-| ---------------- | ------- | --------------------------------- |
-| header           | Object  | Header area                       |
-| - isSuccessful   | Boolean | Successful or not                 |
-| - resultCode     | Integer | Failure code                      |
-| - resultMessage  | String  | Failure message                   |
-| body             | Object  | Body area                         |
-| - data           | List    | Data area                         |
-| -- uids          | List    | List of UIDs                      |
-| --- uid          | String  | UID                               |
-| --- tags         | List    | List of tag information           |
-| ---- tagId       | String  | Tag ID                            |
-| ---- tagName     | String  | Tag name                          |
-| ---- createDate  | String  | Date and time of tag creation     |
-| ---- updateDate  | String  | Date and time of tag modification |
-| --- contacts     | List    | List of contacts                  |
-| ---- contactType | String  | Contact type (EMAIL_ADDRESS)      |
-| ---- contact     | String  | Contact (mail address)            |
-| ---- createDate  | String  | Data and time of contact creation |
-| -- isLast        | Boolean | Last on the list or not           |
-| -- totalCount    | Integer | Total number of data              |
+| 値                | タイプ      | 説明                    |
+| ---------------- | ------- | --------------------- |
+| header           | Object  | ヘッダ領域           |
+| - isSuccessful   | Boolean | 成否            |
+| - resultCode     | Integer | 失敗コード           |
+| - resultMessage  | String  | 失敗メッセージ          |
+| body             | Object  | 本文領域           |
+| - data           | List    | データ領域          |
+| -- uids          | List    | UIDリスト          |
+| --- uid          | String  | UID                   |
+| --- tags         | List    | タグ情報リスト        |
+| ---- tagId       | String  | タグID                 |
+| ---- tagName     | String  | タグ名           |
+| ---- createDate  | String  | タグ作成日時        |
+| ---- updateDate  | String  | タグ修正日時        |
+| --- contacts     | List    | 連絡先リスト          |
+| ---- contactType | String  | 連絡先タイプ(EMAIL_ADDRESS) |
+| ---- contact     | String  | 連絡先(メールアドレス)            |
+| ---- createDate  | String  | 連絡先作成日時       |
+| -- isLast        | Boolean | 最後のリストかどうか        |
+| -- totalCount    | Integer | 総データ数          |
 
-### Get UID 
+### UID単件照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1481,17 +1476,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
-| uid    | String | UID             |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
+| uid    | String | UID    |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1523,28 +1518,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                       |
-| --------------- | ------- | --------------------------------- |
-| header          | Object  | Header area                       |
-| - isSuccessful  | Boolean | Successful or not                 |
-| - resultCode    | Integer | Failure code                      |
-| - resultMessage | String  | Failure message                   |
-| body            | Object  | Body area                         |
-| - data          | List    | Data area                         |
-| e               | String  | UID                               |
-| -- tags         | List    | List of tag information           |
-| --- tagId       | String  | Tag ID                            |
-| --- tagName     | String  | Tag name                          |
-| --- createDate  | String  | Date and time of tag creation     |
-| --- updateDate  | String  | Date and time of tag modification |
-| -- contacts     | List    | List of contacts                  |
-| --- contactType | String  | Contact type                      |
-| --- contact     | String  | Contact (mail address)            |
-| --- createDate  | String  | Date and time of contact creation |
+| 値               | タイプ      | 説明         |
+| --------------- | ------- | ---------- |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
+| body            | Object  | 本文領域 |
+| - data          | List    | データ領域 |
+| -- uid          | String  | UID        |
+| -- tags         | List    | タグ情報リスト |
+| --- tagId       | String  | タグID      |
+| --- tagName     | String  | タグ名 |
+| --- createDate  | String  | タグ作成日時 |
+| --- updateDate  | String  | タグ修正日時 |
+| -- contacts     | List    | 連絡先リスト |
+| --- contactType | String  | 連絡先タイプ |
+| --- contact     | String  | 連絡先(メールアドレス) |
+| --- createDate  | String  | 連絡先作成日時 |
 
-### Register UIDs
+### UIDの登録
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1554,32 +1549,32 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Request body]
 
-| Value        | Type        | Required | Description            |
-| ------------ | ----------- | -------- | ---------------------- |
-| uid          | String      | O        | UID                    |
-| tagIds       | List:String | O        | List of tag IDs        |
-| contacts     | List        | O        | List of mail addresses |
-| -contactType | String      | O        | Contact type           |
-| -contact     | String      | O        | Contact (mail address) |
+| 値      | タイプ    | 必須 | 説明   |
+| ------------ | ----------- | ---- | ---------- |
+| uid          | String      | O    | UID        |
+| tagIds       | List:String | O    | タグIDリスト |
+| contacts     | List        | O    | メールアドレスリスト |
+| -contactType | String      | O    | 連絡先タイプ |
+| -contact     | String      | O    | 連絡先(メールアドレス) |
 
-[Caution]
+[注意]
 
-* When tagIds is provided, contacts is not required.
-* When contacts is provided, tagIds is not required.
-* For this product, contactType must be requested in the "EMAIL_ADDRESS" value.
+* tagIdsが与えられる場合、contactsは必須値ではありません。
+* contactsが与えられる場合、tagIdsは必須値ではありません。
+* 本サービスの場合、contactTypeは必ず"EMAIL_ADDRESS"値でリクエストする必要があります。
 
-[Example]
+[例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhn.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhn.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhnent.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhnent.com"}]}]}'
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1591,16 +1586,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-### Delete UIDs
+### UIDの削除
 
-#### Request 
+#### リクエスト
 
 [URL]
 
@@ -1610,17 +1605,17 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
-| uid    | String | UID             |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
+| uid    | String | UID    |
 
-[Example]
+[例]
 ```
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1632,16 +1627,16 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-### Register Mail Addresses
+### メールアドレスの登録
 
-#### Request 
+#### リクエスト
 
 [URL]
 
@@ -1651,23 +1646,23 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
-| uid    | String | UID             |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
+| uid    | String | UID    |
 
 [Request body]
 
-| Value        | Type   | Required | Description  |
-| ------------ | ------ | -------- | ------------ |
-| emailAddress | String | O        | Mail address |
+| 値            | タイプ     | 必須   | 説明    |
+| ------------ | ------ | ---- | ----- |
+| emailAddress | String | O    | メールアドレス |
 
-[Example]
+[例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhn.com"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhnent.com"}'
 ```
 
-#### Response 
+#### レスポンス
 
 ```
 {
@@ -1679,16 +1674,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-### Delete Mail Addresses
+### メールアドレスの削除
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -1698,18 +1693,18 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Path parameter]
 
-| Value        | Type   | Description     |
-| ------------ | ------ | --------------- |
-| appKey       | String | Original Appkey |
-| uid          | String | UID             |
-| emailAddress | String | Mail Address    |
+| 値      | タイプ | 説明 |
+| ------------ | ------ | ------ |
+| appKey       | String | 固有のアプリケーションキー |
+| uid          | String | UID    |
+| emailAddress | String | メールアドレス |
 
-[Example]
+[例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhn.com
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhnent.com
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1721,18 +1716,18 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-## Query Statistics 
+## 統計照会
 
-### Query Daily Statistics 
+### 日別統計照会
 
-#### Request 
+#### リクエスト
 
 [URL]
 
@@ -1742,25 +1737,25 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value   | Type   | Required | Description                                                  |
-| ------- | ------ | -------- | ------------------------------------------------------------ |
-| from    | String | O        | Start date of statistical query (year-month-day)<br/>(yyyy-MM-dd) |
-| to      | String | O        | End date of statistical query (year-month-day)<br/>(yyyy-MM-dd) |
-| type    | String | X        | Query type<br/>* REQUEST: Request<br/>* SENT: Sent<br/>* RECEIVED :Received <br/>* OPENED:Opened |
-| filters | String | X        | Search conditions (multiple parameters are available)<br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
+| 値       | タイプ     | 必須   | 説明                                       |
+| ------- | ------ | ---- | ---------------------------------------- |
+| from    | String | O    | 統計照会の開始日(年-月-日)<br/>(yyyy-MM-dd)      |
+| to      | String | O    | 統計照会の終了日(年-月-日)<br/>(yyyy-MM-dd)      |
+| type    | String | X    | 照会タイプ<br/>* REQUEST：リクエスト<br/>* SENT：送信<br/>* RECEIVED：受信<br/>* OPENED：開封 |
+| filters | String | X    | 検索条件(多重パラメータ可能)<br/>* MAILTYPE：メールタイプ別(一般/大量)統計<br/>* TEMPLATE：テンプレート別統計 |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/daily?from=2018-03-01&to=2018-03-07&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
 ```
 
-#### Response
+#### レスポンス
 
 ```
 {
@@ -1808,49 +1803,49 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | List    | Data area                                                    |
-| -- ymd          | String  | Date and time of statistics (yyyyMMdd)                       |
-| -- appKey       | String  | Appkey                                                       |
-| -- type         | String  | Type of statistical query<br/>REQUEST: Request <br/>SENT: Sent <br/>RECEIVED: Received<br/>OPENED: Opened |
-| -- mailType     | String  | Mail Type <br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
-| -- templateId   | String  | Template ID                                                  |
-| -- templateName | String  | Template name                                                |
-| -- tm00         | int     | 00:00:00 ~ 00:59:59                                          |
-| -- tm01         | int     | 01:00:00 ~ 01:59:59                                          |
-| -- tm02         | int     | 02:00:00 ~ 02:59:59                                          |
-| -- tm03         | int     | 03:00:00 ~ 03:59:59                                          |
-| -- tm04         | int     | 04:00:00 ~ 04:59:59                                          |
-| -- tm05         | int     | 05:00:00 ~ 05:59:59                                          |
-| -- tm06         | int     | 06:00:00 ~ 06:59:59                                          |
-| -- tm07         | int     | 07:00:00 ~ 07:59:59                                          |
-| -- tm08         | int     | 08:00:00 ~ 08:59:59                                          |
-| -- tm09         | int     | 09:00:00 ~ 09:59:59                                          |
-| -- tm10         | int     | 10:00:00 ~ 10:59:59                                          |
-| -- tm11         | int     | 11:00:00 ~ 11:59:59                                          |
-| -- tm12         | int     | 12:00:00 ~ 12:59:59                                          |
-| -- tm13         | int     | 13:00:00 ~ 13:59:59                                          |
-| -- tm14         | int     | 14:00:00 ~ 14:59:59                                          |
-| -- tm15         | int     | 15:00:00 ~ 15:59:59                                          |
-| -- tm16         | int     | 16:00:00 ~ 16:59:59                                          |
-| -- tm17         | int     | 17:00:00 ~ 17:59:59                                          |
-| -- tm18         | int     | 18:00:00 ~ 18:59:59                                          |
-| -- tm19         | int     | 19:00:00 ~ 19:59:59                                          |
-| -- tm20         | int     | 20:00:00 ~ 20:59:59                                          |
-| -- tm21         | int     | 21:00:00 ~ 21:59:59                                          |
-| -- tm22         | int     | 22:00:00 ~ 22:59:59                                          |
-| -- tm23         | int     | 23:00:00 ~ 23:59:59                                          |
-| -- sum          | int     | Total                                                        |
+| 値         | タイプ      | 説明                                       |
+| --------------- | ------- | ---------------------------------------- |
+| header          | Object  | ヘッダ領域                              |
+| - isSuccessful  | Boolean | 成否                               |
+| - resultCode    | Integer | 失敗コード                              |
+| - resultMessage | String  | 失敗メッセージ                             |
+| body            | Object  | 本文領域                              |
+| - data          | List    | データ領域                             |
+| -- ymd          | String  | 統計日(yyyyMMdd)                          |
+| -- appKey       | String  | アプリケーションキー                                 |
+| -- type         | String  | 統計照会タイプ<br/>REQUEST：リクエスト<br/>SENT：送信<br/>RECEIVED：受信<br/>OPENED：開封 |
+| -- mailType     | String  | メールタイプ<br/>* MAILTYPE：メールタイプ別(一般/大量)統計<br/>* TEMPLATE：テンプレート別統計 |
+| -- templateId   | String  | テンプレートID                                   |
+| -- templateName | String  | テンプレート名                             |
+| -- tm00         | int     | 00:00:00～00:59:59                      |
+| -- tm01         | int     | 01:00:00～01:59:59                      |
+| -- tm02         | int     | 02:00:00～02:59:59                      |
+| -- tm03         | int     | 03:00:00～03:59:59                      |
+| -- tm04         | int     | 04:00:00～04:59:59                      |
+| -- tm05         | int     | 05:00:00～05:59:59                      |
+| -- tm06         | int     | 06:00:00～06:59:59                      |
+| -- tm07         | int     | 07:00:00～07:59:59                      |
+| -- tm08         | int     | 08:00:00～08:59:59                      |
+| -- tm09         | int     | 09:00:00～09:59:59                      |
+| -- tm10         | int     | 10:00:00～10:59:59                      |
+| -- tm11         | int     | 11:00:00～11:59:59                      |
+| -- tm12         | int     | 12:00:00～12:59:59                      |
+| -- tm13         | int     | 13:00:00～13:59:59                      |
+| -- tm14         | int     | 14:00:00～14:59:59                      |
+| -- tm15         | int     | 15:00:00～15:59:59                      |
+| -- tm16         | int     | 16:00:00～16:59:59                      |
+| -- tm17         | int     | 17:00:00～17:59:59                      |
+| -- tm18         | int     | 18:00:00～18:59:59                      |
+| -- tm19         | int     | 19:00:00～19:59:59                      |
+| -- tm20         | int     | 20:00:00～20:59:59                      |
+| -- tm21         | int     | 21:00:00～21:59:59                      |
+| -- tm22         | int     | 22:00:00～22:59:59                      |
+| -- tm23         | int     | 23:00:00～23:59:59                      |
+| -- sum          | int     | 合計                                 |
 
-### Query Monthly Statistics
+### 月別統計照会
 
-#### Request	
+#### リクエスト
 
 [URL]
 
@@ -1860,25 +1855,25 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value   | Type   | Required | Description                                                  |
-| ------- | ------ | -------- | ------------------------------------------------------------ |
-| from    | String | O        | Start date of statistical query (year-month)<br/>(yyyy-MM)   |
-| to      | String | O        | End date of statistical query (year-month)<br/>(yyyy-MM)     |
-| type    | String | X        | Query type<br/>REQUEST: Request <br/>SENT: Sent <br/>RECEIVED: Received <br/>OPENED: Opened |
-| filters | String | X        | Search conditions (multiple parameters are available)<br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
+| 値       | タイプ     | 必須   | 説明                                       |
+| ------- | ------ | ---- | ---------------------------------------- |
+| from    | String | O    | 統計照会の開始日(年-月)<br/>(yyyy-MM)           |
+| to      | String | O    | 統計照会の終了日(年-月)<br/>(yyyy-MM)           |
+| type    | String | X    | 照会タイプ<br/>REQUEST：リクエスト<br/>SENT：送信<br/>RECEIVED：受信<br/>OPENED：開封 |
+| filters | String | X    | 検索条件(多重パラメータ可能)<br/>* MAILTYPE：メールタイプ別(一般/大量)統計<br/>* TEMPLATE：テンプレート別統計 |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/monthly?from=2018-03&to=2018-04&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
 ```
 
-#### Response
+#### レスポンス
 
 ```json
 {
@@ -1926,49 +1921,49 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | List    | Data area                                                    |
-| -- ymd          | String  | Date of statistics (yyyyMMdd)                                |
-| -- appKey       | String  | Appkey                                                       |
-| -- type         | String  | Type of statistical query <br/>* REQUEST: Request <br/>* SENT: Sent <br/>* RECEIVED: Received <br/>* OPENED: Opened |
-| -- mailType     | String  | Mail type <br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
-| -- templateId   | String  | Template ID                                                  |
-| -- templateName | String  | Template name                                                |
-| -- tm00         | int     | 00:00:00 ~ 00:59:59                                          |
-| -- tm01         | int     | 01:00:00 ~ 01:59:59                                          |
-| -- tm02         | int     | 02:00:00 ~ 02:59:59                                          |
-| -- tm03         | int     | 03:00:00 ~ 03:59:59                                          |
-| -- tm04         | int     | 04:00:00 ~ 04:59:59                                          |
-| -- tm05         | int     | 05:00:00 ~ 05:59:59                                          |
-| -- tm06         | int     | 06:00:00 ~ 06:59:59                                          |
-| -- tm07         | int     | 07:00:00 ~ 07:59:59                                          |
-| -- tm08         | int     | 08:00:00 ~ 08:59:59                                          |
-| -- tm09         | int     | 09:00:00 ~ 09:59:59                                          |
-| -- tm10         | int     | 10:00:00 ~ 10:59:59                                          |
-| -- tm11         | int     | 11:00:00 ~ 11:59:59                                          |
-| -- tm12         | int     | 12:00:00 ~ 12:59:59                                          |
-| -- tm13         | int     | 13:00:00 ~ 13:59:59                                          |
-| -- tm14         | int     | 14:00:00 ~ 14:59:59                                          |
-| -- tm15         | int     | 15:00:00 ~ 15:59:59                                          |
-| -- tm16         | int     | 16:00:00 ~ 16:59:59                                          |
-| -- tm17         | int     | 17:00:00 ~ 17:59:59                                          |
-| -- tm18         | int     | 18:00:00 ~ 18:59:59                                          |
-| -- tm19         | int     | 19:00:00 ~ 19:59:59                                          |
-| -- tm20         | int     | 20:00:00 ~ 20:59:59                                          |
-| -- tm21         | int     | 21:00:00 ~ 21:59:59                                          |
-| -- tm22         | int     | 22:00:00 ~ 22:59:59                                          |
-| -- tm23         | int     | 23:00:00 ~ 23:59:59                                          |
-| -- sum          | int     | Total                                                        |
+| 値         | タイプ      | 説明                                       |
+| --------------- | ------- | ---------------------------------------- |
+| header          | Object  | ヘッダ領域                              |
+| - isSuccessful  | Boolean | 成否                               |
+| - resultCode    | Integer | 失敗コード                              |
+| - resultMessage | String  | 失敗メッセージ                             |
+| body            | Object  | 本文領域                              |
+| - data          | List    | データ領域                             |
+| -- ymd          | String  | 統計日(yyyyMMdd)                          |
+| -- appKey       | String  | アプリケーションキー                                 |
+| -- type         | String  | 統計照会タイプ<br/>* REQUEST：リクエスト<br/>* SENT：送信<br/>* RECEIVED：受信<br/>* OPENED：開封 |
+| -- mailType     | String  | メールタイプ<br/>* MAILTYPE：メールタイプ別(一般/大量)統計<br/>* TEMPLATE：テンプレート別統計 |
+| -- templateId   | String  | テンプレートID                                   |
+| -- templateName | String  | テンプレート名                             |
+| -- tm00         | int     | 00:00:00～00:59:59                      |
+| -- tm01         | int     | 01:00:00～01:59:59                      |
+| -- tm02         | int     | 02:00:00～02:59:59                      |
+| -- tm03         | int     | 03:00:00～03:59:59                      |
+| -- tm04         | int     | 04:00:00～04:59:59                      |
+| -- tm05         | int     | 05:00:00～05:59:59                      |
+| -- tm06         | int     | 06:00:00～06:59:59                      |
+| -- tm07         | int     | 07:00:00～07:59:59                      |
+| -- tm08         | int     | 08:00:00～08:59:59                      |
+| -- tm09         | int     | 09:00:00～09:59:59                      |
+| -- tm10         | int     | 10:00:00～10:59:59                      |
+| -- tm11         | int     | 11:00:00～11:59:59                      |
+| -- tm12         | int     | 12:00:00～12:59:59                      |
+| -- tm13         | int     | 13:00:00～13:59:59                      |
+| -- tm14         | int     | 14:00:00～14:59:59                      |
+| -- tm15         | int     | 15:00:00～15:59:59                      |
+| -- tm16         | int     | 16:00:00～16:59:59                      |
+| -- tm17         | int     | 17:00:00～17:59:59                      |
+| -- tm18         | int     | 18:00:00～18:59:59                      |
+| -- tm19         | int     | 19:00:00～19:59:59                      |
+| -- tm20         | int     | 20:00:00～20:59:59                      |
+| -- tm21         | int     | 21:00:00～21:59:59                      |
+| -- tm22         | int     | 22:00:00～22:59:59                      |
+| -- tm23         | int     | 23:00:00～23:59:59                      |
+| -- sum          | int     | 合計                                 |
 
-### Query Integrated Statistics
+### 統合統計照会
 
-#### Request	
+#### リクエスト
 
 [URL]
 
@@ -1978,26 +1973,27 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value      | Type   | Required | Description                                                  |
-| ---------- | ------ | -------- | ------------------------------------------------------------ |
-| from       | String | O        | Start date of statistical query <br/> yyyy-mm-dd HH:mm       |
-| to         | String | O        | End date of statistical query <br/> yyyy-mm-dd HH:mm         |
-| searchType | String | O        | Type of statistics <br/>DATE: By date, TIME: By time, DAY: By day |
-| mailTypes  | String | X        | Mail type <br/>NORMAL: General, MASS: Mass<br/>Multiple entries are available (mailTypes=NORMAL&mailTypes=MASS) |
-| templateId | String | X        | Template ID                                                  |
+| 値          | タイプ     | 必須   | 説明                                       |
+| ---------- | ------ | ---- | ---------------------------------------- |
+| from       | String | O    | 統計照会の開始日<br/> yyyy-mm-dd HH:mm        |
+| to         | String | O    | 統計照会の終了日<br/> yyyy-mm-dd HH:mm        |
+| searchType | String | O    | 統計区分<br/>DATE：日付別、TIME：時間別、DAY：曜日別 |
+| mailTypes  | String | X    | メールタイプ<br/>NORMAL：一般、MASS：大量<br/>複数入力可能(mailTypes=NORMAL&mailTypes=MASS) |
+|adYn | String | X | 広告かどうか<br>Y：広告、N：広告ではない<br>入力しなければ全て|
+| templateId | String | X    | テンプレートID                                   |
 
-[Example]
+[例]
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&templateId=templateId1"
 ```
 
-#### Response
+#### レスポンス
 
 ```json
 {
@@ -2022,28 +2018,28 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value             | Type    | Description                          |
-| ----------------- | ------- | ------------------------------------ |
-| header            | Object  | Header area                          |
-| - isSuccessful    | Boolean | Successful or not                    |
-| - resultCode      | Integer | Failure code                         |
-| - resultMessage   | String  | Failure message                      |
-| body              | Object  | Body area                            |
-| - data            | List    | Data area                            |
-| -- divisionName   | String  | Statistical criteria (date/time/day) |
-| -- requestedCount | Long    | Number of delivery requests          |
-| -- sentCount      | Long    | Number of deliveries                 |
-| -- receivedCount  | Long    | Number of receipts                   |
-| -- openedCount    | Long    | Number of openings                   |
-| -- sentRate       | String  | Delivery rate                        |
-| -- receivedRate   | String  | Receiving rate                       |
-| -- openedRate     | String  | Opening rate                         |
+| 値                 | タイプ      | 説明              |
+| ----------------- | ------- | --------------- |
+| header            | Object  | ヘッダ領域     |
+| - isSuccessful    | Boolean | 成否      |
+| - resultCode      | Integer | 失敗コード     |
+| - resultMessage   | String  | 失敗メッセージ    |
+| body              | Object  | 本文領域     |
+| - data            | List    | データ領域    |
+| -- divisionName   | String  | 統計基準(日付/時間/曜日) |
+| -- requestedCount | Long    | 送信リクエスト件数  |
+| -- sentCount      | Long    | 送信件数     |
+| -- receivedCount  | Long    | 受信件数     |
+| -- openedCount    | Long    | 開封件数     |
+| -- sentRate       | String  | 送信率        |
+| -- receivedRate   | String  | 受信率        |
+| -- openedRate     | String  | 開封率        |
 
-## Manage Rejections 
+## 受信拒否管理
 
-### Query Rejections
+### 受信拒否照会
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -2053,24 +2049,24 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Path parameter]
 
-| Value  | Type   | Description     |
-| ------ | ------ | --------------- |
-| appKey | String | Original Appkey |
+| 値      | タイプ     | 説明     |
+| ------ | ------ | ------ |
+| appKey | String | 固有のアプリケーションキー |
 
 [Query parameter]
 
-| Value       | Type    | Required | Description                                        |
-| ----------- | ------- | -------- | -------------------------------------------------- |
-| mailAddress | String  | X        | Email address registered on the list of rejections |
-| pageNum     | Integer | X        | Page number (default: 1)                           |
-| pageSize    | Integer | X        | Number of queries (default: 15)                    |
+| 値           | タイプ      | 必須   | 説明                       |
+| ----------- | ------- | ---- | ------------------------ |
+| mailAddress | String  | X    | 受信拒否リストに登録されているメールアドレス |
+| pageNum     | Integer | X    | ページ番号(デフォルト値：1)           |
+| pageSize    | Integer | X    | 照会数(デフォルト値：15)            |
 
-[Example]
+[例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhn.com&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
 ```
 
-#### Response
+#### レスポンス
 ```
 {
     "header": {
@@ -2090,23 +2086,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value           | Type    | Description                                        |
-| --------------- | ------- | -------------------------------------------------- |
-| header          | Object  | Header area                                        |
-| - isSuccessful  | Boolean | Successful or not                                  |
-| - resultCode    | Integer | Failure code                                       |
-| - resultMessage | String  | Failure message                                    |
-| body            | Object  | Body area                                          |
-| - pageNum       | Integer | Current page number                                |
-| -pageSize       | Integer | Number of queried data                             |
-| - totalCount    | Integer | Total number of data                               |
-| - data          | List    | Data area                                          |
-| -- mailAddress  | String  | Email address rejecting ads                        |
-| -- blockDate    | String  | Date and time of rejection (yyyy-MM-dd HH:mm:ss.S) |
+| 値               | タイプ      | 説明                              |
+| --------------- | ------- | ------------------------------- |
+| header          | Object  | ヘッダ領域                     |
+| - isSuccessful  | Boolean | 成否                      |
+| - resultCode    | Integer | 失敗コード                     |
+| - resultMessage | String  | 失敗メッセージ                    |
+| body            | Object  | 本文領域                     |
+| - pageNum       | Integer | 現在のページ番号                 |
+| -pageSize       | Integer | 照会されたデータ数                  |
+| - totalCount    | Integer | 総データ数                    |
+| - data          | List    | データ領域                    |
+| -- mailAddress  | String  | 受信拒否メールアドレス              |
+| -- blockDate    | String  | 受信拒否日(yyyy-MM-dd HH:mm:ss.S) |
 
-### Register Rejections
+### 受信拒否登録
 
-#### Request
+#### リクエスト
 
 [URL]
 
@@ -2116,18 +2112,18 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Request body]
 
-| Value             | Type   | Required | Description                                      |
-| ----------------- | ------ | -------- | ------------------------------------------------ |
-| blockReceiverList | ㅣList | O        | List of rejections                               |
-| - mailAddress     | String | O        | Email address rejecting ads                      |
-| - blockDate       | String | X        | Date and time of rejection (yyyy-MM-dd HH:mm:ss) |
+| 値                 | タイプ     | 必須   | 説明                            |
+| ----------------- | ------ | ---- | ----------------------------- |
+| blockReceiverList | ㅣList  | O    | 受信拒否リスト                |
+| - mailAddress     | String | O    | 受信拒否メールアドレス            |
+| - blockDate       | String | X    | 受信拒否日(yyyy-MM-dd HH:mm:ss) |
 
-[Example]
+[例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhn.com","blockDate":"2018-03-01 00:00:00"}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
-#### Response
+#### レスポンス
 ```
 {
   "header": {
@@ -2137,15 +2133,15 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
   }
 }
 ```
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
 
-### Delete Rejections
-#### Request 
+### 受信拒否削除
+#### リクエスト
 
 [URL]
 
@@ -2155,18 +2151,18 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Request body]
 
-| Value             | Type    | Required | Description                             |
-| ----------------- | ------- | -------- | --------------------------------------- |
-| deleted           | Boolean | O        | Field specifying rejections are deleted |
-| blockReceiverList | ㅣList  | O        | List of rejections                      |
-| - mailAddress     | String  | O        | Email address rejecting ads             |
+| 値                 | タイプ      | 必須   | 説明                |
+| ----------------- | ------- | ---- | ----------------- |
+| deleted           | Boolean | O    | 受信拒否削除を明示するフィールド |
+| blockReceiverList | ㅣList   | O    | 受信拒否リスト    |
+| - mailAddress     | String  | O    | 受信拒否メールアドレス |
 
-[Example]
+[例]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhn.com"}]}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.0/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
 ```
 
-#### Response
+#### レスポンス
 ```
 {
   "header": {
@@ -2176,9 +2172,9 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
   }
 }
 ```
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| 値               | タイプ      | 説明     |
+| --------------- | ------- | ------ |
+| header          | Object  | ヘッダ領域 |
+| - isSuccessful  | Boolean | 成否 |
+| - resultCode    | Integer | 失敗コード |
+| - resultMessage | String  | 失敗メッセージ |
