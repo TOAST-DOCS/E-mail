@@ -1,314 +1,319 @@
-## Notification > Email > Console Guide
+﻿## Notification > Email > コンソール使用ガイド
 
-## Send Mails
+## メールの送信
 
-### Send General Mails
+### 一般メールの送信
 
-Enter recipients, title, body, and attachment to send mails.
-For the delivery of general mails, you need to enter recipients yourself.
+受信者、タイトル、内容、添付ファイルなどを入力してメールを送信できます。
+一般メールを送信する場合、受信者を直接入力する必要があります。
 
-![email_01_201812_en.png](https://static.toastoven.net/prod_email/email_01_201812_en.png)
+![email_01_201812](https://static.toastoven.net/prod_email/email_01_201812.png)
 
-Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab.
-Select **General Mails** for **Mail Type**.
-**Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
-**Scheduled Delivery**: Specify the date and time of email delivery.
-**Attached File**: Attach files to mail.
+**メール送信**タブの**テンプレート使用**で**未使用**を選択します。
+**メール区分**で**一般メール**を選択します。
+**送信メール**：送信メールアドレスを入力します。名前<emailAddress>形式で作成すると、送信者の名前とメールアドレスを入力できます。
+**予約送信**：メール送信予約日時を指定できます。
+**添付ファイル**：メールに添付ファイルを追加します。
 
-* Up to five files can be uploaded, not exceeding 10MB.
-* The total volume of attachment cannot be more than 10MB.
+    - 添付ファイルは最大3個まで、10MB以下のファイルのみアップロードできます。
+        - 添付ファイルの容量は、合計10MBが上限です。
+**タイトル**/**内容**：メールのタイトルと内容を入力します。
 
-**Title/Body**: Enter the title and body of the mail.
+![email_02_201812](https://static.toastoven.net/prod_email/email_02_201812.png)
 
-Enter email addresses for **Recipients** and **Cc Recipients**.
+画面の下にある**受信者**と**CC**にメールアドレスを入力します。
 
-### Send Advertising Mails
+### 広告性メールの送信
+広告性メールを送信できます。
 
-You can send advertising mails.
+#### 広告メール送信時の注意事項
+韓国情報通信網法に従い、商業性広告メールや業者の広告メールを送信する場合、下記の事項を遵守する必要があります。 [[韓国インターネット振興院関連の内容を確認](https://spam.kisa.or.kr/spam/sub62.do)]
 
-#### Notes for Sending Advertising Mails
+1. 広告性メールは、受信に同意した受信者にのみ送信する必要があります。
 
-In accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection, you are obliged to follow the rules as below, to send advertising or promotional mails. [[check at Korea Internet & Security Agency](https://spam.kisa.or.kr/spam/sub62.do)]
+これに違反してトラブルが発生した場合、その責任は広告メール送信者にあります。
 
-1. Send ad mails only to those recipients who explicitly agreed to receive ones.
-The sender shall be held liable for any conflicts that may arise in violation of it.
-2. Display the (AD) phrase at the beginning of title.
-3. Show sender information, including name, email address, phone number and home address, in the body.
-4. Clearly display guides for recipients to block receiving or withdraw consent to receive promotional mails, and come up with technical means to easily follow their choices.
+2. タイトルの始めに(広告)という文言を表示する必要があります。
+3. 本文に送信者の名称、メールアドレス、電話番号およびアドレスを含む送信者情報を表示する必要があります。
+4. 本文に受信者が簡単に受信拒否または受信同意の撤回を意思表示できるようにするための案内文を明示し、受信拒否または受信同意の撤回を簡単に選択できるような技術的な措置が必要です。
 
-TOAST shall provide technical means as below to 'Advertising Mails' in compliance of the Act on Promotion of Information and Communications Network Utilization and Information Protection:
+TOASTは、韓国情報通信網法を遵守できるように、'広告メール'に下記のような技術的措置を提供します。
+* タイトルに(広告)という文言を挿入します。
+* 受信者が受信拒否を選択できるように、受信拒否機能を提供します。
+* 受信拒否対象のメールアドレスには広告メールを送信しません。
 
-* Insert the (AD) phrase to title.
-* Allow Reject Receiving Ad Mails for recipients.
-* Do not send mails to the mail addresses rejecting ad mails.
+広告性メールの送信時、下記の項目を参照してください。
 
-Send ad mails in reference of the following:
+![email_03_201812](https://static.toastoven.net/prod_email/email_03_201812.png)
 
-![email_03_201812_en.png](https://static.toastoven.net/prod_email/email_03_201812_en.png)
+1. タイトルに"(広告)"という文言を必ず入れます。
 
-1. The title must include the "(AD)" phrase.
-2. Links to Reject Receiving must be included in Korean/English.
-3. Ad mails are not delivered to the users who are registered to reject ones.
+2. 受信拒否リンクが日本語/英語の形式で必ず入る必要があります。
 
-### Use Templates to Send Mails
+3. 受信拒否に登録されているユーザーは、広告性メール送信時に送信されません。
 
-You can send mails on a template created in advance.
+### テンプレートを利用したメール送信
 
-![email_04_201812_en.png](https://static.toastoven.net/prod_email/email_04_201812_en.png)
+あらかじめ作成しておいたメールテンプレートを使用できます。
 
-1. To use a template, select **Enable** for **Use Templates**.
-2. Click **Select a Template**.
-3. Select a template created in advance from the Category of **Select a Template**.
-    * On how to create a template, refer to **Manage Categories and Templates** section below.
-4. Click **Apply Template**.
+![email_04_201812](https://static.toastoven.net/prod_email/email_04_201812.png)
 
-### Use Tags to Send Mails
+1. テンプレートを使用するには、**テンプレート使用**で**使用**を選択します。
+2. 有効になった**テンプレート選択**をクリックします。
+3. **テンプレート選択**ウィンドウのカテゴリーで、あらかじめ作成しておいたテンプレートを選択します。 
+    - テンプレートの作成方法は、下記の**カテゴリーおよびテンプレート管理**の項目を参照してください。
+4. **テンプレート適用**ボタンをクリックします。
 
-You can send mails by using tags.
-For more details on tags, refer to **Use Tags to Send** in **[Overview](Overview.md)**.
+### タグを使用したメール送信
 
-Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab and select **General Mails** for **Mail Type**.
+タグを使用してメールを送信できます。
+タグについての詳細は、**[概要](Overview.md)**文書の**タグを使用して送信**を参照してください。
 
-* **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
-* **Scheduled Delivery**: Specify the date and time of email delivery.
-* **Attached File**: Attach files to mail.
-    * Up to five files can be uploaded, not exceeding 10MB.
-    * The total volume of attachment cannot be more than 10MB.
-* **Title/Body**: Enter the title and body of the mail.
+**メール送信**タブの**テンプレート使用**で**未使用**を選択し、**メール区分**で**一般メール**を選択します。
 
-![email_05_201812_en.png](https://static.toastoven.net/prod_email/email_05_201812_en.png)
+- **送信メール**：送信メールアドレスを入力します。名前<emailAddress>形式で作成すると、送信者名とメールアドレスを入力できます。
+- **予約送信**：メール送信予約日時を指定できます。
+- **添付ファイル**：メールに添付ファイルを追加します。
+  - 添付ファイルは最大3個まで、10MB以下のファイルのみアップロードできます。
+  - 添付ファイルの容量は、合計10MBが上限です。
+- **タイトル**/**内容**：メールのタイトルと内容を入力します。
 
-1. Select **Tag Delivery** at the bottom of the page and click **Select Tags**.
-    * To add tags, please refer to **Manage Tags**.
-2. Select tags on **Select Tags** screen.
-3. Click **Apply Selectively**.
-4. You can select up to four tags.
-    * You can apply AND, OR conditions to many tags selected.
-        * AND: The destination is recipients who satisfy all the tags.
-        * OR: The destination is recipients who satisfy one or more of the many tags.
+![email_05_201812](https://static.toastoven.net/prod_email/email_05_201812.png)
 
-![email_06_201812_en.png](https://static.toastoven.net/prod_email/email_06_201812_en.png)
+1. 画面下で**タグ送信**タブを選択し、**タグ選択**ボタンをクリックします。
+    - タグを登録する方法は、**タグ管理**を参照してください。
 
-Click **Schedule Delivery** at the bottom right of the mail body.
-On the **Schedule Delivery** window, click your choice.
+2. **タグ選択**ウィンドウで送信したいタグを選択します。
+3. **選択適用**ボタンをクリックします。
+4. 最大4個のタグを選択できます。
+    - 選択した複数のタグにAND、OR条件を適用できます。
+        - AND：複数のタグに全て属す受信者のみを対象にする。
+        - OR：複数のタグのうち、1つ以上のタグに属す受信者を対象にする。
 
-* **Confirm and Process**: Check mail address of each recipient and body in the **Retreive Tagged Mail Delivery** tab before sending mails. Keep note that mail cannot be sent unless user delivers.
-* **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
+![email_06_201812](https://static.toastoven.net/prod_email/email_06_201812.png)
 
-### Upload files to Send Mass Mails
+メール内容入力ボックスの右下にある**送信予約**ボタンをクリックします。
+**送信予約**ウィンドウが表示されたら、希望するボタンをクリックします。
 
-You can use files to send mass mails.
+- **確認後に進行**：受信者別にメールアドレスと送信内容を**タグメール送信照会**タブで確認後にメールを送信できます。ユーザーが送信を行わなかった場合、メールが送信されませんので注意してください。
+- **即時送信**：受信情報を確認せずに即時にメールを送信します。送信結果はタグメール送信照会タブで確認できます。
 
-Select **Not Use** for **Template Use** in the **Send Mails** tab, and select **General Mails** for **Mail Type**.
+### ファイルアップロードによる大量メール送信
 
-![email_07_201812_en.png](https://static.toastoven.net/prod_email/email_07_201812_en.png)
+ファイルを利用して大量メールを送信できます。
 
-1. Enter mail content.
-    * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address.
-    * **Scheduled Delivery**: Specify the date and time of email delivery.
-    * **Attached File**: Attach files to mail.
-        * Up to five files can be uploaded, not exceeding 10MB.
-        * The total volume of attachment cannot be more than 10MB.
-    * **Title**/**Body**: Enter the title and body of the mail. If the title and body of mail is entered in the ##replacement key##format, the mail can be replaced with user specified data. For instance, enter ##name## in the user name, and it is replaced with a user specified name, such as 'Hana Oh' before sent.
-2. Go to **Mass Delivery** at the bottom and click **Download Templates**.
-3. Templates are available either in CSV or Excel.
+**メール送信**タブの**テンプレート使用**で**未使用**を選択し、**メール区分**で**一般メール**を選択します。
 
-![email_08_201812_en.png](https://static.toastoven.net/prod_email/email_08_201812_en.png)
+![email_07_201812](https://static.toastoven.net/prod_email/email_07_201812.png)
 
-Enter replacement data in the template file, such as recipient's mail address and recipient name.
+1. 送信メール情報を入力します。
+    - **送信メール**：送信メールアドレスを入力します。名前<emailAddress>形式で作成すると、送信者名とメールアドレスを入力できます。
+    - **予約送信**：メール送信予約日時を指定できます。
+    - **添付ファイル**：メールに添付ファイルを追加します。
+      - 添付ファイルは最大3個まで、10MB以下のファイルのみアップロードできます。
+      - 添付ファイルの容量は、合計10MBが上限です。
+    - **タイトル**/**内容**：メールのタイトルと内容を入力します。メールのタイトルと内容に##置換キー##の形式で入力すると、メール内容をユーザーが指定したデータに置換して送信できます。例えば、ユーザー名が入る部分に'##name##さん'と入力すると、'山田太郎'と、ユーザーが指定した名前に置換されて送信されます。
 
-1. Click **Upload Recipient File** to upload files.
-    * File containing template data can be uploaded with 10 thousand persons, up to 3MB.
-    * Any error in template data will be shown. Please check and upload it with correct template data.
-    * The total number (no more than 10) with detail information shows.
-    * **Error Types**
-        * When the receive\_mail\_address row does not exist: The receive\_mail\_address row is for recipient's mail address and it's a required field\.
-        * When there is no entered data available
-        * When recipient's mail address or replacement data is missing
-2. Click **Schedule Delivery** at the bottom right of the mail page.
-3. On the **Schedule Delivery** window, click your choice.
-    * **Check and Send**: Check mail address of each recipient and body in the **Retrieve Tagged Mail Delivery** tab before sending mails. Keep note that mail cannot be sent unless user delivers.
-    * **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
+2. 画面下にある**大量送信**タブで**テンプレートのダウンロード**をクリックします。
 
-## View Delivery
+3. テンプレートはCSVとExcelファイル形式で提供します。
 
-### Retrieve by Mail Request
+![email_08_201812](https://static.toastoven.net/prod_email/email_08_201812.png)
 
-You can query sent mails by Date and Time of Delivery, Date and Time of Receipt, Template, and Delivery Status on **Retrieve by Mail Request**.
+テンプレートファイルに受信者のメールアドレスと名前など、置換キーに指定する置換データを入力します。
 
-![email_18_201812_en.png](https://static.toastoven.net/prod_email/email_18_201812_en.png)
+4. **受信者ファイルのアップロード**をクリックして作成したファイルをアップロードします。
+    - テンプレートデータを入れたファイルは最大1万名、そして3MBまでアップロードできます。
+    - テンプレートデータにエラーがある場合、エラー情報が表示されます。エラーの内容を確認して修正します。
+    - エラーは総エラー件数と内容(最大10件)を表示します。
+        - **エラーの種類**
+            - receive_mail_address列が存在しない場合：receive_mail_address列は受信者のメールアドレスを入力する列のため、入力は必須です。
+            - 入力されたデータがない場合
+            - 受信者のメールアドレスまたは置換データの入力がない場合
 
-Click a mail on the list to check its details.
+5. メール内容入力ボックスの右下にある**送信予約**ボタンをクリックします。
+6. **送信予約**ウィンドウが表示されたら、希望するボタンをクリックします。
+    - **確認後に進行**：受信者別にメールアドレスと送信内容を**タグメール送信照会**タブで確認後にメールを送信できます。ユーザーが送信を行わなかった場合、メールが送信されませんので注意してください。
+    - **即時送信**：受信情報を確認せずに即時にメールを送信します。送信結果はタグメール送信照会タブで確認できます。
 
-![email_19_201812_en.png](https://static.toastoven.net/prod_email/email_19_201812_en.png)
+## 送信照会
 
-### Retrieve Bulk Mail Delivery
 
-In the **Retrieve Bulk Mail Delivery** tab, you can retrieve scheduled mass mail delivery or cancel delivery.
+### メールリクエスト別照会
 
-![email_09_201812_en.png](https://static.toastoven.net/prod_email/email_09_201812_en.png)
+**メールリクエスト別照会**タブで送信日時、受信日時、テンプレート、送信ステータスなどの条件で送信されたメールを照会できます。
 
-* Click **Send** to send mails: may take quite a while, depending on the number of deliveries.
-* Click **Cancel** to cancel sending mails.
+![email_18_201812](https://static.toastoven.net/prod_email/email_18_201812.png)
 
-**Status of Bulk Mail Delivery**
+リストにあるメール内容をクリックすると、詳細送信内容を確認できます。
 
-* Waiting: Recipient file data is still not read.
-* Preparing Delivery: Recipient file data is being uploaded.
-* Preparing Delivery Completed: Sending mail is completely prepared. Select a schedule (a column on the list) and check mail delivery details per recipient on the list at the bottom.
-* Ready for Delivery: It is ready to send mails.
-* Delivering: Mail is now on the delivery. Select a schedule (a column on the list) and check the delivery processing rate.
-* Delivery Completed: Delivery has been normally completed.
-* Delivery Failed: Error occurred during delivery. To check delivery status, query received mails.
-* Delivery Cancelled: User has cancelled sending mails.
+![email_19_201812](https://static.toastoven.net/prod_email/email_19_201812.png)
 
-**Retrieve Mail Delivery per Recipient**
+### 大量メール送信照会
 
-![email_10_201812_en.png](https://static.toastoven.net/prod_email/email_10_201812_en.png)
+**大量メール送信照会**タブでは、大量メール送信予約の照会や、送信または送信取消ができます。
 
-1. Select a bulk mail delivery record (a row on the list).
-2. A detailed list of mail delivery per recipient will be shown at the bottom tab. Click on **View Details**.
-3. You can check whether the body content has been successfully replaced by the replacement key.
+![email_09_201812](https://static.toastoven.net/prod_email/email_09_201812.png)
 
-### Retrieve Tagged Mail Delivery
+  - **送信**をクリックするとメールを送信します。メール送信件数によっては、かなり時間がかかることがあります。
+  - **取消**をクリックすると、メール送信をキャンセルします。
 
-* In the **Retrieve Tagged Mail Delivery** tab, you can retrieve scheduled tagged mail delivery or cancel delivery.
+**大量メール送信進行状態**
 
-![email_11_201812_en.png](https://static.toastoven.net/prod_email/email_11_201812_en.png)
+  - 待機：受信者ファイルデータの読み込み作業を進行する前の状態です。
+  - 送信準備：受信者ファイルデータ情報をロード中の状態です。
+  - 送信準備完了：メール送信準備が完了した状態です。予約件(リストの行)を選択すると、受信者別メール送信内容を下段リストで確認できます。
+  - 送信待機：メール送信作業待機中の状態です。
+  - 送信中：メール送信が進行中の状態です。予約件(リストの行)を選択すると、送信進行率を確認できます。
+  - 送信完了：送信が正常に完了された状態です。
+  - 送信失敗：送信進行中に送信エラーが発生した場合です。メール別送信ステータスは、メール受信照会リストで確認できます。
+  - 送信取消：ユーザーがメールの送信をキャンセルした状態です。
 
-* Click **Send** to send mails: may take quite a while, depending on the number of deliveries.
-* Click **Cancel** to cancel sending mails.
+**受信者別メール送信照会**
 
-**Status of Tagged Mails Delivery**
+![email_10_201812](https://static.toastoven.net/prod_email/email_10_201812.png)
 
-* Waiting: Recipient file data is still not read.
-* Preparing Delivery: Recipient file data is being uploaded.
-* Preparing Delivery Completed: Sending mail is completely prepared. Select a schedule (a column on the list) and check mail delivery details per recipient on the list at the bottom.
-* Ready for Delivery: It is ready to send mails.
-* Delivering: Mail is now on the delivery. Select a schedule (a column on the list) and check the delivery processing rate.
-* Delivery Completed: Delivery has been normally completed.
-* Delivery Failed: Error occurred during delivery. To check delivery status, query received mails.
-* Delivery Cancelled: User has cancelled sending mails.
+1. 大量メール送信予約件(リストの行)を選択します。
+2. 下段のリストで受信者別メール送信履歴が表示されます。**詳細表示**ボタンをクリックします。
+3. メール詳細照会モーダルウィンドウで置換されたメール送信内容を確認できます。
 
-**Retrieve Mail Delivery per Recipient**
+### タグメール送信照会タブ
+**タグメール送信照会**タブでは、タグメール送信予約の照会や、送信、送信取消ができます。
 
-![email_12_201812_en.png](https://static.toastoven.net/prod_email/email_12_201812_en.png)
+![email_11_201812](https://static.toastoven.net/prod_email/email_11_201812.png)
 
-Select a tagged mail schedule (a column on the list) to query the list of mail deliver per recipient at the bottom.
+- **送信**をクリックするとメールを送信します。メール送信件数によっては、相応の時間がかかることがあります。
+- **取消**をクリックすると、メールの送信をキャンセルします。
 
-### Manage Categories and Templates
+**タグメール送信進行状態**
 
-#### Categories
+- 待機：受信者ファイルデータの読み込み作業を進行する前の状態です。
+- 送信準備：受信者ファイルデータ情報をロード中の状態です。
+- 送信準備完了：メール送信準備が完了した状態です。予約件(リストの行)を選択すると、受信者別メール送信内容を下段リストで確認できます。
+- 送信待機：メール送信作業待機中の状態です。
+- 送信中：メール送信が進行中の状態です。予約件(リストの行)を選択すると、送信進行率を確認できます。
+- 送信完了：送信が正常に完了された状態です。
+- 送信失敗：送信進行中に送信エラーが発生した場合です。メール別送信ステータスは、メール受信照会リストで確認できます。
+- 送信取消：ユーザーがメールの送信をキャンセルした状態です。
 
-You can create categories to sort templates for mail delivery.
+**受信者別メール送信照会**
 
-![email_13_201812_en.png](https://static.toastoven.net/prod_email/email_13_201812_en.png)
+![email_12_201812](https://static.toastoven.net/prod_email/email_12_201812.png)
 
-1. Select a category from **Categories** on the left.
-2. Click **Add Cetegory**.
-    * Please make sure that the category is selected first.
-3. When **Add Category** window pops up, complete the form.
-4. Click **Add**.
+タグメール送信予約件(リストの行)を選択すると、下段のリストで受信者別メール送信履歴を照会できます。
 
-To modify category, select a category and click **Modify**. When **Modify Category** window pops up, modify the content and click **Modify**.
+## カテゴリーおよびテンプレート管理
 
-#### Templates
+カテゴリーを作成した後、メール送信時に使用するテンプレートを分類して管理できます。
 
-![email_14_201812_en.png](https://static.toastoven.net/prod_email/email_14_201812_en.png)
+![email_13_201812](https://static.toastoven.net/prod_email/email_13_201812.png)
 
-1. To add a template, select a category and click **Add Templates**.
-2. Complete the form with frequently used items.
-3. Click **Add**.
+1. 左側にある**カテゴリー**でカテゴリーを選択します。
+2. **カテゴリー追加**ボタンをクリックします。
+    - カテゴリーを先に選択した状態で、**カテゴリー追加**ボタンをクリックする必要があります。
+3. **カテゴリー追加**ウィンドウが表示されたら内容を入力します。
+4. **追加**ボタンをクリックします。
 
-To modify a template, select a template, modify it, and then click **Modify**.
+- カテゴリーを修正するには、先に修正するカテゴリーを選択した後、**修正**ボタンをクリックします。**カテゴリー修正**ウィンドウが表示されたら内容を入力して**修正**ボタンをクリックします。
 
-### Manage Tags
+![email_14_201812](https://static.toastoven.net/prod_email/email_14_201812.png)
 
-You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
-Click a tag and the list of UIDs registered to the tag can be retrieved.
+1. テンプレートを追加するには、先に作成されたカテゴリーを選択した後、**テンプレート追加**ボタンをクリックします。
+2. よく使用する内容を作成します。
+3. 右上にある**追加**ボタンをクリックします。
 
-![email_15_201812_en.png](https://static.toastoven.net/prod_email/email_15_201812_en.png)
+## タグ管理
 
-When there is no registered tag, click **Register Tags**, enter **Tag Name** on the **Register/Modify Tags** window, and then click **Register**.
+**タグ管理**タブで、メールを送信する時に使用するタグの作成や、修正または削除ができます。
+特定タグをクリックすると、タグに登録されたUIDリストを照会できます。
 
-To register UIDs to a tag, select a tag from the list of registered tags and click **Register UIDs**.
-Enter an UID on the **Register UIDs** window and click **Register**.
+![email_15_201812](https://static.toastoven.net/prod_email/email_15_201812.png)
 
-Up to 1,000 UIDs can be registered at once, for a tag.
+登録されたタグがない場合は、**タグ登録**ボタンをクリックして**タグ登録/修正**ウィンドウで**タグ名**を入力して**登録**ボタンをクリックします。
 
-### Manage UIDs
+タグにUIDを登録するには、登録したタグリストで希望するタグを選択して**UID登録**をクリックします。
+**UID登録**ウィンドウにUIDを入力し、**登録**をクリックします。
 
-Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
+タグ内UIDは一度に最大1,000個まで登録できます。
 
-![email_16_201812_en.png](https://static.toastoven.net/prod_email/email_16_201812_en.png)
 
-UIDs, registered to a tag, can be used to easily send mails to multiple recipients.
+## UID管理
 
-![email_17_201812_en.png](https://static.toastoven.net/prod_email/email_17_201812_en.png)
+**UID管理**タブでUIDとメールアドレスを管理できます。
 
-1. Click **Register UIDs**.
-2. Click **Download Templates**. You can enter multiple UIDs and mail address in CSV format.
-    * Download a template, and enter UID on the first row, and mail address on the second row.
-3. Save the file and click **Upload UID Files** to upload the file.
-4. Click **Register**.
+![email_16_201812](https://static.toastoven.net/prod_email/email_16_201812.png)
 
-### Manage Call Rejects
+UIDはタグに登録して多数の対象者に簡単にメールを送信できます。
 
-You can manage rejecting users on the **Manage Call Rejct** tab.
+![email_17_201812](https://static.toastoven.net/prod_email/email_17_201812.png)
 
-![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
+1. **UID登録**ボタンをクリックします。
+2. **テンプレートダウンロード**ボタンを押して、CSVファイルに複数のUIDとメールアドレスを入力できます。
+    - テンプレートをダウンロードして、下記の形式のように最初の列にはUID、二列目にはメールアドレスを入力します。
+3. 入力したファイルを保存し、**UIDファイルアップロード**ボタンをクリックしてアップロードします。
+4. **登録**ボタンをクリックします。
 
-You may search for users who have unsubscribed so far, and register or delete rejections.
+### 受信拒否管理
 
-#### Register Rejections Manually
+**受信拒否管理**タブで受信拒否対象を管理できます。
 
-![email_21_201812_en.png](https://static.toastoven.net/prod_email/email_21_201812_en.png)
+![email_20_201812](https://static.toastoven.net/prod_email/email_20_201812.png)
 
-1. Click **Register Rejections**.
-2. Enter unsubscription mail address in the **Register Rejections** window.
-    * Click **Add** to register up to 10 persons.
-3. Click **Register**.
+現在まで受信拒否したユーザーを照会でき、受信拒否の登録や削除を直接入力できます。
 
-#### Register Rejections by Uploading a Template File
+#### 受信拒否を直接入力して登録
 
-You can upload rejection files in CSV, text (.txt), or excel (.xlsx).
+![email_21_201812](https://static.toastoven.net/prod_email/email_21_201812.png)
 
-![email_22_201812_en.png](https://static.toastoven.net/prod_email/email_22_201812_en.png)
+1. **受信拒否登録**ボタンをクリックします。
+2. **受信拒否登録**ウィンドウで受信拒否メールアドレスを入力します。
+    - **追加**ボタンをクリックして最大10人まで登録できます。
+3. **登録**ボタンをクリックします。
 
-1. Select **Batch Registration of Mail Addresses** to upload a file.
-2. Complete an upload and click **Register**.
-    * When they're normally uploaded, the message will show **A total of n mail addresses are found**.
+#### 受信拒否をファイルアップロードで登録
 
-![email_23_201812_en.png](https://static.toastoven.net/prod_email/email_23_201812_en.png)
+受信拒否ファイルはCSV、テキスト(.txt)、Excel(.xlsx)ファイルでアップロードできます。
 
-When it is fully uploaded, you can check the list on the **Manage Call Rejects** tab
+![email_22_201812](https://static.toastoven.net/prod_email/email_22_201812.png)
 
-#### Delete Rejections
+**メールアドレス一括登録**をクリックしてファイルをアップロードします。
+アップロードが完了したら**登録**ボタンをクリックします。
+正常にアップロードされると、**n個のメールアドレスを確認しました。**という文言が表示されます。
 
-![email_24_201812_en.png](https://static.toastoven.net/prod_email/email_24_201812_en.png)
+![email_23_201812](https://static.toastoven.net/prod_email/email_23_201812.png)
 
-1. Select email addresses to delete.
-2. Click **Delete Rejections**.
-3. Check the message in the **Undo Rejection** window and click **Yes**.
+アップロードが完了したら、**受信拒否管理**タブでリストを確認できます。
 
-![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
+#### 受信拒否の削除
 
-When it is completely deleted, you can check it on the **Manage Call Rejects** tab.
+![email_24_201812](https://static.toastoven.net/prod_email/email_24_201812.png)
 
-### Retrieve Statistics
+1. 削除する受信拒否メールアドレスを選択します。
+2. **受信拒否削除**ボタンをクリックします。
+3. **受信拒否解除**ウィンドウで内容を確認し、**はい**ボタンをクリックします。
 
-Check delivery statistics on the **Retrieve Statistics** tab.
-You can retrieve by conditions, such as period, statistical type (date, time, or day), mail type (general or mass), or template.
+削除が完了されると、**受信拒否管理**タブで確認できます。
 
-![email_26_201812_en.png](https://static.toastoven.net/prod_email/email_26_201812_en.png)
+![email_25_201812](https://static.toastoven.net/prod_email/email_25_201812.png)
 
-### Guide for Notice of Personal Information Assignor
+### 統計情報照会
 
-When the Customer uses TOAST > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of TOAST Email Service and not to be adversely affected for not disclosing his assignment status:
+**統計照会**タブで送信統計を確認できます。
+照会期間、統計区分(日付、時間、曜日)、メールタイプ(一般、大量)、テンプレートなどを条件に照会できます。
 
-(Example)
 
-[Notice of Personal Information Assignor] To use TOAST Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
+日付別、時間帯別、曜日別で照会できます。
 
-Assignor: NHN
-Content of Business: Send emails in lieu of customers
+![email_26_201812](https://static.toastoven.net/prod_email/email_26_201812.png)
+
+### 個人情報受託会社の告知案内
+
+顧客'がTOAST Emailサービスの利用時、'顧客'と'当社'の間で個人情報処理に関する業務の委託/受託関係が発生するため、韓国情報通信網法および個人情報保護法に従って、委託者である'顧客'は個人情報処理方針を通して'当社'に個人情報を委託した状況(受託会社および業務の内容)を公開する必要があります。
+
+よって'当社'では'顧客'がTOAST Emailサービスを利用するにおいて関連法令を遵守し、委託状況の未公開により過料などの不利益を被らないように下記のように案内できます。
+
+(例)<br>
+[個人情報受託会社の告知案内] <br>
+Emailサービス利用時、顧客の会社で運営する'個人情報処理方針' >委託状況に次の内容を表記してください。<br>
+受託会社：NHN<br>
+業務の内容：メール送信代行<br>
