@@ -1,4 +1,4 @@
-﻿## Notification > Email > エラーコード
+## Notification > Email > エラーコード
 
 ### エラーコード
 |service|isSuccessful|resultCode|resultMessage|

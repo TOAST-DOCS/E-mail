@@ -1,4 +1,4 @@
-﻿## Notification > Email > コンソール使用ガイド
+## Notification > Email > コンソール使用ガイド
 
 ## メールの送信
 

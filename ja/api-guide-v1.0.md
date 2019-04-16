@@ -1,4 +1,4 @@
-﻿## Notification > Email > API v1.0ガイド
+## Notification > Email > API v1.0ガイド
 
 [APIドメイン]
 
