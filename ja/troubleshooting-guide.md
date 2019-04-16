@@ -1,4 +1,4 @@
-﻿## Notification > Email > 問題解決ガイド
+## Notification > Email > 問題解決ガイド
 
 ### SPF(Sender Policy Framework)の登録
 TOAST Emailで送信するメールがスパム処理されることがあるため、次のようにSPFの登録方法を案内します。
