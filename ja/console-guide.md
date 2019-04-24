@@ -7,7 +7,7 @@
 受信者、タイトル、内容、添付ファイルなどを入力してメールを送信できます。
 一般メールを送信する場合、受信者を直接入力する必要があります。
 
-![email_01_201812](https://static.toastoven.net/prod_email/email_01_201812.png)
+![email_01_201812](https://static.toastoven.net/prod_email/email_01_201812_en.png)
 
 **メール送信**タブの**テンプレート使用**で**未使用**を選択します。
 **メール区分**で**一般メール**を選択します。
@@ -19,7 +19,7 @@
         - 添付ファイルの容量は、合計10MBが上限です。
 **タイトル**/**内容**：メールのタイトルと内容を入力します。
 
-![email_02_201812](https://static.toastoven.net/prod_email/email_02_201812.png)
+![email_02_201812](https://static.toastoven.net/prod_email/email_02_201904_en.png)
 
 画面の下にある**受信者**と**CC**にメールアドレスを入力します。
 
@@ -44,7 +44,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 広告性メールの送信時、下記の項目を参照してください。
 
-![email_03_201812](https://static.toastoven.net/prod_email/email_03_201812.png)
+![email_03_201812](https://static.toastoven.net/prod_email/email_03_201812_en.png)
 
 1. タイトルに"(広告)"という文言を必ず入れます。
 
@@ -56,7 +56,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 あらかじめ作成しておいたメールテンプレートを使用できます。
 
-![email_04_201812](https://static.toastoven.net/prod_email/email_04_201812.png)
+![email_04_201812](https://static.toastoven.net/prod_email/email_04_201812_en.png)
 
 1. テンプレートを使用するには、**テンプレート使用**で**使用**を選択します。
 2. 有効になった**テンプレート選択**をクリックします。
@@ -78,7 +78,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
   - 添付ファイルの容量は、合計10MBが上限です。
 - **タイトル**/**内容**：メールのタイトルと内容を入力します。
 
-![email_05_201812](https://static.toastoven.net/prod_email/email_05_201812.png)
+![email_05_201812](https://static.toastoven.net/prod_email/email_05_201812_en.png)
 
 1. 画面下で**タグ送信**タブを選択し、**タグ選択**ボタンをクリックします。
     - タグを登録する方法は、**タグ管理**を参照してください。
@@ -90,7 +90,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
         - AND：複数のタグに全て属す受信者のみを対象にする。
         - OR：複数のタグのうち、1つ以上のタグに属す受信者を対象にする。
 
-![email_06_201812](https://static.toastoven.net/prod_email/email_06_201812.png)
+![email_06_201812](https://static.toastoven.net/prod_email/email_06_201812_en.png)
 
 メール内容入力ボックスの右下にある**送信予約**ボタンをクリックします。
 **送信予約**ウィンドウが表示されたら、希望するボタンをクリックします。
@@ -104,7 +104,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 **メール送信**タブの**テンプレート使用**で**未使用**を選択し、**メール区分**で**一般メール**を選択します。
 
-![email_07_201812](https://static.toastoven.net/prod_email/email_07_201812.png)
+![email_07_201812](https://static.toastoven.net/prod_email/email_07_201812_en.png)
 
 1. 送信メール情報を入力します。
     - **送信メール**：送信メールアドレスを入力します。名前<emailAddress>形式で作成すると、送信者名とメールアドレスを入力できます。
@@ -118,7 +118,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 3. テンプレートはCSVとExcelファイル形式で提供します。
 
-![email_08_201812](https://static.toastoven.net/prod_email/email_08_201812.png)
+![email_08_201812](https://static.toastoven.net/prod_email/email_08_201812_en.png)
 
 テンプレートファイルに受信者のメールアドレスと名前など、置換キーに指定する置換データを入力します。
 
@@ -143,17 +143,17 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 **メールリクエスト別照会**タブで送信日時、受信日時、テンプレート、送信ステータスなどの条件で送信されたメールを照会できます。
 
-![email_18_201812](https://static.toastoven.net/prod_email/email_18_201812.png)
+![email_18_201812](https://static.toastoven.net/prod_email/email_18_201812_en.png)
 
 リストにあるメール内容をクリックすると、詳細送信内容を確認できます。
 
-![email_19_201812](https://static.toastoven.net/prod_email/email_19_201812.png)
+![email_19_201812](https://static.toastoven.net/prod_email/email_19_201812_en.png)
 
 ### 大量メール送信照会
 
 **大量メール送信照会**タブでは、大量メール送信予約の照会や、送信または送信取消ができます。
 
-![email_09_201812](https://static.toastoven.net/prod_email/email_09_201812.png)
+![email_09_201812](https://static.toastoven.net/prod_email/email_09_201812_en.png)
 
   - **送信**をクリックするとメールを送信します。メール送信件数によっては、かなり時間がかかることがあります。
   - **取消**をクリックすると、メール送信をキャンセルします。
@@ -171,7 +171,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 **受信者別メール送信照会**
 
-![email_10_201812](https://static.toastoven.net/prod_email/email_10_201812.png)
+![email_10_201812](https://static.toastoven.net/prod_email/email_10_201812_en.png)
 
 1. 大量メール送信予約件(リストの行)を選択します。
 2. 下段のリストで受信者別メール送信履歴が表示されます。**詳細表示**ボタンをクリックします。
@@ -180,7 +180,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 ### タグメール送信照会タブ
 **タグメール送信照会**タブでは、タグメール送信予約の照会や、送信、送信取消ができます。
 
-![email_11_201812](https://static.toastoven.net/prod_email/email_11_201812.png)
+![email_11_201812](https://static.toastoven.net/prod_email/email_11_201812_en.png)
 
 - **送信**をクリックするとメールを送信します。メール送信件数によっては、相応の時間がかかることがあります。
 - **取消**をクリックすると、メールの送信をキャンセルします。
@@ -198,7 +198,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 **受信者別メール送信照会**
 
-![email_12_201812](https://static.toastoven.net/prod_email/email_12_201812.png)
+![email_12_201812](https://static.toastoven.net/prod_email/email_12_201812_en.png)
 
 タグメール送信予約件(リストの行)を選択すると、下段のリストで受信者別メール送信履歴を照会できます。
 
@@ -206,7 +206,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 カテゴリーを作成した後、メール送信時に使用するテンプレートを分類して管理できます。
 
-![email_13_201812](https://static.toastoven.net/prod_email/email_13_201812.png)
+![email_13_201812](https://static.toastoven.net/prod_email/email_13_201812_en.png)
 
 1. 左側にある**カテゴリー**でカテゴリーを選択します。
 2. **カテゴリー追加**ボタンをクリックします。
@@ -216,7 +216,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 - カテゴリーを修正するには、先に修正するカテゴリーを選択した後、**修正**ボタンをクリックします。**カテゴリー修正**ウィンドウが表示されたら内容を入力して**修正**ボタンをクリックします。
 
-![email_14_201812](https://static.toastoven.net/prod_email/email_14_201812.png)
+![email_14_201812](https://static.toastoven.net/prod_email/email_14_201812_en.png)
 
 1. テンプレートを追加するには、先に作成されたカテゴリーを選択した後、**テンプレート追加**ボタンをクリックします。
 2. よく使用する内容を作成します。
@@ -227,7 +227,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 **タグ管理**タブで、メールを送信する時に使用するタグの作成や、修正または削除ができます。
 特定タグをクリックすると、タグに登録されたUIDリストを照会できます。
 
-![email_15_201812](https://static.toastoven.net/prod_email/email_15_201812.png)
+![email_15_201812](https://static.toastoven.net/prod_email/email_15_201812_en.png)
 
 登録されたタグがない場合は、**タグ登録**ボタンをクリックして**タグ登録/修正**ウィンドウで**タグ名**を入力して**登録**ボタンをクリックします。
 
@@ -241,11 +241,11 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
 
 **UID管理**タブでUIDとメールアドレスを管理できます。
 
-![email_16_201812](https://static.toastoven.net/prod_email/email_16_201812.png)
+![email_16_201812](https://static.toastoven.net/prod_email/email_16_201812_en.png)
 
 UIDはタグに登録して多数の対象者に簡単にメールを送信できます。
 
-![email_17_201812](https://static.toastoven.net/prod_email/email_17_201812.png)
+![email_17_201812](https://static.toastoven.net/prod_email/email_17_201812_en.png)
 
 1. **UID登録**ボタンをクリックします。
 2. **テンプレートダウンロード**ボタンを押して、CSVファイルに複数のUIDとメールアドレスを入力できます。
@@ -257,13 +257,13 @@ UIDはタグに登録して多数の対象者に簡単にメールを送信で�
 
 **受信拒否管理**タブで受信拒否対象を管理できます。
 
-![email_20_201812](https://static.toastoven.net/prod_email/email_20_201812.png)
+![email_20_201812](https://static.toastoven.net/prod_email/email_20_201812_en.png)
 
 現在まで受信拒否したユーザーを照会でき、受信拒否の登録や削除を直接入力できます。
 
 #### 受信拒否を直接入力して登録
 
-![email_21_201812](https://static.toastoven.net/prod_email/email_21_201812.png)
+![email_21_201812](https://static.toastoven.net/prod_email/email_21_201812_en.png)
 
 1. **受信拒否登録**ボタンをクリックします。
 2. **受信拒否登録**ウィンドウで受信拒否メールアドレスを入力します。
@@ -274,19 +274,19 @@ UIDはタグに登録して多数の対象者に簡単にメールを送信で�
 
 受信拒否ファイルはCSV、テキスト(.txt)、Excel(.xlsx)ファイルでアップロードできます。
 
-![email_22_201812](https://static.toastoven.net/prod_email/email_22_201812.png)
+![email_22_201812](https://static.toastoven.net/prod_email/email_22_201812_en.png)
 
 **メールアドレス一括登録**をクリックしてファイルをアップロードします。
 アップロードが完了したら**登録**ボタンをクリックします。
 正常にアップロードされると、**n個のメールアドレスを確認しました。**という文言が表示されます。
 
-![email_23_201812](https://static.toastoven.net/prod_email/email_23_201812.png)
+![email_23_201812](https://static.toastoven.net/prod_email/email_23_201812_en.png)
 
 アップロードが完了したら、**受信拒否管理**タブでリストを確認できます。
 
 #### 受信拒否の削除
 
-![email_24_201812](https://static.toastoven.net/prod_email/email_24_201812.png)
+![email_24_201812](https://static.toastoven.net/prod_email/email_24_201812_en.png)
 
 1. 削除する受信拒否メールアドレスを選択します。
 2. **受信拒否削除**ボタンをクリックします。
@@ -294,7 +294,7 @@ UIDはタグに登録して多数の対象者に簡単にメールを送信で�
 
 削除が完了されると、**受信拒否管理**タブで確認できます。
 
-![email_25_201812](https://static.toastoven.net/prod_email/email_25_201812.png)
+![email_25_201812](https://static.toastoven.net/prod_email/email_20_201812_en.png)
 
 ### 統計情報照会
 
@@ -304,7 +304,7 @@ UIDはタグに登録して多数の対象者に簡単にメールを送信で�
 
 日付別、時間帯別、曜日別で照会できます。
 
-![email_26_201812](https://static.toastoven.net/prod_email/email_26_201812.png)
+![email_26_201812](https://static.toastoven.net/prod_email/email_26_201812_en.png)
 
 ### 個人情報受託会社の告知案内
 
