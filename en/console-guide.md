@@ -20,6 +20,8 @@ Select **General Mails** for **Mail Type**.
 
 **Title/Body**: Enter the title and body of the mail.
 
+![email_02_201812](https://static.toastoven.net/prod_email/email_02_201904_en.png)
+
 Enter email addresses for **Recipients** and **Cc Recipients**.
 
 ### Send Advertising Mails
