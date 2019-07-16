@@ -51,6 +51,7 @@
 |발송|false|-2043| There are too much mail at this time. Please send it at another time.|
 |발송|false|-2044| The 'fileName' is required.|
 |발송|false|-2045| The 'fileBody' is required.|
+|발송|false|-2046| The '{}' can have only 'Y' or 'N' values. {}: {}|
 |템플릿|false|-2100|The 'templateId' is required.|
 |템플릿|false|-2107|Not found the template. templateId: {}|
 |템플릿|false|-2111|A template with attachments is not supported. templateId : {}|
