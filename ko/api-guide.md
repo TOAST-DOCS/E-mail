@@ -1434,7 +1434,6 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |useYn|	String|	X|	사용 여부(Y/N)|
 |pageNum|	Integer|	X|	페이지 번호(Default : 1)|
 |pageSize|	Integer|	X|	조회 건수(Default : 15)|
-|all|	Boolean|	X|	전체 템플릿 목록 조회 여부|
 
 [예시]
 ``` sh
