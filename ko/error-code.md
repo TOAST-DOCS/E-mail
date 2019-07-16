@@ -49,8 +49,10 @@
 |발송|false|-2041| The 'fileName' exceeds maximum length. (100 chars)|
 |발송|false|-2042| The 'createUser' exceeds maximum length. (50 chars)|
 |발송|false|-2043| There are too much mail at this time. Please send it at another time.|
+|발송|false|-2044| The 'fileName' is required.|
+|발송|false|-2045| The 'fileBody' is required.|
 |템플릿|false|-2100|The 'templateId' is required.|
-|템플릿|false|-2107|There is no template with template ID.|
+|템플릿|false|-2107|Not found the template. templateId: {}|
 |템플릿|false|-2111|A template with attachments is not supported. templateId : {}|
 |통계|false|-2200|Invalid statistics search parameter.|
 |통계|false|-2201|The 'from' must be before 'to'|
@@ -68,6 +70,11 @@
 |수신 거부|false|-2308|Invalid email address.|
 |수신 거부|false|-2309|Not found file.|
 |수신 거부|false|-2400|Invalid parameter.|
+|카테고리|false|-3003|The 'categoryName' is required.|
+|카테고리|false|-3004|The 'categoryName' can't exceed 200 characters.|
+|카테고리|false|-3005|The 'categoryDesc' can't exceed 1,000 characters.|
+|카테고리|false|-3006|Not found the category. categoryId: {}|
+|카테고리|false|-3007|The category is the default and you cannot delete it.|
 |태그|false|-7000|Fail to call Tag API.|
 |태그|false|-7001|Invalid parameter.|
 |태그|false|-7002|The 'tagExpression' is required.|
