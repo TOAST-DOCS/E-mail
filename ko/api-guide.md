@@ -1099,7 +1099,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- createDate|	String|	생성일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 
-<h2 id="category">카테고리 관리</h2>
+<p id="category"></p>
+
+## 카테고리 관리
 
 ### 카테고리 리스트 조회
 
@@ -1404,8 +1406,9 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<p id="template"></p>
 
-<h2 id="template">템플릿 관리</h2>
+## 템플릿 관리
 
 ### 템플릿 리스트 조회
 
