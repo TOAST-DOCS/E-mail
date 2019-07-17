@@ -59,7 +59,7 @@ Content-Type: application/json;charset=UTF-8
 
 [주의]
 
-* template을 사용할 경우 title, body는 선택 필드입니다. (입력 시 입력된 값이 template보다 우선 적용)
+* template을 사용할 경우 title, body는 필수 값이 아닙니다. (입력 시 입력된 값이 template보다 우선 적용)
 
 [예시 1]
 ```
@@ -159,7 +159,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [주의]
 
-* template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+* template을 사용할 경우 title, body는 필수 값이 아닙니다. (입력 시 입력된 값이 template 보다 우선적용)
 
 
 [예시 1]
@@ -301,7 +301,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [주의]
 
-* template을 사용할 경우 title, body는 필수 제외 (입력 시 입력된 값이 template 보다 우선적용)
+* template을 사용할 경우 title, body는 필수 값이 아닙니다. (입력 시 입력된 값이 template 보다 우선적용)
 
 #### 일반 메일과 다른 점
 인증 메일 성격상 다음과 같이 다른 특성들이 있습니다.
@@ -399,7 +399,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [주의]
 
-* template을 사용할 경우 title, body는 필수입력 제외 (입력 시 입력된 값이 template보다 우선 적용)
+* template을 사용할 경우 title, body는 필수 값이 아닙니다. (입력 시 입력된 값이 template보다 우선 적용)
 
 
 [예시 1]
@@ -1700,6 +1700,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- fileId|	String|	파일 ID|
 |-- fileName|	String|	파일명|
 
+[주의]
+
+* 파일을 업로드 한 다음 템플릿에 첨부하면, 다른 템플릿에 그 파일을 첨부할 수 없습니다. 첨부된 파일을 수정하거나 새로 업로드 한 후 첨부해야 합니다.
+
 ### 템플릿 수정
 
 #### 요청
@@ -2200,9 +2204,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [주의]
 
-* tagIds가 주어지는 경우 contacts는 필수 값이 아니다.
-* contacts가 주어지는 경우 tagIds는 필수 값이 아니다.
-* 본 상품의 경우, contactType은 반드시 "EMAIL_ADDRESS" 값으로 요청해야 한다.
+* tagIds가 주어지는 경우 contacts는 필수 값이 아닙니다.
+* contacts가 주어지는 경우 tagIds는 필수 값이 아닙니다.
+* 본 상품의 경우, contactType은 반드시 "EMAIL_ADDRESS" 값으로 요청해야 합니다.
 
 [예시]
 ```
