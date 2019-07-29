@@ -15,8 +15,8 @@ Select **General Mails** for **Mail Type**.
 **Scheduled Delivery**: Specify the date and time of email delivery.
 **Attached File**: Attach files to mail.
 
-* Up to five files can be uploaded, not exceeding 10MB.
-* The total volume of attachment cannot be more than 10MB.
+* Up to five files can be uploaded, not exceeding 30MB.
+* The total volume of attachment cannot be more than 30MB.
 
 **Title/Body**: Enter the title and body of the mail.
 
@@ -74,8 +74,8 @@ Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab a
 * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
 * **Scheduled Delivery**: Specify the date and time of email delivery.
 * **Attached File**: Attach files to mail.
-    * Up to five files can be uploaded, not exceeding 10MB.
-    * The total volume of attachment cannot be more than 10MB.
+    * Up to five files can be uploaded, not exceeding 30MB.
+    * The total volume of attachment cannot be more than 30MB.
 * **Title/Body**: Enter the title and body of the mail.
 
 ![email_05_201812_en.png](https://static.toastoven.net/prod_email/email_05_201812_en.png)
@@ -109,8 +109,8 @@ Select **Not Use** for **Template Use** in the **Send Mails** tab, and select **
     * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address.
     * **Scheduled Delivery**: Specify the date and time of email delivery.
     * **Attached File**: Attach files to mail.
-        * Up to five files can be uploaded, not exceeding 10MB.
-        * The total volume of attachment cannot be more than 10MB.
+        * Up to five files can be uploaded, not exceeding 30MB.
+        * The total volume of attachment cannot be more than 30MB.
     * **Title**/**Body**: Enter the title and body of the mail. If the title and body of mail is entered in the ##replacement key##format, the mail can be replaced with user specified data. For instance, enter ##name## in the user name, and it is replaced with a user specified name, such as 'Hana Oh' before sent.
 2. Go to **Mass Delivery** at the bottom and click **Download Templates**.
 3. Templates are available either in CSV or Excel.
