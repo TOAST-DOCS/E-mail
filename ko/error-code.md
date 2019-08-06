@@ -52,6 +52,8 @@
 |발송|false|-2044| The 'fileName' is required.|
 |발송|false|-2045| The 'fileBody' is required.|
 |발송|false|-2046| The '{}' can have only 'Y' or 'N' values. {}: {}|
+|발송|false|-2047| The 'senderGroupingKey' exceeds maximum length. (100 chars)|
+|발송|false|-2048| You can set the size up to 1000. pageSize: {}|
 |템플릿|false|-2100|The 'templateId' is required.|
 |템플릿|false|-2102|The 'templateName' is required.|
 |템플릿|false|-2103|The 'sendMailAddress' is required.|
