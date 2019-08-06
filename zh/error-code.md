@@ -20,7 +20,7 @@
 |발송|false|-2010|Sender Email Format is wrong.|
 |발송|false|-2011|Receiver Email Format is wrong.|
 |발송|false|-2012|The maximum number of recipients is 1000.|
-|발송|false|-2013|The file size is less than 10M.|
+|발송|false|-2013|The file size is less than 30M.|
 |발송|false|-2014|Up to 5 attachments including the template's are allowed.|
 |발송|false|-2015|The 'title' is required.|
 |발송|false|-2016|The 'body' is required.|
