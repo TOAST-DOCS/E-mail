@@ -609,7 +609,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	발신메일 주소|
+|senderAddress|	String|	X|	발신메일 주소|
 |senderName|	String|	X|	발신자 이름|
 |receiveMailAddr|	String|	X|	수신메일 주소|
 |templateId|	String|	X|	템플릿번호|
@@ -648,7 +648,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "templateId": "Template",
                 "templateName": "Template Name",
                 "senderName": "Sender",
-                "senderMail": "sender@nhn.com",
+                "senderAddress": "sender@nhn.com",
                 "title": "Title",
                 "mailStatusCode": "SST2",
                 "mailStatusName": "발송완료",
@@ -682,7 +682,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- templateId|	String|	템플릿ID|
 |-- templateName|	String|	템플릿명|
 |-- senderName|	String|	발신자 이름|
-|-- senderMail|	String|	발신자 메일주소|
+|-- senderAddress|	String|	발신자 메일주소|
 |-- title|	String|	메일 제목|
 |-- mailStatusCode|	String|	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
 |-- mailStatusName|	String|	발송 상태 명|
@@ -700,6 +700,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 * 수신 여부 필드 **isReceived**가 추가되었습니다. 
 * 요청 필드 중 발송 상태 코드를 나타내는 필드 이름이 **mailStatusCode**로 변경되었습니다. 
 * 수신자 메일 주소를 나타내는 필드 이름이 **receiveMailAddr**로 변경되었습니다.
+* 발신자 메일 주소를 나타내는 필드 이름이 **senderAddress**로 변경되었습니다.
 
 
 ### 메일 발송 상세 조회
@@ -745,7 +746,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "templateId": "Template",
             "templateName": "Template Name",
             "senderName": "Sender",
-            "senderMail": "sender@nhn.com",
+            "senderAddress": "sender@nhn.com",
             "resultId": "<20190101000000ABCDEFG0@test>",
             "title": "Title",
             "body": "Body",
@@ -799,7 +800,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- templateId|	String|	템플릿 ID|
 |-- templateName|	String|	템플릿 명|
 |-- senderName|	String|	발신자 이름|
-|-- senderMail|	String|	발신자 메일주소|
+|-- senderAddress|	String|	발신자 메일주소|
 |-- resultId|	String|	메일 발송 ID|
 |-- title|	String|	메일 제목|
 |-- body|	String|	메일 내용|
@@ -830,6 +831,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 * 수신자 리스트를 나타내는 필드 이름이 **receiverList**로 변경되었습니다.
 * 수신자의 수신 여부 필드 **isReceived**가 추가되었습니다. 
 * 수신자의 읽음 여부 필드 이름이 **isRead**로 변경되었습니다.
+* 발신자 메일 주소를 나타내는 필드 이름이 **senderAddress**로 변경되었습니다.
 
 
 ### 태그 메일 발송 요청 조회
