@@ -676,7 +676,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
 |- pageNum|	Integer|	현재 페이지 번호|
-|-pageSize|	Integer|	조회된 데이터 건수|
+|- pageSize|	Integer|	조회된 데이터 건수|
 |- totalCount|	Integer|	총 데이터 건수|
 |- data|	List|	데이터 영역|
 |-- requestId|	String|	요청 ID|
@@ -1463,7 +1463,182 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<p id="template"></p>
 
+## 템플릿 관리
+
+### 템플릿 리스트 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.4/appKeys/{appKey}/templates|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|categoryId|	Integer|	X|	카테고리 ID|
+|useYn|	String|	X|	사용 여부(Y/N)|
+|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
+|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+
+[예시]
+``` sh
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
+```
+
+#### 응답
+
+```
+{
+    "header": {
+        "resultCode": Integer,
+        "resultMessage": String,
+        "isSuccessful": Boolean
+    },
+    "body": {
+        "pageNum": Integer,
+        "pageSize": Integer,
+        "totalCount": Integer,
+        "data": [
+            {
+                "templateId": String,
+                "categoryId": Integer,
+                "categoryName": String,
+                "templateName": String,
+                "templateDesc": String,
+                "useYn": String,
+                "delYn": String,
+                "title": String,
+                "createDate": String,
+                "updateDate": String
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|- pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- templateId|	String|	템플릿 ID|
+|-- categoryId|	Integer|	카테고리 ID|
+|-- categoryName|	String|	카테고리 명|
+|-- templateName|	String|	템플릿 명|
+|-- templateDesc|	String|	템플릿 설명|
+|-- useYn|	String|	사용여부|
+|-- delYn|	String|	삭제 여부|
+|-- title|	String|	메일 제목|
+|-- createDate|	String|	생성일시|
+|-- updateDate|	String|	수정일시|
+
+### 템플릿 상세 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET|	/email/v1.4/appKeys/{appKey}/templates/{templateId}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|templateId|	String|	템플릿 ID|
+
+[예시]
+``` sh
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates/{templateId}"
+```
+
+#### 응답
+
+```
+{
+    "header": {
+        "resultCode": Integer,
+        "resultMessage": String,
+        "isSuccessful": Boolean
+    },
+    "body": {
+        "data": {
+            "templateId": String,
+            "categoryId": Integer,
+            "categoryName": String,
+            "templateName": String,
+            "templateDesc": String,
+            "useYn": String,
+            "delYn": String,
+            "sendMailAddress": String,
+            "title": String,
+            "templateType": String,
+            "body": String,
+            "createDate": String,
+            "updateDate": String,
+            "attachFileList": [
+                {
+                    "fileType": String,
+                    "fileId": Integer,
+                    "fileName": String,
+                    "filePath": String,
+                    "fileSize": Integer,
+                    "createDate": String
+                }
+            ]
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- templateId|	String|	템플릿 ID|
+|-- categoryId|	Integer|	카테고리 ID|
+|-- categoryName|	String|	카테고리명|
+|-- templateName|	String|	템플릿명|
+|-- templateDesc|	String|	템플릿 설명|
+|-- useYn|	String|	사용여부 (Y= 사용중, N= 사용안함)|
+|-- delYn|	String|	삭제 여부(Y= 삭제, N= 삭제 아님)|
+|-- sendMailAddress|	String|	발신메일주소|
+|-- title|	String|	메일 주소|
+|-- templateType|	String|	템플릿 타입 <br/>DEFAULT(default), FREEMARKER)|
+|-- body|	String|	메일 내용|
+|-- createDate|	String|	생성일시|
+|-- updateDate|	String|	수정일시|
+|-- attachFileList|	List|	첨부파일 리스트|
+|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|--- fileId| String| 파일 ID|
+|--- fileName|	String|	첨부파일 이름|
+|--- filePath|	String|	첨부파일 경로|
+|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- createDate|	String|	생성일시|
 
 ### 템플릿 등록
 
