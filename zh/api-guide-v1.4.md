@@ -1,4 +1,4 @@
-## Notification > Email > API v1.3 Guide
+## Notification > Email > API v1.4 Guide
 
 [API Domain]
 
@@ -25,7 +25,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/mail|
+|POST|	/email/v1.4/appKeys/{appKey}/sender/mail|
 
 [Path Parameter]
 
@@ -54,19 +54,20 @@ Content-Type: application/json;charset=UTF-8
 | customHeaders     | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
 | userId            | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
+
 [Caution]
 
-- To use a template, title and body are not required (input values, if available, precede template values)
-- The templateId parameter is required to use templateParameter. 
+* To use a template, title and body are not required (input values, if available, precede template values)
 
 [Example 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### Response
@@ -95,30 +96,26 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- requestId|	String| Request ID |
-|-- results|	List| Delivery result |
-|--- receiveMailAddr|	String| Recipient's mail address |
-|--- receiveName|	String| Recipient's name |
-|--- receiveType|	String| Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
-|--- resultCode|	Integer| Result code of recipient delivery request |
-|--- resultMessage|	String| Result message of recipient delivery request |
+| Value               | Type    | Description                                             |
+| ------------------- | ------- | ------------------------------------------------------- |
+| header              | Object  | Header area                                             |
+| - isSuccessful      | Boolean | Successful or not                                       |
+| - resultCode        | Integer | Failure code                                            |
+| - resultMessage     | String  | Failure message                                         |
+| body                | Object  | Body area                                               |
+| - data              | Object  | Data area                                               |
+| -- requestId        | String  | Request ID                                              |
+| -- results          | List    | Delivery result                                         |
+| --- receiveMailAddr | String  | Recipient's mail address                                |
+| --- receiveName     | String  | Recipient's name                                        |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
+| --- resultCode      | Integer | Result code of recipient delivery request               |
+| --- resultMessage   | String  | Result message of recipient delivery request            |
 
+#### Changes in v 1.4
 
-#### Changes in v1.3
-
-* Added **results** to return results for all requested recipients.  
-* **results** show information of requested recipients, as well as result codes and messages for each corresponding recipient.  
-* Responds with success (isSuccessful=true) if requests by a part of or all recipients are successful.
-* Responds with failure (isSuccessful=false) if it fails because common items of a request (e.g. sender's mail address or information of attached file) or all recipients are invalid.  
-* Returns null, if it fails since all recipients are invalid, and therefore **requestId** does not exist. 
+- There is no need of registering a template, since mails are processed by **templateType** and **templateParameter**.
+- **templateParameter** is applied to **title** and **body**, according to **templateType**.
 
 ### Send Individual Mails
 
@@ -130,7 +127,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/eachMail||
+|POST|	/email/v1.4/appKeys/{appKey}/sender/eachMail||
 
 [Path Parameter]
 
@@ -140,42 +137,43 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Request Body]
 
-| Value               | Type        | Required | Description                                                  |
-| ------------------- | ----------- | -------- | ------------------------------------------------------------ |
-| senderAddress       | String      | O        | Sender's mail                                                |
-| senderName          | String      | X        | Sender's name                                                |
-| requestDate         | String      | X        | Enter current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
-| title               | String      | O        | Title                                                        |
-| body                | String      | O        | Body                                                         |
-| attachFileIdList    | List:String | X        | ID for uploaded attached file                                |
-| templateId          | String      | X        | ID for delivery template                                     |
-| receiverList        | List        | O        | List of recipients<br/>Send up to 1,000 persons              |
-| - receiveMailAddr   | String      | O        | Recipient's mail address                                     |
-| - receiveName       | String      | X        | Recipient's name                                             |
-| - templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
-| -- #key#            | String      | X        | Replacement key (##key##)                                    |
-| -- #value#          | Object      | X        | Mapped value for replacement key                             |
-| customHeaders       | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
-| userId              | String      | X        | Delimiter for delivery e.g.) admin, system                   |
+|Value| Type | Required | Description |
+|---|---|---|---|
+|senderAddress|	String|	O| Sender's mail |
+|senderName|	String|	X| Sender's name |
+|requestDate|	String|	X| Enter current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
+|title|	String|	O| Title |
+|body|	String|	O| Body |
+|attachFileIdList|	List:Integer|	X| ID for uploaded attached file |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER) |
+|templateId|	String|	X| ID for delivery template |
+|receiverList|	List|	O| List of recipients<br/>Send up to 1,000 persons |
+|- receiveMailAddr|	String|	O| Recipient's mail address |
+|- receiveName|	String|	X| Recipient's name |
+|- templateParameter|	Object|	X| Replacement parameter (to enter mail title/body for replacement) |
+|-- #key#|	String|	X| Replacement key (##key##) |
+|-- #value#|	Object|	X| Mapped value for replacement key |
+|customHeaders| Map| X| [Custom Header](./Overview/#custom-header) |
+|userId|	String|	X| Delimiter for delivery e.g.) admin,system |
 
 [Caution]
 
 * To use a template, title and body are not required (input values, if available, precede template values)
-* The templateId parameter is required to use templateParameter.
+
 
 [Example 1]
-
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 
-#### Response 
+#### Response
 
 ```
 {
@@ -201,29 +199,26 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- requestId|	String| Request ID |
-|-- results|	List| Delivery result |
-|--- receiveMailAddr|	String| Recipient's mail address |
-|--- receiveName|	String| Recipient's name |
-|--- receiveType|	String| Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
-|--- resultCode|	Integer| Result code of recipient delivery request |
-|--- resultMessage|	String| Result message of recipient delivery request |
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - data              | Object  | Data area                                                    |
+| -- requestId        | String  | Request ID                                                   |
+| -- results          | List    | Delivery result                                              |
+| --- receiveMailAddr | String  | Recipient's mail address                                     |
+| --- receiveName     | String  | Recipient's name                                             |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
+| --- resultCode      | Integer | Result code of recipient delivery request                    |
+| --- resultMessage   | String  | Result message of recipient delivery request                 |
 
-#### Changes in v1.3
+#### Changes in v 1.4
 
-- Added **results** to return results for all requested recipients.  
-- **results** show information of requested recipients, as well as result codes and messages for each corresponding recipient.  
-- Responds with success (isSuccessful=true) if requests by a part of or all recipients are successful.
-- Responds with failure (isSuccessful=false) if it fails because common items of a request (e.g. sender's mail address or information of attached file) or all recipients are invalid.  
-- Returns null, if it fails since all recipients are invalid, and therefore **requestId** does not exist. 
+* There is no need of registering a template, since mails are processed by **templateType** and **templateParameter**.
+* **templateParameter** is applied to **title** and **body**, according to **templateType**.
 
 ### Send Advertising General Mails
 
@@ -238,16 +233,17 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v1.4/appKeys/{appKey}/sender/ad-mail|
 
 [Example 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"(Ad) sample title","body":"sample body \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"(Ad)sample title","body":"sample body \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 ### Send Advertising Individual Mails
@@ -258,19 +254,21 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v1.4/appKeys/{appKey}/sender/ad-eachMail |
 
 [Example 1]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"(Ad) sample title","body":"sample body \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"(Ad) sample title","body":"sample body \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
-### Send Tagged Mails
+### Send Authenticated Mails 
 
 #### Request
 
@@ -278,7 +276,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/auth-mail||
+|POST|	/email/v1.4/appKeys/{appKey}/sender/auth-mail||
 
 [Path Parameter]
 
@@ -288,29 +286,28 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Request Body]
 
-|Value| Type | Required | Description |
-|---|---|---|---|
-|senderAddress|	String|	O| Sender's mail |
-|senderName|	String|	X| Sender's name |
-|requestDate|	String|	X| Enter current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
-|title|	String|	O| Title |
-|body|	String|	O| Body |
-|templateId|	String|	X| Delivery template ID |
-|receiver|	Object|	O|	Recipients |
-|- receiveMailAddr|	String|	O| Recipient's mail address |
-|- receiveName|	String|	X| Recipient's name |
-|- templateParameter|	Object|	X| Replacement parameter (to enter for mail title/body replacement력) |
-|-- #key#|	String|	X| Replacement key (##key##) |
-|-- #value#|	Object|	X| Mapped value for replacement key |
-|customHeaders| Map| X| [Custom Header](./Overview/#custom-header) |
-|userId|	String|	X| Delimiter of delivery e.g.) admin,system |
+| Value               | Type   | Required | Description                                                  |
+| ------------------- | ------ | -------- | ------------------------------------------------------------ |
+| senderAddress       | String | O        | Sender's address                                             |
+| senderName          | String | X        | Sender's name                                                |
+| requestDate         | String | X        | Enter current time when delivery time is missing (yyyy-MM-dd HH:mm:ss) |
+| title               | String | O        | Title                                                        |
+| body                | String | O        | Body                                                         |
+| templateId          | String | X        | ID for delivery template                                     |
+| receiver            | Object | O        | Recipient                                                    |
+| - receiveMailAddr   | String | O        | Recipient's mail address                                     |
+| - receiveName       | String | X        | Recipient's name                                             |
+| - templateParameter | Object | X        | Replacement parameter (to enter mail title/body for replacement) |
+| -- #key#            | String | X        | Replacement key (##key##)                                    |
+| -- #value#          | Object | X        | Mapped value for replacement key                             |
+| customHeaders       | Map    | X        | [Custom Header](./Overview/#custom-header)                   |
+| userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 
 [Caution]
 
-* To use a template, title and body are not required (input values, if available, precede template values)
-* The templateId parameter is required to use templateParameter.
+- To use a template, title and body are not required (input values, if available, precede template values)
 
-#### Differences from General Mails
+#### Differences from General Mails 
 
 Features of authenticated mails are as follows: 
 
@@ -318,13 +315,15 @@ Features of authenticated mails are as follows:
 - File attachment is not supported. Templates including attachment are not supported. 
 
 [Example 1]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1"},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}},"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### Response
@@ -345,16 +344,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- requestId|	String| Request ID |
-|-- statusCode|	String| Request status code (Y: preparing for sending , N: Preparing for sending failed) |
+| Value           | Type    | Description                                                  |
+| --------------- | ------- | ------------------------------------------------------------ |
+| header          | Object  | Header area                                                  |
+| - isSuccessful  | Boolean | Successful or not                                            |
+| - resultCode    | Integer | Failure code                                                 |
+| - resultMessage | String  | Failure message                                              |
+| body            | Object  | Body area                                                    |
+| - data          | Object  | Data area                                                    |
+| -- requestId    | String  | Request ID                                                   |
+| -- statusCode   | String  | Request status code (Y: preparing for sending , N: Preparing for sending failed) |
 
 ### Send Tagged Mails
 
@@ -364,7 +363,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v1.4/appKeys/{appKey}/sender/tagMail|
 
 [Path Parameter]
 
@@ -372,7 +371,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|---|
 |appKey|	String| Original appkey |
 
-[Request Body]
+[Request body]
 
 ```
 {
@@ -403,21 +402,22 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | attachFileIdList | List:String | X        | List of attached files                                       |
 | tagExpression    | List:String | O        | Tag expression                                               |
 | customHeaders    | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
-| userId           | String      | X        | Delimiter of delivery<br />e.g.) admin, system               |
+| userId           | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
 [Caution]
 
-* To use template, title and body are required (input values, if available, precede template values)
-
+- To use template, title and body are required (input values, if available, precede template values)
 
 [Example 1]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"sender's name","title":"sample title","body":"sample body","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 [Example 2 - Using Templates]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
 #### Response
@@ -455,7 +455,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v1.4/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path Parameter]
 
@@ -482,7 +482,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 [Example]
 
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"XXXXX","fileBody":[]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"XXXXX","fileBody":[]}'
 ```
 
 #### Response
@@ -503,27 +503,42 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- fileId|	String| File ID |
-|-- fileName|	String| File name |
+| Value           | Type    | Description       |
+| --------------- | ------- | ----------------- |
+| header          | Object  | Header area       |
+| - isSuccessful  | Boolean | Successful or not |
+| - resultCode    | Integer | Failure code      |
+| - resultMessage | String  | Failure message   |
+| body            | Object  | Body area         |
+| - data          | Object  | Data area         |
+| -- fileId       | String  | File ID           |
+| -- fileName     | String  | File name         |
 
 ### Title/Body Replacement
 
-#### Example of Writing Mails with Replacement
-
+* As of v 1.4, title and body are processed in different methods according to **templateType** added to Send API.  
+#### Default Type
+* Enter in the (##Replacement Key##) format to replace with user-defined **templateParameter**.
 ```
-* title: Hello, ##title_name##!!
+* title: Hello, ##title_name## !!
 * body: We send ##body_content##.
+->
+* title: Hello, clouc customer1 !!
+* body: We send test2.
 ```
 
-#### Example of General Mail Request
+#### FreeMarker Type
+* [FreeMarker Template Engine](https://freemarker.apache.org/) is supported.
+* You may use a template language to replace with user-defined **templateParameter**. 
+```
+* title: Hello, ${title_name}!!
+* body: We send ${body_content}.
+->
+* title: Hello, cloud customer1!!
+* body: We send test2.
+```
+
+#### Example of General Mail Request 
 ```
 {
     "senderAddress" : "support@nhnent.com",
@@ -560,12 +575,6 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-#### Example of Result 
-```
-* title: Hello, Cloud Customer 1!!
-* body: We sedn test2.
-```
-
 ## Query of Mails
 
 ### Query List of Mail Deliveries
@@ -576,7 +585,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/sender/mails|
+|GET|	/email/v1.4/appKeys/{appKey}/sender/mails|
 
 [Path Parameter]
 
@@ -597,13 +606,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | senderName       | String  | X        | Sender's name                                                |
 | receiveMail      | String  | X        | Recipient's mail address                                     |
 | templateId       | String  | X        | Template number                                              |
-| sendStatus       | String  | X        | Delivery status code <br/> SST0: Preparing for sending, SST1: Sending,  <br/> SST2: Sending completed, SST3: Sending failed |
+| sendStatus       | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed |
 | pageNum          | Integer | X        | Page number (default: 1)                                     |
 | pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### Response
@@ -669,7 +679,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
 | -- resultId         | String  | Delivery result ID                                           |
 | -- resultDate       | String  | Date and time of delivery completed                          |
-| -- mailStatusCode   | String  | Delivery status code <br/> SST0: Preparing Delivery, SST1: Delivering,  <br/> SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- requestDate      | String  | Date and time of delivery requested                          |
 
@@ -681,19 +691,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v1.4/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path Parameter]
 
 |Value| Type | Description |
 |---|---|---|
-|appKey|	String| Original appkey |
+|appKey|	String| Original appKey |
 |requestId|	String| Request ID |
 |mailSeq|	Integer| Mail sequence |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
 
 #### Response
@@ -746,42 +757,42 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- mailStatusCode|	String| Delivery status |
-|-- mailStatusName|	String| Name of delivery status |
-|-- templateId|	String| Template ID |
-|-- templateName|	String| Template name |
-|-- senderName|	String| Sender's name |
-|-- senderMail|	String| Sender's mail address |
-|-- title|	String| Title |
-|-- body|	String| Body |
-|-- attachFileYn|	String| Attached or not |
-|-- resultId|	String| Mail delivery ID |
-|-- resultDate|	String| Date and time of delivery completed |
-|-- receivers|	List| List of recipients |
-|--- requestId|	String| Request ID |
-|--- mailSequence|	Integer| Mail sequence |
-|--- receiveType|	String| Recipient type |
-|--- receiveTypeName|	String| Name of recipient type |
-|--- receiveName|	String| Recipient's name |
-|--- receiveMailAddr|	String| Recipient's mail address |
-|--- readYn| String| Received or not |
-|--- readDate| String| Received date (yyyy-MM-dd HH:mm:ss.SSS) |
-|-- attachFileList|	List| List of attached files |
-|--- fileType|	String| Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-|--- fileId| String| File ID |
-|--- fileName|	String| Name of attached file |
-|--- filePath|	String| Path of attached file |
-|--- fileSize|	Integer| Size of attached file (byte) |
-|--- createDate|	String| Date and time of creation |
-|-- customHeaders|	Map|	[Custom Header](./Overview/#custom-header) |
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - data              | Object  | Data area                                                    |
+| -- mailStatusCode   | String  | Delivery status                                              |
+| -- mailStatusName   | String  | Name of delivery status                                      |
+| -- templateId       | String  | Template ID                                                  |
+| -- templateName     | String  | Template name                                                |
+| -- senderName       | String  | Sender's name                                                |
+| -- senderMail       | String  | Sender's mail address                                        |
+| -- title            | String  | Mail title                                                   |
+| -- body             | String  | Mail body                                                    |
+| -- attachFileYn     | String  | Attached or not                                              |
+| -- resultId         | String  | Mail delivery ID                                             |
+| -- resultDate       | String  | Date and time of delivery completed                          |
+| -- receivers        | List    | List of recipients                                           |
+| --- requestId       | String  | Request ID                                                   |
+| --- mailSequence    | Integer | Mail sequence                                                |
+| --- receiveType     | String  | Recipient type                                               |
+| --- receiveTypeName | String  | Name of recipient type                                       |
+| --- receiveName     | String  | Recipient's name                                             |
+| --- receiveMailAddr | String  | Recipient's mail address                                     |
+| --- readYn          | String  | Received or not                                              |
+| --- readDate        | String  | Received date (yyyy-MM-dd HH:mm:ss.SSS)                      |
+| -- attachFileList   | List    | List of attached files                                       |
+| --- fileType        | String  | Type of attached files (MAIL: files attached to mail, TEMPLATE: files attached to template) |
+| --- fileId          | String  | File ID                                                      |
+| --- fileName        | String  | Name of attached file                                        |
+| --- filePath        | String  | Path of attached file                                        |
+| --- fileSize        | Integer | Size of attached file (byte)                                 |
+| --- createDate      | String  | Date and time of creation                                    |
+| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
 
 ### Query Request for Tagged Mail Delivery
 
@@ -791,7 +802,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/tagMails|
+|GET|	/email/v1.4/appKeys/{appKey}/tagMails|
 
 [Path Parameter]
 
@@ -809,7 +820,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | senderMail    | String  | X        | Sender's mail address                                        |
 | senderName    | String  | X        | Sender's name                                                |
 | templateId    | String  | X        | Template ID                                                  |
-| sendStatus    | String  | X        | Delivery status code <br/> WAIT: Waiting, READY: Ready, <br/>SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, <br/>SENDING: Delivering, COMPLETE: Delivery Completed, <br/>FAIL: Delivery Failed, CANCEL: Delivery Canceled |
+| sendStatus    | String  | X        | Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery,  SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
 | pageNum       | Integer | X        | Page number (default: 1)                                     |
 | pageSize      | Integer | X        | Number of queries (default: 15)                              |
 
@@ -821,7 +832,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 [Example]
 
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### Response
@@ -876,7 +887,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | -- requestId     | String      | Request ID                                                   |
 | -- requestIp     | String      | Request IP                                                   |
 | -- requestDate   | String      | Request time                                                 |
-| -- tagSendStatus | String      | Delivery status code  <br />WAIT: Waiting, READY: Ready, <br/>SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed, <br/>FAIL: Delivery Failed, CANCEL: Delivery Canceled |
+| -- tagSendStatus | String      | Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
 | -- tagExpression | List:String | Tag expression                                               |
 | -- templateId    | String      | Template ID                                                  |
 | -- templateName  | String      | Template name                                                |
@@ -899,7 +910,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v1.4/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path Parameter]
 
@@ -915,13 +926,14 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | receiveMail      | String  | X        | Recipient's mail address                                     |
 | startReceiveDate | String  | X        | Start date of receiving (yyyy-MM-dd HH:mm:ss)                |
 | endReceiveDate   | String  | X        | End date of receiving (yyyy-MM-dd HH:mm:ss)                  |
-| receiveStatus    | String  | X        | Delivery status code <br/> SST0: Preparing Delivery, SST1: Delivering,  <br/> SST2: Delivery Completed, SST3: Delivery Failed |
+| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
 | pageNum          | Integer | X        | Page number (default: 1)                                     |
 | pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### Response
@@ -972,7 +984,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | -- requestId      | String  | Request ID                                                   |
 | -- mailSequence   | Integer | Mail sequence                                                |
 | -- receiveMail    | String  | Recipient's address                                          |
-| -- mailStatusCode | String  | Delivery status code <br/> SST0: Preparing Delivery, SST1: Delivering,  <br/> SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
 | -- mailStatusName | String  | Name of mail status                                          |
 | -- resultId       | String  | SMTP ID                                                      |
 | -- resultDate     | String  | Time of actual delivery                                      |
@@ -991,19 +1003,20 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v1.4/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path Parameter]
 
-|Value| Type | Description |
-|---|---|---|
-|appKey|	String| Original appkey |
-|requestId|	String| Request ID |
-|mailSequence|	Integer| Mail sequence |
+| Value        | Type    | Description     |
+| ------------ | ------- | --------------- |
+| appKey       | String  | Original appkey |
+| requestId    | String  | Request ID      |
+| mailSequence | Integer | Mail sequence   |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
 ```
 
 #### Response
@@ -1057,46 +1070,46 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- pageNum|	Integer| Current page number |
-|-pageSize|	Integer| Number of queried data |
-|- totalCount|	Integer| Total number of data |
-|- data|	List| Data area |
-|-- requestId  | String  | Request ID |
-|-- requestIp | String  | Request IP |
-|-- templateId | String  | Template ID |
-|-- templateName | String  | Template name |
-|-- mailStatusCode | String  | Mail status code <br/> SST0: Preparing Delivery, SST1: Delivering,  <br/> SST2: Delivery Completed, SST3: Delivery Failed |
-|-- mailStatusName | String  | Mail status name |
-|-- requestDate | String  | Request time |
-|-- resultDate | String  | Result time |
-|-- senderName | String  | Sender's name |
-|-- senderMail | String  | Sender's address |
-|-- resultId | String  | SMTP ID |
-|-- title | String  | Title |
-|-- body | String  | Body |
-|-- receivers | List| List of recipients |
-|--- requestId | String  | Request ID |
-|--- mailSequence | Integer  | Mail sequence |
-|--- receiveType | String  | Type of recipients (MRT0: recipient, MRT1: Cc, MRT2: Bcc) |
-|--- receiveTypeName | String  | Name of recipient type |
-|--- receiveMailAddr | String  | Recipient's mail address |
-|--- readYn | String  | Read or not |
-|--- readDate | String  | Read time |
-|-- attachFileList | List  | List of attached files |
-|--- fileType|	String| Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-|--- fileId| String| File ID |
-|--- fileName|	String| Name of attached file |
-|--- filePath|	String| Path of attached file |
-|--- fileSize|	Integer| Size of attached file (byte) |
-|--- createDate|	String| Date and time of creation |
-|-- customHeaders|	Map|	[Custom Header](./Overview/#custom-header) |
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - pageNum           | Integer | Current page number                                          |
+| -pageSize           | Integer | Number of queried data                                       |
+| - totalCount        | Integer | Total number of data                                         |
+| - data              | List    | Data area                                                    |
+| -- requestId        | String  | Request ID                                                   |
+| -- requestIp        | String  | Request IP                                                   |
+| -- templateId       | String  | Template ID                                                  |
+| -- templateName     | String  | Template name                                                |
+| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusName   | String  | Name of mail status                                          |
+| -- requestDate      | String  | Request time                                                 |
+| -- resultDate       | String  | Result time                                                  |
+| -- senderName       | String  | Sender's name                                                |
+| -- senderMail       | String  | Sender's address                                             |
+| -- resultId         | String  | SMTP ID                                                      |
+| -- title            | String  | Title                                                        |
+| -- body             | String  | Body                                                         |
+| -- receivers        | List    | List of recipients                                           |
+| --- requestId       | String  | Request ID                                                   |
+| --- mailSequence    | Integer | Mail sequence                                                |
+| --- receiveType     | String  | Type of recipients (MRT0: recipient, MRT1: Cc, MRT2: Bcc)    |
+| --- receiveTypeName | String  | Name of recipient type                                       |
+| --- receiveMailAddr | String  | Recipient's mail address                                     |
+| --- readYn          | String  | Read or not                                                  |
+| --- readDate        | String  | Read time                                                    |
+| -- attachFileList   | List    | List of attached files                                       |
+| --- fileType        | String  | Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
+| --- fileId          | String  | File ID                                                      |
+| --- fileName        | String  | Name of attached file                                        |
+| --- filePath        | String  | Path of attached file                                        |
+| --- fileSize        | Integer | Size of attached file (byte)                                 |
+| --- createDate      | String  | Date and time of creation                                    |
+| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
 
 ## Query of Templates
 
@@ -1108,7 +1121,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/templates|
+|GET|	/email/v1.4/appKeys/{appKey}/templates|
 
 [Path Parameter]
 
@@ -1127,8 +1140,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | all        | Boolean | X        | Query list of all templates or not |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
 #### Response
@@ -1136,65 +1150,53 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 ```
 {
     "header": {
-        "isSuccessful": Boolean,
         "resultCode": Integer,
-        "resultMessage": String
+        "resultMessage": String,
+        "isSuccessful": Boolean
     },
     "body": {
         "pageNum": Integer,
         "pageSize": Integer,
         "totalCount": Integer,
-        "data": [{
-            "templateId": String,
-            "serviceId": Integer,
-            "categoryId": Integer,
-            "categoryName": String,
-            "sort": Integer,
-            "templateName": String,
-            "templateDesc": String,
-            "useYn": String,
-            "sendMailAddress": String,
-            "sendType": String,
-            "sendTypeName": String,
-            "title": String,
-            "body": String,
-            "attachFileYn": String,
-            "delYn": String,
-            "createDate": String,
-            "createUser": String,
-            "updateDate": String,
-            "updateUser": String,
-}]
+        "data": [
+            {
+                "templateId": String,
+                "categoryId": Integer,
+                "categoryName": String,
+                "templateName": String,
+                "templateDesc": String,
+                "useYn": String,
+                "delYn": String,
+                "title": String,
+                "createDate": String,
+                "updateDate": String
+            }
+        ]
     }
 }
 ```
 
-| Value             | Type    | Description                         |
-| ----------------- | ------- | ----------------------------------- |
-| header            | Object  | Header area                         |
-| - isSuccessful    | Boolean | Successful or not                   |
-| - resultCode      | Integer | Failure code                        |
-| - resultMessage   | String  | Failure message                     |
-| body              | Object  | Body area                           |
-| - pageNum         | Integer | Current page number                 |
-| -pageSize         | Integer | Number of queried data              |
-| - totalCount      | Integer | Total number of data                |
-| -data             | List    | Data area                           |
-| --templateId      | String  | Template ID                         |
-| --serviceId       | Integer | Service ID                          |
-| --categoryId      | Integer | Category ID                         |
-| --categoryName    | String  | Category name                       |
-| --sort            | Integer | Sequence                            |
-| --templateName    | String  | Template name                       |
-| --templateDesc    | String  | Template description                |
-| -- useYn          | String  | Use or not                          |
-| --sendMailAddress | String  | Sender's mail address for templates |
-| --title           | String  | Mail title                          |
-| --body            | String  | Mail body                           |
-| --attachFileYn    | String  | Add template attachment or not      |
-| --delYn           | String  | Delete or not                       |
-| --createDate      | String  | Date and time of creation           |
-| --updateDate      | String  | Date and time of modification       |
+|Value| Type | Description |
+|---|---|---|
+|header|	Object| Header area |
+|- isSuccessful|	Boolean| Successful or not |
+|- resultCode|	Integer| Failure code |
+|- resultMessage|	String| Failure message |
+|body|	Object| Body area |
+|- pageNum|	Integer| Current page number |
+|- pageSize|	Integer| Number of queried data |
+|- totalCount|	Integer| Total number of data |
+|- data|	List| Data area |
+|-- templateId|	String| Template ID |
+|-- categoryId|	Integer| Category ID |
+|-- categoryName|	String| Category name |
+|-- templateName|	String| Template name |
+|-- templateDesc|	String| Template description |
+|-- useYn|	String| Use or not |
+|-- delYn|	String| Delete or not |
+|-- title|	String| Title |
+|-- createDate|	String| Date and time of creation |
+|-- updateDate|	String| Date and time of modification |
 
 ### Query Template Details
 
@@ -1204,7 +1206,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v1.4/appKeys/{appKey}/templates/{templateId}|
 
 [Path Parameter]
 
@@ -1214,8 +1216,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |templateId|	String| Template ID |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/templates/{templateId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates/{templateId}"
 ```
 
 #### Response
@@ -1223,78 +1226,68 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 ```
 {
     "header": {
-        "isSuccessful": Boolean,
         "resultCode": Integer,
-        "resultMessage": String
+        "resultMessage": String,
+        "isSuccessful": Boolean
     },
     "body": {
-    "data": [{
+        "data": {
             "templateId": String,
-            "serviceId": Integer,
             "categoryId": Integer,
             "categoryName": String,
             "templateName": String,
             "templateDesc": String,
             "useYn": String,
+            "delYn": String,
             "sendMailAddress": String,
             "title": String,
+            "templateType": String,
             "body": String,
-            "delYn": String,
             "createDate": String,
-            "createUser": String,
             "updateDate": String,
-            "updateUser": String,
-            "attachFileList": [{
-                "fileId": Integer,
-                "serviceId" : Integer,
-                "templateId": String,
-                "filePath": String,
-                "fileName": String,
-                "fileSize" : Integer,
-                "createDate": String,
-                "createUser": String,
-                "updateDate" : String,
-                "updateUser" : String
-            }]
-        }]
+            "attachFileList": [
+                {
+                    "fileType": String,
+                    "fileId": Integer,
+                    "fileName": String,
+                    "filePath": String,
+                    "fileSize": Integer,
+                    "createDate": String
+                }
+            ]
+        }
     }
 }
 ```
 
-| Value             | Type    | Description                           |
-| ----------------- | ------- | ------------------------------------- |
-| header            | Object  | Header area                           |
-| - isSuccessful    | Boolean | Successful or not                     |
-| - resultCode      | Integer | Failure code                          |
-| - resultMessage   | String  | Failure message                       |
-| body              | Object  | Body area                             |
-| -data             | List    | Data area                             |
-| --templateId      | String  | Template ID                           |
-| --serviceId       | Integer | Service ID                            |
-| --categoryId      | Integer | Category ID                           |
-| --categoryName    | String  | Category name                         |
-| --templateName    | String  | Template name                         |
-| --templateDesc    | String  | Template description                  |
-| --useYn           | String  | Use or not (Y: In use, N: Not in use) |
-| --sendMailAddress | String  | Sender's mail address                 |
-| --title           | String  | Mail address                          |
-| --body            | String  | Mail body                             |
-| --delYn           | String  | Delete or not                         |
-| --createDate      | String  | Date and time of creation             |
-| --createUser      | String  | Creator                               |
-| --updateDate      | String  | Date and time of modification         |
-| --updateUser      | String  | Modifier                              |
-| --attachFileList  | List    | List of attached files                |
-| ---fileId         | Integer | Attachment ID                         |
-| ---serviceId      | Integer | Service ID                            |
-| ---templateId     | String  | Template ID                           |
-| ---filePath       | String  | Path of attached file                 |
-| ---fileName       | String  | Name of attached file                 |
-| ---fileSize       | Integer | Size of attached file                 |
-| ---createDate     | String  | Date and time of creation             |
-| ---createUser     | String  | Creator                               |
-| ---updateDate     | String  | Date and time of modification         |
-| ---updateUser     | String  | Modifier                              |
+|Value| Type | Description |
+|---|---|---|
+|header|	Object| Header area |
+|- isSuccessful|	Boolean| Successful or not |
+|- resultCode|	Integer| Failure code |
+|- resultMessage|	String| Failure message |
+|body|	Object| Body area |
+|- data|	List| Data area |
+|-- templateId|	String| Template ID |
+|-- categoryId|	Integer| Category ID |
+|-- categoryName|	String| Category name |
+|-- templateName|	String| Template name |
+|-- templateDesc|	String| Template description |
+|-- useYn|	String| Use or not (Y= In use, N= Not in use) |
+|-- delYn|	String| Delete or not (Y= Delete, N= Not delete) |
+|-- sendMailAddress|	String| Sender's mail address |
+|-- title|	String| Mail address |
+|-- templateType|	String| Template type <br/>DEFAULT(default), FREEMARKER) |
+|-- body|	String| Body |
+|-- createDate|	String| Date and time of creation |
+|-- updateDate|	String| Date and time of modification |
+|-- attachFileList|	List| List of attached files |
+|--- fileType|	String| Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
+|--- fileId| String| File ID |
+|--- fileName|	String| Name of attached file |
+|--- filePath|	String| Path of attached file |
+|--- fileSize|	Integer| Size of attached file (byte) |
+|--- createDate|	String| Date and time of creation |
 
 ## Tag Management
 
@@ -1306,7 +1299,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/tags|
+|GET|	/email/v1.4/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -1316,14 +1309,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [Query Parameter]
 
-|Value| Type | Required | Description |
-|---|---|---|---|
-|pageNum|	Integer|	X| Page number (Default : 1) |
-|pageSize|	Integer|	X| Number of queries (Default : 15) |
+| Value    | Type    | Required | Description                      |
+| -------- | ------- | -------- | -------------------------------- |
+| pageNum  | Integer | X        | Page number (Default : 1)        |
+| pageSize | Integer | X        | Number of queries (Default : 15) |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
 ```
 
 #### Response
@@ -1372,7 +1366,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/tags|
+|POST|	/email/v1.4/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -1387,8 +1381,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |tagName|	String|	O| Tag name |
 
 [Example]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tags -d '{"tagName":"sample tag"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tags -d '{"tagName":"sample tag"}'
 ```
 
 #### Response
@@ -1426,7 +1421,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v1.3/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v1.4/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
@@ -1442,8 +1437,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |tagName|	String|	O| Tag name |
 
 [Example]
+
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"sample tag2"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"sample tag2"}'
 ```
 
 #### Response
@@ -1465,29 +1461,30 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
 
-### Delete Tags
+### Delete Tags	
 
-#### Request
+#### Request 
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.3/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v1.4/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
-|Value| Type | Description |
+|Value| Type | Desription |
 |---|---|---|
 |appKey|	String| Original appkey |
 |tagId|	String| Tag ID |
 
 [Example]
+
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/tags/{tagId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/tags/{tagId}
 ```
 
-#### Response 
+#### Response
 
 ```
 {
@@ -1506,17 +1503,17 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
 
-## UID Management 
+## UID Management
 
-### Query UIDs 
+### Query UIDs
 
-#### Request 
+#### Request
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/uids|
+|GET|	/email/v1.4/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -1534,8 +1531,9 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 | limit     | Integer     | X        | Number of queries (default: 15)                              |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
 ```
 
 #### Response
@@ -1600,13 +1598,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 ### Get UIDs
 
-#### Request
+#### Request 
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v1.4/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -1616,8 +1614,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |uid|	String|	UID |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids/{uid}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids/{uid}"
 ```
 
 #### Response
@@ -1679,7 +1678,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/uids|
+|POST|	/email/v1.4/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -1706,7 +1705,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 [Example]
 
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhnent.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhnent.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhnent.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhnent.com"}]}]}'
 ```
 
 #### Response
@@ -1736,7 +1735,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.3/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v1.4/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -1746,8 +1745,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |uid|	String|	UID|
 
 [Example]
+
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids/{uid}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids/{uid}
 ```
 
 #### Response
@@ -1777,13 +1777,13 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.3/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v1.4/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path Parameter]
 
 |Value| Type | Description |
 |---|---|---|
-|appKey|	String| Original appKey |
+|appKey|	String| Original appkey |
 |uid|	String|	UID|
 
 [Request Body]
@@ -1793,8 +1793,9 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |emailAddress|	String|	O| Mail address |
 
 [Example]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhnent.com"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhnent.com"}'
 ```
 
 #### Response
@@ -1824,19 +1825,20 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.3/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v1.4/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path Parameter]
 
-|Value| Type | Description |
-|---|---|---|
-|appKey|	String| Original appkey |
-|uid|	String|	UID|
-|emailAddress|	String| Mail address |
+| Value        | Type   | Description     |
+| ------------ | ------ | --------------- |
+| appKey       | String | Original appkey |
+| uid          | String | UID             |
+| emailAddress | String | Mail address    |
 
 [Example]
+
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhnent.com
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhnent.com
 ```
 
 #### Response
@@ -1858,7 +1860,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
 
-## Query Statistics
+## Query Statistics	
 
 ### Query Daily Statistics
 
@@ -1868,7 +1870,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/statistics/daily
+|GET|	/email/v1.4/appKeys/{appKey}/statistics/view |
 
 [Path Parameter]
 
@@ -1878,254 +1880,19 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [Query Parameter]
 
-| Value   | Type   | Required | Description                                                  |
-| ------- | ------ | -------- | ------------------------------------------------------------ |
-| from    | String | O        | Start date of statistical query (year-month-day)<br/>(yyyy-MM-dd) |
-| to      | String | O        | End date of statistical query (year-month-day)<br/>(yyyy-MM-dd) |
-| type    | String | X        | Query type<br/>* REQUEST:Request<br/>* SENT: Sent<br/>* RECEIVED :Received<br/>* OPENED: Opened |
-| filters | String | X        | Search conditions (multiple parameters are available)<br/>* MAILTYPE: Statistics per mail type (general/mass)<br/>* TEMPLATE: Statistics per template |
+|Value| Type | Required | Description |
+|---|---|---|---|
+|from|	String|	O | Start date of statistical query<br/> yyyy-mm-dd HH:mm |
+|to|	String|	O | End date of statistical query<br/> yyyy-mm-dd HH:mm |
+|searchType| String | O | Statistics Type<br/>DATE: By date, TIME: By time, DAY: By day |
+|mailTypes | String | X | Mail Type<br/>NORMAL: General, MASS: Mass<br/>Multiple inputs are available (mailTypes=NORMAL&mailTypes=MASS) |
+|adYn | String | X | Ad or not<br>Y: Ad, N: Not an ad<br>All, if left blank |
+|templateId | String | X | Template ID |
 
 [Example]
-```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/statistics/daily?from=2018-03-01&to=2018-03-07&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
-```
-
-#### Response
 
 ```
-{
-    "isSuccessful": Boolean,
-    "resultCode": Integer,
-    "resultMessage": String
-},
-    "body" : {
-        "data" : [
-        {
-            "ymd" :  String,
-            "appKey" :  String,
-            "type" :  String,
-            "mailType" :  String,
-            "templateId" :  String,
-            "templateName" :  String,
-            "tm00" :  int,
-            "tm01" :  int,
-            "tm02" :  int,
-            "tm03" :  int,
-            "tm04" :  int,
-            "tm05" :  int,
-            "tm06" :  int,
-            "tm07" :  int,
-            "tm08" :  int,
-            "tm09" :  int,
-            "tm10" :  int,
-            "tm11" :  int,
-            "tm12" :  int,
-            "tm13" :  int,
-            "tm14" :  int,
-            "tm15" :  int,
-            "tm16" :  int,
-            "tm17" :  int,
-            "tm18" :  int,
-            "tm19" :  int,
-            "tm20" :  int,
-            "tm21" :  int,
-            "tm22" :  int,
-            "tm23" :  int,
-            "sum" : int
-        }
-        ]
-    }
-}
-```
-
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | List    | Data area                                                    |
-| -- ymd          | String  | Date and time of statistics  (yyyyMMdd)                      |
-| -- appKey       | String  | Appkey                                                       |
-| -- type         | String  | Type of statistical query <br/>REQUEST: Request<br/>SENT: Sent<br/>RECEIVED: Received<br/>OPENED: Opened |
-| -- mailType     | String  | Mail type<br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
-| -- templateId   | String  | Template ID                                                  |
-| -- templateName | String  | Template name                                                |
-| -- tm00         | int     | 00:00:00 ~ 00:59:59                                          |
-| -- tm01         | int     | 01:00:00 ~ 01:59:59                                          |
-| -- tm02         | int     | 02:00:00 ~ 02:59:59                                          |
-| -- tm03         | int     | 03:00:00 ~ 03:59:59                                          |
-| -- tm04         | int     | 04:00:00 ~ 04:59:59                                          |
-| -- tm05         | int     | 05:00:00 ~ 05:59:59                                          |
-| -- tm06         | int     | 06:00:00 ~ 06:59:59                                          |
-| -- tm07         | int     | 07:00:00 ~ 07:59:59                                          |
-| -- tm08         | int     | 08:00:00 ~ 08:59:59                                          |
-| -- tm09         | int     | 09:00:00 ~ 09:59:59                                          |
-| -- tm10         | int     | 10:00:00 ~ 10:59:59                                          |
-| -- tm11         | int     | 11:00:00 ~ 11:59:59                                          |
-| -- tm12         | int     | 12:00:00 ~ 12:59:59                                          |
-| -- tm13         | int     | 13:00:00 ~ 13:59:59                                          |
-| -- tm14         | int     | 14:00:00 ~ 14:59:59                                          |
-| -- tm15         | int     | 15:00:00 ~ 15:59:59                                          |
-| -- tm16         | int     | 16:00:00 ~ 16:59:59                                          |
-| -- tm17         | int     | 17:00:00 ~ 17:59:59                                          |
-| -- tm18         | int     | 18:00:00 ~ 18:59:59                                          |
-| -- tm19         | int     | 19:00:00 ~ 19:59:59                                          |
-| -- tm20         | int     | 20:00:00 ~ 20:59:59                                          |
-| -- tm21         | int     | 21:00:00 ~ 21:59:59                                          |
-| -- tm22         | int     | 22:00:00 ~ 22:59:59                                          |
-| -- tm23         | int     | 23:00:00 ~ 23:59:59                                          |
-| -- sum          | int     | Total                                                        |
-
-### Query Monthly Statistics
-
-#### Request
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/statistics/monthly |
-
-[Path Parameter]
-
-|Value| Type | Description |
-|---|---|---|
-|appKey|	String| Original appkey |
-
-[Query Parameter]
-
-| Value   | Type   | Required | Description                                                  |
-| ------- | ------ | -------- | ------------------------------------------------------------ |
-| from    | String | O        | Start date of statistical query (year-month)<br/>(yyyy-MM)   |
-| to      | String | O        | End date of statistical query (year-month)<br/>(yyyy-MM)     |
-| type    | String | X        | Query type<br/>REQUEST: Request<br/>SENT: Sent <br/>RECEIVED: Received <br/>OPENED: Opened |
-| filters | String | X        | Search conditions (multiple parameters are available)<br/>* MAILTYPE: Statistics per mail type (general/mass)<br/>* TEMPLATE: Statistics per template |
-
-[Example]
-```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/statistics/monthly?from=2018-03&to=2018-04&type=OPENED&filters=MAILTYPE&filters=TEMPLATE"
-```
-
-#### Response
-
-```json
-{
-    "isSuccessful": Boolean,
-    "resultCode": Integer,
-    "resultMessage": String
-},
-    "body" : {
-        "data" : [
-        {
-            "ymd" :  String,
-            "appKey" :  String,
-            "type" :  String,
-            "mailType" :  String,
-            "templateId" :  String,
-            "templateName" :  String,
-            "tm00" :  int,
-            "tm01" :  int,
-            "tm02" :  int,
-            "tm03" :  int,
-            "tm04" :  int,
-            "tm05" :  int,
-            "tm06" :  int,
-            "tm07" :  int,
-            "tm08" :  int,
-            "tm09" :  int,
-            "tm10" :  int,
-            "tm11" :  int,
-            "tm12" :  int,
-            "tm13" :  int,
-            "tm14" :  int,
-            "tm15" :  int,
-            "tm16" :  int,
-            "tm17" :  int,
-            "tm18" :  int,
-            "tm19" :  int,
-            "tm20" :  int,
-            "tm21" :  int,
-            "tm22" :  int,
-            "tm23" :  int,
-            "sum" : int
-        }
-        ]
-    }
-}
-```
-
-| Value           | Type    | Description                                                  |
-| --------------- | ------- | ------------------------------------------------------------ |
-| header          | Object  | Header area                                                  |
-| - isSuccessful  | Boolean | Successful or not                                            |
-| - resultCode    | Integer | Failure code                                                 |
-| - resultMessage | String  | Failure message                                              |
-| body            | Object  | Body area                                                    |
-| - data          | List    | Data area                                                    |
-| -- ymd          | String  | Date of statistics (yyyyMMdd)                                |
-| -- appKey       | String  | Appkey                                                       |
-| -- type         | String  | Type of statistical query <br/>* REQUEST: Request <br/>* SENT: Sent <br/>* RECEIVED: Received <br/>* OPENED: Opened |
-| -- mailType     | String  | Mail type<br/>* MAILTYPE: Statistics per mail type (general/mass) <br/>* TEMPLATE: Statistics per template |
-| -- templateId   | String  | Template ID                                                  |
-| -- templateName | String  | Template name                                                |
-| -- tm00         | int     | 00:00:00 ~ 00:59:59                                          |
-| -- tm01         | int     | 01:00:00 ~ 01:59:59                                          |
-| -- tm02         | int     | 02:00:00 ~ 02:59:59                                          |
-| -- tm03         | int     | 03:00:00 ~ 03:59:59                                          |
-| -- tm04         | int     | 04:00:00 ~ 04:59:59                                          |
-| -- tm05         | int     | 05:00:00 ~ 05:59:59                                          |
-| -- tm06         | int     | 06:00:00 ~ 06:59:59                                          |
-| -- tm07         | int     | 07:00:00 ~ 07:59:59                                          |
-| -- tm08         | int     | 08:00:00 ~ 08:59:59                                          |
-| -- tm09         | int     | 09:00:00 ~ 09:59:59                                          |
-| -- tm10         | int     | 10:00:00 ~ 10:59:59                                          |
-| -- tm11         | int     | 11:00:00 ~ 11:59:59                                          |
-| -- tm12         | int     | 12:00:00 ~ 12:59:59                                          |
-| -- tm13         | int     | 13:00:00 ~ 13:59:59                                          |
-| -- tm14         | int     | 14:00:00 ~ 14:59:59                                          |
-| -- tm15         | int     | 15:00:00 ~ 15:59:59                                          |
-| -- tm16         | int     | 16:00:00 ~ 16:59:59                                          |
-| -- tm17         | int     | 17:00:00 ~ 17:59:59                                          |
-| -- tm18         | int     | 18:00:00 ~ 18:59:59                                          |
-| -- tm19         | int     | 19:00:00 ~ 19:59:59                                          |
-| -- tm20         | int     | 20:00:00 ~ 20:59:59                                          |
-| -- tm21         | int     | 21:00:00 ~ 21:59:59                                          |
-| -- tm22         | int     | 22:00:00 ~ 22:59:59                                          |
-| -- tm23         | int     | 23:00:00 ~ 23:59:59                                          |
-| -- sum          | int     | Total                                                        |
-
-### Query Integrated Statistics
-
-#### Request
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-|GET|	/email/v1.3/appKeys/{appKey}/statistics/view |
-
-[Path Parameter]
-
-|Value| Type | Description |
-|---|---|---|
-|appKey|	String| Original appkey |
-
-[Query Parameter]
-
-| Value      | Type   | Required | Description                                                  |
-| ---------- | ------ | -------- | ------------------------------------------------------------ |
-| from       | String | O        | Start date of statistical query <br/> yyyy-mm-dd HH:mm       |
-| to         | String | O        | End date of statistical query <br/> yyyy-mm-dd HH:mm         |
-| searchType | String | O        | Category of statistics <br/>DATE: By date, TIME: By time, DAY: By day |
-| mailTypes  | String | X        | Mail type<br/>NORMAL: General, MASS: Mass<br/>Multiple entries are available (mailTypes=NORMAL&mailTypes=MASS) |
-| adYn       | String | X        | Ad or not<br>Y:Ad, N: Not an ad<br>All, if left blank        |
-| templateId | String | X        | Template ID                                                  |
-
-[Example]
-```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
 ```
 
 #### Response
@@ -2153,22 +1920,22 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-| Value             | Type    | Description                          |
-| ----------------- | ------- | ------------------------------------ |
-| header            | Object  | Header area                          |
-| - isSuccessful    | Boolean | Successful or not                    |
-| - resultCode      | Integer | Failure code                         |
-| - resultMessage   | String  | Failure message                      |
-| body              | Object  | Body area                            |
-| - data            | List    | Data area                            |
-| -- divisionName   | String  | Statistical criteria (date/time/day) |
-| -- requestedCount | Long    | Number of delivery requests          |
-| -- sentCount      | Long    | Number of deliveries                 |
-| -- receivedCount  | Long    | Number of receipts                   |
-| -- openedCount    | Long    | Number of openings                   |
-| -- sentRate       | String  | Delivery rate                        |
-| -- receivedRate   | String  | Receiving rate                       |
-| -- openedRate     | String  | Opening rate                         |
+|Value| Type | Description |
+|---|---|---|
+|header|	Object| Header area |
+|- isSuccessful|	Boolean| Successful or not |
+|- resultCode|	Integer| Failure code |
+|- resultMessage|	String| Failure message |
+|body|	Object| Body area |
+|- data|	List| Data area |
+|-- divisionName | String | Statistical criteria (date/time/day) |
+|-- requestedCount | Long | Number of delivery requests |
+|-- sentCount | Long | Number of deliveries |
+|-- receivedCount | Long | Number of receipts |
+|-- openedCount | Long | Number of openings |
+|-- sentRate | String | Delivery rate |
+|-- receivedRate | String | Receiving rate |
+|-- openedRate | String | Opening rate |
 
 ## Rejection Management
 
@@ -2180,7 +1947,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v1.3/appKeys/{appKey}/block-receivers |
+| GET |	/email/v1.4/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -2197,8 +1964,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | pageSize    | Integer | X        | Number of queries (default: 15)                    |
 
 [Example]
+
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
 ```
 
 #### Response
@@ -2243,7 +2011,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v1.3/appKeys/{appKey}/block-receivers |
+| POST |	/email/v1.4/appKeys/{appKey}/block-receivers |
 
 [Request Body]
 
@@ -2254,8 +2022,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | - blockDate       | String | X        | Date of rejection (yyyy-MM-dd HH:mm:ss) |
 
 [Example]
+
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
 #### Response
@@ -2281,9 +2050,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [URL]
 
-| Http method | URI                                          |
-| ----------- | -------------------------------------------- |
-| PUT         | /email/v1.1/appKeys/{appKey}/block-receivers |
+|Http method|	URI|
+|---|---|
+| PUT |	/email/v1.4/appKeys/{appKey}/block-receivers |
 
 [Request Body]
 
@@ -2296,11 +2065,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 [Example]
 
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.1/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
 ```
 
 #### Response
-
 ```
 {
   "header": {
@@ -2309,9 +2077,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
     "resultMessage": String
   }
 }
-
 ```
-
 | Value           | Type    | Description       |
 | --------------- | ------- | ----------------- |
 | header          | Object  | Header area       |

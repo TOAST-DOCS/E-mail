@@ -1,12 +1,31 @@
 ## Notification > Email > Release Notes
 
-### 2019.01.29
+### 2019.08.27
+#### Feature Updates 
+* [API] API version updated to v1.5 
+* [API] Added Features for Sender's Group Key 
+    * Send mails, when requested, by specifying sender's group key, which helps to query request.   
+    * For more details, see [[Send Mail API](./api-guide/#_1)] and [[Query Mail API](./api-guide/#_25)].
+* [API] Added Receive or Not Field 
+    * Query request details to see if the mail has been received, as well as received time.
+    * For more details, see [[Query Mail Delivery Details API](./api-guide/#_29)].
 
+
+### 2019.07.23
+#### Feature Updates 
+* [API] Added Manage Templates API 
+    * Register, Modify, and Delete Templates are available on APIs. 
+    * For more details, see [[Manage Templates API](./api-guide/#template)].
+* [API] Added Manage Category API 
+    * Use categories to classify and manage templates. You may specify categories to be included when a template is created. 
+    * Register, Modify, Delete, and Query Categories are available on APIs. 
+    * For more details, see [[Manage Category API](./api-guide/#category)].
+    
+
+### 2019.01.29
 #### 기능 추가
 * [Console/API] 템플릿 아이디 길이 증가
     * 템플릿 아이디 길이 제한이 기존 10글자에서 50글자로 변경되었습니다.
-
-
 
 ### 2018.12.18
 #### 기능 추가
