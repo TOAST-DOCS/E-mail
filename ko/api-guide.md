@@ -38,24 +38,24 @@ Content-Type: application/json;charset=UTF-8
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|​senderAddress|	String|	O|	발신자 메일|
-|senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(default) |
-|title|	String|	O|	제목|
-|body|	String|	O|	내용|
-|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id|
-|templateId|	String|	X|	발송 템플릿 ID|
-|templateType| String| X| 템플릿 타입 <br/>DEFAULT(default), FREEMARKER)|
+|senderAddress|	String|	O|	발신자 메일 주소 ( 최대 100자 )|
+|senderName|	String|	X|	발신자 이름 ( 최대 100자 )|
+|requestDate|	String|	X|	발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
+|title|	String|	O|	메일 제목 (최대 998자)|
+|body|	String|	O|	메일 내용|
+|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id (파일 업로드 시 file id를 반환)|
+|templateId|	String|	X|	발송 템플릿 ID ( 최대 50자 )|
+|templateType| String| X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 |templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
-|- #key#|	String|	X|	치환 키 (##key##)|
-|- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
+|- key|	String|	X|	치환 키 (##key##)|
+|- value|	Object|	X|	치환 키에 매핑되는 Value값|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능(받는사람, 참조자 포함)|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
 |customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
-|senderGroupingKey| String| X| 발신자 그룹키 |
-|userId|	String|	X|	발송 구분자 ex)admin,system|
+|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
 
 [주의]
@@ -74,23 +74,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "resultCode": 0,
+        "resultMessage": "success",
+        "isSuccessful": true
     },
     "body": {
         "data": {
-            "requestId": String,
+            "requestId": "20190101000000ABCDEFG0",
             "results": [
                 {
-                    "receiveMailAddr": String,
-                    "receiveName": String,
-                    "receiveType": String,
-                    "resultCode": Integer,
-                    "resultMessage": String
+                    "receiveMailAddr": "receiver@nhn.com",
+                    "receiveName": "receiver",
+                    "receiveType": "MRT0",
+                    "resultCode": 0,
+                    "resultMessage": "success"
                 }
             ]
         }
@@ -101,7 +101,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -141,14 +141,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|​senderAddress|	String|	O|	발신자 메일|
-|senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자, 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	제목|
-|body|	String|	O|	내용|
-|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id|
-|templateType| String| X| 템플릿 타입 <br/>DEFAULT(default), FREEMARKER)|
-|templateId|	String|	X|	발송 템플릿 ID|
+|senderAddress|	String|	O|	발신자 메일 주소 ( 최대 100자 )|
+|senderName|	String|	X|	발신자 이름 ( 최대 100자 )|
+|requestDate|	String|	X|	발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
+|title|	String|	O|	메일 제목 (최대 998자)|
+|body|	String|	O|	메일 내용|
+|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id (파일 업로드 시 file id를 반환)|
+|templateId|	String|	X|	발송 템플릿 ID ( 최대 50자 )|
+|templateType| String| X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능|
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
@@ -156,8 +156,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
-|senderGroupingKey| String| X| 발신자 그룹키 |
-|userId|	String|	X|	발송 구분자 ex)admin,system|
+|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
+|userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
 [주의]
 
@@ -177,23 +177,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "resultCode": 0,
+        "resultMessage": "success",
+        "isSuccessful": true
     },
     "body": {
         "data": {
-            "requestId": String,
+            "requestId": "20190101000000ABCDEFG0",
             "results": [
                 {
-                    "receiveMailAddr": String,
-                    "receiveName": String,
-                    "receiveType": String,
-                    "resultCode": Integer,
-                    "resultMessage": String
+                    "receiveMailAddr": "receiver@nhn.com",
+                    "receiveName": "receiver",
+                    "receiveType": "MRT0",
+                    "resultCode": 0,
+                    "resultMessage": "success"
                 }
             ]
         }
@@ -204,7 +204,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -286,10 +286,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|​senderAddress|	String|	O|	발신자 메일|
-|senderName|	String|	X|	발신자 이름|
-|requestDate|	String|	X|	발송 일자, 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	제목|
+|senderAddress|	String|	O|	발신자 메일 ( 최대 100자 )|
+|senderName|	String|	X|	발신자 이름 ( 최대 100자 )|
+|requestDate|   String| X|  발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
+|title|	String|	O|	제목 ( 최대 998자 )|
 |body|	String|	O|	내용|
 |templateId|	String|	X|	발송 템플릿 ID|
 |receiver|	Object|	O|	수신자 |
@@ -298,8 +298,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
-|userId|	String|	X|	발송 구분자 ex)admin,system|
+|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header) ( 최대 100자 )|
+|userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
 [주의]
 
@@ -323,23 +323,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "resultCode": 0,
+        "resultMessage": "success",
+        "isSuccessful": true
     },
     "body": {
         "data": {
-            "requestId": String,
+            "requestId": "20190101000000ABCDEFG0",
             "results": [
                 {
-                    "receiveMailAddr": String,
-                    "receiveName": String,
-                    "receiveType": String,
-                    "resultCode": Integer,
-                    "resultMessage": String
+                    "receiveMailAddr": "receiver@nhn.com",
+                    "receiveName": "receiver",
+                    "receiveType": "MRT0",
+                    "resultCode": 0,
+                    "resultMessage": "success"
                 }
             ]
         }
@@ -350,7 +350,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -382,32 +382,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Request body]
 
-```
-{
-    "senderAddress": String,
-    "senderName": String,
-    "requestDate": String,
-    "title": String,
-    "body": String,
-    "templateId": String,
-    "adYn": String,
-    "autoSendYn": String,
-    "attachFileIdList": List:String,
-    "tagExpression": List:String,
-    "userId": String
-}
-```
-
 |값|	타입|	필수|	설명|
 | - | - | - | - |
-| senderAddress  | String | O|발신자 주소 |
-| senderName | String | X|발신자명 |
-| requestDate | String | X|발송 일자 미입력시 : 현재 시간으로 발송 (yyyy-MM-dd HH:mm:ss) |
-| title  | String | O|제목 |
+|senderAddress|	String|	O|	발신자 메일 ( 최대 100자 )|
+|senderName|	String|	X|	발신자 이름 ( 최대 100자 )|
+|requestDate|   String| X|  발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
+|title|	String|	O|	제목 ( 최대 998자 )|
 | body  | String | O|내용 |
 | templateId  | String | X|템플릿 ID |
-| adYn  | String | X|광고 여부 (default 'N') |
-| autoSendYn  | String | X|자동 발송 여부 (default 'Y') |
+| adYn  | String | X|광고 여부 'N'(기본값) |
+| autoSendYn  | String | X|자동 발송 여부 'Y'(기본값) |
 | attachFileIdList  | List:Integer | X|첨부파일 리스트 |
 | tagExpression  | List:String | O|태그 표현식 |
 |customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
@@ -430,16 +414,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful":boolean,
-        "resultCode":Integer,
-        "resultMessage":String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
         "data": {
-            "requestId":String
+            "requestId": "20190101000000ABCDEFG0"
         }
     }
 }
@@ -448,7 +432,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -472,14 +456,6 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |appKey|	String|	고유의 appKey|
 
 [Request body]
-
-```
-{
-    "fileName": String,
-    "createUser": String,
-    "fileBody": Byte[]
-}
-```
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
@@ -513,7 +489,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -611,14 +587,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |senderAddress|	String|	X|	발신메일 주소|
 |senderName|	String|	X|	발신자 이름|
-|receiveMailAddr|	String|	X|	수신메일 주소|
-|templateId|	String|	X|	템플릿번호|
+|receiveMailAddr|	String|	X|	수신 메일 주소|
+|templateId|	String|	X|	템플릿 ID|
 |mailStatusCode|	String|	X|	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
 |isReceived| Boolean| X | 수신 여부 |
 |isOpened| Boolean| X | 읽음 여부 |
 |senderGroupingKey| String| X| 발신자 그룹키|
-|pageNum|	Integer|	X|	페이지 번호: 1(default)|
-|pageSize|	Integer|	X|	조회 건수: 15(default)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 * **requestId** 또는 **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
 
@@ -630,7 +606,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -671,7 +647,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -680,7 +656,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- totalCount|	Integer|	총 데이터 건수|
 |- data|	List|	데이터 영역|
 |-- requestId|	String|	요청 ID|
-|-- mailSeq|	Integer|	메일 순번|
+|-- mailSeq|	Integer|	한 요청에 여러 메일을 보낸 경우, 각 메일에 부여되는 순번|
 |-- requestDate|	String|	발신일시|
 |-- templateId|	String|	템플릿ID|
 |-- templateName|	String|	템플릿명|
@@ -726,7 +702,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |---|---|---|
 |appKey|	String|	고유의 appKey|
 |requestId|	String|	요청ID|
-|mailSeq|	Integer|	메일 순번|
+|mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값)|
 
 [예시]
 ```
@@ -735,7 +711,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -793,7 +769,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -828,7 +804,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
-|--- createDate|	String|	생성일시|
+|--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹키 |
 
@@ -869,8 +845,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |senderName|	String|	X|	발신자 이름|
 |templateId|	String|	X|	템플릿 ID|
 |sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [주의]
 
@@ -884,36 +860,39 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
-        "pageNum": Integer,
-        "pageSize": Integer,
-        "totalCount": Integer,
+        "pageNum": 1,
+        "pageSize": 15,
+        "totalCount": 1,
         "data": [
             {
-                "requestId": String,
-                "requestIp": String,
-                "requestDate": String,
-                "tagSendStatus": String,
-                "tagExpression": List:String,
-                "templateId": String,
-                "templateName": String,
-                "senderName": String,
-                "senderMailAddress": String,
-                "title": String,
-                "body": String,
-                "attachYn": String,
-                "adYn": String,
-                "createUser": String,
-                "createDate": String,
-                "updateUser": String,
-                "updateDate": String
+                "requestId": "20190101000000ABCDEFG0",
+                "requestIp": "127.0.0.1",
+                "requestDate": "2019-01-01 00:00:00.0",
+                "tagSendStatus": "COMPLETE",
+                "tagSendStatusName": "발송완료",
+                "tagExpression": [
+                    "ABCD1234"
+                ],
+                "templateId": "TEMPLATE",
+                "templateName": "Template",
+                "senderName": "sender",
+                "senderMailAddress": "sender@nhn.com",
+                "title": "Title",
+                "body": "Body",
+                "attachYn": "N",
+                "adYn": "N",
+                "createUser": "USER",
+                "createDate": "2019-09-24 09:33:25.0",
+                "updateUser": "USER",
+                "updateDate": "2019-09-24 09:35:15.0"
             }
         ]
     }
@@ -923,7 +902,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -945,9 +924,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- attachYn |  String  | 첨부파일여부 |
 |-- adYn |  String  | 광고여부 |
 |-- createUser |  String  | 생성자 |
-|-- createDate |  String  | 생성일시 |
+|-- createDate |  String  | 생성 일시 |
 |-- updateUser |  String  | 수정자 |
-|-- updateDate |  String  | 수정일시 |
+|-- updateDate |  String  | 수정 일시 |
 
 ### 태그 메일 발송 수신자 조회
 
@@ -974,8 +953,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
 |receiveStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ```
@@ -984,32 +963,32 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
-        "pageNum": Integer,
-        "pageSize": Integer,
-        "totalCount": Integer,
+        "pageNum": 1,
+        "pageSize": 15,
+        "totalCount": 1,
         "data": [
             {
-                "requestId": String,
-                "mailSequence": Integer,
-                "receiveMail": String,
-                "mailStatusCode": String,
-                "mailStatusName": String,
-                "resultId": String,
-                "resultDate": String,
-                "readYn": String,
-                "readDate": String,
-                "createUser": String,
-                "createDate": String,
-                "updateUser": String,
-                "updateDate": String
+                "requestId": "20190101000000ABCDEFG0",
+                "receiveMail": "receiver@nhn.com",
+                "mailStatusCode": "SST2",
+                "mailStatusName": "발송완료",
+                "resultId": "<20190101000000ABCDEFG0@mail>",
+                "resultDate": "2019-01-01 00:00:00.0",
+                "readYn": "Y",
+                "readDate": "2019-01-01 00:00:00.0",
+                "createUser": "USER",
+                "createDate": "2019-01-01 00:00:00.0",
+                "updateUser": "USER",
+                "updateDate": "2019-01-01 00:00:00.0",
+                "mailSequence": 0
             }
         ]
     }
@@ -1019,7 +998,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -1037,9 +1016,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- readYn | String  | 읽음 여부 |
 |-- readDate | String  | 읽은 시간 |
 |-- createUser |  String  | 생성자 |
-|-- createDate |  String  | 생성일시 |
+|-- createDate |  String  | 생성 일시 |
 |-- updateUser |  String  | 수정자 |
-|-- updateDate |  String  | 수정일시 |
+|-- updateDate |  String  | 수정 일시 |
 
 ### 태그 메일 발송 상세 조회
 
@@ -1066,50 +1045,52 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
         "data": {
-            "requestId": String,
-            "requestIp": String,
-            "templateId": String,
-            "templateName": String,
-            "mailStatusCode": String,
-            "mailStatusName": String,
-            "requestDate": String,
-            "resultDate": String,
-            "senderName": String,
-            "senderMail": String",
-            "resultId": String,
-            "title": String,
-            "body": String",
+            "requestId": "20190101000000ABCDEFG0",
+            "requestIp": "127.0.0.1",
+            "templateId": "TEMPLATE",
+            "templateName": "Template",
+            "mailStatusCode": "SST2",
+            "mailStatusName": "발송완료",
+            "requestDate": "2019-01-01 00:00:00.0",
+            "senderName": "sender",
+            "senderMail": "sender@nhn.com",
+            "resultId": "<20190101000000ABCDEFG0@mail>",
+            "resultDate": "2019-01-01 00:00:00.0",
+            "title": "Title",
+            "body": "Body",
+            "customHeaders": {
+                "Content-Type": "text/html"
+            },
             "receivers": [
                 {
-                    "requestId": String
-                    "mailSequence": String
-                    "receiveType": String
-                    "receiveTypeName": String
-                    "receiveMailAddr": String
-                    "readYn": String
-                    "readDate": String
+                    "requestId": "20190101000000ABCDEFG0",
+                    "receiveType": "MRT0",
+                    "receiveTypeName": "받는사람",
+                    "receiveMailAddr": "receiver@nhn.com",
+                    "readYn": "Y",
+                    "readDate": "2019-01-01 00:00:00.0",
+                    "mailSequence": "0"
                 }
             ],
             "attachFileList": [
                 {
-                    "fileType": String,
-                    "fileId": Integer
-                    "fileName": String,
-                    "filePath": String,
-                    "fileSize": Integer,
-                    "createDate": String
+                    "fileType": "MAIL",
+                    "fileId": 12345,
+                    "fileName": "test.csv",
+                    "filePath": "file/path",
+                    "fileSize": 10,
+                    "createDate": "2019-01-01 00:00:00.0"
                 }
-            ],
-            "customHeaders": Map
+            ]
         }
     }
 }
@@ -1118,7 +1099,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -1149,11 +1130,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- readDate | String  | 읽은 시간 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일ID|
+|--- fileId| String| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
-|--- createDate|	String|	생성일시|
+|--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 
 <p id="category"></p>
@@ -1174,7 +1155,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	고유의 앱키|
+|appKey|	String|	고유의 appKey|
 
 [Query parameter]
 
@@ -1182,8 +1163,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |---|---|---|---|
 |useYn|	String|	X|	사용 여부 Y, N |
 |categoryParentId|	Integer|	X|	부모 카테고리 ID |
-|pageNum|	Integer|	X|	페이지 번호(기본값: 1)|
-|pageSize|	Integer|	X|	조회 건수(기본값: 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ``` sh
@@ -1192,7 +1173,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1234,7 +1215,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- data|	List|	데이터 영역|
 |-- categoryId|	Integer|	카테고리 ID|
 |-- categoryParentId|	Integer| 부모 카테고리 ID(최상위 카테고리인 경우 0)|
-|-- depth|	Integer| 깊이(depth)(최상위 카테고리인 경우 0) |
+|-- depth|	Integer| depth (최상위 카테고리인 경우 0) |
 |-- categoryName|	String|	카테고리 이름|
 |-- categoryDesc|	String|	카테고리 설명|
 |-- useYn|	String|	사용 여부|
@@ -1257,7 +1238,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	고유의 앱키|
+|appKey|	String|	고유의 appKey|
 |categoryId|	String|	카테고리 ID|
 
 [예시]
@@ -1267,7 +1248,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1301,7 +1282,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- data|	List|	데이터 영역|
 |-- categoryId|	Integer|	카테고리 ID|
 |-- categoryParentId|	Integer| 부모 카테고리 ID(최상위 카테고리인 경우 0)|
-|-- depth|	Integer| 깊이(depth)(최상위 카테고리인 경우 0) |
+|-- depth|	Integer| depth (최상위 카테고리인 경우 0) |
 |-- categoryName|	String|	카테고리 이름|
 |-- categoryDesc|	String|	카테고리 설명|
 |-- useYn|	String|	사용 여부|
@@ -1326,7 +1307,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	고유의 앱키|
+|appKey|	String|	고유의 appKey|
 
 [Request body]
 
@@ -1346,7 +1327,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1386,7 +1367,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	고유의 앱키|
+|appKey|	String|	고유의 appKey|
 |categoryId|	Integer|	카테고리 ID|
 
 [Request body]
@@ -1405,7 +1386,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1436,7 +1417,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	고유의 앱키|
+|appKey|	String|	고유의 appKey|
 |categoryId|	Integer|	카테고리 ID|
 
 [예시]
@@ -1446,7 +1427,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1475,7 +1456,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.4/appKeys/{appKey}/templates|
+|GET|	/email/v1.5/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -1489,39 +1470,39 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |---|---|---|---|
 |categoryId|	Integer|	X|	카테고리 ID|
 |useYn|	String|	X|	사용 여부(Y/N)|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.5/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "resultCode": Integer,
-        "resultMessage": String,
-        "isSuccessful": Boolean
+        "resultCode": 0,
+        "resultMessage": "success",
+        "isSuccessful": true
     },
     "body": {
-        "pageNum": Integer,
-        "pageSize": Integer,
-        "totalCount": Integer,
+        "pageNum": 1,
+        "pageSize": 15,
+        "totalCount": 1,
         "data": [
             {
-                "templateId": String,
-                "categoryId": Integer,
-                "categoryName": String,
-                "templateName": String,
-                "templateDesc": String,
-                "useYn": String,
-                "delYn": String,
-                "title": String,
-                "createDate": String,
-                "updateDate": String
+                "templateId": "TEMPLATE",
+                "categoryId": 12345,
+                "categoryName": "Category",
+                "templateName": "Template",
+                "templateDesc": "Template",
+                "useYn": "Y",
+                "delYn": "N",
+                "title": "Title",
+                "createDate": "2019-01-01 00:00:00.0",
+                "updateDate": "2019-01-01 00:00:00.0"
             }
         ]
     }
@@ -1531,7 +1512,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -1547,8 +1528,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- useYn|	String|	사용여부|
 |-- delYn|	String|	삭제 여부|
 |-- title|	String|	메일 제목|
-|-- createDate|	String|	생성일시|
-|-- updateDate|	String|	수정일시|
+|-- createDate|	String|	생성 일시|
+|-- updateDate|	String|	수정 일시|
 
 ### 템플릿 상세 조회
 
@@ -1558,7 +1539,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.4/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v1.5/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -1569,41 +1550,41 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.4/appKeys/{appKey}/templates/{templateId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.5/appKeys/{appKey}/templates/{templateId}"
 ```
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "resultCode": Integer,
-        "resultMessage": String,
-        "isSuccessful": Boolean
+        "resultCode": 0,
+        "resultMessage": "success",
+        "isSuccessful": true
     },
     "body": {
         "data": {
-            "templateId": String,
-            "categoryId": Integer,
-            "categoryName": String,
-            "templateName": String,
-            "templateDesc": String,
-            "useYn": String,
-            "delYn": String,
-            "sendMailAddress": String,
-            "title": String,
-            "templateType": String,
-            "body": String,
-            "createDate": String,
-            "updateDate": String,
+            "templateId": "TEMPLATE",
+            "categoryId": 12345,
+            "categoryName": "Category",
+            "templateName": "Template",
+            "templateDesc": "Template",
+            "useYn": "Y",
+            "delYn": "N",
+            "sendMailAddress": "test@nhn.com",
+            "title": "Title",
+            "templateType": "DEFAULT",
+            "body": "Body",
+            "createDate": "2019-01-01 00:00:00.0",
+            "updateDate": "2019-01-01 00:00:00.0",
             "attachFileList": [
                 {
-                    "fileType": String,
-                    "fileId": Integer,
-                    "fileName": String,
-                    "filePath": String,
-                    "fileSize": Integer,
-                    "createDate": String
+                    "fileType": "TEMPLATE",
+                    "fileId": 12345,
+                    "fileName": "test.csv",
+                    "filePath": "file/path",
+                    "fileSize": 10,
+                    "createDate": "2019-01-01 00:00:00.0"
                 }
             ]
         }
@@ -1614,7 +1595,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -1628,17 +1609,17 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- delYn|	String|	삭제 여부(Y= 삭제, N= 삭제 아님)|
 |-- sendMailAddress|	String|	발신메일주소|
 |-- title|	String|	메일 주소|
-|-- templateType|	String|	템플릿 타입 <br/>DEFAULT(default), FREEMARKER)|
+|-- templateType|	String|	템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 |-- body|	String|	메일 내용|
-|-- createDate|	String|	생성일시|
-|-- updateDate|	String|	수정일시|
+|-- createDate|	String|	생성 일시|
+|-- updateDate|	String|	수정 일시|
 |-- attachFileList|	List|	첨부파일 리스트|
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| String| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
-|--- createDate|	String|	생성일시|
+|--- createDate|	String|	생성 일시|
 
 ### 템플릿 등록
 
@@ -1646,29 +1627,29 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [URL]
 
-|Http method|   URI|
+|Http method|	URI|
 |---|---|
-|POST|  /email/v1.5/appKeys/{appKey}/templates|
+|POST|	/email/v1.5/appKeys/{appKey}/templates|
 
 
 [Path parameter]
 
-|값| 타입| 설명|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|    String| 고유의 앱키|
+|appKey|	String|	고유의 appKey|
 
 [Request body]
 
-|값| 타입| 최대 길이 | 필수| 설명|
+|값|	타입|	최대 길이 | 필수|	설명|
 |---|---|---|---|---|
-| categoryId |  Integer|    - | O | 카테고리 ID |
+| categoryId |	Integer|	- | O |	카테고리 ID |
 | templateId | String | 50 | O | 템플릿 ID |
-| templateName |    String| 200 |   O | 템플릿 이름|
-| templateDesc |    String| 4000 |  X | 템플릿 설명|
-| useYn |   String| 1 | X|  사용 여부 Y(기본값), N|
+| templateName |	String| 200 |	O |	템플릿명|
+| templateDesc |	String| 4000 |	X |	템플릿 설명|
+| useYn |	String| 1 |	X|	사용 여부 Y(기본값), N|
 | sendMailAddress | String| 300 | O| 발신 메일 주소 |
 | title | String | 500 | O | 메일 제목 |
-| templateType |    String| 10 |    X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER |
+| templateType |	String| 10 |	X|	템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 | body | String | - | O | 메일 본문 |
 | attachFileIdList | List<Integer> | - | X | 첨부 파일 ID(fileId) |
 | userId | String | 50 | X | 사용자 ID |
@@ -1681,7 +1662,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1691,7 +1672,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 }
 ```
 
-|값| 타입| 설명|
+|값|	타입|	설명|
 |---|---|---|
 |header|    Object| 헤더 영역|
 |- isSuccessful|    Boolean| 성공 여부 |
@@ -1704,23 +1685,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [URL]
 
-|Http method|   URI|
+|Http method|	URI|
 |---|---|
-|POST|  /email/v1.5/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|	/email/v1.5/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
-|값| 타입| 설명|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|    String| 고유의 앱키|
+|appKey|	String|	고유의 appKey|
 
 [Request body]
 
-|값| 타입| 최대 길이| 필수|  설명|
+|값|	타입|	최대 길이| 필수|	설명|
 |---|---|---|---|---|
-|fileName|  String| 100|O| 파일 이름 |
-|fileBody|  Byte[]| - |O| 파일의 바이트[] 값 |
-|userId|    String| 50|X| 사용자 ID |
+|fileName|	String|	100|O|	파일이름|
+|fileBody|	Byte[]|	- |O|	파일의 Byte[] 값|
+|userId|	String|	50|X|	유저 ID|
 
 [예시]
 ``` sh
@@ -1729,7 +1710,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-``` json
+```json
 {
   "header": {
     "isSuccessful":  true,
@@ -1766,24 +1747,24 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [URL]
 
-|Http method|   URI|
+|Http method|	URI|
 |---|---|
-|PUT|   /email/v1.5/appKeys/{appKey}/templates/{templateId}|
+|PUT|	/email/v1.5/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
-|값| 타입| 설명|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|    String| 고유의 앱키|
-|templateId|    String| 템플릿 ID|
+|appKey|	String|	고유의 appKey|
+|templateId|	String|	템플릿 ID|
 
 [Request body]
 
-|값| 타입| 최대 길이 | 필수| 설명|
+|값|	타입|	최대 길이 | 필수|	설명|
 |---|---|---|---|---|
-| templateName |    String| 200 |   X | 템플릿 이름|
-| templateDesc |    String| 4000 |  X | 템플릿 설명|
-| useYn |   String| 1 | X | 사용 여부 Y, N|
+| templateName |	String| 200 |	X |	템플릿명|
+| templateDesc |	String| 4000 |	X |	템플릿 설명|
+| useYn |	String| 1 |	X |	사용 여부 Y, N|
 | sendMailAddress | String| 300 | X| 발신 메일 주소 |
 | title | String | 500 | X | 메일 제목 |
 | templateType |    String| 10 |    X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER |
@@ -1798,7 +1779,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1821,16 +1802,16 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [URL]
 
-|Http method|   URI|
+|Http method|	URI|
 |---|---|
-|DELETE|    /email/v1.5/appKeys/{appKey}/templates/{templateId}|
+|DELETE|	/email/v1.5/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
-|값| 타입| 설명|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|    String| 고유의 앱키|
-|templateId|    String| 템플릿 ID|
+|appKey|	String|	고유의 appKey|
+|templateId|	String|	템플릿 ID|
 
 [예시]
 ``` sh
@@ -1839,7 +1820,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 #### 응답
 
-``` json
+```json
 {
     "header": {
         "isSuccessful": true,
@@ -1879,8 +1860,8 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ```
@@ -1889,23 +1870,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
-        "pageNum": Integer,
-        "pageSize": Integer,
-        "totalCount": Integer,
+        "pageNum": 1,
+        "pageSize": 1,
+        "totalCount": 1,
         "data": [
             {
-                "tagId": String,
-                "tagName": String,
-                "createdDate": String,
-                "updatedDate": String
+                "tagId": "ABCD1234",
+                "tagName": "TAG",
+                "createdDate": "2019-01-01 00:00:00",
+                "updatedDate": "2019-01-01 00:00:00"
             }
         ]
     }
@@ -1915,15 +1896,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
 |- data|	List|	데이터 영역|
 |-- tagId | String | 태그 ID |
 |-- tagName | String | 태그 이름 |
-|-- createdDate | String | 생성일시 |
-|-- updatedDate | String | 수정일시 |
+|-- createdDate | String | 생성 일시 |
+|-- updatedDate | String | 수정 일시 |
 
 ### 태그 등록
 
@@ -1954,16 +1935,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
         "data": {
-            "tagId": String
+            "tagId": "ABCD1234"
         }
     }
 }
@@ -1972,7 +1953,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -2009,20 +1990,21 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2050,20 +2032,21 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2091,8 +2074,8 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 |---|---|---|---|
 |wheres|	List:String|	X|	조회 조건.</br> 알파뱃, 숫자, 괄호로 이루어진 문자열 배열. </br>괄호는 1개, AND, OR은 3개까지 사용할 수 있다.</br> (예시) tagId1,AND,tagId2|
 |offsetUid|	String|	X|	offset UID|
-|offset|	Integer|	X| offset(Default : 0)|
-|limit|	Integer|	X|	조회 건수(Default : 15)|
+|offset|	Integer|	X| offset 0(기본값)|
+|limit|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ```
@@ -2101,37 +2084,37 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
         "data": {
             "uids": [
                 {
-                    "uid": String,
+                    "uid": "UID",
                     "tags": [
                         {
-                            "tagId": String,
-                            "tagName": String,
-                            "createDate": String,
-                            "updateDate": String
+                            "tagId": "ABCD1234",
+                            "tagName": "TAG",
+                            "createdDate": "2019-01-01 00:00:00",
+                            "updatedDate": "2019-01-01 00:00:00"
                         }
                     ],
                     "contacts": [
                         {
-                            "contactType": String,
-                            "contact": String,
-                            "createDate": String"
+                            "contactType": "EMAIL_ADDRESS",
+                            "contact": "test@nhn.com",
+                            "createdDate": "2019-01-01 00:00:00"
                         }
                     ]
                 }
             ],
-            "isLast": Boolean,
-            "totalCount": Integer
+            "isLast": false,
+            "totalCount": 5
         }
     }
 }
@@ -2140,7 +2123,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -2150,12 +2133,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- tags | List | 태그 정보 리스트 |
 |---- tagId | String | 태그 ID |
 |---- tagName | String | 태그 이름 |
-|---- createDate | String | 태그 생성일시 |
-|---- updateDate | String | 태그 수정일시 |
+|---- createDate | String | 태그 생성 일시 |
+|---- updateDate | String | 태그 수정 일시 |
 |--- contacts | List | 연락처 리스트 |
 |---- contactType | String | 연락처 타입 (EMAIL_ADDRESS)|
 |---- contact | String | 연락처 (메일 주소)) |
-|---- createDate | String | 연락처 생성일시 |
+|---- createDate | String | 연락처 생성 일시 |
 |-- isLast | Boolean | 마지막 리스트 여부 |
 |-- totalCount | Integer | 총 데이터 건수  |
 
@@ -2183,29 +2166,29 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": String,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
         "data": {
-            "uid": "",
+            "uid": "UID",
             "tags": [
                 {
-                    "tagId": String,
-                    "tagName": String,
-                    "createDate": String,
-                    "updateDate": String
+                    "tagId": "ABCD1234",
+                    "tagName": "TAG",
+                    "createdDate": "2019-01-01 00:00:00",
+                    "updatedDate": "2019-01-01 00:00:00"
                 }
             ],
             "contacts": [
                 {
-                    "contactType": String,
-                    "contact": String,
-                    "createDate": String
+                    "contactType": "EMAIL_ADDRESS",
+                    "contact": "test@nhn.com",
+                    "createdDate": "2019-01-01 00:00:00"
                 }
             ]
         }
@@ -2216,7 +2199,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -2225,12 +2208,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- tags | List | 태그 정보 리스트 |
 |--- tagId | String | 태그 ID |
 |--- tagName | String | 태그 이름 |
-|--- createDate | String | 태그 생성일시 |
-|--- updateDate | String | 태그 수정일시 |
+|--- createDate | String | 태그 생성 일시 |
+|--- updateDate | String | 태그 수정 일시 |
 |-- contacts | List | 연락처 리스트 |
 |--- contactType | String | 연락처 타입 |
 |--- contact | String | 연락처 (메일 주소)) |
-|--- createDate | String | 연락처 생성일시 |
+|--- createDate | String | 연락처 생성 일시 |
 
 ### UID 등록
 
@@ -2255,8 +2238,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |uid|	String|	O|	UID|
 |tagIds|	List:String|	O|	태그 ID 목록|
 |contacts|	List|	O|	메일 주소 목록 |
-|-contactType| String| O| 연락처 타입 |
-|-contact| String| O| 연락처 (메일 주소) |
+|- contactType| String| O| 연락처 타입 |
+|- contact| String| O| 연락처 (메일 주소) |
 
 [주의]
 
@@ -2271,20 +2254,21 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2312,20 +2296,21 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2359,20 +2344,21 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2401,20 +2387,21 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 #### 응답
 
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
-    }
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2456,22 +2443,23 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 ```json
 {
-    "isSuccessful": Boolean,
-    "resultCode": Integer,
-    "resultMessage": String
-},
-    "body" : {
-        "data" : [
-          {
-                  "divisionName": String,
-                  "requestedCount": long,
-                  "sentCount": long,
-                  "receivedCount": long,
-                  "openedCount": long,
-                  "sentRate": String,
-                  "receivedRate": String,
-                  "openedRate": String
-        }
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": {
+        "data": [
+            {
+                "divisionName": "Tue",
+                "requestedCount": 1,
+                "sentCount": 1,
+                "receivedCount": 1,
+                "openedCount": 0,
+                "sentRate": "100.00",
+                "receivedRate": "100.00",
+                "openedRate": "0.00"
+            }
         ]
     }
 }
@@ -2480,7 +2468,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -2517,8 +2505,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	필수| 설명|
 |---|---|---|---|
 |mailAddress|	String|	X| 수신거부 목록에 등록되어 있는 이메일 주소|
-|pageNum|	Integer|	X|	페이지 번호(Default : 1)|
-|pageSize|	Integer|	X|	조회 건수(Default : 15)|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [예시]
 ```
@@ -2526,19 +2514,19 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 ```
 
 #### 응답
-```
+```json
 {
     "header": {
-        "isSuccessful": Boolean,
-        "resultCode": Integer,
-        "resultMessage": String
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
     },
     "body": {
-        "totalCount": Integer,
+        "totalCount": 1,
         "data": [
             {
-                "mailAddress": String,
-                "blockDate": String
+                "mailAddress": "block@nhn.com",
+                "blockDate": "2019-01-01 00:00:00.0"
             }
         ]
     }
@@ -2548,7 +2536,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
@@ -2583,19 +2571,20 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 ```
 
 #### 응답
-```
+```json
 {
-  "header": {
-    "isSuccessful":  Boolean,
-    "resultCode": Integer,
-    "resultMessage": String
-  }
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
@@ -2622,18 +2611,19 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 ```
 
 #### 응답
-```
+```json
 {
-  "header": {
-    "isSuccessful":  Boolean,
-    "resultCode": Integer,
-    "resultMessage": String
-  }
+    "header": {
+        "isSuccessful": true,
+        "resultCode": 0,
+        "resultMessage": "SUCCESS"
+    },
+    "body": null
 }
 ```
 |값|	타입|	설명|
 |---|---|---|
 |header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공여부|
+|- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
