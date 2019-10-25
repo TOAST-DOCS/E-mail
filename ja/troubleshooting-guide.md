@@ -47,7 +47,7 @@ Because the Gmail Image Proxy service does not forward users' cookies, you can't
 ```
 
 #### 参照
-https://developers.google.com/analytics/devguides/collection/protocol/v1/email
+[Google Analytics > Email Tracking - Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/email)
 
 ### Gmailの低い評判(low reputation)問題
 
@@ -78,5 +78,5 @@ Gmailに送信するメールは、受信者が望むものだということを
 評判を維持するには、メールの内容と関連性がある対象に送信する必要があります。ただメールを頻繁に送ることよりもっと重要です。送信対象のサイズは重要ではありません。メール内容と対象を細分化して送信する必要があります。購読キャンセルの原因の66%は関連性がないメール、55%はメッセージの配信が多すぎることです。
 
 #### 参考
-Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now [<Bronto>](https://bronto.com/)
-Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? [<Mailgun>](https://www.mailgun.com)
+Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now - [Bronto](https://bronto.com/)
+Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? - [Mailgun](https://www.mailgun.com)

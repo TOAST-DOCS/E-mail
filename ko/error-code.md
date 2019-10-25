@@ -93,4 +93,10 @@
 |false|-7004|The 'uid' is required, and can not contain the comma character(,).|
 |false|-7005|Invalid email address.|
 |false|-7006|The 'uids' is required|
+|false|-9993|Binding the requests error.|
+|false|-9994|Client exception.|
+|false|-9995|Invalid request. {}|
+|false|-9996|It supports only the content of a type 'application/json'.|
+|false|-9997|Can not read http message.|
+|false|-9998|Not exist API.|
 |false|-9999|Internal Error.|
