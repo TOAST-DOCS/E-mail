@@ -18,6 +18,18 @@ With Email, you can send mails, send by schedule, query delivery history, and ma
 
 - Sending mails  and query of RESTful API are also available on your application. 
 
+## Caution before Sending Mails
+To prevent mails sent from TOAST Email being processed as spam mails at external email services, keep note of the following: 
+
+First, DNS setting is required. <br/>Since mail is sent from the email address which includes the owner's domain via TOAST Email mail delivery server (SMTP), additional setting is required for DNS in which user's own domain can be serviced. <br/> _spfblocka.toast.com must be registered for SPF of TXT record at DNS. If SPF setting is not right, a mail may be considered as a spam or one from a faulty user, hence receiving a warning sign or saved at 'Spam Inbox', which makes it hard for the recipient to receive. <br>
+
+Please see [Troubleshooting Guide](./troubleshooting-guide/) on how to set SPF. 
+   
+
+Second, Gmail considers highly of domain reputation, even for determining spam mails. 
+
+If a sender of low domain reputation fast sends a bulk email, or sends ad emails to unsolicited users,  such mails may be saved at 'Inbox' but with a warning sign; or they may be saved at 'Spam Inbox', or restricted in speed, or even rejected of receiving. Therefore, any user who wants to send bulk emails must take cautious approach by taking reference of domain reputation management guide, so as to remain high on domain reputation.<br>
+For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
 
 ## Reference
 
