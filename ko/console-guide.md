@@ -53,9 +53,9 @@ TOAST는 정보통신망법을 준수할 수 있도록, '광고 메일'에 아�
 
 | 키 | 문구 | 사용 에시 |
 | - | - | - |
-| BLOCK_RECEIVER_LINK | [수신거부](/#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](/#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](/#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
 
 3. 수신 거부로 등록된 유저는 광고성 메일로 발송 시 발송되지 않습니다. 
