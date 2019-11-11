@@ -49,7 +49,10 @@ TOAST는 정보통신망법을 준수할 수 있도록, '광고 메일'에 아�
 1. 제목에 "(광고)" 문구가 필수적으로 들어가야 합니다.
 
 2. 수신거부 링크가 한글/영문 형태로 반드시 들어가야 합니다.
-- 다음은 수신 거부 링크로 제공하고 있는 키입니다.
+
+3. 수신 거부로 등록된 유저는 광고성 메일로 발송 시 발송되지 않습니다. 
+
+* 다음은 수신 거부 링크로 제공하고 있는 키입니다.
 
 | 키 | 문구 | 사용 에시 |
 | - | - | - |
@@ -57,8 +60,6 @@ TOAST는 정보통신망법을 준수할 수 있도록, '광고 메일'에 아�
 | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
 | JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
-
-3. 수신 거부로 등록된 유저는 광고성 메일로 발송 시 발송되지 않습니다. 
 
 ### 템플릿을 이용한 메일 발송
 
