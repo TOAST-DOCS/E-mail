@@ -1111,7 +1111,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	GET /email/v1.4/appKeys/{appKey}/categories|
+|GET| /email/v1.4/appKeys/{appKey}/categories|
 
 [Path parameter]
 

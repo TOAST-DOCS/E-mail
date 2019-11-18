@@ -32,7 +32,7 @@ Content-Type: application/json;charset=UTF-8
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -117,7 +117,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -241,7 +241,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -331,7 +331,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -454,7 +454,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -559,7 +559,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value     | Type    | Description     |
 | --------- | ------- | --------------- |
-| appKey    | String  | Original appkey |
+| appKey    | String  | Original appKey |
 | requestId | String  | Request ID      |
 | mailSeq   | Integer | Mail sequence   |
 
@@ -674,7 +674,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -782,7 +782,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value     | Type   | Description     |
 | --------- | ------ | --------------- |
-| appKey    | String | Original appkey |
+| appKey    | String | Original appKey |
 | requestId | String | Request ID      |
 
 [Query Parameter]
@@ -875,7 +875,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value        | Type    | Description     |
 | ------------ | ------- | --------------- |
-| appKey       | String  | Original appkey |
+| appKey       | String  | Original appKey |
 | requestId    | String  | Request ID      |
 | mailSequence | Integer | Mail sequence   |
 
@@ -998,7 +998,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -1095,7 +1095,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value      | Type   | Description     |
 | ---------- | ------ | --------------- |
-| appKey     | String | Original appkey |
+| appKey     | String | Original appKey |
 | templateId | String | Template ID     |
 
 [Example]
@@ -1198,7 +1198,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -1265,7 +1265,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -1320,7 +1320,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 | tagId  | String | Tag ID          |
 
 [Request Body]
@@ -1368,7 +1368,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 | tagId  | String | Tag ID          |
 
 [Example]
@@ -1412,7 +1412,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -1503,7 +1503,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 | uid    | String | UID             |
 
 [Example]
@@ -1577,7 +1577,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Request Body]
 
@@ -1634,7 +1634,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 | uid    | String | UID             |
 
 [Example]
@@ -1676,7 +1676,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 | uid    | String | UID             |
 
 [Request Body]
@@ -1724,7 +1724,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 | Value        | Type   | Description     |
 | ------------ | ------ | --------------- |
-| appKey       | String | Original appkey |
+| appKey       | String | Original appKey |
 | uid          | String | UID             |
 | emailAddress | String | Mail address    |
 
@@ -1769,7 +1769,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query parameter]
 
@@ -1888,7 +1888,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -2007,7 +2007,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 
@@ -2084,7 +2084,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 | Value  | Type   | Description     |
 | ------ | ------ | --------------- |
-| appKey | String | Original appkey |
+| appKey | String | Original appKey |
 
 [Query Parameter]
 

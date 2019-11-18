@@ -1,5 +1,10 @@
 ## Notification > Email > Release Notes
 
+### 2019.10.29
+#### Feature Updates
+* [Console] Added the Feature of Individual Delivery 
+    * For general delivery,  emails can be individually sent to each recipient. 
+
 ### 2019.08.27
 #### Feature Updates 
 * [API] API version updated to v1.5 
