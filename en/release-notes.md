@@ -1,5 +1,12 @@
 ## Notification > Email > Release Notes
 
+### 2019.11.26
+#### Feature Updates
+* [API] API Version Updated to v1.6
+* [API] User-Input Data Supported for Templates 
+    * When you use a template, user-input sender information, title, and body text are preferred for application than template data. 
+    * For more details, see [[Send Mails API](./api-guide/#_1)]
+
 ### 2019.10.29
 #### Feature Updates
 * [Console] Added the Feature of Individual Delivery 
