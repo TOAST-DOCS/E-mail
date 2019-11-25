@@ -58,7 +58,8 @@ Content-Type: application/json;charset=UTF-8
 
 [Caution]
 
-* To use a template, title and body are not required (input values, if available, precede template values)
+* On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
+* On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
 
 [Example 1]
 ```
@@ -115,6 +116,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### Updated for v1.6
 
+* When values are entered as requested on a template, user's request is applied before template. 
+
 ### Send Individual Mails
 
 * Mails can be sent to each of many recipients. Even if a same mail is sent to many recipients, each recipient can find his or her name only.  
@@ -157,8 +160,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Caution]
 
-* To use a template, title and body are not required (input values, if available, precede template values)
-
+* On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
+* On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
 
 [Example 1]
 ```
@@ -215,7 +218,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
 #### Updated for v1.6 
- 
+
+ * When values are entered as requested on a template, user's request is applied before template. 
 
 ### Sending General Ad Mails 
 
@@ -302,7 +306,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [Caution]
 
-- To use a template, title and body are not required (input values, if available, precede template values)
+* On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
+* On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
 
 #### Differences from General Mails 
 

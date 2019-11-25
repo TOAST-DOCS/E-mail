@@ -1,5 +1,16 @@
 ## Notification > Email > Release Notes
 
+### 2019.11.26
+#### Feature Updates
+* [API] API Version Updated to v1.6
+* [API] User-Input Data Supported for Templates 
+    * When you use a template, user-input sender information, title, and body text are preferred for application than template data. 
+    * For more details, see [[Send Mails API](./api-guide/#_1)]
+
+### 2019.10.29
+#### Feature Updates
+* [Console] Added the Feature of Individual Delivery 
+    * For general delivery,  emails can be individually sent to each recipient. 
 
 ### 2019.08.27
 #### Feature Updates 
@@ -21,13 +32,12 @@
     * Use categories to classify and manage templates. You may specify categories to be included when a template is created. 
     * Register, Modify, Delete, and Query Categories are available on APIs. 
     * For more details, see [[Manage Category API](./api-guide/#category)].
-
+    
 
 ### 2019.01.29
 #### 기능 추가
 * [Console/API] 템플릿 아이디 길이 증가
     * 템플릿 아이디 길이 제한이 기존 10글자에서 50글자로 변경되었습니다.
-
 
 ### 2018.12.18
 #### 기능 추가

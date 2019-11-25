@@ -60,7 +60,8 @@ Content-Type: application/json;charset=UTF-8
 
 [注意]
 
-* templateを使用する場合、title、bodyは任意のフィールドです。(入力時、入力された値がtemplateより優先適用)
+* テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
+* テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
 
 [例1]
 ```
@@ -116,6 +117,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### v1.6の変更事項
 
+* テンプレートを使用しながらリクエスト値を入力する場合は、テンプレートよりユーザーのリクエスト値が優先して適用されます。
+
 ### 個別メール送信
 
 * 受信者が複数人いる時、それぞれの受信者に個別にメールを送信する機能です。複数人に送っても、受信者には本人のみ表示されます。
@@ -158,8 +161,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [注意]
 
-* templateを使用する場合、title、bodyは必須から除外(入力時に入力された値がtemplateより優先適用)
-
+* テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
+* テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
 
 [例1]
 ```
@@ -217,6 +220,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 #### v1.6の変更事項
 
+* テンプレートを使用しながらリクエスト値を入力する場合は、テンプレートよりユーザーのリクエスト値が優先して適用されます。
 
 ### 広告性一般メール送信
 * リクエスト、レスポンス情報は、一般メール送信と同じです。
@@ -298,7 +302,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [注意]
 
-* templateを使用する場合、title、bodyは必須から除外(入力時に入力された値がtemplateより優先適用)
+* テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
+* テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
 
 #### 一般メールと異なる点
 認証メールの性格上、次のように異なる特性があります。
