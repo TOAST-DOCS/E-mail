@@ -52,6 +52,13 @@ Send ad mails in reference of the following:
 2. Links to Reject Receiving must be included in Korean/English.
 3. Ad mails are not delivered to the users who are registered to reject ones.
 
+Following keys are provided as part of rejection links: 
+
+| Key | Phrase|  Example of Usage |
+| - | - | - |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
+
 ### Use Templates to Send Mails
 
 You can send mails on a template created in advance.
@@ -94,7 +101,7 @@ Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab a
 Click **Schedule Delivery** at the bottom right of the mail body.
 On the **Schedule Delivery** window, click your choice.
 
-* **Confirm and Process**: Check mail address of each recipient and body in the **Retreive Tagged Mail Delivery** tab before sending mails. Keep note that mail cannot be sent unless user delivers.
+* **Confirm and Process**: Check mail address of each recipient and body in the **Retreive Tagged Mail Delivery** tab before sending mails. Unless delivery is requested **within 7 days** after registration, data may be deleted and it may not be properly sent (not supported for scheduled delivery).
 * **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
 
 ### Upload files to Send Mass Mails
@@ -129,7 +136,7 @@ Enter replacement data in the template file, such as recipient's mail address an
         * When recipient's mail address or replacement data is missing
 2. Click **Schedule Delivery** at the bottom right of the mail page.
 3. On the **Schedule Delivery** window, click your choice.
-    * **Check and Send**: Check mail address of each recipient and body in the **Retrieve Tagged Mail Delivery** tab before sending mails. Keep note that mail cannot be sent unless user delivers.
+    * **Check and Send**: Check mail address of each recipient and body in the **Retrieve Tagged Mail Delivery** tab before sending mails. Unless delivery is requested **within 7 days** after registration, data may be deleted and it may not be properly sent (not supported for scheduled delivery).
     * **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
 
 ## View Delivery
