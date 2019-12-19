@@ -15,8 +15,9 @@ Select **General Mails** for **Mail Type**.
 **Scheduled Delivery**: Specify the date and time of email delivery.
 **Attached File**: Attach files to mail.
 
-* Up to five files can be uploaded, not exceeding 30MB.
+* Up to 10 files can be uploaded, not exceeding 30MB.
 * The total volume of attachment cannot be more than 30MB.
+* Files can be attached up to 30MB, but they may be rejected due to 'Limit Exceeded' or regarded as spams, depending on the mail system.
 
 **Title/Body**: Enter the title and body of the mail.
 
@@ -81,7 +82,7 @@ Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab a
 * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
 * **Scheduled Delivery**: Specify the date and time of email delivery.
 * **Attached File**: Attach files to mail.
-    * Up to five files can be uploaded, not exceeding 30MB.
+    * Up to 10 files can be uploaded, not exceeding 30MB.
     * The total volume of attachment cannot be more than 30MB.
 * **Title/Body**: Enter the title and body of the mail.
 
@@ -116,7 +117,7 @@ Select **Not Use** for **Template Use** in the **Send Mails** tab, and select **
     * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address.
     * **Scheduled Delivery**: Specify the date and time of email delivery.
     * **Attached File**: Attach files to mail.
-        * Up to five files can be uploaded, not exceeding 30MB.
+        * Up to 10 files can be uploaded, not exceeding 30MB.
         * The total volume of attachment cannot be more than 30MB.
     * **Title**/**Body**: Enter the title and body of the mail. If the title and body of mail is entered in the ##replacement key##format, the mail can be replaced with user specified data. For instance, enter ##name## in the user name, and it is replaced with a user specified name, such as 'Hana Oh' before sent.
 2. Go to **Mass Delivery** at the bottom and click **Download Templates**.
