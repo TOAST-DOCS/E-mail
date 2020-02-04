@@ -2,9 +2,9 @@
 
 
 ### 2020. 01. 21.
-#### 기능 추가
-* [Console] **대량 메일 발송 조회** 탭 내 다운로드 기능 추가
-    * 대량 메일 발송 조회 시 수신 조회 결과 리스트를 대량 발송 템플릿으로 다운로드 할 수 있습니다.
+#### Feature Updates
+* [Console] Downloading is available within the **Query Mass Mail Delivery** tab
+    * You can download the list of query results for mass mail delivery in the mass delivery template.
 
 
 ### 2019. 11. 26.
