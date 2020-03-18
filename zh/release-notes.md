@@ -1,7 +1,17 @@
 ## Notification > Email > Release Notes
 
+### 2020. 03. 24
+#### Feature Updates
+* [Console] 메일 도메인 관리 탭 추가
+     - 메일 도메인 관리 탭의 주요 기능은 다음과 같습니다.
+           - 메일 도메인 관리 기능
+               - 메일 도메인에 대해 등록/인증/삭제/공유 기능이 추가되었습니다.
+           - 메일 도메인 보호 기능 추가
+               - 인증된 메일 도메인은 보호 기능을 통해 제 3자에 의해 이용될 수 없도록 보호 가능합니다.
+
+
 ### 2020. 01. 21.
-#### 기능 추가
+#### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
     * You can download the list of query results for mass mail delivery in the mass delivery template.
 
