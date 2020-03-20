@@ -1,7 +1,7 @@
 ## Notification > Email > Release Notes
 
 ### 2020. 01. 21.
-#### 기능 추가
+#### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
     * You can download the list of query results for mass mail delivery in the mass delivery template.
 

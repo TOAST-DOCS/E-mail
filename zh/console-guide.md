@@ -232,7 +232,7 @@ To modify category, select a category and click **Modify**. When **Modify Catego
 
 To modify a template, select a template, modify it, and then click **Modify**.
 
-### Manage Tags
+## Manage Tags
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
 Click a tag and the list of UIDs registered to the tag can be retrieved.
@@ -246,7 +246,7 @@ Enter an UID on the **Register UIDs** window and click **Register**.
 
 Up to 1,000 UIDs can be registered at once, for a tag.
 
-### Manage UIDs
+## Manage UIDs
 
 Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
 

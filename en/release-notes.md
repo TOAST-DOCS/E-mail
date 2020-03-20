@@ -1,6 +1,5 @@
 ## Notification > Email > Release Notes
 
-
 ### 2020. 01. 21.
 #### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
