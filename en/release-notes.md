@@ -1,5 +1,11 @@
 ## Notification > Email > Release Notes
 
+### 2020. 04. 28.
+#### Feature Updates
+* [Console] DKIM 기능 추가
+    * 메일 발송 시 수신 측에서 메일이 위변조되지 않았는지 검증할 수 있는 DKIM 기능이 추가되었습니다.
+    * 자세한 내용은 [DKIM 가이드](./console-guide/#dkim)를 참고해주세요.
+
 ### 2020. 01. 21.
 #### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
