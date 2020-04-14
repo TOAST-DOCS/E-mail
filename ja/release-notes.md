@@ -1,5 +1,12 @@
 ## Notification > Email > Release Notes
 
+### 2020. 04. 28.
+#### 機能追加
+* [Console] DKIM機能を追加
+    * メール送信時、メールが改ざんされていないかを受信側で検証できるDKIM機能を追加しました。
+    * 詳細は[DKIMガイド](./console-guide/#dkim)を参照してください。
+    
+    
 ### 2020. 03. 24
 #### 機能追加
 * [Console]メールドメイン管理タブを追加
