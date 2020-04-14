@@ -296,7 +296,6 @@ DKIM(Domain Keys Identified Mail)とは、送信者のなりすましやメー�
 **DKIM > 設定**ボタンをクリックするとDKIM機能を利用できます。<br>
 主な機能は次の通りです。<br>
 
-
 * DKIM TXTレコード登録と認証
     * **DKIM認証**タブをクリックします。
     * 発行されたTXTレコードの値をドメインのTXTレコードに登録した後、**認証**ボタンをクリックします。
@@ -312,7 +311,6 @@ DKIM(Domain Keys Identified Mail)とは、送信者のなりすましやメー�
     * 受信したメールの原本を表示
     * Authentication-Resultsヘッダ値に'dkim=pass'が含まれているかを確認
         * メールサービス提供業者によってdkim=pass情報を表すヘッダは異なる場合があります。
-
 
 ## タグ管理
 
