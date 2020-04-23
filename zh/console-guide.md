@@ -290,6 +290,29 @@ To modify a template, select a template, modify it, and then click **Modify**.
 
 * 보다 자세한 내용은 [사용자 지정 헤더(custom header)](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header) 가이드를 참고 부탁드립니다.
 
+<span id="dkim"></span>
+### DKIM
+DKIM(Domain Keys Identified Mail)이란 발신자 및 메일 내용 등이 위변조되지 않았는지 수신자 측에서 검증할 수 있는 기술입니다.
+**DKIM > 설정** 버튼을 클릭하면 DKIM 기능을 이용할 수 있습니다.
+주요 기능은 다음과 같습니다.<br>
+
+
+* DKIM TXT 레코드 등록 및 인증
+    * **DKIM 인증** 탭을 클릭합니다.
+    * 발급받은 TXT 레코드값을 도메인의 TXT 레코드에 등록한 후 **인증** 버튼을 클릭합니다.
+    * 도메인의 TXT 레코드에 "v=DKIM1;k=rsa;p={발급된 RSA publicKey 값}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
+    * 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
+* DKIM 기능 활성화 또는 비활성화
+    * **DKIM 기능** 탭을 클릭합니다.
+    * **활성화** 또는 **비활성화** 버튼을 클릭하여 DKIM 기능을 제어할 수 있습니다.<br>
+
+* DKIM 기능이 정상적으로 동작하는지 확인하는 방법은 다음과 같습니다.
+    * 특정 발송 도메인에 대해 DKIM 인증 및 활성화
+    * 특정 발송 도메인으로 이메일 발송
+    * 수신받은 메일의 원본 보기
+    * Authentication-Results 헤더값에 'dkim=pass'이 포함돼 있는지 확인
+        * 메일 서비스 제공 업체별로 dkim=pass 정보를 나타내는 헤더는 다를 수 있습니다.
+
 ### Manage Tags
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
@@ -304,7 +327,7 @@ Enter an UID on the **Register UIDs** window and click **Register**.
 
 Up to 1,000 UIDs can be registered at once, for a tag.
 
-### Manage UIDs
+## Manage UIDs
 
 Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
 

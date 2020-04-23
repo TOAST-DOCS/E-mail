@@ -99,3 +99,7 @@ For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
 |---|---|
 |Header Name| Name of a header to add. <br>Comprised of between 1 and 50 letters, in English and numbers (a-z, A-Z, 0-9), and hyphen only. |
 |Header Value| Value of a header to add. <br>Composed of between 1 and 1000 bytes. <br>Non-ASCII characters are encoded in Base64 before delivered. |
+
+### 데이터 보관 기간
+Email 서비스는 보관 정책에 따라 최근 90일 데이터만 보관합니다.
+보관 기간이 지난 데이터는 삭제되어 조회할 수 없습니다.
