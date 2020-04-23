@@ -288,7 +288,7 @@ To modify a template, select a template, modify it, and then click **Modify**.
             * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
                 * 수신 측 메일 서비스에서 test@cs.toast.com 메일 주소로 반송 메일 발송
 
-* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header) 가이드를 참고 부탁드립니다.
+* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](https://docs.toast.com/zh/Notification/Email/zh/Overview/#custom-header) 가이드를 참고 부탁드립니다.
 
 <span id="dkim"></span>
 ### DKIM

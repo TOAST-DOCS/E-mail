@@ -288,7 +288,7 @@ TOASTは、韓国情報通信網法を遵守できるように、'広告メー�
             * 例)受信者：test@toast.com, X-TC-ENVELOPE-FROM：test@cs.toast.comへメール送信をリクエストした場合
                 * 受信側のメールサービスからtest@cs.toast.comメールアドレスへ返送メール送信
 
-* さらに詳細な内容は[カスタムヘッダ(custom header)](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header)ガイドを参照してください。
+* さらに詳細な内容は[カスタムヘッダ(custom header)](https://docs.toast.com/ja/Notification/Email/ja/Overview/#custom-header)ガイドを参照してください。
 
 <span id="dkim"></span>
 ### DKIM
