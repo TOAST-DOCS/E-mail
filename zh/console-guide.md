@@ -313,7 +313,7 @@ DKIM(Domain Keys Identified Mail)이란 발신자 및 메일 내용 등이 위�
     * Authentication-Results 헤더값에 'dkim=pass'이 포함돼 있는지 확인
         * 메일 서비스 제공 업체별로 dkim=pass 정보를 나타내는 헤더는 다를 수 있습니다.
 
-### Manage Tags
+## Manage Tags
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
 Click a tag and the list of UIDs registered to the tag can be retrieved.
