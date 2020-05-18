@@ -2,7 +2,7 @@
 
 ## Send Mails
 
-### Send General Mails
+### General Mails
 
 Enter recipients, title, body, and attachment to send mails.
 For the delivery of general mails, you need to enter recipients yourself.
@@ -25,7 +25,7 @@ Select **General Mails** for **Mail Type**.
 
 Enter email addresses for **Recipients** and **Cc Recipients**.
 
-### Send Advertising Mails
+### Advertising Mails
 
 You can send advertising mails.
 
@@ -232,7 +232,7 @@ To modify category, select a category and click **Modify**. When **Modify Catego
 
 To modify a template, select a template, modify it, and then click **Modify**.
 
-## 메일 도메인 관리
+## 메일 도메인 관리 Mail Domain Management
 
 **메일 도메인 관리** 탭에서 발송 메일 도메인을 관리할 수 있습니다.<br>
 발송 메일의 도메인이 개인 혹은 회사에서 소유한 도메인 경우, 제 3자에 의해 악용될 수 있는 문제점을 보완할 수 있는 기능입니다.
@@ -241,18 +241,18 @@ To modify a template, select a template, modify it, and then click **Modify**.
 * 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
     * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
 
-### 메일 도메인 등록
+### 메일 도메인 등록 Register 
 **메인 도메인 등록** 버튼을 클릭해 발송 메일에서 사용할 도메인을 등록할 수 있습니다.<br>
 도메인 등록은 루트 도메인만 등록 가능합니다.
 
-### 메일 도메인 인증
+### 메일 도메인 인증 Verify
 **인증하기** 버튼을 클릭해 도메인 소유권을 인증할 수 있습니다.<br>
 도메인 등록 시 발급받은 토큰값을 도메인의 TXT 레코드에 등록한 후 **인증하기** 버튼을 클릭합니다.<br>
 
 * 도메인의 TXT 레코드에 "toast-domain-verification={토큰}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
 * 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
 
-### 메일 도메인 보호
+### 메일 도메인 보호 Protect
 **보호하기** 버튼을 클릭해 도메인을 보호할 수 있습니다.<br>
 도메인을 보호하면 아래 사항들이 적용됩니다.<br>
 
@@ -262,7 +262,7 @@ To modify a template, select a template, modify it, and then click **Modify**.
         * A, B 프로젝트에서만 "toast.com" 도메인을 발송 주소로 사용 가능
         * C 프로젝트에서는 "toast.com" 도메인을 인증받지 않았으므로 "toast.com" 도메인을 발송 주소로 사용할 수 없음
 
-### 메일 도메인 공유
+### 메일 도메인 공유 Share
 **공유 > 설정** 버튼을 클릭하면 도메인을 공유할 수 있습니다.<br>
 주요 기능은 다음과 같습니다.<br>
 
@@ -272,7 +272,7 @@ To modify a template, select a template, modify it, and then click **Modify**.
     * 프로젝트 여러 개에 동일한 도메인을 인증할 때 인증 과정을 여러 번 진행하지 않아도 됩니다.<br>
     * 한 프로젝트에서 인증받은 후 공유 기능을 활용해 다른 프로젝트의 이메일 서비스 앱키를 입력하면 도메인 공유가 가능합니다.
 
-### 서브 도메인 등록
+### 서브 도메인 등록 Register Sub-domains
 **메인 서브 도메인 > 설정** 버튼을 클릭해 서브 도메인을 등록할 수 있습니다.<br>
 등록된 루트 도메인의 서브 도메인만 등록할 수 있습니다.<br>
 등록된 서브 도메인은 메일 발송 시 **사용자 지정 헤더(custom header)** 기능으로 이용할 수 있습니다.
@@ -323,13 +323,13 @@ UIDs, registered to a tag, can be used to easily send mails to multiple recipien
 
 ### Manage Call Rejects
 
-You can manage rejecting users on the **Manage Call Rejct** tab.
+You can manage rejecting users on the **Manage Call Rejcts** tab.
 
 ![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
 
 You may search for users who have unsubscribed so far, and register or delete rejections.
 
-#### Register Rejections Manually
+#### Register Rejections
 
 ![email_21_201812_en.png](https://static.toastoven.net/prod_email/email_21_201812_en.png)
 
@@ -338,7 +338,7 @@ You may search for users who have unsubscribed so far, and register or delete re
     * Click **Add** to register up to 10 persons.
 3. Click **Register**.
 
-#### Register Rejections by Uploading a Template File
+#### Registration with Template Files
 
 You can upload rejection files in CSV, text (.txt), or excel (.xlsx).
 
