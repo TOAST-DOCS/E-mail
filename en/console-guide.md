@@ -1,8 +1,8 @@
 ## Notification > Email > Console Guide
 
-## Send Mails
+## Mail Delivery
 
-### Send General Mails
+### General Mails
 
 Enter recipients, title, body, and attachment to send mails.
 For the delivery of general mails, you need to enter recipients yourself.
@@ -25,7 +25,7 @@ Select **General Mails** for **Mail Type**.
 
 Enter email addresses for **Recipients** and **Cc Recipients**.
 
-### Send Advertising Mails
+### Advertising Mails
 
 You can send advertising mails.
 
@@ -140,7 +140,7 @@ Enter replacement data in the template file, such as recipient's mail address an
     * **Check and Send**: Check mail address of each recipient and body in the **Retrieve Tagged Mail Delivery** tab before sending mails. Unless delivery is requested **within 7 days** after registration, data may be deleted and it may not be properly sent (not supported for scheduled delivery).
     * **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
 
-## View Delivery
+## Query of Mails
 
 ### Retrieve by Mail Request
 
@@ -232,7 +232,66 @@ To modify category, select a category and click **Modify**. When **Modify Catego
 
 To modify a template, select a template, modify it, and then click **Modify**.
 
-## Manage Tags
+## Mail Domain Management
+
+Delivery mail domains can be managed from the **Mail Domain Management** tab.<br>
+This feature is useful for personal or company-owned domains which can be prevented from third-party abuses.  
+
+* This stage is not a must to enable email services.
+* It is unavailable for non-personal or non-company owned domains. 
+    * Cannot use domains of email account providers, such as Daum, Naver, or Google. 
+
+### Register Mail Domains
+Click **Register Mail Domains** to register domains for delivery mails. <br>
+Only root domains can be registered. 
+
+### Verify Mail Domains
+Clic **Verify** to verify domain ownership. <br>
+Register a token issued from domain registration at TXT record, and click **Verify**. <br>
+
+* If "toast-domain-verification={token}" does not exist nor match, verification fails.  
+* It may take time to transmit changes after TXT record is registered at domain. 
+
+### Protect Mail Domains
+Click **Protect** to protect domains. <br>
+With this, following can be applied. <br>
+
+* Protected domains can be enabled for verified projects only. 
+    * When a same domain is verfied by many projects, applying protection to only one project allows authenticated projects to use all domains. 
+    * e.g.) Verify "toast.com" for email services of Projects A and B, and protect Project A.
+        * "toast.com" can serve as delivery address for Projects A and B only 
+        * For Project C, "toast.com" is not available as delivery address since it is not verified for the project. 
+
+### Share Mail Domains
+Click **Share > Setting** to share domains. <br>
+Main features are as follows.<br>
+
+* Query project with verified domains
+    * Provide the list of TOAST projects completed with verification for specific domains.
+* Share domain with other projects 
+    * No need to repeat the verification process, when verifying same domain for many projects.<br>
+    * After verified from a project, domains can be shared by entering appkey for other projects' email services. 
+
+### Register Sub-domains
+Click **Main Sub-domain > Setting** to register sub-domains. <br>
+Only registered root domain's sub-domains can be registered. <br>
+Registered sub-domains can be used as **Custom Header** to send mails. 
+
+* Custom Headers available for Sub-domains 
+    * Header Name: X-TC-ENVELOPE-FROM
+    * Header Value: Sub-domain
+    * Main features are as follows:
+        * To inspect SPF records for recipient's mail service
+            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
+                * Inspect SPF records with "cs.toast.com", from recipient's mail service
+        * To send returned mails for recipient's mail service
+            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
+                * Send returned mail to test@cs.toast.com, from recipient's mail service 
+
+* For more details, see the guide for [Custom header](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header).
+
+
+## Tag Management
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
 Click a tag and the list of UIDs registered to the tag can be retrieved.
@@ -246,7 +305,7 @@ Enter an UID on the **Register UIDs** window and click **Register**.
 
 Up to 1,000 UIDs can be registered at once, for a tag.
 
-## Manage UIDs
+## UID Management
 
 Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
 
@@ -264,13 +323,13 @@ UIDs, registered to a tag, can be used to easily send mails to multiple recipien
 
 ### Manage Call Rejects
 
-You can manage rejecting users on the **Manage Call Rejct** tab.
+You can manage rejecting users on the **Manage Call Rejcts** tab.
 
 ![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
 
 You may search for users who have unsubscribed so far, and register or delete rejections.
 
-#### Register Rejections Manually
+#### Register Rejections
 
 ![email_21_201812_en.png](https://static.toastoven.net/prod_email/email_21_201812_en.png)
 
@@ -279,7 +338,7 @@ You may search for users who have unsubscribed so far, and register or delete re
     * Click **Add** to register up to 10 persons.
 3. Click **Register**.
 
-#### Register Rejections by Uploading a Template File
+#### Registration with Template Files
 
 You can upload rejection files in CSV, text (.txt), or excel (.xlsx).
 

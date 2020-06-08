@@ -1,5 +1,15 @@
 ## Notification > Email > Release Notes
 
+### March 24, 2020
+#### Feature Updates
+* [Console] Added Mail Domain Management Tab
+     - Main features are as follows: 
+           - Manage Mail Domains
+               - Added features to register, verify, delete, and share mail domains.
+           - Protect Mail Domains 
+               - Verified mail domains can be protected from third-party usage.
+
+
 ### 2020. 01. 21.
 #### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
