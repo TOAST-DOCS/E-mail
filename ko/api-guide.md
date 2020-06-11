@@ -1111,6 +1111,439 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 
+
+## 예약 관리
+
+### 예약 발송 리스트 조회
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+| requestId | String | X | 요청 ID |
+| startSendDate | String | X | 발송 요청 시작 시간(yyyy-MM-dd HH:mm:ss) |
+| endSendDate | String | X | 발송 요청 종료 시간(yyyy-MM-dd HH:mm:ss) |
+| senderMail | String | X | 발신 메일 주소 |
+| receiveMail | String | X | 수신 메일 주소 |
+| templateId | String | X | 템플릿 ID |
+| pageNum | Integer | X | 페이지 번호 1(기본값) |
+| pageSize | Integer | X | 조회 건수 15(기본값) |
+
+
+#### 응답
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "totalCount":1,
+      "pageNum": 1,
+      "pageSize": 15,
+      "data":[
+         {
+            "requestId":"20200605175300tu5z04e1",
+            "mailSeq":0,
+            "title":"Title",
+            "templateId":"TemplateId",
+            "templateName":"TemplateName",
+            "senderAddress":"sender@example.com",
+            "senderName":"senderName",
+            "receiveMailAddr":"receiver@example.com",
+            "receiveName":"receiverName",
+            "receiveType":"MRT0",
+            "receiveTypeName":"받는사람",
+            "requestDate":"2020-06-05 17:53:00",
+            "mailStatusCode":"SST4",
+            "mailStatusName":"예약대기",
+            "senderGroupingKey":"senderKey"
+         }
+      ]
+   }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|- pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId|	String | 요청 ID |
+|-- mailSeq|	Integer| 메일 순번 |
+|-- title|	String| 메일 제목 |
+|-- templateId|	String|	템플릿 ID|
+|-- templateName|	String|	템플릿 이름|
+|-- senderAddress|	String|	발신자 메일 주소|
+|-- senderName|	String|	발신자 이름|
+|-- receiveMailAddr|	String|	수신자 메일 주소|
+|-- receiveName|	String|	수신자 이름|
+|-- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
+|-- receiveTypeName|	String|	수신자 타입 이름|
+|-- requestDate|	String|	요청 시간|
+|-- mailStatusCode|	String|	메일 상태 코드 <br/> SST0: 발송 준비, SST1: 발송중  <br/> SST2: 발송 완료, SST3: 발송 실패 <br/> SST4: 예약 대기 |
+|-- mailStatusName|	String|	메일 상태 이름|
+|-- senderGroupingKey|	String|	발신자 그룹키 (최대 100자) |
+
+### 예약 발송 상세 조회
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
+|mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값) |
+
+#### 응답
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "data":{
+         "requestId":"202006050000008j6bx5Q1",
+         "mailSeq":0,
+         "title":"Title",
+         "body":"Body",
+         "templateId": "TemplateId",
+         "templateName":"TemplateName",
+         "senderAddress":"sender@example.com",
+         "senderName":"senderName",
+         "requestDate":"2020-06-05 00:00:00",
+         "mailStatusCode":"SST4",
+         "mailStatusName":"예약대기",
+         "receivers":[
+            {
+               "requestId":"202006050000008j6bx5Q1",
+               "mailSeq":0,
+               "receiveType":"MRT0",
+               "receiveTypeName":"받는사람",
+               "receiveName":"receiverName",
+               "receiveMailAddr":"receiver@example.com"
+            }
+         ],
+         "attachFileList":[
+            {
+               "fileType":"Mail",
+               "fileId": 123456,
+               "fileName":"attachement.jpg",
+               "filePath":"28578/toast-mt-2020-06-03/2344/183037",
+               "fileSize":8074,
+               "createDate":"2020-06-03 23:44:27"
+            }
+         ],
+         "customHeaders":{
+                "Content-Type": "text/html"
+         }
+      }
+   }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- requestId|	String | 요청 ID |
+|-- mailSeq|	Integer| 메일 순번 |
+|-- title|	String| 메일 제목 |
+|-- body|	String| 메일 본문 |
+|-- templateId|	String|	템플릿 ID|
+|-- templateName|	String|	템플릿 이름|
+|-- senderAddress|	String|	발신자 메일 주소|
+|-- senderName|	String|	발신자 이름|
+|-- requestDate|	String|	요청 시간|
+|-- mailStatusCode|	String|	메일 상태 코드 <br/> SST0: 발송 준비, SST1: 발송중  <br/> SST2: 발송 완료, SST3: 발송 실패 <br/> SST4: 예약 대기 |
+|-- mailStatusName|	String|	메일 상태 이름|
+|-- receiverLis | List | 수신자 리스트 |
+|--- requestId|	String | 요청 ID |
+|--- mailSeq|	Integer| 메일 순번 |
+|--- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
+|--- receiveName|	String|	수신자 이름|
+|--- receiveTypeName|	String|	수신자 타입 이름|
+|--- receiveMailAddr|	String|	수신자 메일 주소|
+|-- attachFileList|	List| 첨부파일 리스트|
+|--- fileType|	String|	첨부파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
+|--- fileId| Integer| 파일 ID <br/> v1.0, v1.1 API를 통해 업로드된 첨부파일은 파일 ID 값이 -1으로 표기됩니다.|
+|--- fileName|	String|	첨부파일 이름|
+|--- filePath|	String|	첨부파일 경로|
+|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- createDate|	String|	생성 일시|
+|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
+
+### 예약 발송 취소 - 요청별
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
+
+#### 응답
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 예약 발송 취소 - 수신자별
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
+|mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값) |
+
+#### 응답
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+
+### 예약 발송 취소 - 다중 필터
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Request body]
+
+```json
+{
+    "searchParameter" : {
+        "requestId" : "202006051209288SxRXhejd20",
+        "startSendDate" : "2020-02-01 00:00",
+        "endSendDate" : "2020-02-01 10:00",
+        "senderMail" : "sender@example.com",
+        "receiveMail" : "receiver@example.com",
+        "templateId" : "templateId"
+    },
+    "updateUser" : "UpdateUser"
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+| searchParameter.requestId | String | X | 요청 ID |
+| searchParameter.startSendDate | String | O | 예약 날짜 시작 (yyyy-MM-dd HH:mm:ss) |
+| searchParameter.endSendDate | String | O | 예약 날짜 종료 (yyyy-MM-dd HH:mm:ss) |
+| searchParameter.senderMail | String | X | 발신자 메일 주소 |
+| searchParameter.receiveMail | String | X | 수신자 메일 주소 |
+| searchParameter.templateId | String | X | 템플릿 ID |
+| updateUser | String | X | 예약 취소 요청자 |
+
+* **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
+
+#### 응답
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "data" : {
+            "reservationCancelId" : "202006051209288SxRXhejd20",
+            "requestedDateTime" : "2020-06-05 16:09:24",
+            "reservationCancelStatus" : "READY"
+        }
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- reservationCancelId|	String | 예약 취소 ID |
+|-- requestedDateTime|	String| 예약 취소 시간(yyyy-MM-dd HH:mm:ss) |
+|-- reservationCancelStatus|	String| 예약 취소 상태 </br>- READY: 예약 준비</br>- PROCESSING: 예약 취소 중</br>- COMPLETED: 예약 취소 완료</br>- FAILED: 예약 취소 실패|
+
+
+### 예약 발송 취소 요청 목록 검색 - 다중 필터
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+| startRequestedDateTime | String | X | 예약 취소 요청 시작 시간(yyyy-MM-dd HH:mm:ss) |
+| endRequestedDateTime | String | X | 예약 취소 요청 종료 시간(yyyy-MM-dd HH:mm:ss) |
+| reservationCancelId | String | X | 예약 취소 ID |
+| pageNum | Integer | X | 페이지 번호 1(기본값) |
+| pageSize | Integer | X | 조회 건수 15(기본값) |
+
+#### 응답
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "pageNum" : 1,
+        "pageSize" : 15,
+        "totalCount" : 1,
+        "data" : [
+            {
+                "reservationCancelId" : "202006051209288SxRXhejd20",
+                "searchParameter" : {
+                    "serviceId" : 12345,
+                    "requestId" : "2020060asdasd8SxRXhejd20",
+                    "startSendDate" : "2020-06-01 00:00:00",
+                    "endSendDate" : "2020-06-11 00:00:00",
+                    "senderMail" : "sender@example.com",
+                    "receiveMail" : "receiver@example.com",
+                    "templateId" : "templateId",
+                    "sendStatus" : null,
+                    "searchedBySendDate" : true
+                },
+                "requestedDateTime" : "2020-06-05 12:09:28",
+                "completedDateTime" : "2020-06-05 12:16:05",
+                "reservationCancelStatus" : "COMPLETED",
+                "totalCount" : 3,
+                "successCount" : 3,
+                "createUser" : "tester",
+                "createdDateTime" : "2020-06-05 12:09:28",
+                "updatedDateTime" : "2020-06-05 12:16:05"
+            }
+        ]
+    }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|- pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- reservationCancelId|	String | 예약 취소 ID |
+|-- searchParameter | Map<String, Object> | 예약 취소 요청 파라미터 |
+|-- requestedDateTime|	String | 예약 취소 요청 시간 |
+|-- completedDateTime|	String | 예약 취소 완료 시간 |
+|-- reservationCancelStatus|	String| 예약 취소 상태 </br>- READY: 예약 준비</br>- PROCESSING: 예약 취소 중</br>- COMPLETED: 예약 취소 완료</br>- FAILED: 예약 취소 실패|
+|-- totalCount | Integer | 예약 취소 대상 건수 |
+|-- successCount | Integer | 예약 취소 성공 건수 |
+|-- createUser | Integer | 예약 취소 요청자 |
+|-- createdDateTime | String | 예약 취소 요청 생성 시간 |
+|-- updatedDateTime | String | 예약 취소 수정 시간 |
+
+
 <p id="category"></p>
 
 ## 카테고리 관리

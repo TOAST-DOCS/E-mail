@@ -1110,6 +1110,439 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./Overview/#custom-header) |
 
+
+## 予約送信管理
+
+### 予約送信リストの照会
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations|
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+
+
+[Query parameter]
+
+|値|	タイプ|	必須|	説明|
+|---|---|---|---|
+| requestId | String | X | リクエストID |
+| startSendDate | String | X | 送信日の開始値(yyyy-MM-dd HH:mm:ss) |
+| endSendDate | String | X | 送信日の終了値(yyyy-MM-dd HH:mm:ss) |
+| senderMail | String | X | 送信メールアドレス |
+| receiveMail | String | X | 受信メールアドレス |
+| templateId | String | X | テンプレートID |
+|pageNum|	Integer|	X|	ページ番号(Default：1)|
+|pageSize|	Integer|	X|	照会件数(Default：15)|
+
+
+#### レスポンス
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "totalCount":1,
+      "pageNum": 1,
+      "pageSize": 15,
+      "data":[
+         {
+            "requestId":"20200605175300tu5z04e1",
+            "mailSeq":0,
+            "title":"Title",
+            "templateId":"TemplateId",
+            "templateName":"TemplateName",
+            "senderAddress":"sender@example.com",
+            "senderName":"senderName",
+            "receiveMailAddr":"receiver@example.com",
+            "receiveName":"receiverName",
+            "receiveType":"MRT0",
+            "receiveTypeName":"받는사람",
+            "requestDate":"2020-06-05 17:53:00",
+            "mailStatusCode":"SST4",
+            "mailStatusName":"예약대기",
+            "senderGroupingKey":"senderKey"
+         }
+      ]
+   }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- pageNum|	Integer|	現在のページ番号|
+|- pageSize|	Integer|	照会されたデータ件数|
+|- totalCount|	Integer|	総データ件数|
+|- data|	List|	データ領域|
+|-- requestId|	String | リクエストID |
+|-- mailSeq|	Integer| メールの順番 |
+|-- title|	String| メールのタイトル |
+|-- templateId|	String|	テンプレートID|
+|-- templateName|	String|	テンプレート名|
+|-- senderAddress|	String|	送信者のメールアドレス|
+|-- senderName|	String|	送信者名|
+|-- receiveMailAddr|	String|	受信者のメールアドレス|
+|-- receiveName|	String|	受信者名|
+|-- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|-- receiveTypeName|	String|	受信者タイプ名|
+|-- requestDate|	String|	送信日時|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusName|	String|	送信ステータス名|
+|-- senderGroupingKey|	String|	発信者グループキー |
+
+### 予約送信の詳細照会
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+|requestId|	String|	リクエストID|
+|mailSeq|	Integer|	メールの順番|
+
+#### レスポンス
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "data":{
+         "requestId":"202006050000008j6bx5Q1",
+         "mailSeq":0,
+         "title":"Title",
+         "body":"Body",
+         "templateId": "TemplateId",
+         "templateName":"TemplateName",
+         "senderAddress":"sender@example.com",
+         "senderName":"senderName",
+         "requestDate":"2020-06-05 00:00:00",
+         "mailStatusCode":"SST4",
+         "mailStatusName":"예약대기",
+         "receivers":[
+            {
+               "requestId":"202006050000008j6bx5Q1",
+               "mailSeq":0,
+               "receiveType":"MRT0",
+               "receiveTypeName":"받는사람",
+               "receiveName":"receiverName",
+               "receiveMailAddr":"receiver@example.com"
+            }
+         ],
+         "attachFileList":[
+            {
+               "fileType":"Mail",
+               "fileId": 123456,
+               "fileName":"attachement.jpg",
+               "filePath":"28578/toast-mt-2020-06-03/2344/183037",
+               "fileSize":8074,
+               "createDate":"2020-06-03 23:44:27"
+            }
+         ],
+         "customHeaders":{
+                "Content-Type": "text/html"
+         }
+      }
+   }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- data|	Object|	データ領域|
+|-- requestId| String| リクエストID|
+|-- mailSeq|	Integer| メールの順番 순번 |
+|-- title|	String| タイトル |
+|-- body|	String| 内容 |
+|-- templateId|	String|	テンプレートID|
+|-- templateName|	String|	テンプレート名|
+|-- senderAddress|	String|	送信者のアドレス|
+|-- senderName|	String|	送信者名|
+|-- requestDate|	String|	リクエスト時間|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusName|	String|	送信ステータス名|
+|-- receiverLis | List | 受信者リスト |
+|--- requestId|	String | リクエストID |
+|--- mailSeq|	Integer| メールの順番 |
+|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|--- receiveName|	String|	受信者名|
+|--- receiveTypeName|	String|	受信者タイプ名|
+|--- receiveMailAddr|	String|	受信者メールアドレス|
+|-- attachFileList|	List| 添付ファイルリスト|
+|--- fileType|	String|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
+|--- fileId| Integer| ファイルID|
+|--- fileName|	String|	添付ファイル名|
+|--- filePath|	String|	添付ファイルパス|
+|--- fileSize|	Integer| 添付ファイルサイズ(byte)|
+|--- createDate|	String|	作成日時|
+|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./Overview/#custom-header) |
+
+### 予約発送の取り消し - リクエスト別
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+|requestId|	String|	リクエストID|
+
+#### レスポンス
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+
+### 予約発送の取り消し - 受信者別
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+|requestId|	String|	リクエストID|
+|mailSeq|	Integer|	メールの順番|
+
+#### レスポンス
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+
+### 予約送信キャンセル - 多重フィルタ
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+
+[Request body]
+
+```json
+{
+    "searchParameter" : {
+        "requestId" : "202006051209288SxRXhejd20",
+        "startSendDate" : "2020-02-01 00:00",
+        "endSendDate" : "2020-02-01 10:00",
+        "senderMail" : "sender@example.com",
+        "receiveMail" : "receiver@example.com",
+        "templateId" : "templateId"
+    },
+    "updateUser" : "UpdateUser"
+}
+```
+
+|値|	タイプ|	必須|	説明|
+|---|---|---|---|
+| searchParameter.requestId | String | X | リクエストID |
+| searchParameter.startSendDate | String | O | 送信日の開始値(yyyy-MM-dd HH:mm) |
+| searchParameter.endSendDate | String | O | 送信日の終了値(yyyy-MM-dd HH:mm) |
+| searchParameter.senderMail | String | X | 送信者のアドレス |
+| searchParameter.receiveMail | String | X | 受信者メールアドレス |
+| searchParameter.templateId | String | X | テンプレートID |
+| updateUser | String | X | 予約キャンセルリクエスト者 |
+
+* **startSendDate**, **endSendDate** リクエストフィールドは必須です。
+
+#### レスポンス
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "data" : {
+            "reservationCancelId" : "202006051209288SxRXhejd20",
+            "requestedDateTime" : "2020-06-05 16:09:24",
+            "reservationCancelStatus" : "READY"
+        }
+    }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- data|	Object|	データ領域|
+|-- reservationCancelId|	String | 予約キャンセルID |
+|-- requestedDateTime|	String| 予約キャンセルリクエスト時間(yyyy-MM-dd HH:mm:ss) |
+|-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
+
+
+### 予約送信キャンセルリクエストリスト照会 - 多重フィルタ
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
+
+[Path parameter]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|appKey|	String|	固有のappKey|
+
+[Query parameter]
+
+|値|	タイプ|	必須|	説明|
+|---|---|---|---|
+| startRequestedDateTime | String | X | 予約キャンセルリクエスト開始時間(yyyy-MM-dd HH:mm:ss) |
+| endRequestedDateTime | String | X | 予約キャンセルリクエスト終了時間(yyyy-MM-dd HH:mm:ss) |
+| reservationCancelId | String | X | 予約キャンセルID |
+|pageNum|	Integer|	X|	ページ番号(デフォルト値：1)|
+|pageSize|	Integer|	X|	照会件数(デフォルト値：15)|
+
+#### レスポンス
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "pageNum" : 1,
+        "pageSize" : 15,
+        "totalCount" : 1,
+        "data" : [
+            {
+                "reservationCancelId" : "202006051209288SxRXhejd20",
+                "searchParameter" : {
+                    "serviceId" : 12345,
+                    "requestId" : "2020060asdasd8SxRXhejd20",
+                    "startSendDate" : "2020-06-01 00:00:00",
+                    "endSendDate" : "2020-06-11 00:00:00",
+                    "senderMail" : "sender@example.com",
+                    "receiveMail" : "receiver@example.com",
+                    "templateId" : "templateId",
+                    "sendStatus" : null,
+                    "searchedBySendDate" : true
+                },
+                "requestedDateTime" : "2020-06-05 12:09:28",
+                "completedDateTime" : "2020-06-05 12:16:05",
+                "reservationCancelStatus" : "COMPLETED",
+                "totalCount" : 3,
+                "successCount" : 3,
+                "createUser" : "tester",
+                "createdDateTime" : "2020-06-05 12:09:28",
+                "updatedDateTime" : "2020-06-05 12:16:05"
+            }
+        ]
+    }
+}
+```
+
+|値|	タイプ|	説明|
+|---|---|---|
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- pageNum|	Integer|	現在のページ番号|
+|- pageSize|	Integer|	照会されたデータ件数|
+|- totalCount|	Integer|	総データ件数|
+|- data|	List|	データ領域|
+|-- reservationCancelId|	String | 予約キャンセルID |
+|-- searchParameter | Map<String, Object> | 予約キャンセルリクエストパラメータ |
+|-- requestedDateTime|	String | 予約キャンセルリクエスト時間|
+|-- completedDateTime|	String | 予約キャンセル完了時間 |
+|-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
+|-- totalCount | Integer | 予約キャンセル対象件数 |
+|-- successCount | Integer | 予約キャンセル成功件数 |
+|-- createUser | Integer | 예약 취소 요청자 |
+|-- createdDateTime | String | 予約キャンセルリクエスト作成時間 |
+|-- updatedDateTime | String | 予約キャンセル修正時間 |
+
+
 <p id="category"></p>
 
 ## カテゴリーの管理

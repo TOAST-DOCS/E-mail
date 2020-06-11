@@ -1120,6 +1120,440 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
 
+
+
+## Scheduled Delivery
+
+### List Scheduled Delivery
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations|
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String|	Original appKey|
+
+
+[Query parameter]
+
+|Value| Type |	Required | Description |
+|---|---|---|---|
+| requestId | String | X | Request ID |
+| startSendDate | String | X | Start date of sending (yyyy-MM-dd HH:mm:ss) |
+| endSendDate | String | X | End date of sending (yyyy-MM-dd HH:mm:ss) |
+| senderMail | String | X | Sender's mail address                                        |
+| receiveMail | String | X | Recipient's mail address                                     |
+| templateId | String | X | Template ID |
+| pageNum|	Integer|	X| Page number (default: 1) |
+| pageSize|	Integer|	X| Number of queries (default: 15) |
+
+#### 응답
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "totalCount":1,
+      "pageNum": 1,
+      "pageSize": 15,
+      "data":[
+         {
+            "requestId":"20200605175300tu5z04e1",
+            "mailSeq":0,
+            "title":"Title",
+            "templateId":"TemplateId",
+            "templateName":"TemplateName",
+            "senderAddress":"sender@example.com",
+            "senderName":"senderName",
+            "receiveMailAddr":"receiver@example.com",
+            "receiveName":"receiverName",
+            "receiveType":"MRT0",
+            "receiveTypeName":"받는사람",
+            "requestDate":"2020-06-05 17:53:00",
+            "mailStatusCode":"SST4",
+            "mailStatusName":"예약대기",
+            "senderGroupingKey":"senderKey"
+         }
+      ]
+   }
+}
+```
+
+|값|	타입|	설명|
+|---|---|---|
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - pageNum           | Integer | Current page number                                          |
+| - pageSize          | Integer | Number of queried data                                       |
+| - totalCount        | Integer | Number of total data                                         |
+| - data              | List    | Data area                                                    |
+| -- requestId        | String  | Request ID                                                   |
+| -- mailSeq          | Integer | Mail sequence                                                |
+| -- title            | String  | Title                                                        |
+| -- templateId       | String  | Template ID                                                  |
+| -- templateName     | String  | Template name                                                |
+| -- senderAddress    | String  | Sender's mail address                                        |
+| -- senderName       | String  | Sender's name                                                |
+| -- receiveMailAddr  | String  | Recipient's mail address                                     |
+| -- receiveName      | String  | Name of recipient                                            |
+| -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
+| -- receiveTypeName  | String  | Name of recipient type                                       |
+| -- requestDate      | String  | Date and time of sending                                     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusName   | String  | Name of delivery status                                      |
+| -- senderGroupingKey| String  | Sender's group key                                           |
+
+### Query Detail Scheduled Delivery
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String| Original appKey |
+|requestId|	String| Request ID |
+|mailSeq|	Integer| Mail sequence |
+
+#### Response
+
+```json
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "data":{
+         "requestId":"202006050000008j6bx5Q1",
+         "mailSeq":0,
+         "title":"Title",
+         "body":"Body",
+         "templateId": "TemplateId",
+         "templateName":"TemplateName",
+         "senderAddress":"sender@example.com",
+         "senderName":"senderName",
+         "requestDate":"2020-06-05 00:00:00",
+         "mailStatusCode":"SST4",
+         "mailStatusName":"예약대기",
+         "receivers":[
+            {
+               "requestId":"202006050000008j6bx5Q1",
+               "mailSeq":0,
+               "receiveType":"MRT0",
+               "receiveTypeName":"받는사람",
+               "receiveName":"receiverName",
+               "receiveMailAddr":"receiver@example.com"
+            }
+         ],
+         "attachFileList":[
+            {
+               "fileType":"Mail",
+               "fileId": 123456,
+               "fileName":"attachement.jpg",
+               "filePath":"28578/toast-mt-2020-06-03/2344/183037",
+               "fileSize":8074,
+               "createDate":"2020-06-03 23:44:27"
+            }
+         ],
+         "customHeaders":{
+                "Content-Type": "text/html"
+         }
+      }
+   }
+}
+```
+
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolea{}n | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - data              | Object  | Data area                                                    |
+| -- requestId        | String  | Request ID                                                   |
+| -- mailSeq          | Integer | Mail sequence                                                |
+| -- title            | String  | Mail title                                                   |
+| -- body             | String  | Mail body                                                    |
+| -- templateId       | String  | Template ID                                                  |
+| -- templateName     | String  | Template name                                                |
+| -- senderAddress    | String  | Sender's mail address                                        |
+| -- senderName       | String  | Sender's name                                                |
+| -- requestDate      | String  | Date and time of sending                                     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusName   | String  | Name of delivery status                                      |
+| -- receiverList     | List    | List of recipients                                           |
+| --- requestId        | String  | Request ID                                                   |
+| --- mailSeq          | Integer | Mail sequence                                                |
+| --- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
+| --- receiveName      | String  | Name of recipient                                            |
+| --- receiveTypeName  | String  | Name of recipient type                                       |
+| --- receiveMailAddr  | String  | Recipient's mail address                                     |
+| -- attachFileList   | List    | List of attached files                                       |
+| --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
+| --- fileId          | String  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
+| --- fileName        | String  | Name of attached file                                        |
+| --- filePath        | String  | Path of attached file                                        |
+| --- fileSize        | Integer | Size of attached file (byte)                                 |
+| --- createDate      | String  | Date and time of creation                                    |
+| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
+
+
+### Cancel Scheduled Delivery by Request
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String| Original appKey |
+|requestId|	String| Request ID |
+
+#### Response
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+
+### Cancel Scheduled Delivery by recipient
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String| Original appKey |
+|requestId|	String| Request ID |
+|mailSeq|	Integer| Mail sequence |
+
+#### Response
+
+```json
+{
+    "header" : {
+        "isSuccessful" : true,
+        "resultCode" : 0,
+        "resultMessage" : "SUCCESS"
+    }
+}
+```
+
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+
+### Cancel Scheduled Delivery - Multiple Filter
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/do-cancels
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String|	Original appkey|
+
+[Request body]
+
+```json
+{
+    "searchParameter" : {
+        "requestId" : "202006051209288SxRXhejd20",
+        "startSendDate" : "2020-02-01 00:00",
+        "endSendDate" : "2020-02-01 10:00",
+        "senderMail" : "sender@example.com",
+        "receiveMail" : "receiver@example.com",
+        "templateId" : "templateId"
+    },
+    "updateUser" : "UpdateUser"
+}
+```
+
+| Value            | Type    | Required | Description                                                  |
+|---|---|---|---|
+| searchParameter.requestId | String | X | Request ID |
+| searchParameter.startSendDate | String | O | Start date of delivery (yyyy-MM-dd HH:mm:ss) |
+| searchParameter.endSendDate | String | O | End date of delivery (yyyy-MM-dd HH:mm:ss) |
+| searchParameter.senderMail | String | X | Sender's mail address |
+| searchParameter.receiveMail | String | X | Recipient's mail address |
+| searchParameter.templateId | String | X | Template ID |
+| updateUser | String | X | Requester of Scheduled Cancellation |
+
+* **startSendDate**, **endSendDate** are required fields.
+
+#### Response
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "data" : {
+            "reservationCancelId" : "202006051209288SxRXhejd20",
+            "requestedDateTime" : "2020-06-05 16:09:24",
+            "reservationCancelStatus" : "READY"
+        }
+    }
+}
+```
+
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - data              | Object  | Data area                                                    |
+| -- reservationCancelId|	String |	Schedule Cancellation ID|
+| -- requestedDateTime|	String|	Time for Schedule Cancellation(yyyy-MM-dd HH:mm:ss)|
+| -- reservationCancelStatus|	String|	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule  <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
+
+
+### List Request of Scheduled Delivery Cancellation - Multiple Filter
+#### Request
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
+
+[Path parameter]
+
+|Value| Type | Description |
+|---|---|---|
+|appKey|	String|	Original appkey|
+
+[Query parameter]
+
+|Value| Type |	Required | Description |
+|---|---|---|---|
+| startRequestedDateTime | String | X |  Request Start Time for Schedule Cancellation(yyyy-MM-dd HH:mm:ss) |
+| endRequestedDateTime | String | X | Request End Time for Schedule Cancellation(yyyy-MM-dd HH:mm:ss) |
+| reservationCancelId | String | X | Schedule Cancellation ID|
+| pageNum|	Integer|	X| Page number (default: 1) |
+| pageSize|	Integer|	X| Number of queries (default: 15) |
+
+#### Response
+
+```json
+{
+    "header" : {
+        "resultCode" : 0,
+        "resultMessage" : "success",
+        "isSuccessful" : true
+    },
+    "body" : {
+        "pageNum" : 1,
+        "pageSize" : 15,
+        "totalCount" : 1,
+        "data" : [
+            {
+                "reservationCancelId" : "202006051209288SxRXhejd20",
+                "searchParameter" : {
+                    "serviceId" : 12345,
+                    "requestId" : "2020060asdasd8SxRXhejd20",
+                    "startSendDate" : "2020-06-01 00:00:00",
+                    "endSendDate" : "2020-06-11 00:00:00",
+                    "senderMail" : "sender@example.com",
+                    "receiveMail" : "receiver@example.com",
+                    "templateId" : "templateId",
+                    "sendStatus" : null,
+                    "searchedBySendDate" : true
+                },
+                "requestedDateTime" : "2020-06-05 12:09:28",
+                "completedDateTime" : "2020-06-05 12:16:05",
+                "reservationCancelStatus" : "COMPLETED",
+                "totalCount" : 3,
+                "successCount" : 3,
+                "createUser" : "tester",
+                "createdDateTime" : "2020-06-05 12:09:28",
+                "updatedDateTime" : "2020-06-05 12:16:05"
+            }
+        ]
+    }
+}
+```
+
+| Value               | Type    | Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |
+| header              | Object  | Header area                                                  |
+| - isSuccessful      | Boolean | Successful or not                                            |
+| - resultCode        | Integer | Failure code                                                 |
+| - resultMessage     | String  | Failure message                                              |
+| body                | Object  | Body area                                                    |
+| - pageNum           | Integer | Current page number                                          |
+| - pageSize          | Integer | Number of queried data                                       |
+| - totalCount        | Integer | Number of total data                                         |
+| - data              | List    | Data area                                                    |
+|-- reservationCancelId|	String | Schedule Cancellation ID |
+|-- searchParameter | Map<String, Object> | Request Parameter for Schedule Cancellation |
+|-- requestedDateTime|	String | Request Time for Schedule Cancellation|
+|-- completedDateTime|	String | Request End Time for Schedule Cancellation |
+|-- reservationCancelStatus|	String| 	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
+|-- totalCount | Integer |  Number of Scheduled Cancellation Targets |
+|-- successCount | Integer |Number of Successful Schedule Cancellation |
+|-- createUser |	String| Requester of Scheduled Cancellation	|
+|-- createdDateTime | String | Request Creation Time for Schedule Cancellation |
+|-- updatedDateTime | String | Modified Time for Scheduled Cancellation  |
+
+
 <p id="category"></p>
 
 ## Category Management 
