@@ -1418,9 +1418,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | searchParameter.senderMail | String | X | 送信者のアドレス |
 | searchParameter.receiveMail | String | X | 受信者メールアドレス |
 | searchParameter.templateId | String | X | テンプレートID |
-| updateUser | String | X | 予約キャンセルリクエスト者 |
+| updateUser | String | O | 予約キャンセルリクエスト者 |
 
-* **startSendDate**, **endSendDate** リクエストフィールドは必須です。
+* **startSendDate**, **endSendDate**, **updateUser** リクエストフィールドは必須です。
 
 #### レスポンス
 

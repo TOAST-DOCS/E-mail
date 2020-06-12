@@ -1397,7 +1397,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/do-cancels
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -1429,9 +1429,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | searchParameter.senderMail | String | X | Sender's mail address |
 | searchParameter.receiveMail | String | X | Recipient's mail address |
 | searchParameter.templateId | String | X | Template ID |
-| updateUser | String | X | Requester of Scheduled Cancellation |
+| updateUser | String | O | Requester of Scheduled Cancellation |
 
-* **startSendDate**, **endSendDate** are required fields.
+* **startSendDate**, **endSendDate**, **updateUser** are required fields.
 
 #### Response
 

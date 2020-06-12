@@ -1419,9 +1419,9 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | searchParameter.senderMail | String | X | 발신자 메일 주소 |
 | searchParameter.receiveMail | String | X | 수신자 메일 주소 |
 | searchParameter.templateId | String | X | 템플릿 ID |
-| updateUser | String | X | 예약 취소 요청자 |
+| updateUser | String | O | 예약 취소 요청자 |
 
-* **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
+* **startSendDate**, **endSendDate**, **updateUser** 요청 필드가 필수입니다.
 
 #### 응답
 
