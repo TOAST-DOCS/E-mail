@@ -1122,7 +1122,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 
 
-## Scheduled Delivery
+## Scheduled Delivery Management
 
 ### List Scheduled Delivery
 #### Request
@@ -1153,7 +1153,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | pageNum|	Integer|	X| Page number (default: 1) |
 | pageSize|	Integer|	X| Number of queries (default: 15) |
 
-#### 응답
+#### Response
 
 ```json
 {
@@ -1189,7 +1189,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 }
 ```
 
-|값|	타입|	설명|
+| Value               | Type    | Description                                                  |
 |---|---|---|
 | header              | Object  | Header area                                                  |
 | - isSuccessful      | Boolean | Successful or not                                            |
