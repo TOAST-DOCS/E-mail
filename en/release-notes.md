@@ -1,5 +1,13 @@
 ## Notification > Email > Release Notes
 
+### 2020. 06. 23.
+#### Feature Updates
+* [Console] 예약 발송 조회 취소 기능 추가
+    * **메일 예약 발송 조회** 탭에서 발송 전 상태의 예약 메일을 취소할 수 있는 기능이 추가되었습니다.
+* [API] 예약 발송 조회 및 취소 기능 추가
+    * 예약 발송 조회 및 취소 기능을 API로 제공합니다.
+
+
 ### March 24, 2020
 #### Feature Updates
 * [Console] Added Mail Domain Management Tab
