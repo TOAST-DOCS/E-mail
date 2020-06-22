@@ -1,5 +1,12 @@
 ## Notification > Email > Release Notes
 
+### 2020. 06. 23.
+#### Feature Updates
+* [Console] 예약 발송 조회 취소 기능 추가
+    * **메일 예약 발송 조회** 탭에서 발송 전 상태의 예약 메일을 취소할 수 있는 기능이 추가되었습니다.
+* [API] 예약 발송 조회 및 취소 기능 추가
+    * 예약 발송 조회 및 취소 기능을 API로 제공합니다.
+
 ### 2020. 04. 28.
 #### Feature Updates
 * [Console] DKIM 기능 추가
@@ -7,14 +14,14 @@
     * 자세한 내용은 [DKIM 가이드](./console-guide/#dkim)를 참고해주세요.
 
 
-### 2020. 03. 24.
+### March 24, 2020
 #### Feature Updates
-* [Console] 메일 도메인 관리 탭 추가
-     - 메일 도메인 관리 탭의 주요 기능은 다음과 같습니다.
-           - 메일 도메인 관리 기능
-               - 메일 도메인을 등록, 인증, 삭제, 공유할 수 있는 기능이 추가되었습니다.
-           - 메일 도메인 보호 기능 추가
-               - 인증된 메일 도메인은 보호 기능을 이용해 제3자가 이용할 수 없도록 보호할 수 있습니다.
+* [Console] Added Mail Domain Management Tab
+     - Main features are as follows: 
+           - Manage Mail Domains
+               - Added features to register, verify, delete, and share mail domains.
+           - Protect Mail Domains 
+               - Verified mail domains can be protected from third-party usage.
 
 
 ### 2020. 01. 21.

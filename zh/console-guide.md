@@ -232,63 +232,63 @@ To modify category, select a category and click **Modify**. When **Modify Catego
 
 To modify a template, select a template, modify it, and then click **Modify**.
 
-## 메일 도메인 관리
+## Mail Domain Management
 
-**메일 도메인 관리** 탭에서 발송 메일 도메인을 관리할 수 있습니다.
-발송 메일의 도메인이 개인 혹은 회사에서 소유한 도메인 경우, 제 3자에 의해 악용될 수 있는 문제점을 보완할 수 있는 기능입니다.
+Delivery mail domains can be managed from the **Mail Domain Management** tab.<br>
+This feature is useful for personal or company-owned domains which can be prevented from third-party abuses.  
 
-* 이메일 서비스를 이용하기 위해 필수로 진행해야 하는 부분은 아닙니다.
-* 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
-    * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
+* This stage is not a must to enable email services.
+* It is unavailable for non-personal or non-company owned domains. 
+    * Cannot use domains of email account providers, such as Daum, Naver, or Google. 
 
-### 메일 도메인 등록
-**메인 도메인 등록** 버튼을 클릭해 발송 메일에서 사용할 도메인을 등록할 수 있습니다.
-도메인 등록은 루트 도메인만 등록 가능합니다.
+### Register Mail Domains
+Click **Register Mail Domains** to register domains for delivery mails. <br>
+Only root domains can be registered. 
 
-### 메일 도메인 인증
-**인증하기** 버튼을 클릭해 도메인 소유권을 인증할 수 있습니다.
-도메인 등록 시 발급받은 토큰값을 도메인의 TXT 레코드에 등록한 후 **인증하기** 버튼을 클릭합니다.<br>
+### Verify Mail Domains
+Clic **Verify** to verify domain ownership. <br>
+Register a token issued from domain registration at TXT record, and click **Verify**. <br>
 
-* 도메인의 TXT 레코드에 "toast-domain-verification={토큰}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
-* 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
+* If "toast-domain-verification={token}" does not exist nor match, verification fails.  
+* It may take time to transmit changes after TXT record is registered at domain. 
 
-### 메일 도메인 보호
-**보호하기** 버튼을 클릭해 도메인을 보호할 수 있습니다.
-도메인을 보호하면 아래 사항들이 적용됩니다.<br>
+### Protect Mail Domains
+Click **Protect** to protect domains. <br>
+With this, following can be applied. <br>
 
-* 보호된 도메인은 이미 인증받은 프로젝트에서만 사용할 수 있습니다.
-    * 동일한 도메인을 인증받은 프로젝트가 여러 개일 때, 그중 하나의 프로젝트에만 보호 적용을 해도 인증받은 프로젝트는 모두 도메인을 사용할 수 있습니다.
-    * 예) A, B 프로젝트의 이메일 서비스에서 "toast.com" 도메인을 인증받은 후, A 프로젝트에서 보호 적용을 진행
-        * A, B 프로젝트에서만 "toast.com" 도메인을 발송 주소로 사용 가능
-        * C 프로젝트에서는 "toast.com" 도메인을 인증받지 않았으므로 "toast.com" 도메인을 발송 주소로 사용할 수 없음
+* Protected domains can be enabled for verified projects only. 
+    * When a same domain is verfied by many projects, applying protection to only one project allows authenticated projects to use all domains. 
+    * e.g.) Verify "toast.com" for email services of Projects A and B, and protect Project A.
+        * "toast.com" can serve as delivery address for Projects A and B only 
+        * For Project C, "toast.com" is not available as delivery address since it is not verified for the project. 
 
-### 메일 도메인 공유
-**공유 > 설정** 버튼을 클릭하면 도메인을 공유할 수 있습니다.
-주요 기능은 다음과 같습니다.<br>
+### Share Mail Domains
+Click **Share > Setting** to share domains. <br>
+Main features are as follows.<br>
 
-* 도메인을 인증받은 프로젝트 조회
-    * 특정 도메인의 인증 절차를 완료한 TOAST 프로젝트 목록을 제공합니다.
-* 도메인을 다른 프로젝트로 공유
-    * 프로젝트 여러 개에 동일한 도메인을 인증할 때 인증 과정을 여러 번 진행하지 않아도 됩니다.<br>
-    * 한 프로젝트에서 인증받은 후 공유 기능을 활용해 다른 프로젝트의 이메일 서비스 앱키를 입력하면 도메인 공유가 가능합니다.
+* Query project with verified domains
+    * Provide the list of TOAST projects completed with verification for specific domains.
+* Share domain with other projects 
+    * No need to repeat the verification process, when verifying same domain for many projects.<br>
+    * After verified from a project, domains can be shared by entering appkey for other projects' email services. 
 
-### 서브 도메인 등록
-**메인 서브 도메인 > 설정** 버튼을 클릭해 서브 도메인을 등록할 수 있습니다.
-등록된 루트 도메인의 서브 도메인만 등록할 수 있습니다.
-등록된 서브 도메인은 메일 발송 시 **사용자 지정 헤더(custom header)** 기능으로 이용할 수 있습니다.
+### Register Sub-domains
+Click **Main Sub-domain > Setting** to register sub-domains. <br>
+Only registered root domain's sub-domains can be registered. <br>
+Registered sub-domains can be used as **Custom Header** to send mails. 
 
-* 서브 도메인을 사용할 수 있는 사용자 지정 헤더(custom header)
-    * 헤더명: X-TC-ENVELOPE-FROM
-    * 헤더값: 서브 도메인
-    * 주요 기능은 다음과 같습니다.
-        * 수신자의 메일 서비스에서 SPF 레코드를 검사할 도메인으로 활용
-            * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
-                * 수신자의 메일 서비스에서 "cs.toast.com" 도메인으로 SPF 레코드 검사를 진행
-        * 수신자의 메일 서비스에서 반송 메일을 보내줄 메일 주소로 활용
-            * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
-                * 수신 측 메일 서비스에서 test@cs.toast.com 메일 주소로 반송 메일 발송
+* Custom Headers available for Sub-domains 
+    * Header Name: X-TC-ENVELOPE-FROM
+    * Header Value: Sub-domain
+    * Main features are as follows:
+        * To inspect SPF records for recipient's mail service
+            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
+                * Inspect SPF records with "cs.toast.com", from recipient's mail service
+        * To send returned mails for recipient's mail service
+            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
+                * Send returned mail to test@cs.toast.com, from recipient's mail service 
 
-* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](https://docs.toast.com/zh/Notification/Email/zh/Overview/#custom-header) 가이드를 참고 부탁드립니다.
+* For more details, see the guide for [Custom header](https://docs.toast.com/zh/Notification/Email/zh/Overview/#custom-header).
 
 <span id="dkim"></span>
 ### DKIM
@@ -313,7 +313,8 @@ DKIM(Domain Keys Identified Mail)이란 발신자 및 메일 내용 등이 위�
     * Authentication-Results 헤더값에 'dkim=pass'이 포함돼 있는지 확인
         * 메일 서비스 제공 업체별로 dkim=pass 정보를 나타내는 헤더는 다를 수 있습니다.
 
-## Manage Tags
+
+## Tag Management
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
 Click a tag and the list of UIDs registered to the tag can be retrieved.
@@ -327,7 +328,7 @@ Enter an UID on the **Register UIDs** window and click **Register**.
 
 Up to 1,000 UIDs can be registered at once, for a tag.
 
-## Manage UIDs
+## UID Management
 
 Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
 
