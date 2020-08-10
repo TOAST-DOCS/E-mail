@@ -1,5 +1,15 @@
 ## Notification > Email > 릴리스 노트
 
+### 2020. 08. 25.
+#### 기능 추가
+* [Console] 메일 발송 상세 조회 시 DSN 정보 추가
+* [Console] 메일 발송 상세 조회건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가
+* [API] API 버전 업데이트 v1.7
+    * 메일 발송 상세 조회 API의 Response 필드 추가
+        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다.
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
+
 ### 2020. 06. 23.
 #### 기능 추가
 * [Console] 예약 발송 조회 취소 기능 추가
