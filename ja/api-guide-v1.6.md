@@ -1,4 +1,4 @@
-## Notification > Email > API v1.7ガイド
+## Notification > Email > API v1.6ガイド
 
 [APIドメイン]
 
@@ -26,7 +26,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/mail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/mail|
 
 [Path parameter]
 
@@ -65,12 +65,12 @@ Content-Type: application/json;charset=UTF-8
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 #### レスポンス
@@ -115,6 +115,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
+#### v1.6の変更事項
+
+* テンプレートを使用しながらリクエスト値を入力する場合は、テンプレートよりユーザーのリクエスト値が優先して適用されます。
+
 ### 個別メール送信
 
 * 受信者が複数人いる時、それぞれの受信者に個別にメールを送信する機能です。複数人に送っても、受信者には本人のみ表示されます。
@@ -125,7 +129,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/eachMail||
+|POST|	/email/v1.6/appKeys/{appKey}/sender/eachMail||
 
 [Path parameter]
 
@@ -162,12 +166,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
 
@@ -214,6 +218,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
 
+#### v1.6の変更事項
+
+* テンプレートを使用しながらリクエスト値を入力する場合は、テンプレートよりユーザーのリクエスト値が優先して適用されます。
+
 ### 広告性一般メール送信
 * リクエスト、レスポンス情報は、一般メール送信と同じです。
 
@@ -225,16 +233,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/ad-mail|
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 ### 広告性個別メール送信
@@ -245,16 +253,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v1.6/appKeys/{appKey}/sender/ad-eachMail |
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"(広告)サンプルタイトル","body":"サンプル内容\n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1, 2],"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"}],"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
 ### 認証メールの送信
@@ -265,7 +273,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/auth-mail||
+|POST|	/email/v1.6/appKeys/{appKey}/sender/auth-mail||
 
 [Path parameter]
 
@@ -305,12 +313,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"},"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1"},"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}},"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}},"userId":"USER"}'
 ```
 
 #### レスポンス
@@ -363,7 +371,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/tagMail|
 
 [Path parameter]
 
@@ -395,12 +403,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhnent.com","senderName":"送信者名","title":"サンプルタイトル","body":"サンプル内容","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
 ```
 
 [例2 - テンプレートの使用]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
 ```
 
 #### レスポンス
@@ -438,7 +446,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v1.6/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -456,7 +464,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
 ```
 
 #### レスポンス
@@ -559,7 +567,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/sender/mails|
+|GET|	/email/v1.6/appKeys/{appKey}/sender/mails|
 
 [Path parameter]
 
@@ -591,7 +599,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### レスポンス
@@ -627,9 +635,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "receiveType": "MRT0",
                 "receiveTypeName": "",
                 "receiveName": "Receiver",
-                "senderGroupingKey": "A_GROUP",
-                "dsnCode": "2.5.0",
-                "dsnMessage": "SUCCESS"
+                "senderGroupingKey": "A_GROUP"
             }
         ]
     }
@@ -666,8 +672,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- receiveTypeName| String| 受信者タイプ名|
 |-- receiveName| String| 受信者名|
 |-- senderGroupingKey| String| 発信者グループキー|
-|-- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
 
 
 ### メール送信詳細の照会
@@ -678,7 +682,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v1.6/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -690,7 +694,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
 
 #### レスポンス
@@ -728,9 +732,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                     "isReceived": true,
                     "resultDate": "2019-01-01 00:00:00",
                     "isOpened": true,
-                    "openedDate": "2019-01-01 00:00:00",
-                    "dsnCode": "2.5.0",
-                    "dsnMessage": "SUCCESS"
+                    "openedDate": "2019-01-01 00:00:00"
                 }
             ],
             "attachFileList": [
@@ -784,8 +786,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- resultDate| String| 受信日時|
 |--- isOpened| Boolean| 既読情報|
 |--- openedDate| String| 開封日時|
-|--- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|--- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
 |-- attachFileList|	List| 添付ファイルリスト|
 |--- fileType|	String|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
 |--- fileId| Integer| ファイルID|
@@ -804,7 +804,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails|
 
 [Path parameter]
 
@@ -833,7 +833,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### レスポンス
@@ -911,7 +911,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path parameter]
 
@@ -933,7 +933,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### レスポンス
@@ -952,6 +952,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
         "data": [
             {
                 "requestId": String,
+                "mailSequence": Integer,
                 "receiveMail": String,
                 "mailStatusCode": String,
                 "mailStatusName": String,
@@ -959,13 +960,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "resultDate": String,
                 "readYn": String,
                 "readDate": String,
-                "dsnCode": String,
-                "dsnMessage": String,
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "mailSequence": Integer
+                "updateDate": String
             }
         ]
     }
@@ -984,6 +982,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- totalCount|	Integer|	総データ件数|
 |- data|	List|	データ領域|
 |-- requestId | String  | リクエストID |
+|-- mailSequence | Integer  | メールの順番 |
 |-- receiveMail | String  | 受信者のアドレス |
 |-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
 |-- mailStatusName | String  | メールのステータス名 |
@@ -991,13 +990,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- resultDate | String  | 実際の送信時間 |
 |-- readYn | String  | 既読かどうか |
 |-- readDate | String  | 読んだ時間 |
-|-- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
 |-- createUser |  String  | 作成者 |
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- mailSequence | Integer  | メールの順番 |
 
 ### タグメール送信詳細照会
 
@@ -1007,7 +1003,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path parameter]
 
@@ -1019,7 +1015,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
 ```
 
 #### レスポンス
@@ -1048,15 +1044,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
             "body": String",
             "receivers": [
                 {
-                    "requestId": String,
-                    "receiveType": String,
-                    "receiveTypeName": String,
-                    "receiveMailAddr": String,
-                    "readYn": String,
-                    "readDate": String,
-                    "dsnCode": String,
-                    "dsnMessage": String,
+                    "requestId": String
                     "mailSequence": String
+                    "receiveType": String
+                    "receiveTypeName": String
+                    "receiveMailAddr": String
+                    "readYn": String
+                    "readDate": String
                 }
             ],
             "attachFileList": [
@@ -1101,14 +1095,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- body | String  | 内容 |
 |-- receivers | List| 受信者リスト|
 |--- requestId | String  | リクエストID |
+|--- mailSequence | Integer  | メールの順番 |
 |--- receiveType | String  | 受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) |
 |--- receiveTypeName | String  | 受信者タイプ名 |
 |--- receiveMailAddr | String  | 受信者メールアドレス |
 |--- readYn | String  | 既読かどうか |
 |--- readDate | String  | 読んだ時間 |
-|--- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|--- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
-|--- mailSequence | String  | メールの順番 |
 |-- attachFileList | List  | 添付ファイルリスト |
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
 |--- fileId| String| ファイルID|
@@ -1128,7 +1120,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations|
 
 [Path parameter]
 
@@ -1221,7 +1213,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -1323,7 +1315,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}
 
 [Path parameter]
 
@@ -1358,7 +1350,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
 
 [Path parameter]
 
@@ -1394,7 +1386,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/search-cancels
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -1469,7 +1461,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations/search-cancels
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -1563,7 +1555,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/categories|
+|GET| /email/v1.6/appKeys/{appKey}/categories|
 
 [Path parameter]
 
@@ -1582,7 +1574,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
 ```
 
 #### レスポンス
@@ -1646,7 +1638,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|GET|	/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1657,7 +1649,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId}"
 ```
 
 #### レスポンス
@@ -1714,7 +1706,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|/email/v1.7/appKeys/{appKey}/categories|
+|POST|/email/v1.6/appKeys/{appKey}/categories|
 
 
 [Path parameter]
@@ -1735,7 +1727,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories -d '{"categoryParentId":12345,"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories -d '{"categoryParentId":12345,"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
 
@@ -1775,7 +1767,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|PUT|/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1795,7 +1787,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ``` sh
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
 #### レスポンス
@@ -1826,7 +1818,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|	URI|
 |---|---|
-|DELETE|/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|DELETE|/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1837,7 +1829,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [例]
 ``` sh
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId}
 ```
 
 #### レスポンス
@@ -1872,7 +1864,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/templates|
+|GET|	/email/v1.6/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -1892,7 +1884,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
 #### レスポンス
@@ -1956,7 +1948,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -1967,7 +1959,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId}"
 ```
 
 #### レスポンス
@@ -2046,7 +2038,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v1.7/appKeys/{appKey}/templates|
+|POST|  /email/v1.6/appKeys/{appKey}/templates|
 
 
 [Path parameter]
@@ -2073,7 +2065,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates -d '{"categoryId":1,"templateId":"TEAMPLTE_ID","templateName":"テンプレート名","templateDesc":"テンプレートの説明","useYn":"Y","sendMailAddress":"test@nhn.com","title":"メールタイトル","templateType":"DEFAULT","body":"メールの内容","attachFileIdList":[1,2,3],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates -d '{"categoryId":1,"templateId":"TEAMPLTE_ID","templateName":"テンプレート名","templateDesc":"テンプレートの説明","useYn":"Y","sendMailAddress":"test@nhn.com","title":"メールタイトル","templateType":"DEFAULT","body":"メールの内容","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
 
@@ -2105,7 +2097,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v1.7/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|  /email/v1.6/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -2123,7 +2115,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
 ```
 
 #### レスポンス
@@ -2167,7 +2159,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|   URI|
 |---|---|
-|PUT|   /email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|PUT|   /email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -2192,7 +2184,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ``` sh
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"テンプレート名","templateDesc":"テンプレートの説明","useYn":"Y","sendMailAddress":"test@nhn.com","title":"メールタイトル","templateType":"DEFAULT","body":"メールの内容","attachFileIdList":[1,2,3],"userId":"USER"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"テンプレート名","templateDesc":"テンプレートの説明","useYn":"Y","sendMailAddress":"test@nhn.com","title":"メールタイトル","templateType":"DEFAULT","body":"メールの内容","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
 #### レスポンス
@@ -2223,7 +2215,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|   URI|
 |---|---|
-|DELETE|    /email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|DELETE|    /email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -2234,7 +2226,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [例]
 ``` sh
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId}
 ```
 
 #### レスポンス
@@ -2267,7 +2259,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tags|
+|GET|	/email/v1.6/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -2284,7 +2276,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
 ```
 
 #### レスポンス
@@ -2333,7 +2325,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/tags|
+|POST|	/email/v1.6/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -2349,7 +2341,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags -d '{"tagName":"サンプルタグ"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags -d '{"tagName":"サンプルタグ"}'
 ```
 
 #### レスポンス
@@ -2387,7 +2379,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v1.7/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v1.6/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -2404,7 +2396,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"サンプルタグ2"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"サンプルタグ2"}'
 ```
 
 #### レスポンス
@@ -2435,7 +2427,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -2446,7 +2438,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags/{tagId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags/{tagId}
 ```
 
 #### レスポンス
@@ -2479,7 +2471,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/uids|
+|GET|	/email/v1.6/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -2498,7 +2490,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
 ```
 
 #### レスポンス
@@ -2569,7 +2561,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v1.6/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -2580,7 +2572,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}"
 ```
 
 #### レスポンス
@@ -2642,7 +2634,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/uids|
+|POST|	/email/v1.6/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -2668,7 +2660,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhnent.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhnent.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhnent.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhnent.com"}]}]}'
 ```
 
 #### レスポンス
@@ -2699,7 +2691,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -2710,7 +2702,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}
 ```
 
 #### レスポンス
@@ -2741,7 +2733,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path parameter]
 
@@ -2758,7 +2750,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhnent.com"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhnent.com"}'
 ```
 
 #### レスポンス
@@ -2789,7 +2781,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path parameter]
 
@@ -2801,7 +2793,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhnent.com
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhnent.com
 ```
 
 #### レスポンス
@@ -2834,7 +2826,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/statistics/view |
+|GET|	/email/v1.6/appKeys/{appKey}/statistics/view |
 
 [Path parameter]
 
@@ -2855,7 +2847,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
 ```
 
 #### レスポンス
@@ -2911,7 +2903,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| GET |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
@@ -2929,7 +2921,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
 ```
 
 #### レスポンス
@@ -2974,7 +2966,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| POST |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Request body]
 
@@ -2986,7 +2978,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [例]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
 #### レスポンス
@@ -3015,7 +3007,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| PUT |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Request body]
 
@@ -3027,7 +3019,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [例]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
 ```
 
 #### レスポンス

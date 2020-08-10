@@ -1,4 +1,4 @@
-## Notification > Email > API v1.7 가이드
+## Notification > Email > API v1.6 가이드
 
 [API 도메인]
 
@@ -26,7 +26,7 @@ Content-Type: application/json;charset=UTF-8
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/mail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/mail|
 
 [Path parameter]
 
@@ -65,12 +65,12 @@ Content-Type: application/json;charset=UTF-8
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 #### 응답
@@ -115,6 +115,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+#### v1.6에서 달라진 사항
+
+* 템플릿을 사용하면서 요청 값을 입력하는 경우, 템플릿보다 사용자의 요청 값이 우선 적용됩니다.
+
 ### 개별 메일 발송
 
 * 수신자가 여러 명일 때 수신자 각각에게 메일을 발송하는 기능입니다. 여러 명에게 보내도 수신자에게는 본인만 표시됩니다.
@@ -125,7 +129,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/eachMail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/eachMail|
 
 [Path parameter]
 
@@ -162,12 +166,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1,2],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1,2],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
 
@@ -213,6 +217,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+#### v1.6에서 달라진 사항
+
+* 템플릿을 사용하면서 요청 값을 입력하는 경우, 템플릿보다 사용자의 요청 값이 우선 적용됩니다.
 
 ### 광고성 일반 메일 발송
 * 요청, 응답 정보는 일반 메일 발송과 동일합니다.
@@ -225,16 +232,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/ad-mail|
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhn.com","receiveName":"고객2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
 ### 광고성 개별 메일 발송
@@ -245,16 +252,16 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v1.6/appKeys/{appKey}/sender/ad-eachMail |
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1,2],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-eachMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"(광고) 샘플 타이틀","body":"샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##","attachFileIdList":[1,2],"receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"}],"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
 ### 인증 메일 발송
@@ -265,7 +272,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/auth-mail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/auth-mail|
 
 [Path parameter]
 
@@ -305,12 +312,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiver":{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"},"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/auth-mail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","receiver":{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1"},"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}},"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhn.com","receiveName":"고객1","templateParameter":{"key":"value"}},"userId":"USER"}'
 ```
 
 #### 응답
@@ -364,7 +371,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v1.6/appKeys/{appKey}/sender/tagMail|
 
 [Path parameter]
 
@@ -391,12 +398,12 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시 1]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/tagMail -d '{"senderAddress":"support@nhn.com","senderName":"발송자이름","title":"샘플 타이틀","body":"샘플 내용","attachFileIdList":[1, 2],"tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
 ```
 
 [예시 2 - 템플릿 사용]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/tagMail -d '{"templateId":"TEMPLATE1","tagExpression":["tag1","AND","tag2"],"userId":"USER"}'
 ```
 
 #### 응답
@@ -434,7 +441,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v1.6/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -452,7 +459,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
 ```
 
 #### 응답
@@ -555,7 +562,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/sender/mails|
+|GET|	/email/v1.6/appKeys/{appKey}/sender/mails|
 
 [Path parameter]
 
@@ -588,7 +595,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### 응답
@@ -624,9 +631,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "receiveType": "MRT0",
                 "receiveTypeName": "받는사람",
                 "receiveName": "Receiver",
-                "senderGroupingKey": "A_GROUP",
-                "dsnCode": "2.5.0",
-                "dsnMessage": "SUCCESS"
+                "senderGroupingKey": "A_GROUP"
             }
         ]
     }
@@ -663,8 +668,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- receiveTypeName| String| 수신자 타입 이름|
 |-- receiveName| String| 수신자 이름|
 |-- senderGroupingKey| String| 발신자 그룹키|
-|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 
 
 ### 메일 발송 상세 조회
@@ -675,7 +678,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v1.6/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -687,7 +690,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
 
 #### 응답
@@ -725,9 +728,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                     "isReceived": true,
                     "resultDate": "2019-01-01 00:00:00",
                     "isOpened": true,
-                    "openedDate": "2019-01-01 00:00:00",
-                    "dsnCode": "2.5.0",
-                    "dsnMessage": "SUCCESS"
+                    "openedDate": "2019-01-01 00:00:00"
                 }
             ],
             "attachFileList": [
@@ -781,8 +782,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- resultDate| String| 수신 일시|
 |--- isOpened| Boolean| 읽음 여부 |
 |--- openedDate| String| 읽은 일시|
-|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- attachFileList|	List| 첨부파일 리스트|
 |--- fileType|	String|	첨부파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
 |--- fileId| Integer| 파일 ID|
@@ -801,7 +800,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails|
 
 [Path parameter]
 
@@ -830,7 +829,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### 응답
@@ -911,7 +910,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path parameter]
 
@@ -933,7 +932,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails/{requestId}?startReceiveDate=2018-03-01+00%3A00&endReceiveDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
 #### 응답
@@ -959,8 +958,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                 "resultDate": "2019-01-01 00:00:00.0",
                 "readYn": "Y",
                 "readDate": "2019-01-01 00:00:00.0",
-                "dnsCode": "2.5.0",
-                "dsnMessage": "SUCCESS",
                 "createUser": "USER",
                 "createDate": "2019-01-01 00:00:00.0",
                 "updateUser": "USER",
@@ -984,6 +981,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- totalCount|	Integer|	총 데이터 건수|
 |- data|	List|	데이터 영역|
 |-- requestId | String  | 요청 ID |
+|-- mailSequence | Integer  | 메일 순번 |
 |-- receiveMail | String  | 수신자주소 |
 |-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
 |-- mailStatusName | String  | 메일 상태명 |
@@ -991,13 +989,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- resultDate | String  | 실제 발송 시간 |
 |-- readYn | String  | 읽음 여부 |
 |-- readDate | String  | 읽은 시간 |
-|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- createUser |  String  | 생성자 |
 |-- createDate |  String  | 생성 일시 |
 |-- updateUser |  String  | 수정자 |
 |-- updateDate |  String  | 수정 일시 |
-|-- mailSequence | Integer  | 메일 순번 |
 
 ### 태그 메일 발송 상세 조회
 
@@ -1007,7 +1002,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v1.6/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path parameter]
 
@@ -1019,7 +1014,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}"
 ```
 
 #### 응답
@@ -1057,8 +1052,6 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
                     "receiveMailAddr": "receiver@nhn.com",
                     "readYn": "Y",
                     "readDate": "2019-01-01 00:00:00.0",
-                    "dsnCode": "2.5.0",
-                    "dsnMessage": "SUCCESS",
                     "mailSequence": "0"
                 }
             ],
@@ -1103,14 +1096,12 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- body | String  | 내용 |
 |-- receivers | List| 수신자 리스트|
 |--- requestId | String  | 요청 ID |
+|--- mailSequence | Integer  | 메일 순번 |
 |--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) |
 |--- receiveTypeName | String  | 수신자 타입명 |
 |--- receiveMailAddr | String  | 수신자 메일 주소 |
 |--- readYn | String  | 읽음 여부 |
 |--- readDate | String  | 읽은 시간 |
-|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|--- mailSequence | String  | 메일 순번 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| String| 파일 ID|
@@ -1130,7 +1121,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations|
 
 [Path parameter]
 
@@ -1223,7 +1214,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -1325,7 +1316,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}
 
 [Path parameter]
 
@@ -1360,7 +1351,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
 
 [Path parameter]
 
@@ -1396,7 +1387,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v1.7/appKeys/{appKey}/sender/reservations/search-cancels
+|PUT| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -1471,7 +1462,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/sender/reservations/search-cancels
+|GET| /email/v1.6/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -1565,7 +1556,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v1.7/appKeys/{appKey}/categories|
+|GET| /email/v1.6/appKeys/{appKey}/categories|
 
 [Path parameter]
 
@@ -1584,7 +1575,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
 ```
 
 #### 응답
@@ -1648,7 +1639,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|GET|	/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1659,7 +1650,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId}"
 ```
 
 #### 응답
@@ -1716,7 +1707,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|/email/v1.7/appKeys/{appKey}/categories|
+|POST|/email/v1.6/appKeys/{appKey}/categories|
 
 
 [Path parameter]
@@ -1737,7 +1728,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories -d '{"categoryParentId":12345,"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories -d '{"categoryParentId":12345,"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
 
@@ -1777,7 +1768,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|PUT|/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1797,7 +1788,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ``` sh
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
 #### 응답
@@ -1828,7 +1819,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|	URI|
 |---|---|
-|DELETE|/email/v1.7/appKeys/{appKey}/categories/{categoryId}|
+|DELETE|/email/v1.6/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -1839,7 +1830,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [예시]
 ``` sh
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/categories/{categoryId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/categories/{categoryId}
 ```
 
 #### 응답
@@ -1874,7 +1865,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/templates|
+|GET|	/email/v1.6/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -1893,7 +1884,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
 #### 응답
@@ -1957,7 +1948,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -1968,7 +1959,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId}"
 ```
 
 #### 응답
@@ -2047,7 +2038,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/templates|
+|POST|	/email/v1.6/appKeys/{appKey}/templates|
 
 
 [Path parameter]
@@ -2074,7 +2065,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates -d '{"categoryId":1,"templateId":"TEAMPLTE_ID","templateName":"템플릿 이름","templateDesc":"템플릿 설명","useYn":"Y","sendMailAddress":"test@nhn.com","title":"메일 제목","templateType":"DEFAULT","body":"메일 내용","attachFileIdList":[1,2,3],"userId":"USER"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates -d '{"categoryId":1,"templateId":"TEAMPLTE_ID","templateName":"템플릿 이름","templateDesc":"템플릿 설명","useYn":"Y","sendMailAddress":"test@nhn.com","title":"메일 제목","templateType":"DEFAULT","body":"메일 내용","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
 
@@ -2106,7 +2097,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|	/email/v1.6/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -2124,7 +2115,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ``` sh
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
 ```
 
 #### 응답
@@ -2168,7 +2159,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|PUT|	/email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -2193,7 +2184,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ``` sh
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"템플릿 이름","templateDesc":"템플릿 설명","useYn":"Y","sendMailAddress":"test@nhn.com","title":"메일 제목","templateType":"DEFAULT","body":"메일 내용","attachFileIdList":[1,2,3],"userId":"USER"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"템플릿 이름","templateDesc":"템플릿 설명","useYn":"Y","sendMailAddress":"test@nhn.com","title":"메일 제목","templateType":"DEFAULT","body":"메일 내용","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
 #### 응답
@@ -2224,7 +2215,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/templates/{templateId}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -2235,7 +2226,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [예시]
 ``` sh
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/templates/{templateId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/templates/{templateId}
 ```
 
 #### 응답
@@ -2269,7 +2260,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/tags|
+|GET|	/email/v1.6/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -2286,7 +2277,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags?pageNum=1&pageSize=10"
 ```
 
 #### 응답
@@ -2335,7 +2326,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/tags|
+|POST|	/email/v1.6/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -2351,7 +2342,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags -d '{"tagName":"샘플태그"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags -d '{"tagName":"샘플태그"}'
 ```
 
 #### 응답
@@ -2389,7 +2380,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v1.7/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v1.6/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -2406,7 +2397,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"샘플태그2"}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags/{tagId} -d '{"tagName":"샘플태그2"}'
 ```
 
 #### 응답
@@ -2437,7 +2428,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -2448,7 +2439,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 
 [예시]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/tags/{tagId}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/tags/{tagId}
 ```
 
 #### 응답
@@ -2481,7 +2472,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/uids|
+|GET|	/email/v1.6/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -2500,7 +2491,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids?wheres=tagId1,OR,tagId2&offset=0&limit=10"
 ```
 
 #### 응답
@@ -2571,7 +2562,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v1.6/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -2582,7 +2573,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}"
 ```
 
 #### 응답
@@ -2644,7 +2635,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/uids|
+|POST|	/email/v1.6/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -2670,7 +2661,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhn.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhn.com"}]}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids -d '{"uids":[{"uid":"sample-uid","tagIds":["tagId1"],"contacts":[{"contactType":"EMAIL_ADDRESS","contact":"customer1@nhn.com"},{"contactType":"EMAIL_ADDRESS","contact":"customer2@nhn.com"}]}]}'
 ```
 
 #### 응답
@@ -2701,7 +2692,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -2712,7 +2703,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}
 ```
 
 #### 응답
@@ -2743,7 +2734,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path parameter]
 
@@ -2760,7 +2751,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [예시]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhn.com"}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses -d '{"emailAddress" : "customer1@nhn.com"}'
 ```
 
 #### 응답
@@ -2791,7 +2782,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path parameter]
 
@@ -2803,7 +2794,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhn.com
+curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/uids/{uid}/email-addresses/customer1@nhn.com
 ```
 
 #### 응답
@@ -2836,7 +2827,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v1.7/appKeys/{appKey}/statistics/view |
+|GET|	/email/v1.6/appKeys/{appKey}/statistics/view |
 
 [Path parameter]
 
@@ -2857,7 +2848,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://api-mai
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
 ```
 
 #### 응답
@@ -2913,7 +2904,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| GET |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
@@ -2931,7 +2922,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhn.com&pageNum=1&pageSize=10"
+curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhn.com&pageNum=1&pageSize=10"
 ```
 
 #### 응답
@@ -2976,7 +2967,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| POST |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Request body]
 
@@ -2988,7 +2979,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 
 [예시]
 ```
-curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhn.com","blockDate":"2018-03-01 00:00:00"}]}'
+curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhn.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
 #### 응답
@@ -3017,7 +3008,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 |Http method|	URI|
 |---|---|
-| PUT |	/email/v1.7/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v1.6/appKeys/{appKey}/block-receivers |
 
 [Request body]
 
@@ -3029,7 +3020,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 
 [예시]
 ```
-curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.7/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhn.com"}]}'
+curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.6/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhn.com"}]}'
 ```
 
 #### 응답
