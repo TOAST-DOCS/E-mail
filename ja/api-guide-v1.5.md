@@ -913,7 +913,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |- resultMessage|	String|	失敗メッセージ|
 |body|	Object|	本文領域|
 |- pageNum|	Integer|	現在のページ番号|
-|-pageSize|	Integer|	照会されたデータ件数|
+|- pageSize|	Integer|	照会されたデータ件数|
 |- totalCount|	Integer|	総データ件数|
 |- data|	List|	データ領域|
 |-- requestId | String  | リクエストID |
