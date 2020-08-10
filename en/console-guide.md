@@ -206,9 +206,9 @@ In the **Retrieve Bulk Mail Delivery** tab, you can retrieve scheduled mass mail
 
 Select a tagged mail schedule (a column on the list) to query the list of mail deliver per recipient at the bottom.
 
-### Manage Categories and Templates
+## Manage Categories and Templates
 
-#### Categories
+### Categories
 
 You can create categories to sort templates for mail delivery.
 
@@ -222,7 +222,7 @@ You can create categories to sort templates for mail delivery.
 
 To modify category, select a category and click **Modify**. When **Modify Category** window pops up, modify the content and click **Modify**.
 
-#### Templates
+### Templates
 
 ![email_14_201812_en.png](https://static.toastoven.net/prod_email/email_14_201812_en.png)
 
@@ -290,6 +290,28 @@ Registered sub-domains can be used as **Custom Header** to send mails.
 
 * For more details, see the guide for [Custom header](https://docs.toast.com/en/Notification/Email/en/Overview/#custom-header).
 
+<span id="dkim"></span>
+### DomainKeys Identified Mail (DKIM)
+DKIM, or DomainKeys Identified Mail refers to a technique by which the receiver can check if the sender address or email is forged. <br>
+To enable DKIM, click **DKIM > Setting**.<br>
+Its main features are like follows: <br>
+
+
+* Register and Authenticate DKIM TXT Records 
+    * Click **Authenticate DKIM**.
+    * Register issued TXT record onto TXT Record of domain, and click **Authenticate**. 
+    * If "v=DKIM1;k=rsa;p={issued RSA publicKey value}" of domain's TXT record does not exist or is not consistent, authentication fails.  
+    * It might take time to register TXT record to domain and transmit changes. 
+* Enable or Disable DKIM 
+    * Click **DKIM Features**.
+    * Press **Enable** or **Disable** to control DKIM features. <br>
+
+* You may do like below to check if DKIM works properly. 
+    * Authenticate and enable DKIM for a particular sender's domain
+    * Send email to a particular domain 
+    * Read the original of a receiving email 
+    * Check if the Authentication-Results header includes 'dkim=pass'
+        * Each email service provider may provide different header for dkim=pass.
 
 ## Tag Management
 
