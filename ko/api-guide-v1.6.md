@@ -1430,7 +1430,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/reservations' \
+'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
