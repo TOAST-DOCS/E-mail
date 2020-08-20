@@ -68,7 +68,7 @@ Content-Type: application/json;charset=UTF-8
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "샘플 타이틀",
@@ -92,7 +92,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "templateParameter": {
         "key": "value"
@@ -207,7 +207,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "샘플 타이틀",
@@ -227,7 +227,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
@@ -305,7 +305,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "(광고) 샘플 타이틀",
@@ -329,7 +329,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "templateParameter": {
         "key": "value"
@@ -364,7 +364,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "(광고) 샘플 타이틀",
@@ -384,7 +384,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
@@ -449,7 +449,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "샘플 타이틀",
@@ -467,7 +467,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
@@ -561,7 +561,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "샘플 타이틀",
@@ -577,7 +577,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateId": "TEMPLATE1",
     "tagExpression": ["tag1", "AND", "tag2"],
     "userId": "USER"
@@ -640,7 +640,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "fileName": "file.csv",
     "createUser": "USER",
     "fileBody": []
@@ -1652,7 +1652,7 @@ curl -X PUT \
 curl -X PUT \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "searchParameter": {
         "requestId": "202006051209288SxRXhejd20",
         "startSendDate": "2020-02-01 00:00",
@@ -1983,7 +1983,7 @@ curl -X GET \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/categories'
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "categoryParentId": 12345,
     "categoryName": "Category",
     "categoryDesc": "Top Category",
@@ -2052,7 +2052,7 @@ curl -X POST \
 curl -X PUT \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "categoryName": "Category",
     "categoryDesc": "Top Category",
     "useYn": "Y",
@@ -2343,7 +2343,7 @@ curl -X GET \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "categoryId": 1,
     "templateId": "TEAMPLTE_ID",
     "templateName": "템플릿 이름",
@@ -2407,7 +2407,7 @@ curl -X POST \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "fileName": "file.csv",
     "userId": "USER",
     "fileBody": []
@@ -2483,7 +2483,7 @@ curl -X POST \
 curl -X PUT \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "templateName": "템플릿 이름",
     "templateDesc": "템플릿 설명",
     "useYn": "Y",
@@ -2658,7 +2658,7 @@ curl -X GET \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "tagName": "API-Guide-샘플-태그"
 }'
 ```
@@ -2719,7 +2719,7 @@ curl -X POST \
 curl -X PUT \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "tagName": "API-Guide-샘플-태그2"
 }'
 ```
@@ -2994,7 +2994,7 @@ curl -X GET \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "uids": [{
             "uid": "sample-uid",
             "tagIds": [],
@@ -3100,7 +3100,7 @@ curl -X DELETE \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "emailAddress": "customer1@example.com"
 }'
 ```
@@ -3342,7 +3342,7 @@ curl -X GET \
 curl -X POST \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "blockReceiverList": [{
             "mailAddress": "customer1@example.com",
             "blockDate": "2018-03-01 00:00:00"
@@ -3392,7 +3392,7 @@ curl -X POST \
 curl -X PUT \
 'https://api-mail.cloud.toast.com/email/v1.6/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
---data-raw '{
+-d '{
     "deleted": true,
     "blockReceiverList": [{
             "mailAddress": "customer1@example.com"
