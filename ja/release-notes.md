@@ -2,11 +2,11 @@
 
 ### 2020. 08. 25.
 #### 機能追加
-* [Console] 메일 발송 상세 조회 시 DSN 정보 추가
-* [Console] 메일 발송 상세 조회 건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가
-* [API] API 버전 업데이트 v1.7
-    * 메일 발송 상세 조회 API의 Response 필드 추가
-        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다.
+* [Console]メール送信詳細の照会時、DSN情報を追加
+* [Console]メール送信詳細照会結果のファイルダウンロード時、CSVファイル内にDSN情報を追加
+* [API]APIバージョンアップデートv1.7
+    * メール送信詳細照会APIのResponseフィールドを追加
+        * SMTPを通して送信されたメールの状態を下記DSN情報フィールドで確認できます。
             * DSN Code, DSN Message
             * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
 
