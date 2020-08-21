@@ -206,9 +206,9 @@ In the **Retrieve Bulk Mail Delivery** tab, you can retrieve scheduled mass mail
 
 Select a tagged mail schedule (a column on the list) to query the list of mail deliver per recipient at the bottom.
 
-### Manage Categories and Templates
+## Manage Categories and Templates
 
-#### Categories
+### Categories
 
 You can create categories to sort templates for mail delivery.
 
@@ -222,7 +222,7 @@ You can create categories to sort templates for mail delivery.
 
 To modify category, select a category and click **Modify**. When **Modify Category** window pops up, modify the content and click **Modify**.
 
-#### Templates
+### Templates
 
 ![email_14_201812_en.png](https://static.toastoven.net/prod_email/email_14_201812_en.png)
 
@@ -291,28 +291,28 @@ Registered sub-domains can be used as **Custom Header** to send mails.
 * For more details, see the guide for [Custom header](https://docs.toast.com/en/Notification/Email/en/Overview/#custom-header).
 
 <span id="dkim"></span>
-### DKIM
-DKIM(Domain Keys Identified Mail)이란 발신자 및 메일 내용 등이 위변조되지 않았는지 수신자 측에서 검증할 수 있는 기술입니다.
-**DKIM > 설정** 버튼을 클릭하면 DKIM 기능을 이용할 수 있습니다.
-주요 기능은 다음과 같습니다.<br>
+### DomainKeys Identified Mail (DKIM)
+DKIM, or DomainKeys Identified Mail refers to a technique by which the receiver can check if the sender address or email is forged. <br>
+To enable DKIM, click **DKIM > Setting**.<br>
+Its main features are like follows: <br>
 
 
-* DKIM TXT 레코드 등록 및 인증
-    * **DKIM 인증** 탭을 클릭합니다.
-    * 발급받은 TXT 레코드값을 도메인의 TXT 레코드에 등록한 후 **인증** 버튼을 클릭합니다.
-    * 도메인의 TXT 레코드에 "v=DKIM1;k=rsa;p={발급된 RSA publicKey 값}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
-    * 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
-* DKIM 기능 활성화 또는 비활성화
-    * **DKIM 기능** 탭을 클릭합니다.
-    * **활성화** 또는 **비활성화** 버튼을 클릭하여 DKIM 기능을 제어할 수 있습니다.<br>
+* Register and Authenticate DKIM TXT Records 
+    * Click **Authenticate DKIM**.
+    * Register issued TXT record onto TXT Record of domain, and click **Authenticate**. 
+    * If "v=DKIM1;k=rsa;p={issued RSA publicKey value}" of domain's TXT record does not exist or is not consistent, authentication fails.  
+    * It might take time to register TXT record to domain and transmit changes. 
+* Enable or Disable DKIM 
+    * Click **DKIM Features**.
+    * Press **Enable** or **Disable** to control DKIM features. <br>
 
-* DKIM 기능이 정상적으로 동작하는지 확인하는 방법은 다음과 같습니다.
-    * 특정 발송 도메인에 대해 DKIM 인증 및 활성화
-    * 특정 발송 도메인으로 이메일 발송
-    * 수신받은 메일의 원본 보기
-    * Authentication-Results 헤더값에 'dkim=pass'이 포함돼 있는지 확인
-        * 메일 서비스 제공 업체별로 dkim=pass 정보를 나타내는 헤더는 다를 수 있습니다.
-        
+* You may do like below to check if DKIM works properly. 
+    * Authenticate and enable DKIM for a particular sender's domain
+    * Send email to a particular domain 
+    * Read the original of a receiving email 
+    * Check if the Authentication-Results header includes 'dkim=pass'
+        * Each email service provider may provide different header for dkim=pass.
+
 ## Tag Management
 
 You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.

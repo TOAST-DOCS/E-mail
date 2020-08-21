@@ -1,5 +1,15 @@
 ## Notification > Email > Release Notes
 
+### 2020. 08. 25.
+#### 機能追加
+* [Console]メール送信詳細の照会時、DSN情報を追加
+* [Console]メール送信詳細照会結果のファイルダウンロード時、CSVファイル内にDSN情報を追加
+* [API]APIバージョンアップデートv1.7
+    * メール送信詳細照会APIのResponseフィールドを追加
+        * SMTPを通して送信されたメールの状態を下記DSN情報フィールドで確認できます。
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
+
 ### 2020. 06. 23.
 #### 機能追加
 * [Console]予約送信照会においてキャンセル機能を追加
