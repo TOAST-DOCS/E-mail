@@ -1414,6 +1414,13 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- data|	List|	データ領域|
 |-- tagId | String | タグID |
 
+##### Description
+- タグは最大2,048個まで作成できます。
+
+##### タグにUID追加作成
+- タグにUIDを追加(append)すること。既存のUIDを追加するとUIDのタグは増えます。
+- 1つのUIDの最大タグ数は16個。
+
 ### タグの修正
 
 #### リクエスト

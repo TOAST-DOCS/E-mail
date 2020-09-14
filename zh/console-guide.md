@@ -293,8 +293,11 @@ Registered sub-domains can be used as **Custom Header** to send mails.
 
 ## Tag Management
 
-You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
-Click a tag and the list of UIDs registered to the tag can be retrieved.
+You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.<br>
+Click a tag and the list of UIDs registered to the tag can be retrieved.<br>
+태그는 Notification 서비스 전역으로 사용됩니다.
+- 태그는 최대 2,048개까지 생성할 수 있습니다.
+- 하나의 UID에 태그를 16개까지 추가할 수 있습니다.
 
 ![email_15_201812_en.png](https://static.toastoven.net/prod_email/email_15_201812_en.png)
 
