@@ -389,6 +389,28 @@ When it is fully uploaded, you can check the list on the **Manage Call Rejects**
 
 When it is completely deleted, you can check it on the **Manage Call Rejects** tab.
 
+<span id="webhook"></span>
+## 웹훅 관리
+웹훅이란, 서비스에서 어떠한 작업이 수행되었음을 HTTP POST로 알리는 것을 말합니다.
+
+**웹훅 관리** 탭에서 웹훅 설정을 관리할 수 있습니다.
+
+
+### 웹훅 설정 등록
+Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
+웹훅 등록 시 아래 설정 값을 입력합니다.
+
+- 이벤트 타입
+    - 현재 지원되는 이벤트 타입은 다음과 같습니다.
+        - 광고 메일 수신 거부 주소 등록
+- 대상 URL
+    - 이벤트 발생 시 데이터를 전달받을 URL입니다.
+        - 프로토콜은 HTTPS만 지원합니다.    
+    - POST 요청에 대한 명세는 [웹훅](./api-guide/#webhook)를 참고해주세요.
+- 서명
+    - 정의된 서명 키는 POST 요청 시 X-Toast-Webhook-Signature 헤더의 값으로 포함됩니다.
+
+
 ## Retrieve Statistics
 
 Check delivery statistics on the **Retrieve Statistics** tab.
