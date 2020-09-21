@@ -316,8 +316,11 @@ DKIM(Domain Keys Identified Mail)이란 발신자 및 메일 내용 등이 위�
 
 ## Tag Management
 
-You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.
-Click a tag and the list of UIDs registered to the tag can be retrieved.
+You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.<br>
+Click a tag and the list of UIDs registered to the tag can be retrieved.<br>
+태그는 Notification 서비스 전역으로 사용됩니다.
+- 태그는 최대 2,048개까지 생성할 수 있습니다.
+- 하나의 UID에 태그를 16개까지 추가할 수 있습니다.
 
 ![email_15_201812_en.png](https://static.toastoven.net/prod_email/email_15_201812_en.png)
 
@@ -344,7 +347,7 @@ UIDs, registered to a tag, can be used to easily send mails to multiple recipien
 3. Save the file and click **Upload UID Files** to upload the file.
 4. Click **Register**.
 
-### Manage Call Rejects
+## Manage Call Rejects
 
 You can manage rejecting users on the **Manage Call Rejct** tab.
 
@@ -387,14 +390,14 @@ When it is fully uploaded, you can check the list on the **Manage Call Rejects**
 
 When it is completely deleted, you can check it on the **Manage Call Rejects** tab.
 
-### Retrieve Statistics
+## Retrieve Statistics
 
 Check delivery statistics on the **Retrieve Statistics** tab.
 You can retrieve by conditions, such as period, statistical type (date, time, or day), mail type (general or mass), or template.
 
 ![email_26_201812_en.png](https://static.toastoven.net/prod_email/email_26_201812_en.png)
 
-### Guide for Notice of Personal Information Assignor
+## Guide for Notice of Personal Information Assignor
 
 When the Customer uses TOAST > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of TOAST Email Service and not to be adversely affected for not disclosing his assignment status:
 
