@@ -1,5 +1,25 @@
 ## Notification > Email > 릴리스 노트
 
+### 2020. 09. 22.
+#### 기능 추가
+* [Console] 웹훅 기능 추가
+    * [웹훅 관리] 메뉴가 추가되었습니다.
+        * Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.
+        * 현재 지원되는 이벤트 타입은 다음과 같습니다.
+            * 광고 메일 수신 거부 주소 등록
+                * 광고성 메일 발송 시 포함된 수신 거부 링크로 수신자가 수신 거부한 경우 웹훅 기능이 동작합니다.
+        * 자세한 내용은 [웹훅 관리](./console-guide/#webhook)를 참고해주세요.
+
+### 2020. 08. 25.
+#### 기능 추가
+* [Console] 메일 발송 상세 조회 시 DSN 정보 추가
+* [Console] 메일 발송 상세 조회 건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가
+* [API] API 버전 업데이트 v1.7
+    * 메일 발송 상세 조회 API의 Response 필드 추가
+        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다.
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
+
 ### 2020. 06. 23.
 #### 기능 추가
 * [Console] 예약 발송 조회 취소 기능 추가

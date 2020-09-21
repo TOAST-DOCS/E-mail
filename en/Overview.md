@@ -99,3 +99,7 @@ For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
 |---|---|
 |Header Name| Name of a header to add. <br>Comprised of between 1 and 50 letters, in English and numbers (a-z, A-Z, 0-9), and hyphen only. |
 |Header Value| Value of a header to add. <br>Composed of between 1 and 1000 bytes. <br>Non-ASCII characters are encoded in Base64 before delivered. |
+
+### Data Retention Period 
+According to the retention policy, email data of the recent 90 days only can be retained. 
+Data older than that are deleted and cannot be queried. 

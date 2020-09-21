@@ -7,6 +7,11 @@
 * [API] Added Query/Cancel Scheduled Delivery
     * Query or cancel scheduled delivery are now available via APIs.  
 
+### April 28, 2020
+#### Feature Updates
+* [Console] Added DKIM 
+    * The features of DomainKeys Identified Mail have been added to check if receiving email is forged.
+    * For more details, see [DKIM Guide](./console-guide/#dkim).
 
 ### March 24, 2020
 #### Feature Updates
@@ -18,25 +23,25 @@
                - Verified mail domains can be protected from third-party usage.
 
 
-### 2020. 01. 21.
+### January 21, 2020
 #### Feature Updates
 * [Console] Downloading is available within the **Query Mass Mail Delivery** tab
     * You can download the list of query results for mass mail delivery in the mass delivery template.
 
 
-### 2019. 11. 26.
+### November 26, 2019
 #### Feature Updates
 * [API] API Version Updated to v1.6
 * [API] User-Input Data Supported for Templates 
     * When you use a template, user-input sender information, title, and body text are preferred for application than template data. 
     * For more details, see [Send Mails API](./api-guide/#_1)
 
-### 2019. 10. 29.
+### October 29, 2019
 #### Feature Updates
 * [Console] Added the Feature of Individual Delivery 
     * For general delivery,  emails can be individually sent to each recipient. 
 
-### 2019. 08. 27.
+### August 27, 2019
 #### Feature Updates 
 * [API] API version updated to v1.5 
 * [API] Added Features for Sender's Group Key 
@@ -47,7 +52,7 @@
     * For more details, see [Query Mail Delivery Details API](./api-guide/#_29).
 
 
-### 2019. 07. 23.
+### July 23, 2019
 #### Feature Updates 
 * [API] Added Manage Templates API 
     * Register, Modify, and Delete Templates are available on APIs. 
