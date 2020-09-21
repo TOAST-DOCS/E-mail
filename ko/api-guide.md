@@ -3441,15 +3441,12 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 생성된 POST 요청에 대한 API 문서입니다.
 
 ### 웹훅 발송
-
 [URL]
-
 |Http method|	URI|
 |---|---|
 | POST | 웹훅 설정에 정의한 대상 URL |
 
 [Header]
-
 |값|	타입|	설명|
 |---|---|---|
 |X-Toast-Webhook-Signature|	String| 웹훅 설정 시 입력한 서명 |
@@ -3463,7 +3460,7 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 |productName|	String|	웹훅 이벤트가 발생한 서비스명 |
 |appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
 |event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록 |
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해주세요. |
+|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./#event-hooks)를 참고해주세요. |
 
 #### cURL
 ```
@@ -3482,7 +3479,8 @@ curl -X POST \
                 ...
             }
         ]
-    }'
+    }
+'
 ```
 
 <span id="event-hooks"></span>
