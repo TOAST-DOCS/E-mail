@@ -393,23 +393,25 @@ UID는 태그에 등록하여 다수의 대상자에게 쉽게 메일을 발송�
 
 ![email_25_201812](https://static.toastoven.net/prod_email/email_25_201812.png)
 
-## Webhook 관리
-Webhook이란, 서비스에서 어떠한 작업이 수행 되었을 때 해당 작업이 수행되었음을 HTTP POST로 알리는 개념을 말합니다
-[Webhook 관리]탭에서 Webhook 설정을 관리할 수 있습니다.
+## 웹훅 관리
+웹훅이란, 서비스에서 어떠한 작업이 수행되었음을 HTTP POST로 알리는 것을 말합니다.
+
+**웹훅 관리** 탭에서 웹훅 설정을 관리할 수 있습니다.
 
 
-### Webhook 설정 등록
-Email 서비스 내 특정 이벤트가 발생하면 Webhook 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
-Webhook 등록 시 아래 설정 값을 입력합니다.
-1. 이벤트 타입
+### 웹훅 설정 등록
+Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
+웹훅 등록 시 아래 설정 값을 입력합니다.
+
+- 이벤트 타입
     - 현재 지원되는 이벤트 타입은 다음과 같습니다.
         - 광고 메일 수신 거부 주소 등록
-2. 대상 URL
-    - 이벤트 발생 시 데이터를 전달받을 URL 입니다.
+- 대상 URL
+    - 이벤트 발생 시 데이터를 전달받을 URL입니다.
         - 프로토콜은 HTTPS만 지원합니다.    
-    - POST 요청에 대한 명세는 [Webhook](./api-guide/#webhook)를 참고해주세요.
-3. 서명
-    - 정의된 서명키는 POST 요청 시 X-Toast-Webhook-Signature 헤더의 값으로 포함됩니다.
+    - POST 요청에 대한 명세는 [웹훅](./api-guide/#webhook)를 참고해주세요.
+- 서명
+    - 정의된 서명 키는 POST 요청 시 X-Toast-Webhook-Signature 헤더의 값으로 포함됩니다.
 
 ## 통계 정보 조회
 
