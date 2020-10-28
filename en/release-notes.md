@@ -2,11 +2,11 @@
 
 ### August 25, 2020
 #### Feature Updates
-* [Console] 메일 발송 상세 조회 시 DSN 정보 추가
-* [Console] 메일 발송 상세 조회 건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가
-* [API] API 버전 업데이트 v1.7
-    * 메일 발송 상세 조회 API의 Response 필드 추가
-        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다.
+* [Console] 메일 발송 상세 조회 시 DSN 정보 추가 Added DSN information when querying email delivery details 
+* [Console] 메일 발송 상세 조회 건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가 Added DSN information within CSV file when downloading file for a detail mail delivery case
+* [API] API 버전 업데이트 v1.7 Updated API to v1.7 
+    * 메일 발송 상세 조회 API의 Response 필드 추가 Added the response field of Query Mail Delivery Details API 
+        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다. You may find mail status sent via SMTP
             * DSN Code, DSN Message
             * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
 
@@ -105,7 +105,7 @@
     * 메일 발송 API 응답에 각 수신자에 대한 결과를 반환합니다. 사용자는 응답으로부터 성공한 수신자 정보와 실패한 수신자 정보를 확인할 수 있습니다.
     * 자세한 내용은 [일반 메일 발송 API 응답](./api-guide-v1.3/#_4)과 [개별 메일 발송 API 응답](./api-guide-v1.3/#_7)을 참고해주세요.
 * [API] 통계 조회 API에 광고 여부 조건 추가
-    * 광고 메일과 광고가 아닌 메일을 구분하여 통계를 확인할 수 있습니다.
+    * 광고 메일과 광고가 아닌 메일을 구분하여 통계를 확인할 수 있습니다. 
     * 자세한 내용은 [통합 통계 조회 API](./api-guide-v1.3/#_83)을 참고해주세요.
 
 ### 2018. 09. 18.
