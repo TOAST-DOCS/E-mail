@@ -2,11 +2,11 @@
 
 ### August 25, 2020
 #### Feature Updates
-* [Console] 메일 발송 상세 조회 시 DSN 정보 추가 Added DSN information when querying email delivery details 
-* [Console] 메일 발송 상세 조회 건에 대한 파일 다운로드 시 CSV 파일 내 DSN 정보 추가 Added DSN information within CSV file when downloading file for a detail mail delivery case
-* [API] API 버전 업데이트 v1.7 Updated API to v1.7 
-    * 메일 발송 상세 조회 API의 Response 필드 추가 Added the response field of Query Mail Delivery Details API 
-        * SMTP를 통해 발송된 메일 상태를 아래 DSN 정보 필드로 확인할 수 있습니다. You may find mail status sent via SMTP
+* [Console] Added DSN information when querying email delivery details 
+* [Console] Added DSN information within CSV file when downloading file for a detail mail delivery case
+* [API] Updated API to v1.7 
+    * Added the response field of Query Mail Delivery Details API 
+        * Find mail status sent via SMTP from the field on DSN information 
             * DSN Code, DSN Message
             * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
 
