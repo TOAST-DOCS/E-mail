@@ -66,7 +66,7 @@ Content-Type: application/json;charset=UTF-8
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -90,7 +90,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' 
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -201,7 +201,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail' 
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -221,7 +221,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMa
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -297,7 +297,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/eachMa
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -321,7 +321,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mai
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -355,7 +355,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-mai
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -375,7 +375,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eac
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -440,7 +440,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/ad-eac
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -458,7 +458,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-m
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -556,7 +556,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/auth-m
 [例1]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
@@ -572,7 +572,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMai
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateId": "TEMPLATE1",
@@ -635,7 +635,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/tagMai
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "fileName": "file.csv",
@@ -777,7 +777,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/attachfile/bi
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -878,7 +878,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mails?
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1023,7 +1023,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/mail/'
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1125,7 +1125,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails?star
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1213,7 +1213,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1348,7 +1348,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tagMails/'"${
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1435,7 +1435,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1543,7 +1543,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1586,7 +1586,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1655,7 +1655,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "searchParameter": {
@@ -1730,7 +1730,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1830,7 +1830,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/sender/reserv
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1907,7 +1907,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories' \
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -1987,7 +1987,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories'
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories'
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "categoryParentId": 12345,
@@ -2055,7 +2055,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories'
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "categoryName": "Category",
@@ -2105,7 +2105,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"
 #### cURL
 ```
 curl -X DELETE \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2162,7 +2162,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/categories/'"
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2239,7 +2239,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2347,7 +2347,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"$
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "categoryId": 1,
@@ -2411,7 +2411,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates' \
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "fileName": "file.csv",
@@ -2487,7 +2487,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/att
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "templateName": "Template Name",
@@ -2542,7 +2542,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"$
 #### cURL
 ```
 curl -X DELETE \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2594,7 +2594,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/templates/'"$
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2661,7 +2661,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "tagName": "API-Guide-Sample"
@@ -2728,7 +2728,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags' \
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "tagName": "API-Guide-Sample"
@@ -2775,7 +2775,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_
 #### cURL
 ```
 curl -X DELETE \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2829,7 +2829,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/tags/'"${TAG_
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -2913,7 +2913,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -3003,7 +3003,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "uids": [{
@@ -3059,7 +3059,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids' \
 #### cURL
 ```
 curl -X DELETE \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -3109,7 +3109,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "emailAddress": "customer1@example.com"
@@ -3157,7 +3157,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER
 #### cURL
 ```
 curl -X DELETE \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -3213,7 +3213,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/uids/'"${USER
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -3288,7 +3288,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/statistics/vi
 #### cURL
 ```
 curl -X GET \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
@@ -3347,7 +3347,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receive
 #### cURL
 ```
 curl -X POST \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "blockReceiverList": [{
@@ -3397,7 +3397,7 @@ https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receive
 #### cURL
 ```
 curl -X PUT \
-https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://api-mail.cloud.toast.com/email/v1.7/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "deleted": true,
