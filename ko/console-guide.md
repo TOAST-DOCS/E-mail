@@ -424,6 +424,7 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 
 ![email_26_201812](https://static.toastoven.net/prod_email/email_26_201812.png)
 
+<span id='personal-information-assignor'></span>
 ## 개인정보 수탁사 고지 안내
 
 '고객'이 TOAST Email 서비스 이용 시, '고객' - '당사' 간 개인 정보 처리에 관한 업무 위수탁 관계가 발생하는 바 정보통신망법 및 개인정보보호법에 따라 위탁자인 '고객'은 개인정보처리방침을 통해 '당사'에 개인 정보를 위탁한 현황(수탁자 및 업무의 내용)을 공개해야 합니다.
