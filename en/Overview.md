@@ -33,6 +33,7 @@ For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
 
 ## Reference
 
+<span id='tags-and-uids'></span>
 ### Tags and UIDs
 
 #### Glossary

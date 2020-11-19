@@ -3426,3 +3426,77 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	成否|
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
+
+
+
+<span id="webhook"></span>
+## Webフック
+Emailサービス内で特定イベントが発生した時、Webフック設定に定義されたURLへPOSTリクエストを作成します。<br>
+作成されたPOSTリクエストについてのAPI文書です。
+
+### Webフック送信
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+| POST | Webフック設定に定義した対象URL |
+
+[Header]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|X-Toast-Webhook-Signature|	String| Webフック設定時に入力した署名 |
+
+[Request body]
+
+|値|	タイプ|	説明|
+|---|---|---|
+|hooksId|	String| Webフック設定に定義されたURLへPOSTリクエストを行うたびに作成される固有のID |
+|webhookConfigId|	String|Webフック設定ID|
+|productName|	String|	Webフックイベントが発生したサービス名 |
+|appKey|	String| Webフックイベントが発生したサービスAppkey |
+|event|	String| Webフックイベント名<br>* UNSUBSCRIBE：広告メール受信アドレス登録 |
+|hooks|	List\<Map\> | Webフックイベント発生時のデータ<br>※詳細な内容は[イベントタイプ別フック(hook)定義](./api-guide/#event-hooks)を参照してください。 |
+
+#### cURL
+```
+curl -X POST \
+    '{TargetUrl}' \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'X-Toast-Webhook-Signature: application/json;charset=UTF-8' \
+    -d '{
+        "hooksId":"202007271010101010sadasdavas",
+        "webhookConfigId":"String",
+        "productName":"Email",
+        "appKey":"akb3dukdmdjsdSvgk",
+        "event":"UNSUBSCRIBE",
+        "hooks":[
+            {
+                ...
+            }
+        ]
+    }'
+```
+
+<span id="event-hooks"></span>
+
+### イベントタイプ別hooks定義
+Webフック設定に定義されたURLへPOSTリクエストを作成する時のイベントタイプ別フック(hook)データです。
+#### 広告メール受信アドレス登録
+|値|	タイプ|	説明|
+|---|---|---|
+|hooks|	List\<Map\> | Webフックイベント発生時のデータ |
+|- hookId|	String| サービスでイベントが発生する時に作成される固有ID |
+|- receiveMailAddr|	String|	受信拒否をリクエストした受信者メールアドレス |
+|- createdDateTime|	String| 受信拒否リクエスト日時<br>* yyyy-MM-dd'T'HH:mm:ss.SSSXXX|
+
+```json
+"hooks":[
+    {
+        "hookId":"202007271010101010sadasdavas",
+        "receiveMailAddr":"help@toast.com",
+        "createdDateTime":"2020-09-09T11:25:10.000+09:00"
+    }
+]
+```
