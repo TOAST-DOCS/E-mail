@@ -1,18 +1,28 @@
 ## Notification > Email > Release Notes
 
-### 2020. 06. 23.
+### August 25, 2020
 #### Feature Updates
-* [Console] 예약 발송 조회 취소 기능 추가
-    * **메일 예약 발송 조회** 탭에서 발송 전 상태의 예약 메일을 취소할 수 있는 기능이 추가되었습니다.
-* [API] 예약 발송 조회 및 취소 기능 추가
-    * 예약 발송 조회 및 취소 기능을 API로 제공합니다.
+* [Console] Added DSN information when querying email delivery details 
+* [Console] Added DSN information within CSV file when downloading file for a detail mail delivery case
+* [API] Updated API to v1.7 
+    * Added the response field of Query Mail Delivery Details API 
+        * Find mail status sent via SMTP from the field on DSN information 
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
 
-### 2020. 04. 28.
+
+### June 23, 2020
 #### Feature Updates
-* [Console] DKIM 기능 추가
-    * 메일 발송 시 수신 측에서 메일이 위변조되지 않았는지 검증할 수 있는 DKIM 기능이 추가되었습니다.
-    * 자세한 내용은 [DKIM 가이드](./console-guide/#dkim)를 참고해주세요.
+* [Console] Added Cancellation for Query Scheduled Delivery 
+    * On the **Query Scheduled Delivery** tab, the feature of cancelling scheduled emails before sent has been added. 
+* [API] Added Query/Cancel Scheduled Delivery
+    * Query or cancel scheduled delivery are now available via APIs.  
 
+### April 28, 2020
+#### Feature Updates
+* [Console] Added DKIM 
+    * The features of DomainKeys Identified Mail have been added to check if receiving email is forged.
+    * For more details, see [DKIM Guide](./console-guide/#dkim).
 
 ### March 24, 2020
 #### Feature Updates

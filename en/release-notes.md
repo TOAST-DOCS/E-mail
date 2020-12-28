@@ -1,5 +1,16 @@
 ## Notification > Email > Release Notes
 
+### August 25, 2020
+#### Feature Updates
+* [Console] Added DSN information when querying email delivery details 
+* [Console] Added DSN information within CSV file when downloading file for a detail mail delivery case
+* [API] Updated API to v1.7 
+    * Added the response field of Query Mail Delivery Details API 
+        * Find mail status sent via SMTP from the field on DSN information 
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
+
+
 ### June 23, 2020
 #### Feature Updates
 * [Console] Added Cancellation for Query Scheduled Delivery 
@@ -94,7 +105,7 @@
     * 메일 발송 API 응답에 각 수신자에 대한 결과를 반환합니다. 사용자는 응답으로부터 성공한 수신자 정보와 실패한 수신자 정보를 확인할 수 있습니다.
     * 자세한 내용은 [일반 메일 발송 API 응답](./api-guide-v1.3/#_4)과 [개별 메일 발송 API 응답](./api-guide-v1.3/#_7)을 참고해주세요.
 * [API] 통계 조회 API에 광고 여부 조건 추가
-    * 광고 메일과 광고가 아닌 메일을 구분하여 통계를 확인할 수 있습니다.
+    * 광고 메일과 광고가 아닌 메일을 구분하여 통계를 확인할 수 있습니다. 
     * 자세한 내용은 [통합 통계 조회 API](./api-guide-v1.3/#_83)을 참고해주세요.
 
 ### 2018. 09. 18.
