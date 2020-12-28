@@ -270,7 +270,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.cloud.toast.com/email/v1.3/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}}],"customHeaders":{"X-Sample":"sample","Content-Type":"text/html; charset=utf-8"},"userId":"XXXXX"}'
 ```
 
-### Send Tagged Mails
+### Send Authenticated Mails 
 
 #### Request
 
@@ -1417,6 +1417,14 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | body            | Object  | Body area         |
 | - data          | List    | Data area         |
 | -- tagId        | String  | Tag ID            |
+
+##### Description
+- 태그는 최대 2,048개까지 생성할 수 있습니다.
+
+##### 태그에 UID 추가 생성
+- 태그에 UID를 추가(append)하는 것으로, 기존에 있던 UID를 추가하면 UID의 태그는 늘어납니다.
+- 한 UID에 태그를 16개까지 추가할 수 있습니다.
+
 
 ### Modify Tags
 

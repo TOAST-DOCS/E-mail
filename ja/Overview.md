@@ -30,6 +30,7 @@ SPFの設定方法は、[問題解決ガイド](./troubleshooting-guide/)を参�
 
 ## 参考
 
+<span id='tags-and-uids'></span>
 ### タグとUID
 
 #### サービス用語

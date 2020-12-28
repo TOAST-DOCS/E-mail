@@ -1923,6 +1923,13 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- data|	List|	데이터 영역|
 |-- tagId | String | 태그 ID |
 
+##### Description
+- 태그는 최대 2,048개까지 생성할 수 있습니다.
+
+##### 태그에 UID 추가 생성
+- 태그에 UID를 추가(append)하는 것으로, 기존에 있던 UID를 추가하면 UID의 태그는 늘어납니다.
+- 한 UID에 태그를 16개까지 추가할 수 있습니다.
+
 ### 태그 수정
 
 #### 요청
@@ -2581,3 +2588,4 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://api-mail.c
 |- isSuccessful|	Boolean|	성공여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
+

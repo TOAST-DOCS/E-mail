@@ -1,5 +1,25 @@
 ## Notification > Email > Release Notes
 
+### 2020. 09. 22.
+#### 機能追加
+* [Console]Webフック機能追加
+    * [Webフック管理]メニューが追加されました。
+        * Emailサービス内で特定イベントが発生すると、Webフック設定に定義されたURLへPOSTリクエストを作成します。
+        * 現在サポートしているイベントタイプは次のとおりです。
+            * 広告メール受信拒否アドレス登録
+                * 広告性メール送信時に含まれる受信拒否リンクで受信者が受信拒否した場合、Webフック機能が動作します。
+        * 詳細な内容は[Webフック管理](./console-guide/#webhook)を参照してください。
+
+### 2020. 08. 25.
+#### 機能追加
+* [Console]メール送信詳細の照会時、DSN情報を追加
+* [Console]メール送信詳細照会結果のファイルダウンロード時、CSVファイル内にDSN情報を追加
+* [API]APIバージョンアップデートv1.7
+    * メール送信詳細照会APIのResponseフィールドを追加
+        * SMTPを通して送信されたメールの状態を下記DSN情報フィールドで確認できます。
+            * DSN Code, DSN Message
+            * [DSN(Delivery Status Notification)](https://tools.ietf.org/html/rfc3463)
+
 ### 2020. 06. 23.
 #### 機能追加
 * [Console]予約送信照会においてキャンセル機能を追加
