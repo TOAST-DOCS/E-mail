@@ -1,7 +1,7 @@
 ## Notification > Email > 문제 해결 가이드
 
 ### SPF(Sender Policy Framework) 등록
-TOAST Email을 통해 발송하는 메일이 스팸 처리되고 있어 다음과 같이 SPF 등록 방법을 안내합니다.
+NHN Cloud Email을 통해 발송하는 메일이 스팸 처리되고 있어 다음과 같이 SPF 등록 방법을 안내합니다.
 
 #### 현상과 원인
 
@@ -16,7 +16,7 @@ TOAST Email을 통해 발송하는 메일이 스팸 처리되고 있어 다음�
 * **발송 메일**에 입력할 메일 주소의 도메인에 대한 SPF 레코드를 만듭니다.
 * 도메인에 SPF 레코드가 없다면 수신자가 메일이 인증된 메일 서버에서 전송된 것인지를 확인할 수 없으므로 메일이 수신 거부될 수도 있습니다.
 
-#### TOAST SPF 레코드 설정
+#### NHN Cloud SPF 레코드 설정
 아래의 값을 DNS의 TXT 레코드에 등록합니다. 자세한 등록 방법은 DNS 관리 업체에 문의하시기 바랍니다.
 ```
 v=spf1 include:_spfblocka.toast.com ~all
