@@ -39,7 +39,7 @@ The sender shall be held liable for any conflicts that may arise in violation of
 3. Show sender information, including name, email address, phone number and home address, in the body.
 4. Clearly display guides for recipients to block receiving or withdraw consent to receive promotional mails, and come up with technical means to easily follow their choices.
 
-TOAST shall provide technical means as below to 'Advertising Mails' in compliance of the Act on Promotion of Information and Communications Network Utilization and Information Protection:
+NHN Cloud shall provide technical means as below to 'Advertising Mails' in compliance of the Act on Promotion of Information and Communications Network Utilization and Information Protection:
 
 * Insert the (AD) phrase to title.
 * Allow Reject Receiving Ad Mails for recipients.
@@ -267,7 +267,7 @@ Click **Share > Setting** to share domains. <br>
 Main features are as follows.<br>
 
 * Query project with verified domains
-    * Provide the list of TOAST projects completed with verification for specific domains.
+    * Provide the list of NHN Cloud projects completed with verification for specific domains.
 * Share domain with other projects 
     * No need to repeat the verification process, when verifying same domain for many projects.<br>
     * After verified from a project, domains can be shared by entering appkey for other projects' email services. 
@@ -399,11 +399,11 @@ You can retrieve by conditions, such as period, statistical type (date, time, or
 <span id='personal-information-assignor'></span>
 ## Guide for Notice of Personal Information Assignor
 
-When the Customer uses TOAST > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of TOAST Email Service and not to be adversely affected for not disclosing his assignment status:
+When the Customer uses NHN Cloud > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud Email Service and not to be adversely affected for not disclosing his assignment status:
 
 (Example)
 
-[Notice of Personal Information Assignor] To use TOAST Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
+[Notice of Personal Information Assignor] To use NHN Cloud Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
 
 Assignor: NHN
 Content of Business: Send emails in lieu of customers
