@@ -19,9 +19,9 @@ With Email, you can send mails, send by schedule, query delivery history, and ma
 - Sending mails  and query of RESTful API are also available on your application. 
 
 ## Caution before Sending Mails
-To prevent mails sent from TOAST Email being processed as spam mails at external email services, keep note of the following: 
+To prevent mails sent from NHN Cloud Email being processed as spam mails at external email services, keep note of the following: 
 
-First, DNS setting is required. <br/>Since mail is sent from the email address which includes the owner's domain via TOAST Email mail delivery server (SMTP), additional setting is required for DNS in which user's own domain can be serviced. <br/> _spfblocka.toast.com must be registered for SPF of TXT record at DNS. If SPF setting is not right, a mail may be considered as a spam or one from a faulty user, hence receiving a warning sign or saved at 'Spam Inbox', which makes it hard for the recipient to receive. <br>
+First, DNS setting is required. <br/>Since mail is sent from the email address which includes the owner's domain via NHN Cloud Email mail delivery server (SMTP), additional setting is required for DNS in which user's own domain can be serviced. <br/> _spfblocka.toast.com must be registered for SPF of TXT record at DNS. If SPF setting is not right, a mail may be considered as a spam or one from a faulty user, hence receiving a warning sign or saved at 'Spam Inbox', which makes it hard for the recipient to receive. <br>
 
 Please see [Troubleshooting Guide](./troubleshooting-guide/) on how to set SPF. 
    
@@ -73,7 +73,7 @@ For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
 ### Custom Header
 
 * Custom header can be added to a receiving email for delivery. 
-* TOAST Email Service adopts the headers following the format as described in [RFC 822](https://www.ietf.org/rfc/rfc0822.txt), except below: 
+* NHN Cloud Email Service adopts the headers following the format as described in [RFC 822](https://www.ietf.org/rfc/rfc0822.txt), except below: 
 
 #### Headers Unavailable to Request
 

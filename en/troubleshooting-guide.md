@@ -1,7 +1,7 @@
 ## Notification > Email > Troubleshooting Guide
 
 ### Register Sender Policy Framework (SPF)
-As mails sent  by TOAST Email are often considered spams, we provide the guide as below to register SPF.   
+As mails sent  by NHN Cloud Email are often considered spams, we provide the guide as below to register SPF.   
 
 #### Circumstance and Cause 
 
@@ -17,7 +17,7 @@ As mails sent  by TOAST Email are often considered spams, we provide the guide a
 * Create an SPF record for the domain of email addresses for **Mails to Send**.
 * If SPF record is not available for a domain, mail receiving may be rejected, as recipient cannot confirm whether the mail comes from an authorized mail server.  
 
-#### TOAST SPF Record Setting 
+#### NHN Cloud SPF Record Setting 
 
 Even after SPF setting for TXT record is changed, it may take 10 minutes to 24 hours until DNS change is fully transmitted. It is safe to send emails after hours since SPF setting change is done.  
 
