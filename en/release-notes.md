@@ -1,5 +1,20 @@
 ## Notification > Email > Release Notes
 
+### 2020. 10. 27.
+#### 기능 추가
+* [Console] 대량 메일 발송 취소 기능 추가
+    * **대량 메일 발송 조회** 탭에서 발송중인 상태의 메일을 취소할 수 있는 기능이 추가되었습니다.
+
+### 2020. 09. 22.
+#### 기능 추가
+* [Console] 웹훅 기능 추가
+    * [웹훅 관리] 메뉴가 추가되었습니다.
+        * Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.
+        * 현재 지원되는 이벤트 타입은 다음과 같습니다.
+            * 광고 메일 수신 거부 주소 등록
+                * 광고성 메일 발송 시 포함된 수신 거부 링크로 수신자가 수신 거부한 경우 웹훅 기능이 동작합니다.
+        * 자세한 내용은 [웹훅 관리](./console-guide/#webhook)를 참고해주세요.
+
 ### August 25, 2020
 #### Feature Updates
 * [Console] Added DSN information when querying email delivery details 
