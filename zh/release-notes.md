@@ -1,5 +1,10 @@
 ## Notification > Email > Release Notes
 
+### March 23, 2021
+#### Feature Updates
+* [Console/API] 템플릿 아이디 허용 문자 제한
+    * 템플릿 아이디에 '/', '?', ':' 문자를 사용할 수 없도록 개선되었습니다.
+
 ### August 25, 2020
 #### Feature Updates
 * [Console] 메일 발송 상세 조회 시 DSN 정보 추가
