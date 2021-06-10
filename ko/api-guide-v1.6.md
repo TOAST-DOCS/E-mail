@@ -3259,7 +3259,7 @@ curl -X GET \
 |-- receivedRate | String | 수신율 |
 |-- openedRate | String | 오픈율 |
 
-## 수신 거부 관리
+## 부 관리
 
 ### 수신 거부 조회
 
@@ -3282,6 +3282,8 @@ curl -X GET \
 |값|	타입|	필수| 설명|
 |---|---|---|---|
 |mailAddress|	String|	X| 수신거부 목록에 등록되어 있는 이메일 주소|
+|startBlockDate|	String|	X| 수신 거부 시작값 (yyyy-MM-dd HH:mm:ss)|
+|endBLockDate|	String|	X| 수신 거부 종료값 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
