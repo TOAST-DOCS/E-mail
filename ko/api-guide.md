@@ -3267,7 +3267,7 @@ curl -X GET \
 |-- receivedRate | String | 수신율 |
 |-- openedRate | String | 오픈율 |
 
-## 부 관리
+## 수신 거부 관리
 
 ### 수신 거부 조회
 
