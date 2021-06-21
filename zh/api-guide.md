@@ -3287,7 +3287,7 @@ curl -X GET \
 | ----------- | ------- | -------- | -------------------------------------------------- |
 | mailAddress | String  | X        | Email address registered on the list of rejections |
 |startBlockDate|	String|	X| Start date of rejection (yyyy-MM-dd HH:mm:ss)|
-|endBLockDate|	String|	X| End date of rejection (yyyy-MM-dd HH:mm:ss)|
+|endBlockDate|	String|	X| End date of rejection (yyyy-MM-dd HH:mm:ss)|
 | pageNum     | Integer | X        | Page number (default: 1)                           |
 | pageSize    | Integer | X        | Number of queries (default: 15)                    |
 
