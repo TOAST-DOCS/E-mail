@@ -3275,6 +3275,8 @@ curl -X GET \
 |値|	タイプ|	必須| 説明|
 |---|---|---|---|
 |mailAddress|	String|	X| 受信拒否リストに登録されているメールアドレス|
+|startBlockDate|	String|	X| 受信拒否日開始値 (yyyy-MM-dd HH:mm:ss)|
+|endBlockDate|	String|	X| 受信拒否日終了値 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 #### cURL
