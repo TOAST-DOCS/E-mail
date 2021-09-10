@@ -1237,7 +1237,7 @@ curl -X GET \
 |- data|	Object|	데이터 영역|
 |-- requestId| String| 요청 ID|
 |-- requestDate| String| 요청 일시|
-|-- sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|-- sendStatus|	String|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
 |-- sendStatusName|	String|	발송 상태 명|
 |-- templateId|	String|	템플릿 ID|
 |-- templateName|	String|	템플릿 명|
