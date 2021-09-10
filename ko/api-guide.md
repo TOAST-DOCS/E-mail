@@ -3,7 +3,7 @@
 ### v2.0 API 소개
 
 1. 시크릿 키 인증 도입
-	* v2.0 API 호출 시 헤더에 [시크릿 키](./#secret-key)를 설정해서 호출해야 합니다.
+	* v2.0 API 호출 시 헤더에 [시크릿 키](./api-guide/#secret-key)를 설정해서 호출해야 합니다.
 2. 대량 발송 조회 API 추가
 	* 대량 발송건에 대한 조회 API가 추가되었습니다.
 
@@ -62,7 +62,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 
 [Request body]
@@ -214,7 +214,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -355,7 +355,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [예시 1]
 ```
@@ -434,7 +434,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [예시 1]
 ```
@@ -503,7 +503,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -642,7 +642,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -744,7 +744,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -886,7 +886,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -1022,7 +1022,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1135,7 +1135,7 @@ curl -X GET \
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹키 |
 
-### 대량 메일 리스트 조회
+### 량 메일 리스트 조회
 
 #### 요청
 
@@ -1175,7 +1175,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1261,7 +1261,7 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |requestId|	String|	요청 ID|
 
-[Path parameter]
+[Query parameter]
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
@@ -1282,7 +1282,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1387,7 +1387,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1519,7 +1519,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -1645,7 +1645,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -1757,7 +1757,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1893,7 +1893,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 
 [Query parameter]
@@ -2009,7 +2009,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -2130,7 +2130,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -2186,7 +2186,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -2240,7 +2240,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -2346,7 +2346,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -2459,7 +2459,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -2558,7 +2558,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -2641,7 +2641,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -2724,7 +2724,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -2796,7 +2796,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -2856,7 +2856,7 @@ curl -X DELETE \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -2955,7 +2955,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -3060,7 +3060,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3145,7 +3145,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3228,7 +3228,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3310,7 +3310,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -3369,7 +3369,7 @@ curl -X DELETE \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -3450,7 +3450,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3531,7 +3531,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3597,7 +3597,7 @@ curl -X PUT \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -3655,7 +3655,7 @@ curl -X DELETE \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -3761,7 +3761,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -3848,7 +3848,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -3933,7 +3933,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -3990,7 +3990,7 @@ curl -X DELETE \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -4058,7 +4058,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -4117,7 +4117,7 @@ curl -X DELETE \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -4210,7 +4210,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Query parameter]
 
@@ -4290,7 +4290,7 @@ curl -X GET \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
@@ -4359,7 +4359,7 @@ curl -X POST \
 
 |값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 [Request body]
 
