@@ -276,7 +276,7 @@ curl -X POST \
 |-- results|	List|	送信結果|
 |--- receiveMailAddr|	String|	受信者のメールアドレス|
 |--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) <br>個別送信は、このフィールドをリクエストしないためnullを返す。|
+|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
@@ -511,7 +511,7 @@ curl -X POST \
 |-- results|	List|	送信結果|
 |--- receiveMailAddr|	String|	受信者のメールアドレス|
 |--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) <br>個別送信は、このフィールドをリクエストしないためnullを返す。|
+|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
@@ -630,7 +630,7 @@ curl -X POST \
 |---|---|---|---|
 |fileName|	String|	O|	ファイル名|
 |fileBody|	Byte[]|	O|	ファイルのByte[]値|
-|createUser|	String|	O|	ファイルアップロードユーザー情報|
+|createUser|	String|	X|	ファイルアップロードユーザー情報|
 
 #### cURL
 ```

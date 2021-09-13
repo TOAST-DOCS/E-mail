@@ -23,7 +23,7 @@ Content-Type: application/json;charset=UTF-8
 
 ### Secret Key
 - 콘솔에서 확인 가능합니다.
-- Secret Key가 필요한 API를 호출할 때, 해더에 아래와 같이 설정해서 호출해야 합니다.
+- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
@@ -323,7 +323,7 @@ curl -X POST \
 |-- results|	List|	送信結果|
 |--- receiveMailAddr|	String|	受信者のメールアドレス|
 |--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) <br>個別送信は、このフィールドをリクエストしないためnullを返す。|
+|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
@@ -612,7 +612,7 @@ curl -X POST \
 |-- results|	List|	送信結果|
 |--- receiveMailAddr|	String|	受信者のメールアドレス|
 |--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC) <br>個別送信は、このフィールドをリクエストしないためnullを返す。|
+|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
@@ -757,7 +757,7 @@ curl -X POST \
 |---|---|---|---|
 |fileName|	String|	O|	ファイル名|
 |fileBody|	Byte[]|	O|	ファイルのByte[]値|
-|createUser|	String|	O|	ファイルアップロードユーザー情報|
+|createUser|	String|	X|	ファイルアップロードユーザー情報|
 
 #### cURL
 ```
@@ -1266,17 +1266,6 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |requestId|	String|	요청 ID|
 
-[Query parameter]
-
-|값|	타입|	필수|	설명|
-|---|---|---|---|
-|receiveMailAddr|	String|	X|	수신 메일 주소|
-|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
-
 [Header]
 
 ```
@@ -1288,6 +1277,18 @@ curl -X GET \
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|receiveMailAddr|	String|	X|	수신 메일 주소|
+|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 #### cURL
 ```
