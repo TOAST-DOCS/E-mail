@@ -23,7 +23,7 @@ Content-Type: application/json;charset=UTF-8
 
 ### Secret Key
 - 콘솔에서 확인 가능합니다.
-- Secret Key가 필요한 API를 호출할 때, 해더에 아래와 같이 설정해서 호출해야 합니다.
+- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
@@ -323,7 +323,7 @@ curl -X POST \
 | -- results          | List    | Delivery result                                              |
 | --- receiveMailAddr | String  | Recipient's mail address                                     |
 | --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
@@ -616,7 +616,7 @@ curl -X POST \
 | -- results          | List    | Delivery result                                              |
 | --- receiveMailAddr | String  | Recipient's mail address                                     |
 | --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
@@ -756,7 +756,7 @@ curl -X POST \
 | ---------- | ------ | -------- | ------------------------- |
 | fileName   | String | O        | File name                 |
 | fileBody   | Byte[] | O        | Byte[]  of a file         |
-| createUser | String | O        | File uploader information |
+| createUser | String | X        | File uploader information |
 
 #### cURL
 ```
@@ -1264,18 +1264,6 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |requestId|	String|	요청 ID|
 
-
-[Query parameter]
-
-|값|	타입|	필수|	설명|
-|---|---|---|---|
-|receiveMailAddr|	String|	X|	수신 메일 주소|
-|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
-
 [Header]
 
 ```
@@ -1287,6 +1275,18 @@ curl -X GET \
 |값|	타입|	필수|	설명|
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+
+
+[Query parameter]
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|receiveMailAddr|	String|	X|	수신 메일 주소|
+|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 #### cURL
 ```

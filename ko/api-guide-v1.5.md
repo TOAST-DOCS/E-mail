@@ -213,7 +213,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- results|	List|	발송 결과|
 |--- receiveMailAddr|	String|	수신자 메일 주소|
 |--- receiveName|	String|	수신자 명|
-|--- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) <br>개별 발송은 이 필드를 요청하지 않으므로 null을 반환.|
+|--- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) |
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
@@ -359,7 +359,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |-- results|	List|	발송 결과|
 |--- receiveMailAddr|	String|	수신자 메일 주소|
 |--- receiveName|	String|	수신자 명|
-|--- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) <br>개별 발송은 이 필드를 요청하지 않으므로 null을 반환.|
+|--- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
@@ -461,7 +461,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |---|---|---|---|
 |fileName|	String|	O|	파일이름|
 |fileBody|	Byte[]|	O|	파일의 Byte[] 값|
-|createUser|	String|	O|	파일 업로드 유저 정보|
+|createUser|	String|	X|	파일 업로드 유저 정보|
 
 [예시]
 ```

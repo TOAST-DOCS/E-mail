@@ -278,7 +278,7 @@ curl -X POST \
 | -- results          | List    | Delivery result                                              |
 | --- receiveMailAddr | String  | Recipient's mail address                                     |
 | --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
@@ -519,7 +519,7 @@ curl -X POST \
 | -- results          | List    | Delivery result                                              |
 | --- receiveMailAddr | String  | Recipient's mail address                                     |
 | --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) <br>Returns null for individual delivery, as this field is not requested. |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
@@ -633,7 +633,7 @@ curl -X POST \
 | ---------- | ------ | -------- | ------------------------- |
 | fileName   | String | O        | File name                 |
 | fileBody   | Byte[] | O        | Byte[]  of a file         |
-| createUser | String | O        | File uploader information |
+| createUser | String | X        | File uploader information |
 
 #### cURL
 ```
