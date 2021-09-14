@@ -1,5 +1,17 @@
 ## Notification > Email > Release Notes
 
+### September 14, 2021
+#### Feature Updates
+* [API] API 버전 업데이트 v2.0
+    * 시크릿 키 인증 추가
+        * API 인증 단계에서 시크릿 키 검증이 추가되었습니다.
+        * 자세한 내용은 [Secret Key](./api-guide/#secret-key)를 참고해주세요.
+    * 대량 메일 발송 조회 API 추가
+        * 대량 메일 발송 조회 기능을 API로 제공합니다.
+* [Console/API] 템플릿 아이디 허용 문자 제한
+    * 템플릿 아이디에 &, %, ", ', 문자를 사용할 수 없도록 개선되었습니다.
+
+
 ### March 23, 2021
 #### Feature Updates
 * [Console/API] 템플릿 아이디 허용 문자 제한
