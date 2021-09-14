@@ -1486,7 +1486,8 @@ curl -X GET \
          ],
          "customHeaders":{
                 "Content-Type": "text/html"
-         }
+         },
+         "senderGroupingKey":"senderKey"
       }
    }
 }
@@ -1526,6 +1527,7 @@ curl -X GET \
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
+|-- senderGroupingKey|	String|	발신자 그룹키 (최대 100자) |
 
 ### 예약 발송 취소 - 요청별
 #### 요청

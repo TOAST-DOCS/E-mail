@@ -1483,7 +1483,8 @@ curl -X GET \
          ],
          "customHeaders":{
                 "Content-Type": "text/html"
-         }
+         },
+         "senderGroupingKey":"senderKey"
       }
    }
 }
@@ -1523,6 +1524,7 @@ curl -X GET \
 |--- fileSize|	Integer| 添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./Overview/#custom-header) |
+|-- senderGroupingKey|	String|	発信者グループキー |
 
 ### 予約発送の取り消し - リクエスト別
 #### リクエスト

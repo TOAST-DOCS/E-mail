@@ -1481,7 +1481,8 @@ curl -X GET \
          ],
          "customHeaders":{
                 "Content-Type": "text/html"
-         }
+         },
+         "senderGroupingKey":"senderKey"
       }
    }
 }
@@ -1521,6 +1522,7 @@ curl -X GET \
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
+| -- senderGroupingKey| String  | Sender's group key                                           |
 
 
 ### Cancel Scheduled Delivery by Request
