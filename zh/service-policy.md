@@ -1,7 +1,7 @@
 ## Notification > Email > Service Policy
 
 <span id='operation-policy'></span>
-## NHN Cloud Email 발송 제한에 대한 가이드
+## NHN Cloud Email Sending Restriction Guide
 
 * Please note that, in case of excessive email bounce rate, NHN Cloud Email service may be restricted from sending emails according to the service operation policy.
     * Bounce rate is the percentage of email addresses that were notified by the inbound SMTP server that the email could not be delivered (bounce or sending failure) among all the email addresses that the customer requested sending.
