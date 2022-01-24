@@ -1,5 +1,11 @@
 ## Notification > Email > Release Notes
 
+### January 25, 2022
+#### Feature Updates
+* [SMTP] SMTP 인터페이스 기능 추가
+    * SMTP 인터페이스를 통해 메일을 발송 할 수 있습니다.
+    * 자세한 내용은 [SMTP 가이드](./smtp-guide)를 참고해주세요.
+
 ### September 14, 2021
 #### Feature Updates
 * [API] API 버전 업데이트 v2.0
