@@ -60,7 +60,7 @@ auth plain AEFwcEtleQBTZWNyZXRLZXk=
 ```
 
 ### LOGIN 인증 방식
-PLAIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
+LOGIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩 하는 방법입니다.
 ```bash
 echo -n "AppKey" | openssl enc -base64
