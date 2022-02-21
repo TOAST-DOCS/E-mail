@@ -1,5 +1,9 @@
 ## Notification > Email > Release Notes
 
+### February 22, 2022
+#### Feature Updates
+* [Console] 숨은 참조 기능 추가
+
 ### January 25, 2022
 #### Feature Updates
 * [SMTP] SMTP 인터페이스 기능 추가
