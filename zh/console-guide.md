@@ -406,5 +406,5 @@ When the Customer uses NHN Cloud > Email Service, assignment of personal informa
 
 [Notice of Personal Information Assignor] To use NHN Cloud Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
 
-Assignor: NHN
+Assignor: NHN Cloud Corporation
 Content of Business: Send emails in lieu of customers
