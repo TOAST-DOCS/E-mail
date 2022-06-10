@@ -4472,3 +4472,51 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
     }
 ]
 ```
+
+#### メッセージの送信結果の更新
+|값|	타입|	설명|
+|---|---|---|
+|hooks|	List\<Map\> | Webフックイベント発生時のデータ |
+|- messageType|	String| メールタイプ<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
+|- requestId|	String| リクエストID |
+|- mailSeq|	Integer| メールの順番 |
+|- senderName|	String| 送信者名 |
+|- senderAddress|	String| 送信者のアドレス |
+|- receiveName|	String| 受信者名 |
+|- receiveMailAddr|	String| 受信者メールアドレス |
+|- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|- requestDate|	String| 受信日時 |
+|- createDate|	String| 作成日時 |
+|- resultDate|	String| 受信日時 |
+|- dsnCode|	String| DSN(Delivery Status Notification) ステータスコード |
+|- dsnMessage|	String| DSN(Delivery Status Notification) ステータスメッセージ |
+|- _links|	Object|	リンク |
+|- self|	Object|	- |
+|- href|	String|	メッセージ照会APIリンク |
+|- hookId|	String| サービスでイベントが発生する時に作成される固有ID |
+
+```json
+"hooks":[
+    {
+    "messageType":"NORMAL_MAIL",
+    "requestId":"20190101000000ABCDEFG0",
+    "mailSeq":"0",
+    "senderName":"NHN Cloud",
+    "senderAddress":"sender@nhncloud.com",
+    "receiveName":"NHN Cloud",
+    "receiveMailAddr":"receiver@nhncloud.com",
+    "mailStatusCode":"SST2",
+    "requestDate":"2020-09-09T11:25:10.000+09:00",
+    "createDate":"2020-09-09T11:25:10.000+09:00",
+    "resultDate":"2020-09-09T11:25:10.000+09:00",
+    "dsnCode":"2.5.0",
+    "dsnMessage":"SUCCESS",
+    "_links":{
+        "self":{
+            "href":"https://api-mail.cloud.toast.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
+        }
+    },
+    "hookId": "202007271010101010sadasdavas"
+    }
+]
+```
