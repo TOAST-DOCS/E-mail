@@ -603,7 +603,7 @@ curl -X POST \
 |- data|	Object|	데이터 영역|
 |-- requestId|	String|	요청 ID|
 
-### 첨부드
+### 첨부파일 업로드
 
 #### 요청
 
