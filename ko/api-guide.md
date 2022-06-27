@@ -4479,3 +4479,50 @@ curl -X POST \
 ]
 ```
 
+#### 메시지 발송 결과 코드 업데이트
+|값|	타입|	설명|
+|---|---|---|
+|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
+|- messageType|	String| 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
+|- requestId|	String| 요청 ID |
+|- mailSeq|	Integer| 메일 순번 |
+|- senderName|	String| 발신자 이름 |
+|- senderAddress|	String| 발신자 메일주소 |
+|- receiveName|	String| 수신자 이름 |
+|- receiveMailAddr|	String| 수신자 메일 주소 |
+|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|- requestDate|	String| 요청 일시 |
+|- createDate|	String| 생성 일시 |
+|- resultDate|	String| 수신 일시 |
+|- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
+|- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
+|- _links|	Object|	링크 |
+|- self|	Object|	- |
+|- href|	String|	메시지 조회 API 링크 |
+|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
+
+```json
+"hooks":[
+    {
+    "messageType":"NORMAL_MAIL",
+    "requestId":"20190101000000ABCDEFG0",
+    "mailSeq":"0",
+    "senderName":"NHN Cloud",
+    "senderAddress":"sender@nhncloud.com",
+    "receiveName":"NHN Cloud",
+    "receiveMailAddr":"receiver@nhncloud.com",
+    "mailStatusCode":"SST2",
+    "requestDate":"2020-09-09T11:25:10.000+09:00",
+    "createDate":"2020-09-09T11:25:10.000+09:00",
+    "resultDate":"2020-09-09T11:25:10.000+09:00",
+    "dsnCode":"2.5.0",
+    "dsnMessage":"SUCCESS",
+    "_links":{
+        "self":{
+            "href":"https://api-mail.cloud.toast.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
+        }
+    },
+    "hookId": "202007271010101010sadasdavas"
+    }
+]
+```
