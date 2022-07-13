@@ -8,6 +8,8 @@
 |false|-1000|Invalid appKey.|
 |false|-1001|Service is not exist.|
 |false|-1002|Service is disabled.|
+|false|-1004|Invalid secretKey.|
+|false|-1005|Service is temporarily blocked.|
 |false|-2000|Date format error.|
 |false|-2001|The 'receiverList' or 'receiver' is required.|
 |false|-2002|The 'senderAddress' is required.|
