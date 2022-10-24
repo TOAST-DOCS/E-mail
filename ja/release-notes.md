@@ -1,5 +1,9 @@
 ## Notification > Email > Release Notes
 
+### 2022. 10. 25.
+#### バグ修正
+* [SMTP] text/plain, text/html 형식의 메시지가 모두 포함되어 있는 경우 text/plain 메시지만 수신측에게 전달되는 버그 수정
+
 ### 2022. 02. 22.
 #### 機能追加
 * [Console] 숨은 참조 기능 추가
