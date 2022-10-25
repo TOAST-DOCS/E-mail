@@ -2,7 +2,7 @@
 
 ### October 25, 2022
 #### Bug Fixes
-* [SMTP] text/plain, text/html 형식의 메시지가 모두 포함되어 있는 경우 text/plain 메시지만 수신측에게 전달되는 버그 수정
+* [SMTP] text/plain, text/html 형식의 메시지가 모두 포함되어 있는 경우 text/plain 메시지만 수신 측에게 전달되는 버그 수정
 
 ### February 22, 2022
 #### Feature Updates
