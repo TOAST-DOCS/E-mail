@@ -2,34 +2,48 @@
 
 ### October 25, 2022
 #### Bug Fixes
-* [SMTP] text/plain, text/html 형식의 메시지가 모두 포함되어 있는 경우 text/plain 메시지만 수신 측에게 전달되는 버그 수정
+* [SMTP] Fixed an issue where, when both text/plain and text/HTML messages are included, only the text/pain message are sent
 
 ### February 22, 2022
 #### Feature Updates
-* [Console] 숨은 참조 기능 추가
+* [Console] Added blind carbon copy (BCC) feature
 
 ### January 25, 2022
 #### Feature Updates
-* [SMTP] SMTP 인터페이스 기능 추가
-    * SMTP 인터페이스를 통해 메일을 발송 할 수 있습니다.
-    * 자세한 내용은 [SMTP 가이드](./smtp-guide)를 참고해주세요.
+* [SMTP] Added SMTP interface feature
+    * You can send mail via SMTP interface.
+    * For more details, refer to [SMTP Guide](./smtp-guide).
 
 ### September 14, 2021
 #### Feature Updates
-* [API] API 버전 업데이트 v2.0
-    * 시크릿 키 인증 추가
-        * API 인증 단계에서 시크릿 키 검증이 추가되었습니다.
-        * 자세한 내용은 [Secret Key](./api-guide/#secret-key)를 참고해주세요.
-    * 대량 메일 발송 조회 API 추가
-        * 대량 메일 발송 조회 기능을 API로 제공합니다.
-* [Console/API] 템플릿 아이디 허용 문자 제한
-    * 템플릿 아이디에 &, %, ", ', 문자를 사용할 수 없도록 개선되었습니다.
-
+* [API] API Version Updated to v2.0
+    * Added secret key authentication
+        * Added secret key authentication in API authentication.
+        * For more details, refer to [Secret Key](./api-guide/#secret-key).
+    * Added Retrieve Bulk Main Delivery API
+        * Added an API to retrieve bulk mail deliveries.
+* [Console/API] Restricted allowed characters for template ID
+    * Improved not to use &, %, ", ' for a template ID.
 
 ### March 23, 2021
 #### Feature Updates
-* [Console/API] 템플릿 아이디 허용 문자 제한
-    * 템플릿 아이디에 '/', '?', ':' 문자를 사용할 수 없도록 개선되었습니다.
+* [Console/API] Added restriction to allowed characters for template ID
+    * Improved not to use '/', '?', ':' for a template ID.
+
+### October 27, 2022
+#### Feature Updates
+* [Console] Added a feature to cancel bulk mail delivery
+    * Added a feature to cancel mail that is being sent on the **Retrieve Mass Mail Delivery** tab.
+
+### September 22, 2020
+#### Feature Updates
+ [Console] Added webhook feature
+    * Added [Manage Webhook] menu.
+        * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
+        * Event types that are currently supported are as follows.
+            * Register recipient addresses that reject advertising mails
+                * When a recipient rejects an advertising mail by using a link included in the mail, the webhook feature starts to work.
+        * For more details, refer to [Manage Webhook](./console-guide/#webhook).
 
 ### August 25, 2020
 #### Feature Updates
