@@ -395,7 +395,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | adYn  | String | X|広告かどうか(default 'N') |
 | autoSendYn  | String | X|自動送信かどうか(default 'Y') |
 | attachFileIdList  | List:Integer | X|添付ファイルリスト |
-| tagExpression  | List:String | O|タグ表現式 |
+| tagExpression  | List:String | O|タグ表現式 (タグID含む) |
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./Overview/#custom-header)|
 | userId  | String | X|送信セパレータ ex)admin,system|
 
@@ -920,7 +920,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- requestIp |  String  | リクエストIP |
 |-- requestDate |  String  | リクエスト時間 |
 |-- tagSendStatus |  String  | 送信ステータスコード<br/> WAIT：待機、READY：送信準備、<br/>SENDREADY：送信準備完了、SENDWAIT：送信待機、<br/>SENDING：送信中、COMPLETE：送信完了、<br/>FAIL：送信失敗、CANCEL：送信取消 |
-|-- tagExpression |  List:String  | タグ表現式 |
+|-- tagExpression |  List:String  | タグ表現式 (タグID含む) |
 |-- templateId |  String  | テンプレートID |
 |-- templateName |  String  | テンプレート名 |
 |-- senderName |  String  | 送信者名 |
