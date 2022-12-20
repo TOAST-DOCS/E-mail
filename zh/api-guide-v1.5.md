@@ -402,7 +402,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | adYn             | String      | X        | Advertisement or not (default is 'N')                        |
 | autoSendYn       | String      | X        | Automatic delivery or not (default is 'Y')                   |
 | attachFileIdList | List:String | X        | List of attached files                                       |
-| tagExpression    | List:String | O        | Tag expression                                               |
+| tagExpression    | List:String | O        | Tag expression (including Tag ID)                                               |
 | customHeaders    | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
 | userId           | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
@@ -931,7 +931,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | -- requestIp     | String      | Request IP                                                   |
 | -- requestDate   | String      | Request time                                                 |
 | -- tagSendStatus | String      | Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
-| -- tagExpression | List:String | Tag expression                                               |
+| -- tagExpression | List:String | Tag expression (including Tag ID)                                               |
 | -- templateId    | String      | Template ID                                                  |
 | -- templateName  | String      | Template name                                                |
 | -- senderName    | String      | Sender's name                                                |
