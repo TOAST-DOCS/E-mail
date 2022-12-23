@@ -794,7 +794,7 @@ curl -X POST \
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
 |- data|	Object|	데이터 영역|
-|-- fileId|	String|	파일 ID|
+|-- fileId|	Integer|	파일 ID|
 |-- fileName|	String|	파일명|
 
 
@@ -1487,7 +1487,7 @@ curl -X GET \
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -1859,7 +1859,7 @@ curl -X GET \
 |--- mailSequence | Integer  | 메일 순번 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -3030,7 +3030,7 @@ curl -X GET \
 |-- updateDate|	String|	수정 일시|
 |-- attachFileList|	List|	첨부파일 리스트|
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -3197,7 +3197,7 @@ curl -X POST \
 |- resultMessage|   String| 실패 메시지|
 |body|  Object| 본문 영역|
 |- data|    Object| 데이터 영역|
-|-- fileId| String| 파일 ID|
+|-- fileId| Integer| 파일 ID|
 |-- fileName|   String| 파일 이름|
 
 [주의]

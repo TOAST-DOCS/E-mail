@@ -798,7 +798,7 @@ curl -X POST \
 |- resultMessage|	String|	失敗メッセージ|
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
-|-- fileId|	String|	ファイルID|
+|-- fileId|	Integer|	ファイルID|
 |-- fileName|	String|	ファイル名|
 
 
@@ -1492,7 +1492,7 @@ curl -X GET \
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -1859,7 +1859,7 @@ curl -X GET \
 |--- mailSequence | String  | メールの順番 |
 |-- attachFileList | List  | 添付ファイルリスト |
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -3029,7 +3029,7 @@ curl -X GET \
 |-- updateDate|	String|	修正日時|
 |-- attachFileList|	List|	添付ファイルリスト|
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -3196,7 +3196,7 @@ curl -X POST \
 |- resultMessage|   String| 失敗メッセージ|
 |body|  Object| 本文領域|
 |- data|    Object| データ領域|
-|-- fileId| String| ファイルID|
+|-- fileId| Integer| ファイルID|
 |-- fileName|   String| ファイル名|
 
 [注意]
