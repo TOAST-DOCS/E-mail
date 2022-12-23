@@ -513,7 +513,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | - resultMessage | String  | Failure message   |
 | body            | Object  | Body area         |
 | - data          | Object  | Data area         |
-| -- fileId       | String  | File ID           |
+| -- fileId       | Integer  | File ID           |
 | -- fileName     | String  | File name         |
 
 ### Title/Body Replacement
@@ -819,7 +819,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | --- openedDate      | String  | Date and Time of Opening                                     |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -1147,7 +1147,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 | --- readDate        | String  | Read time                                                    |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -1640,7 +1640,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- updateDate|	String| Date and time of modification |
 |-- attachFileList|	List| List of attached files |
 |--- fileType|	String| Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
-|--- fileId| String| File ID |
+|--- fileId| Integer| File ID |
 |--- fileName|	String| Name of attached file |
 |--- filePath|	String| Path of attached file |
 |--- fileSize|	Integer| Size of attached file (byte) |
@@ -1760,7 +1760,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- resultMessage|   String| Failure message |
 |body|  Object| Body area |
 |- data|    Object| Data area |
-|-- fileId| String| File ID |
+|-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
 [Caution]

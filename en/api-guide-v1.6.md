@@ -673,7 +673,7 @@ curl -X POST \
 | - resultMessage | String  | Failure message   |
 | body            | Object  | Body area         |
 | - data          | Object  | Data area         |
-| -- fileId       | String  | File ID           |
+| -- fileId       | Integer  | File ID           |
 | -- fileName     | String  | File name         |
 
 ### Title/Body Replacement
@@ -971,7 +971,7 @@ curl -X GET \
 | --- openedDate      | String  | Date and Time of Opening                                     |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -1293,7 +1293,7 @@ curl -X GET \
 | --- readDate        | String  | Read time                                                    |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -1506,7 +1506,7 @@ curl -X GET \
 | --- receiveMailAddr  | String  | Recipient's mail address                                     |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | String  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
+| --- fileId          | Integer  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -2297,7 +2297,7 @@ curl -X GET \
 |-- updateDate|	String| Date and time of modification |
 |-- attachFileList|	List| List of attached files |
 |--- fileType|	String| Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
-|--- fileId| String| File ID |
+|--- fileId| Integer| File ID |
 |--- fileName|	String| Name of attached file |
 |--- filePath|	String| Path of attached file |
 |--- fileSize|	Integer| Size of attached file (byte) |
@@ -2438,7 +2438,7 @@ curl -X POST \
 |- resultMessage|   String| Failure message |
 |body|  Object| Body area |
 |- data|    Object| Data area |
-|-- fileId| String| File ID |
+|-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
 [Caution]

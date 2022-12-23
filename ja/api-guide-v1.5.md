@@ -504,7 +504,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- resultMessage|	String|	失敗メッセージ|
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
-|-- fileId|	String|	ファイルID|
+|-- fileId|	Integer|	ファイルID|
 |-- fileName|	String|	ファイル名|
 
 
@@ -1134,7 +1134,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- readDate | String  | 読んだ時間 |
 |-- attachFileList | List  | 添付ファイルリスト |
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -1620,7 +1620,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- updateDate|	String|	修正日時|
 |-- attachFileList|	List|	添付ファイルリスト|
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -1739,7 +1739,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- resultMessage|   String| 失敗メッセージ|
 |body|  Object| 本文領域|
 |- data|    Object| データ領域|
-|-- fileId| String| ファイルID|
+|-- fileId| Integer| ファイルID|
 |-- fileName|   String| ファイル名|
 
 [注意]

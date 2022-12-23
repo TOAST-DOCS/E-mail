@@ -670,7 +670,7 @@ curl -X POST \
 |- resultMessage|	String|	失敗メッセージ|
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
-|-- fileId|	String|	ファイルID|
+|-- fileId|	Integer|	ファイルID|
 |-- fileName|	String|	ファイル名|
 
 
@@ -1306,7 +1306,7 @@ curl -X GET \
 |--- mailSequence | String  | メールの順番 |
 |-- attachFileList | List  | 添付ファイルリスト |
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -2307,7 +2307,7 @@ curl -X GET \
 |-- updateDate|	String|	修正日時|
 |-- attachFileList|	List|	添付ファイルリスト|
 |--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| String| ファイルID|
+|--- fileId| Integer| ファイルID|
 |--- fileName|	String|	添付ファイル名|
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
@@ -2448,7 +2448,7 @@ curl -X POST \
 |- resultMessage|   String| 失敗メッセージ|
 |body|  Object| 本文領域|
 |- data|    Object| データ領域|
-|-- fileId| String| ファイルID|
+|-- fileId| Integer| ファイルID|
 |-- fileName|   String| ファイル名|
 
 [注意]
