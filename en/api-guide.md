@@ -661,7 +661,7 @@ curl -X POST \
 | adYn             | String      | X        | Advertisement or not (default is 'N')                        |
 | autoSendYn       | String      | X        | Automatic delivery or not (default is 'Y')                   |
 | attachFileIdList | List:String | X        | List of attached files                                       |
-| tagExpression    | List:String | O        | Tag expression                                               |
+| tagExpression    | List:String | O        | Tag expression (including Tag ID)                                               |
 | customHeaders    | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
 | userId           | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
@@ -797,7 +797,7 @@ curl -X POST \
 | - resultMessage | String  | Failure message   |
 | body            | Object  | Body area         |
 | - data          | Object  | Data area         |
-| -- fileId       | String  | File ID           |
+| -- fileId       | Integer  | File ID           |
 | -- fileName     | String  | File name         |
 
 ### Title/Body Replacement
@@ -1129,7 +1129,7 @@ curl -X GET \
 | --- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -1490,7 +1490,7 @@ curl -X GET \
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -1605,7 +1605,7 @@ curl -X GET \
 | -- requestIp     | String      | Request IP                                                   |
 | -- requestDate   | String      | Request time                                                 |
 | -- tagSendStatus | String      | Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
-| -- tagExpression | List:String | Tag expression                                               |
+| -- tagExpression | List:String | Tag expression (including Tag ID)                                               |
 | -- templateId    | String      | Template ID                                                  |
 | -- templateName  | String      | Template name                                                |
 | -- senderName    | String      | Sender's name                                                |
@@ -1857,7 +1857,7 @@ curl -X GET \
 | --- mailSequence    | Integer | Mail sequence                                                |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-| --- fileId          | String  | File ID                                                      |
+| --- fileId          | Integer  | File ID                                                      |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -2096,7 +2096,7 @@ curl -X GET \
 | --- receiveMailAddr  | String  | Recipient's mail address                                     |
 | -- attachFileList   | List    | List of attached files                                       |
 | --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | String  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
+| --- fileId          | Integer  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
 | --- fileName        | String  | Name of attached file                                        |
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
@@ -3030,7 +3030,7 @@ curl -X GET \
 |-- updateDate|	String| Date and time of modification |
 |-- attachFileList|	List| List of attached files |
 |--- fileType|	String| Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
-|--- fileId| String| File ID |
+|--- fileId| Integer| File ID |
 |--- fileName|	String| Name of attached file |
 |--- filePath|	String| Path of attached file |
 |--- fileSize|	Integer| Size of attached file (byte) |
@@ -3197,7 +3197,7 @@ curl -X POST \
 |- resultMessage|   String| Failure message |
 |body|  Object| Body area |
 |- data|    Object| Data area |
-|-- fileId| String| File ID |
+|-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
 [Caution]

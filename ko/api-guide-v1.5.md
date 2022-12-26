@@ -393,7 +393,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 | adYn  | String | X|광고 여부 'N'(기본값) |
 | autoSendYn  | String | X|자동 발송 여부 'Y'(기본값) |
 | attachFileIdList  | List:Integer | X|첨부파일 리스트 |
-| tagExpression  | List:String | O|태그 표현식 |
+| tagExpression  | List:String | O|태그 표현식 (태그 ID 포함) |
 |customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
 
@@ -494,7 +494,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- resultMessage|	String|	실패 메시지|
 |body|	Object|	본문 영역|
 |- data|	Object|	데이터 영역|
-|-- fileId|	String|	파일 ID|
+|-- fileId|	Integer|	파일 ID|
 |-- fileName|	String|	파일명|
 
 
@@ -914,7 +914,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- requestIp |  String  | 요청 아이피 |
 |-- requestDate |  String  | 요청 시간 |
 |-- tagSendStatus |  String  | 발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소 |
-|-- tagExpression |  List:String  | 태그 표현식 |
+|-- tagExpression |  List:String  | 태그 표현식 (태그 ID 포함) |
 |-- templateId |  String  | 템플릿 ID |
 |-- templateName |  String  | 템플릿명 |
 |-- senderName |  String  | 발신자명 |
@@ -1130,7 +1130,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |--- readDate | String  | 읽은 시간 |
 |-- attachFileList | List  | 첨부파일 리스트 |
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -1615,7 +1615,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://api-mail.
 |-- updateDate|	String|	수정 일시|
 |-- attachFileList|	List|	첨부파일 리스트|
 |--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| String| 파일 ID|
+|--- fileId| Integer| 파일 ID|
 |--- fileName|	String|	첨부파일 이름|
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
@@ -1734,7 +1734,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://api-mail.
 |- resultMessage|   String| 실패 메시지|
 |body|  Object| 본문 영역|
 |- data|    Object| 데이터 영역|
-|-- fileId| String| 파일 ID|
+|-- fileId| Integer| 파일 ID|
 |-- fileName|   String| 파일 이름|
 
 [주의]
