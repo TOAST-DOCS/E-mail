@@ -91,3 +91,25 @@ QXBwS2V5
 U2VjcmV0S2V5
 235 Authentication Succesfull
 ```
+
+### 용도별 메일 사용
+메일 용도에 따라 메일 타입을 지정할 수 있습니다.</br>
+메일 타입은 인증시 Appkey와 함께 입력 해주시면 됩니다.</br>
+타입을 지정하지 않으면 normal 타입으로 메일이 발송 됩니다.</br>
+ex) appkey#mailType</br>
+지정 가능한 타입은 아래와 같습니다.
+
+| 타입     | 설명    |
+|--------|-------|
+| normal | 일반 메일 | 
+| auth   | 인증 메일 |
+| ad     | 광고 메일 |
+
+```bash
+# PLAIN 인증 방식
+echo -ne "\0AppKey#auth\0SecretKey" | openssl enc -base64
+
+# Login 인증 방식
+echo -n "AppKey#ad" | openssl enc -base64
+
+```
