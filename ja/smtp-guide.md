@@ -56,7 +56,7 @@ ehlo a
 250-AUTH LOGIN PLAIN
 250 AUTH=LOGIN PLAIN
 auth plain AEFwcEtleQBTZWNyZXRLZXk=
-235 Authentication Succesfull
+235 Authentication Successful
 ```
 
 ### LOGIN 인증 방식
@@ -89,7 +89,7 @@ auth login
 QXBwS2V5
 334 UGFzc3dvcmQ6
 U2VjcmV0S2V5
-235 Authentication Succesfull
+235 Authentication Successful
 ```
 
 ### 용도별 메일 사용
