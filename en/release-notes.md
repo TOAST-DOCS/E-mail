@@ -1,12 +1,12 @@
 ## Notification > Email > Release Notes
 
-### 2023. 03. 28.
-* [Console] 조회 날짜 제한 변경
-    * 대량 메일 발송 조회, 태그 메일 발송 조회, 일반 메일 수신자 메일 주소 기준 조회 시 날짜 제한이 30일에서 31일로 변경되었습니다.
-* 요청 파일 다운로드 시 확장자를 선택할 수 있도록 개선.
+### March 28, 2023
+* [Console] Changed query date limit
+    * Changed the date limit from 30 days to 31 days for mass mail delivery query, tagged mail delivery query, and general mail recipient query.
+* Improved to select extensions when downloading requested files
     * CSV, XLSX
-* 대량 발송 결과 표시 개선
-    * 대량 메일 발송 시 정상 발송 대상 데이터가 없을 경우 발송 성공으로 표시하던 것을 발송 실패로 표시하도록 변경되었습니다.
+* Improved display of mass delivery results
+    * Changed so that, when there is no data normally sent in mass delivery, it is displayed as Delivery Failed, not Delivery Completed.
 
 ### October 25, 2022
 #### Bug Fixes

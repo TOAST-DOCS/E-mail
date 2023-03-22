@@ -92,26 +92,26 @@ U2VjcmV0S2V5
 235 Authentication Successful
 ```
 
-### 용도별 메일 사용
-메일 용도에 따라 메일 타입을 지정할 수 있습니다.</br>
-메일 타입은 인증 시 Appkey와 함께 입력해 주시면 됩니다.</br>
-타입을 지정하지 않으면 normal 타입으로 메일이 발송됩니다.</br>
+### Mail Type by Purpose
+You can specify a mail type according to mail usage.</br>
+You can enter a mail type along with Appkey during authentication.</br>
+If the type is not specified, the mail is sent as normal.</br>
 </br>
 ex) appkey#mailType</br>
 </br>
-지정 가능한 타입은 아래와 같습니다.
+You can specify a type as follows.
 
-| 타입     | 설명    |
+| Type   | Description   |
 |--------|-------|
-| normal | 일반 메일 | 
-| auth   | 인증 메일 |
-| ad     | 광고 메일 |
+| normal | Normal mail | 
+| auth   | Authentication mail |
+| ad     | Advertisement mail |
 
 ```bash
-# PLAIN 인증 방식
+# PLAIN authentication method
 echo -ne "\0AppKey#auth\0SecretKey" | openssl enc -base64
 
-# Login 인증 방식
+# Login authentication method
 echo -n "AppKey#ad" | openssl enc -base64
 
 ```
