@@ -1,41 +1,41 @@
 ## Notification > Email > SMTPガイド
 
-[SMTP 도메인]
+[SMTPドメイン]
 
-|도메인 |
+|ドメイン |
 |---|
 |smtp-mail.cloud.toast.com |
 
-| TLS/SSL | 포트 |
+| TLS/SSL | ポート |
 |---|---|
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
-## 암호화 연결
-### STARTTLS 연결
-25, 587, 2587 포트를 통해 명시적 SSL을 사용하는 방법
+## 暗号化接続
+### STARTTLS接続
+25、587、2587ポートを介して明示的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.cloud.toast.com:587
 ```
 
-### TLS Wrapper 연결
-465, 2465 포트를 통해 암시적 SSL을 사용하는 방법
+### TLS Wrapper接続
+465、2465ポートを介して暗黙的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.cloud.toast.com:465
 ```
 
-## SMTP 자격 증명
-인증 메커니즘은 PLAIN, LOGIN 두 방식을 선택하여 사용 할 수 있습니다.</br>
-인증 방식에 사용할 자격 증명은 아래 값을 참고합니다.
+## SMTP認証情報
+認証メカニズムはPLAIN、LOGINの2つの方式を選択して使用できます。</br>
+認証方式に使用する認証情報は以下の値を参照します。
 
-| 값 | 설명 |
+| 値 | 説明 |
 |---|---|
-| 사용자 이름 | NHN Cloud Email 서비스의 AppKey | 
-| 비밀번호 | NHN Cloud Email 서비스의 SecretKey | 
+| ユーザー名 | NHN Cloud EmailサービスのAppKey | 
+| パスワード | NHN Cloud EmailサービスのSecretKey | 
 
-### PLAIN 인증 방식
-PLAIN 인증 방식은 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
-**사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩 하는 방법입니다.
+### PLAIN認証方式
+PLAIN認証方式は**ユーザー名**、**パスワード**を1行のBase64でエンコードして認証情報を試みます。</br>
+**ユーザー名**、**パスワード**を1行のBase64でエンコードする方法です。
 ```bash
 echo -ne "\0AppKey\0SecretKey" | openssl enc -base64
 AEFwcEtleQBTZWNyZXRLZXk=
@@ -56,12 +56,12 @@ ehlo a
 250-AUTH LOGIN PLAIN
 250 AUTH=LOGIN PLAIN
 auth plain AEFwcEtleQBTZWNyZXRLZXk=
-235 Authentication Succesfull
+235 Authentication Successful
 ```
 
-### LOGIN 인증 방식
-LOGIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
-**사용자 이름**, **비밀번호**를 각각 Base64로 인코딩 하는 방법입니다.
+### LOGIN認証方式
+LOGIN認証方式は**ユーザー名**、**パスワード**をそれぞれBase64でエンコードして認証情報を試みます。</br>
+**ユーザー名**、**パスワード**をそれぞれBase64でエンコードする方法です。
 ```bash
 echo -n "AppKey" | openssl enc -base64
 QXBwS2V5
@@ -89,5 +89,29 @@ auth login
 QXBwS2V5
 334 UGFzc3dvcmQ6
 U2VjcmV0S2V5
-235 Authentication Succesfull
+235 Authentication Successful
+```
+
+### 用途別メールの使用
+メールの用途に応じてメールタイプを指定できます。</br>
+メールタイプは認証時にAppkeyと一緒に入力してください。</br>
+タイプを指定しない場合、normalタイプでメールが送信されます。</br>
+</br>
+ex) appkey#mailType</br>
+</br>
+指定可能なタイプは次のとおりです。
+
+| タイプ  | 説明 |
+|--------|-------|
+| normal | 一般メール | 
+| auth   | 認証メール |
+| ad     | 広告メール |
+
+```bash
+# PLAIN認証方式
+echo -ne "\0AppKey#auth\0SecretKey" | openssl enc -base64
+
+# Login認証方式
+echo -n "AppKey#ad" | openssl enc -base64
+
 ```
