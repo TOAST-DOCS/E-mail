@@ -1,5 +1,13 @@
 ## Notification > Email > Release Notes
 
+### 2023. 03. 28.
+* [Console] 조회 날짜 제한 변경
+    * 대량 메일 발송 조회, 태그 메일 발송 조회, 일반 메일 수신자 메일 주소 기준 조회 시 날짜 제한이 30일에서 31일로 변경되었습니다.
+* 요청 파일 다운로드 시 확장자를 선택할 수 있도록 개선.
+    * CSV, XLSX
+* 대량 발송 결과 표시 개선
+    * 대량 메일 발송 시 정상 발송 대상 데이터가 없을 경우 발송 성공으로 표시하던 것을 발송 실패로 표시하도록 변경되었습니다.
+
 ### October 25, 2022
 #### Bug Fixes
 * [SMTP] Fixed an issue where, when both text/plain and text/HTML messages are included, only the text/pain message are sent
