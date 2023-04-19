@@ -4,7 +4,7 @@
 
 |ドメイン |
 |---|
-|smtp-mail.cloud.toast.com |
+|smtp-mail.nhncloudservice.com |
 
 | TLS/SSL | ポート |
 |---|---|
@@ -15,13 +15,13 @@
 ### STARTTLS接続
 25、587、2587ポートを介して明示的SSLを使用する方法
 ```
-openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.cloud.toast.com:587
+openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
 ### TLS Wrapper接続
 465、2465ポートを介して暗黙的SSLを使用する方法
 ```
-openssl s_client -crlf -quiet -connect smtp-mail.cloud.toast.com:465
+openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
 
 ## SMTP認証情報
@@ -42,13 +42,13 @@ AEFwcEtleQBTZWNyZXRLZXk=
 ```
 
 ```bash
-$ telnet smtp-mail.cloud.toast.com 25
-Trying smtp-mail.cloud.toast.com...
-Connected to smtp-mail.gtm.toastoven.net.
+$ telnet smtp-mail.nhncloudservice.com 25
+Trying smtp-mail.nhncloudservice.com...
+Connected to smtp-mail-nhncloud.gtm.toastoven.net.
 Escape character is '^]'.
-220 smtp-mail.cloud.toast.com SMTP Server (NHN Cloud Email SMTP) ready
+220 smtp-mail.nhncloudservice.com SMTP Server (NHN Cloud Email SMTP) ready
 ehlo a
-250-smtp-mail.cloud.toast.com Hello a [10.162.169.253])
+250-smtp-mail.nhncloudservice.com Hello a [10.162.169.253])
 250-PIPELINING
 250-ENHANCEDSTATUSCODES
 250-8BITMIME
@@ -71,13 +71,13 @@ U2VjcmV0S2V5
 ```
 
 ```bash
-$ telnet smtp-mail.cloud.toast.com 25
-Trying smtp-mail.cloud.toast.com...
-Connected to smtp-mail.gtm.toastoven.net.
+$ telnet smtp-mail.nhncloudservice.com 25
+Trying smtp-mail.nhncloudservice.com...
+Connected to smtp-mail-nhncloud.gtm.toastoven.net.
 Escape character is '^]'.
-220 smtp-mail.cloud.toast.com SMTP Server (NHN Cloud Email SMTP) ready
+220 smtp-mail.nhncloudservice.com SMTP Server (NHN Cloud Email SMTP) ready
 ehlo a
-250-smtp-mail.cloud.toast.com Hello a [10.170.128.251])
+250-smtp-mail.nhncloudservice.com Hello a [10.170.128.251])
 250-PIPELINING
 250-ENHANCEDSTATUSCODES
 250-8BITMIME
