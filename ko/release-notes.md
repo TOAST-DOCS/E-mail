@@ -7,7 +7,7 @@
   * API/SMTP 인터페이스의 도메인이 cloud.toast.com 에서 nhncloudservice.com 으로 변경되었습니다.
     * API: api-mail.cloud.toast.com ➡ email.api.nhncloudservice.com
     * SMTP: smtp-mail.cloud.toast.com ➡ smtp-mail.nhncloudservice.com
-  * API/SMTP 인터페이스를 사용하는 고객은 발송 도메인을 변경해주시기 바랍니다. 기존 도메인을 사용하시면 추후 발송이 제한될 수 있습니다.
+  * API/SMTP 인터페이스를 사용하시는 고객은 도메인을 변경해주시기 바랍니다. 기존 도메인을 사용하시면 추후 발송이 제한될 수 있습니다.
 
 #### 버그 수정
 * [Console] 대량 메일 조회간 common.code.null 이 나오는 부분 개선
