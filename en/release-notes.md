@@ -1,5 +1,21 @@
 ## Notification > Email > Release Notes
 
+### 2023. 04. 25.
+#### 기능 개선/변경
+* [API/SMTP] 도메인 변경
+  * API/SMTP 인터페이스의 도메인이 cloud.toast.com에서 nhncloudservice.com으로 변경되었습니다.
+    * API: api-mail.cloud.toast.com → email.api.nhncloudservice.com
+    * SMTP: smtp-mail.cloud.toast.com → smtp-mail.nhncloudservice.com
+  * API/SMTP 인터페이스를 사용하는 경우 도메인을 변경해야 합니다. 기존 도메인을 계속 사용할 경우 추후 발송이 제한될 수 있습니다.
+
+#### 버그 수정
+* [Console] 대량 메일 발송 수신자 조회 시 common.code.null이 나오는 문제 수정
+  * 대량 메일 발송 조회 이후 메일별 수신자 목록 조회 시 일부 상태 코드에서 common.code.null이 나오는 문제를 수정하였습니다.
+
+#### 기능 추가
+* [Console] 발송 예약을 이용해 대량 발송 시 발송 취소 버튼 추가
+  * 발송 예약을 이용해 대량 발송 시 발송을 취소할 수 있는 버튼이 추가되었습니다.
+  
 ### 2023. 03. 28.
 * [Console] 조회 날짜 제한 변경
     * 대량 메일 발송 조회, 태그 메일 발송 조회, 일반 메일 수신자 메일 주소 기준 조회 시 날짜 제한이 30일에서 31일로 변경되었습니다.
