@@ -1,12 +1,28 @@
 ## Notification > Email > Release Notes
 
-### 2023. 03. 28.
-* [Console] 조회 날짜 제한 변경
-    * 대량 메일 발송 조회, 태그 메일 발송 조회, 일반 메일 수신자 메일 주소 기준 조회 시 날짜 제한이 30일에서 31일로 변경되었습니다.
-* 요청 파일 다운로드 시 확장자를 선택할 수 있도록 개선.
+### April 25, 2023
+#### Feature Updates
+* [API/SMTP] Changed domain
+  * Changed the domain for the API/SMTP interface from cloud.toast.com to nhncloudservice.com.
+    * API: api-mail.cloud.toast.com → email.api.nhncloudservice.com
+    * SMTP: smtp-mail.cloud.toast.com → smtp-mail.nhncloudservice.com
+  * When using the API/SMTP interface, you must change the domain. If you keep using the existing domain, delivery may be restricted in the future.
+
+#### Bug Fixes
+* [Console] Fixed an issue where common.code.null appears when searching for recipients of mass delivery
+  * Fixed an issue where, when searching the list of recipients by mail after mass delivery, common.code.null appears in some status code.
+
+#### Added Features
+* [Console] Added the Cancel button for mass delivery using scheduled delivery
+  * Added a button to cancel mass delivery using scheduled delivery.
+
+### March 28, 2023
+* [Console] Changed the date limit on query
+    * Changed the date limit from 30 days to 31 days for mass delivery queries, tagged mailing queries, and queries by regular mail recipient address.
+* Improved to select file extensions when downloading requested files
     * CSV, XLSX
-* 대량 발송 결과 표시 개선
-    * 대량 메일 발송 시 정상 발송 대상 데이터가 없을 경우 발송 성공으로 표시하던 것을 발송 실패로 표시하도록 변경되었습니다.
+* Improved display of mass delivery results
+    * Changed from displaying successful delivery to displaying delivery failure if there is no data sent normally for mass delivery.
 
 ### October 25, 2022
 #### Bug Fixes

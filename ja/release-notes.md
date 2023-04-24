@@ -1,5 +1,21 @@
 ## Notification > Email > Release Notes
 
+### 2023. 04. 25.
+#### 機能改善/変更
+* [API/SMTP]ドメイン変更
+  * API/SMTPインタフェースのドメインがcloud.toast.comからnhncloudservice.comに変更されました。
+    * API: api-mail.cloud.toast.com → email.api.nhncloudservice.com
+    * SMTP: smtp-mail.cloud.toast.com → smtp-mail.nhncloudservice.com
+  * API/SMTPインタフェースを使用する場合、ドメインを変更する必要があります。既存のドメインを引き続き使用する場合、今後の送信が制限される場合があります。
+
+#### バグ修正
+* [Console]大量メール送信受信者照会時にcommon.code.nullが発生する問題を修正
+  * 大量メール送信照会時に一部ステータスコードでcommon.code.nullが発生する問題を修正しました。
+
+#### 機能追加
+* [Console]送信予約を利用して大量送信を行う時に送信キャンセルボタンを追加
+  * 送信予約を利用して大量送信を行う時、送信をキャンセルできるボタンが追加されました。
+
 ### 2023. 03. 28.
 * [Console]照会日付制限を変更
   * 大量メール送信照会、タグメール送信照会、一般メール受信者メールアドレス基準照会を行う時の日付制限を30日から31日に変更しました。
