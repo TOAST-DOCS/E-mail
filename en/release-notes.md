@@ -1,14 +1,14 @@
 ## Notification > Email > Release Notes
 
-### 2023. 05. 30.
+### May 30, 2023
 
-#### 기능 개선/변경
-* [API] 첨부파일 보관 기간 유효성 추가
-  * 보관 기간이 만료된 파일을 첨부해 메일 요청 성공 후 발송 시점에 실패하던 것을 발송 시 요청 시점에 실패하도록 개선하였습니다.
+#### Feature Updates
+* [API] Added retention period validty of attachments
+  * Improved from failing at send time after a successful mail request with an expired file attachment to failing at request time when sending.
 
-#### 버그 수정
-* [Console] 이메일 템플릿 등록 시 일부 CSS 충돌 수정
-  * 이메일 템플릿 등록 시 일부 태그의 CSS가 충돌되어 미리보기 시에 잘못 표시되는 현상이 있어 수정하였습니다.
+#### Bug Fixes
+* [Console] Fixes some CSS conflicts when registering email templates
+  * Fixed an issue where, when registering email templates, CSS conflicts of some tags cause an incorrect display in the preview.
 
 ### April 25, 2023
 #### Feature Updates
