@@ -1,5 +1,15 @@
 ## Notification > Email > Release Notes
 
+### May 30, 2023
+
+#### Feature Updates
+* [API] Added retention period validty of attachments
+  * Improved from failing at send time after a successful mail request with an expired file attachment to failing at request time when sending.
+
+#### Bug Fixes
+* [Console] Fixes some CSS conflicts when registering email templates
+  * Fixed an issue where, when registering email templates, CSS conflicts of some tags cause an incorrect display in the preview.
+
 ### April 25, 2023
 #### Feature Updates
 * [API/SMTP] Changed domain
