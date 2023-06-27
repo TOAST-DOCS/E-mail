@@ -1,7 +1,12 @@
 ## Notification > Email > Release Notes
 
+### 2023. 06. 27.
+#### 기능 개선/변경
+* [Console] 템플릿 미리보기 화면 개선
+  * 메일 발송 간 템플릿 선택 화면에서 템플릿 선택 시 보여지는 미리보기 화면이 개선되었습니다.
+  * 템플릿 선택 시 내용란에 노출되던 템플릿 내용이 미리보기 화면으로 이동되었습니다.
+  
 ### May 30, 2023
-
 #### Feature Updates
 * [API] Added retention period validty of attachments
   * Improved from failing at send time after a successful mail request with an expired file attachment to failing at request time when sending.
