@@ -56,12 +56,12 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 
 다음은 수신 거부 링크로 제공하고 있는 키입니다.
 
-| 키 | 문구 | 사용 에시 |
-| - | - | - |
-| BLOCK_RECEIVER_LINK | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
-| BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
+| 키                       | 문구 | 사용 에시                                                                                                                         |
+|-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
+| BLOCK_RECEIVER_LINK     | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요.                                                                                |
+| EN_BLOCK_RECEIVER_LINK  | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##.                                   |
+| JA_BLOCK_RECEIVER_LINK  | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。                                                                         |
+| BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 ### 템플릿을 이용한 메일 발송
 
