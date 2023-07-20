@@ -56,11 +56,11 @@ NHN Cloudは、韓国情報通信網法を遵守できるように、'広告メ�
 
 次は、受信拒否リンクで提供しているキーです。
 
-| キー | 文言 | 使用例 |
-| - | - | - |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
-| BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
+| キー                      | 文言 | 使用例                                                                                                                           |
+|-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
+| EN_BLOCK_RECEIVER_LINK  | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##.                                   |
+| JA_BLOCK_RECEIVER_LINK  | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。                                                                         |
+| BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 ### テンプレートを利用したメール送信
 
