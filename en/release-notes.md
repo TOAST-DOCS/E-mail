@@ -1,12 +1,12 @@
 ## Notification > Email > Release Notes
 
-### 2023. 07. 25.
-#### 기능 개선/변경
-* [Console] 메일 도메인 관리 화면 변경
-  * 인증 일시, 보호 일시, SPF 레코드 확인 일시 목록이 삭제되었습니다.
-  * 삭제된 목록은 각각 **인증 여부, 보호 여부, SPF 레코드 여부**에 마우스 포인터를 올려 툴팁으로 확인할 수 있습니다.
-* [Console] 메일 요청별 조회 → 검색 결과 다운로드 요청 시 파일 내 정보 추가
-  * 메일 발송 상세 조회 건에 대한 요청 파일 내용으로 Mail Sequence, Template ID, DSN Message 정보가 추가되었습니다.
+### July 25, 2023
+#### Feature Updates
+* [Console] Changed mail domain management screen
+  * Deleted the Date and Time of Verification, Date and Time of Protection, Date and Time of Check SPF Record field.
+  * You can check the deleted fields as a tooltip by hovering over the **Verified or Not, Protected or not, SPF Record or Not** respectively.
+* [Console] Added additional information in Retrieve by Mail Request → Request to download search results
+  * Added  Mail Sequence, Template ID, DSN Message information to the request file content for mail delivery detail queries.
 
 ### June 27, 2023
 #### Feature Updates
