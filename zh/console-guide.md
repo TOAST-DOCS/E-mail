@@ -55,10 +55,10 @@ Send ad mails in reference of the following:
 
 Following keys are provided as part of rejection links: 
 
-| Key | Phrase|  Example of Usage |
-| - | - | - |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| BLOCK_RECEIVER_LINK | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK##' target='_blank'>click here</a>`. |
+| Key                     | Phrase| Example of Usage                                                                                                              |
+|-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
+| EN_BLOCK_RECEIVER_LINK  | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##.                                   |
+| BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 ### Use Templates to Send Mails
 

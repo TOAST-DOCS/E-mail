@@ -1,10 +1,18 @@
 ## Notification > Email > Release Notes
 
-### 2023. 06. 27.
-#### 기능 개선/변경
-* [Console] 템플릿 미리보기 화면 개선
-  * 메일 발송 간 템플릿 선택 화면에서 템플릿 선택 시 보여지는 미리보기 화면이 개선되었습니다.
-  * 템플릿 선택 시 내용란에 노출되던 템플릿 내용이 미리보기 화면으로 이동되었습니다.
+### July 25, 2023
+#### Feature Updates
+* [Console] Changed mail domain management screen
+  * Deleted the Date and Time of Verification, Date and Time of Protection, Date and Time of Check SPF Record field.
+  * You can check the deleted fields as a tooltip by hovering over the **Verified or Not, Protected or not, SPF Record or Not** respectively.
+* [Console] Added additional information in Retrieve by Mail Request → Request to download search results
+  * Added  Mail Sequence, Template ID, DSN Message information to the request file content for mail delivery detail queries.
+
+### June 27, 2023
+#### Feature Updates
+* [Console] Improved template preview screen
+  * Improved the Preview template screen when selecting a template in mail delivery.
+  * Moved the template content that displayed in the body field, when selecting a template, to the Preview screen.
   
 ### May 30, 2023
 #### Feature Updates
