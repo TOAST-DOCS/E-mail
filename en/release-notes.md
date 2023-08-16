@@ -1,5 +1,10 @@
 ## Notification > Email > Release Notes
 
+### 2023. 08. 29.
+#### 기능 개선/변경
+* [Console] 대량메일 발송 요청시 중복 요청 방지
+  * 대량메일 발송 요청시 중복 요청이 될 경우 요청이 거절되도록 개선하였습니다.
+  
 ### July 25, 2023
 #### Feature Updates
 * [Console] Changed mail domain management screen
