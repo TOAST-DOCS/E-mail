@@ -400,8 +400,8 @@ You can retrieve by conditions, such as period, statistical type (date, time, or
 <span id='personal-information-assignor'></span>
 
 ## 발송 설정
-메시지 보관 기간 정책에 따라, 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
-백업 여부, 파일 확장자, 파일을 업로드할 저장소 정보를 입력하면, 해당 저장소에 백업 일자가 포함된 파일이 생성됩니다.
+메시지 보관 기간 정책에 따라 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
+백업 사용 여부, 파일 확장자, 파일을 업로드할 저장소 정보를 입력하면 해당 저장소에 백업 일자가 포함된 파일이 생성됩니다.
 
 ## Guide for Notice of Personal Information Assignor
 
