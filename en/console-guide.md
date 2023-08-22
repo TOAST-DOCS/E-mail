@@ -397,6 +397,11 @@ You can retrieve by conditions, such as period, statistical type (date, time, or
 ![email_26_201812_en.png](https://static.toastoven.net/prod_email/email_26_201812_en.png)
 
 <span id='personal-information-assignor'></span>
+
+## Delivery Settings
+You can backup delivery history data older than 90 days according to the message retention period policy.
+When you enter information on whether to use backup, file extension, and repository, a file with the backup date is created in the repository.
+
 ## Guide for Notice of Personal Information Assignor
 
 When the Customer uses NHN Cloud > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud Email Service and not to be adversely affected for not disclosing his assignment status:

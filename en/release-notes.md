@@ -1,5 +1,15 @@
 ## Notification > Email > Release Notes
 
+### August 29, 2023
+#### Feature Updates
+* [Console] Prevention of duplicate requests upon mass 
+  * Improved to reject duplicate requests for mass delivery. 
+
+### Added Features
+* [Console] Backup data past the retention period
+    * Added a feature to backup data past the retention period.
+    * The mail body is not included in the save target.
+
 ### July 25, 2023
 #### Feature Updates
 * [Console] Changed mail domain management screen
