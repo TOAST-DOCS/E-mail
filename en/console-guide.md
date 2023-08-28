@@ -397,6 +397,11 @@ You can retrieve by conditions, such as period, statistical type (date, time, or
 ![email_26_201812_en.png](https://static.toastoven.net/prod_email/email_26_201812_en.png)
 
 <span id='personal-information-assignor'></span>
+
+## 발송 설정
+메시지 보관 기간 정책에 따라 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
+백업 사용 여부, 파일 확장자, 파일을 업로드할 저장소 정보를 입력하면 해당 저장소에 백업 일자가 포함된 파일이 생성됩니다.
+
 ## Guide for Notice of Personal Information Assignor
 
 When the Customer uses NHN Cloud > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud Email Service and not to be adversely affected for not disclosing his assignment status:
