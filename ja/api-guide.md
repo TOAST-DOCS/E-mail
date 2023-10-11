@@ -369,7 +369,7 @@ curl -X POST \
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##",
+    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
             "receiveName": "고객1",
@@ -447,7 +447,7 @@ curl -X POST \
     "senderAddress": "support@example.com",
     "senderName": "발송자이름",
     "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 \n##BLOCK_RECEIVER_LINK## \n##EN_BLOCK_RECEIVER_LINK##",
+    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
