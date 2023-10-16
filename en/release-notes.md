@@ -51,7 +51,7 @@
   * Fixed an issue where, when searching the list of recipients by mail after mass delivery, common.code.null appears in some status code.
 
 #### Added Features
-* [Console] Added the CanTcel button for mass delivery using scheduled delivery
+* [Console] Added the Cancel button for mass delivery using scheduled delivery
   * Added a button to cancel mass delivery using scheduled delivery.
 
 ### March 28, 2023
