@@ -1,19 +1,19 @@
 ## Notification > Email > Release Notes
-### 2023. 10. 17.
-#### 기능 개선/변경
-* [Console] 메일 조회 기본값 설정
-  * 메일 조회 화면 진입 시 발송/요청/예약 일시 필드를 초기화하는 기능이 추가되었습니다.
-  * 이 기능은 "메일 요청별 조회", "메일 예약 발송 조회", "대량 메일 발송 조회", "태그 메일 발송 조회" 화면에 적용됩니다.
-  
-### 2023. 08. 29.
-#### 기능 개선/변경
-* [Console] 대량 메일 발송 요청 시 중복 요청 방지
-  * 대량 메일 발송을 중복으로 요청할 경우 요청이 거절되도록 개선하였습니다.
+### October 17, 2023.
+#### Feature Updates
+* [Console] Settings for mail retrieve defaults
+  * Added the feature to reset the delivery/request/schedule date fields upon entering the mail retrieve screen.
+  * This feature applies to the “Retrieve by Mail Request”, “Retrieve Scheduled Mail Delivery”, “Retrieve Bulk Mail Delivery”, and “Retrieve Tagged Mail Delivery” screens.
 
-#### 기능 추가
-* [Console] 보관 기간이 지난 데이터 백업 기능
-  * 보관 기간이 지난 데이터의 백업을 위한 설정 기능이 추가되었습니다.
-  * 메일 본문은 저장 대상에 포함되지 않습니다.
+### August 29, 2023
+#### Feature Updates
+* [Console] Duplicate requests prevention when requesting for mass delivery
+  * Improved to reject duplicate requests for mass delivery. 
+
+#### Added Features
+* [Console] Added the feature to backup out-of-date data
+  * Added settings for backing up data that has passed its retention period.
+  * The body of the mail is not included in the save target.
 
 ### July 25, 2023
 #### Feature Updates
