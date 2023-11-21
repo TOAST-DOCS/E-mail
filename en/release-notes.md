@@ -1,4 +1,19 @@
 ## Notification > Email > Release Notes
+### October 17, 2023.
+#### Feature Updates
+* [Console] Settings for mail retrieve defaults
+  * Added the feature to reset the delivery/request/schedule date fields upon entering the mail retrieve screen.
+  * This feature applies to the “Retrieve by Mail Request”, “Retrieve Scheduled Mail Delivery”, “Retrieve Bulk Mail Delivery”, and “Retrieve Tagged Mail Delivery” screens.
+
+### August 29, 2023
+#### Feature Updates
+* [Console] Duplicate requests prevention when requesting for mass delivery
+  * Improved to reject duplicate requests for mass delivery. 
+
+#### Added Features
+* [Console] Added the feature to backup out-of-date data
+  * Added settings for backing up data that has passed its retention period.
+  * The body of the mail is not included in the save target.
 
 ### August 29, 2023
 #### Feature Updates
