@@ -10,10 +10,6 @@
 - 수신 서버는 DKIM-Signature 헤더 내 도메인(d=) DNS에 공개된 공개 키와 서명 알고리즘 정보 등이 담긴 DKIM 레코드를 조회하고 이 값들을 이용해 수신된 이메일 DKIM-Signature 헤더의 디지털 서명을 검증합니다.
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)에서는 DKIM 레코드를 TXT 레코드로 등록하도록 권장하고 있어 NHN CLOUD Email에서는 TXT 레코드 인증 및 활성화 기능을 도입하였습니다.
 
-#### DKIM 레코드 등록 및 검증 흐름
-다음은 NHN CLOUD Email의 DKIM 레코드 등록과 DKIM 검증 흐름입니다.
-![img_6.png](img_6.png)
-
 ### DKIM-Signature 구조
 다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
 

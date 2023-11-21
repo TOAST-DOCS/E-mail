@@ -6,9 +6,6 @@
 <br>수신 서버는 발송자 주소(From) 도메인의 DNS에서 DMARC 레코드를 조회합니다. DMARC 레코드에 정의된 정책에 따라 수신 서버는 수신된 메일을 인증합니다. DMARC 정책은 SPF와 DKIM을 사용하는지, 각각의 인증 수단이 실패했을 때 메일 처리 방법은 어떻게 되는지로 구성되어 있습니다. 
 <br><br>일부 메일 서비스(ex) Gmail,Yahoo 등)들은 DMARC를 적용하지 않을 경우 스팸 메일로 인지해 발송을 차단합니다. 메일 발송간 높은 메일 도달률을 위해서는 DMARC 레코드를 사용하는 것을 권장드립니다.
 
-### DMARC 인증 흐름 
-![img_9.png](img_9.png)
-
 ### DMARC DNS 레코드 구조
 
 DMARC DNS 레코드는 '_dmarc.example.com'처럼 DMARC를 적용할 발송 도메인에 '_dmarc'를 붙인 서브 도메인 DNS에 레코드를 등록합니다.
