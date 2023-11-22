@@ -63,7 +63,7 @@ DMARC 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 
 
 #### 2. DMARC 레코드 DNS 등록
 DMARC 레코드를 등록하는 방법을 설명합니다.
-DMARC 레코드는 '_dmarc.example.com'처럼 DMARC를 적용할 발송 도메인에 '_dmarc'를 붙인 도메인 DNS에 TXT 레코드로 등록합니다. NHN CLOUD Email 콘솔에서 추가적으로 작업할 내용은 없으며, 적절한 DMARC 정책을 수립해 등록하면 됩니다.
+DMARC 레코드는 '_dmarc.example.com'처럼 DMARC를 적용할 발송 도메인에 '_dmarc'를 붙인 도메인 DNS에 TXT 레코드로 등록합니다. NHN Cloud Email 콘솔에서 추가적으로 작업할 내용은 없으며, 적절한 DMARC 정책을 수립해 등록하면 됩니다.
 예를 들면 등록할 내용은 다음과 같습니다. DMARC 실패 시 보고서를 수신할 주소를 설정해야 합니다.
 
 ```

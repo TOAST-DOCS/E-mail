@@ -32,7 +32,7 @@ TXT 레코드의 SPF 설정 변경 작업이 끝나더라도 DNS 서버 상황�
 
 > SPF implementations MUST limit the number of mechanisms and modifiers that do DNS lookups to at most 10 per SPF check, including any lookups caused by the use of the "include" mechanism or the "redirect" modifier. If this number is exceeded during a check, a PermError MUST be returned. The "include", "a", "mx", "ptr", and "exists" mechanisms as well as the "redirect" modifier do count against this limit. The "all", "ip4", and "ip6" mechanisms do not require DNS lookups and therefore do not count against this limit. The "exp" modifier does not count against this limit because the DNS lookup to fetch the explanation string occurs after the SPF record has been evaluated.
 
-해당 호출에는 "include" 메커니즘이나 "redirect" 수정자에 의해 트리거된 모든 조회가 포함됩니다. NHN CLOUD Email의 spf 레코드 `v=spf1 include:_spfblocka.toast.com ~all`가 DNS Lookup간 처리 규약을 초과할 경우, 스팸 메일로 처리될 수 있습니다.
+해당 호출에는 "include" 메커니즘이나 "redirect" 수정자에 의해 트리거된 모든 조회가 포함됩니다. NHN Cloud Email의 spf 레코드 `v=spf1 include:_spfblocka.toast.com ~all`가 DNS Lookup간 처리 규약을 초과할 경우, 스팸 메일로 처리될 수 있습니다.
 
 
 

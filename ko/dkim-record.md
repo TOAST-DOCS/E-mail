@@ -8,7 +8,7 @@
 - DKIM은 공개 키 암호화를 기반으로 하는 디지털 서명 체계를 사용합니다. 
 - 발송 서버는 이메일 발송 시 이메일 발송자, 수신자, 제목, 내용 등을 비밀 키로 서명합니다. 이 서명 값을 DKIM-Signature 헤더(Header)에 추가합니다. 
 - 수신 서버는 DKIM-Signature 헤더 내 도메인(d=) DNS에 공개된 공개 키와 서명 알고리즘 정보 등이 담긴 DKIM 레코드를 조회하고 이 값들을 이용해 수신된 이메일 DKIM-Signature 헤더의 디지털 서명을 검증합니다.
-- [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)에서는 DKIM 레코드를 TXT 레코드로 등록하도록 권장하고 있어 NHN CLOUD Email에서는 TXT 레코드 인증 및 활성화 기능을 도입하였습니다.
+- [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)에서는 DKIM 레코드를 TXT 레코드로 등록하도록 권장하고 있어 NHN Cloud Email에서는 TXT 레코드 인증 및 활성화 기능을 도입하였습니다.
 
 ### DKIM-Signature 구조
 다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
