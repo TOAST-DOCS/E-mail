@@ -1,42 +1,8 @@
-## Notification > Email > Troubleshooting Guide
+## Notification > Email > 문제 해결 가이드
 
-### Register Sender Policy Framework (SPF)
-As mails sent  by NHN Cloud Email are often considered spams, we provide the guide as below to register SPF.   
+### Gmail 수신 확인 관련
 
-#### Circumstance and Cause 
-
-* Circumstance: Sent mails are not delivered to recipient's mail address but returned as spams. 
-* Cause: SPF not registered 
-
-#### What is SPF?
-
-|Term| Description |
-|---|---|
-|SPF Record|As part of a DNS (Domain Name System) record, it validates mail servers which can send mails from a domain.|
-
-* Create an SPF record for the domain of email addresses for **Mails to Send**.
-* If SPF record is not available for a domain, mail receiving may be rejected, as recipient cannot confirm whether the mail comes from an authorized mail server.  
-
-#### NHN Cloud SPF Record Setting 
-
-Even after SPF setting for TXT record is changed, it may take 10 minutes to 24 hours until DNS change is fully transmitted. It is safe to send emails after hours since SPF setting change is done.  
-
-#### How to Find TXT Record of DNS
-For Linux 
-```
-nslookup -q=TXT <your.domain.name>
-```
-```
-dig -t TXT <your.domain.name>
-```
-For Windows 
-```
-nslookup -q=TXT <your.domain.name>
-```
-
-### Confirmation of Receipt on Gmail 
-
-On Gmail, it is unavailable to collect whether mails are properly received. Generally, to check mail receiving, images are inserted; but for Gmail, the in-between server changes to disallow the image tracking. Such intentional block makes it technically impossible to collect data on mail receiving.  
+수신자의 메일이 Gmail인 경우 메일의 수신 확인 여부를 수집할 수 없습니다. 수신 확인을 위해 이미지를 심어 놓는 방식을 사용하는데, Gmail에서는 중간 서버가 해당 이미지를 추적할 수 없도록 바꾸게 됩니다. 이는 Gmail에서 의도적으로 막아 놓은 것으로 기술적으로 수신 확인에 대한 정보를 수집하는 것은 불가능합니다.
 
 ```
 Gmail Image Proxy
@@ -44,37 +10,37 @@ Gmail Image Proxy
 Because the Gmail Image Proxy service does not forward users' cookies, you can't use the measurement protocol to track Gmail users. The Gmail Image Proxy service prevents this by having the measurement protocol requests passed through an intermediate server.
 ```
 
-#### For Reference 
+#### 참조
 [Google Analytics > Email Tracking - Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/email)
 
-### Issue of Low Reputation on Gmail
+### Gmail 낮은 평판(low reputation) 문제
 
-Here is a brief guide of Gmail on reputation: how 'reputation' is evaluated on Gmail, and how to raise or remain 'reputation'. 
-For more details, please see reference at the bottom of the page. 
+Gmail 평판(reputation)에 관한 간략한 가이드입니다.
+Gmail에서 어떻게 '평판'을 평가하는지, '평판'을 올리고 유지하는 방법은 무엇인지 짧게 설명합니다.
+더 자세한 내용은 문서 아래의 참고 문서를 확인해 주시기 바랍니다.
 
-#### What is Reputation? 
-For a mail delivery, the Inbox Service Provider, or ISP (Gmail receiver SMPT server), evaluates the reputation of sender SMTP server to decide whether to receive, and also to classify Spam messages. If mail sending is not right for the reputation evaluation method, it may cause  `Slower delivery speed` and `difficulties in receiving mails from recipients` who use the same ISP. 
- Reputation is largely categorized into IP Reputation, and Domain Reputation. 
+#### 평판(reputation)?
+메일 발송 시 ISP(Inbox Service Provider, Gmail, 수신 SMPT 서버)는 발송 SMTP 서버의 평판을 평가해 수신 여부를 정하고, 스팸을 분류합니다. ISP의 평판 평가 방식에 맞지 않게 메일을 발송하면, `발송 속도 저하`와 해당 ISP를 사용하는 `수신인의 메일 수신이 어려워`질 수 있습니다.
+평판은 크게 IP 평판, 도메인 평판이 있습니다.
+* IP 평판:  IP는 발송 SMTP의 IP입니다. 발송 SMTP가 가지는 IP의 평판을 의미합니다.
+* 도메인 평판: 도메인은 메일 발송 도메인입니다. NHN의 도메인은 'nhn.com'이 됩니다. 메일 발송의 주체가 되는 도메인의 평판을 의미합니다.
 
-* IP Reputation:  IP refers to the IP of sender SMTP. It is the reputation of IP of the sender SMTP. 
-* Domain Reputation: Domain refers to the mail sender's domain. For instance, NHN's domain is 'nhn.com'. It is the reputation of mail sender's domain. 
+#### Gmail의 평판 평가 방식
+##### 도메인 평판을 더 중요하게 평가한다.
+여러 도메인이 IP를 공유해서 발송하는 경우가 많기 때문에 IP보다 도메인을 더 중요하게 평가합니다. Complaints(불만)보다 Engagement(참여) 더 중요하게 평가합니다. 여기서 Complaints는 수신인의 스팸 처리 등을 뜻합니다. Engagement는 수신인이 메일 내용 확인 및 내용에 있는 링크 클릭, 스팸 처리 해제 등을 뜻합니다.
+##### 그 밖에 여러 가지를 평가한다.
+개인적인 메일인지 아닌지, 발송 IP의 평판은 어떤지, 메일 내 링크가 들어가 있는가, 매일 내용 등 여러 가지 요소들을 평가하여 평판을 결정합니다.
 
-#### Evaluation Method of Reputation by Gmail 
-##### Focus More on Domain Reputation    
-Since, in many cases, a single IP is shared by many domains, domain is regarded as a more important point of evaluation than IP. Engagement is considered more highly than complaints: Complaints refer to spamming by recipients, while Engagement refers to the click of a link or unspamming. 
-##### Evaluate Many Other Points As Well  
- Reputation is determined in consideration of many aspects of a mail: if it is personal or not, reputation of its sender IP, existence of a link within, or the content of it.   
-
-#### How to Raise Reputation
-##### Need the Warm-up Process
-It is not recommended to abruptly send bulk mails to new a IP or domain, which may cause low reputation. It is better to increase the number gradually, like from 50 to 100, 500, and then 1,000, throughout many days. 
-##### Send to Largely Engaged Recipients 
-It must be proved that the mails we sent by Gmail are what recipients have wanted. Sending mails, during the warm-up period, to much loyal users who are anxious to receive mails is a good way of raising reputation. 
-##### Allow Permissions 
-The feature of permission of receiving must be enabled.
+#### 평판을 올리는 방법
+##### 준비(warm-Up) 과정 필요
+처음부터 새로운 IP와 도메인으로 많은 양의 메일을 발송하는 것은 바람직하지 않으며, 오히려 평판이 낮아질 수 있습니다. 며칠에 걸쳐서 50, 100, 500, 1000, ...처럼 서서히 증가시켜야 합니다.
+##### Engagement가 큰 수신인을 대상으로 발송
+Gmail에 우리가 발송하는 메일은 수신인들이 원하는 것이라는 것을 증명해야 합니다. Warm-Up 시 일반적인 사용자들보다 훨씬 충성도 높은, 메일이 오기만을 기다리고 있는 사용자들에게 발송하면 평판을 높일 수 있습니다.
+##### Permissions 제공
+서비스에서 수신 여부 설정을 할 수 있도록 기능을 제공해야 합니다.
 ##### Relevancy
-To remain high reputation, mails must be sent to those who are relevant. This is more important than frequent mailing. Size of target doesn't really matter; but, mail content and target must be separated for delivery. About 66% of canceling subscription is due to irrelevant mails and 55% to fatiguing messages. 
+평판을 유지하기 위해서는 메일 내용과 관련성이 있는 대상에게 발송해야 합니다. 단지 메일을 자주 보내는 것보다 더 중요합니다. 발송 대상의 크기는 중요하지 않습니다. 메일 내용과 대상을 세분화해서 발송해야 합니다. 구독 취소의 원인 66%는 관련성이 없는 메일, 55%는 메시지의 피로도 때문입니다.
 
-#### For Reference 
+#### 참고
 Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now - [Bronto](https://bronto.com/)
 Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? - [Mailgun](https://www.mailgun.com)

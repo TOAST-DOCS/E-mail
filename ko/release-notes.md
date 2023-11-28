@@ -1,4 +1,5 @@
 ## Notification > Email > 릴리스 노트
+
 ### 2023. 12. 19.
 #### 기능 추가
 * [Console] DMARC 인증 기능 추가

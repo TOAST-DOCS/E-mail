@@ -1,4 +1,11 @@
 ## Notification > Email > Release Notes
+
+### 2023. 12. 19.
+#### 기능 추가
+* [Console] DMARC 인증 기능 추가
+  - DMARC 인증 절차가 추가됩니다.
+  - 2024년 2월 1일 [Gmail 이메일 발신자 가이드라인](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)이 변경됨에 따라 SPF, DKIM, DMARC 인증을 모두 수행하지 않을 경우 발송이 제한됩니다.
+
 ### October 17, 2023.
 #### Feature Updates
 * [Console] Settings for mail retrieve defaults
