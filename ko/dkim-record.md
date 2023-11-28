@@ -52,11 +52,12 @@ DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 
 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.toast.com/ko/)를 참고하십시오.
 
 #### 2. DKIM 레코드 등록
-![img_4.png](img_4.png)
 
 1. **메일 도메인 관리** 탭으로 이동합니다.
 2. 등록된 발송 도메인에 **DKIM 설정** 버튼을 클릭합니다.
 3. 표시된 DKIM 레코드를 복사해 발송 지정된 도메인 DNS에 등록합니다.
+
+![email_202312_04.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04.png)
 
 ##### 주의 사항
 - TXT 레코드의 DKIM 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
@@ -66,14 +67,11 @@ DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 
 - DKIM 레코드가 등록되었다면 **인증** 버튼을 클릭해 인증을 완료합니다.
 - 인증이 완료될 경우 **인증** 버튼이 **인증 완료**로 변경됩니다.
 
-![img_8.png](img_8.png)
-
 #### 4. DKIM 활성화
 인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
 
-![img_7.png](img_7.png)
+![email_202312_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05.png)
 
 #### 5. DKIM 인증 테스트하기
 - DKIM 기능이 인증 및 활성화 되었을 경우 이메일을 발송해 DKIM이 정상적으로 인증되는지 확인할 수 있습니다.
 - 발송한 이메일의 우측 상단 더보기에서 원문 보기를 클릭 경우 DKIM 관련 헤더를 확인할 수 있습니다.
-

@@ -79,9 +79,14 @@ DMARC 레코드는 '_dmarc.example.com'처럼 DMARC를 적용할 발송 도메�
 #### 3.DMARC 인증 
 - DMARC 레코드 DNS 등록이 완료되면 DMARC 관리 팝업에서 DMARC 인증을 수행합니다.
 
-![img_13.png](img_13.png)
+![email_202312_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08.png)
 
 인증이 완료될 경우, **인증 완료** 라는 문구가 표시됩니다.
+
+#### DMARC 레코드 조회 실패화면 예시
+- DMARC 레코드 조회 실패 시, 다음과 같은 화면이 표시됩니다.
+
+![email_202312_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09.png)
 
 
 ### 주의 사항

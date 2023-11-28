@@ -25,7 +25,8 @@ TXT 레코드의 SPF 설정 변경 작업이 끝나더라도 DNS 서버 상황�
 인증 완료한 도메인의 SPF 레코드가 정상적으로 등록되었는지 확인합니다.
 등록이 완료되었을 경우 `SPF 검증 성공` 메시지가 표시됩니다.
 
-![img_10.png](img_10.png)
+![email_202312_06_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_en.png)
+
 
 ### 주의 사항
 [RFC 4408](https://datatracker.ietf.org/doc/rfc4408/?include_text=1)의 Section 10.1 "Processing Limits"에는 DNS Lookup 간 처리 규약이 명시되어 있습니다.
