@@ -1,7 +1,7 @@
 ## Notification > Email > 도메인 관리 가이드 > DKIM
 
-### DKIM(DomainKeys Identified Mail)이란?
-- DKIM(DomainKeys Identified Mail)은 이메일 발신자가 이메일에 디지털 서명을 하여 발신자의 진위 여부를 확인하고 전송 중에 메시지가 변조되지 않았는지 확인할 수 있는 이메일 인증 방법입니다.
+### DKIM(domainKeys identified mail)이란?
+- DKIM(domainKeys identified mail)은 이메일 발신자가 이메일에 디지털 서명을 하여 발신자의 진위 여부를 확인하고 전송 중에 메시지가 변조되지 않았는지 확인할 수 있는 이메일 인증 방법입니다.
 - DKIM을 통해 스팸 발송자 및 기타 악의적인 공격자가 이메일을 위조하는 것을 방지할 수 있습니다.
 
 ### DKIM의 구조
@@ -42,33 +42,34 @@ b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
 - 이메일 발송 도메인은 example.net입니다.
 - 이메일 발송 도메인의 지정자(s)는 nhncloud입니다.
 - 이메일 발송 도메인(d)은 example.net입니다.
-- 이메일 발송 도메인의 DKIM 레코드는 toast.\_domainkey.example.net입니다.
-- 수신 서버는 toast.\_domainkey.example.net의 DKIM 레코드를 조회해 이메일을 인증합니다.
+- 이메일 발송 도메인의 DKIM 레코드는 nhncloud.\_domainkey.example.net입니다.
+- 수신 서버는 nhncloud.\_domainkey.example.net의 DKIM 레코드를 조회해 이메일을 인증합니다.
 
 ###  DKIM 레코드 등록 및 인증, 활성화 방법
 
 #### 1. 메일 도메인 등록 및 인증
 DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
-메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.toast.com/ko/)를 참고하시기 바랍니다.
+메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.toast.com/ko/)를 참고하십시오.
 
 #### 2. DKIM 레코드 등록
 ![img_4.png](img_4.png)
 
-1. 메일 도메인 관리 탭으로 이동합니다.
-2. 등록된 발송 도메인에 DKIM 설정 버튼을 클릭합니다.
+1. **메일 도메인 관리** 탭으로 이동합니다.
+2. 등록된 발송 도메인에 **DKIM 설정** 버튼을 클릭합니다.
 3. 표시된 DKIM 레코드를 복사해 발송 지정된 도메인 DNS에 등록합니다.
 
-##### 주의사항
+##### 주의 사항
 - TXT 레코드의 DKIM 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
 - DKIM 설정 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
 
 #### 3. DKIM 인증
-DKIM 레코드가 등록되었다면, 인증 버튼을 클릭해 인증을 완료합니다.
+- DKIM 레코드가 등록되었다면 **인증** 버튼을 클릭해 인증을 완료합니다.
+- 인증이 완료될 경우 **인증** 버튼이 **인증 완료**로 변경됩니다.
 
 ![img_8.png](img_8.png)
 
 #### 4. DKIM 활성화
-인증이 성공했다면 팝업 내 DKIM 기능으로 이동 후 활성화 버튼을 클릭해 DKIM을 활성화합니다.
+인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
 
 ![img_7.png](img_7.png)
 
