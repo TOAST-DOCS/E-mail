@@ -11,7 +11,7 @@
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)에서는 DKIM 레코드를 TXT 레코드로 등록하도록 권장하고 있어 NHN Cloud Email에서는 TXT 레코드 인증 및 활성화 기능을 도입하였습니다.
 
 ### DKIM-Signature 구조
-다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
+- 다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
 
 > DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=nhncloud;
 t=1117574938; x=1118006938;
@@ -48,8 +48,8 @@ b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
 ###  DKIM 레코드 등록 및 인증, 활성화 방법
 
 #### 1. 메일 도메인 등록 및 인증
-DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
-메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/ko/Notification/Email/ko/domain-verification/)를 참고하십시오.
+- DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
+- 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/ko/Notification/Email/ko/domain-verification/)를 참고하십시오.
 
 #### 2. DKIM 레코드 등록
 
@@ -68,7 +68,7 @@ DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 
 - 인증이 완료될 경우 **인증** 버튼이 **인증 완료**로 변경됩니다.
 
 #### 4. DKIM 활성화
-인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
+- 인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
 
 ![email_202312_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05.png)
 

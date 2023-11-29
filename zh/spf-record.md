@@ -8,22 +8,22 @@
 ### SPF 레코드 인증 절차 
 
 #### 1. 메일 도메인 등록 및 인증 
-SPF 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다. 
-메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/zh/Notification/Email/zh/domain-verification/)를 참고하십시오.
+- SPF 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다. 
+- 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/zh/Notification/Email/zh/domain-verification/)를 참고하십시오.
 
 #### 2. NHN Cloud SPF 레코드 설정
-아래의 값을 DNS의 TXT 레코드에 등록합니다. 자세한 등록 방법은 DNS 관리 업체에 문의하십시오.
+- 아래의 값을 DNS의 TXT 레코드에 등록합니다. 자세한 등록 방법은 DNS 관리 업체에 문의하십시오.
 
 ```
 v=spf1 include:_spfblocka.toast.com ~all
 ```
 
-TXT 레코드의 SPF 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
-<br> SPF 설정 변경 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
+- TXT 레코드의 SPF 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
+- SPF 설정 변경 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
 
 #### 3. SPF 레코드 검증
-인증 완료한 도메인의 SPF 레코드가 정상적으로 등록되었는지 확인합니다.
-등록이 완료되었을 경우 `SPF 검증 성공` 메시지가 표시됩니다.
+- 인증 완료한 도메인의 SPF 레코드가 정상적으로 등록되었는지 확인합니다.
+- 등록이 완료되었을 경우 `SPF 검증 성공` 메시지가 표시됩니다.
 
 ![email_202312_06_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_en.png)
 
