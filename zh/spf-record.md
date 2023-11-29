@@ -9,7 +9,7 @@
 
 #### 1. 메일 도메인 등록 및 인증 
 SPF 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다. 
-메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.toast.com/ko/)를 참고하십시오.
+메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/zh/Notification/Email/zh/domain-verification/)를 참고하십시오.
 
 #### 2. NHN Cloud SPF 레코드 설정
 아래의 값을 DNS의 TXT 레코드에 등록합니다. 자세한 등록 방법은 DNS 관리 업체에 문의하십시오.

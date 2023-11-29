@@ -59,7 +59,7 @@ DMARC 레코드에 사용되는 값에 대해 설명합니다. 더 자세한 내
 ### DMARC 레코드 검증 절차
 #### 1. 메일 도메인 등록 및 인증
 DMARC 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
-메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.toast.com/ko/)를 참고하십시오.
+메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)를 참고하십시오.
 
 #### 2. DMARC 레코드 DNS 등록
 DMARC 레코드를 등록하는 방법을 설명합니다.
