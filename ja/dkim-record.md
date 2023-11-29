@@ -1,7 +1,7 @@
 ## Notification > Email > 도메인 관리 가이드 > DKIM
 
-### DKIM(domainKeys identified mail)이란?
-- DKIM(domainKeys identified mail)은 이메일 발신자가 이메일에 디지털 서명을 하여 발신자의 진위 여부를 확인하고 전송 중에 메시지가 변조되지 않았는지 확인할 수 있는 이메일 인증 방법입니다.
+### DKIM(domainkeys identified mail)이란?
+- DKIM(domainkeys identified mail)은 이메일 발신자가 이메일에 디지털 서명을 하여 발신자의 진위 여부를 확인하고 전송 중에 메시지가 변조되지 않았는지 확인할 수 있는 이메일 인증 방법입니다.
 - DKIM을 통해 스팸 발송자 및 기타 악의적인 공격자가 이메일을 위조하는 것을 방지할 수 있습니다.
 
 ### DKIM의 구조
