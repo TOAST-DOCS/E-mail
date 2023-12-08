@@ -1,100 +1,99 @@
-## Notification > Email > 도메인 관리 가이드 > DMARC
+## Notification > Email > ドメイン管理ガイド > DMARC
 
-### DMARC (domain-based message authentication reporting and conformance)란?
+### DMARC (domain-based message authentication reporting and conformance)とは？
 
-이메일 보안 강화 가능의 마지막 단계인 DMARC는 이메일 스푸핑을 이용한 피싱, 사기 등을 막기 위한 도메인 기반 메시지 인증에 대한 보고 및 준수 정책입니다. 
-<br>수신 서버는 발송자 주소 (From) 도메인의 DNS에서 DMARC 레코드를 조회합니다. DMARC 레코드에 정의된 정책에 따라 수신 서버는 수신된 메일을 인증합니다. DMARC 정책은 SPF와 DKIM을 사용하는지, 각각의 인증 수단이 실패했을 때 메일 처리 방법은 어떻게 되는지로 구성되어 있습니다. 
-<br>일부 메일 서비스 (ex. Gmail이나 Yahoo 등)들은 DMARC를 적용하지 않을 경우 스팸 메일로 인지해 발송을 차단합니다. 메일 발송 간 높은 메일 도달률을 위해서는 DMARC 레코드를 사용하는 것을 권장합니다.
+メールセキュリティ強化可能の最終段階であるDMARCは、メールスプーフィングを利用したフィッシング、詐欺などを防ぐためのドメインベースメッセージ認証に対する報告および遵守ポリシーです。 
+<br>受信サーバーは、送信者アドレス(From)ドメインのDNSでDMARCレコードを照会します。DMARCレコードに定義されたポリシーに従って、受信サーバーは受信したメールを認証します。DMARCポリシーは、SPFとDKIMを使用するかどうか、それぞれの認証手段が失敗したときのメール処理方法はどうなるかで構成されています。
+<br>一部のメールサービス(ex. GmailやYahooなど)は、DMARCを適用しない場合、スパムメールとして認識し、送信をブロックします。メール送信間の高いメール到達率のためには、DMARCレコードを使用することを推奨します。
 
-### DMARC DNS 레코드 구조
+### DMARC DNSレコードの構造
 
-DMARC DNS 레코드는 '_dmarc.example.com'처럼 DMARC를 적용할 발송 도메인에 '_dmarc'를 붙인 서브 도메인 DNS에 레코드를 등록합니다.
+DMARC DNSレコードは'_dmarc.example.com'のように、DMARCを適用する送信ドメインに'_dmarc'を付けたサブドメインDNSにレコードを登録します。
 
-다음은 DMARC DNS 레코드 예시입니다.
+以下はDMARC DNSレコードの例です。
 
 ```
 "v=DMARC1;p=none;sp=quarantine;pct=100;rua=mailto:dmarcreports@example.com;"
 ```
 
-DMARC 레코드에 사용되는 값에 대해 설명합니다. 더 자세한 내용은 [RFC 7489](https://www.ietf.org/rfc/rfc7489.txt)를 참고 부탁드립니다.
+DMARCレコードに使われる値について説明します。詳細は[RFC 7489](https://www.ietf.org/rfc/rfc7489.txt)をご覧ください。
 
-| 구분 | 필수 여부 | 값                        | 설명                                                                                        |
+| 区分 | 必須かどうか | 値                       | 説明                                                                                       |
 | --- | ----- |--------------------------|-------------------------------------------------------------------------------------------|
-| v | 필수 | DMARC1 (고정)              | 버전입니다.                                                                                    |
-| p | 필수 | none, quarantine, reject | 실패 시 처리에 대한 정책입니다.                                                                        |
-| sp | 선택 | none, quarantine, reject | 서브 도메인에 대한 실패 처리 정책입니다.                                                                   |
-| pct | 선택 | 0 \~ 100 (기본값 100)       | 정책을 적용할 이메일 비중입니다. 예를 들어 50인 경우 수신된 이메일 중 절반이 DMARC 정책에 의해 인증됩니다.                         |
-| adkim | 선택 | s, r (기본값)               | DKIM 얼라인먼트 (Alignment). DKIM-Signature의 도메인 (d)와 From (5322.From)의 일치 수준에 대한 설정입니다.       |
-| aspf | 선택 | s, r (기본값)               | SPF 얼라인먼트 (Alignment). SPF 인증 시 MAIL FROM (5321.From)과 From (5322.From)의 일치 수준에 대한 설정입니다. |
-| rua | 선택 |                          | 주기적으로 집계한 실패 보고서를 수신할 주소입니다. 예, mailto:demarc-report@nhncloud.com                         |
-| ruf | 선택 |                          | 실패 보고서를 수신할 주소입니다. 예, mailto:demarc-report@nhncloud.com                                   |
-| fo | 선택 | 0 (기본값), 1, d, s         | 실패 보고서 (ruf)를 생성할 기준입니다.                                                                  |
-| rf | 선택 | afrf (고정)                | 실패 보고서 (ruf) 형식에 대한 설정입니다.                                                                |
-| ri | 선택 | 86400 (단위 초, 기본 값)       | 실패를 집계할 기간입니다. 설정된 주기마다 실패 보고서(rua)가 발송됩니다.                                               |
+| v | 必須 | DMARC1 (固定)              | バージョンです。                                                                                    |
+| p | 必須 | none, quarantine, reject | 失敗時の処理ポリシーです。                                                                        |
+| sp | 任意 | none, quarantine, reject | サブドメインに対する失敗処理ポリシーです。                                                                   |
+| pct | 任意 | 0～100 (デフォルト値100)       | ポリシーを適用するメールの割合です。例えば、50の場合、受信したメールの半分がDMARCポリシーによって認証されます。                         |
+| adkim | 任意 | s, r (デフォルト値)               | DKIM アライメント (Alignment). DKIM-Signatureのドメイン(d)とFrom (5322.From)の一致水準についての設定です。       |
+| aspf | 任意 | s, r (デフォルト値)               | SPF アライメント (Alignment). SPF認証時のMAIL FROM (5321.From)とFrom (5322.From)の一致水準についての設定です。 |
+| rua | 任意 |                          | 定期的に集計した失敗レポートを受信するアドレスです。 例：mailto:demarc-report@nhncloud.com                         |
+| ruf | 任意 |                          | 失敗レポートを受信するアドレスです。例：mailto:demarc-report@nhncloud.com                                   |
+| fo | 任意 | 0 (デフォルト値), 1, d, s         | 失敗レポート(ruf)を作成する基準です。                                                                  |
+| rf | 任意 | afrf (固定)                | 失敗レポート(ruf)形式についての設定です。                                                                |
+| ri | 任意 | 86400 (単位秒、デフォルト値)       | 失敗を集計する期間です。設定された周期ごとに失敗レポート(rua)が送信されます。                                               |
 
-#### 실패 정책 (p) 값 종류
+#### 失敗ポリシー(p)値種類
 
-| 실패 정책 | 설명                                                                                                                          |
+| 失敗ポリシー | 説明                                                                                                                         |
 | ----- |-----------------------------------------------------------------------------------------------------------------------------|
-| none | 수신 서버에서 실패에 대해 아무 처리도 하지 않을 것을 바랍니다. SPF, DKIM을 사용하지 않는 상황에서 설정할 수 있습니다.                                                    |
-| quarantine | 수신 서버는 실패한 메일을 스팸으로 처리할 것을 바랍니다.                                                                                            |
-| reject | 수신 서버에서 DMARC 실패가 발생한 메일을 반송합니다. 일반적으로 발송 서버와 수신 서버가 SMTP 통신 시 DSN (Delivery Status Notification) 응답으로 이루어지는 것을 선호하는 정책입니다. |
+| none | 受信サーバーで失敗に対して何も処理しないようにします。SPF、DKIMを使用していない状況で設定できます。                                                    |
+| quarantine | 受信サーバーは失敗したメールをスパムとして処理することを望みます。                                                                                            |
+| reject | 受信サーバーでDMARC失敗が発生したメールを返送します。一般的に、送信サーバーと受信サーバーがSMTP通信時にDSN(Delivery Status Notification)レスポンスで行われることを好むポリシーです。 |
 
-#### SPF와 DKIM 얼라인먼트 (aspf, adkim) 값 설명
+#### SPFとDKIM アライメント (aspf, adkim)値の説明
 
-| 정책 | 설명                                                                                 |
+| ポリシー | 説明                                                                                |
 | --- |------------------------------------------------------------------------------------|
-| s | 엄격함 (Strict)입니다. 도메인 부분이 완전히 일치해야 합니다.                                             |
-| r | 유연함 (Relexed)입니다. 서브 도메인도 가능합니다. 예, 'd=example.com'일 때 'From: news.example.com' 통과 |
+| s | 厳格(Strict)です。ドメイン部分が完全に一致する必要があります。                                             |
+| r | 柔軟(Relexed)です。サブドメインも可能です。例えば'd=example.com'の場合、'From: news.example.com'通過 |
 
-### 실패 보고서 생성 기준 (fo)에 대한 값 설명
-- 실패 보고서 (ruf)를 설정하면 사용됩니다.
+### 失敗レポート作成基準(fo)の値説明
+- 失敗レポート(ruf)を設定すると使用されます。
 
-| 기준 | 설명 |
+| 基準 | 説明 |
 | --- | --- |
-| 0 | SPF, DKIM 모두 실패했을 때 보고합니다. |
-| 1 | SPF, DKIM 하나라도 실패했을 때 보고합니다. |
-| d | DKIM 인증 실패 시 보고합니다. |
-| s | SPF 인증 실패 시 보고합니다. |
+| 0 | SPF、DKIMの両方が失敗したときに報告します。 |
+| 1 | SPF、DKIMnoいずれかが失敗したときに報告します。 |
+| d | DKIM認証に失敗した場合に報告します。 |
+| s | SPF認証に失敗した場合に報告します。 |
 
-### DMARC 레코드 검증 절차
-#### 1. 메일 도메인 등록 및 인증
-- DMARC 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
-- 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)를 참고하십시오.
+### DMARCレコード検証手順
+#### 1. メールドメイン登録および認証
+- DMARCレコード検証はメールドメインが登録および認証が完了した場合、ウェブコンソールで有効になります。
+- メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)を参考してください。
 
-#### 2. DMARC 레코드 DNS 등록
-- DMARC 레코드를 등록하는 방법을 설명합니다. 자세한 등록 방법은 DNS 관리 업체에 문의하십시오.
-- DMARC 레코드는 '_dmarc.example.com'와 같이 DMARC를 적용할 발송 도메인에 '_dmarc'를 붙인 도메인 DNS를 등록하고 적절한 DMARC 정책을 수립하여 TXT 레코드로 등록해야 합니다.
-- 예를 들면 등록할 내용은 다음과 같습니다. DMARC 실패 시 보고서를 수신할 주소를 설정해야 합니다.
+#### 2. DMARCレコードDNS登録
+- DMARCレコードを登録する方法を説明します。詳しい登録方法はDNS管理業者にお問い合わせください。
+- DMARCレコードは'_dmarc.example.com'のようにDMARCを適用する送信ドメインに'_dmarc'を付けたドメインDNSを登録し、適切なDMARCポリシーを策定してTXTレコードとして登録する必要があります。
+- 例えば、登録する内容は次のとおりです。 DMARC失敗時にレポートを受信するアドレスを設定する必要があります。
 
 ```
-"v=DMARC1; p=none; fo=1; rua=mailto:${보고서를_수신할_주소}"
+"v=DMARC1; p=none; fo=1; rua=mailto:${レポートを_受信する_アドレス}"
 ```
 
-- 등록이 완료되었다면 'nslookup', 'dig' 명령어를 이용하여 DMARC DNS 레코드가 DNS에 반영되었는지 확인할 수 있습니다.
+- 登録が完了したら、'nslookup', 'dig'コマンドを利用してDMARC DNSレコードがDNSに反映されたか確認できます。
 
-#### 주의 사항
-- TXT 레코드의 DMARC 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
-- DMARC 설정 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
+#### 注意事項
+- TXTレコードのDMARC設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
+- DMARC設定作業後、数時間程度経過してからメールを送信するのが安全です。
 
-#### 3.DMARC 인증 
-- DMARC 레코드 DNS 등록이 완료되면 DMARC 관리 팝업에서 DMARC 인증을 수행합니다.
-- 인증이 완료될 경우, **인증 완료** 라는 문구가 표시됩니다.
+#### 3.DMARC認証 
+- DMARCレコードのDNS登録が完了したら、DMARC管理ポップアップでDMARC認証を行います。
+- 認証が完了すると、**認証完了**という文言が表示されます。
 ![email_202312_08_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_ja.png)
 
-#### DMARC 레코드 조회 실패 화면 예시
-- DMARC 레코드 조회 실패 시 다음과 같은 화면이 표시됩니다.
+#### DMARCレコード照会失敗画面例
+- DMARCレコード照会に失敗した場合、次のような画面が表示されます。
 
 ![email_202312_09_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_ja.png)
 
 
-### 주의 사항
-#### 1. SPF 관련 주의 사항
-[RFC 7489](https://www.ietf.org/rfc/rfc7489.txt) 문서를 참고할 경우 일부 수신 서버에서 SPF를 DMARC 검증 로직을 먼저 구현할 수 있습니다. 이 때 SPF 레코드에 -all과 같은 - 접두사가 있을 경우 DMARC 인증을 실패할 수 있습니다. 일부 수신 서버에서 DMARC 인증을 실패할 경우 SPF 레코드에 -all과 같은 - 접두사를 제거하고 DMARC 인증을 다시 시도하십시오.
+### 注意事項
+#### 1. SPF関連注意事項
+[RFC 7489](https://www.ietf.org/rfc/rfc7489.txt) 文書を参考にする場合、一部の受信サーバーでSPFをDMARC検証ロジックを先に実装できます。この時、SPFレコードに -all のような -接頭辞がある場合、DMARC認証に失敗することがあります。一部の受信サーバーでDMARC認証に失敗する場合、SPFレコードに -all のような -接頭辞を削除してDMARC認証を再試行してください。
 
-#### 2. DMARC 관련 주의 사항
-DMARC에서 주의할 점은 수신 서버가 DMARC 정책에 맞게 처리하는 것을 완전히 보장하지 않는다는 것입니다. DMARC는 발송 서버가 수신 서버에게 정책을 제안하는 수준으로 이해해야 합니다.
-예를 들어 실패 정책을 'none'으로 설정해도 수신 서버는 인증이 실패된 이메일을 스팸으로 처리할 수 있습니다.
+#### 2. DMARC関連注意事項
+DMARCで注意すべき点は、受信サーバーがDMARCポリシーに合わせて処理することを完全に保証しないということです。 DMARCは送信サーバーが受信サーバーにポリシーを提案するレベルで理解する必要があります。
+例えば、失敗ポリシーを「none」に設定しても、受信サーバーは認証に失敗したメールをスパムとして処理することがあります。
 
-NHN Cloud에서는 [RFC 7489](https://www.ietf.org/rfc/rfc7489.txt) 문서에 따라 DMARC 검증을 수행합니다. 일부 수신 서버에서 메일 수신이 실패할 경우 [고객 센터 > 1:1 문의](https://www.nhncloud.com/kr/support/inquiry)를 통해 문의하십시오.
-
+NHN Cloudでは[RFC 7489](https://www.ietf.org/rfc/rfc7489.txt)文書に従ってDMARC検証を行います。一部の受信サーバーでメールの受信が失敗する場合は、[サポート > 1:1お問い合わせ](https://www.nhncloud.com/kr/support/inquiry)からお問い合わせください。
