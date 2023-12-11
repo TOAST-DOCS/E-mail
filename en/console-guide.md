@@ -1,414 +1,508 @@
-## Notification > Email > Console Guide
+## Notification > Email > 콘솔 사용 가이드
 
-## Mail Delivery
+## 메일 발송
 
-### General Mails
+### 일반 메일 발송
 
-Enter recipients, title, body, and attachment to send mails.
-For the delivery of general mails, you need to enter recipients yourself.
+받는 사람, 제목, 내용, 첨부 파일 등을 입력하여 메일을 발송할 수 있습니다.
+일반 메일 발송의 경우 수신자를 직접 입력해야 합니다.
 
-![email_01_201812_en.png](https://static.toastoven.net/prod_email/email_01_201812_en.png)
+![email_01_20231023_en](https://static.toastoven.net/prod_email/email_01_20231023_en.png)
 
-Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab.
-Select **General Mails** for **Mail Type**.
-**Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
-**Scheduled Delivery**: Specify the date and time of email delivery.
-**Attached File**: Attach files to mail.
+1. **메일 발송** 탭의 **템플릿 사용 여부**에서 **미사용**을 선택합니다.
+2. **메일 구분**에서 **일반 메일**을 선택합니다.
+3. 3. **발송 메일** 주소를 입력합니다. 이름 형식으로 작성하면 발송자 이름과 메일 주소를 입력할 수 있습니다.
+    - "발신자 이름<발신 메일>" 형태로 발송하면, 이메일을 받는 사람에게 발신자 이름과 이메일 주소 형식으로 표시됩니다.
+4. 발송하고 싶은 시간이 있다면 **예약 발송**란에 입력합니다.
+5. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
+6. **제목 및 메시지 내용**을 입력합니다.
+7. **받는 사람**과 **참조**에 원하는 메일 주소를 입력합니다.
 
-* Up to 10 files can be uploaded, not exceeding 30MB.
-* The total volume of attachment cannot be more than 30MB.
-* Files can be attached up to 30MB, but they may be rejected due to 'Limit Exceeded' or regarded as spams, depending on the mail system.
+- 첨부 파일은 최대 10개까지 업로드 가능하며, 30MB 이하의 파일만 가능합니다.
+- 첨부 파일의 총합은 30MB를 넘어갈 수 없습니다.
+- 최대 30MB까지 첨부 가능하지만 수신하는 이메일 시스템(gmail.com, naver.com 등)의 첨부 파일 제한 정책에 따라 `제한 초과`로 거부되거나 스팸 판정률이 높아질 수 있으므로 10MB 이내로 첨부할 것을 권장합니다.
 
-**Title/Body**: Enter the title and body of the mail.
+### 광고성 메일 발송
 
-![email_02_201812](https://static.toastoven.net/prod_email/email_02_201904_en.png)
+광고성 메일을 발송할 수 있습니다.
 
-Enter email addresses for **Recipients** and **Cc Recipients**.
+![email_02_20231023_en](https://static.toastoven.net/prod_email/email_02_20231023_en.png)
 
-### Advertising Mails
+1. **메일 구분**에서 광고 메일을 선택합니다.
+2. **발송 메일** 주소를 입력합니다. 이름 형식으로 작성하면 발송자 이름과 메일 주소를 입력할 수 있습니다. 
+   - "발신자 이름<발신 메일>" 형태로 발송하면, 이메일을 받는 사람에게 발신자 이름과 이메일 주소 형식으로 표시됩니다.
+3. 발송하고 싶은 시간이 있다면 **예약 발송**란에 입력합니다.
+4. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
+5. **제목 및 메시지 내용**을 입력합니다.
+6. **받는 사람**과 **참조**에 원하는 메일 주소를 입력합니다.
 
-You can send advertising mails.
+- 제목이 시작되는 부분에 "(광고)" 문구가 필수적으로 들어가야 합니다.
+- 본문에 전송자의 명칭, 이메일 주소, 전화번호 및 주소를 표시해야 합니다.
+- 수신 거부 링크가 한글/영문 형태로 반드시 들어가야 하며, 수신을 거부할 수 있는 기술적 조치를 해야 합니다.
+- 수신 거부로 등록된 유저는 광고성 메일로 발송 시 발송되지 않습니다.
 
-#### Notes for Sending Advertising Mails
+#### 광고 메일 발송 시 유의 사항
 
-In accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection, you are obliged to follow the rules as below, to send advertising or promotional mails. [[check at Korea Internet & Security Agency](https://spam.kisa.or.kr/spam/sub62.do)]
+정보통신망법에 따라 상업성 광고 메일이나 업체 홍보 메일을 발송하는 경우, 아래 사항을 준수해야 합니다.([한국인터넷진흥원 관련 내용 확인](https://spam.kisa.or.kr/spam/sub62.do)) <br>
 
-1. Send ad mails only to those recipients who explicitly agreed to receive ones.
-The sender shall be held liable for any conflicts that may arise in violation of it.
-2. Display the (AD) phrase at the beginning of title.
-3. Show sender information, including name, email address, phone number and home address, in the body.
-4. Clearly display guides for recipients to block receiving or withdraw consent to receive promotional mails, and come up with technical means to easily follow their choices.
+1. 광고성 메일은 명시적으로 수신 동의를 한 수신자에게만 발송해야 합니다. 이를 위반하여 분쟁이 발생하는 경우 책임은 광고 메일 발송자에게 있습니다.
+2. 제목이 시작되는 부분에 "(광고)" 문구가 필수적으로 들어가야 합니다.
+3. 본문에 발송자의 명칭, 전자우편주소,전화번호 및 주소를 포함하는 발송자 정보를 표시해야 합니다.
+4. 본문에 수신자가 수신 거부 또는 수신 동의 철회 의사를 쉽게 표시할 수 있도록 하기 위한 안내문을 명시해야 합니다.
+5. 수신자가 본문 내에 [수신거부] 등을 눌러 수신 거부 또는 수신 동의 철회 여부를 간편하게 선택할 수 있도록 기술적 조치를 해야 하며, 이 경우 그 안내문과 기술적 조치는 한글과 영문으로 명시해야 합니다.
 
-NHN Cloud shall provide technical means as below to 'Advertising Mails' in compliance of the Act on Promotion of Information and Communications Network Utilization and Information Protection:
+> 메일 수신을 원치 않으시면 <strong>[수신 거부]</strong>를 클릭하세요. <br>If you do not want to receive it, please click a <strong>[Unsubscription]</strong>
 
-* Insert the (AD) phrase to title.
-* Allow Reject Receiving Ad Mails for recipients.
-* Do not send mails to the mail addresses rejecting ad mails.
 
-Send ad mails in reference of the following:
+NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 대해 아래와 같은 기술적 조치를 제공합니다.
 
-![email_03_201812_en.png](https://static.toastoven.net/prod_email/email_03_201812_en.png)
+- 제목에 (광고) 문구를 삽입합니다.
+- 수신자가 수신 거부를 선택할 수 있도록 한글과 영문 형태로 수신 거부 기능을 제공합니다.
+- 수신 거부 대상 메일 주소에는 광고 메일을 발송하지 않습니다.
 
-1. The title must include the "(AD)" phrase.
-2. Links to Reject Receiving must be included in Korean/English.
-3. Ad mails are not delivered to the users who are registered to reject ones.
+#### 수신 거부 링크로 제공하고 있는 키
 
-Following keys are provided as part of rejection links: 
-
-| Key                     | Phrase| Example of Usage                                                                                                              |
+| 키 | 문구 | 사용 예시 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| EN_BLOCK_RECEIVER_LINK  | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##.                                   |
+| BLOCK_RECEIVER_LINK | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
-### Use Templates to Send Mails
+### 템플릿 메일 발송
 
-You can send mails on a template created in advance.
+미리 생성해 놓은 메일 템플릿을 사용할 수 있습니다.
 
-![email_04_201812_en.png](https://static.toastoven.net/prod_email/email_04_201812_en.png)
+![email_03_20231023_en](https://static.toastoven.net/prod_email/email_03_20231023_en.png)
 
-1. To use a template, select **Enable** for **Use Templates**.
-2. Click **Select a Template**.
-3. Select a template created in advance from the Category of **Select a Template**.
-    * On how to create a template, refer to **Manage Categories and Templates** section below.
-4. Click **Apply Template**.
+1. **템플릿 사용 여부**에서 사용으로 선택하고 **템플릿 선택** 창에서 원하는 템플릿을 선택합니다. 
+   - 템플릿을 생성하는 방법은 아래 **카테고리 및 템플릿 관리** 절을 참고하세요.
+2. 발송하고 싶은 시간이 있다면 **예약 발송**란에 입력합니다.
+3. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
+4. **받는 사람**과 **참조**에 원하는 메일 주소를 입력합니다.
 
-### Use Tags to Send Mails
+### 대량 메일 발송
 
-You can send mails by using tags.
-For more details on tags, refer to **Use Tags to Send** in **[Overview](Overview.md)**.
+Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 있습니다. 하단 탭에서 **대량 발송**을 선택합니다.
 
-Select **Disable** for **Enable Template or Not** in the **Deliver Mails** tab and select **General Mails** for **Mail Type**.
+![email_04_20231023_en](https://static.toastoven.net/prod_email/email_04_20231023_en.png)
+![email_05_20231023_en](https://static.toastoven.net/prod_email/email_05_20231023_en.png)
 
-* **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address. .
-* **Scheduled Delivery**: Specify the date and time of email delivery.
-* **Attached File**: Attach files to mail.
-    * Up to 10 files can be uploaded, not exceeding 30MB.
-    * The total volume of attachment cannot be more than 30MB.
-* **Title/Body**: Enter the title and body of the mail.
+> 메일 제목과 내용에 ##치환 키## 형식으로 입력하면 메일 내용을 사용자가 지정한 데이터로 치환하여 발송할 수 있습니다. <strong>Free Marker 타입</strong>을 이용하실 경우 ${치환 키} 형식으로 입력해 주세요.
 
-![email_05_201812_en.png](https://static.toastoven.net/prod_email/email_05_201812_en.png)
+1. 화면 하단의 대량 발송 탭에서 **템플릿 다운로드**를 클릭합니다.
+    - 템플릿 사용 여부에서 사용으로 선택 후, 템플릿 다운로드 클릭 시 템플릿 치환자가 포함된 CSV, XLSX 템플릿 파일을 다운로드 할 수 있습니다.
+    - 템플릿 파일에 수신자 메일 주소와 이름 등 치환 키에 지정할 치환 데이터를 입력합니다.
+2. **수신자 파일 업로드**를 클릭해 작성한 파일을 업로드합니다.
+    - 템플릿 데이터를 담은 파일은 최대 50만 명 그리고 30MB 까지 업로드할 수 있습니다.
+    - 템플릿 데이터에 오류가 있는 경우, 오류 정보가 나타납니다. 오류 내용을 확인하고 수정합니다.
+    - 오류는 총 오류 건수와 내용(최대 10건)을 표시합니다.
+        - **오류 종류**
+            - receive_mail_address 열이 존재하지 않는 경우: receive_mail_address 열은 수신자 메일 주소를 입력하는 열로 필수로 입력해야 합니다.
+            - 입력된 데이터가 없는 경우
+            - 수신자 메일 주소 또는 치환 데이터 입력이 누락된 경우
+3. 발송하고 싶은 시간이 있다면 **예약 발송**란에 입력합니다.
+4. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
+5. **제목 및 메시지 내용**을 입력합니다.
+6. **발송** 버튼 클릭 시 **확인 후 진행, 즉시 발송** 2가지를 선택하여 발송할 수 있습니다.
+    - 확인 후 진행 : **대량 메일 발송 조회** 탭에서 7일 이내에 메일 수신자 확인 후 메일 발송을 진행합니다. (예약 발송 시 지원하지 않습니다.)
+    - 즉시 발송 : 메일 수신자를 확인하지 않고 즉시 발송을 진행합니다. 발송 상태는 **대량 메일 발송** 탭에서 결과를 확인할 수 있습니다.
 
-1. Select **Tag Delivery** at the bottom of the page and click **Select Tags**.
-    * To add tags, please refer to **Manage Tags**.
-2. Select tags on **Select Tags** screen.
-3. Click **Apply Selectively**.
-4. You can select up to four tags.
-    * You can apply AND, OR conditions to many tags selected.
-        * AND: The destination is recipients who satisfy all the tags.
-        * OR: The destination is recipients who satisfy one or more of the many tags.
+### 태그 메일 발송
 
-![email_06_201812_en.png](https://static.toastoven.net/prod_email/email_06_201812_en.png)
+태그의 조건에 맞는 UID로 발송할 수 있습니다. 하단 탭에서 **태그 발송**을 선택합니다.
+태그에 대한 보다 자세한 내용은 [참고](./console-guide/#_32/)에서 확인하세요.
 
-Click **Schedule Delivery** at the bottom right of the mail body.
-On the **Schedule Delivery** window, click your choice.
+![email_06_20231023_en](https://static.toastoven.net/prod_email/email_06_20231023_en.png)
 
-* **Confirm and Process**: Check mail address of each recipient and body in the **Retreive Tagged Mail Delivery** tab before sending mails. Unless delivery is requested **within 7 days** after registration, data may be deleted and it may not be properly sent (not supported for scheduled delivery).
-* **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
+1. **메일 발송** 탭의 **템플릿 사용 여부**에서 **미사용**을 선택합니다.
+2. 화면 하단의 **태그 발송** 탭을 선택하고 **태그 선택** 버튼을 클릭합니다.
+    - 태그 등록은 **태그 관리** 탭에서 가능하며, UID & 이메일 저장은 UID 관리 탭에서 가능합니다.
+3. **태그 선택** 창에서 발송하고자 하는 태그를 선택합니다.
+4. 최대 4개의 태그를 선택할 수 있습니다.
+    - 선택한 여러 태그에 AND, OR 조건을 적용할 수 있습니다.
+        - AND: 여러 태그에 모두 속한 수신자만 대상으로 함.
+        - OR: 여러 태그 중 하나 이상의 태그에 속한 수신자를 대상으로 함.
+5. 발송하고 싶은 시간이 있다면 **예약 발송**란에 입력합니다.
+6. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
+7. **제목 및 메시지 내용**을 입력합니다.
+8. **발송** 버튼 클릭 시 **확인 후 진행, 즉시 발송** 2가지를 선택하여 발송할 수 있습니다.
+    - 확인 후 진행 : **태그 메일 발송 조회** 탭에서 7일 이내에 메일 수신자 확인 후 메일 발송을 진행합니다. (예약 발송 시 지원하지 않습니다.)
+    - 즉시 발송 : 메일 수신자를 확인하지 않고 즉시 발송을 진행합니다. 발송 상태는 **태그 메일 발송 조회** 탭에서 결과를 확인할 수 있습니다.
 
-### Upload files to Send Mass Mails
+## 템플릿 관리
 
-You can use files to send mass mails.
+카테고리를 만든 후 메일 발송 시 사용하는 템플릿을 분류하여 관리할 수 있습니다.
 
-Select **Not Use** for **Template Use** in the **Send Mails** tab, and select **General Mails** for **Mail Type**.
+### 카테고리 추가/수정
 
-![email_07_201812_en.png](https://static.toastoven.net/prod_email/email_07_201812_en.png)
+![email_07_20231023_en](https://static.toastoven.net/prod_email/email_07_20231023_en.png)
 
-1. Enter mail content.
-    * **Mail Delivery**: Enter an email address to send. Write in the name format to enter sender name and address.
-    * **Scheduled Delivery**: Specify the date and time of email delivery.
-    * **Attached File**: Attach files to mail.
-        * Up to 10 files can be uploaded, not exceeding 30MB.
-        * The total volume of attachment cannot be more than 30MB.
-    * **Title**/**Body**: Enter the title and body of the mail. If the title and body of mail is entered in the ##replacement key##format, the mail can be replaced with user specified data. For instance, enter ##name## in the user name, and it is replaced with a user specified name, such as 'Hana Oh' before sent.
-2. Go to **Mass Delivery** at the bottom and click **Download Templates**.
-3. Templates are available either in CSV or Excel.
+- **카테고리 추가 및 수정** 버튼 클릭 시 카테고리 추가/수정이 가능합니다.
+- 반드시 카테고리를 선택한 상태에서 **카테고리 추가/수정** 버튼을 클릭해야 합니다.
 
-![email_08_201812_en.png](https://static.toastoven.net/prod_email/email_08_201812_en.png)
+### 템플릿 추가/수정
 
-Enter replacement data in the template file, such as recipient's mail address and recipient name.
+![email_08_20231023_en](https://static.toastoven.net/prod_email/email_08_20231023_en.png)
 
-1. Click **Upload Recipient File** to upload files.
-    * File containing template data can be uploaded with 10 thousand persons, up to 3MB.
-    * Any error in template data will be shown. Please check and upload it with correct template data.
-    * The total number (no more than 10) with detail information shows.
-    * **Error Types**
-        * When the receive\_mail\_address row does not exist: The receive\_mail\_address row is for recipient's mail address and it's a required field\.
-        * When there is no entered data available
-        * When recipient's mail address or replacement data is missing
-2. Click **Schedule Delivery** at the bottom right of the mail page.
-3. On the **Schedule Delivery** window, click your choice.
-    * **Check and Send**: Check mail address of each recipient and body in the **Retrieve Tagged Mail Delivery** tab before sending mails. Unless delivery is requested **within 7 days** after registration, data may be deleted and it may not be properly sent (not supported for scheduled delivery).
-    * **Immediate Delivery**: Send mails immediately without checking receiving information. You can find delivery result in the Query Tagged Mail Delivery tab.
+- **템플릿 추가 및 수정** 버튼 클릭 시 템플릿 추가/수정이 가능합니다.
+- 반드시 카테고리를 선택한 상태에서 **템플릿 추가/수정** 버튼을 클릭해야 합니다.
+- 인증번호, 주문번호, 쿠폰코드, 포인트 등을 치환으로 넣고 싶으신 경우, **제목 또는 내용에 '##key##'와 같이 치환 키를 ##으로 묶어 입력**합니다.
 
-## Query of Mails
+## 수신 거부 관리
 
-### Retrieve by Mail Request
+**수신 거부 관리** 탭에서 수신 거부 대상을 관리할 수 있습니다.
 
-You can query sent mails by Date and Time of Delivery, Date and Time of Receipt, Template, and Delivery Status on **Retrieve by Mail Request**.
+![email_09_20231023_en](https://static.toastoven.net/prod_email/email_09_20231023_en.png)
 
-![email_18_201812_en.png](https://static.toastoven.net/prod_email/email_18_201812_en.png)
+현재까지 수신 거부한 사용자를 조회할 수 있으며, 직접 입력 또는 파일 업로드를 통해 수신 거부를 등록하거나 삭제할 수 있습니다.
 
-Click a mail on the list to check its details.
+### 수신 거부 직접 입력으로 등록
 
-![email_19_201812_en.png](https://static.toastoven.net/prod_email/email_19_201812_en.png)
+![email_10_20231023_en](https://static.toastoven.net/prod_email/email_10_20231023_en.png)
 
-### Retrieve Bulk Mail Delivery
+- **수신 거부 등록** 창에서 수신 거부 이메일 주소를 입력합니다.
+- **추가** 버튼을 클릭해 최대 10명까지 등록할 수 있습니다.
 
-In the **Retrieve Bulk Mail Delivery** tab, you can retrieve scheduled mass mail delivery or cancel delivery.
+### 수신 거부 파일 업로드로 등록
 
-![email_09_201812_en.png](https://static.toastoven.net/prod_email/email_09_201812_en.png)
+![email_11_20231023_en](https://static.toastoven.net/prod_email/email_11_20231023_en.png)
 
-* Click **Send** to send mails: may take quite a while, depending on the number of deliveries.
-* Click **Cancel** to cancel sending mails.
+- 수신 거부 파일은 CSV, 텍스트(.txt), Excel(.xlsx) 파일로 업로드할 수 있습니다.
+- **메일 주소 일괄 등록**을 클릭해 파일을 업로드합니다.
+- 정상적으로 업로드되면 **총 n개의 메일 주소가 확인되었습니다.** 라는 문구가 나타납니다.
 
-**Status of Bulk Mail Delivery**
+### 수신 거부 삭제
 
-* Waiting: Recipient file data is still not read.
-* Preparing Delivery: Recipient file data is being uploaded.
-* Preparing Delivery Completed: Sending mail is completely prepared. Select a schedule (a column on the list) and check mail delivery details per recipient on the list at the bottom.
-* Ready for Delivery: It is ready to send mails.
-* Delivering: Mail is now on the delivery. Select a schedule (a column on the list) and check the delivery processing rate.
-* Delivery Completed: Delivery has been normally completed.
-* Delivery Failed: Error occurred during delivery. To check delivery status, query received mails.
-* Delivery Cancelled: User has cancelled sending mails.
+![email_12_20231023_en](https://static.toastoven.net/prod_email/email_12_20231023_en.png)
 
-**Retrieve Mail Delivery per Recipient**
+- 삭제할 수신 거부 이메일 주소를 선택 후 **수신 거부 삭제** 버튼을 클릭합니다.
+- 삭제가 완료되면 **수신 거부 관리** 탭에서 확인할 수 있습니다.
 
-![email_10_201812_en.png](https://static.toastoven.net/prod_email/email_10_201812_en.png)
+## 발송 조회
 
-1. Select a bulk mail delivery record (a row on the list).
-2. A detailed list of mail delivery per recipient will be shown at the bottom tab. Click on **View Details**.
-3. You can check whether the body content has been successfully replaced by the replacement key.
+### 메일 요청별 조회
 
-### Retrieve Tagged Mail Delivery
+**메일 요청별 조회** 탭에서 발송 일시, 수신 일시, 템플릿, 발송 상태 등의 조건을 이용해 발송된 메일을 조회할 수 있습니다.
 
-* In the **Retrieve Tagged Mail Delivery** tab, you can retrieve scheduled tagged mail delivery or cancel delivery.
+![email_13_20231023_en](https://static.toastoven.net/prod_email/email_13_20231023_en.png)
 
-![email_11_201812_en.png](https://static.toastoven.net/prod_email/email_11_201812_en.png)
+- 요청 ID 또는 발송 일시는 필수 값입니다.
+- 발송 일시 검색은 최대 7일 이내로 검색 가능합니다.
+- 수신 일시 검색은 최대 한 달 이내로 검색 가능합니다.
+- 자세한 내용을 확인하려면 요청 ID 또는 제목 클릭 시 **상세 보기** 팝업이 노출됩니다.
+- 전체화면에 보여지는 데이터는 엑셀로 다운로드 할 수 있습니다.
+- 요청 상태를 통해 발송 요청에 대한 상태를 확인할 수 있습니다.
 
-* Click **Send** to send mails: may take quite a while, depending on the number of deliveries.
-* Click **Cancel** to cancel sending mails.
+### 메일 예약 발송 조회
+**메일 예약 발송 조회** 탭에서 예약 발송된 메일을 조회할 수 있습니다.
 
-**Status of Tagged Mails Delivery**
+![email_14_20231023_en](https://static.toastoven.net/prod_email/email_14_20231023_en.png)
 
-* Waiting: Recipient file data is still not read.
-* Preparing Delivery: Recipient file data is being uploaded.
-* Preparing Delivery Completed: Sending mail is completely prepared. Select a schedule (a column on the list) and check mail delivery details per recipient on the list at the bottom.
-* Ready for Delivery: It is ready to send mails.
-* Delivering: Mail is now on the delivery. Select a schedule (a column on the list) and check the delivery processing rate.
-* Delivery Completed: Delivery has been normally completed.
-* Delivery Failed: Error occurred during delivery. To check delivery status, query received mails.
-* Delivery Cancelled: User has cancelled sending mails.
+- 요청 ID 또는 예약 일시는 필수 값입니다.
+- 예약 일시 검색은 최대 한 달 이내로 검색 가능합니다.
+- 자세한 내용을 확인하려면 요청ID 또는 제목 클릭 시 **상세 보기** 팝업이 노출됩니다.
+- 요청 상태를 통해 발송 요청에 대한 상태를 확인할 수 있습니다. 예약 발송이 성공된 건은 메일 요청별 조회 탭에서 확인 가능합니다.
+- 예약 대기 상태인 경우, [취소] 버튼 클릭 혹은 검색 조건에 따른 [검색 결과 예약 취소 요청] 버튼 클릭을 통해 예약 취소를 할 수 있습니다.
+    - 예약 발송 시간 10분 전인 경우, 해당 발송 내역은 메일 요청별 조회 탭으로 이동됩니다.
+    - 메일 요청별 조회 탭으로 이동되는 경우, 발송 취소가 불가합니다.
 
-**Retrieve Mail Delivery per Recipient**
+### 대량 메일 발송 조회
 
-![email_12_201812_en.png](https://static.toastoven.net/prod_email/email_12_201812_en.png)
+**대량 메일 발송 조회** 탭에서는 대량 메일 발송 예약을 조회하거나 발송 또는 발송을 취소할 수 있습니다.
 
-Select a tagged mail schedule (a column on the list) to query the list of mail deliver per recipient at the bottom.
+![email_15_20231023_en](https://static.toastoven.net/prod_email/email_15_20231023_en.png)
 
-## Manage Categories and Templates
+- 요청 ID 또는 요청 일시는 필수 값입니다.
+- 요청 일시 검색은 최대 한 달 이내로 검색 가능합니다.
+- 발송/취소: 대량 메일 발송 시 **확인 후 진행**을 선택하면 ‘발송 준비 완료‘ 상태의 건을 선택 후 **발송/취소** 버튼을 클릭하여 발송하거나 취소할 수 있습니다.
+- 조회: 상단의 조회 폼에서 대량 메일 발송 건을 조회할 수 있습니다. 조회 건의 리스트 행을 선택하면 하단의 조회 폼에서 수신메일과 발송 정보(발송 내용, 발송 결과)를 확인할 수 있습니다.
+- 예약 대기 상태인 경우, 해당 목록을 선택하여 예약 취소를 할 수 있습니다.
+- 진행 상태를 통해 발송 요청에 대한 상태를 확인 할 수 있습니다.
+- 전체화면에 보여지는 데이터는 엑셀로 다운로드 할 수 있습니다.
 
-### Categories
+#### 대량 메일 발송 진행 상태
 
-You can create categories to sort templates for mail delivery.
+- 대기: 수신자 파일 데이터를 읽는 작업을 진행하기 전 상태입니다.
+- 발송준비: 수신자 파일 데이터 정보를 로드 중인 상태입니다.
+- 발송준비완료: 메일 발송 준비가 완료된 상 입니다. 예약 건(목록의 행)을 선택하면 수신자별 메일 발송 내용을 하단 목록에서 확인할 수 있습니다.
+- 발송대기: 메일 발송 작업 대기 중인 상태입니다.
+- 발송중: 메일 발송이 진행 중인 상태입니다. 예약 건(목록의 행)을 선택하면 발송 진행률을 확인할 수 있습니다.
+- 발송완료: 발송이 정상적으로 완료된 상태입니다.
+- 발송실패: 발송 진행 중 오류가 발생한 상태입니다. 메일별 발송 상태는 메일 수신 조회 목록에서 확인할 수 있습니다.
+- 발송취소: 사용자가 메일 발송을 취소한 상태입니다.
 
-![email_13_201812_en.png](https://static.toastoven.net/prod_email/email_13_201812_en.png)
+#### 수신자별 메일 발송 조회
 
-1. Select a category from **Categories** on the left.
-2. Click **Add Cetegory**.
-    * Please make sure that the category is selected first.
-3. When **Add Category** window pops up, complete the form.
-4. Click **Add**.
+대량 메일 발송 건(리스트의 행) 선택하시면 하단의 리스트에서 수신 메일별 발송 내용과 발송 결과를 조회할 수 있습니다.
 
-To modify category, select a category and click **Modify**. When **Modify Category** window pops up, modify the content and click **Modify**.
+![email_16_20231023_en](https://static.toastoven.net/prod_email/email_16_20231023_en.png)
 
-### Templates
+**수신자별 조회**에서 해당 수신자를 선택하여 발송 내용이 정상적으로 치환되었는지 확인할 수 있습니다.
 
-![email_14_201812_en.png](https://static.toastoven.net/prod_email/email_14_201812_en.png)
+![email_17_20231023_en](https://static.toastoven.net/prod_email/email_17_20231023_en.png)
 
-1. To add a template, select a category and click **Add Templates**.
-2. Complete the form with frequently used items.
-3. Click **Add**.
+### 태그 메일 발송 조회
 
-To modify a template, select a template, modify it, and then click **Modify**.
+**태그 메일 발송 조회** 탭에서는 태그 메일 발송 예약을 조회하거나 발송 또는 발송 취소를 할 수 있습니다.
 
-## Mail Domain Management
+![email_18_20231023_en](https://static.toastoven.net/prod_email/email_18_20231023_en.png)
 
-Delivery mail domains can be managed from the **Mail Domain Management** tab.<br>
-This feature is useful for personal or company-owned domains which can be prevented from third-party abuses.  
+- 요청 ID 또는 요청 일시는 필수 값입니다.
+- 요청 일시 검색은 최대 한 달 이내로 검색 가능합니다.
+- 발송/취소: 태그 메일 발송 시 **검수 후 진행**을 선택하면 ‘발송 준비 완료‘ 상태의 건을 선택 후 **발송/취소** 버튼을 클릭하여 발송하거나 취소할 수 있습니다.
+- 조회: 상단의 조회 폼에서 태그 메일 발송 건을 조회할 수 있습니다. 조회 건의 리스트 행을 선택하면 하단의 조회 폼에서 수신메일과 발송 정보(발송 내용, 발송 결과)를 확인할 수 있습니다.
+- 예약 발송 시, 별도 발송 취소가 불가합니다.
+- 진행 상태를 통해 발송 요청에 대한 상태를 확인 할 수 있습니다.
+- 전체화면에 보여지는 데이터는 엑셀로 다운로드 할 수 있습니다.
 
-* This stage is not a must to enable email services.
-* It is unavailable for non-personal or non-company owned domains. 
-    * Cannot use domains of email account providers, such as Daum, Naver, or Google. 
+#### 태그 메일 발송 진행 상태
 
-### Register Mail Domains
-Click **Register Mail Domains** to register domains for delivery mails. <br>
-Only root domains can be registered. 
+- 대기: 수신자 파일 데이터를 읽는 작업을 진행하기 전 상태입니다.
+- 발송준비: 수신자 파일 데이터 정보를 로드 중인 상태입니다.
+- 발송준비완료: 메일 발송 준비가 완료된 상태 입니다. 예약 건(목록의 행)을 선택하면 수신자별 메일 발송 내용을 하단 목록에서 확인할 수 있습니다.
+- 발송대기: 메일 발송 작업 대기 중인 상태입니다.
+- 발송중: 메일 발송이 진행 중인 상태입니다. 예약 건(목록의 행)을 선택하면 발송 진행률을 확인할 수 있습니다.
+- 발송완료: 발송이 정상적으로 완료된 상태입니다.
+- 발송실패: 발송 진행 중 오류가 발생한 상태입니다. 메일별 발송 상태는 메일 수신 조회 목록에서 확인할 수 있습니다.
+- 발송취소: 사용자가 메일 발송을 취소한 상태입니다.
 
-### Verify Mail Domains
-Clic **Verify** to verify domain ownership. <br>
-Register a token issued from domain registration at TXT record, and click **Verify**. <br>
+#### 수신자별 메일 발송 조회
 
-* If "toast-domain-verification={token}" does not exist nor match, verification fails.  
-* It may take time to transmit changes after TXT record is registered at domain. 
+태그 메일 발송 건(목록의 행)을 선택해 하단의 목록에서 수신 메일별 발송 내용 및 결과를 조회할 수 있습니다.
 
-### Protect Mail Domains
-Click **Protect** to protect domains. <br>
-With this, following can be applied. <br>
+![email_18-1_20231023_en](https://static.toastoven.net/prod_email/email_18-1_20231023_en.png)
 
-* Protected domains can be enabled for verified projects only. 
-    * When a same domain is verfied by many projects, applying protection to only one project allows authenticated projects to use all domains. 
-    * e.g.) Verify "toast.com" for email services of Projects A and B, and protect Project A.
-        * "toast.com" can serve as delivery address for Projects A and B only 
-        * For Project C, "toast.com" is not available as delivery address since it is not verified for the project. 
+**수신자별 조회**에서 해당 수신자를 선택하여 발송 내용이 정상적으로 발송되었는지 확인할 수 있습니다.
 
-### Share Mail Domains
-Click **Share > Setting** to share domains. <br>
-Main features are as follows.<br>
+![email_19_20231023_en](https://static.toastoven.net/prod_email/email_19_20231023_en.png)
 
-* Query project with verified domains
-    * Provide the list of NHN Cloud projects completed with verification for specific domains.
-* Share domain with other projects 
-    * No need to repeat the verification process, when verifying same domain for many projects.<br>
-    * After verified from a project, domains can be shared by entering appkey for other projects' email services. 
+## 메일 도메인 관리
 
-### Register Sub-domains
-Click **Main Sub-domain > Setting** to register sub-domains. <br>
-Only registered root domain's sub-domains can be registered. <br>
-Registered sub-domains can be used as **Custom Header** to send mails. 
+**메일 도메인 관리** 탭에서 발송 메일 도메인을 관리할 수 있습니다.
+발송 메일의 도메인이 개인 혹은 회사에서 소유한 도메인 경우, 제 3자에 의해 악용될 수 있는 문제점을 보완할 수 있는 기능입니다.
 
-* Custom Headers available for Sub-domains 
-    * Header Name: X-TC-ENVELOPE-FROM
-    * Header Value: Sub-domain
-    * Main features are as follows:
-        * To inspect SPF records for recipient's mail service
-            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
-                * Inspect SPF records with "cs.toast.com", from recipient's mail service
-        * To send returned mails for recipient's mail service
-            * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
-                * Send returned mail to test@cs.toast.com, from recipient's mail service 
+* 이메일 서비스를 이용하기 위해 필수로 진행해야 하는 부분은 아닙니다. 
+  * 도메인을 등록하지 않고도 이메일 서비스를 이용할 수 있으나 서비스 이용에 일부 제한 사항이 있습니다.
+  * 자세한 내용은 [발송 전 유의 사항](./console-guide/#_2/)을 참고하세요.
+* 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
+    * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
 
-* For more details, see the guide for [Custom header](https://docs.toast.com/en/Notification/Email/en/Overview/#custom-header).
+### 메일 도메인 등록
 
-<span id="dkim"></span>
-### DomainKeys Identified Mail (DKIM)
-DKIM, or DomainKeys Identified Mail refers to a technique by which the receiver can check if the sender address or email is forged. <br>
-To enable DKIM, click **DKIM > Setting**.<br>
-Its main features are like follows: <br>
+**메인 도메인 등록** 버튼을 클릭해 발송 메일에서 사용할 도메인을 등록할 수 있습니다.
+도메인 등록은 루트 도메인만 등록 가능합니다.
 
+### 메일 도메인 인증
 
-* Register and Authenticate DKIM TXT Records 
-    * Click **Authenticate DKIM**.
-    * Register issued TXT record onto TXT Record of domain, and click **Authenticate**. 
-    * If "v=DKIM1;k=rsa;p={issued RSA publicKey value}" of domain's TXT record does not exist or is not consistent, authentication fails.  
-    * It might take time to register TXT record to domain and transmit changes. 
-* Enable or Disable DKIM 
-    * Click **DKIM Features**.
-    * Press **Enable** or **Disable** to control DKIM features. <br>
+**인증하기** 버튼을 클릭해 도메인 소유권을 인증할 수 있습니다.
+도메인 등록 시 발급받은 토큰값을 도메인의 TXT 레코드에 등록한 후 **인증하기** 버튼을 클릭합니다.<br>
 
-* You may do like below to check if DKIM works properly. 
-    * Authenticate and enable DKIM for a particular sender's domain
-    * Send email to a particular domain 
-    * Read the original of a receiving email 
-    * Check if the Authentication-Results header includes 'dkim=pass'
-        * Each email service provider may provide different header for dkim=pass.
+* 도메인의 TXT 레코드에 "toast-domain-verification={토큰}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
+* 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
 
-## Tag Management
+### 메일 도메인 보호
 
-You can create, modify, or delete tags applied to send mails in the **Manage Tags** tab.<br>
-Click a tag and the list of UIDs registered to the tag can be retrieved.<br>
-태그는 Notification 서비스 전역으로 사용됩니다.
-- 태그는 최대 2,048개까지 생성할 수 있습니다.
-- 하나의 UID에 태그를 16개까지 추가할 수 있습니다.
+**보호하기** 버튼을 클릭해 도메인을 보호할 수 있습니다.
+도메인을 보호하면 아래 사항들이 적용됩니다.<br>
 
-![email_15_201812_en.png](https://static.toastoven.net/prod_email/email_15_201812_en.png)
+* 보호된 도메인은 이미 인증받은 프로젝트에서만 사용할 수 있습니다.
+    * 동일한 도메인을 인증받은 프로젝트가 여러 개일 때, 그중 하나의 프로젝트에만 보호 적용을 해도 인증받은 프로젝트는 모두 도메인을 사용할 수 있습니다.
+    * 예) A, B 프로젝트의 이메일 서비스에서 "toast.com" 도메인을 인증받은 후, A 프로젝트에서 보호 적용을 진행
+        * A, B 프로젝트에서만 "toast.com" 도메인을 발송 주소로 사용 가능
+        * C 프로젝트에서는 "toast.com" 도메인을 인증받지 않았으므로 "toast.com" 도메인을 발송 주소로 사용할 수 없음
 
-When there is no registered tag, click **Register Tags**, enter **Tag Name** on the **Register/Modify Tags** window, and then click **Register**.
+메일 도메인 인증 및 보호 기능에 대한 보다 더 자세한 설명은 [도메인 관리 가이드 > 도메인 인증 및 보호](./domain-verification/)를 참고하세요.
 
-To register UIDs to a tag, select a tag from the list of registered tags and click **Register UIDs**.
-Enter an UID on the **Register UIDs** window and click **Register**.
+### 메일 도메인 공유
 
-Up to 1,000 UIDs can be registered at once, for a tag.
+**공유 > 설정** 버튼을 클릭하면 도메인을 공유할 수 있습니다.
+주요 기능은 다음과 같습니다.<br>
 
-## UID Management
+* 도메인을 인증받은 프로젝트 조회
+    * 특정 도메인의 인증 절차를 완료한 NHN Cloud 프로젝트 목록을 제공합니다.
+* 도메인을 다른 프로젝트로 공유
+    * 프로젝트 여러 개에 동일한 도메인을 인증할 때 인증 과정을 여러 번 진행하지 않아도 됩니다.<br>
+    * 한 프로젝트에서 인증받은 후 공유 기능을 활용해 다른 프로젝트의 이메일 서비스 앱키를 입력하면 도메인 공유가 가능합니다.
 
-Go to the **Manage UIDs** tab to manage UIDs and mail addresses.
+### 서브 도메인 등록
 
-![email_16_201812_en.png](https://static.toastoven.net/prod_email/email_16_201812_en.png)
+**메인 서브 도메인 > 설정** 버튼을 클릭해 서브 도메인을 등록할 수 있습니다.
+등록된 루트 도메인의 서브 도메인만 등록할 수 있습니다.
+등록된 서브 도메인은 메일 발송 시 **사용자 지정 헤더(custom header)** 기능으로 이용할 수 있습니다.
 
-UIDs, registered to a tag, can be used to easily send mails to multiple recipients.
+* 서브 도메인을 사용할 수 있는 사용자 지정 헤더(custom header)
+    * 헤더명: X-TC-ENVELOPE-FROM
+    * 헤더값: 서브 도메인
+    * 주요 기능은 다음과 같습니다.
+        * 수신자의 메일 서비스에서 SPF 레코드를 검사할 도메인으로 활용
+            * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
+                * 수신자의 메일 서비스에서 "cs.toast.com" 도메인으로 SPF 레코드 검사를 진행
+        * 수신자의 메일 서비스에서 반송 메일을 보내줄 메일 주소로 활용
+            * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
+                * 수신 측 메일 서비스에서 test@cs.toast.com 메일 주소로 반송 메일 발송
 
-![email_17_201812_en.png](https://static.toastoven.net/prod_email/email_17_201812_en.png)
+* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header) 가이드를 참고하세요.
 
-1. Click **Register UIDs**.
-2. Click **Download Templates**. You can enter multiple UIDs and mail address in CSV format.
-    * Download a template, and enter UID on the first row, and mail address on the second row.
-3. Save the file and click **Upload UID Files** to upload the file.
-4. Click **Register**.
+### SPF, DKIM, DMARC 인증
+NHN Cloud Email 서비스의 메일 발송(SMTP) 서버를 통해 사용자 소유의 도메인이 포함된 이메일 주소를 가지고 발송되는 것이므로, 사용자 소유의 도메인이 서비스되는 DNS에 추가 설정이 필요합니다.
 
-## Manage Call Rejects
+DNS에 추가 설정이 필요한 내역은 SPF, DKIM, DMARC가 있으며 TXT 레코드 형식으로 추가 설정이 가능합니다.
+DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 참고하십시오.
 
-You can manage rejecting users on the **Manage Call Rejcts** tab.
+- [도메인 관리 가이드 > SPF](./spf-record/)
+- [도메인 관리 가이드 > DKIM](./dkim-record/)
+- [도메인 관리 가이드 > DMARC](./dmarc-record/)
 
-![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
+## 태그 관리
 
-You may search for users who have unsubscribed so far, and register or delete rejections.
+**태그 관리** 탭에서 메일을 발송할 때 사용하는 태그를 생성하거나 수정 또는 삭제할 수 있습니다.
 
-#### Register Rejections
+특정 태그를 클릭하면 태그에 등록된 UID 목록을 조회할 수 있습니다. 태그와 UID 용어 의미는 [참고](./console-guide/#_32/)에서 확인하세요.
 
-![email_21_201812_en.png](https://static.toastoven.net/prod_email/email_21_201812_en.png)
+![email_20_20231023_en](https://static.toastoven.net/prod_email/email_20_20231023_en.png)
 
-1. Click **Register Rejections**.
-2. Enter unsubscription mail address in the **Register Rejections** window.
-    * Click **Add** to register up to 10 persons.
-3. Click **Register**.
+1. 등록된 태그가 없다면 **태그 등록** 버튼을 클릭한 뒤 **태그 등록/수정** 창에서 **태그 이름**을 입력하고 **등록** 버튼을 클릭합니다.
+   - 태그는 최대 2,048개까지 생성할 수 있습니다.
+2. 태그에 UID를 등록하려면 등록한 태그 목록에서 원하는 태그를 선택하고 **UID 등록**을 클릭합니다.
+3. **UID 등록** 창에 UID를 입력하고 **등록**을 클릭합니다.
+    - 태그 내 UID는 한 번에 최대 1,000개까지 등록할 수 있습니다.
 
-#### Registration with Template Files
+## UID 관리
 
-You can upload rejection files in CSV, text (.txt), or excel (.xlsx).
+**UID 관리** 탭에서 UID와 메일 주소를 관리할 수 있습니다.
 
-![email_22_201812_en.png](https://static.toastoven.net/prod_email/email_22_201812_en.png)
+UID는 태그에 등록하여 다수의 대상자에게 쉽게 메일을 발송할 수 있습니다. 태그와 UID 용어 의미는 [참고](./console-guide/#_32/)에서 확인하세요.
 
-1. Select **Batch Registration of Mail Addresses** to upload a file.
-2. Complete an upload and click **Register**.
-    * When they're normally uploaded, the message will show **A total of n mail addresses are found**.
+![email_21_20231023_en](https://static.toastoven.net/prod_email/email_21_20231023_en.png)
 
-![email_23_201812_en.png](https://static.toastoven.net/prod_email/email_23_201812_en.png)
+![email_22_20231023_en](https://static.toastoven.net/prod_email/email_22_20231023_en.png)
 
-When it is fully uploaded, you can check the list on the **Manage Call Rejects** tab
+1. **UID 등록** 버튼을 클릭합니다
+2. **템플릿 다운로드** 버튼을 눌러 CSV 파일로 여러 UID와 메일 주소를 입력할 수 있습니다.
+    - 템플릿을 다운로드한 뒤 첫 번째 열에는 UID, 두 번째 열에는 이메일 주소를 입력합니다.
+3. 입력한 파일을 저장한 후 **UID 파일 업로드** 버튼을 클릭하여 업로드합니다.
+    - 템플릿 작성 후 업로드 시 확인된 메일 개수를 확인할 수 있습니다.
+4. **등록** 버튼을 클릭합니다.
 
-#### Delete Rejections
+## 웹훅 관리
 
-![email_24_201812_en.png](https://static.toastoven.net/prod_email/email_24_201812_en.png)
+웹훅이란, 서비스에서 어떠한 작업이 수행되었음을 알리는 기능을 말합니다. <br>
+웹훅을 등록할 경우 Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 HTTP POST 요청을 생성합니다. 웹훅 설정은 **웹훅 관리** 탭에서 관리할 수 있습니다.
 
-1. Select email addresses to delete.
-2. Click **Delete Rejections**.
-3. Check the message in the **Undo Rejection** window and click **Yes**.
+#### 웹훅 설정 등록
 
-![email_20_201812_en.png](https://static.toastoven.net/prod_email/email_20_201812_en.png)
+웹훅 등록 시 아래 설정 값을 입력합니다.
 
-When it is completely deleted, you can check it on the **Manage Call Rejects** tab.
+- 이벤트 타입
+    - 현재 지원되는 이벤트 타입은 다음과 같습니다.
+        - 메시지 발송 결과 코드 업데이트, 광고 메일 수신 거부 주소 등록
+- 대상 URL
+    - 이벤트 발생 시 데이터를 전달 받을 URL입니다.
+        - 프로토콜은 HTTPS만 지원합니다.
+    - POST 요청에 대한 명세는 [웹훅](./api-guide/#webhook)를 참고하세요.
+- 서명
+    - 정의된 서명 키는 POST 요청 시 X-Toast-Webhook-Signature 헤더의 값으로 포함됩니다.
 
-## Retrieve Statistics
+![email_23_20231023_en](https://static.toastoven.net/prod_email/email_23_20231023_en.png)
 
-Check delivery statistics on the **Retrieve Statistics** tab.
-You can retrieve by conditions, such as period, statistical type (date, time, or day), mail type (general or mass), or template.
+1. 등록할 이벤트 타입을 선택합니다.
+2. 웹훅으로 전송될 데이터를 수신할 수 있는 URL 주소를 기재합니다.
+3. 등록할 웹훅 서명을 입력합니다.(필수 아님)
+4. 검증을 받으시고 추가 버튼을 클릭하여 웹훅을 등록합니다.
 
-![email_26_201812_en.png](https://static.toastoven.net/prod_email/email_26_201812_en.png)
+등록 완료된 웹훅은 **웹훅 등록 목록**에서 확인 가능합니다.
+
+## 통계 정보 조회
+
+**통계 조회** 탭에서 발송 통계를 확인할 수 있습니다.
+조회 기간, 통계 구분(날짜, 시간, 요일), 메일 유형(일반, 대량), 템플릿 등을 조건으로 사용해 조회할 수 있습니다.
+
+날짜별, 시간대별, 요일별로 조회할 수 있습니다.
+
+![email_24_20231023_en](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
+
+
+## 발송 설정
+
+#### 백업 설정
+
+- 메시지 보관 기간 정책에 따라 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
+- 백업 사용 여부, 파일 확장자, 파일을 업로드할 저장소 정보를 입력하면 해당 저장소에 백업 일자가 포함된 파일이 생성됩니다.
 
 <span id='personal-information-assignor'></span>
 
-## Delivery Settings
-You can backup delivery history data older than 90 days according to the message retention period policy.
-When you enter information on whether to use backup, file extension, and repository, a file with the backup date is created in the repository.
+## 참고
 
-## Guide for Notice of Personal Information Assignor
+<span id='tags-and-uids'></span>
+### 태그와 UID
 
-When the Customer uses NHN Cloud > Email Service, assignment of personal information between the Customer and the Company arises, and the assignee, the Customer, is obliged to disclose the status (assignor and content of business) of his assignment of personal information to the Company, through the personal information handling policy, in accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection. Accordingly, the Company may provide guidelines as below for the Customer, to abide by relevant regulations in the use of NHN Cloud Email Service and not to be adversely affected for not disclosing his assignment status:
+#### 서비스 용어
+|용어|	설명|
+|---|---|
+|태그(tag)|UID를 분류하는 체계. <br>UID에 여러 개의 태그를 붙여 사용자가 쉽게 UID 정보를 검색하고 사용할 수 있습니다.|
+|UID|사용자를 구분하는 ID(식별자). <br>하나의 UID에는 여러 개의 연락처를 등록하여 발송에 사용할 수 있습니다. |
+|연락처(contact)|연락을 하기 위해 정해둔 곳. <br>Notification에서는 Push, Email, SMS, 총 3개의 상품에서 연락처를 등록할 수 있습니다. <br>Push는 토큰, Email은 메일 주소, SMS는 전화번호입니다.|
 
-(Example)
+#### 태그를 사용하여 발송
+* 수신자 정보인 메일 주소 대신, 태그를 선택하여 메일을 발송할 수 있는 기능입니다.
 
-[Notice of Personal Information Assignor] To use NHN Cloud Email Service, make sure the following is displayed for 'Personal Information Handling Policy' > Assignment Status of the Customer.
+1. UID를 등록합니다.
 
-Assignor: NHN Cloud Corporation
-Content of Business: Send emails in lieu of customers
+* **UID 관리** 탭에서 UID 및 하나 이상의 메일 주소를 등록합니다.
+* 자세한 내용은 [UID 관리](./console-guide/#_27)를 참고하세요.
+
+2. 태그를 등록합니다.
+
+* **태그 관리** 탭에서 태그를 등록합니다.
+* 자세한 내용은 [태그 관리](./console-guide/#_26)를 참고하세요.
+
+3.  태그에 UID를 등록합니다.
+
+* **태그 관리** 탭에서 등록한 태그에 UID를 등록합니다.
+
+4. 태그를 선택한 후 메일을 발송합니다.
+
+* **메일 발송** 탭에서 메일 주소 대신 **태그 발송**을 선택하여 태그를 등록합니다.
+* 메일은 태그에 등록된 UID의 메일 주소로 발송됩니다.
+* 자세한 내용은 [태그 메일 발송](./console-guide/#_6)을 참고하세요.
+
+#### 다른 상품의 태그 기능과의 관계
+* 만약 같은 프로젝트에서 Push 또는 SMS 상품을 사용하고 있다면, Email에서 사용하고 있는 태그와 UID 정보를 재등록하지 않고 함께 사용할 수 있습니다.
+* 각 상품의 콘솔에서 같은 UID에 다른 연락처를 추가할 수 있습니다.
+
+### 사용자 지정 헤더(Custom header)
+
+* 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
+* NHN Cloud Email 서비스에서는 아래 헤더 이외에 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)에 설명된 형식을 따르는 헤더를 사용할 수 있습니다.
+
+#### 요청할 수 없는 헤더
+
+* From
+* To
+* Cc
+* Bcc
+* Date
+* Subject
+* Content-Disposition
+* Message-ID
+* Sender
+* Reply-To
+* Newsgroups
+* Content-ID
+* Content-MD5
+* MIME-Version
+* Content-Transfer-Encoding
+* Content-Description
+
+#### 구성
+
+| 용어 | 설명 |
+|---|---|
+|헤더 이름| 추가할 헤더의 이름. <br>영문과 숫자(a-z, A-Z, 0-9), 하이픈(-)만 사용해 1-50자 사이로 작성합니다. |
+|헤더값| 추가할 헤더의 값. <br>1-1000바이트 사이로 작성합니다. <br>ASCII가 아닌 문자는 Base64로 인코딩한 후 발송합니다. |
+
+
+### 데이터 보관 기간
+Email 서비스는 보관 정책에 따라 최근 90일 데이터만 보관합니다.
+보관 기간이 지난 데이터는 삭제되어 조회할 수 없습니다.
