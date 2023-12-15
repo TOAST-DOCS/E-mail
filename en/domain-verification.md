@@ -1,63 +1,63 @@
-## Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호
+## Notification > Email > Domain management Guide > Domain Authentication and Protection
 
-### 이메일 보안 강화 기능
+### Enhanced email security feature
 
-#### 메일 도메인 보호 기능 
-메일 도메인 보호 기능은 NHN Cloud Email에서 제공하는 보안 기능입니다. NHN Cloud Email 내에서 내가 소유한 메일 도메인을 제3자가 사용하는 것을 방지합니다. 
-<br> NHN Cloud Email 콘솔에서 메일 도메인을 등록하고 소유 여부가 확인되면 승인되지 않은 다른 프로젝트에서는 해당 메일 도메인을 사용해 이메일을 보낼 수 없게 됩니다.
+#### Enhanced mail domain protection feature 
+Mail domain protection is a security feature provided by NHN Cloud Email. It prevents third parties from using the mail domain you own within the NHN Cloud Email.
+<br> Once you registered the mail domain on NHN Cloud Email console and confirm that you own it, other projects that are not approved would not be able to send emails using that mail domain.
 
-### 메일 도메인 등록 및 소유권 확인하기
-- 먼저 NHN Cloud Email 콘솔에서 메일 도메인을 등록하고 메일 도메인 소유권을 확인해야 합니다. 
-- 메일 도메인 소유자는 NHN Cloud Email에서 제공한 TXT 레코드를 메일 도메인 DNS에 등록합니다. 
-- NHN Cloud Email은 메일 도메인 DNS의 TXT 레코드 일치 여부로 소유권을 확인합니다.
+### Register mail domains and verify ownership
+- First, you need to register your mail domain on NHN Cloud Email console and verify your ownership of mail domain. 
+- Mail domain owner registers TXT record provided by NHN Cloud Email to mail domain DNS. 
+- NHN Cloud Email checks ownership by matching TXT records in mail domain DNS.
 
-### 메일 도메인 인증 및 보호 절차
-#### 메일 도메인 등록
-![email_202312_00_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00_en.png)
+### Mail domain authentication and protection procedures
+#### Register mail domain
+![email_202312_00.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00.png)
 
-1. Email 콘솔로 이동합니다.
-2. **메일 도메인 관리** 탭으로 이동합니다.
-3. **메일 도메인 등록** 버튼을 클릭하고 메일 발송 시 사용할 도메인을 등록합니다. (최상위 도메인만 등록 가능)
+1. Navigate to email console.
+2. Navigate to **Manage Mail Domain** tab.
+3. Click **Register Mail Domain** button and register the domain to use when sending mail. (Only the highest domain can be registered)
 
 
-#### 메일 도메인 인증(소유권 확인 절차)
-![email_202312_01_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01_en.png)
+#### Mail domain authentication (ownership verification procedure)
+![email_202312_01.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01.png)
 
-1. **인증**을 클릭합니다. **메일 도메인 인증** 팝업 화면에 생성된 토큰이 표시됩니다.
-2. 등록한 메일 도메인 DNS에 TXT 레코드를 추가합니다.
-3. 추가한 TXT 레코드가 반영되었다면 **인증**을 클릭해 메일 도메인 소유권을 인증합니다.
-4. SPF와 마찬가지로 'nslookup', 'dig' 명령어를 이용해 소유 확인을 위한 TXT 레코드가 메일 도메인 DNS에 반영되었는지 확인할 수 있습니다.
+1. Click **Authentication**. Created token is displayed in **Mail Domain Authentication** pop-up screen.
+2. Add TXT record to the registered mail domain DNS.
+3. If the added TXT record is reflected, click on **Authenticate** to verify the ownership of mail domain.
+4. Like SPF, you can use the 'nslookup' and 'dig' commands to see if TXT record for ownership verification has been reflected in mail domain DNS.
 
-#### DNS의 TXT 레코드를 확인하는 방법
-Linux 환경
+#### How to check TXT record in DNS
+Linux environment 
+``` 
+nslookup -q=TXT <your.domain.name> 
 ```
-nslookup -q=TXT <your.domain.name>
+``` 
+dig -t TXT <your.domain.name> 
 ```
+Windows environment 
 ```
-dig -t TXT <your.domain.name>
-```
-Windows 환경
-```
-nslookup -q=TXT <your.domain.name>
+nslookup -q=TXT <your.domain.name> 
 ```
 
 
-### 도메인 공유하기
-- 메일 도메인을 보호하기 앞서 등록한 도메인을 다른 프로젝트에서 사용하고 있다면 도메인 공유가 필요합니다. 
-- 공유하지 않고 도메인 보호 기능을 활성화하면 공유 받지 않은 프로젝트에서 메일 발송은 실패합니다. 따라서 메일 도메인을 여러 프로젝트에서 사용한다면 반드시 공유해야 합니다.
+### Sharing Domains
+- Before protecting mail domains, if you are using a domain that is registered for another project, you need to share the domain. 
+- If you enable domain protection without sharing, sending mail from an unshared project fails. Therefore, you must share the mail domain if using it for multiple projects.
 
-### 도메인 공유
-![email_202312_02_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02_en.png)
-
-
-1. 등록한 메일 도메인 항목의 **공유 > 설정** 버튼을 클릭합니다.
-2. 공유할 프로젝트로 이동 후 NHN Cloud Email 앱키를 확인합니다. 확인된 앱키를 등록합니다. 공유가 완료되면 목록에 프로젝트 정보가 표시됩니다. 앱키는 우측 상단 **URL & Appkey**에서 확인할 수 있습니다.
-### 메일 도메인 보호하기
-![email_202312_03_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_en.png)
+### Share Domains
+![email_202312_02.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02.png)
 
 
-메일 도메인 등록, 소유권 확인, 공유 설정이 완료되었다면 보호 기능을 활성화할 수 있습니다.
-1. 보호 기능을 활성화할 메일 도메인 항목의 **보호 여부 > 보호** 버튼을 클릭합니다.
-2. **보호 적용 안내**의 내용을 확인한 뒤 **보호**를 클릭해 기능을 활성화합니다.
-3. 활성화되면 메일 도메인 보호는 완료되며, 발송 중 다른 프로젝트에서 해당 메일 도메인을 사용할 수 없습니다.
+1. Click **Share>Settings** button for the mail domain item you registered.
+2. Navigate to the project you want to share and check NHN Cloud Email app key. Register the verified app key. When the sharing is complete, project information appears in the list. Appkey can be found in the top right corner **URL and Appkey**.
+### Protecting Mail Domains
+![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03.png)
+
+
+Once you have registered, verified ownership and set up sharing for the mail domain, you can enable protection feature. 
+1. Click **Protection Status > Protect** for the mail domain item for which you want to enable protection feature. 
+2. **Apply Protection Guide**, click on **Protect** to activate the feature. 
+3. Once activated, mail domain protection is complete, and that mail domain is not available to other projects during delivery.
 
