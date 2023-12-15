@@ -60,7 +60,7 @@ Describes the values used for DMARC records. For more information, please refer 
 ### DMARC record certification procedure
 #### 1. Mail Domain Registration and Authentication
 - DMARC record certification is enabled on web console when the mail domain is registered and authenticated.
-- For detailed guide on mail domain authentication, refer to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](https://docs.nhncloud.com/ko/Notification/Email/ko/domain-verification/).
+- For detailed guide on mail domain authentication, refer to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](https://docs.nhncloud.com/en/Notification/Email/en/domain-verification/).
 
 #### 2. DMARC Record DNS Registration
 - Describes how to register DMARC record. Contact your DNS administrator for more information on how to register.

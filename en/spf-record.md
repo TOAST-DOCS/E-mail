@@ -9,7 +9,7 @@
 
 #### 1. Mail Domain Registration and Authentication 
 - SPF record validation is enabled on web console when the mail domain is registered and authenticated. 
-- For detailed guide on mail domain authentication, refer to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](https://docs.nhncloud.com/ko/Notification/Email/ko/domain-verification/).
+- For detailed guide on mail domain authentication, refer to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](https://docs.nhncloud.com/en/Notification/Email/en/domain-verification/).
 
 #### 2. NHN Cloud SPF Record Settings
 - Register the following values in DNS's TXT record. Contact your DNS administrator for more information on how to register.
