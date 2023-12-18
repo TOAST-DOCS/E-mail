@@ -25,7 +25,7 @@ v=spf1 include:_spfblocka.toast.com ~all
 - Verify that the SPF records in the authenticated domain are registered successfully.
 - When registration is complete, the message `SPF Validation Success` is displayed.
 
-![email_202312_06.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_en.png)
+![email_202312_06_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_en.png)
 
 ### Precautions
 Section 10.1 "Processing Limits" of [RFC 4408](https://datatracker.ietf.org/doc/rfc4408/?include_text=1) specifies inter-DNS Lookup processing protocol.
