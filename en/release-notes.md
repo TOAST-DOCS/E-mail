@@ -8,16 +8,6 @@
     - DMARC authentication procedure is added.
     - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
-#### Feature Updates
-
-* [Console] Improved domain registration validation logic
-    * Improved domain validation logic when registering a domain.
-    * If your domain contains some symbols ('．', '。', '．', '｡'), registering domains is not possible.
-
-* [API] Improved domain validation for sending requests
-    * Improved domain validation logic for sending requests.
-    * If the domain contains some symbols ('．', '。', '．', '｡'), mail sending requests are not possible.
-
 ### October 17, 2023.
 
 #### Feature Updates
