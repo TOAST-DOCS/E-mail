@@ -68,7 +68,7 @@ will be authenticated by DMARC policy. |
 
 - DMARC record certification is enabled on web console when the mail domain is registered and authenticated.
 - For detailed guide on mail domain authentication, refer
-  to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](https://docs.nhncloud.com/en/Notification/Email/en/domain-verification/)
+  to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](./domain-verification/)
   .
 
 #### 2. DMARC Record DNS Registration

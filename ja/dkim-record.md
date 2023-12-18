@@ -53,7 +53,7 @@
 #### 1. メールドメインの登録および認証
 
 - DKIM認証は、メールドメインの登録と認証が完了した場合、Webコンソールで有効になります。
-- メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)
+- メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参照してください。
 
 #### 2. DKIMレコードの登録

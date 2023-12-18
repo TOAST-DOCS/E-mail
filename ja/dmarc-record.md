@@ -64,7 +64,7 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 #### 1. メールドメイン登録および認証
 
 - DMARCレコード検証はメールドメインが登録および認証が完了した場合、ウェブコンソールで有効になります。
-- メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)
+- メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参考してください。
 
 #### 2. DMARCレコードDNS登録

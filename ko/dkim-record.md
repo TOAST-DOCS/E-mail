@@ -53,8 +53,8 @@
 #### 1. 메일 도메인 등록 및 인증
 
 - DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
-- 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](https://docs.nhncloud.com/ko/Notification/Email/ko/domain-verification/)를 참고하십시오.
-
+- 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](./domain-verification/)를 참고하십시오.
+  
 #### 2. DKIM 레코드 등록
 
 1. **메일 도메인 관리** 탭으로 이동합니다.

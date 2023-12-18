@@ -10,7 +10,7 @@
 #### 1. メールドメイン登録および認証
 
 - SPFレコード検証は、メールドメインが登録および認証が完了した場合、Webコンソールで有効になります。
-- メールドメイン認証に関する詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](https://docs.nhncloud.com/ja/Notification/Email/ja/domain-verification/)
+- メールドメイン認証に関する詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参照してください。
 
 #### 2. NHN Cloud SPFレコード設定
