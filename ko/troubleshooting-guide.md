@@ -42,5 +42,4 @@ Gmail에 우리가 발송하는 메일은 수신인들이 원하는 것이라는
 평판을 유지하기 위해서는 메일 내용과 관련성이 있는 대상에게 발송해야 합니다. 단지 메일을 자주 보내는 것보다 더 중요합니다. 발송 대상의 크기는 중요하지 않습니다. 메일 내용과 대상을 세분화해서 발송해야 합니다. 구독 취소의 원인 66%는 관련성이 없는 메일, 55%는 메시지의 피로도 때문입니다.
 
 #### 참고
-Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now - [Bronto](https://bronto.com/)
 Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? - [Mailgun](https://www.mailgun.com)

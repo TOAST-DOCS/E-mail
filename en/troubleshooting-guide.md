@@ -76,5 +76,4 @@ The feature of permission of receiving must be enabled.
 To remain high reputation, mails must be sent to those who are relevant. This is more important than frequent mailing. Size of target doesn't really matter; but, mail content and target must be separated for delivery. About 66% of canceling subscription is due to irrelevant mails and 55% to fatiguing messages. 
 
 #### For Reference 
-Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now - [Bronto](https://bronto.com/)
 Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? - [Mailgun](https://www.mailgun.com)
