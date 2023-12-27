@@ -53,7 +53,7 @@ Content-Type: application/json;charset=UTF-8
 |- receiveMailAddr|	String|	O|	수신자 메일주소|
 |- receiveName|	String|	X|	수신자 명|
 |- receiveType|	String|	O|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
+|customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
@@ -193,7 +193,7 @@ curl -X POST \
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
+|customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
@@ -430,7 +430,7 @@ curl -X POST \
 |- templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header) ( 최대 100자 )|
+|customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header) ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 
 [주의]
@@ -553,7 +553,7 @@ curl -X POST \
 | autoSendYn  | String | X|자동 발송 여부 'Y'(기본값) |
 | attachFileIdList  | List:Integer | X|첨부파일 리스트 |
 | tagExpression  | List:String | O|태그 표현식 (태그 ID 포함) |
-|customHeaders| Map| X| [사용자 지정 헤더](./Overview/#custom-header)|
+|customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
 
 [예시 1]
@@ -978,7 +978,7 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
-|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
+|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹키 |
 
 ### 태그 메일 발송 요청 조회
@@ -1304,7 +1304,7 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
-|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
+|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 
 
 ## 예약 관리
@@ -1518,7 +1518,7 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
-|-- customHeaders|	Map|	[사용자 지정 헤더](./Overview/#custom-header) |
+|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹키 (최대 100자) |
 
 ### 예약 발송 취소 - 요청별

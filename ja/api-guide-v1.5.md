@@ -53,7 +53,7 @@ Content-Type: application/json;charset=UTF-8
 |- receiveMailAddr|	String|	O|	受信者のメールアドレス|
 |- receiveName|	String|	X|	受信者名|
 |- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./Overview/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 発信者グループキー |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 
@@ -155,7 +155,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時の入力)|
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./Overview/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 発信者グループキー |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 
@@ -298,7 +298,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時の入力)|
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./Overview/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 
 [注意]
@@ -396,7 +396,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | autoSendYn  | String | X|自動送信かどうか(default 'Y') |
 | attachFileIdList  | List:Integer | X|添付ファイルリスト |
 | tagExpression  | List:String | O|タグ表現式 (タグID含む) |
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./Overview/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 | userId  | String | X|送信セパレータ ex)admin,system|
 
 [注意]
@@ -814,7 +814,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer| 添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
-|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./Overview/#custom-header) |
+|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー|
 
 #### v1.5에서 달라진 사항
@@ -1139,7 +1139,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |--- filePath|	String|	添付ファイルパス|
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
-|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./Overview/#custom-header) |
+|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 
 <p id="category"></p>
 
