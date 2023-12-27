@@ -51,7 +51,7 @@ Content-Type: application/json;charset=UTF-8
 | - receiveMailAddr | String      | O        | Recipient's email address                                    |
 | - receiveName     | String      | X        | Recipient's name                                             |
 | - receiveType     | String      | O        | Recipient type (MRT0: recipient , MRT1: Cc, MRT2: Bcc)       |
-| customHeaders     | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
+| customHeaders     | Map         | X        | [Custom Header](./console-guide/#custom-header)                   |
 | senderGroupingKey | String      | X        | Sender's group key                                           |
 | userId            | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
@@ -154,7 +154,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- templateParameter|	Object|	X| Replacement parameter (to enter mail title/body for replacement) |
 |-- #key#|	String|	X| Replacement key (##key##) |
 |-- #value#|	Object|	X| Mapped value for replacement key |
-|customHeaders| Map| X| [Custom Header](./Overview/#custom-header) |
+|customHeaders| Map| X| [Custom Header](./console-guide/#custom-header) |
 |senderGroupingKey| String| X| Sender's group key |
 |userId|	String|	X| Delimiter for delivery e.g.) admin,system |
 
@@ -302,7 +302,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | - templateParameter | Object | X        | Replacement parameter (to enter mail title/body for replacement) |
 | -- #key#            | String | X        | Replacement key (##key##)                                    |
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
-| customHeaders       | Map    | X        | [Custom Header](./Overview/#custom-header)                   |
+| customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 
 [Caution]
@@ -403,7 +403,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | autoSendYn       | String      | X        | Automatic delivery or not (default is 'Y')                   |
 | attachFileIdList | List:String | X        | List of attached files                                       |
 | tagExpression    | List:String | O        | Tag expression (including Tag ID)                                               |
-| customHeaders    | Map         | X        | [Custom Header](./Overview/#custom-header)                   |
+| customHeaders    | Map         | X        | [Custom Header](./console-guide/#custom-header)                   |
 | userId           | String      | X        | Delimiter of delivery e.g.) admin, system                    |
 
 [Caution]
@@ -824,7 +824,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
 | --- createDate      | String  | Date and time of creation                                    |
-| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
+| -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
 
 #### Updated for v1.5
@@ -1152,7 +1152,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | --- filePath        | String  | Path of attached file                                        |
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
 | --- createDate      | String  | Date and time of creation                                    |
-| -- customHeaders    | Map     | [Custom Header](./Overview/#custom-header)                   |
+| -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 
 <p id="category"></p>
 
