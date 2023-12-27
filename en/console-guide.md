@@ -31,7 +31,7 @@ You can send advertising mails.
 
 #### Notes for Sending Advertising Mails
 
-In accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection, you are obliged to follow the rules as below, to send advertising or promotional mails. [[check at Korea Internet & Security Agency](https://spam.kisa.or.kr/spam/sub62.do)]
+In accordance with Act on Promotion of Information and Communications Network Utilization and Information Protection, you are obliged to follow the rules as below, to send advertising or promotional mails. [[check at Korea Internet & Security Agency](https://spam.kisa.or.kr/spam/cm/cntnts/cntntsView.do?mi=1061&cntntsId=1086)]
 
 1. Send ad mails only to those recipients who explicitly agreed to receive ones.
 The sender shall be held liable for any conflicts that may arise in violation of it.
