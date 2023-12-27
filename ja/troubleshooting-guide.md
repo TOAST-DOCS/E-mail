@@ -78,5 +78,4 @@ Gmailに送信するメールは、受信者が望むものだということを
 ##### 関連性の高いメッセージ
 
 #### 参考
-Gmail Inbox Delivery and Domain Reputation: What You Need to Know Now - [Bronto](https://bronto.com/)
 Domain Reputation Or IP Reputation: Which One Does Gmail Care About More? - [Mailgun](https://www.mailgun.com)
