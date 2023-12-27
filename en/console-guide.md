@@ -288,7 +288,7 @@ Registered sub-domains can be used as **Custom Header** to send mails.
             * e.g.) When mail delivery is requested for Recipient: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com
                 * Send returned mail to test@cs.toast.com, from recipient's mail service 
 
-* For more details, see the guide for [Custom header](https://docs.toast.com/en/Notification/Email/en/Overview/#custom-header).
+* For more details, see the guide for [Custom header](https://docs.toast.com/en/Notification/Email/en/console-guide/#custom-header).
 
 <span id="dkim"></span>
 ### DomainKeys Identified Mail (DKIM)
