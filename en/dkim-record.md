@@ -71,7 +71,7 @@ DKIM Header example above has the following implications.
 2. Click **Set DKIM** button for the registered sender domain.
 3. Copy the displayed DKIM record and register it with the domain DNS selected to be sent.
 
-![email\_202312\_04.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04.png)
+![email\_202312\_04.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04_en.png)
 
 ##### Precautions
 
@@ -87,7 +87,7 @@ DKIM Header example above has the following implications.
 
 - If authentication is successful, select **DKIM** tab on pop-up screen and click on **Activate** to enable DKIM.
 
-![email\_202312\_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05.png)
+![email\_202312\_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_en.png)
 
 #### 5. Test DKIM Authentication
 

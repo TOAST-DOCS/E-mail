@@ -21,20 +21,20 @@ Following is an example of a DMARC DNS record.
 
 Describes the values used for DMARC records. For more information, please refer to [RFC 7489](https://www.ietf.org/rfc/rfc7489.txt).
 
-| Classification | Required | Value | Description |
-| --- | ----- |------------------------------------------------------------------------------------------------------------------------------ |
-| v | Required | DMARC1 (Fixed) | Version. |
-| p | Required | None, quarantine, reject | Policy for handling failure. |
-| sp | Optional | None, quarantine, reject | Failure handling policy for subdomains. |
-| pct | Optional | 0 \~ 100 (default 100) | The proportion of emails to which the policy to be applied. For example, if it is 50, half of the emails received
+| Classification | Required | Value | Description                                                                                                            |
+| --- | ----- |-------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| v | Required | DMARC1 (Fixed) | Version.                                                                                                               |
+| p | Required | None, quarantine, reject | Policy for handling failure.                                                                                           |
+| sp | Optional | None, quarantine, reject | Failure handling policy for subdomains.                                                                                |
+| pct | Optional | 0 \~ 100 (default 100) | The proportion of emails to which the policy to be applied. For example, if it is 50, half of the emails received      
 will be authenticated by DMARC policy. |
-| adkim | Optional | s, r (default) | DKIM Alignment. Setting for matching level of DKIM-Signature domain (d) and From (5322.From). |
+| adkim | Optional | s, r (default) | DKIM Alignment. Setting for matching level of DKIM-Signature domain (d) and From (5322.From).                          |
 | aspf | Optional | s, r (default) | SPF Alignment. Setting for the matching level of MAIL FROM (5321.From) and From (5322.From) during SPF authentication. |
-| rua | Optional | | | Address to receive periodically aggregated failure reports. Example, mailto:demarc-report@nhncloud.com |
-| ruf | Optional | | | | Address to receive the failure report. Example, mailto:demarc-report@nhncloud.com |
-| fo | Optional | 0 (default), 1, d, s | Criteria to generate a failure report (ruf). |
-| rf | Optional | afrf (fixed) | Setup for the failure report (ruf) format. |
-| ri | Optional | 86400 (default value, in seconds) | Period to count failures. A failure report (rua) is sent every set period. |
+| rua | Optional | |                                                                                                                        | Address to receive periodically aggregated failure reports. Example, mailto:demarc-report@nhncloud.com |
+| ruf | Optional | |                                                                                                                        | | Address to receive the failure report. Example, mailto:demarc-report@nhncloud.com |
+| fo | Optional | 0 (default), 1, d, s | Criteria to generate a failure report (ruf).                                                                           |
+| rf | Optional | afrf (fixed) | Setup for the failure report (ruf) format.                                                                             |
+| ri | Optional | 86400 (default value, in seconds) | Period to count failures. A failure report (rua) is sent every set period.                                             |
 
 #### Failure policy (p) value type
 
@@ -93,13 +93,13 @@ will be authenticated by DMARC policy. |
 
 - When DMARC record DNS registration is complete, perform DMARC authentication in DMARC administration pop-up.
 - When authentication is complete, the phrase **Authenticated** is displayed.
-  ![email\_202312\_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08.png)
+  ![email\_202312\_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_en.png)
 
 #### Example of DMARC record lookup failure screen
 
 - If DMARC record lookup fails, the following screen is displayed.
 
-![email\_202312\_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09.png)
+![email\_202312\_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_en.png)
 
 ### Precautions
 

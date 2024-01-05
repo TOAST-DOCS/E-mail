@@ -19,7 +19,7 @@ emails using that mail domain.
 
 #### Register mail domain
 
-![email_202312_00.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00.png)
+![email_202312_00.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00_en.png)
 
 1. Navigate to email console.
 2. Navigate to **Manage Mail Domain** tab.
@@ -27,7 +27,7 @@ emails using that mail domain.
 
 #### Mail domain authentication (ownership verification procedure)
 
-![email_202312_01.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01.png)
+![email_202312_01.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01_en.png)
 
 1. Click **Authentication**. Created token is displayed in **Mail Domain Authentication** pop-up screen.
 2. Add TXT record to the registered mail domain DNS.
@@ -60,7 +60,7 @@ nslookup -q=TXT <your.domain.name>
 
 ### Share Domains
 
-![email_202312_02.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02.png)
+![email_202312_02.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02_en.png)
 
 1. Click **Share>Settings** button for the mail domain item you registered.
 2. Navigate to the project you want to share and check NHN Cloud Email app key. Register the verified app key. When the sharing is complete, project information
@@ -68,7 +68,7 @@ nslookup -q=TXT <your.domain.name>
 
 ### Protecting Mail Domains
 
-![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03.png)
+![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_en.png)
 
 Once you have registered, verified ownership and set up sharing for the mail domain, you can enable protection feature.
 
