@@ -1,106 +1,46 @@
 ## Notification > Email > Overview
 
-With Email, you can send mails, send by schedule, query delivery history, and manage templates. 
-<br>RESTful API is also available for easy integration. 
+In the NHN Cloud Email service, you can use a number of features, including mail delivery, sending scheduled delivery, checking delivery history and managing templates, etc. 
+It also provides RESTful APIs for easy integration with proprietary delivery programs and management tools.
 
 ## Main Features
 
-- Send Mass Mails
-  - Enter the list of recipients in excel and send mass mails.  
-- Send by Tags 
-  \-  Enter the list of recipients using tags and send mass mails.
-- Schedule Delivery
-  \- Send mails in time of your schedule. 
-- Provide Replacement Tags 
-  \- Send personalized mails for each recipient with replacement tags.
-- Support Template Functions 
-  \- Register frequently-used mails as templates. 
+- Mass Delivery Support 
+    - You can enter a list of recipients in Excel file and send mail in bulk.
+- Tag Delivery Support 
+    - You can enter a list of recipients list by using tag and send mail in bulk.
+- Scheduled Delivery 
+    - You can send mails at any time you want.
+- Replacement Tag 
+    - Use Replacement Tags to send personalized mails to each recipient.
+- Template Feature 
+    - You can register and use frequently used mail formats as templates.
+- Manage Advertising Mail Unsubscription 
+    - You can view mail addresses that are denied or added to the Unsubscription Recipient list and manage the Unsubscription List. 
+- Email Security Feature 
+    - You can safely send mail by performing SPF / DKIM / DMARC record authentication. 
+- Retrieve Statistics 
+    - You can analyze detailed results for each mail delivery case. 
 
-- Sending mails  and query of RESTful API are also available on your application. 
+- You can use the mail delivery and view RESTful API available in customer’s applications.
 
-## Caution before Sending Mails
-To prevent mails sent from NHN Cloud Email being processed as spam mails at external email services, keep note of the following: 
+## Precautions Before Delivery
+To prevent emails sent using NHN Cloud Email service from being treated as spam by an external email service, you should keep in mind the following.
 
-First, DNS setting is required. <br/>Since mail is sent from the email address which includes the owner's domain via NHN Cloud Email mail delivery server (SMTP), additional setting is required for DNS in which user's own domain can be serviced. <br/> _spfblocka.toast.com must be registered for SPF of TXT record at DNS. If SPF setting is not right, a mail may be considered as a spam or one from a faulty user, hence receiving a warning sign or saved at 'Spam Inbox', which makes it hard for the recipient to receive. <br>
+First, DNS must be set up. <br/>
+Since it is sent with email address containing a user-owned domain through NHN Cloud Email service's Mail delivery (SMTP) server, additional settings are required in DNS where user-owned domain is serviced. 
+For more information about additional DNS settings, see **Domain Management Guide**.
 
-Please see [Troubleshooting Guide](./troubleshooting-guide/) on how to set SPF. 
-   
+- [Domain Management Guide > Domain Authentication and Protection ](./domain-verification/)
+- [Domain Management Guide > SPF](./spf-record/)
+- [Domain Management Guide > DKIM](./dkim-record/)
+- [Domain Management Guide > DMARC](./dmarc-record/)
 
-Second, Gmail considers highly of domain reputation, even for determining spam mails. 
+Starting from February 1, 2024, [Gmail sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will change and send requests to some receiving mail systems may be rejected if you do not have domain authentication and SPF, DKIM, and DMARC authentication.
 
-If a sender of low domain reputation fast sends a bulk email, or sends ad emails to unsolicited users,  such mails may be saved at 'Inbox' but with a warning sign; or they may be saved at 'Spam Inbox', or restricted in speed, or even rejected of receiving. Therefore, any user who wants to send bulk emails must take cautious approach by taking reference of domain reputation management guide, so as to remain high on domain reputation.<br>
-For more details, please see [Troubleshooting Guide](./troubleshooting-guide/)
+**Restricted Destination Domains When Not Authenticated** 
+- gmail.com 
+- yahoo.com
 
-## Reference
-
-<span id='tags-and-uids'></span>
-### Tags and UIDs
-
-#### Glossary
-|Glossary| Description |
-|---|---|
-|Tag|A system that classifies UID. <br>Many tags can be attached to an UID so as to help users to easily search and use UID information.|
-|UID|ID (identifier) that classifies users. <br>One UID can have multiple contacts to be applied for delivery. |
-|Contact|A specified location to contact. <br>Notification provides three products to register contact: Push, Email, and SMS. <br />Push regards to tokens; Email to mail addresses; and, SMS to phone numbers.|
-
-#### Use Tags to Send Mails 
-* You can send mails by selecting tags, instead of mail addresses, as recipient information. 
-
-1. Register UID.
-
-* Go to **Manage UIDs** and register UID and one or many mail addresses. 
-* For more details, refer to [Manage UIDs](./console-guide/#uid). 
-
-2. Register tags.
-
-* Go to **Manage Tags** and register tags.
-* For more details, refer to [Manage Tags](./console-guide/#_11). 
-
-3.  Register UID to a tag.
-
-* Go to **Manage Tags** and register UID to a registered tag.
-
-4. Select tags to send mails. 
-
-* Go to **Send Mails** and Select **Send Tags**, instead of mail addresses, and register tags. 
-* Mails are to be sent to mail addresses of UID which is registered to a tag. 
-* For more details, refer to [Send Mails using Tags](./console-guide/#_6).
-
-#### Tags of Other Products 
-* You can share your tag and UID information of Email with Push or SMS, without the need of re-registration. 
-* Other contacts can be added to a same UID of each product console. 
-
-### Custom Header
-
-* Custom header can be added to a receiving email for delivery. 
-* NHN Cloud Email Service adopts the headers following the format as described in [RFC 822](https://www.ietf.org/rfc/rfc0822.txt), except below: 
-
-#### Headers Unavailable to Request
-
-* From
-* To
-* Cc
-* Bcc
-* Date
-* Subject
-* Content-Disposition
-* Message-ID
-* Sender
-* Reply-To
-* Newsgroups
-* Content-ID
-* Content-MD5
-* MIME-Version
-* Content-Transfer-Encoding
-* Content-Description
-
-#### Composition 
-
-| Term | Description |
-|---|---|
-|Header Name| Name of a header to add. <br>Comprised of between 1 and 50 letters, in English and numbers (a-z, A-Z, 0-9), and hyphen only. |
-|Header Value| Value of a header to add. <br>Composed of between 1 and 1000 bytes. <br>Non-ASCII characters are encoded in Base64 before delivered. |
-
-### Data Retention Period 
-According to the retention policy, email data of the recent 90 days only can be retained. 
-Data older than that are deleted and cannot be queried. 
+Second, Gmail uses domain reputation as a primary criterion for determining spam. If a sender with a low domain reputation sends a high volume of emails at a high speed, or sends advertising emails that the recipient doesn't want, the emails are stored in their "inbox" but with warning or stored in their ‘spam’ folder, or the recipient can slow down or deny the emails. Therefore, if you want to send out emails in bulk, you should always take care to keep your domain reputation high by referring to the following guide on how to manage your domain reputation.<br>
+For more information, see the [troubleshooting guide](./troubleshooting-guide/).
