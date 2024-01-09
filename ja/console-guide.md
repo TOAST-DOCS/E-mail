@@ -29,7 +29,7 @@
 広告性メールを送信できます。
 
 #### 広告メール送信時の注意事項
-韓国情報通信網法に従い、商業性広告メールや業者の広告メールを送信する場合、下記の事項を遵守する必要があります。 [[韓国インターネット振興院関連の内容を確認](https://spam.kisa.or.kr/spam/sub62.do)]
+韓国情報通信網法に従い、商業性広告メールや業者の広告メールを送信する場合、下記の事項を遵守する必要があります。 [[韓国インターネット振興院関連の内容を確認](https://spam.kisa.or.kr/spam/cm/cntnts/cntntsView.do?mi=1061&cntntsId=1086)]
 
 1. 広告性メールは、受信に同意した受信者にのみ送信する必要があります。
 
@@ -288,7 +288,7 @@ NHN Cloudは、韓国情報通信網法を遵守できるように、'広告メ�
             * 例)受信者：test@toast.com, X-TC-ENVELOPE-FROM：test@cs.toast.comへメール送信をリクエストした場合
                 * 受信側のメールサービスからtest@cs.toast.comメールアドレスへ返送メール送信
 
-* さらに詳細な内容は[カスタムヘッダ(custom header)](https://docs.toast.com/ja/Notification/Email/ja/Overview/#custom-header)ガイドを参照してください。
+* さらに詳細な内容は[カスタムヘッダ(custom header)](https://docs.toast.com/ja/Notification/Email/ja/console-guide/#custom-header)ガイドを参照してください。
 
 <span id="dkim"></span>
 ### DKIM
