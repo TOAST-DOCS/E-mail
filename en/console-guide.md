@@ -119,7 +119,7 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
 ### Tagged Mail Delivery
 
 You can send it as UID that meets tagged conditions. Select **Tagged delivery** on bottom tab.
-For more information about tags, refer to [Note](./console-guide/#_32/).
+For more information about tags, refer to [Note](./console-guide/#_37/).
 
 ![email_06_20231023_en](https://static.toastoven.net/prod_email/email_06_20231023_en.png)
 
@@ -303,7 +303,7 @@ potential problems that can be exploited by third parties.
 
 * It is not a mandatory feature to use the email service.
     * You can use the email service without registering a domain, but there are some restrictions on using the service.
-    * For more information, see [Caution before Delivery](./console-guide/#_2/).
+    * For more information, see [Caution before Delivery](./Overview/#_2/).
 * It cannot be used unless the domain is owned by an individual or a company.
     * You cannot use the domain of companies that provide mail account issuance services such as Daum, Naver and Google.
 
@@ -362,7 +362,7 @@ Registered sub-domains are available with **Custom Header** feature when sending
             * <i>(e.g.,)</i> If you requested to send an email To: test@toast.com , X-TC-ENVELOPE- FROM: to test@cs.toast.com
                 * Send a return mail from the recipient mail service to test@cs.toast.com mail address
 
-* For more information, refer to [custom header](https://docs.toast.com/ko/Notification/Email/ko/Overview/#custom-header) guide.
+* For more information, refer to [custom header](./console-guide/#custom-header) guide.
 
 ### SPF, DKIM, DMARC Authentication
 
@@ -380,7 +380,7 @@ refer to **Domain Management Guide**.
 
 On **Tag Management** tab, you can create, modify or delete tags that you use to send mail.
 
-Click on specific tag to view the list of UIDs registered in the tag. Check [Note](./console-guide/#_32/) for the meaning of tag and UID terms.
+Click on specific tag to view the list of UIDs registered in the tag. Check [Note](./console-guide/#_37/) for the meaning of tag and UID terms.
 
 ![email_20_20231023_en](https://static.toastoven.net/prod_email/email_20_20231023_en.png)
 
@@ -394,7 +394,7 @@ Click on specific tag to view the list of UIDs registered in the tag. Check [Not
 
 You can manage UIDs and mail addresses on **UID Management** tab.
 
-UIDs can easily send mail to a large number of subjects by registering with tags. Check [Note](./console-guide/#_32/) for the meaning of tag and UID terms.
+UIDs can easily send mail to a large number of subjects by registering with tags. Check [Note](./console-guide/#_37/) for the meaning of tag and UID terms.
 
 ![email_21_20231023_en](https://static.toastoven.net/prod_email/email_21_20231023_en.png)
 
@@ -477,12 +477,12 @@ You can view by date, time zone and day of the week.
 1. Register UID.
 
 * On the **UID Management** tab, register UID and one or more mail addresses.
-* For more information, see [UID Management](./console-guide/#_27).
+* For more information, see [UID Management](./console-guide/#uid).
 
 2. Register a tag.
 
 * Register tags On **Tags Management** tab.
-* For more information, refer to [Tag Management](./console-guide/#_26).
+* For more information, refer to [Tag Management](./console-guide/#_31).
 
 3. Register UID in tag.
 
@@ -492,7 +492,7 @@ You can view by date, time zone and day of the week.
 
 * In the **Deliver Mails** tab, select **Tag Delivery** instead of email address to register the tag.
 * Mail is sent to the mail address of UID registered in the tag.
-* For more information, please refer to [Tagged Mail Delivery](./console-guide/#_6).
+* For more information, please refer to [Tagged Mail Delivery](./console-guide/#_8).
 
 #### Relationship with the Tag Feature of Other Products
 
