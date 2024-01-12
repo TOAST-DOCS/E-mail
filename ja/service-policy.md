@@ -1,4 +1,4 @@
-## Notification > Email > サービスポリシー(test)
+## Notification > Email > サービスポリシー(tesdddddt)
 
 <span id='operation-policy'></span>
 ## 送信制限に関する案内
