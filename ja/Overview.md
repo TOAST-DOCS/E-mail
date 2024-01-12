@@ -1,4 +1,4 @@
-## Notification > Email > 概要
+## Notification > Email > 概要(test)
 
 Emailを使用すると、メール送信、予約送信、送信履歴照会、テンプレート管理機能を使用できます。
 <br>簡単に連携できるようにRESTful APIで使用できます。
