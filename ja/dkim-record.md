@@ -16,7 +16,7 @@
 
 - 以下はメール送信時にメールヘッダに追加されるDKIM署名(DKIM-Signatureヘッダ)の例です。
 
-> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=nhncloud;
+> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=toast;
 > t=1117574938; x=1118006938;
 > h=from:to:subject:date;
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
@@ -43,10 +43,10 @@
 上のDKIM Headerの例を見ると、次のような意味を持ちます。
 
 - メール送信ドメインはexample.netです。
-- メール送信ドメインのセレクター(s)はnhncloudです。
+- メール送信ドメインのセレクター(s)はtoastです。
 - メール送信ドメイン(d)はexample.netです。
-- メール送信ドメインのDKIMレコードはnhncloud.\_domainkey.example.netです。
-- 受信サーバーはnhncloud.\_domainkey.example.netのDKIMレコードを照会してメールを認証します。
+- メール送信ドメインのDKIMレコードはtoast.\_domainkey.example.netです。
+- 受信サーバーはtoast.\_domainkey.example.netのDKIMレコードを照会してメールを認証します。
 
 ### DKIMレコード登録および認証、有効化方法
 
