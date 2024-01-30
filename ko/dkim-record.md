@@ -16,7 +16,7 @@
 
 - 다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
 
-> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=nhncloud;
+> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=toast;
 > t=1117574938; x=1118006938;
 > h=from:to:subject:date;
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
@@ -43,10 +43,10 @@
 위의 DKIM Header 예제를 보면 다음과 같은 의미를 가집니다.
 
 - 이메일 발송 도메인은 example.net입니다.
-- 이메일 발송 도메인의 지정자(s)는 nhncloud입니다.
+- 이메일 발송 도메인의 지정자(s)는 toast입니다.
 - 이메일 발송 도메인(d)은 example.net입니다.
-- 이메일 발송 도메인의 DKIM 레코드는 nhncloud.\_domainkey.example.net입니다.
-- 수신 서버는 nhncloud.\_domainkey.example.net의 DKIM 레코드를 조회해 이메일을 인증합니다.
+- 이메일 발송 도메인의 DKIM 레코드는 toast.\_domainkey.example.net입니다.
+- 수신 서버는 toast.\_domainkey.example.net의 DKIM 레코드를 조회해 이메일을 인증합니다.
 
 ### DKIM 레코드 등록 및 인증, 활성화 방법
 

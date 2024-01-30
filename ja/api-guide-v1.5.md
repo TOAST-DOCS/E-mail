@@ -588,23 +588,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 [Query parameter]
 
-|値|	タイプ|	必須|	説明|
-|---|---|---|---|
-|requestId|	String|	O|	リクエストID|
-|startSendDate|	String|	O|	送信日の開始値(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	X|	送信日の終了値(yyyy-MM-dd HH:mm:ss)|
-|startReceiveDate|	String|	X|	受信日の開始値(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	受信日の終了値(yyyy-MM-dd HH:mm:ss)|
-|senderAddress|	String|	X|	送信メールアドレス|
-|senderName|	String|	X|	送信者名|
-|receiveMailAddr|	String|	X|	受信メールアドレス|
-|templateId|	String|	X|	テンプレート番号|
-|mailStatusCode|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
-|isReceived| Boolean| X | 受信情報 |
-|isOpened| Boolean| X | 既読情報 |
-|senderGroupingKey| String| X| 発信者グループキー|
-|pageNum|	Integer|	X|	ページ番号(Default：1)|
-|pageSize|	Integer|	X|	照会件数(Default：15)|
+|値|	タイプ|	必須| 	説明                                                                     |
+|---|---|---|-------------------------------------------------------------------------|
+|requestId|	String|	O| 	リクエストID                                                                |
+|startSendDate|	String|	O| 	送信日の開始値(yyyy-MM-dd HH:mm:ss)                                           |
+|endSendDate|	String|	X| 	送信日の終了値(yyyy-MM-dd HH:mm:ss)                                           |
+|startReceiveDate|	String|	X| 	受信日の開始値(yyyy-MM-dd HH:mm:ss)                                           |
+|endReceiveDate|	String|	X| 	受信日の終了値(yyyy-MM-dd HH:mm:ss)                                           |
+|senderAddress|	String|	X| 	送信メールアドレス                                                              |
+|senderName|	String|	X| 	送信者名                                                                   |
+|receiveMailAddr|	String|	X| 	受信メールアドレス                                                              |
+|templateId|	String|	X| 	テンプレート番号                                                               |
+|mailStatusCode|	String|	X| 	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし |
+|isReceived| Boolean| X | 受信情報                                                                    |
+|isOpened| Boolean| X | 既読情報                                                                    |
+|senderGroupingKey| String| X| 発信者グループキー                                                               |
+|pageNum|	Integer|	X| 	ページ番号(Default：1)                                                       |
+|pageSize|	Integer|	X| 	照会件数(Default：15)                                                       |
 
 * **requestId**または**startSendDate**、**endSendDate**リクエストフィールドは必須です。
 
@@ -672,7 +672,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- senderName|	String|	送信者名|
 |-- senderAddress|	String|	送信者のメールアドレス|
 |-- title|	String|	メールのタイトル|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- isReceived|	Boolean|	受信情報|
 |-- resultDate|	String|	受信日時|
@@ -787,7 +787,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- mailSeq| Integer| メールの順番|
 |-- requestIp| String| リクエストIP|
 |-- requestDate| String| リクエスト時間|
-|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- templateId|	String|	テンプレートID|
 |-- templateName|	String|	テンプレート名|
@@ -958,7 +958,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |receiveMail|	String|	X|	受信メールアドレス|
 |startReceiveDate|	String|	X|	受信日の開始値(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	受信日の終了値(yyyy-MM-dd HH:mm:ss)|
-|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗|
+|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 
@@ -1115,7 +1115,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- requestIp | String  | リクエストIP |
 |-- templateId | String  | テンプレートID |
 |-- templateName | String  | テンプレート名 |
-|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし |
 |-- mailStatusName | String  | メールのステータス名 |
 |-- requestDate | String  | リクエスト時間 |
 |-- resultDate | String  | 結果時間 |

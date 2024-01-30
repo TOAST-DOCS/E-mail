@@ -761,7 +761,7 @@ curl -X POST \
 | senderName       | String  | X        | Sender's name                                                |
 | receiveMailAddr  | String  | X        | Recipient's mail address                                     |
 | templateId       | String  | X        | Template number                                              |
-| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed |
+| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed, SST7: Not Authenticated |
 | isReceived       | Boolean | X        | Received or Not                                              |
 | isOpened         | Boolean | X        | Opened or Not                                                |
 | senderGroupingKey| String  | X        | Sender's group key                                           |
@@ -838,7 +838,7 @@ curl -X GET \
 | -- senderName       | String  | Sender's name                                                |
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- title            | String  | Title                                                        |
-| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- isReceived       | Boolean | Received or Not                                              |
 | -- resultDate       | String  | Date and Time of Receiving                                   |
@@ -1115,7 +1115,7 @@ curl -X GET \
 | receiveMail      | String  | X        | Recipient's mail address                                     |
 | startReceiveDate | String  | X        | Start date of receiving (yyyy-MM-dd HH:mm:ss)                |
 | endReceiveDate   | String  | X        | End date of receiving (yyyy-MM-dd HH:mm:ss)                  |
-| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | pageNum          | Integer | X        | Page number (default: 1)                                     |
 | pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
@@ -1176,7 +1176,7 @@ curl -X GET \
 | -- requestId      | String  | Request ID                                                   |
 | -- mailSequence   | Integer | Mail sequence                                                |
 | -- receiveMail    | String  | Recipient's address                                          |
-| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName | String  | Name of mail status                                          |
 | -- resultId       | String  | SMTP ID                                                      |
 | -- resultDate     | String  | Time of actual delivery                                      |
@@ -1282,7 +1282,7 @@ curl -X GET \
 | -- requestIp        | String  | Request IP                                                   |
 | -- templateId       | String  | Template ID                                                  |
 | -- templateName     | String  | Template name                                                |
-| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of mail status                                          |
 | -- requestDate      | String  | Request time                                                 |
 | -- resultDate       | String  | Result time                                                  |
@@ -1409,7 +1409,7 @@ curl -X GET \
 | -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
 | -- receiveTypeName  | String  | Name of recipient type                                       |
 | -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
@@ -1505,7 +1505,7 @@ curl -X GET \
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- senderName       | String  | Sender's name                                                |
 | -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- receiverList     | List    | List of recipients                                           |
 | --- requestId        | String  | Request ID                                                   |
@@ -3463,7 +3463,7 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 |webhookConfigId|	String|웹훅 설정 ID|
 |productName|	String|	웹훅 이벤트가 발생한 서비스명 |
 |appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
-|event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록 |
+|event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록<br>* MESSAGE_RESULT_UPDATE: 메시지 발송 결과 코드 업데이트 |
 |hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해주세요. |
 
 #### cURL
@@ -3510,26 +3510,26 @@ curl -X POST \
 ```
 
 #### 메시지 발송 결과 코드 업데이트
-|값|	타입|	설명|
-|---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- messageType|	String| 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
-|- requestId|	String| 요청 ID |
-|- mailSeq|	Integer| 메일 순번 |
-|- senderName|	String| 발신자 이름 |
-|- senderAddress|	String| 발신자 메일주소 |
-|- receiveName|	String| 수신자 이름 |
-|- receiveMailAddr|	String| 수신자 메일 주소 |
-|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|- requestDate|	String| 요청 일시 |
-|- createDate|	String| 생성 일시 |
-|- resultDate|	String| 수신 일시 |
-|- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
-|- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
-|- _links|	Object|	링크 |
-|- self|	Object|	- |
-|- href|	String|	메시지 조회 API 링크 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
+|값|	타입| 	설명                                                                                                                                                   |
+|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                       |
+|- messageType|	String| 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH |
+|- requestId|	String| 요청 ID                                                                                                                                                 |
+|- mailSeq|	Integer| 메일 순번                                                                                                                                                 |
+|- senderName|	String| 발신자 이름                                                                                                                                                |
+|- senderAddress|	String| 발신자 메일주소                                                                                                                                              |
+|- receiveName|	String| 수신자 이름                                                                                                                                                |
+|- receiveMailAddr|	String| 수신자 메일 주소                                                                                                                                             |
+|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증                                                                           |
+|- requestDate|	String| 요청 일시                                                                                                                                                 |
+|- createDate|	String| 생성 일시                                                                                                                                                 |
+|- resultDate|	String| 수신 일시                                                                                                                                                 |
+|- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드                                                                                                               |
+|- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지                                                                                                              |
+|- _links|	Object| 	링크                                                                                                                                                   |
+|- self|	Object| 	-                                                                                                                                                    |
+|- href|	String| 	메시지 조회 API 링크                                                                                                                                        |
+|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID                                                                                                                           |
 
 ```json
 "hooks":[

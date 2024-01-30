@@ -20,7 +20,7 @@
 
 - The following is an example of DKIM signature (DKIM-Signature header) that is added to the email header when sending an email.
 
-> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=nhncloud;
+> DKIM-Signature: v=1; a=rsa-sha256; d=example.net; s=toast;
 > t=1117574938; x=1118006938;
 > h=from:to:subject:date;
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
@@ -51,10 +51,10 @@ to seconds of elapsed time from UTC (agreed world time). Example, June 8, 2020 a
 DKIM Header example above has the following implications.
 
 - Email sender domain is example.net .
-- Selector (s) for the email sender domain is nhncloud
+- Selector (s) for the email sender domain is toast
 - the email sender domain (d) is example.net .
-- The DKIM record for the email sender domain is nhncloud.\_domainkey.example.net .
-- Receiving server authenticates email by lookup DKIM record at nhncloud.\_domainkey.example.net .
+- The DKIM record for the email sender domain is toast.\_domainkey.example.net .
+- Receiving server authenticates email by lookup DKIM record at toast.\_domainkey.example.net .
 
 ### How to register, authenticate and activate DKIM records
 
