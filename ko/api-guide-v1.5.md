@@ -578,23 +578,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 [Query parameter]
 
-|값|	타입|	필수|	설명|
-|---|---|---|---|
-|requestId|	String|	O|	요청 ID|
-|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|senderAddress|	String|	X|	발신메일 주소|
-|senderName|	String|	X|	발신자 이름|
-|receiveMailAddr|	String|	X|	수신 메일 주소|
-|templateId|	String|	X|	템플릿 ID|
-|mailStatusCode|	String|	X|	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
-|isReceived| Boolean| X | 수신 여부 |
-|isOpened| Boolean| X | 읽음 여부 |
-|senderGroupingKey| String| X| 발신자 그룹키|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
+|값|	타입|	필수| 	설명                                                                           |
+|---|---|---|-------------------------------------------------------------------------------|
+|requestId|	String|	O| 	요청 ID                                                                        |
+|startSendDate|	String|	O| 	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)                                              |
+|endSendDate|	String|	O| 	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)                                              |
+|startReceiveDate|	String|	X| 	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)                                              |
+|endReceiveDate|	String|	X| 	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)                                              |
+|senderAddress|	String|	X| 	발신메일 주소                                                                      |
+|senderName|	String|	X| 	발신자 이름                                                                       |
+|receiveMailAddr|	String|	X| 	수신 메일 주소                                                                     |
+|templateId|	String|	X| 	템플릿 ID                                                                       |
+|mailStatusCode|	String|	X| 	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
+|isReceived| Boolean| X | 수신 여부                                                                         |
+|isOpened| Boolean| X | 읽음 여부                                                                         |
+|senderGroupingKey| String| X| 발신자 그룹키                                                                       |
+|pageNum|	Integer|	X| 	페이지 번호 1(기본값)                                                                |
+|pageSize|	Integer|	X| 	조회 건수 15(기본값)                                                                |
 
 * **requestId** 또는 **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
 
@@ -663,7 +663,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- senderName|	String|	발신자 이름|
 |-- senderAddress|	String|	발신자 메일주소|
 |-- title|	String|	메일 제목|
-|-- mailStatusCode|	String|	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusCode|	String|	발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |-- mailStatusName|	String|	발송 상태 명|
 |-- isReceived|	Boolean|	수신 여부|
 |-- resultDate|	String|	수신 일시|
@@ -778,7 +778,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- mailSeq| Integer| 메일 순번|
 |-- requestIp| String| 요청 IP|
 |-- requestDate| String| 요청 일시|
-|-- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |-- mailStatusName|	String|	발송 상태 명|
 |-- templateId|	String|	템플릿 ID|
 |-- templateName|	String|	템플릿 명|
@@ -952,7 +952,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |receiveMail|	String|	X|	수신 메일 주소|
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|receiveStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|receiveStatus|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
@@ -1009,7 +1009,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- requestId | String  | 요청 ID |
 |-- mailSequence | Integer  | 메일 순번 |
 |-- receiveMail | String  | 수신자주소 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |-- mailStatusName | String  | 메일 상태명 |
 |-- resultId | String  | SMTP ID |
 |-- resultDate | String  | 실제 발송 시간 |
@@ -1111,7 +1111,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- requestIp | String  | 요청 IP |
 |-- templateId | String  | 템플릿 ID |
 |-- templateName | String  | 템플릿 명 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
 |-- mailStatusName | String  | 메일 상태 명 |
 |-- requestDate | String  | 요청 시간 |
 |-- resultDate | String  | 결과 시간 |

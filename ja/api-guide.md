@@ -905,7 +905,7 @@ curl -X POST \
 |senderName|	String|	X|	送信者名|
 |receiveMailAddr|	String|	X|	受信メールアドレス|
 |templateId|	String|	X|	テンプレート番号|
-|mailStatusCode|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|mailStatusCode|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |isReceived| Boolean| X | 受信情報 |
 |isOpened| Boolean| X | 既読情報 |
 |senderGroupingKey| String| X| 発信者グループキー|
@@ -983,7 +983,7 @@ curl -X GET \
 |-- senderName|	String|	送信者名|
 |-- senderAddress|	String|	送信者のメールアドレス|
 |-- title|	String|	メールのタイトル|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- isReceived|	Boolean|	受信情報|
 |-- resultDate|	String|	受信日時|
@@ -1107,7 +1107,7 @@ curl -X GET \
 |-- mailSeq| Integer| メールの順番|
 |-- requestIp| String| リクエストIP|
 |-- requestDate| String| リクエスト時間|
-|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- templateId|	String|	テンプレートID|
 |-- templateName|	String|	テンプレート名|
@@ -1286,7 +1286,7 @@ curl -X GET \
 |receiveMailAddr|	String|	X|	수신 메일 주소|
 |startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
@@ -1349,7 +1349,7 @@ curl -X GET \
 |- data|	List|	데이터 영역|
 |-- requestId | String  | 요청 ID |
 |-- mailSeq | Integer  | 메일 순번 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패|
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
 |-- mailStatusName | String  | 메일 상태명 |
 |-- resultId | String  | SMTP ID |
 |-- receiveType|	String|	수신자 타입<br/>MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조|
@@ -1457,46 +1457,46 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
-|---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- data|	List|	데이터 영역|
-|-- requestId  | String  | 요청 ID |
-|-- templateId | String  | 템플릿 ID |
-|-- templateName | String  | 템플릿 명 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3 : 발송실패 |
-|-- mailStatusName | String  | 메일 상태 명 |
-|-- requestDate | String  | 요청 시간 |
-|-- senderName | String  | 발신자 명 |
-|-- senderAddress | String  | 발신자 주소 |
-|-- resultId | String  | SMTP ID |
-|-- resultDate | String  | 실제 발송 시간 |
-|-- title | String  | 제목 |
-|-- body | String  | 내용 |
-|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
-|-- receiverList | List| 수신자 리스트|
-|--- requestId | String  | 요청 ID |
-|--- mailSeq | Integer  | 메일 순번 |
-|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) |
-|--- receiveTypeName | String  | 수신자 타입명 |
-|--- receiveMailAddr | String  | 수신자 메일 주소 |
-|--- isReceived| Boolean| 수신 여부 |
-|--- resultDate| String| 수신 일시|
-|--- isOpened| Boolean| 읽음 여부 |
-|--- openedDate| String| 읽은 일시|
-|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- attachFileList | List  | 첨부파일 리스트 |
-|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
-|--- createDate|	String|	생성 일시|
+|값|	타입| 	설명                                                                         |
+|---|---|-----------------------------------------------------------------------------|
+|header|	Object| 	헤더 영역                                                                      |
+|- isSuccessful|	Boolean| 	성공 여부                                                                      |
+|- resultCode|	Integer| 	실패 코드                                                                      |
+|- resultMessage|	String| 	실패 메시지                                                                     |
+|body|	Object| 	본문 영역                                                                      |
+|- data|	List| 	데이터 영역                                                                     |
+|-- requestId  | String  | 요청 ID                                                                       |
+|-- templateId | String  | 템플릿 ID                                                                      |
+|-- templateName | String  | 템플릿 명                                                                       |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
+|-- mailStatusName | String  | 메일 상태 명                                                                     |
+|-- requestDate | String  | 요청 시간                                                                       |
+|-- senderName | String  | 발신자 명                                                                       |
+|-- senderAddress | String  | 발신자 주소                                                                      |
+|-- resultId | String  | SMTP ID                                                                     |
+|-- resultDate | String  | 실제 발송 시간                                                                    |
+|-- title | String  | 제목                                                                          |
+|-- body | String  | 내용                                                                          |
+|-- customHeaders|	Map| 	[사용자 지정 헤더](./console-guide/#custom-header)                                |
+|-- receiverList | List| 수신자 리스트                                                                     |
+|--- requestId | String  | 요청 ID                                                                       |
+|--- mailSeq | Integer  | 메일 순번                                                                       |
+|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)                               |
+|--- receiveTypeName | String  | 수신자 타입명                                                                     |
+|--- receiveMailAddr | String  | 수신자 메일 주소                                                                   |
+|--- isReceived| Boolean| 수신 여부                                                                       |
+|--- resultDate| String| 수신 일시                                                                       |
+|--- isOpened| Boolean| 읽음 여부                                                                       |
+|--- openedDate| String| 읽은 일시                                                                       |
+|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드                                     |
+|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지                                    |
+|-- attachFileList | List  | 첨부파일 리스트                                                                    |
+|--- fileType|	String| 	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)                          |
+|--- fileId| Integer| 파일 ID                                                                       |
+|--- fileName|	String| 	첨부파일 이름                                                                    |
+|--- filePath|	String| 	첨부파일 경로                                                                    |
+|--- fileSize|	Integer| 	첨부파일 크기 (byte)                                                             |
+|--- createDate|	String| 	생성 일시                                                                      |
 
 
 ### タグメール送信リクエストの照会
@@ -1657,7 +1657,7 @@ curl -X GET \
 |receiveMail|	String|	X|	受信メールアドレス|
 |startReceiveDate|	String|	X|	受信日の開始値(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	受信日の終了値(yyyy-MM-dd HH:mm:ss)|
-|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗|
+|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 
@@ -1719,7 +1719,7 @@ curl -X GET \
 |-- requestId | String  | リクエストID |
 |-- mailSequence | Integer  | メールの順番 |
 |-- receiveMail | String  | 受信者のアドレス |
-|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName | String  | メールのステータス名 |
 |-- resultId | String  | SMTP ID |
 |-- resultDate | String  | 実際の送信時間 |
@@ -1838,7 +1838,7 @@ curl -X GET \
 |-- requestIp | String  | リクエストIP |
 |-- templateId | String  | テンプレートID |
 |-- templateName | String  | テンプレート名 |
-|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし |
 |-- mailStatusName | String  | メールのステータス名 |
 |-- requestDate | String  | リクエスト時間 |
 |-- resultDate | String  | 結果時間 |
@@ -1977,7 +1977,7 @@ curl -X GET \
 |-- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |-- receiveTypeName|	String|	受信者タイプ名|
 |-- requestDate|	String|	送信日時|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- senderGroupingKey|	String|	発信者グループキー |
 
@@ -2086,7 +2086,7 @@ curl -X GET \
 |-- senderAddress|	String|	送信者のアドレス|
 |-- senderName|	String|	送信者名|
 |-- requestDate|	String|	リクエスト時間|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- receiverLis | List | 受信者リスト |
 |--- requestId|	String | リクエストID |
@@ -4484,7 +4484,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
 |- senderAddress|	String| 送信者のアドレス |
 |- receiveName|	String| 受信者名 |
 |- receiveMailAddr|	String| 受信者メールアドレス |
-|- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |- requestDate|	String| 受信日時 |
 |- createDate|	String| 作成日時 |
 |- resultDate|	String| 受信日時 |

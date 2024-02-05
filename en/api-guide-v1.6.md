@@ -767,7 +767,7 @@ curl -X POST \
 | senderName       | String  | X        | Sender's name                                                |
 | receiveMailAddr  | String  | X        | Recipient's mail address                                     |
 | templateId       | String  | X        | Template number                                              |
-| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed |
+| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed, SST7: Not Authenticated |
 | isReceived       | Boolean | X        | Received or Not                                              |
 | isOpened         | Boolean | X        | Opened or Not                                                |
 | senderGroupingKey| String  | X        | Sender's group key                                           |
@@ -842,7 +842,7 @@ curl -X GET \
 | -- senderName       | String  | Sender's name                                                |
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- title            | String  | Title                                                        |
-| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- isReceived       | Boolean | Received or Not                                              |
 | -- resultDate       | String  | Date and Time of Receiving                                   |
@@ -1113,7 +1113,7 @@ curl -X GET \
 | receiveMail      | String  | X        | Recipient's mail address                                     |
 | startReceiveDate | String  | X        | Start date of receiving (yyyy-MM-dd HH:mm:ss)                |
 | endReceiveDate   | String  | X        | End date of receiving (yyyy-MM-dd HH:mm:ss)                  |
-| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | pageNum          | Integer | X        | Page number (default: 1)                                     |
 | pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
@@ -1172,7 +1172,7 @@ curl -X GET \
 | -- requestId      | String  | Request ID                                                   |
 | -- mailSequence   | Integer | Mail sequence                                                |
 | -- receiveMail    | String  | Recipient's address                                          |
-| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName | String  | Name of mail status                                          |
 | -- resultId       | String  | SMTP ID                                                      |
 | -- resultDate     | String  | Time of actual delivery                                      |
@@ -1274,7 +1274,7 @@ curl -X GET \
 | -- requestIp        | String  | Request IP                                                   |
 | -- templateId       | String  | Template ID                                                  |
 | -- templateName     | String  | Template name                                                |
-| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of mail status                                          |
 | -- requestDate      | String  | Request time                                                 |
 | -- resultDate       | String  | Result time                                                  |
@@ -1399,7 +1399,7 @@ curl -X GET \
 | -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
 | -- receiveTypeName  | String  | Name of recipient type                                       |
 | -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
@@ -1495,7 +1495,7 @@ curl -X GET \
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- senderName       | String  | Sender's name                                                |
 | -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting     |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated    |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- receiverList     | List    | List of recipients                                           |
 | --- requestId        | String  | Request ID                                                   |

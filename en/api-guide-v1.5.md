@@ -596,23 +596,23 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 [Query Parameter]
 
-| Value            | Type    | Required | Description                                                  |
-| ---------------- | ------- | -------- | ------------------------------------------------------------ |
-| requestId        | String  | O        | Request ID                                                   |
-| startSendDate    | String  | O        | Delivery start date (yyyy-MM-dd HH:mm:ss)                    |
-| endSendDate      | String  | X        | Delivery end date (yyyy-MM-dd HH:mm:ss)                      |
-| startReceiveDate | String  | X        | Receiving start date (yyyy-MM-dd HH:mm:ss)                   |
-| endReceiveDate   | String  | X        | Receiving end date (yyyy-MM-dd HH:mm:ss)                     |
-| senderAddress    | String  | X        | Sender's mail address                                        |
-| senderName       | String  | X        | Sender's name                                                |
-| receiveMailAddr  | String  | X        | Recipient's mail address                                     |
-| templateId       | String  | X        | Template number                                              |
-| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed |
-| isReceived       | Boolean | X        | Received or Not                                              |
-| isOpened         | Boolean | X        | Opened or Not                                                |
-| senderGroupingKey| String  | X        | Sender's group key                                           |
-| pageNum          | Integer | X        | Page number (default: 1)                                     |
-| pageSize         | Integer | X        | Number of queries (default: 15)                              |
+| Value            | Type    | Required | Description                                                                                                                                  |
+| ---------------- | ------- | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
+| requestId        | String  | O        | Request ID                                                                                                                                   |
+| startSendDate    | String  | O        | Delivery start date (yyyy-MM-dd HH:mm:ss)                                                                                                    |
+| endSendDate      | String  | X        | Delivery end date (yyyy-MM-dd HH:mm:ss)                                                                                                      |
+| startReceiveDate | String  | X        | Receiving start date (yyyy-MM-dd HH:mm:ss)                                                                                                   |
+| endReceiveDate   | String  | X        | Receiving end date (yyyy-MM-dd HH:mm:ss)                                                                                                     |
+| senderAddress    | String  | X        | Sender's mail address                                                                                                                        |
+| senderName       | String  | X        | Sender's name                                                                                                                                |
+| receiveMailAddr  | String  | X        | Recipient's mail address                                                                                                                     |
+| templateId       | String  | X        | Template number                                                                                                                              |
+| mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed, SST7: Not Authenticated |
+| isReceived       | Boolean | X        | Received or Not                                                                                                                              |
+| isOpened         | Boolean | X        | Opened or Not                                                                                                                                |
+| senderGroupingKey| String  | X        | Sender's group key                                                                                                                           |
+| pageNum          | Integer | X        | Page number (default: 1)                                                                                                                     |
+| pageSize         | Integer | X        | Number of queries (default: 15)                                                                                                              |
 
 * **requestId**, or **startSendDate** and **endSendDate** are required fields. 
 
@@ -681,7 +681,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- senderName       | String  | Sender's name                                                |
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- title            | String  | Title                                                        |
-| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- isReceived       | Boolean | Received or Not                                              |
 | -- resultDate       | String  | Date and Time of Receiving                                   |
@@ -969,7 +969,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | receiveMail      | String  | X        | Recipient's mail address                                     |
 | startReceiveDate | String  | X        | Start date of receiving (yyyy-MM-dd HH:mm:ss)                |
 | endReceiveDate   | String  | X        | End date of receiving (yyyy-MM-dd HH:mm:ss)                  |
-| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| receiveStatus    | String  | X        | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | pageNum          | Integer | X        | Page number (default: 1)                                     |
 | pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
@@ -1027,7 +1027,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- requestId      | String  | Request ID                                                   |
 | -- mailSequence   | Integer | Mail sequence                                                |
 | -- receiveMail    | String  | Recipient's address                                          |
-| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName | String  | Name of mail status                                          |
 | -- resultId       | String  | SMTP ID                                                      |
 | -- resultDate     | String  | Time of actual delivery                                      |
@@ -1128,7 +1128,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- requestIp        | String  | Request IP                                                   |
 | -- templateId       | String  | Template ID                                                  |
 | -- templateName     | String  | Template name                                                |
-| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed |
+| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
 | -- mailStatusName   | String  | Name of mail status                                          |
 | -- requestDate      | String  | Request time                                                 |
 | -- resultDate       | String  | Result time                                                  |
