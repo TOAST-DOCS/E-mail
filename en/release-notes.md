@@ -1,6 +1,6 @@
 ## Notification > Email > Release Notes
 
-### Jan 30, 2024.
+### Jan 31, 2024.
 
 #### Added Features
 

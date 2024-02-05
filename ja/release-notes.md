@@ -1,6 +1,6 @@
 ## Notification > Email > Release Notes
 
-### 2024. 01. 30.
+### 2024. 01. 31.
 
 #### 機能追加
 
