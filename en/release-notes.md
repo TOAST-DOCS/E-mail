@@ -1,5 +1,30 @@
 ## Notification > Email > Release Notes
 
+### Jan 31, 2024.
+
+#### Added Features
+
+* [Console] Added mail sending status
+  - Added "Authentication failed (SST7)" to mail sending status.
+  - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+  - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
+
+#### Feature Updates
+
+* [API/SMTP] Respond to changes to Gmail email sender guidelines
+  * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+  * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
+
+* [Console] Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects
+  * Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects.
+  * Authentication values are not initialized when sharing an authenticated domain.
+
+* [API] Improved SPF record authentication errors
+  * Fixed an issue where authentication would be performed if more than one SPF record is registered for a domain.
+  * If multiple SPF records exist, it can be considered a misconfiguration by the DNS system.
+  * So if you have more than one SPF record, the authentication failed status appears.
+  * For more information, see [RFC 4408](https://www.ietf.org/rfc/rfc4408.txt).
+
 ### December 19, 2023
 
 #### Added Features

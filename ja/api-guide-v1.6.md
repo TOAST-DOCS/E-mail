@@ -773,7 +773,7 @@ curl -X POST \
 |senderName|	String|	X|	送信者名|
 |receiveMailAddr|	String|	X|	受信メールアドレス|
 |templateId|	String|	X|	テンプレート番号|
-|mailStatusCode|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|mailStatusCode|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |isReceived| Boolean| X | 受信情報 |
 |isOpened| Boolean| X | 既読情報 |
 |senderGroupingKey| String| X| 発信者グループキー|
@@ -848,7 +848,7 @@ curl -X GET \
 |-- senderName|	String|	送信者名|
 |-- senderAddress|	String|	送信者のメールアドレス|
 |-- title|	String|	メールのタイトル|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- isReceived|	Boolean|	受信情報|
 |-- resultDate|	String|	受信日時|
@@ -955,7 +955,7 @@ curl -X GET \
 |-- mailSeq| Integer| メールの順番|
 |-- requestIp| String| リクエストIP|
 |-- requestDate| String| リクエスト時間|
-|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- templateId|	String|	テンプレートID|
 |-- templateName|	String|	テンプレート名|
@@ -1118,7 +1118,7 @@ curl -X GET \
 |receiveMail|	String|	X|	受信メールアドレス|
 |startReceiveDate|	String|	X|	受信日の開始値(yyyy-MM-dd HH:mm:ss)|
 |endReceiveDate|	String|	X|	受信日の終了値(yyyy-MM-dd HH:mm:ss)|
-|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗|
+|receiveStatus|	String|	X|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 
@@ -1177,7 +1177,7 @@ curl -X GET \
 |-- requestId | String  | リクエストID |
 |-- mailSequence | Integer  | メールの順番 |
 |-- receiveMail | String  | 受信者のアドレス |
-|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗|
+|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
 |-- mailStatusName | String  | メールのステータス名 |
 |-- resultId | String  | SMTP ID |
 |-- resultDate | String  | 実際の送信時間 |
@@ -1279,7 +1279,7 @@ curl -X GET \
 |-- requestIp | String  | リクエストIP |
 |-- templateId | String  | テンプレートID |
 |-- templateName | String  | テンプレート名 |
-|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗 |
+|-- mailStatusCode | String  | メールステータスコード<br/> SST0：送信準備、SST1：送信中、<br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし |
 |-- mailStatusName | String  | メールのステータス名 |
 |-- requestDate | String  | リクエスト時間 |
 |-- resultDate | String  | 結果時間 |
@@ -1403,7 +1403,7 @@ curl -X GET \
 |-- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |-- receiveTypeName|	String|	受信者タイプ名|
 |-- requestDate|	String|	送信日時|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- senderGroupingKey|	String|	発信者グループキー |
 
@@ -1499,7 +1499,7 @@ curl -X GET \
 |-- senderAddress|	String|	送信者のアドレス|
 |-- senderName|	String|	送信者名|
 |-- requestDate|	String|	リクエスト時間|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち|
+|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
 |-- receiverLis | List | 受信者リスト |
 |--- requestId|	String | リクエストID |
