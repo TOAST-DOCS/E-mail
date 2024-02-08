@@ -87,6 +87,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 発信者グループキー |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
+| statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 
 [注意]
@@ -115,7 +116,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -140,7 +142,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -237,6 +240,7 @@ curl -X POST \
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 発信者グループキー |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
+|statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 [注意]
 
@@ -260,7 +264,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -280,7 +285,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -380,7 +386,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -405,7 +412,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -454,7 +462,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -474,7 +483,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -524,6 +534,7 @@ curl -X POST \
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 |userId|	String|	X|	送信セパレータ ex)admin,system|
+|statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 [注意]
 
@@ -551,7 +562,8 @@ curl -X POST \
         "receiveMailAddr": "customer1@example.com",
         "receiveName": "고객1"
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -570,7 +582,8 @@ curl -X POST \
             "key": "value"
         }
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -660,6 +673,7 @@ curl -X POST \
 | tagExpression  | List:String | O|タグ表現式 (タグID含む) |
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
 | userId  | String | X|送信セパレータ ex)admin,system|
+| statsId | String |X| 統計ID(発信検索条件には含まれません) |
 
 [注意]
 
@@ -679,7 +693,8 @@ curl -X POST \
     "body": "샘플 내용",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -692,7 +707,8 @@ curl -X POST \
 -d '{
     "templateId": "TEMPLATE1",
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 

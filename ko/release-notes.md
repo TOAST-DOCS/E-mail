@@ -4,7 +4,7 @@
 
 #### 기능 추가
 
-* [API] StatsId 필드 추가
+* [API] StatsId 필드 추가(v2.0 API)
     * 메일 발송 API 요청 파라미터에 통계 구분을 위한 StatsId 필드가 추가되었습니다.
 * [Console]
     * 통계 조회 화면 개편

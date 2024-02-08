@@ -86,6 +86,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 | customHeaders     | Map         | X        | [Custom Header](./console-guide/#custom-header)                   |
 | senderGroupingKey | String      | X        | Sender's group key                                           |
 | userId            | String      | X        | Delimiter of delivery e.g.) admin, system                    |
+| statsId           | String      | X        | Statistics ID (not included in the delivery search conditions)|
 
 
 [Caution]
@@ -114,7 +115,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -139,7 +141,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -237,6 +240,7 @@ curl -X POST \
 |customHeaders| Map| X| [Custom Header](./console-guide/#custom-header) |
 |senderGroupingKey| String| X| Sender's group key |
 |userId|	String|	X| Delimiter for delivery e.g.) admin,system |
+|statsId| String      | X        | Statistics ID (not included in the delivery search conditions)|
 
 [Caution]
 
@@ -260,7 +264,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -280,7 +285,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -382,7 +388,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -407,7 +414,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -456,7 +464,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -476,7 +485,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -527,6 +537,7 @@ curl -X POST \
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
 | customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
+| statsId             | String | X        | Statistics ID (not included in the delivery search conditions)|
 
 [Caution]
 
@@ -555,7 +566,8 @@ curl -X POST \
         "receiveMailAddr": "customer1@example.com",
         "receiveName": "고객1"
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -574,7 +586,8 @@ curl -X POST \
             "key": "value"
         }
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -664,6 +677,7 @@ curl -X POST \
 | tagExpression    | List:String | O        | Tag expression (including Tag ID)                                               |
 | customHeaders    | Map         | X        | [Custom Header](./console-guide/#custom-header)                   |
 | userId           | String      | X        | Delimiter of delivery e.g.) admin, system                    |
+| statsId          | String      | X        | Statistics ID (not included in the delivery search conditions)|
 
 [Example 1]
 ```
@@ -678,7 +692,8 @@ curl -X POST \
     "body": "샘플 내용",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -691,7 +706,8 @@ curl -X POST \
 -d '{
     "templateId": "TEMPLATE1",
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
