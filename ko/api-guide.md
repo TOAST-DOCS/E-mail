@@ -87,7 +87,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
-|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다) |
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 
 [주의]
@@ -240,7 +240,7 @@ curl -X POST \
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
-|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다) |
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [주의]
 
@@ -533,7 +533,7 @@ curl -X POST \
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header) ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
-|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다) |
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [주의]
 
@@ -673,7 +673,7 @@ curl -X POST \
 | tagExpression  | List:String | O| 태그 표현식 (태그 ID 포함) |
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
-|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다) |
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [예시 1]
 ```

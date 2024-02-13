@@ -23,9 +23,9 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 |hooksId|	String| 웹훅 설정에 정의된 URL로 POST 요청을 할 때마다 고유하게 생성되는 ID |
 |webhookConfigId|	String|웹훅 설정 ID|
 |productName|	String|	웹훅 이벤트가 발생한 서비스명 |
-|appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
+|appKey|	String| 웹훅 이벤트가 발생한 서비스 앱키 |
 |event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록 |
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해주세요. |
+|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해 주세요. |
 
 #### cURL
 ```
@@ -78,10 +78,10 @@ curl -X POST \
 |- requestId|	String| 요청 ID |
 |- mailSeq|	Integer| 메일 순번 |
 |- senderName|	String| 발신자 이름 |
-|- senderAddress|	String| 발신자 메일주소 |
+|- senderAddress|	String| 발신자 메일 주소 |
 |- receiveName|	String| 수신자 이름 |
 |- receiveMailAddr|	String| 수신자 메일 주소 |
-|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
+|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0: 발송준비, SST1: 발송중, <br/> SST2: 발송완료, SST3: 발송실패, SST7: 미인증|
 |- requestDate|	String| 요청 일시 |
 |- createDate|	String| 생성 일시 |
 |- resultDate|	String| 수신 일시 |
