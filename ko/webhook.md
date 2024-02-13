@@ -81,7 +81,7 @@ curl -X POST \
 |- senderAddress|	String| 발신자 메일 주소 |
 |- receiveName|	String| 수신자 이름 |
 |- receiveMailAddr|	String| 수신자 메일 주소 |
-|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0: 발송 준비, SST1: 발송 중, <br/> SST2: 발송 완료, SST3: 발송실패, SST7: 미인증|
+|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0: 발송 준비, SST1: 발송 중, <br/> SST2: 발송 완료, SST3: 발송 실패, SST7: 미인증|
 |- requestDate|	String| 요청 일시 |
 |- createDate|	String| 생성 일시 |
 |- resultDate|	String| 수신 일시 |
