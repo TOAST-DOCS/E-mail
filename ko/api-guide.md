@@ -87,6 +87,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 
 [주의]
@@ -115,7 +116,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -140,7 +142,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -237,6 +240,7 @@ curl -X POST \
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 |senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [주의]
 
@@ -260,7 +264,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -280,7 +285,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -378,7 +384,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -403,7 +410,8 @@ curl -X POST \
             "receiveType": "MRT1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -453,7 +461,8 @@ curl -X POST \
             "receiveName": "고객1"
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -473,7 +482,8 @@ curl -X POST \
             }
         }
     ],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -523,6 +533,7 @@ curl -X POST \
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header) ( 최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [주의]
 
@@ -550,7 +561,8 @@ curl -X POST \
         "receiveMailAddr": "customer1@example.com",
         "receiveName": "고객1"
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -569,7 +581,8 @@ curl -X POST \
             "key": "value"
         }
     },
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -660,6 +673,7 @@ curl -X POST \
 | tagExpression  | List:String | O| 태그 표현식 (태그 ID 포함) |
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
+|statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
 [예시 1]
 ```
@@ -674,7 +688,8 @@ curl -X POST \
     "body": "샘플 내용",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -687,7 +702,8 @@ curl -X POST \
 -d '{
     "templateId": "TEMPLATE1",
     "tagExpression": ["tag1", "AND", "tag2"],
-    "userId": "USER"
+    "userId": "USER",
+    "statsId": "statsId"
 }'
 ```
 
@@ -4405,124 +4421,3 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
-
-<span id="webhook"></span>
-## 웹훅
-Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
-생성된 POST 요청에 대한 API 문서입니다.
-
-### 웹훅 발송
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-| POST | 웹훅 설정에 정의한 대상 URL |
-
-[Header]
-
-|값|	타입|	설명|
-|---|---|---|
-|X-Toast-Webhook-Signature|	String| 웹훅 설정 시 입력한 서명 |
-
-[Request body]
-
-|값|	타입|	설명|
-|---|---|---|
-|hooksId|	String| 웹훅 설정에 정의된 URL로 POST 요청을 할 때마다 고유하게 생성되는 ID |
-|webhookConfigId|	String|웹훅 설정 ID|
-|productName|	String|	웹훅 이벤트가 발생한 서비스명 |
-|appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
-|event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록 |
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해주세요. |
-
-#### cURL
-```
-curl -X POST \
-    '{TargetUrl}' \
-    -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'X-Toast-Webhook-Signature: application/json;charset=UTF-8' \
-    -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
-    -d '{
-        "hooksId":"202007271010101010sadasdavas",
-        "webhookConfigId":"String",
-        "productName":"Email",
-        "appKey":"akb3dukdmdjsdSvgk",
-        "event":"UNSUBSCRIBE",
-        "hooks":[
-            {
-                ...
-            }
-        ]
-    }'
-```
-
-<span id="event-hooks"></span>
-
-### 이벤트 유형별 hooks 정의
-웹훅 설정에 정의된 URL로 POST 요청을 생성할 때 이벤트 타입별 훅(hook) 데이터입니다.
-#### 광고 메일 수신 주소 등록
-|값|	타입|	설명|
-|---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
-|- receiveMailAddr|	String|	수신 거부를 요청한 수신자 메일 주소 |
-|- createdDateTime|	String| 수신 거부 요청 일시<br>* yyyy-MM-dd'T'HH:mm:ss.SSSXXX|
-
-```json
-"hooks":[
-    {
-        "hookId":"202007271010101010sadasdavas",
-        "receiveMailAddr":"help@toast.com",
-        "createdDateTime":"2020-09-09T11:25:10.000+09:00"
-    }
-]
-```
-
-#### 메시지 발송 결과 코드 업데이트
-|값|	타입|	설명|
-|---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- messageType|	String| 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
-|- requestId|	String| 요청 ID |
-|- mailSeq|	Integer| 메일 순번 |
-|- senderName|	String| 발신자 이름 |
-|- senderAddress|	String| 발신자 메일주소 |
-|- receiveName|	String| 수신자 이름 |
-|- receiveMailAddr|	String| 수신자 메일 주소 |
-|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
-|- requestDate|	String| 요청 일시 |
-|- createDate|	String| 생성 일시 |
-|- resultDate|	String| 수신 일시 |
-|- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
-|- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
-|- _links|	Object|	링크 |
-|- self|	Object|	- |
-|- href|	String|	메시지 조회 API 링크 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
-
-```json
-"hooks":[
-    {
-    "messageType":"NORMAL_MAIL",
-    "requestId":"20190101000000ABCDEFG0",
-    "mailSeq":"0",
-    "senderName":"NHN Cloud",
-    "senderAddress":"sender@nhncloud.com",
-    "receiveName":"NHN Cloud",
-    "receiveMailAddr":"receiver@nhncloud.com",
-    "mailStatusCode":"SST2",
-    "requestDate":"2020-09-09T11:25:10.000+09:00",
-    "createDate":"2020-09-09T11:25:10.000+09:00",
-    "resultDate":"2020-09-09T11:25:10.000+09:00",
-    "dsnCode":"2.5.0",
-    "dsnMessage":"SUCCESS",
-    "_links":{
-        "self":{
-            "href":"https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
-        }
-    },
-    "hookId": "202007271010101010sadasdavas"
-    }
-]
-```

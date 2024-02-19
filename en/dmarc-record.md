@@ -26,7 +26,7 @@ Describes the values used for DMARC records. For more information, please refer 
 | v | Required | DMARC1 (Fixed) | Version.                                                                                                               |
 | p | Required | None, quarantine, reject | Policy for handling failure.                                                                                           |
 | sp | Optional | None, quarantine, reject | Failure handling policy for subdomains.                                                                                |
-| pct | Optional | 0 \~ 100 (default 100) | The proportion of emails to which the policy to be applied. For example, if it is 50, half of the emails received      
+| pct | Optional | 0 \~ 100 (default 100) | The proportion of emails to which the policy to be applied. For example, if it is 50, half of the emails received
 will be authenticated by DMARC policy. |
 | adkim | Optional | s, r (default) | DKIM Alignment. Setting for matching level of DKIM-Signature domain (d) and From (5322.From).                          |
 | aspf | Optional | s, r (default) | SPF Alignment. Setting for the matching level of MAIL FROM (5321.From) and From (5322.From) during SPF authentication. |
