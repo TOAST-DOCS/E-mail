@@ -33,6 +33,7 @@ curl -X POST \
     '{TargetUrl}' \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -H 'X-Toast-Webhook-Signature: application/json;charset=UTF-8' \
+    -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
     -d '{
         "hooksId":"202007271010101010sadasdavas",
         "webhookConfigId":"String",
@@ -70,7 +71,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
 ```
 
 #### メッセージの送信結果の更新
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
 |hooks|	List\<Map\> | Webフックイベント発生時のデータ |
 |- messageType|	String| メールタイプ<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
