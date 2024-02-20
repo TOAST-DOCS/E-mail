@@ -1,31 +1,31 @@
-## Notification > Email > 웹훅 가이드
-Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
-생성된 POST 요청에 대한 API 문서입니다.
+## Notification > Email > Webhook Guide
+When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.<br>
+The API documentation for the generated POST request.
 
-### 웹훅 발송
+### Send Webhook
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-| POST | 웹훅 설정에 정의한 대상 URL |
+| POST | The destination URL defined in the webhook settings |
 
 [Header]
 
-|값|	타입|	설명|
+|Value|	Type|	Descriptions|
 |---|---|---|
-|X-Toast-Webhook-Signature|	String| 웹훅 설정 시 입력한 서명 |
+|X-Toast-Webhook-Signature|	String| The signature entered when webhook is configured |
 
 [Request body]
 
-|값|	타입|	설명|
+|Value|	Type|	Descriptions|
 |---|---|---|
-|hooksId|	String| 웹훅 설정에 정의된 URL로 POST 요청을 할 때마다 고유하게 생성되는 ID |
-|webhookConfigId|	String|웹훅 설정 ID|
-|productName|	String|	웹훅 이벤트가 발생한 서비스명 |
-|appKey|	String| 웹훅 이벤트가 발생한 서비스 Appkey |
-|event|	String| 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록 |
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해주세요. |
+|hooksId|	String| A unique ID created every time a POST request is sent to the URL specified by webhook settings |
+|webhookConfigId|	String|Webhook setup ID|
+|productName|	String|	The name of the service where a webhook event occurred |
+|appKey|	String| The service appkey where the webhook event occurred |
+|event|	String| Webhook event name<br>* UNSUBSCRIBE: Register an address to receive advertising emails |
+|hooks|	List\<Map\> | Data when a webhook event occurs<br>\* For more information, see  [Hook definitions by event type](./api-guide/#event-hooks). |
 
 #### cURL
 ```
@@ -50,15 +50,15 @@ curl -X POST \
 
 <span id="event-hooks"></span>
 
-### 이벤트 유형별 hooks 정의
-웹훅 설정에 정의된 URL로 POST 요청을 생성할 때 이벤트 타입별 훅(hook) 데이터입니다.
-#### 광고 메일 수신 주소 등록
-|값|	타입|	설명|
+### Hook definitions by event type
+Hook data per event type when generating a POST request to the URL defined in the webhook settings.
+#### Register an address to receive advertising mail
+|Value|	Type|	Descriptions|
 |---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
-|- receiveMailAddr|	String|	수신 거부를 요청한 수신자 메일 주소 |
-|- createdDateTime|	String| 수신 거부 요청 일시<br>* yyyy-MM-dd'T'HH:mm:ss.SSSXXX|
+|hooks|	List\<Map\> | Data when a webhook event occurs |
+|- hookId|	String| A unique ID created when an event occurs in a service |
+|- receiveMailAddr|	String|	The email address of the recipient who requested the unsubscribe |
+|- createdDateTime|	String| Date of unsubscribe request<br>\* yyyy-MM-dd'T'HH:mm:ss.SSSXXX|
 
 ```json
 "hooks":[
@@ -70,27 +70,27 @@ curl -X POST \
 ]
 ```
 
-#### 메시지 발송 결과 코드 업데이트
-|값|	타입|	설명|
+#### Update the message sending result code
+|Value|	Type|	Descriptions|
 |---|---|---|
-|hooks|	List\<Map\> | 웹훅 이벤트 발생 시 데이터 |
-|- messageType|	String| 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
-|- requestId|	String| 요청 ID |
-|- mailSeq|	Integer| 메일 순번 |
-|- senderName|	String| 발신자 이름 |
-|- senderAddress|	String| 발신자 메일주소 |
-|- receiveName|	String| 수신자 이름 |
-|- receiveMailAddr|	String| 수신자 메일 주소 |
-|- mailStatusCode|	String| 발송 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
-|- requestDate|	String| 요청 일시 |
-|- createDate|	String| 생성 일시 |
-|- resultDate|	String| 수신 일시 |
-|- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
-|- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
-|- _links|	Object|	링크 |
+|hooks|	List\<Map\> | Data when a webhook event occurs |
+|- messageType|	String| Mail type<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
+|- requestId|	String| Request ID |
+|- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Mail order |
+|- senderName|	String| Sender name |
+|- senderAddress|	String| Sender email address |
+|- receiveName|	String| Recipient name |
+|- receiveMailAddr|	String| Recipient email address |
+|- mailStatusCode|	String| Delivery status code <br/> SST0: ready to deliver, SST1: in delivery, <br/> SST2: Sent successfully, SST3: Sent unsuccessfully, SST7: Unauthorized|
+|- requestDate|	String| Date and time of request |
+|- createDate|	String| Date and time of creation |
+|- resultDate|	String| Date and time of receiving |
+|- dsnCode|	String| Delivery Status Notification (DSN) status code |
+|- dsnMessage|	String| Delivery Status Notification (DSN) status message |
+|- _links|	Object|	Link |
 |- self|	Object|	- |
-|- href|	String|	메시지 조회 API 링크 |
-|- hookId|	String| 서비스에서 이벤트가 발생할 때 생성되는 고유 ID |
+|- href|	String|	Query Message API link |
+|- hookId|	String| A unique ID created when an event occurs in a service |
 
 ```json
 "hooks":[
