@@ -12,6 +12,8 @@
         * Added a menu to view statistics by event occurrence time.
     * Added statistics event key settings menu
         * Added a menu to add a StatsId for use in the API and console.
+* [Console] Role segmentation
+    * Added the feature to grant separate Email menu access and feature control permissions based on role.
 
 #### Feature Updates
 
