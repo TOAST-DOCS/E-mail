@@ -8,16 +8,16 @@
     - Bounce rate is the percentage of email addresses that were notified by the inbound SMTP server that the email could not be delivered (bounce or sending failure) among all the email addresses that the customer requested sending.
 - Manage to avoid excessive email bounce rates.
 - The reasons for bounce rates (bounces or failed deliveries) are as follows.
-  - Invalid sender email address or sending domain
-  - Invalid recipient email address or receiving domain
-  - Sender domains that do not apply email security measures such as SPF, DKIM, DMARC, etc.
-  - When sending repeated or duplicate emails to the same recipient excessively
-  - When sending a forged email to circumvent opt-out
-  - When sending an email containing content that could be suspected of being phishing or spam
-  - When sending an advertising email that does not follow the Act on Promotion of Information and Communications Network Utilization and Information Protection
+    - Invalid sender email address or sending domain
+    - Invalid recipient email address or receiving domain
+    - Sender domains that do not apply email security measures such as SPF, DKIM, DMARC, etc.
+    - When sending repeated or duplicate emails to the same recipient excessively
+    - When sending a forged email to circumvent opt-out
+    - When sending an email containing content that could be suspected of being phishing or spam
+    - When sending an advertising email that does not follow the Act on Promotion of Information and Communications Network Utilization and Information Protection
 - If email sending is restricted due to the bounce rate, please check the following.
-  - Check whether there are any items that are the cause of the bounce rate and take corrective action.
-  - Then, go to [Customer Center > 1:1 Inquiry](https://www.nhncloud.com/kr/support/inquiry) to ask about removing the sending restrictions.
+    - Check whether there are any items that are the cause of the bounce rate and take corrective action.
+    - Then, go to [Customer Center > 1:1 Inquiry](https://www.nhncloud.com/kr/support/inquiry) to ask about removing the sending restrictions.
 
 ## Notice of Personal Information Consignee
 

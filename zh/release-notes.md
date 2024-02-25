@@ -1,29 +1,58 @@
 ## Notification > Email > Release Notes
 
+### 2024. 02. 27.
+
+#### Added Features
+
+* [API] Added StatsId field (v2.0 API)
+  * Added the StatsId field to mail delivery API request parameters for statistical classification.
+* [Console]
+  * Renewed the Query Statistics screen
+    * Changed the existing Query Statistics menu to (Old) Query Statistics.
+    * Added a menu to view statistics by event occurrence time.
+  * Added statistics event key settings menu
+    * Added a menu to add a StatsId for use in the API and console.
+* [Console] Role segmentation
+  * Added the feature to grant separate Email menu access and feature control permissions based on role.
+
+#### Feature Updates
+
+* [Console] Changed conditions for the mail delivery query
+  * Delivery query condition changes from `Received or not` to `Receive Type`.
+  * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
+  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+
+* [Console] Added SMTP response code field in mail delivery query
+  * Added SMTP response code field to mail delivery query
+  * SMTP response codes provide response codes for errors that occurred when sending mail.
+  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+
 ### Jan 31, 2024.
 
 #### Added Features
 
 * [Console] Added mail sending status
-  - Added "Authentication failed (SST7)" to mail sending status.
-  - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
-  - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
+    - Added "Authentication failed (SST7)" to mail sending status.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
 
 #### Feature Updates
 
 * [API/SMTP] Respond to changes to Gmail email sender guidelines
-  * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
-  * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
+    * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
 
 * [Console] Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects
-  * Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects.
-  * Authentication values are not initialized when sharing an authenticated domain.
+    * Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects.
+    * Authentication values are not initialized when sharing an authenticated domain.
 
 * [API] Improved SPF record authentication errors
-  * Fixed an issue where authentication would be performed if more than one SPF record is registered for a domain.
-  * If multiple SPF records exist, it can be considered a misconfiguration by the DNS system.
-  * So if you have more than one SPF record, the authentication failed status appears.
-  * For more information, see [RFC 4408](https://www.ietf.org/rfc/rfc4408.txt).
+    * Fixed an issue where authentication would be performed if more than one SPF record is registered for a domain.
+    * If multiple SPF records exist, it can be considered a misconfiguration by the DNS system.
+    * So if you have more than one SPF record, the authentication failed status appears.
+    * For more information, see [RFC 4408](https://www.ietf.org/rfc/rfc4408.txt).
 
 ### December 19, 2023
 
@@ -31,7 +60,8 @@
 
 * [Console] Added DMARC authentication feature
     - DMARC authentication procedure is added.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
 ### October 17, 2023.
 
@@ -56,11 +86,14 @@
     * The body of the mail is not included in the save target.
 
 ### August 29, 2023
+
 #### Feature Updates
-* [Console] Prevention of duplicate requests upon mass 
-  * Improved to reject duplicate requests for mass delivery. 
+
+* [Console] Prevention of duplicate requests upon mass
+    * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
+
 * [Console] Backup data past the retention period
     * Added a feature to backup data past the retention period.
     * The mail body is not included in the save target.
@@ -176,6 +209,7 @@
 #### Feature Updates
 
 [Console] Added webhook feature
+
 * Added [Manage Webhook] menu.
 * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
 * Event types that are currently supported are as follows.
@@ -218,10 +252,10 @@
 
 * [Console] Added Mail Domain Management Tab
     - Main features are as follows:
-      - Manage Mail Domains
-      - Added features to register, verify, delete, and share mail domains.
-      - Protect Mail Domains
-      - Verified mail domains can be protected from third-party usage.
+        - Manage Mail Domains
+        - Added features to register, verify, delete, and share mail domains.
+        - Protect Mail Domains
+        - Verified mail domains can be protected from third-party usage.
 
 ### January 21, 2020
 

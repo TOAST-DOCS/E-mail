@@ -1,29 +1,58 @@
 ## Notification > Email > Release Notes
 
+### February 27, 2024
+
+#### Added Features
+
+* [API] Added StatsId field (v2.0 API)
+    * Added the StatsId field to mail delivery API request parameters for statistical classification.
+* [Console]
+    * Renewed the Query Statistics screen
+        * Changed the existing Query Statistics menu to (Old) Query Statistics.
+        * Added a menu to view statistics by event occurrence time.
+    * Added statistics event key settings menu
+        * Added a menu to add a StatsId for use in the API and console.
+* [Console] Role segmentation
+    * Added the feature to grant separate Email menu access and feature control permissions based on role.
+
+#### Feature Updates
+
+* [Console] Changed conditions for the mail delivery query
+    * Delivery query condition changes from `Received or not` to `Receive Type`.
+    * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+
+* [Console] Added SMTP response code field in mail delivery query
+    * Added SMTP response code field to mail delivery query
+    * SMTP response codes provide response codes for errors that occurred when sending mail.
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+
 ### Jan 31, 2024.
 
 #### Added Features
 
 * [Console] Added mail sending status
-  - Added "Authentication failed (SST7)" to mail sending status.
-  - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
-  - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
+    - Added "Authentication failed (SST7)" to mail sending status.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
 
 #### Feature Updates
 
 * [API/SMTP] Respond to changes to Gmail email sender guidelines
-  * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
-  * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
+    * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
 
 * [Console] Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects
-  * Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects.
-  * Authentication values are not initialized when sharing an authenticated domain.
+    * Fixed an issue where re-authentication of SPF records and DMARC records are required when sharing projects.
+    * Authentication values are not initialized when sharing an authenticated domain.
 
 * [API] Improved SPF record authentication errors
-  * Fixed an issue where authentication would be performed if more than one SPF record is registered for a domain.
-  * If multiple SPF records exist, it can be considered a misconfiguration by the DNS system.
-  * So if you have more than one SPF record, the authentication failed status appears.
-  * For more information, see [RFC 4408](https://www.ietf.org/rfc/rfc4408.txt).
+    * Fixed an issue where authentication would be performed if more than one SPF record is registered for a domain.
+    * If multiple SPF records exist, it can be considered a misconfiguration by the DNS system.
+    * So if you have more than one SPF record, the authentication failed status appears.
+    * For more information, see [RFC 4408](https://www.ietf.org/rfc/rfc4408.txt).
 
 ### December 19, 2023
 

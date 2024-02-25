@@ -57,6 +57,7 @@
 |false|-2047| The 'senderGroupingKey' exceeds maximum length. (100 chars)|
 |false|-2048| You can set the size up to 1000. pageSize: {}|
 |false|-2050| No registed the sender email address|
+|false|-2059| The 'statsId' exceeds maximum length. (8 chars)|
 |false|-2100|The 'templateId' is required.|
 |false|-2102|The 'templateName' is required.|
 |false|-2103|The 'sendMailAddress' is required.|
