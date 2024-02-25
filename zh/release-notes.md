@@ -2,28 +2,30 @@
 
 ### 2024. 02. 27.
 
-#### 기능 추가
+#### Added Features
 
-* [API] StatsId 필드 추가
-    * 메일 발송 API 요청 파라미터에 통계 구분을 위한 StatsId 필드가 추가되었습니다.
+* [API] Added StatsId field (v2.0 API)
+  * Added the StatsId field to mail delivery API request parameters for statistical classification.
 * [Console]
-    * 통계 조회 화면 개편
-        * 기존 통계 조회 메뉴가 (구)통계 조회로 변경되었습니다.
-        * 이벤트 발생 시간 기준 통계 조회 메뉴가 추가되었습니다.
-    * 통계 이벤트 키 설정 메뉴 추가
-        * API와 콘솔에서 사용할 StatsId를 추가할 수 있는 메뉴가 추가되었습니다.
+  * Renewed the Query Statistics screen
+    * Changed the existing Query Statistics menu to (Old) Query Statistics.
+    * Added a menu to view statistics by event occurrence time.
+  * Added statistics event key settings menu
+    * Added a menu to add a StatsId for use in the API and console.
+* [Console] Role segmentation
+  * Added the feature to grant separate Email menu access and feature control permissions based on role.
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [Console] 메일 발송 조회 조건 변경
-    * 발송 조회 조건이 `수신 여부`에서 `수신 유형`으로 변경됩니다.
-    * "전체", "수신", "수신 안 함" 조건에서 "전체", "성공", "실패-(Soft Bounce)", "실패-(Hard Bounce)"으로 변경됩니다.
-    * 이 기능은 **메일 요청별 조회**, **메일 예약 발송 조회**, **대량 메일 발송 조회**, **태그 메일 발송 조회** 화면에 적용됩니다.
+* [Console] Changed conditions for the mail delivery query
+  * Delivery query condition changes from `Received or not` to `Receive Type`.
+  * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
+  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
 
-* [Console] 메일 발송 조회시 SMTP 응답 코드 필드 추가
-    * 메일 발송 조회 시 SMTP 응답 코드 필드가 추가되었습니다.
-    * SMTP 응답 코드는 메일 발송 시 발생한 오류에 대한 응답 코드를 제공합니다.
-    * 이 기능은 **메일 요청별 조회**, **메일 예약 발송 조회**, **대량 메일 발송 조회**, **태그 메일 발송 조회** 화면에 적용됩니다.
+* [Console] Added SMTP response code field in mail delivery query
+  * Added SMTP response code field to mail delivery query
+  * SMTP response codes provide response codes for errors that occurred when sending mail.
+  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
 
 ### Jan 31, 2024.
 
