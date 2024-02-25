@@ -3438,5 +3438,3 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	성공 여부|
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
-
-
