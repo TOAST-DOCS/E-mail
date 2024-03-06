@@ -1,9 +1,12 @@
-## Notification > Email > API v2.1 Guide
+## Notification > Email > API v2.0 Guide
 
-### v2.1 API 소개
+### v2.0 API 소개
 
-1. 조회 API 응답 변경
-	* 메일 조회 API의 응답에 statId가 추가되었습니다.
+1. 시크릿 키 인증 도입
+	* v2.0 API 호출 시 헤더에 [시크릿 키](./api-guide/#secret-key)를 설정해서 호출해야 합니다.
+2. 대량 발송 조회 API 추가
+	* 대량 발송건에 대한 조회 API가 추가되었습니다.
+
 
 [API Domain]
 
@@ -42,7 +45,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/mail|
 
 [Path Parameter]
 
@@ -94,7 +97,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -120,7 +123,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -196,7 +199,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/eachMail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/eachMail|
 
 [Path Parameter]
 
@@ -247,7 +250,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -269,7 +272,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -344,7 +347,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-mail|
 
 [Path Parameter]
 
@@ -367,7 +370,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -393,7 +396,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -424,7 +427,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-eachMail |
 
 [Path Parameter]
 
@@ -447,7 +450,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -469,7 +472,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -495,7 +498,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/auth-mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/auth-mail|
 
 [Path Parameter]
 
@@ -551,7 +554,7 @@ Features of authenticated mails are as follows:
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -571,7 +574,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -638,7 +641,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/tagMail|
 
 [Path Parameter]
 
@@ -679,7 +682,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -697,7 +700,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -743,7 +746,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v2.0/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path Parameter]
 
@@ -774,7 +777,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -883,7 +886,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mails|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mails|
 
 [Path Parameter]
 
@@ -928,7 +931,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -968,8 +971,7 @@ curl -X GET \
                 "receiveName": "Receiver",
                 "senderGroupingKey": "A_GROUP",
                 "dsnCode": "2.5.0",
-                "dsnMessage": "SUCCESS",
-                "statsId": "statsId"
+                "dsnMessage": "SUCCESS"
             }
         ]
     }
@@ -1008,7 +1010,6 @@ curl -X GET \
 | -- senderGroupingKey| String  | Sender's group key                                           |
 | -- dsnCode| String| DSN(Delivery Status Notification) Status Code |
 | -- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 
 ### Query Mail Delivery Details
@@ -1019,7 +1020,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path Parameter]
 
@@ -1044,7 +1045,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1102,8 +1103,7 @@ curl -X GET \
             "customHeaders": {
                 "Content-Type": "text/html"
             },
-            "senderGroupingKey": "A_GROUP",
-            "statsId": "statsId"
+            "senderGroupingKey": "A_GROUP"
         }
     }
 }
@@ -1152,7 +1152,6 @@ curl -X GET \
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 
 ### 대량 메일 리스트 조회
@@ -1163,7 +1162,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails|
 
 [Path parameter]
 
@@ -1200,7 +1199,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1232,8 +1231,7 @@ curl -X GET \
             "body":"body",
             "adYn":"N",
             "createDate":"2021-08-06 18:43:03",
-            "updateDate":"2021-08-06 18:43:03",
-            "statsId": "statsId"
+            "updateDate":"2021-08-06 18:43:03"
          }
       ]
    }
@@ -1264,7 +1262,6 @@ curl -X GET \
 |-- adYn |  String  | 광고여부 |
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### 대량 메일 발송 수신자 조회
 
@@ -1274,7 +1271,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}|
 
 [Path parameter]
 
@@ -1310,7 +1307,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1346,8 +1343,7 @@ curl -X GET \
             "dsnCode":"2.5.0",
             "dsnMessage":"SUCCESS",
             "createDate":"2021-08-06 12:01:41",
-            "updateDate":"2021-08-06 12:02:00",
-            "statsId": "statsId"
+            "updateDate":"2021-08-06 12:02:00"
          }
       ]
    }
@@ -1382,7 +1378,6 @@ curl -X GET \
 |-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### 대량 메일 발송 상세 조회
 
@@ -1392,7 +1387,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -1417,7 +1412,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1470,8 +1465,7 @@ curl -X GET \
                "fileSize":1679,
                "createDate":"2021-08-06 12:29:14"
             }
-         ],
-         "statsId": "statsId"
+         ]
       }
    }
 }
@@ -1517,7 +1511,6 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 
 ### Query Request for Tagged Mail Delivery
@@ -1528,7 +1521,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails|
 
 [Path Parameter]
 
@@ -1570,7 +1563,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1606,8 +1599,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": String
+                "updateDate": String
             }
         ]
     }
@@ -1642,7 +1634,6 @@ curl -X GET \
 | -- createDate    | String      | Date and time of creation                                    |
 | -- updateUser    | String      | Modifier                                                     |
 | -- updateDate    | String      | Date and time of modification                                |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### Query Recipients of Tagged Mail Delivery
 
@@ -1652,7 +1643,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path Parameter]
 
@@ -1687,7 +1678,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1721,8 +1712,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": String
+                "updateDate": String
             }
         ]
     }
@@ -1755,7 +1745,6 @@ curl -X GET \
 | -- createDate     | String  | Date and time of creation                                    |
 | -- updateUser     | String  | Modifier                                                     |
 | -- updateDate     | String  | Date and time of modification                                |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### Query Details of Tagged Mail Delivery
 
@@ -1765,7 +1754,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path Parameter]
 
@@ -1790,7 +1779,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1842,8 +1831,7 @@ curl -X GET \
                     "createDate": String
                 }
             ],
-            "customHeaders": Map,
-            "statsId": String
+            "customHeaders": Map
         }
     }
 }
@@ -1891,7 +1879,6 @@ curl -X GET \
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 
 
@@ -1904,7 +1891,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations|
 
 [Path parameter]
 
@@ -1927,7 +1914,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1975,8 +1962,7 @@ curl -X GET \
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
             "mailStatusName":"예약대기",
-            "senderGroupingKey":"senderKey",
-            "statsId": "statsId"
+            "senderGroupingKey":"senderKey"
          }
       ]
    }
@@ -2009,7 +1995,6 @@ curl -X GET \
 | -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- senderGroupingKey| String  | Sender's group key                                           |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### Query Detail Scheduled Delivery
 #### Request
@@ -2018,7 +2003,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -2043,7 +2028,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2143,7 +2128,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}
 
 [Path parameter]
 
@@ -2167,7 +2152,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2198,7 +2183,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
 
 [Path parameter]
 
@@ -2223,7 +2208,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2254,7 +2239,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2305,7 +2290,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8'  \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2360,7 +2345,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2393,7 +2378,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2474,7 +2459,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/categories|
+|GET| /email/v2.0/appKeys/{appKey}/categories|
 
 [Path parameter]
 
@@ -2506,7 +2491,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2572,7 +2557,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|GET|	/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2596,7 +2581,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2655,7 +2640,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|/email/v2.1/appKeys/{appKey}/categories|
+|POST|/email/v2.0/appKeys/{appKey}/categories|
 
 
 [Path parameter]
@@ -2689,7 +2674,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories'
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories'
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2738,7 +2723,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|PUT|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2771,7 +2756,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2810,7 +2795,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|DELETE|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2834,7 +2819,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2871,7 +2856,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates|
+|GET|	/email/v2.0/appKeys/{appKey}/templates|
 
 [Path Parameter]
 
@@ -2904,7 +2889,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2970,7 +2955,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path Parameter]
 
@@ -2994,7 +2979,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3075,7 +3060,7 @@ curl -X GET \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates|
+|POST|  /email/v2.0/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -3114,7 +3099,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3161,7 +3146,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|  /email/v2.0/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -3192,7 +3177,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3243,7 +3228,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|PUT|   /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|PUT|   /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3281,7 +3266,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3325,7 +3310,7 @@ curl -X PUT \
 
 |Http method|   URI|
 |---|---|
-|DELETE|    /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|DELETE|    /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3349,7 +3334,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3385,7 +3370,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tags|
+|GET|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -3415,7 +3400,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3466,7 +3451,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/tags|
+|POST|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -3495,7 +3480,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3546,7 +3531,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
@@ -3576,7 +3561,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3613,7 +3598,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
@@ -3637,7 +3622,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3672,7 +3657,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids|
+|GET|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -3704,7 +3689,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3777,7 +3762,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -3801,7 +3786,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3865,7 +3850,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids|
+|POST|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -3904,7 +3889,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3949,7 +3934,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -3973,7 +3958,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4006,7 +3991,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path Parameter]
 
@@ -4036,7 +4021,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4072,7 +4057,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path Parameter]
 
@@ -4097,7 +4082,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4132,7 +4117,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/statistics/view |
+|GET|	/email/v2.0/appKeys/{appKey}/statistics/view |
 
 [Path Parameter]
 
@@ -4166,7 +4151,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4224,7 +4209,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| GET |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4257,7 +4242,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4304,7 +4289,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| POST |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4335,7 +4320,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4374,7 +4359,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-| PUT |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4405,7 +4390,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
