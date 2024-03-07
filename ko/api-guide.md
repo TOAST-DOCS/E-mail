@@ -4514,22 +4514,21 @@ curl -X GET \
 }
 ```
 
-| 값                                   | 	타입      | 	설명        |
-|-------------------------------------|----------|------------|
-| header                              | 	Object  | 	헤더 영역     |
-| - isSuccessful                      | 	Boolean | 	성공 여부     |
-| - resultCode                        | 	Integer | 	실패 코드     |
-| - resultMessage                     | 	String  | 	실패 메시지    |
-| stats                               | 	Object  | 	본문 영역     |
-| - eventDateTime                     | 	String  | 	이벤트 발생 시간 |
-| - events                            | 	List    | 	데이터 영역    |
-| -- {statsCriteriaValue}.REQUESTED   | 	Integer | 요청 건수      |
-| -- {statsCriteriaValue}.SENT        | 	Integer | 	발송 건수     |
-| -- {statsCriteriaValue}.SENT_FAILED | 	Integer | 	실패 건수     |
-| -- {statsCriteriaValue}.RECEIVED    | 	Integer | 	성공 건수     |
-| -- {statsCriteriaValue}.OPENED      | 	Integer | 	읽은 건수     |
-* {statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값 입니다.
-* statsCriteria가 Event일 경우에는 표시되지 않습니다.
+| 값                       | 	타입      | 	설명                                                      |
+|-------------------------|----------|----------------------------------------------------------|
+| header                  | 	Object  | 	헤더 영역                                                   |
+| - isSuccessful          | 	Boolean | 	성공 여부                                                   |
+| - resultCode            | 	Integer | 	실패 코드                                                   |
+| - resultMessage         | 	String  | 	실패 메시지                                                  |
+| stats                   | 	Object  | 	본문 영역                                                   |
+| - eventDateTime         | 	String  | 	이벤트 발생 시간                                               |
+| - events                | 	List    | 	데이터 영역                                                  |
+| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값 입니다. |
+| --- REQUESTED           | 	Integer | 요청 건수                                                    |
+| --- SENT                | 	Integer | 	발송 건수                                                   |
+| --- SENT_FAILED         | 	Integer | 	실패 건수                                                   |
+| --- RECEIVED            | 	Integer | 	성공 건수                                                   |
+| --- OPENED              | 	Integer | 	읽은 건수                                                   |
 
 ### 통계 합계 조회
 #### 요청
