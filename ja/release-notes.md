@@ -56,7 +56,7 @@
 
 * [Console]メール送信ステータス追加
     - メール送信ステータスに「認証失敗(SST7)」が追加されました。
-  - 2024年2月1日[Gmailメール送信者ガイドライン](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)
+    - 2024年2月1日[Gmailメール送信者ガイドライン](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)
     が変更されたため、SPF、DKIM、DMARC認証をすべて実行しない場合、送信が制限されます。
     - 送信が制限された場合、送信状態が「認証失敗(SST7)」と表示されます。
 
