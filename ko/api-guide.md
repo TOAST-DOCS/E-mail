@@ -72,7 +72,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 |requestDate|	String|	X|	발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
 |title|	String|	O|	메일 제목 (최대 998자)|
 |body|	String|	O|	메일 내용|
-|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id (파일 업로드 시 file id를 반환)|
+|attachFileIdList|	List:Integer|	X|	업로드한 첨부 파일 id (파일 업로드 시 file id를 반환)|
 |templateId|	String|	X|	발송 템플릿 ID ( 최대 50자 )|
 |templateType| String| X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 |templateParameter|	Object|	X|	치환 파라미터 (메일 제목/내용 치환시 입력)|
@@ -226,7 +226,7 @@ curl -X POST \
 |requestDate|	String|	X|	발송 일시 (yyyy-MM-dd HH:mm:ss) <br/>현재 일시(기본값) |
 |title|	String|	O|	메일 제목 (최대 998자)|
 |body|	String|	O|	메일 내용|
-|attachFileIdList|	List:Integer|	X|	업로드한 첨부파일 id (파일 업로드 시 file id를 반환)|
+|attachFileIdList|	List:Integer|	X|	업로드한 첨부 파일 id (파일 업로드 시 file id를 반환)|
 |templateId|	String|	X|	발송 템플릿 ID ( 최대 50자 )|
 |templateType| String| X| 템플릿 타입 <br/>DEFAULT(기본값), FREEMARKER)|
 |receiverList|	List|	O|	수신자 리스트<br/> 최대 1000명까지 발송 가능|
@@ -667,7 +667,7 @@ curl -X POST \
 | templateId  | String | X|템플릿 ID |
 | adYn  | String | X|광고 여부 'N'(기본값) |
 | autoSendYn  | String | X|자동 발송 여부 'Y'(기본값) |
-| attachFileIdList  | List:Integer | X|첨부파일 리스트 |
+| attachFileIdList  | List:Integer | X|첨부 파일 리스트 |
 | tagExpression  | List:String | O| 태그 표현식 (태그 ID 포함) |
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
@@ -732,7 +732,7 @@ curl -X POST \
 |- data|	Object|	데이터 영역|
 |-- requestId|	String|	요청 ID|
 
-### 첨부파일 업로드
+### 첨부 파일 업로드
 
 #### 요청
 
@@ -1142,12 +1142,12 @@ curl -X GET \
 |--- openedDate| String| 읽은 일시|
 |--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- attachFileList|	List| 첨부파일 리스트|
-|--- fileType|	String|	첨부파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
+|-- attachFileList|	List| 첨부 파일 리스트|
+|--- fileType|	String|	첨부 파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
 |--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- fileName|	String|	첨부 파일 이름|
+|--- filePath|	String|	첨부 파일 경로|
+|--- fileSize|	Integer|	첨부 파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹키 |
@@ -1259,7 +1259,7 @@ curl -X GET \
 |-- senderAddress|	String|	발신자 메일주소|
 |-- title|	String|	메일 제목|
 |-- body|	String|	메일 내용|
-|-- adYn |  String  | 광고여부 |
+|-- adYn |  String  | 광고 여부 |
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
 |-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
@@ -1508,12 +1508,12 @@ curl -X GET \
 |--- openedDate| String| 읽은 일시|
 |--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- attachFileList | List  | 첨부파일 리스트 |
-|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|-- attachFileList | List  | 첨부 파일 리스트 |
+|--- fileType|	String|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- fileName|	String|	첨부 파일 이름|
+|--- filePath|	String|	첨부 파일 경로|
+|--- fileSize|	Integer|	첨부 파일 크기(byte)|
 |--- createDate|	String|	생성 일시|
 |-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
@@ -1637,7 +1637,7 @@ curl -X GET \
 |-- senderMail |  String  | 발신자주소 |
 |-- title |  String  | 제목 |
 |-- body |  String  | 내용 |
-|-- attachYn |  String  | 첨부파일여부 |
+|-- attachYn |  String  | 첨부 파일여부 |
 |-- adYn |  String  | 광고여부 |
 |-- createUser |  String  | 생성자 |
 |-- createDate |  String  | 생성 일시 |
@@ -1886,12 +1886,12 @@ curl -X GET \
 |--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
 |--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 |--- mailSequence | Integer  | 메일 순번 |
-|-- attachFileList | List  | 첨부파일 리스트 |
-|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|-- attachFileList | List  | 첨부 파일 리스트 |
+|--- fileType|	String|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- fileName|	String|	첨부 파일 이름|
+|--- filePath|	String|	첨부 파일 경로|
+|--- fileSize|	Integer|	첨부 파일 크기(byte)|
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
@@ -2009,9 +2009,9 @@ curl -X GET \
 |-- receiveType|	String|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
 |-- receiveTypeName|	String|	수신자 타입 이름|
 |-- requestDate|	String|	요청 시간|
-|-- mailStatusCode|	String|	메일 상태 코드 <br/> SST0: 발송 준비, SST1: 발송중  <br/> SST2: 발송 완료, SST3: 발송 실패 <br/> SST4: 예약 대기, SST7: 미인증 |
+|-- mailStatusCode|	String|	메일 상태 코드 <br/> SST0: 발송 준비, SST1: 발송 중  <br/> SST2: 발송 완료, SST3: 발송 실패 <br/> SST4: 예약 대기, SST7: 미인증 |
 |-- mailStatusName|	String|	메일 상태 이름|
-|-- senderGroupingKey|	String|	발신자 그룹키 (최대 100자) |
+|-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 |--- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 
@@ -2130,15 +2130,15 @@ curl -X GET \
 |--- receiveName|	String|	수신자 이름|
 |--- receiveTypeName|	String|	수신자 타입 이름|
 |--- receiveMailAddr|	String|	수신자 메일 주소|
-|-- attachFileList|	List| 첨부파일 리스트|
-|--- fileType|	String|	첨부파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
-|--- fileId| Integer| 파일 ID <br/> v1.0, v1.1 API를 통해 업로드된 첨부파일은 파일 ID 값이 -1으로 표기됩니다.|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|-- attachFileList|	List| 첨부 파일 리스트|
+|--- fileType|	String|	첨부 파일 타입 <br/>MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일|
+|--- fileId| Integer| 파일 ID <br/> v1.0, v1.1 API를 통해 업로드된 첨부 파일은 파일 ID 값이 -1으로 표기됩니다.|
+|--- fileName|	String|	첨부 파일 이름|
+|--- filePath|	String|	첨부 파일 경로|
+|--- fileSize|	Integer|	첨부 파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	발신자 그룹키 (최대 100자) |
+|-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 |-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### 예약 발송 취소 - 요청별
@@ -3062,12 +3062,12 @@ curl -X GET \
 |-- body|	String|	메일 내용|
 |-- createDate|	String|	생성 일시|
 |-- updateDate|	String|	수정 일시|
-|-- attachFileList|	List|	첨부파일 리스트|
-|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|-- attachFileList|	List|	첨부 파일 리스트|
+|--- fileType|	String|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- fileName|	String|	첨부 파일 이름|
+|--- filePath|	String|	첨부 파일 경로|
+|--- fileSize|	Integer|	첨부 파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
 
 ### 템플릿 등록
@@ -4476,9 +4476,9 @@ curl -X PUT \
 | eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
 | statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
 | timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 조회범위 시작 값, 최근 30일까지 (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 조회범위 종료 값, 최근 30일까지 (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NOMAL, MASS, TAG, SMTP                                |
+| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
 | extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
 | extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
 | messageId      | String       | X   | 메시지 아이디                                                                                          |
@@ -4523,7 +4523,7 @@ curl -X GET \
 | stats                   | 	Object  | 	본문 영역                                                   |
 | - eventDateTime         | 	String  | 	이벤트 발생 시간                                               |
 | - events                | 	List    | 	데이터 영역                                                  |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값 입니다. |
+| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값입니다. |
 | --- REQUESTED           | 	Integer | 요청 건수                                                    |
 | --- SENT                | 	Integer | 	발송 건수                                                   |
 | --- SENT_FAILED         | 	Integer | 	실패 건수                                                   |
@@ -4565,9 +4565,9 @@ curl -X GET \
 | eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
 | statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
 | timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 조회범위 시작 값, 최근 30일까지 (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 조회범위 종료 값, 최근 30일까지 (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NOMAL, MASS, TAG, SMTP                                |
+| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
 | extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
 | extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
 | messageId      | String       | X   | 메시지 아이디                                                                                          |
