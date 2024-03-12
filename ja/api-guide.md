@@ -4430,3 +4430,175 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	成否|
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
+## 통계
+### 통계 조회
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v2.1/appKeys/{appKey}/stats|
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+
+
+[Query parameter]
+
+| 값              | 	타입          | 	필수 | 	설명                                                                                              |
+|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
+| eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
+| statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
+| timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
+| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
+| extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
+| extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
+| messageId      | String       | X   | 메시지 아이디                                                                                          |
+| statsIds       | Array String | X   | 통계 이벤트 키 아이디                                                                                     |
+| templateIds    | Array String | X   | 템플릿 ID                                                                                           |
+| statsCriteria  | Array String | X   | 합계 시 통계 기준, 설정하지 않으면 기본값으로 합계를 계산. EVENT(기본값), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
+
+##### cURL
+```
+curl -X GET \
+'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+-H 'Content-Type: application/json;charset=UTF-8' \
+-H 'X-Secret-Key: '"${SECRET_KEY}"''
+```
+
+#### 응답
+```json
+{
+	"header": {
+		"resultCode": 0,
+		"resultMessage": "success",
+		"isSuccessful": true
+	},
+	"stats": [{
+		"eventDateTime": "2020-08-12T00:00:00.000+09:00",
+		"events": {
+			"{statsCriteriaValue}.RECEIVED": 0,
+			"{statsCriteriaValue}.SENT_FAILED": 0,
+			"{statsCriteriaValue}.SENT": 0,
+			"{statsCriteriaValue}.OPENED": 0
+		}
+	}]
+}
+```
+
+| 값                       | 	타입      | 	설명                                                      |
+|-------------------------|----------|----------------------------------------------------------|
+| header                  | 	Object  | 	헤더 영역                                                   |
+| - isSuccessful          | 	Boolean | 	성공 여부                                                   |
+| - resultCode            | 	Integer | 	실패 코드                                                   |
+| - resultMessage         | 	String  | 	실패 메시지                                                  |
+| stats                   | 	Object  | 	본문 영역                                                   |
+| - eventDateTime         | 	String  | 	이벤트 발생 시간                                               |
+| - events                | 	List    | 	데이터 영역                                                  |
+| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값입니다. |
+| --- REQUESTED           | 	Integer | 요청 건수                                                    |
+| --- SENT                | 	Integer | 	발송 건수                                                   |
+| --- SENT_FAILED         | 	Integer | 	실패 건수                                                   |
+| --- RECEIVED            | 	Integer | 	성공 건수                                                   |
+| --- OPENED              | 	Integer | 	읽은 건수                                                   |
+
+### 통계 합계 조회
+#### 요청
+
+[URL]
+
+| Http method | 	URI                                     |
+|-------------|------------------------------------------|
+| GET         | /email/v2.1/appKeys/{appKey}/stats/total |
+
+[Path parameter]
+
+|값|	타입|	설명|
+|---|---|---|
+|appKey|	String|	고유의 appKey|
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+
+
+[Query parameter]
+
+| 값              | 	타입          | 	필수 | 	설명                                                                                              |
+|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
+| eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
+| statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
+| timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
+| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
+| extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
+| extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
+| messageId      | String       | X   | 메시지 아이디                                                                                          |
+| statsIds       | Array String | X   | 통계 이벤트 키 아이디                                                                                     |
+| templateIds    | Array String | X   | 템플릿 ID                                                                                           |
+| statsCriteria  | Array String | X   | 합계 시 통계 기준, 설정하지 않으면 기본값으로 합계를 계산. EVENT(기본값), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
+
+##### cURL
+```
+curl -X GET \
+'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+-H 'Content-Type: application/json;charset=UTF-8' \
+-H 'X-Secret-Key: '"${SECRET_KEY}"''
+```
+
+#### 응답
+```json
+{
+	"header": {
+		"resultCode": 0,
+		"resultMessage": "success",
+		"isSuccessful": true
+	},
+	"total" : {
+		"SENT" : 120,
+		"SENT_FAILED" : 50,
+		"RECEIVED": 0,
+		"OPENED": 0
+	}
+}
+```
+
+| 값                                   | 	타입      | 	설명        |
+|-------------------------------------|----------|------------|
+| header                              | 	Object  | 	헤더 영역     |
+| - isSuccessful                      | 	Boolean | 	성공 여부     |
+| - resultCode                        | 	Integer | 	실패 코드     |
+| - resultMessage                     | 	String  | 	실패 메시지    |
+| total                               | 	Object  | 	본문 영역     |
+| - {statsCriteriaValue}.REQUESTED   | 	Integer | 요청 건수      |
+| - {statsCriteriaValue}.SENT        | 	Integer | 	발송 건수     |
+| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	실패 건수     |
+| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	성공 건수     |
+| - {statsCriteriaValue}.OPENED      | 	Integer | 	읽은 건수     |
