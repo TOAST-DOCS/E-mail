@@ -1,11 +1,12 @@
-## Notification > Email > API v2.1ガイド
+## Notification > Email > API v2.0ガイド
 
-### v2.1 API紹介
+### v2.0 API 소개
 
-1.シークレットキー認証の導入
-	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
-2. 大量送信照会API追加
-	* 大量送信件の照会APIが追加されました。
+1. 시크릿 키 인증 도입
+	* v2.0 API 호출 시 헤더에 [시크릿 키](./api-guide/#secret-key)를 설정해서 호출해야 합니다.
+2. 대량 발송 조회 API 추가
+	* 대량 발송건에 대한 조회 API가 추가되었습니다.
+
 
 [APIドメイン]
 
@@ -21,13 +22,13 @@ Content-Type: application/json;charset=UTF-8
 <p id="secret-key"></p>
 
 ### Secret Key
-- コンソールで確認できます。
-- Secret Keyが必要なAPIを呼び出す時,ヘッダに下記のように設定して呼び出す必要があります。
+- 콘솔에서 확인 가능합니다.
+- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
 ```
-**CONSOLE > Notification > Email > URL & AppKey**で確認/作成できます。
+**CONSOLE > Notification > Email > URL & AppKey** 에서 확인/생성할 수 있습니다.
 
 
 [curl例注意事項]
@@ -44,7 +45,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/mail|
 
 [Path parameter]
 
@@ -97,21 +98,21 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "サンプルタイトル",
-    "body": "サンプル内容",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "顧客2",
+            "receiveName": "고객2",
             "receiveType": "MRT1"
         }
     ],
@@ -123,7 +124,7 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -133,11 +134,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "顧客2",
+            "receiveName": "고객2",
             "receiveType": "MRT1"
         }
     ],
@@ -198,7 +199,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/eachMail||
+|POST|	/email/v2.0/appKeys/{appKey}/sender/eachMail||
 
 [Path parameter]
 
@@ -249,18 +250,18 @@ curl -X POST \
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "サンプルタイトル",
-    "body": "サンプル内容",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1"
+            "receiveName": "고객1"
         }
     ],
     "userId": "USER",
@@ -271,14 +272,14 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "templateParameter": {
                 "key": "value"
             }
@@ -344,7 +345,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-mail|
 
 [Path parameter]
 
@@ -367,21 +368,21 @@ curl -X POST \
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "(広告)サンプルタイトル",
-    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "발송자이름",
+    "title": "(광고) 샘플 타이틀",
+    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "顧客2",
+            "receiveName": "고객2",
             "receiveType": "MRT1"
         }
     ],
@@ -393,7 +394,7 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -403,11 +404,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "顧客2",
+            "receiveName": "고객2",
             "receiveType": "MRT1"
         }
     ],
@@ -424,7 +425,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-eachMail |
 
 [Path parameter]
 
@@ -447,18 +448,18 @@ curl -X POST \
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "(広告)サンプルタイトル",
-    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "발송자이름",
+    "title": "(광고) 샘플 타이틀",
+    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1"
+            "receiveName": "고객1"
         }
     ],
     "userId": "USER",
@@ -469,14 +470,14 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "顧客1",
+            "receiveName": "고객1",
             "templateParameter": {
                 "key": "value"
             }
@@ -495,7 +496,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/auth-mail||
+|POST|	/email/v2.0/appKeys/{appKey}/sender/auth-mail||
 
 [Path parameter]
 
@@ -549,17 +550,17 @@ curl -X POST \
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "サンプルタイトル",
-    "body": "サンプル内容",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "顧客1"
+        "receiveName": "고객1"
     },
     "userId": "USER",
     "statsId": "statsId"
@@ -569,14 +570,14 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "templateId": "TEMPLATE1",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "顧客1",
+        "receiveName": "고객1",
         "templateParameter": {
             "key": "value"
         }
@@ -636,7 +637,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/tagMail|
 
 [Path parameter]
 
@@ -682,14 +683,14 @@ curl -X POST \
 [例1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "送信者名",
-    "title": "サンプルタイトル",
-    "body": "サンプル内容",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
     "userId": "USER",
@@ -700,7 +701,7 @@ curl -X POST \
 [例2 - テンプレートの使用]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -746,7 +747,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v2.0/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -777,7 +778,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -887,7 +888,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mails|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mails|
 
 [Path parameter]
 
@@ -932,7 +933,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -972,8 +973,7 @@ curl -X GET \
                 "receiveName": "Receiver",
                 "senderGroupingKey": "A_GROUP",
                 "dsnCode": "2.5.0",
-                "dsnMessage": "SUCCESS",
-                "statsId": "statsId"
+                "dsnMessage": "SUCCESS"
             }
         ]
     }
@@ -1012,7 +1012,6 @@ curl -X GET \
 |-- senderGroupingKey| String| 発信者グループキー|
 |-- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
 |-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
-|-- statsId| String| 統計データグルーピングのためのキー |
 
 
 ### メール送信詳細の照会
@@ -1023,7 +1022,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -1048,7 +1047,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -1106,8 +1105,7 @@ curl -X GET \
             "customHeaders": {
                 "Content-Type": "text/html"
             },
-            "senderGroupingKey": "A_GROUP",
-            "statsId": "statsId"
+            "senderGroupingKey": "A_GROUP"
         }
     }
 }
@@ -1156,38 +1154,37 @@ curl -X GET \
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー|
-|-- statsId| String| 統計データグルーピングのためのキー |
 
 
-### 大量メールリスト照会
+### 대량 메일 리스트 조회
 
-#### リクエスト
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails|
 
 [Path parameter]
 
-|値|	タイプ|	説明|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	固有のappKey|
+|appKey|	String|	고유의 appKey|
 
 [Query parameter]
 
-|値|	タイプ|	必須|	説明|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	O|	リクエストID|
-|startSendDate|	String|	O|	送信日開始値(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	送信日終了値(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	送信メールアドレス|
-|senderName|	String|	X|	送信者名|
-|templateId|	String|	X|	テンプレートID|
-|sendStatus|	String|	X|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
-|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
-|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
+|requestId|	String|	O|	요청 ID|
+|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	발신메일 주소|
+|senderName|	String|	X|	발신자 이름|
+|templateId|	String|	X|	템플릿 ID|
+|sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [Header]
 
@@ -1197,19 +1194,19 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	必須|	説明|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### レスポンス
+#### 응답
 
 ```json
 {
@@ -1227,7 +1224,7 @@ curl -X GET \
             "requestId":"202108061843001hIOqv82",
             "requestDate":"2021-08-06 18:43:00",
             "sendStatus":"COMPLETE",
-            "sendStatusName":"送信完了",
+            "sendStatusName":"발송완료",
             "templateId":"templateId",
             "templateName":"templateName",
             "senderName":"NHN Cloud",
@@ -1236,56 +1233,54 @@ curl -X GET \
             "body":"body",
             "adYn":"N",
             "createDate":"2021-08-06 18:43:03",
-            "updateDate":"2021-08-06 18:43:03",
-            "statsId": "statsId"
+            "updateDate":"2021-08-06 18:43:03"
          }
       ]
    }
 }
 ```
 
-|値|	タイプ|	説明|
+|값|	타입|	설명|
 |---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	Object|	データ領域|
-|-- requestId| String| リクエストID|
-|-- requestDate| String| リクエスト日時|
-|-- sendStatus|	String|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
-|-- sendStatusName|	String|	送信ステータス名|
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderName|	String|	送信者名|
-|-- senderAddress|	String|	送信者メールアドレス|
-|-- title|	String|	メールタイトル|
-|-- body|	String|	メール内容|
-|-- adYn |  String  | 広告かどうか |
-|-- createDate |  String  | 作成日時 |
-|-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|- pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	Object|	데이터 영역|
+|-- requestId| String| 요청 ID|
+|-- requestDate| String| 요청 일시|
+|-- sendStatus|	String|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|-- sendStatusName|	String|	발송 상태 명|
+|-- templateId|	String|	템플릿 ID|
+|-- templateName|	String|	템플릿 명|
+|-- senderName|	String|	발신자 이름|
+|-- senderAddress|	String|	발신자 메일주소|
+|-- title|	String|	메일 제목|
+|-- body|	String|	메일 내용|
+|-- adYn |  String  | 광고여부 |
+|-- createDate |  String  | 생성 일시 |
+|-- updateDate |  String  | 수정 일시 |
 
-### 大量メール送信受信者照会
+### 대량 메일 발송 수신자 조회
 
-#### リクエスト
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}|
 
 [Path parameter]
 
-|値|	タイプ|	説明|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	固有のappKey|
-|requestId|	String|	リクエストID|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
 
 [Header]
 
@@ -1295,31 +1290,31 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	必須|	説明|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 
 [Query parameter]
 
-|値|	タイプ|	必須|	説明|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|receiveMailAddr|	String|	X|	受信メールアドレス|
-|startReceiveDate|	String|	X|	受信日開始値(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	受信日終了値(yyyy-MM-dd HH:mm:ss)|
-|mailStatusCode|	String|	X|	送信ステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
-|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
-|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
+|receiveMailAddr|	String|	X|	수신 메일 주소|
+|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### レスポンス
+#### 응답
 
 ```json
 {
@@ -1337,10 +1332,10 @@ curl -X GET \
             "requestId":"20210806120100sA3CcWU2",
             "mailSeq":1,
             "mailStatusCode":"SST2",
-            "mailStatusName":"送信完了",
+            "mailStatusName":"발송완료",
             "resultId":"<20210806120100sA3CcWU2@tcmmsapp-92a901>",
             "receiveType":"MRT0",
-            "receiveTypeName":"受信者",
+            "receiveTypeName":"받는사람",
             "receiveName":"name",
             "receiveMailAddr":"email@nhncloud.com",
             "isReceived":true,
@@ -1350,61 +1345,59 @@ curl -X GET \
             "dsnCode":"2.5.0",
             "dsnMessage":"SUCCESS",
             "createDate":"2021-08-06 12:01:41",
-            "updateDate":"2021-08-06 12:02:00",
-            "statsId": "statsId"
+            "updateDate":"2021-08-06 12:02:00"
          }
       ]
    }
 }
 ```
 
-|値|	タイプ|	説明|
+|값|	타입|	설명|
 |---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|-pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- requestId | String  | リクエストID |
-|-- mailSeq | Integer  | メール順番 |
-|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
-|-- mailStatusName | String  | メール状態名 |
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId | String  | 요청 ID |
+|-- mailSeq | Integer  | 메일 순번 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
+|-- mailStatusName | String  | 메일 상태명 |
 |-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	受信者タイプ<br/>MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC|
-|-- receiveTypeName|	String|	受信者タイプ 名|
-|-- receiveName|	String|	受信者名|
-|-- receiveMailAddr|	String|	受信者メールアドレス|
-|-- isReceived| Boolean| 受信したかどうか |
-|-- resultDate| String| 受信日時|
-|-- isOpened| Boolean| 既読かどうか |
-|-- openedDate| String| 既読日時|
-|-- dsnCode| String| DSN(Delivery Status Notification)ステータスコード|
-|-- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ |
-|-- createDate |  String  | 作成日時 |
-|-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|-- receiveType|	String|	수신자 타입<br/>MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조|
+|-- receiveTypeName|	String|	수신자 타입 명|
+|-- receiveName|	String|	수신자 이름|
+|-- receiveMailAddr|	String|	수신자 메일 주소|
+|-- isReceived| Boolean| 수신 여부 |
+|-- resultDate| String| 수신 일시|
+|-- isOpened| Boolean| 읽음 여부 |
+|-- openedDate| String| 읽은 일시|
+|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
+|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
+|-- createDate |  String  | 생성 일시 |
+|-- updateDate |  String  | 수정 일시 |
 
-### 大量メール送信詳細照会
+### 대량 메일 발송 상세 조회
 
-#### リクエスト
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
 
 [Path parameter]
 
-|値|	タイプ|	説明|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	固有のappKey|
-|requestId|	String|	リクエストID|
-|mailSeq|	Integer|	メール順番|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
+|mailSeq|	Integer|	메일 순번|
 
 [Header]
 
@@ -1414,19 +1407,19 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	必須|	説明|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### レスポンス
+#### 응답
 
 ```json
 {
@@ -1441,7 +1434,7 @@ curl -X GET \
          "templateId":"test",
          "templateName":"3443423",
          "mailStatusCode":"SST2",
-         "mailStatusName":"送信完了",
+         "mailStatusName":"발송완료",
          "requestDate":"2021-08-06 12:31:00",
          "senderName":"name",
          "senderAddress":"email@nhncloud.com",
@@ -1455,7 +1448,7 @@ curl -X GET \
                "requestId":"20210806123100Q60Z9I72",
                "mailSeq":"1",
                "receiveType":"MRT0",
-               "receiveTypeName":"受信者",
+               "receiveTypeName":"받는사람",
                "receiveMailAddr":"email@nhncloud.com",
                "isReceived":true,
                "resultDate":"2021-08-06 12:34:30",
@@ -1474,54 +1467,52 @@ curl -X GET \
                "fileSize":1679,
                "createDate":"2021-08-06 12:29:14"
             }
-         ],
-         "statsId": "statsId"
+         ]
       }
    }
 }
 ```
 
-|値|	タイプ| 	説明                                                                        |
+|값|	타입| 	설명                                                                         |
 |---|---|-----------------------------------------------------------------------------|
-|header|	Object| 	ヘッダ領域                                                                     |
-|- isSuccessful|	Boolean| 	成否                                                                     |
-|- resultCode|	Integer| 	失敗コード                                                                     |
-|- resultMessage|	String| 	失敗メッセージ                                                                    |
-|body|	Object| 	本文領域                                                                     |
-|- data|	List| 	データ領域                                                                    |
-|-- requestId  | String  | リクエストID                                                                       |
-|-- templateId | String  | テンプレートID                                                                      |
-|-- templateName | String  | テンプレート名                                                                       |
-|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証 |
-|-- mailStatusName | String  | メール状態名                                                                    |
-|-- requestDate | String  | リクエスト時間                                                                      |
-|-- senderName | String  | 送信者名                                                                       |
-|-- senderAddress | String  | 送信者アドレス                                                                     |
+|header|	Object| 	헤더 영역                                                                      |
+|- isSuccessful|	Boolean| 	성공 여부                                                                      |
+|- resultCode|	Integer| 	실패 코드                                                                      |
+|- resultMessage|	String| 	실패 메시지                                                                     |
+|body|	Object| 	본문 영역                                                                      |
+|- data|	List| 	데이터 영역                                                                     |
+|-- requestId  | String  | 요청 ID                                                                       |
+|-- templateId | String  | 템플릿 ID                                                                      |
+|-- templateName | String  | 템플릿 명                                                                       |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
+|-- mailStatusName | String  | 메일 상태 명                                                                     |
+|-- requestDate | String  | 요청 시간                                                                       |
+|-- senderName | String  | 발신자 명                                                                       |
+|-- senderAddress | String  | 발신자 주소                                                                      |
 |-- resultId | String  | SMTP ID                                                                     |
-|-- resultDate | String  | 実際の送信時間                                                                   |
-|-- title | String  | タイトル                                                                         |
-|-- body | String  | 内容                                                                         |
-|-- customHeaders|	Map| 	[ユーザー指定ヘッダ](./console-guide/#custom-header)                                |
-|-- receiverList | List| 受信者リスト                                                                    |
-|--- requestId | String  | リクエストID                                                                       |
-|--- mailSeq | Integer  | メールの順番                                                                       |
-|--- receiveType | String  | 受信者タイプ(MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC)                               |
-|--- receiveTypeName | String  | 受信者タイプ名                                                                    |
-|--- receiveMailAddr | String  | 受信者メールアドレス                                                                  |
-|--- isReceived| Boolean| 受信したかどうか                                                                       |
-|--- resultDate| String| 受信日時                                                                      |
-|--- isOpened| Boolean| 既読かどうか                                                                       |
-|--- openedDate| String| 既読日時                                                                      |
-|--- dsnCode| String| DSN(Delivery Status Notification)ステータスコード                                    |
-|--- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ                                   |
-|-- attachFileList | List  | 添付ファイルリスト                                                                   |
-|--- fileType|	String| 	添付ファイルタイプ(MAIL:メールに添付されたファイル、 TEMPLATE:テンプレートに添付されたファイル)                          |
-|--- fileId| Integer| ファイルID                                                                       |
-|--- fileName|	String| 	添付ファイルの名前                                                                   |
-|--- filePath|	String| 	添付ファイルのパス                                                                   |
-|--- fileSize|	Integer| 	添付ファイルのサイズ(byte)                                                             |
-|--- createDate|	String| 	作成日時                                                                     |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|-- resultDate | String  | 실제 발송 시간                                                                    |
+|-- title | String  | 제목                                                                          |
+|-- body | String  | 내용                                                                          |
+|-- customHeaders|	Map| 	[사용자 지정 헤더](./console-guide/#custom-header)                                |
+|-- receiverList | List| 수신자 리스트                                                                     |
+|--- requestId | String  | 요청 ID                                                                       |
+|--- mailSeq | Integer  | 메일 순번                                                                       |
+|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)                               |
+|--- receiveTypeName | String  | 수신자 타입명                                                                     |
+|--- receiveMailAddr | String  | 수신자 메일 주소                                                                   |
+|--- isReceived| Boolean| 수신 여부                                                                       |
+|--- resultDate| String| 수신 일시                                                                       |
+|--- isOpened| Boolean| 읽음 여부                                                                       |
+|--- openedDate| String| 읽은 일시                                                                       |
+|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드                                     |
+|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지                                    |
+|-- attachFileList | List  | 첨부파일 리스트                                                                    |
+|--- fileType|	String| 	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)                          |
+|--- fileId| Integer| 파일 ID                                                                       |
+|--- fileName|	String| 	첨부파일 이름                                                                    |
+|--- filePath|	String| 	첨부파일 경로                                                                    |
+|--- fileSize|	Integer| 	첨부파일 크기 (byte)                                                             |
+|--- createDate|	String| 	생성 일시                                                                      |
 
 
 ### タグメール送信リクエストの照会
@@ -1532,7 +1523,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails|
 
 [Path parameter]
 
@@ -1574,7 +1565,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1610,8 +1601,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": String
+                "updateDate": String
             }
         ]
     }
@@ -1646,7 +1636,6 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### タグメールの送信受信者照会
 
@@ -1656,7 +1645,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path parameter]
 
@@ -1691,7 +1680,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -1725,8 +1714,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": String
+                "updateDate": String
             }
         ]
     }
@@ -1759,7 +1747,6 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### タグメール送信詳細照会
 
@@ -1769,7 +1756,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path parameter]
 
@@ -1794,7 +1781,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -1843,11 +1830,10 @@ curl -X GET \
                     "fileName": String,
                     "filePath": String,
                     "fileSize": Integer,
-                    "createDate": String,
-                    "statsId": String
+                    "createDate": String
                 }
             ],
-            "statsId": "statsId"
+            "customHeaders": Map
         }
     }
 }
@@ -1895,7 +1881,6 @@ curl -X GET \
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
-|-- statsId| String| 統計データグルーピングのためのキー |
 
 
 ## 予約送信管理
@@ -1907,7 +1892,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations|
 
 [Path parameter]
 
@@ -1944,7 +1929,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -1974,12 +1959,11 @@ curl -X GET \
             "receiveMailAddr":"receiver@example.com",
             "receiveName":"receiverName",
             "receiveType":"MRT0",
-            "receiveTypeName":"受信者",
+            "receiveTypeName":"받는사람",
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
-            "mailStatusName":"予約待機",
-            "senderGroupingKey":"senderKey",
-            "statsId": "statsId"
+            "mailStatusName":"예약대기",
+            "senderGroupingKey":"senderKey"
          }
       ]
    }
@@ -2011,9 +1995,7 @@ curl -X GET \
 |-- requestDate|	String|	送信日時|
 |-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
-|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
-|--- statsId| String| 統計データグルーピングのためのキー |
-
+|-- senderGroupingKey|	String|	発信者グループキー |
 
 ### 予約送信の詳細照会
 #### リクエスト
@@ -2022,7 +2004,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -2047,7 +2029,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2073,13 +2055,13 @@ curl -X GET \
          "senderName":"senderName",
          "requestDate":"2020-06-05 00:00:00",
          "mailStatusCode":"SST4",
-         "mailStatusName":"予約待機",
+         "mailStatusName":"예약대기",
          "receivers":[
             {
                "requestId":"202006050000008j6bx5Q1",
                "mailSeq":0,
                "receiveType":"MRT0",
-               "receiveTypeName":"受信者",
+               "receiveTypeName":"받는사람",
                "receiveName":"receiverName",
                "receiveMailAddr":"receiver@example.com"
             }
@@ -2097,8 +2079,7 @@ curl -X GET \
          "customHeaders":{
                 "Content-Type": "text/html"
          },
-         "senderGroupingKey":"senderKey",
-         "statsId": "statsId"
+         "senderGroupingKey":"senderKey"
       }
    }
 }
@@ -2113,7 +2094,7 @@ curl -X GET \
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
 |-- requestId| String| リクエストID|
-|-- mailSeq|	Integer| メールの順番 |
+|-- mailSeq|	Integer| メールの順番 순번 |
 |-- title|	String| タイトル |
 |-- body|	String| 内容 |
 |-- templateId|	String|	テンプレートID|
@@ -2138,8 +2119,7 @@ curl -X GET \
 |--- fileSize|	Integer| 添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|-- senderGroupingKey|	String|	発信者グループキー |
 
 ### 予約発送の取り消し - リクエスト別
 #### リクエスト
@@ -2148,7 +2128,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}
 
 [Path parameter]
 
@@ -2172,7 +2152,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2203,7 +2183,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
 
 [Path parameter]
 
@@ -2228,7 +2208,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2259,7 +2239,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2310,7 +2290,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 -d '{
@@ -2365,7 +2345,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2398,7 +2378,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2462,7 +2442,7 @@ curl -X GET \
 |-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
 |-- totalCount | Integer | 予約キャンセル対象件数 |
 |-- successCount | Integer | 予約キャンセル成功件数 |
-|-- createUser | Integer | 予約キャンセル要求者 |
+|-- createUser | Integer | 예약 취소 요청자 |
 |-- createdDateTime | String | 予約キャンセルリクエスト作成時間 |
 |-- updatedDateTime | String | 予約キャンセル修正時間 |
 
@@ -2479,7 +2459,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/categories|
+|GET| /email/v2.0/appKeys/{appKey}/categories|
 
 [Path parameter]
 
@@ -2511,7 +2491,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2577,7 +2557,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|GET|	/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2601,7 +2581,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2660,7 +2640,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|/email/v2.1/appKeys/{appKey}/categories|
+|POST|/email/v2.0/appKeys/{appKey}/categories|
 
 
 [Path parameter]
@@ -2694,7 +2674,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories'
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories'
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2742,7 +2722,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|PUT|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2775,7 +2755,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2814,7 +2794,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|DELETE|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2838,7 +2818,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2875,7 +2855,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates|
+|GET|	/email/v2.0/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -2908,7 +2888,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2974,7 +2954,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -2998,7 +2978,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3079,7 +3059,7 @@ curl -X GET \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates|
+|POST|  /email/v2.0/appKeys/{appKey}/templates|
 
 
 [Path parameter]
@@ -3119,7 +3099,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3165,7 +3145,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|  /email/v2.0/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -3196,7 +3176,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3247,7 +3227,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|PUT|   /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|PUT|   /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3285,7 +3265,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3329,7 +3309,7 @@ curl -X PUT \
 
 |Http method|   URI|
 |---|---|
-|DELETE|    /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|DELETE|    /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3353,7 +3333,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3388,7 +3368,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tags|
+|GET|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -3418,7 +3398,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3469,7 +3449,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/tags|
+|POST|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path parameter]
 
@@ -3498,7 +3478,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3548,7 +3528,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -3578,7 +3558,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3614,7 +3594,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path parameter]
 
@@ -3638,7 +3618,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3673,7 +3653,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids|
+|GET|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -3705,7 +3685,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3778,7 +3758,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -3802,7 +3782,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3866,7 +3846,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids|
+|POST|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path parameter]
 
@@ -3905,7 +3885,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3950,7 +3930,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path parameter]
 
@@ -3974,7 +3954,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4007,7 +3987,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path parameter]
 
@@ -4037,7 +4017,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4073,7 +4053,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path parameter]
 
@@ -4098,7 +4078,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4133,7 +4113,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/statistics/view |
+|GET|	/email/v2.0/appKeys/{appKey}/statistics/view |
 
 [Path parameter]
 
@@ -4167,7 +4147,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4225,7 +4205,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| GET |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
@@ -4257,7 +4237,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4304,7 +4284,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| POST |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
@@ -4335,7 +4315,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4373,7 +4353,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-| PUT |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path parameter]
 
@@ -4404,7 +4384,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4434,175 +4414,3 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	成否|
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
-
-## 統計
-### 統計照会
-#### リクエスト
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-|GET| /email/v2.1/appKeys/{appKey}/stats|
-
-[Path parameter]
-
-|値|	タイプ|	説明|
-|---|---|---|
-|appKey|	String|	固有のappKey|
-
-[Header]
-
-```
-{
-  "X-Secret-Key": String
-}
-```
-
-|値|	タイプ|	必須|	説明|
-|---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
-
-[Query parameter]
-
-| 値             | 	タイプ         | 	必須 | 	説明                                                                                             |
-|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | イベントのカテゴリー。 MESSAGE                                                                               |
-| statisticsType | String       | X   | 検索された統計データの表現形式。 NORMAL(デフォルト値), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | 統計データの時間単位。デフォルト値は照会期間に応じて決定、 MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 照会範囲の開始値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 照会範囲の終了値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategoryがMESSAGEの場合、メールタイプでフィルタリング可能。 NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | eventCategoryがMESSAGEの場合、送信ドメインでフィルタリング可能。                                                      |
-| extra3s        | Array String | X   | eventCategoryがMESSAGEの場合、受信ドメインでフィルタリング可能。                                                      |
-| messageId      | String       | X   | メッセージID                                                                                          |
-| statsIds       | Array String | X   | 統計イベントキーID                                                                                     |
-| templateIds    | Array String | X   | テンプレートID                                                                                           |
-| statsCriteria  | Array String | X   | 合計時の統計基準。設定しない場合はデフォルト値で合計を計算。 EVENT(デフォルト値)、EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
-
-##### cURL
-```
-curl -X GET \
-https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
--H 'Content-Type: application/json;charset=UTF-8' \
--H 'X-Secret-Key: '"${SECRET_KEY}"''
-```
-
-#### レスポンス
-```json
-{
-	"header": {
-		"resultCode": 0,
-		"resultMessage": "success",
-		"isSuccessful": true
-	},
-	"stats": [{
-		"eventDateTime": "2020-08-12T00:00:00.000+09:00",
-		"events": {
-			"{statsCriteriaValue}.RECEIVED": 0,
-			"{statsCriteriaValue}.SENT_FAILED": 0,
-			"{statsCriteriaValue}.SENT": 0,
-			"{statsCriteriaValue}.OPENED": 0
-		}
-	}]
-}
-```
-
-| 値                      | 	タイプ     | 	説明                                                     |
-|-------------------------|----------|----------------------------------------------------------|
-| header                  | 	Object  | 	ヘッダ領域                                                  |
-| - isSuccessful          | 	Boolean | 	成否                                                  |
-| - resultCode            | 	Integer | 	失敗コード                                                  |
-| - resultMessage         | 	String  | 	失敗メッセージ                                                 |
-| stats                   | 	Object  | 	本文領域                                                  |
-| - eventDateTime         | 	String  | 	イベント発生時間                                              |
-| - events                | 	List    | 	データ領域                                                 |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}は照会条件として入力したstatsCriteriaの値です。 |
-| --- REQUESTED           | 	Integer | リクエスト件数                                                   |
-| --- SENT                | 	Integer | 	送信件数                                                  |
-| --- SENT_FAILED         | 	Integer | 	失敗件数                                                  |
-| --- RECEIVED            | 	Integer | 	成功件数                                                  |
-| --- OPENED              | 	Integer | 	読んだ件数                                                  |
-
-### 統計合計照会
-#### リクエスト
-
-[URL]
-
-| Http method | 	URI                                     |
-|-------------|------------------------------------------|
-| GET         | /email/v2.1/appKeys/{appKey}/stats/total |
-
-[Path parameter]
-
-|値|	タイプ|	説明|
-|---|---|---|
-|appKey|	String|	固有のappKey|
-
-[Header]
-
-```
-{
-  "X-Secret-Key": String
-}
-```
-
-|値|	タイプ|	必須|	説明|
-|---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
-
-
-[Query parameter]
-
-| 値             | 	タイプ         | 	必須 | 	説明                                                                                             |
-|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | イベントのカテゴリー。 MESSAGE                                                                               |
-| statisticsType | String       | X   | 検索された統計データの表現形式。 NORMAL(デフォルト値), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | 統計データの時間単位。デフォルト値は照会期間に応じて決定、 MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 照会範囲の開始値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 照会範囲の終了値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategoryがMESSAGEの場合、メールタイプでフィルタリング可能。 NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | eventCategoryがMESSAGEの場合、送信ドメインでフィルタリング可能。                                                      |
-| extra3s        | Array String | X   | eventCategoryがMESSAGEの場合、受信ドメインでフィルタリング可能。                                                      |
-| messageId      | String       | X   | メッセージID                                                                                          |
-| statsIds       | Array String | X   | 統計イベントキーID                                                                                     |
-| templateIds    | Array String | X   | テンプレートID                                                                                           |
-| statsCriteria  | Array String | X   | 合計時の統計基準。設定しない場合はデフォルト値で合計を計算。 EVENT(デフォルト値)、EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
-
-##### cURL
-```
-curl -X GET \
-https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
--H 'Content-Type: application/json;charset=UTF-8' \
--H 'X-Secret-Key: '"${SECRET_KEY}"''
-```
-
-#### レスポンス
-```json
-{
-	"header": {
-		"resultCode": 0,
-		"resultMessage": "success",
-		"isSuccessful": true
-	},
-	"total" : {
-		"SENT" : 120,
-		"SENT_FAILED" : 50,
-		"RECEIVED": 0,
-		"OPENED": 0
-	}
-}
-```
-
-| 値                                  | 	タイプ     | 	説明       |
-|-------------------------------------|----------|------------|
-| header                              | 	Object  | 	ヘッダ領域    |
-| - isSuccessful                      | 	Boolean | 	成否    |
-| - resultCode                        | 	Integer | 	失敗コード    |
-| - resultMessage                     | 	String  | 	失敗メッセージ   |
-| total                               | 	Object  | 	本文領域    |
-| - {statsCriteriaValue}.REQUESTED   | 	Integer | リクエスト件数     |
-| - {statsCriteriaValue}.SENT        | 	Integer | 	送信件数    |
-| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	失敗件数    |
-| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	成功件数    |
-| - {statsCriteriaValue}.OPENED      | 	Integer | 	読んだ件数    |
