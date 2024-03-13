@@ -1,9 +1,11 @@
 ## Notification > Email > API v2.1ガイド
 
-### v2.1 API 소개
+### v2.1 API紹介
 
-1. 조회 API 응답 변경
-	* 메일 조회 API의 응답에 statId가 추가되었습니다.
+1.シークレットキー認証の導入
+	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
+2. 大量送信照会API追加
+	* 大量送信件の照会APIが追加されました。
 
 [APIドメイン]
 
@@ -19,13 +21,13 @@ Content-Type: application/json;charset=UTF-8
 <p id="secret-key"></p>
 
 ### Secret Key
-- 콘솔에서 확인 가능합니다.
-- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
+- コンソールで確認できます。
+- Secret Keyが必要なAPIを呼び出す時,ヘッダに下記のように設定して呼び出す必要があります。
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
 ```
-**CONSOLE > Notification > Email > URL & AppKey** 에서 확인/생성할 수 있습니다.
+**CONSOLE > Notification > Email > URL & AppKey**で確認/作成できます。
 
 
 [curl例注意事項]
@@ -100,16 +102,16 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -131,11 +133,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -252,13 +254,13 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "顧客1"
         }
     ],
     "userId": "USER",
@@ -276,7 +278,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "templateParameter": {
                 "key": "value"
             }
@@ -370,16 +372,16 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "送信者名",
+    "title": "(広告)サンプルタイトル",
+    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -401,11 +403,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -450,13 +452,13 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "送信者名",
+    "title": "(広告)サンプルタイトル",
+    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "顧客1"
         }
     ],
     "userId": "USER",
@@ -474,7 +476,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "templateParameter": {
                 "key": "value"
             }
@@ -552,12 +554,12 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "고객1"
+        "receiveName": "顧客1"
     },
     "userId": "USER",
     "statsId": "statsId"
@@ -574,7 +576,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "고객1",
+        "receiveName": "顧客1",
         "templateParameter": {
             "key": "value"
         }
@@ -685,9 +687,9 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
     "userId": "USER",
@@ -1010,7 +1012,7 @@ curl -X GET \
 |-- senderGroupingKey| String| 発信者グループキー|
 |-- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
 |-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 
 ### メール送信詳細の照会
@@ -1154,12 +1156,12 @@ curl -X GET \
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー|
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 
-### 대량 메일 리스트 조회
+### 大量メールリスト照会
 
-#### 요청
+#### リクエスト
 
 [URL]
 
@@ -1169,23 +1171,23 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
+|appKey|	String|	固有のappKey|
 
 [Query parameter]
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|requestId|	String|	O|	요청 ID|
-|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	발신메일 주소|
-|senderName|	String|	X|	발신자 이름|
-|templateId|	String|	X|	템플릿 ID|
-|sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
+|requestId|	String|	O|	リクエストID|
+|startSendDate|	String|	O|	送信日開始値(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	送信日終了値(yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	送信メールアドレス|
+|senderName|	String|	X|	送信者名|
+|templateId|	String|	X|	テンプレートID|
+|sendStatus|	String|	X|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
+|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
+|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
 
 [Header]
 
@@ -1195,9 +1197,9 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1207,7 +1209,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### 응답
+#### レスポンス
 
 ```json
 {
@@ -1225,7 +1227,7 @@ curl -X GET \
             "requestId":"202108061843001hIOqv82",
             "requestDate":"2021-08-06 18:43:00",
             "sendStatus":"COMPLETE",
-            "sendStatusName":"발송완료",
+            "sendStatusName":"送信完了",
             "templateId":"templateId",
             "templateName":"templateName",
             "senderName":"NHN Cloud",
@@ -1242,35 +1244,35 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- pageNum|	Integer|	현재 페이지 번호|
-|- pageSize|	Integer|	조회된 데이터 건수|
-|- totalCount|	Integer|	총 데이터 건수|
-|- data|	Object|	데이터 영역|
-|-- requestId| String| 요청 ID|
-|-- requestDate| String| 요청 일시|
-|-- sendStatus|	String|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
-|-- sendStatusName|	String|	발송 상태 명|
-|-- templateId|	String|	템플릿 ID|
-|-- templateName|	String|	템플릿 명|
-|-- senderName|	String|	발신자 이름|
-|-- senderAddress|	String|	발신자 메일주소|
-|-- title|	String|	메일 제목|
-|-- body|	String|	메일 내용|
-|-- adYn |  String  | 광고여부 |
-|-- createDate |  String  | 생성 일시 |
-|-- updateDate |  String  | 수정 일시 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- pageNum|	Integer|	現在のページ番号|
+|- pageSize|	Integer|	照会されたデータ件数|
+|- totalCount|	Integer|	総データ件数|
+|- data|	Object|	データ領域|
+|-- requestId| String| リクエストID|
+|-- requestDate| String| リクエスト日時|
+|-- sendStatus|	String|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
+|-- sendStatusName|	String|	送信ステータス名|
+|-- templateId|	String|	テンプレートID|
+|-- templateName|	String|	テンプレート名|
+|-- senderName|	String|	送信者名|
+|-- senderAddress|	String|	送信者メールアドレス|
+|-- title|	String|	メールタイトル|
+|-- body|	String|	メール内容|
+|-- adYn |  String  | 広告かどうか |
+|-- createDate |  String  | 作成日時 |
+|-- updateDate |  String  | 修正日時 |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
-### 대량 메일 발송 수신자 조회
+### 大量メール送信受信者照会
 
-#### 요청
+#### リクエスト
 
 [URL]
 
@@ -1280,10 +1282,10 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
-|requestId|	String|	요청 ID|
+|appKey|	String|	固有のappKey|
+|requestId|	String|	リクエストID|
 
 [Header]
 
@@ -1293,21 +1295,21 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 
 [Query parameter]
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|receiveMailAddr|	String|	X|	수신 메일 주소|
-|startReceiveDate|	String|	X|	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|mailStatusCode|	String|	X|	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
+|receiveMailAddr|	String|	X|	受信メールアドレス|
+|startReceiveDate|	String|	X|	受信日開始値(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	受信日終了値(yyyy-MM-dd HH:mm:ss)|
+|mailStatusCode|	String|	X|	送信ステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
+|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
+|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
 
 #### cURL
 ```
@@ -1317,7 +1319,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### 응답
+#### レスポンス
 
 ```json
 {
@@ -1335,10 +1337,10 @@ curl -X GET \
             "requestId":"20210806120100sA3CcWU2",
             "mailSeq":1,
             "mailStatusCode":"SST2",
-            "mailStatusName":"발송완료",
+            "mailStatusName":"送信完了",
             "resultId":"<20210806120100sA3CcWU2@tcmmsapp-92a901>",
             "receiveType":"MRT0",
-            "receiveTypeName":"받는사람",
+            "receiveTypeName":"受信者",
             "receiveName":"name",
             "receiveMailAddr":"email@nhncloud.com",
             "isReceived":true,
@@ -1356,39 +1358,39 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- pageNum|	Integer|	현재 페이지 번호|
-|-pageSize|	Integer|	조회된 데이터 건수|
-|- totalCount|	Integer|	총 데이터 건수|
-|- data|	List|	데이터 영역|
-|-- requestId | String  | 요청 ID |
-|-- mailSeq | Integer  | 메일 순번 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
-|-- mailStatusName | String  | 메일 상태명 |
+|header|	Object|	ヘッダ領域|
+|- isSuccessful|	Boolean|	成否|
+|- resultCode|	Integer|	失敗コード|
+|- resultMessage|	String|	失敗メッセージ|
+|body|	Object|	本文領域|
+|- pageNum|	Integer|	現在のページ番号|
+|-pageSize|	Integer|	照会されたデータ件数|
+|- totalCount|	Integer|	総データ件数|
+|- data|	List|	データ領域|
+|-- requestId | String  | リクエストID |
+|-- mailSeq | Integer  | メール順番 |
+|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
+|-- mailStatusName | String  | メール状態名 |
 |-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	수신자 타입<br/>MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조|
-|-- receiveTypeName|	String|	수신자 타입 명|
-|-- receiveName|	String|	수신자 이름|
-|-- receiveMailAddr|	String|	수신자 메일 주소|
-|-- isReceived| Boolean| 수신 여부 |
-|-- resultDate| String| 수신 일시|
-|-- isOpened| Boolean| 읽음 여부 |
-|-- openedDate| String| 읽은 일시|
-|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- createDate |  String  | 생성 일시 |
-|-- updateDate |  String  | 수정 일시 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- receiveType|	String|	受信者タイプ<br/>MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC|
+|-- receiveTypeName|	String|	受信者タイプ 名|
+|-- receiveName|	String|	受信者名|
+|-- receiveMailAddr|	String|	受信者メールアドレス|
+|-- isReceived| Boolean| 受信したかどうか |
+|-- resultDate| String| 受信日時|
+|-- isOpened| Boolean| 既読かどうか |
+|-- openedDate| String| 既読日時|
+|-- dsnCode| String| DSN(Delivery Status Notification)ステータスコード|
+|-- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ |
+|-- createDate |  String  | 作成日時 |
+|-- updateDate |  String  | 修正日時 |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
-### 대량 메일 발송 상세 조회
+### 大量メール送信詳細照会
 
-#### 요청
+#### リクエスト
 
 [URL]
 
@@ -1398,11 +1400,11 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
-|requestId|	String|	요청 ID|
-|mailSeq|	Integer|	메일 순번|
+|appKey|	String|	固有のappKey|
+|requestId|	String|	リクエストID|
+|mailSeq|	Integer|	メール順番|
 
 [Header]
 
@@ -1412,9 +1414,9 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1424,7 +1426,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### 응답
+#### レスポンス
 
 ```json
 {
@@ -1439,7 +1441,7 @@ curl -X GET \
          "templateId":"test",
          "templateName":"3443423",
          "mailStatusCode":"SST2",
-         "mailStatusName":"발송완료",
+         "mailStatusName":"送信完了",
          "requestDate":"2021-08-06 12:31:00",
          "senderName":"name",
          "senderAddress":"email@nhncloud.com",
@@ -1453,7 +1455,7 @@ curl -X GET \
                "requestId":"20210806123100Q60Z9I72",
                "mailSeq":"1",
                "receiveType":"MRT0",
-               "receiveTypeName":"받는사람",
+               "receiveTypeName":"受信者",
                "receiveMailAddr":"email@nhncloud.com",
                "isReceived":true,
                "resultDate":"2021-08-06 12:34:30",
@@ -1479,47 +1481,47 @@ curl -X GET \
 }
 ```
 
-|값|	타입| 	설명                                                                         |
+|値|	タイプ| 	説明                                                                        |
 |---|---|-----------------------------------------------------------------------------|
-|header|	Object| 	헤더 영역                                                                      |
-|- isSuccessful|	Boolean| 	성공 여부                                                                      |
-|- resultCode|	Integer| 	실패 코드                                                                      |
-|- resultMessage|	String| 	실패 메시지                                                                     |
-|body|	Object| 	본문 영역                                                                      |
-|- data|	List| 	데이터 영역                                                                     |
-|-- requestId  | String  | 요청 ID                                                                       |
-|-- templateId | String  | 템플릿 ID                                                                      |
-|-- templateName | String  | 템플릿 명                                                                       |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
-|-- mailStatusName | String  | 메일 상태 명                                                                     |
-|-- requestDate | String  | 요청 시간                                                                       |
-|-- senderName | String  | 발신자 명                                                                       |
-|-- senderAddress | String  | 발신자 주소                                                                      |
+|header|	Object| 	ヘッダ領域                                                                     |
+|- isSuccessful|	Boolean| 	成否                                                                     |
+|- resultCode|	Integer| 	失敗コード                                                                     |
+|- resultMessage|	String| 	失敗メッセージ                                                                    |
+|body|	Object| 	本文領域                                                                     |
+|- data|	List| 	データ領域                                                                    |
+|-- requestId  | String  | リクエストID                                                                       |
+|-- templateId | String  | テンプレートID                                                                      |
+|-- templateName | String  | テンプレート名                                                                       |
+|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証 |
+|-- mailStatusName | String  | メール状態名                                                                    |
+|-- requestDate | String  | リクエスト時間                                                                      |
+|-- senderName | String  | 送信者名                                                                       |
+|-- senderAddress | String  | 送信者アドレス                                                                     |
 |-- resultId | String  | SMTP ID                                                                     |
-|-- resultDate | String  | 실제 발송 시간                                                                    |
-|-- title | String  | 제목                                                                          |
-|-- body | String  | 내용                                                                          |
-|-- customHeaders|	Map| 	[사용자 지정 헤더](./console-guide/#custom-header)                                |
-|-- receiverList | List| 수신자 리스트                                                                     |
-|--- requestId | String  | 요청 ID                                                                       |
-|--- mailSeq | Integer  | 메일 순번                                                                       |
-|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)                               |
-|--- receiveTypeName | String  | 수신자 타입명                                                                     |
-|--- receiveMailAddr | String  | 수신자 메일 주소                                                                   |
-|--- isReceived| Boolean| 수신 여부                                                                       |
-|--- resultDate| String| 수신 일시                                                                       |
-|--- isOpened| Boolean| 읽음 여부                                                                       |
-|--- openedDate| String| 읽은 일시                                                                       |
-|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드                                     |
-|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지                                    |
-|-- attachFileList | List  | 첨부파일 리스트                                                                    |
-|--- fileType|	String| 	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)                          |
-|--- fileId| Integer| 파일 ID                                                                       |
-|--- fileName|	String| 	첨부파일 이름                                                                    |
-|--- filePath|	String| 	첨부파일 경로                                                                    |
-|--- fileSize|	Integer| 	첨부파일 크기 (byte)                                                             |
-|--- createDate|	String| 	생성 일시                                                                      |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- resultDate | String  | 実際の送信時間                                                                   |
+|-- title | String  | タイトル                                                                         |
+|-- body | String  | 内容                                                                         |
+|-- customHeaders|	Map| 	[ユーザー指定ヘッダ](./console-guide/#custom-header)                                |
+|-- receiverList | List| 受信者リスト                                                                    |
+|--- requestId | String  | リクエストID                                                                       |
+|--- mailSeq | Integer  | メールの順番                                                                       |
+|--- receiveType | String  | 受信者タイプ(MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC)                               |
+|--- receiveTypeName | String  | 受信者タイプ名                                                                    |
+|--- receiveMailAddr | String  | 受信者メールアドレス                                                                  |
+|--- isReceived| Boolean| 受信したかどうか                                                                       |
+|--- resultDate| String| 受信日時                                                                      |
+|--- isOpened| Boolean| 既読かどうか                                                                       |
+|--- openedDate| String| 既読日時                                                                      |
+|--- dsnCode| String| DSN(Delivery Status Notification)ステータスコード                                    |
+|--- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ                                   |
+|-- attachFileList | List  | 添付ファイルリスト                                                                   |
+|--- fileType|	String| 	添付ファイルタイプ(MAIL:メールに添付されたファイル、 TEMPLATE:テンプレートに添付されたファイル)                          |
+|--- fileId| Integer| ファイルID                                                                       |
+|--- fileName|	String| 	添付ファイルの名前                                                                   |
+|--- filePath|	String| 	添付ファイルのパス                                                                   |
+|--- fileSize|	Integer| 	添付ファイルのサイズ(byte)                                                             |
+|--- createDate|	String| 	作成日時                                                                     |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 
 ### タグメール送信リクエストの照会
@@ -1845,7 +1847,7 @@ curl -X GET \
                     "statsId": String
                 }
             ],
-            "customHeaders": Map
+            "statsId": "statsId"
         }
     }
 }
@@ -1893,6 +1895,7 @@ curl -X GET \
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 
 ## 予約送信管理
@@ -1971,10 +1974,10 @@ curl -X GET \
             "receiveMailAddr":"receiver@example.com",
             "receiveName":"receiverName",
             "receiveType":"MRT0",
-            "receiveTypeName":"받는사람",
+            "receiveTypeName":"受信者",
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
-            "mailStatusName":"예약대기",
+            "mailStatusName":"予約待機",
             "senderGroupingKey":"senderKey",
             "statsId": "statsId"
          }
@@ -2008,8 +2011,9 @@ curl -X GET \
 |-- requestDate|	String|	送信日時|
 |-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
 |-- mailStatusName|	String|	送信ステータス名|
-|-- senderGroupingKey|	String|	発信者グループキー |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
+|--- statsId| String| 統計データグルーピングのためのキー |
+
 
 ### 予約送信の詳細照会
 #### リクエスト
@@ -2069,13 +2073,13 @@ curl -X GET \
          "senderName":"senderName",
          "requestDate":"2020-06-05 00:00:00",
          "mailStatusCode":"SST4",
-         "mailStatusName":"예약대기",
+         "mailStatusName":"予約待機",
          "receivers":[
             {
                "requestId":"202006050000008j6bx5Q1",
                "mailSeq":0,
                "receiveType":"MRT0",
-               "receiveTypeName":"받는사람",
+               "receiveTypeName":"受信者",
                "receiveName":"receiverName",
                "receiveMailAddr":"receiver@example.com"
             }
@@ -2109,7 +2113,7 @@ curl -X GET \
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
 |-- requestId| String| リクエストID|
-|-- mailSeq|	Integer| メールの順番 순번 |
+|-- mailSeq|	Integer| メールの順番 |
 |-- title|	String| タイトル |
 |-- body|	String| 内容 |
 |-- templateId|	String|	テンプレートID|
@@ -2134,8 +2138,8 @@ curl -X GET \
 |--- fileSize|	Integer| 添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	発信者グループキー |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 ### 予約発送の取り消し - リクエスト別
 #### リクエスト
@@ -2458,7 +2462,7 @@ curl -X GET \
 |-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
 |-- totalCount | Integer | 予約キャンセル対象件数 |
 |-- successCount | Integer | 予約キャンセル成功件数 |
-|-- createUser | Integer | 예약 취소 요청자 |
+|-- createUser | Integer | 予約キャンセル要求者 |
 |-- createdDateTime | String | 予約キャンセルリクエスト作成時間 |
 |-- updatedDateTime | String | 予約キャンセル修正時間 |
 
@@ -4430,9 +4434,10 @@ curl -X PUT \
 |- isSuccessful|	Boolean|	成否|
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
-## 통계
-### 통계 조회
-#### 요청
+
+## 統計
+### 統計照会
+#### リクエスト
 
 [URL]
 
@@ -4442,9 +4447,9 @@ curl -X PUT \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
+|appKey|	String|	固有のappKey|
 
 [Header]
 
@@ -4454,37 +4459,36 @@ curl -X PUT \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
-
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 [Query parameter]
 
-| 값              | 	타입          | 	필수 | 	설명                                                                                              |
+| 値             | 	タイプ         | 	必須 | 	説明                                                                                             |
 |----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
-| statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
-| extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
-| messageId      | String       | X   | 메시지 아이디                                                                                          |
-| statsIds       | Array String | X   | 통계 이벤트 키 아이디                                                                                     |
-| templateIds    | Array String | X   | 템플릿 ID                                                                                           |
-| statsCriteria  | Array String | X   | 합계 시 통계 기준, 설정하지 않으면 기본값으로 합계를 계산. EVENT(기본값), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
+| eventCategory  | String       | O   | イベントのカテゴリー。 MESSAGE                                                                               |
+| statisticsType | String       | X   | 検索された統計データの表現形式。 NORMAL(デフォルト値), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
+| timeUnit       | String       | X   | 統計データの時間単位。デフォルト値は照会期間に応じて決定、 MINUTES, HOURS, DAYS                                           |
+| from           | String       | X   | 照会範囲の開始値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 照会範囲の終了値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategoryがMESSAGEの場合、メールタイプでフィルタリング可能。 NORMAL, MASS, TAG, SMTP                               |
+| extra2s        | Array String | X   | eventCategoryがMESSAGEの場合、送信ドメインでフィルタリング可能。                                                      |
+| extra3s        | Array String | X   | eventCategoryがMESSAGEの場合、受信ドメインでフィルタリング可能。                                                      |
+| messageId      | String       | X   | メッセージID                                                                                          |
+| statsIds       | Array String | X   | 統計イベントキーID                                                                                     |
+| templateIds    | Array String | X   | テンプレートID                                                                                           |
+| statsCriteria  | Array String | X   | 合計時の統計基準。設定しない場合はデフォルト値で合計を計算。 EVENT(デフォルト値)、EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
 
 ##### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
-#### 응답
+#### レスポンス
 ```json
 {
 	"header": {
@@ -4504,24 +4508,24 @@ curl -X GET \
 }
 ```
 
-| 값                       | 	타입      | 	설명                                                      |
+| 値                      | 	タイプ     | 	説明                                                     |
 |-------------------------|----------|----------------------------------------------------------|
-| header                  | 	Object  | 	헤더 영역                                                   |
-| - isSuccessful          | 	Boolean | 	성공 여부                                                   |
-| - resultCode            | 	Integer | 	실패 코드                                                   |
-| - resultMessage         | 	String  | 	실패 메시지                                                  |
-| stats                   | 	Object  | 	본문 영역                                                   |
-| - eventDateTime         | 	String  | 	이벤트 발생 시간                                               |
-| - events                | 	List    | 	데이터 영역                                                  |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}는 조회 조건으로 입력한 statsCriteria의 값입니다. |
-| --- REQUESTED           | 	Integer | 요청 건수                                                    |
-| --- SENT                | 	Integer | 	발송 건수                                                   |
-| --- SENT_FAILED         | 	Integer | 	실패 건수                                                   |
-| --- RECEIVED            | 	Integer | 	성공 건수                                                   |
-| --- OPENED              | 	Integer | 	읽은 건수                                                   |
+| header                  | 	Object  | 	ヘッダ領域                                                  |
+| - isSuccessful          | 	Boolean | 	成否                                                  |
+| - resultCode            | 	Integer | 	失敗コード                                                  |
+| - resultMessage         | 	String  | 	失敗メッセージ                                                 |
+| stats                   | 	Object  | 	本文領域                                                  |
+| - eventDateTime         | 	String  | 	イベント発生時間                                              |
+| - events                | 	List    | 	データ領域                                                 |
+| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}は照会条件として入力したstatsCriteriaの値です。 |
+| --- REQUESTED           | 	Integer | リクエスト件数                                                   |
+| --- SENT                | 	Integer | 	送信件数                                                  |
+| --- SENT_FAILED         | 	Integer | 	失敗件数                                                  |
+| --- RECEIVED            | 	Integer | 	成功件数                                                  |
+| --- OPENED              | 	Integer | 	読んだ件数                                                  |
 
-### 통계 합계 조회
-#### 요청
+### 統計合計照会
+#### リクエスト
 
 [URL]
 
@@ -4531,9 +4535,9 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|値|	タイプ|	説明|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
+|appKey|	String|	固有のappKey|
 
 [Header]
 
@@ -4543,37 +4547,37 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 
 [Query parameter]
 
-| 값              | 	타입          | 	필수 | 	설명                                                                                              |
+| 値             | 	タイプ         | 	必須 | 	説明                                                                                             |
 |----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | 이벤트의 카테고리. MESSAGE                                                                               |
-| statisticsType | String       | X   | 검색된 통계 데이터의 표현 형식. NORMAL(기본값), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | 통계 데이터의 시간 단위. 기본값은 조회 기간에 따라 결정, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | 조회 범위 시작 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | 조회 범위 종료 값, 최근 30일까지(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | eventCategory가 MESSAGE인 경우 메일 타입으로 필터링 가능. NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | eventCategory가 MESSAGE인 경우 발신 도메인으로 필터링 가능.                                                      |
-| extra3s        | Array String | X   | eventCategory가 MESSAGE인 경우 수신 도메인으로 필터링 가능.                                                      |
-| messageId      | String       | X   | 메시지 아이디                                                                                          |
-| statsIds       | Array String | X   | 통계 이벤트 키 아이디                                                                                     |
-| templateIds    | Array String | X   | 템플릿 ID                                                                                           |
-| statsCriteria  | Array String | X   | 합계 시 통계 기준, 설정하지 않으면 기본값으로 합계를 계산. EVENT(기본값), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
+| eventCategory  | String       | O   | イベントのカテゴリー。 MESSAGE                                                                               |
+| statisticsType | String       | X   | 検索された統計データの表現形式。 NORMAL(デフォルト値), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
+| timeUnit       | String       | X   | 統計データの時間単位。デフォルト値は照会期間に応じて決定、 MINUTES, HOURS, DAYS                                           |
+| from           | String       | X   | 照会範囲の開始値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| to             | String       | X   | 照会範囲の終了値、最近30日まで(ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
+| extra1s        | Array String | X   | eventCategoryがMESSAGEの場合、メールタイプでフィルタリング可能。 NORMAL, MASS, TAG, SMTP                               |
+| extra2s        | Array String | X   | eventCategoryがMESSAGEの場合、送信ドメインでフィルタリング可能。                                                      |
+| extra3s        | Array String | X   | eventCategoryがMESSAGEの場合、受信ドメインでフィルタリング可能。                                                      |
+| messageId      | String       | X   | メッセージID                                                                                          |
+| statsIds       | Array String | X   | 統計イベントキーID                                                                                     |
+| templateIds    | Array String | X   | テンプレートID                                                                                           |
+| statsCriteria  | Array String | X   | 合計時の統計基準。設定しない場合はデフォルト値で合計を計算。 EVENT(デフォルト値)、EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
 
 ##### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
-#### 응답
+#### レスポンス
 ```json
 {
 	"header": {
@@ -4590,15 +4594,15 @@ curl -X GET \
 }
 ```
 
-| 값                                   | 	타입      | 	설명        |
+| 値                                  | 	タイプ     | 	説明       |
 |-------------------------------------|----------|------------|
-| header                              | 	Object  | 	헤더 영역     |
-| - isSuccessful                      | 	Boolean | 	성공 여부     |
-| - resultCode                        | 	Integer | 	실패 코드     |
-| - resultMessage                     | 	String  | 	실패 메시지    |
-| total                               | 	Object  | 	본문 영역     |
-| - {statsCriteriaValue}.REQUESTED   | 	Integer | 요청 건수      |
-| - {statsCriteriaValue}.SENT        | 	Integer | 	발송 건수     |
-| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	실패 건수     |
-| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	성공 건수     |
-| - {statsCriteriaValue}.OPENED      | 	Integer | 	읽은 건수     |
+| header                              | 	Object  | 	ヘッダ領域    |
+| - isSuccessful                      | 	Boolean | 	成否    |
+| - resultCode                        | 	Integer | 	失敗コード    |
+| - resultMessage                     | 	String  | 	失敗メッセージ   |
+| total                               | 	Object  | 	本文領域    |
+| - {statsCriteriaValue}.REQUESTED   | 	Integer | リクエスト件数     |
+| - {statsCriteriaValue}.SENT        | 	Integer | 	送信件数    |
+| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	失敗件数    |
+| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	成功件数    |
+| - {statsCriteriaValue}.OPENED      | 	Integer | 	読んだ件数    |
