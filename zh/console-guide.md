@@ -97,11 +97,11 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
 > using <strong>Free Marker type</strong>, please enter it in the form of ${replacement key}.
 
 1. On Mass Delivery tab at the bottom of screen, click on **Download Template**.
-    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX template files that contain
+    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX and XLS template files that contain
       template replacements.
     - In template file, enter replacement data to specify in replacement key, including receiver mail address and name.
 2. **Upload Recipient File** to upload the created file.
-    - Files containing template data can be uploaded by up to 500,000 people and up to 30MB.
+    - Files containing template data can be uploaded by up to 30MB.
     - If there is an error in template data, error information appears. Check and correct any errors.
     - Errors display the total number of errors and their contents (up to 10).
         - **Type of Errors**
