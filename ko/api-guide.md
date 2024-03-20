@@ -4489,7 +4489,7 @@ curl -X PUT \
 ##### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}"'' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4578,7 +4578,7 @@ curl -X GET \
 ##### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
+'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats/total?eventCategory='"${EVENT_CATEGORY}"'' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
