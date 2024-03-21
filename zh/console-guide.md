@@ -97,11 +97,11 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
 > using <strong>Free Marker type</strong>, please enter it in the form of ${replacement key}.
 
 1. On Mass Delivery tab at the bottom of screen, click on **Download Template**.
-    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX template files that contain
+    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX and XLS template files that contain
       template replacements.
     - In template file, enter replacement data to specify in replacement key, including receiver mail address and name.
 2. **Upload Recipient File** to upload the created file.
-    - Files containing template data can be uploaded by up to 500,000 people and up to 30MB.
+    - Files containing template data can be uploaded by up to 30MB.
     - If there is an error in template data, error information appears. Check and correct any errors.
     - Errors display the total number of errors and their contents (up to 10).
         - **Type of Errors**
@@ -445,6 +445,20 @@ of the week), mail type (general, mass) and template.
 You can view by date, time zone and day of the week.
 
 ![email_24_20231023_en](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
+
+## 통계 이벤트 키 관리
+**통계 이벤트 키 관리** 탭에서 통계 이벤트 키를 관리할 수 있습니다. 생성 시 이름, 설명, 이벤트 수집 기간을 설정할 수 있습니다. 이벤트 수집 기간을 설정하지 않으면 수집 기간은 무기한으로 설정됩니다. 생성된 통계 이벤트 키는 메시지 발송 시 설정할 수 있습니다. 통계 이벤트 키가 설정된 메시지들의 발송 결과는 **통계** 탭에서 통계 이벤트 키로 검색할 수 있습니다.
+
+<span id="stats"></span>
+
+## 통계 조회
+최근 30일 내 수집된 메시지 수신/확인 데이터를 검색할 수 있습니다. 콘솔에서 **통계 조회**를 선택합니다. 메시지, 토큰 등록이나 삭제에 대한 통계를 검색할 수 있습니다.
+
+1. 기간을 검색 조건으로 설정할 수 있습니다.
+    - 간편 기간 설정 버튼 외 수동 설정 시 1분을 최소 기간, 30일을 최대 기간으로 설정할 수 있습니다.
+2. 유형으로 그래프가 표시되는 방식을 설정할 수 있습니다.
+    - 기본은 설정된 기간에 따라 자동으로 최적화된 유형으로 그래프를 표시합니다.
+3. 메시지 통계에서는 통계 이벤트 키, 템플릿아이디, 메일 타입으로 검색할 수 있습니다.
 
 ## Sending Settings
 
