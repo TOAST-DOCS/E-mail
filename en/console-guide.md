@@ -439,26 +439,26 @@ Registered webhooks can be checked in the **Webhook Registration List**.
 
 ## Retrieve Statistics
 
-You can view delivery statistics on ** Retrieve Statistics ** tab. You can view with conditions such as inquiry period, statistical breakdown (date, time, day
+You can view delivery statistics on the **Statistics** (old) tab. You can view with conditions such as inquiry period, statistical breakdown (date, time, day
 of the week), mail type (general, mass) and template.
 
 You can view by date, time zone and day of the week.
 
 ![email_24_20231023_en](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
 
-## 통계 이벤트 키 관리
-**통계 이벤트 키 관리** 탭에서 통계 이벤트 키를 관리할 수 있습니다. 생성 시 이름, 설명, 이벤트 수집 기간을 설정할 수 있습니다. 이벤트 수집 기간을 설정하지 않으면 수집 기간은 무기한으로 설정됩니다. 생성된 통계 이벤트 키는 메시지 발송 시 설정할 수 있습니다. 통계 이벤트 키가 설정된 메시지들의 발송 결과는 **통계** 탭에서 통계 이벤트 키로 검색할 수 있습니다.
+## Manage Statistical Event Keys
+You can manage statistical event keys on the Manage **Statistical Event Keys** tab. When you create it, you can set a name, description, and event collection period. If you do not set an event collection period, the collection period is set to indefinite. The created statistical event key can be set at the time of sending the message. The sending results of messages with statistical event keys set can be searched by statistical event key on the **Statistics** tab.
 
 <span id="stats"></span>
 
-## 통계 조회
-최근 30일 내 수집된 메시지 수신/확인 데이터를 검색할 수 있습니다. 콘솔에서 **통계 조회**를 선택합니다. 메시지, 토큰 등록이나 삭제에 대한 통계를 검색할 수 있습니다.
+## Query Statistics
+You can search for message received/viewed data collected in the last 30 days. In the console, select View **statistics**. You can retrieve statistics for messages, token enrollments, or deletions.
 
-1. 기간을 검색 조건으로 설정할 수 있습니다.
-    - 간편 기간 설정 버튼 외 수동 설정 시 1분을 최소 기간, 30일을 최대 기간으로 설정할 수 있습니다.
-2. 유형으로 그래프가 표시되는 방식을 설정할 수 있습니다.
-    - 기본은 설정된 기간에 따라 자동으로 최적화된 유형으로 그래프를 표시합니다.
-3. 메시지 통계에서는 통계 이벤트 키, 템플릿아이디, 메일 타입으로 검색할 수 있습니다.
+1. You can set a time period as a search criteria.
+    - In addition to the Quick Set Duration button, you can manually set a minimum duration of 1 minute and a maximum duration of 30 days.
+2. Type lets you set how the graph is displayed.
+    - Default displays the graph in a type that is automatically optimized based on the set time period.
+3. In message statistics, you can search by statistical event key, templateid, and mail type.
 
 ## Sending Settings
 
