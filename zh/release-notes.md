@@ -38,6 +38,7 @@
     * Added a menu to add a StatsId for use in the API and console.
 * [Console] Role segmentation
   * Added the feature to grant separate Email menu access and feature control permissions based on role.
+  * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
 
 #### Feature Updates
 

@@ -38,6 +38,7 @@
         * API와 콘솔에서 사용할 StatsId를 추가할 수 있는 메뉴가 추가되었습니다.
 * [Console] 역할 세분화
     * 역할에 따라 Email 메뉴 접근 및 기능 제어 권한이 별도로 부여되도록 기능이 추가되었습니다.
+    * 자세한 내용은 [콘솔 사용 가이드](https://docs.nhncloud.com/ko/nhncloud/ko/console-guide/#_24)를 참고해주세요.
 
 #### 기능 개선/변경
 
