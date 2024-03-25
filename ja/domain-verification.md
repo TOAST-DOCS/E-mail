@@ -66,7 +66,7 @@ nslookup -q=TXT <your.domain.name>
 
 ![email_202312_03_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_ja.png)
 
-メールドメインの登録、所有権確認、共有設定が完了したら、保護機能を有効にすることができます。
+メールドメインの登録、所有権確認、が完了したら、保護機能を有効にすることができます。
 
 1. 保護機能を有効にするメールドメインの項目の**保護するかどうか > 保護**ボタンをクリックします。
 2. **保護適用案内**の内容を確認した後、**保護**をクリックして機能を有効にします。

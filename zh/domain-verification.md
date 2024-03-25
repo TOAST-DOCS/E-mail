@@ -70,7 +70,7 @@ nslookup -q=TXT <your.domain.name>
 
 ![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_en.png)
 
-Once you have registered, verified ownership and set up sharing for the mail domain, you can enable protection feature.
+Once you have registered and verified ownership for the mail domain, you can enable protection feature.
 
 1. Click **Protection Status > Protect** for the mail domain item for which you want to enable protection feature.
 2. **Apply Protection Guide**, click on **Protect** to activate the feature.

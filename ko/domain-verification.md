@@ -66,7 +66,7 @@ nslookup -q=TXT <your.domain.name>
 
 ![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03.png)
 
-메일 도메인 등록, 소유권 확인, 공유 설정이 완료되었다면 보호 기능을 활성화할 수 있습니다.
+메일 도메인 등록, 소유권 확인이 완료되었다면 보호 기능을 활성화할 수 있습니다.
 
 1. 보호 기능을 활성화할 메일 도메인 항목의 **보호 여부 > 보호** 버튼을 클릭합니다.
 2. **보호 적용 안내**의 내용을 확인한 뒤 **보호**를 클릭해 기능을 활성화합니다.
