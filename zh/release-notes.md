@@ -1,30 +1,30 @@
 ## Notification > Email > Release Notes
-### 2024. 03. 26.
+### March 26, 2024.
 
-#### 기능 추가
+#### Added Features
 
-* [Console] 템플릿 관리 기능 추가 - 카테고리/템플릿 수정
-    * 템플릿 및 카테고리 수정 기능이 추가되어 선택한 항목을 수정할 수 있습니다.
-    * `템플릿 관리` 화면에서 카테고리나 템플릿을 선택한 후, 원하는 카테고리로 드래그하여 이동할 수 있습니다.
+* [Console] Added the feature to manage templates - Modify Category/Template
+  * Added the feature to modify templates and categories, allowing you to modify selected items.
+  * You can select a category or template on `Manage Template` screen and drag it to any desired categories.
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [API] API 버전 업데이트 v2.1
-    * 조회 API 응답 변경
-        * 메일 조회 API의 응답에 통계 이벤트 키가 추가되었습니다.
-    * 통계 이벤트 키로 조회할 수 있는 API가 추가되었습니다.
-        * 조회한 통계 데이터를 합산할 수 있는 합계 API가 추가되었습니다.
-* [API] SPF 유효성 검증 로직 강화
-    * SPF 유효성 검증 로직이 강화됩니다.
-        * 10회 이상 lookup될 경우 SPF 유효성 검증에 실패합니다.
-        * `~ all` directive가 spf 레코드 중간에 존재할 경우 SPF 유효성 검증에 실패합니다.
-        * SPF 레코드가 2개 이상 존재할 경우 SPF 유효성 검증에 실패합니다.
-* [Console] 대량 메일 수신자 파일 업로드 제한 변경 안내
-    * 수신자 파일 업로드 제한이 변경되었습니다. 이제 수신자에 대한 최대 제한이 사라집니다.
-        * 기존: 대량 메일 수신자 파일은 최대 50만 명 그리고 30MB까지 업로드할 수 있습니다.
-        * 변경 후: 대량 메일 수신자 파일은 30MB까지 업로드할 수 있습니다.
+* [API] API version update v2.1
+  * Changed Query API Response
+    * Added statistics event keys to responses from the query mail  API.
+  * Added API to query by statistical event key.
+    * Added a summation API to sum queried statistical data.
+* [API] Strengthen SPF validation logic
+  * SPF validation logic is to be strengthened.
+    * SPF validation fails if it is looked up more than 10 times.
+    * SPF validation fails if `~all` direction exists in the middle of spf records.
+    * If more than two SPF record exists, SPF validation fails.
+* [Console] Changed the file upload limit for mass mail recipients
+  * The limits on uploading recipient files have been changed. The maximum limit on recipients will now disappear.
+    * Previous: Mass mail recipient files can upload up to 500,000 people and up to 30 MB.
+    * Current: Mass mail recipient files can be uploaded up to 30 MB.
 
-### 2024. 02. 27.
+### February 27, 2024
 
 #### Added Features
 
