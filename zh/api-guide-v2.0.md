@@ -1,9 +1,12 @@
-## Notification > Email > API v2.1 Guide
+## Notification > Email > API v2.0 Guide
 
-### v2.1 API Overview
+### v2.0 API 소개
 
-1. Changed query API response
-	* Added statId to the response of the mail query API.
+1. 시크릿 키 인증 도입
+	* v2.0 API 호출 시 헤더에 [시크릿 키](./api-guide/#secret-key)를 설정해서 호출해야 합니다.
+2. 대량 발송 조회 API 추가
+	* 대량 발송건에 대한 조회 API가 추가되었습니다.
+
 
 [API Domain]
 
@@ -19,13 +22,13 @@ Content-Type: application/json;charset=UTF-8
 <p id="secret-key"></p>
 
 ### Secret Key
-- You can check in the console.
-- When calling an API that requires Secret Key, you must call after configuring the header as follows.
+- 콘솔에서 확인 가능합니다.
+- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
 ```
-**You can check and create in CONSOLE > Notification > Email > URL & AppKey**.
+**CONSOLE > Notification > Email > URL & AppKey** 에서 확인/생성할 수 있습니다.
 
 
 [Caution for Curl Example]
@@ -42,7 +45,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/mail|
 
 [Path Parameter]
 
@@ -62,8 +65,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
-
-[Request body]
+[Request Body]
 
 | Value             | Type        | Required | Description                                                  |
 | ----------------- | ----------- | -------- | ------------------------------------------------------------ |
@@ -95,21 +97,21 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "Sender name",
-    "title": "Sample title",
-    "body": "Sample body",
+    "senderName": "발송자이름",
+    "title": "샘플 타이틀",
+    "body": "샘플 내용",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "Customer 1",
+            "receiveName": "고객1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "Customer 2",
+            "receiveName": "고객2",
             "receiveType": "MRT1"
         }
     ],
@@ -121,7 +123,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -197,7 +199,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/eachMail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/eachMail|
 
 [Path Parameter]
 
@@ -238,7 +240,7 @@ curl -X POST \
 |customHeaders| Map| X| [Custom Header](./console-guide/#custom-header) |
 |senderGroupingKey| String| X| Sender's group key |
 |userId|	String|	X| Delimiter for delivery e.g.) admin,system |
-|statsId| String      | X        | Statistics ID (not included in the delivery search conditions)|
+|statsId| String      | X| Statistics ID (not included in the delivery search conditions)|
 
 [Caution]
 
@@ -248,7 +250,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -270,7 +272,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -345,7 +347,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-mail|
 
 [Path Parameter]
 
@@ -368,7 +370,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -394,7 +396,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -425,7 +427,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/ad-eachMail |
+|POST|	/email/v2.0/appKeys/{appKey}/sender/ad-eachMail |
 
 [Path Parameter]
 
@@ -448,7 +450,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -470,7 +472,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/ad-eachMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -496,7 +498,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/auth-mail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/auth-mail|
 
 [Path Parameter]
 
@@ -552,7 +554,7 @@ Features of authenticated mails are as follows:
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -572,7 +574,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/auth-mail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -627,7 +629,7 @@ curl -X POST \
 | -- results          | List    | Delivery result                                              |
 | --- receiveMailAddr | String  | Recipient's mail address                                     |
 | --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
+| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
@@ -639,7 +641,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/tagMail|
+|POST|	/email/v2.0/appKeys/{appKey}/sender/tagMail|
 
 [Path Parameter]
 
@@ -680,7 +682,7 @@ curl -X POST \
 [Example 1]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -698,7 +700,7 @@ curl -X POST \
 [Example 2 - Using Templates]
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/tagMail' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/tagMail' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -744,7 +746,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/attachfile/binaryUpload|
+|POST|	/email/v2.0/appKeys/{appKey}/attachfile/binaryUpload|
 
 [Path Parameter]
 
@@ -775,7 +777,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -884,7 +886,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mails|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mails|
 
 [Path Parameter]
 
@@ -906,30 +908,30 @@ curl -X POST \
 
 [Query Parameter]
 
-| Value            | Type    | Required | Description                                                                                                                                  |
-| ---------------- | ------- | -------- |----------------------------------------------------------------------------------------------------------------------------------------------|
-| requestId        | String  | O        | Request ID                                                                                                                                   |
-| startSendDate    | String  | O        | Delivery start date (yyyy-MM-dd HH:mm:ss)                                                                                                    |
-| endSendDate      | String  | X        | Delivery end date (yyyy-MM-dd HH:mm:ss)                                                                                                      |
-| startReceiveDate | String  | X        | Receiving start date (yyyy-MM-dd HH:mm:ss)                                                                                                   |
-| endReceiveDate   | String  | X        | Receiving end date (yyyy-MM-dd HH:mm:ss)                                                                                                     |
-| senderAddress    | String  | X        | Sender's mail address                                                                                                                        |
-| senderName       | String  | X        | Sender's name                                                                                                                                |
-| receiveMailAddr  | String  | X        | Recipient's mail address                                                                                                                     |
-| templateId       | String  | X        | Template number                                                                                                                              |
+| Value            | Type    | Required | Description                                                  |
+| ---------------- | ------- | -------- | ------------------------------------------------------------ |
+| requestId        | String  | O        | Request ID                                                   |
+| startSendDate    | String  | O        | Delivery start date (yyyy-MM-dd HH:mm:ss)                    |
+| endSendDate      | String  | X        | Delivery end date (yyyy-MM-dd HH:mm:ss)                      |
+| startReceiveDate | String  | X        | Receiving start date (yyyy-MM-dd HH:mm:ss)                   |
+| endReceiveDate   | String  | X        | Receiving end date (yyyy-MM-dd HH:mm:ss)                     |
+| senderAddress    | String  | X        | Sender's mail address                                        |
+| senderName       | String  | X        | Sender's name                                                |
+| receiveMailAddr  | String  | X        | Recipient's mail address                                     |
+| templateId       | String  | X        | Template number                                              |
 | mailStatusCode   | String  | X        | Delivery status code   SST0: Preparing for sending, SST1: Sending,    SST2: Sending completed, SST3: Sending failed, SST7: Not Authenticated |
-| isReceived       | Boolean | X        | Received or Not                                                                                                                              |
-| isOpened         | Boolean | X        | Opened or Not                                                                                                                                |
-| senderGroupingKey| String  | X        | Sender's group key                                                                                                                           |
-| pageNum          | Integer | X        | Page number (default: 1)                                                                                                                     |
-| pageSize         | Integer | X        | Number of queries (default: 15)                                                                                                              |
+| isReceived       | Boolean | X        | Received or Not                                              |
+| isOpened         | Boolean | X        | Opened or Not                                                |
+| senderGroupingKey| String  | X        | Sender's group key                                           |
+| pageNum          | Integer | X        | Page number (default: 1)                                     |
+| pageSize         | Integer | X        | Number of queries (default: 15)                              |
 
 * **requestId**, or **startSendDate** and **endSendDate** are required fields. 
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -969,8 +971,7 @@ curl -X GET \
                 "receiveName": "Receiver",
                 "senderGroupingKey": "A_GROUP",
                 "dsnCode": "2.5.0",
-                "dsnMessage": "SUCCESS",
-                "statsId": "statsId"
+                "dsnMessage": "SUCCESS"
             }
         ]
     }
@@ -1009,7 +1010,6 @@ curl -X GET \
 | -- senderGroupingKey| String  | Sender's group key                                           |
 | -- dsnCode| String| DSN(Delivery Status Notification) Status Code |
 | -- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-|-- statsId| String| Key for statistics data grouping |
 
 
 ### Query Mail Delivery Details
@@ -1020,7 +1020,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}|
 
 [Path Parameter]
 
@@ -1045,7 +1045,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/mail/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1103,8 +1103,7 @@ curl -X GET \
             "customHeaders": {
                 "Content-Type": "text/html"
             },
-            "senderGroupingKey": "A_GROUP",
-            "statsId": "statsId"
+            "senderGroupingKey": "A_GROUP"
         }
     }
 }
@@ -1153,38 +1152,37 @@ curl -X GET \
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
-|-- statsId| String| Key for statistics data grouping |
 
 
-### Query Mass Delivery List
+### 대량 메일 리스트 조회
 
-#### Request
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails|
 
 [Path parameter]
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	Unique appkey|
+|appKey|	String|	고유의 appKey|
 
 [Query parameter]
 
-|Value|	Type|	Required|	Descriptions|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|requestId|	String|	O|	Request ID|
-|startSendDate|	String|	O|	Start value of send date(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	End value of send date (yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	Sender mail address|
-|senderName|	String|	X|	Sender name|
-|templateId|	String|	X|	Template ID|
-|sendStatus|	String|	X|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|
-|pageNum|	Integer|	X|	Page number 1(default)|
-|pageSize|	Integer|	X|	The number of queries 15(default)|
+|requestId|	String|	O|	요청 ID|
+|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	발신메일 주소|
+|senderName|	String|	X|	발신자 이름|
+|templateId|	String|	X|	템플릿 ID|
+|sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
+|pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
 [Header]
 
@@ -1194,95 +1192,93 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Required|	Descriptions|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### Response
+#### 응답
 
 ```json
-{ 
-   "header":{ 
-      "isSuccessful":true, 
-      "resultCode":0, 
-      "resultMessage":"SUCCESS" 
-   }, 
-   "body":{ 
-      "pageNum":1, 
-      "pageSize":15, 
-      "totalCount":1, 
-      "data":[ 
-         { 
-            "requestId":"202108061843001hIOqv82", 
-            "requestDate":"2021-08-06 18:43:00", 
-            "sendStatus":"COMPLETE", 
-            "sendStatusName":"Complete to send ", 
-            "templateId":"templateId", 
-            "templateName":"templateName", 
-            "senderName":"NHN Cloud", 
-            "senderAddress":"email@nhncloud.com", 
-            "title":"title", 
-            "body":"body", 
-            "adYn":"N", 
-            "createDate":"2021-08-06 18:43:03", 
-            "updateDate":"2021-08-06 18:43:03", 
-            "statsId": "statsId" 
-         } 
-      ] 
-   } 
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "pageNum":1,
+      "pageSize":15,
+      "totalCount":1,
+      "data":[
+         {
+            "requestId":"202108061843001hIOqv82",
+            "requestDate":"2021-08-06 18:43:00",
+            "sendStatus":"COMPLETE",
+            "sendStatusName":"발송완료",
+            "templateId":"templateId",
+            "templateName":"templateName",
+            "senderName":"NHN Cloud",
+            "senderAddress":"email@nhncloud.com",
+            "title":"title",
+            "body":"body",
+            "adYn":"N",
+            "createDate":"2021-08-06 18:43:03",
+            "updateDate":"2021-08-06 18:43:03"
+         }
+      ]
+   }
 }
 ```
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- pageNum|	Integer|	Current page number|
-|- pageSize|	Integer|	The number of data queried |
-|- totalCount|	Integer|	Total number of data|
-|- data|	Object|	Scope of data|
-|-- requestId| String| Request ID|
-|-- requestDate| String| Date and time of request|
-|-- sendStatus|	String|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|
-|-- sendStatusName|	String|	Name of send status |
-|-- templateId|	String|	Template ID|
-|-- templateName|	String|	Template name|
-|-- senderName|	String|	Sender name|
-|-- senderAddress|	String|	Sender mail address|
-|-- title|	String|	Title|
-|-- body|	String|	Content|
-|-- adYn |  String  | Advertisement or not |
-|-- createDate |  String  | Created date |
-|-- updateDate |  String  | Modified date |
-|-- statsId| String| Key for statistics data grouping |
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|- pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	Object|	데이터 영역|
+|-- requestId| String| 요청 ID|
+|-- requestDate| String| 요청 일시|
+|-- sendStatus|	String|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
+|-- sendStatusName|	String|	발송 상태 명|
+|-- templateId|	String|	템플릿 ID|
+|-- templateName|	String|	템플릿 명|
+|-- senderName|	String|	발신자 이름|
+|-- senderAddress|	String|	발신자 메일주소|
+|-- title|	String|	메일 제목|
+|-- body|	String|	메일 내용|
+|-- adYn |  String  | 광고여부 |
+|-- createDate |  String  | 생성 일시 |
+|-- updateDate |  String  | 수정 일시 |
 
-### Query Recipient for Mass Delivery
+### 대량 메일 발송 수신자 조회
 
-#### Request
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}|
 
 [Path parameter]
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	Unique appkey|
-|requestId|	String|	Request ID|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
 
 [Header]
 
@@ -1292,116 +1288,114 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Required|	Descriptions|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 
 [Query parameter]
 
-|Value|	Type|	Required| 	Descriptions                                                                         |
-|---|---|---|-----------------------------------------------------------------------------|
-|receiveMailAddr|	String|	X| 	Receiving mail address                                                                   |
-|startReceiveDate|	String|	X| 	Start value of receiving date (yyyy-MM-dd HH:mm:ss)                                            |
-|endReceiveDate|	String|	X| 	End value of receiving date (yyyy-MM-dd HH:mm:ss)                                            |
-|mailStatusCode|	String|	X| 	Send status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved |
-|pageNum|	Integer|	X| 	Page number 1(default)                                                              |
-|pageSize|	Integer|	X| 	The number of queries 15(default)                                                              |
+|값|	타입|	필수| 	설명                                                                          |
+|---|---|---|------------------------------------------------------------------------------|
+|receiveMailAddr|	String|	X| 	수신 메일 주소                                                                    |
+|startReceiveDate|	String|	X| 	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)                                             |
+|endReceiveDate|	String|	X| 	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)                                             |
+|mailStatusCode|	String|	X| 	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
+|pageNum|	Integer|	X| 	페이지 번호 1(기본값)                                                               |
+|pageSize|	Integer|	X| 	조회 건수 15(기본값)                                                               |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### Response
+#### 응답
 
 ```json
-{ 
-   "header":{ 
-      "isSuccessful":true, 
-      "resultCode":0, 
-      "resultMessage":"SUCCESS" 
-   }, 
-   "body":{ 
-      "pageNum":1, 
-      "pageSize":15, 
-      "totalCount":1, 
-      "data":[ 
-         { 
-            "requestId":"20210806120100sA3CcWU2", 
-            "mailSeq":1, 
-            "mailStatusCode":"SST2", 
-            "mailStatusName":" Complete to send ", 
-            "resultId":"<20210806120100sA3CcWU2@tcmmsapp-92a901>", 
-            "receiveType":"MRT0", 
-            "receiveTypeName":"Recepient", 
-            "receiveName":"name", 
-            "receiveMailAddr":"email@nhncloud.com", 
-            "isReceived":true, 
-            "resultDate":"2021-08-06 13:02:00", 
-            "isOpened":true, 
-            "openedDate":"2021-08-06 12:34:30", 
-            "dsnCode":"2.5.0", 
-            "dsnMessage":"SUCCESS", 
-            "createDate":"2021-08-06 12:01:41", 
-            "updateDate":"2021-08-06 12:02:00", 
-            "statsId": "statsId" 
-         } 
-      ] 
-   } 
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "pageNum":1,
+      "pageSize":15,
+      "totalCount":1,
+      "data":[
+         {
+            "requestId":"20210806120100sA3CcWU2",
+            "mailSeq":1,
+            "mailStatusCode":"SST2",
+            "mailStatusName":"발송완료",
+            "resultId":"<20210806120100sA3CcWU2@tcmmsapp-92a901>",
+            "receiveType":"MRT0",
+            "receiveTypeName":"받는사람",
+            "receiveName":"name",
+            "receiveMailAddr":"email@nhncloud.com",
+            "isReceived":true,
+            "resultDate":"2021-08-06 13:02:00",
+            "isOpened":true,
+            "openedDate":"2021-08-06 12:34:30",
+            "dsnCode":"2.5.0",
+            "dsnMessage":"SUCCESS",
+            "createDate":"2021-08-06 12:01:41",
+            "updateDate":"2021-08-06 12:02:00"
+         }
+      ]
+   }
 }
 ```
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- pageNum|	Integer|	Current page number|
-|-pageSize|	Integer|	The number of data queried |
-|- totalCount|	Integer|	Total number of data|
-|- data|	List|	Scope of data|
-|-- requestId | String  | Request ID |
-|-- mailSeq | Integer  | Mail order |
-|-- mailStatusCode | String  | Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved|
-|-- mailStatusName | String  | Mail status name |
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- pageNum|	Integer|	현재 페이지 번호|
+|-pageSize|	Integer|	조회된 데이터 건수|
+|- totalCount|	Integer|	총 데이터 건수|
+|- data|	List|	데이터 영역|
+|-- requestId | String  | 요청 ID |
+|-- mailSeq | Integer  | 메일 순번 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증  |
+|-- mailStatusName | String  | 메일 상태명 |
 |-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	Recipient type<br/>MRT0 : Recipient , MRT1 : CC, MRT2 : BCC|
-|-- receiveTypeName|	String|	Recipient type name|
-|-- receiveName|	String|	Recipient name|
-|-- receiveMailAddr|	String|	Recipient email address|
-|-- isReceived| Boolean| Received or not |
-|-- resultDate| String| Date and time of receiving|
-|-- isOpened| Boolean| Opened or not |
-|-- openedDate| String| Date and time of open|
-|-- dsnCode| String| Delivery Status Notification (DSN) status code|
-|-- dsnMessage| String| Delivery Status Notification (DSN) status message |
-|-- createDate |  String  | Created date |
-|-- updateDate |  String  | Modified date |
-|-- statsId| String| Key for statistics data grouping |
+|-- receiveType|	String|	수신자 타입<br/>MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조|
+|-- receiveTypeName|	String|	수신자 타입 명|
+|-- receiveName|	String|	수신자 이름|
+|-- receiveMailAddr|	String|	수신자 메일 주소|
+|-- isReceived| Boolean| 수신 여부 |
+|-- resultDate| String| 수신 일시|
+|-- isOpened| Boolean| 읽음 여부 |
+|-- openedDate| String| 읽은 일시|
+|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
+|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
+|-- createDate |  String  | 생성 일시 |
+|-- updateDate |  String  | 수정 일시 |
 
-### Query Mass Delivery Details
+### 대량 메일 발송 상세 조회
 
-#### Request
+#### 요청
 
 [URL]
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
+|GET|	/email/v2.0/appKeys/{appKey}/mass-mails/{requestId}/{mailSeq}|
 
 [Path parameter]
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|appKey|	String|	Unique appkey|
-|requestId|	String|	Request ID|
-|mailSeq|	Integer|	Mail order|
+|appKey|	String|	고유의 appKey|
+|requestId|	String|	요청 ID|
+|mailSeq|	Integer|	메일 순번|
 
 [Header]
 
@@ -1411,114 +1405,113 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Required|	Descriptions|
+|값|	타입|	필수|	설명|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/mass-mails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}"' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
-#### Response
+#### 응답
 
 ```json
-{ 
-   "header":{ 
-      "isSuccessful":true, 
-      "resultCode":0, 
-      "resultMessage":"SUCCESS" 
-   }, 
-   "body":{ 
-      "data":{ 
-         "requestId":"20210806123100Q60Z9I72", 
-         "templateId":"test", 
-         "templateName":"3443423", 
-         "mailStatusCode":"SST2", 
-         "mailStatusName":"Complete to send", 
-         "requestDate":"2021-08-06 12:31:00", 
-         "senderName":"name", 
-         "senderAddress":"email@nhncloud.com", 
-         "resultId":"<20210806123100Q60Z9I72@tcmmsapp-92a901>", 
-         "resultDate":"2021-08-06 12:34:30", 
-         "title":"test", 
-         "body":"test", 
-         "customHeaders":null, 
-         "receiverList":[ 
-            { 
-               "requestId":"20210806123100Q60Z9I72", 
-               "mailSeq":"1", 
-               "receiveType":"MRT0", 
-               "receiveTypeName":"Recepient", 
-               "receiveMailAddr":"email@nhncloud.com", 
-               "isReceived":true, 
-               "resultDate":"2021-08-06 12:34:30", 
-               "isOpened":true, 
-               "openedDate":"2021-08-06 12:34:30", 
-               "dsnCode":"2.5.0", 
-               "dsnMessage":"SUCCESS" 
-            } 
-         ], 
-         "attachFileList":[ 
-            { 
-               "fileType":"TEMPLATE", 
-               "fileId":38915, 
-               "fileName":"file", 
-               "filePath":"1014535/toast-mt-2021-08-06/1229/38915", 
-               "fileSize":1679, 
-               "createDate":"2021-08-06 12:29:14" 
-            } 
-         ], 
-         "statsId": "statsId" 
-      } 
-   } 
+{
+   "header":{
+      "isSuccessful":true,
+      "resultCode":0,
+      "resultMessage":"SUCCESS"
+   },
+   "body":{
+      "data":{
+         "requestId":"20210806123100Q60Z9I72",
+         "templateId":"test",
+         "templateName":"3443423",
+         "mailStatusCode":"SST2",
+         "mailStatusName":"발송완료",
+         "requestDate":"2021-08-06 12:31:00",
+         "senderName":"name",
+         "senderAddress":"email@nhncloud.com",
+         "resultId":"<20210806123100Q60Z9I72@tcmmsapp-92a901>",
+         "resultDate":"2021-08-06 12:34:30",
+         "title":"test",
+         "body":"test",
+         "customHeaders":null,
+         "receiverList":[
+            {
+               "requestId":"20210806123100Q60Z9I72",
+               "mailSeq":"1",
+               "receiveType":"MRT0",
+               "receiveTypeName":"받는사람",
+               "receiveMailAddr":"email@nhncloud.com",
+               "isReceived":true,
+               "resultDate":"2021-08-06 12:34:30",
+               "isOpened":true,
+               "openedDate":"2021-08-06 12:34:30",
+               "dsnCode":"2.5.0",
+               "dsnMessage":"SUCCESS"
+            }
+         ],
+         "attachFileList":[
+            {
+               "fileType":"TEMPLATE",
+               "fileId":38915,
+               "fileName":"file",
+               "filePath":"1014535/toast-mt-2021-08-06/1229/38915",
+               "fileSize":1679,
+               "createDate":"2021-08-06 12:29:14"
+            }
+         ]
+      }
+   }
 }
 ```
 
-|Value|	Type|	Descriptions|
+|값|	타입|	설명|
 |---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- data|	List|	Scope of data|
-|-- requestId  | String  | Request ID |
-|-- templateId | String  | Template ID |
-|-- templateName | String  | Template name |
-|-- mailStatusCode | String  | Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved |
-|-- mailStatusName | String  | Mail status name |
-|-- requestDate | String  | Request time |
-|-- senderName | String  | Sender name |
-|-- senderAddress | String  | Sender address |
+|header|	Object|	헤더 영역|
+|- isSuccessful|	Boolean|	성공 여부|
+|- resultCode|	Integer|	실패 코드|
+|- resultMessage|	String|	실패 메시지|
+|body|	Object|	본문 영역|
+|- data|	List|	데이터 영역|
+|-- requestId  | String  | 요청 ID |
+|-- templateId | String  | 템플릿 ID |
+|-- templateName | String  | 템플릿 명 |
+|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증  |
+|-- mailStatusName | String  | 메일 상태 명 |
+|-- requestDate | String  | 요청 시간 |
+|-- senderName | String  | 발신자 명 |
+|-- senderAddress | String  | 발신자 주소 |
 |-- resultId | String  | SMTP ID |
-|-- resultDate | String  | Actual sending time |
-|-- title | String  | Title |
-|-- body | String  | Content |
-|-- customHeaders|	Map|	[Customer Header](./console-guide/#custom-header) |
-|-- receiverList | List| List of recipients|
-|--- requestId | String  | Request ID |
-|--- mailSeq | Integer  | Mail order |
-|--- receiveType | String  | Recipient type(MRT0 : recipient , MRT1 : CC, MRT2 : BCC) |
-|--- receiveTypeName | String  | Recipient type name |
-|--- receiveMailAddr | String  | Recipient email address |
-|--- isReceived| Boolean| Received or not |
-|--- resultDate| String| Date and time of receiving|
-|--- isOpened| Boolean| Opened or not |
-|--- openedDate| String| Date and time of open|
-|--- dsnCode| String| Delivery Status Notification (DSN) status code|
-|--- dsnMessage| String| Delivery Status Notification (DSN) status message |
-|-- attachFileList | List  | Attached file list |
-|--- fileType|	String|	Attached file type(MAIL: files attached to mail, TEMPLATE: files attached to template)|
-|--- fileId| Integer| File ID|
-|--- fileName|	String|	Attached file name|
-|--- filePath|	String|	Attached file path|
-|--- fileSize|	Integer|	Attached file size(byte)|
-|--- createDate|	String|	Date and time of creation|
-|-- statsId| String| Key for statistics data grouping |
+|-- resultDate | String  | 실제 발송 시간 |
+|-- title | String  | 제목 |
+|-- body | String  | 내용 |
+|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
+|-- receiverList | List| 수신자 리스트|
+|--- requestId | String  | 요청 ID |
+|--- mailSeq | Integer  | 메일 순번 |
+|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) |
+|--- receiveTypeName | String  | 수신자 타입명 |
+|--- receiveMailAddr | String  | 수신자 메일 주소 |
+|--- isReceived| Boolean| 수신 여부 |
+|--- resultDate| String| 수신 일시|
+|--- isOpened| Boolean| 읽음 여부 |
+|--- openedDate| String| 읽은 일시|
+|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
+|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
+|-- attachFileList | List  | 첨부파일 리스트 |
+|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|--- fileId| Integer| 파일 ID|
+|--- fileName|	String|	첨부파일 이름|
+|--- filePath|	String|	첨부파일 경로|
+|--- fileSize|	Integer|	첨부파일 크기 (byte)|
+|--- createDate|	String|	생성 일시|
+
 
 ### Query Request for Tagged Mail Delivery
 
@@ -1528,7 +1521,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails|
 
 [Path Parameter]
 
@@ -1570,7 +1563,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1606,8 +1599,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": String
+                "updateDate": String
             }
         ]
     }
@@ -1642,7 +1634,6 @@ curl -X GET \
 | -- createDate    | String      | Date and time of creation                                    |
 | -- updateUser    | String      | Modifier                                                     |
 | -- updateDate    | String      | Date and time of modification                                |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
 
 ### Query Recipients of Tagged Mail Delivery
 
@@ -1652,7 +1643,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}|
 
 [Path Parameter]
 
@@ -1687,7 +1678,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'?startSendDate='"${START_DATE}"'&endSendDate='"${END_DATE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -1721,9 +1712,7 @@ curl -X GET \
                 "createUser": String,
                 "createDate": String,
                 "updateUser": String,
-                "updateDate": String,
-                "statsId": "statsId",
-                "mailSequence": 0
+                "updateDate": String
             }
         ]
     }
@@ -1756,7 +1745,6 @@ curl -X GET \
 | -- createDate     | String  | Date and time of creation                                    |
 | -- updateUser     | String  | Modifier                                                     |
 | -- updateDate     | String  | Date and time of modification                                |
-|-- statsId| String| Key for statistics data grouping |
 
 ### Query Details of Tagged Mail Delivery
 
@@ -1766,7 +1754,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
+|GET|	/email/v2.0/appKeys/{appKey}/tagMails/{requestId}/{mailSequence}|
 
 [Path Parameter]
 
@@ -1791,62 +1779,59 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tagMails/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
 #### Response
 
-```json
+```
 {
     "header": {
-        "isSuccessful": true,
-        "resultCode": 0,
-        "resultMessage": "SUCCESS"
+        "isSuccessful": Boolean,
+        "resultCode": Integer,
+        "resultMessage": String
     },
     "body": {
         "data": {
-            "requestId": "20190101000000ABCDEFG0",
-            "requestIp": "127.0.0.1",
-            "templateId": "TEMPLATE",
-            "templateName": "Template",
-            "mailStatusCode": "SST2",
-            "mailStatusName": "Sending completed",
-            "requestDate": "2019-01-01 00:00:00.0",
-            "senderName": "sender",
-            "senderMail": "sender@example.com",
-            "resultId": "<20190101000000ABCDEFG0@mail>",
-            "resultDate": "2019-01-01 00:00:00.0",
-            "title": "Title",
-            "body": "Body",
-            "customHeaders": {
-                "Content-Type": "text/html"
-            },
+            "requestId": String,
+            "requestIp": String,
+            "templateId": String,
+            "templateName": String,
+            "mailStatusCode": String,
+            "mailStatusName": String,
+            "requestDate": String,
+            "resultDate": String,
+            "senderName": String,
+            "senderMail": String",
+            "resultId": String,
+            "title": String,
+            "body": String",
             "receivers": [
                 {
-                    "requestId": "20190101000000ABCDEFG0",
-                    "receiveType": "MRT0",
-                    "receiveTypeName": "Recipient",
-                    "receiveMailAddr": "receiver@example.com",
-                    "readYn": "Y",
-                    "readDate": "2019-01-01 00:00:00.0",
-                    "dsnCode": "2.5.0",
-                    "dsnMessage": "SUCCESS",
-                    "mailSequence": "0"
+                    "requestId": String,
+                    "receiveType": String,
+                    "receiveTypeName": String,
+                    "receiveMailAddr": String,
+                    "readYn": String,
+                    "readDate": String,
+                    "dsnCode": String,
+                    "dsnMessage": String,
+                    "mailSequence": String
                 }
             ],
             "attachFileList": [
                 {
-                    "fileType": "MAIL",
-                    "fileId": 12345,
-                    "fileName": "test.csv",
-                    "filePath": "file/path",
-                    "fileSize": 10,
-                    "createDate": "2019-01-01 00:00:00.0"
+                    "fileType": String,
+                    "fileId": Integer
+                    "fileName": String,
+                    "filePath": String,
+                    "fileSize": Integer,
+                    "createDate": String
                 }
             ],
-            "statsId": "statsId"
+            "customHeaders": Map
         }
     }
 }
@@ -1894,7 +1879,7 @@ curl -X GET \
 | --- fileSize        | Integer | Size of attached file (byte)                                 |
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
-|-- statsId| String| Key for statistical data grouping |
+
 
 
 ## Scheduled Delivery Management
@@ -1906,7 +1891,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations|
 
 [Path parameter]
 
@@ -1926,6 +1911,15 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+#### cURL
+```
+curl -X GET \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations' \
+-H 'Content-Type: application/json;charset=UTF-8' \
+-H 'X-Secret-Key: '"${SECRET_KEY}"'' 
+```
+
+
 [Query parameter]
 
 |Value| Type |	Required | Description |
@@ -1938,15 +1932,6 @@ curl -X GET \
 | templateId | String | X | Template ID |
 | pageNum|	Integer|	X| Page number (default: 1) |
 | pageSize|	Integer|	X| Number of queries (default: 15) |
-
-#### cURL
-```
-curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations' \
--H 'Content-Type: application/json;charset=UTF-8' \
--H 'X-Secret-Key: '"${SECRET_KEY}"'' 
-```
-
 
 #### Response
 
@@ -1977,8 +1962,7 @@ curl -X GET \
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
             "mailStatusName":"예약대기",
-            "senderGroupingKey":"senderKey",
-            "statsId": "statsId"
+            "senderGroupingKey":"senderKey"
          }
       ]
    }
@@ -2011,8 +1995,6 @@ curl -X GET \
 | -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- senderGroupingKey| String  | Sender's group key                                           |
-|-- statsId| String| Key for statistical data grouping |
-
 
 ### Query Detail Scheduled Delivery
 #### Request
@@ -2021,7 +2003,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}|
 
 [Path parameter]
 
@@ -2029,7 +2011,7 @@ curl -X GET \
 |---|---|---|
 |appKey|	String| Original appKey |
 |requestId|	String| Request ID |
-|mailSeq|	Integer| Mail order (mailSeq value returned when a mailing list is queried) |
+|mailSeq|	Integer| Mail sequence |
 
 [Header]
 
@@ -2046,7 +2028,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2072,13 +2054,13 @@ curl -X GET \
          "senderName":"senderName",
          "requestDate":"2020-06-05 00:00:00",
          "mailStatusCode":"SST4",
-         "mailStatusName":"Waiting for reservation",
+         "mailStatusName":"예약대기",
          "receivers":[
             {
                "requestId":"202006050000008j6bx5Q1",
                "mailSeq":0,
                "receiveType":"MRT0",
-               "receiveTypeName":"Recipient",
+               "receiveTypeName":"받는사람",
                "receiveName":"receiverName",
                "receiveMailAddr":"receiver@example.com"
             }
@@ -2096,8 +2078,7 @@ curl -X GET \
          "customHeaders":{
                 "Content-Type": "text/html"
          },
-         "senderGroupingKey":"senderKey",
-         "statsId": "statsId"
+         "senderGroupingKey":"senderKey"
       }
    }
 }
@@ -2106,7 +2087,7 @@ curl -X GET \
 | Value               | Type    | Description                                                  |
 | ------------------- | ------- | ------------------------------------------------------------ |
 | header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
+| - isSuccessful      | Boolea{}n | Successful or not                                            |
 | - resultCode        | Integer | Failure code                                                 |
 | - resultMessage     | String  | Failure message                                              |
 | body                | Object  | Body area                                                    |
@@ -2120,7 +2101,7 @@ curl -X GET \
 | -- senderAddress    | String  | Sender's mail address                                        |
 | -- senderName       | String  | Sender's name                                                |
 | -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting , SST7: Not Authenticated    |
+| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- receiverList     | List    | List of recipients                                           |
 | --- requestId        | String  | Request ID                                                   |
@@ -2139,7 +2120,6 @@ curl -X GET \
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
-
 ### Cancel Scheduled Delivery by Request
 #### Request
 
@@ -2147,7 +2127,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}
 
 [Path parameter]
 
@@ -2171,7 +2151,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2202,7 +2182,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/{requestId}/{mailSeq}
 
 [Path parameter]
 
@@ -2210,7 +2190,7 @@ curl -X PUT \
 |---|---|---|
 |appKey|	String| Original appKey |
 |requestId|	String| Request ID |
-|mailSeq|	Integer| Mail order (mailSeq value returned when a mailing list is queried) |
+|mailSeq|	Integer| Mail sequence |
 
 [Header]
 
@@ -2227,7 +2207,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/'"${REQUEST_ID}"'/'"${MAIL_SEQ}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2258,7 +2238,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|PUT| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|PUT| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2309,7 +2289,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8'  \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2364,7 +2344,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/reservations/search-cancels
+|GET| /email/v2.0/appKeys/{appKey}/sender/reservations/search-cancels
 
 [Path parameter]
 
@@ -2397,7 +2377,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/sender/reservations/search-cancels' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2465,6 +2445,7 @@ curl -X GET \
 |-- createdDateTime | String | Request Creation Time for Schedule Cancellation |
 |-- updatedDateTime | String | Modified Time for Scheduled Cancellation  |
 
+
 <p id="category"></p>
 
 ## Category Management 
@@ -2477,7 +2458,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET| /email/v2.1/appKeys/{appKey}/categories|
+|GET| /email/v2.0/appKeys/{appKey}/categories|
 
 [Path parameter]
 
@@ -2509,7 +2490,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2575,7 +2556,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|GET|	/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2599,7 +2580,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
@@ -2658,7 +2639,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|/email/v2.1/appKeys/{appKey}/categories|
+|POST|/email/v2.0/appKeys/{appKey}/categories|
 
 
 [Path parameter]
@@ -2692,7 +2673,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories'
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories'
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2741,7 +2722,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|PUT|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2774,7 +2755,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -2813,7 +2794,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|/email/v2.1/appKeys/{appKey}/categories/{categoryId}|
+|DELETE|/email/v2.0/appKeys/{appKey}/categories/{categoryId}|
 
 [Path parameter]
 
@@ -2837,7 +2818,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/categories/'"${CATEGORY_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2874,7 +2855,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates|
+|GET|	/email/v2.0/appKeys/{appKey}/templates|
 
 [Path Parameter]
 
@@ -2902,11 +2883,12 @@ curl -X DELETE \
 | useYn      | String  | X        | Use or Not (Y/N)                   |
 | pageNum    | Integer | X        | Page number (default: 1)           |
 | pageSize   | Integer | X        | Number of queries (default: 15)    |
+| all        | Boolean | X        | Query list of all templates or not |
 
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -2972,7 +2954,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|GET|	/email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path Parameter]
 
@@ -2996,7 +2978,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3077,8 +3059,7 @@ curl -X GET \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates|
-
+|POST|  /email/v2.0/appKeys/{appKey}/templates|
 
 [Path parameter]
 
@@ -3117,7 +3098,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3164,7 +3145,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|POST|  /email/v2.1/appKeys/{appKey}/templates/attachfile/binaryUpload|
+|POST|  /email/v2.0/appKeys/{appKey}/templates/attachfile/binaryUpload|
 
 [Path parameter]
 
@@ -3195,7 +3176,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/attachfile/binaryUpload' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3246,7 +3227,7 @@ curl -X POST \
 
 |Http method|   URI|
 |---|---|
-|PUT|   /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|PUT|   /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3284,7 +3265,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3328,7 +3309,7 @@ curl -X PUT \
 
 |Http method|   URI|
 |---|---|
-|DELETE|    /email/v2.1/appKeys/{appKey}/templates/{templateId}|
+|DELETE|    /email/v2.0/appKeys/{appKey}/templates/{templateId}|
 
 [Path parameter]
 
@@ -3352,7 +3333,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/templates/'"${TEMPLATE_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3388,7 +3369,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/tags|
+|GET|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -3418,7 +3399,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3469,7 +3450,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/tags|
+|POST|	/email/v2.0/appKeys/{appKey}/tags|
 
 [Path Parameter]
 
@@ -3498,7 +3479,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3549,7 +3530,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|PUT|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|PUT|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
@@ -3579,7 +3560,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3616,7 +3597,7 @@ curl -X PUT \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/tags/{tagId}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/tags/{tagId}|
 
 [Path Parameter]
 
@@ -3640,7 +3621,7 @@ curl -X PUT \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/tags/'"${TAG_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3675,7 +3656,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids|
+|GET|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -3707,7 +3688,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3737,7 +3718,7 @@ curl -X GET \
                     "contacts": [
                         {
                             "contactType": "EMAIL_ADDRESS",
-                            "contact": "test@example.com",
+                            "contact": "test@nhn.com",
                             "createdDate": "2019-01-01 00:00:00"
                         }
                     ]
@@ -3780,7 +3761,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|GET|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -3804,7 +3785,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -3832,7 +3813,7 @@ curl -X GET \
             "contacts": [
                 {
                     "contactType": "EMAIL_ADDRESS",
-                    "contact": "test@example.com",
+                    "contact": "test@nhn.com",
                     "createdDate": "2019-01-01 00:00:00"
                 }
             ]
@@ -3868,7 +3849,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids|
+|POST|	/email/v2.0/appKeys/{appKey}/uids|
 
 [Path Parameter]
 
@@ -3907,7 +3888,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -3952,7 +3933,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}|
 
 [Path Parameter]
 
@@ -3976,7 +3957,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4009,7 +3990,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses|
+|POST|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses|
 
 [Path Parameter]
 
@@ -4039,7 +4020,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4075,7 +4056,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|DELETE|	/email/v2.1/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
+|DELETE|	/email/v2.0/appKeys/{appKey}/uids/{uid}/email-addresses/{emailAddress}|
 
 [Path Parameter]
 
@@ -4100,7 +4081,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X DELETE \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/uids/'"${USER_ID}"'/email-addresses/'"${EMAIL_ADDR}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4135,7 +4116,7 @@ curl -X DELETE \
 
 |Http method|	URI|
 |---|---|
-|GET|	/email/v2.1/appKeys/{appKey}/statistics/view |
+|GET|	/email/v2.0/appKeys/{appKey}/statistics/view |
 
 [Path Parameter]
 
@@ -4169,7 +4150,7 @@ curl -X DELETE \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/statistics/view?from='"${FROM}"'&to='"${TO}"'&searchType='"${SEARCH_TYPE}" \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4227,7 +4208,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| GET |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| GET |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4260,7 +4241,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
@@ -4307,7 +4288,7 @@ curl -X GET \
 
 |Http method|	URI|
 |---|---|
-| POST |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| POST |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4338,7 +4319,7 @@ curl -X GET \
 #### cURL
 ```
 curl -X POST \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4377,7 +4358,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-| PUT |	/email/v2.1/appKeys/{appKey}/block-receivers |
+| PUT |	/email/v2.0/appKeys/{appKey}/block-receivers |
 
 [Path Parameter]
 
@@ -4408,7 +4389,7 @@ curl -X POST \
 #### cURL
 ```
 curl -X PUT \
-'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/block-receivers' \
+'https://email.api.nhncloudservice.com/email/v2.0/appKeys/'"${APP_KEY}"'/block-receivers' \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
@@ -4438,176 +4419,3 @@ curl -X PUT \
 | - isSuccessful  | Boolean | Successful or not |
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
-
-## Statistics
-### Query Statistics
-#### Request
-
-[URL]
-
-|Http method|	URI|
-|---|---|
-|GET| /email/v2.1/appKeys/{appKey}/stats|
-
-[Path parameter]
-
-|Value|	Type|	Descriptions|
-|---|---|---|
-|appKey|	String|	Unique appkey|
-
-[Header]
-
-```
-{
-  "X-Secret-Key": String
-}
-```
-
-|Value|	Type|	Required|	Descriptions|
-|---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
-
-
-[Query parameter]
-
-| Value              | 	Type          | 	Required | 	Descriptions                                                                                              |
-|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | Event category. MESSAGE                                                                               |
-| statisticsType | String       | X   | Descrption format of queried statistical data. NORMAL(default), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | Time unit of statistical data. Defaults are determined according to the query period, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | Start value of query range, up to last 30 days (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | End value of query range, up to last 30 days (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by mail type. NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by the sending domain                                                      |
-| extra3s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by the receiving domain                                                      |
-| messageId      | String       | X   | Message ID                                                                                          |
-| statsIds       | Array String | X   | Statistics event key ID                                                                                     |
-| templateIds    | Array String | X   | Template ID                                                                                           |
-| statsCriteria  | Array String | X   | Statistical criteria for sum, if not set, calculates sum as default. EVENT(default), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
-
-##### cURL
-```
-curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
--H 'Content-Type: application/json;charset=UTF-8' \
--H 'X-Secret-Key: '"${SECRET_KEY}"''
-```
-
-#### Response
-```json
-{
-	"header": {
-		"resultCode": 0,
-		"resultMessage": "success",
-		"isSuccessful": true
-	},
-	"stats": [{
-		"eventDateTime": "2020-08-12T00:00:00.000+09:00",
-		"events": {
-			"{statsCriteriaValue}.RECEIVED": 0,
-			"{statsCriteriaValue}.SENT_FAILED": 0,
-			"{statsCriteriaValue}.SENT": 0,
-			"{statsCriteriaValue}.OPENED": 0
-		}
-	}]
-}
-```
-
-| Value                       | 	Type      | 	Descriptions                                                      |
-|-------------------------|----------|----------------------------------------------------------|
-| header                  | 	Object  | 	Header area                                                   |
-| - isSuccessful          | 	Boolean | 	Successful or not                                                   |
-| - resultCode            | 	Integer | 	Failure code                                                   |
-| - resultMessage         | 	String  | 	Failure message                                                  |
-| stats                   | 	Object  | 	Body area                                                   |
-| - eventDateTime         | 	String  | 	Event occurrence time                                               |
-| - events                | 	List    | 	Scope of data                                                  |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue} is the value of statsCriteria entered as a query condition. |
-| --- REQUESTED           | 	Integer | The number of requested cases                                                    |
-| --- SENT                | 	Integer | 	The number of sent cases                                                   |
-| --- SENT_FAILED         | 	Integer | 	The number of failure cases                                                   |
-| --- RECEIVED            | 	Integer | 	The number of success cases                                                   |
-| --- OPENED              | 	Integer | 	The number of opened cases                                                   |
-
-### Query Statistical Totals
-#### Request
-
-[URL]
-
-| Http method | 	URI                                     |
-|-------------|------------------------------------------|
-| GET         | /email/v2.1/appKeys/{appKey}/stats/total |
-
-[Path parameter]
-
-|Value|	Type|	Descriptions|
-|---|---|---|
-|appKey|	String|	Unique appkey|
-
-[Header]
-
-```
-{
-  "X-Secret-Key": String
-}
-```
-
-|Value|	Type|	Required|	Descriptions|
-|---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
-
-
-[Query parameter]
-
-| Value              | 	Type          | 	Required | 	Descriptions                                                                                              |
-|----------------|--------------|-----|--------------------------------------------------------------------------------------------------|
-| eventCategory  | String       | O   | Event category. MESSAGE                                                                               |
-| statisticsType | String       | X   | Descrption format of queried statistical data. NORMAL(default), MINUTELY, HOURLY, DAILY, BY_DAY                                  |
-| timeUnit       | String       | X   | Time unit of statistical data. Defaults are determined according to the query period, MINUTES, HOURS, DAYS                                           |
-| from           | String       | X   | Start value of query range, up to last 30 days (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| to             | String       | X   | End value of query range, up to last 30 days (ISO 8601, e.g. YYYY-MM-DDThh:mm:ss.SSSTZD, 2018-04-24T06:00:00.000%2B09:00) |
-| extra1s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by mail type. NORMAL, MASS, TAG, SMTP                               |
-| extra2s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by the sending domain                                                      |
-| extra3s        | Array String | X   | If eventCategory is MESSAGE, it can be filtered by the receiving domain                                                      |
-| messageId      | String       | X   | Message ID                                                                                          |
-| statsIds       | Array String | X   | Statistics event key ID                                                                                     |
-| templateIds    | Array String | X   | Template ID                                                                                           |
-| statsCriteria  | Array String | X   | Statistical criteria for sum, if not set, calculates sum as default. EVENT(default), EXTRA_1, EXTRA_2, EXTRA_3, TEMPLATE_ID            |
-
-##### cURL
-```
-curl -X GET \
-'https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?eventCategory='"${EVENT_CATEGORY}" \
--H 'Content-Type: application/json;charset=UTF-8' \
--H 'X-Secret-Key: '"${SECRET_KEY}"''
-```
-
-#### Response
-```json
-{
-	"header": {
-		"resultCode": 0,
-		"resultMessage": "success",
-		"isSuccessful": true
-	},
-	"total" : {
-		"SENT" : 120,
-		"SENT_FAILED" : 50,
-		"RECEIVED": 0,
-		"OPENED": 0
-	}
-}
-```
-
-| Value                                   | 	Type      | 	Descriptions        |
-|-------------------------------------|----------|------------|
-| header                              | 	Object  | 	Header area     |
-| - isSuccessful                      | 	Boolean | 	Successful or not     |
-| - resultCode                        | 	Integer | 	Failure code     |
-| - resultMessage                     | 	String  | 	Failure message    |
-| total                               | 	Object  | 	Body area     |
-| - {statsCriteriaValue}.REQUESTED   | 	Integer | The number of requested cases      |
-| - {statsCriteriaValue}.SENT        | 	Integer | 	The number of sent cases     |
-| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	The number of failure cases     |
-| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	The number of success cases     |
-| - {statsCriteriaValue}.OPENED      | 	Integer | 	The number of opened cases     |

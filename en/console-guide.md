@@ -97,11 +97,11 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
 > using <strong>Free Marker type</strong>, please enter it in the form of ${replacement key}.
 
 1. On Mass Delivery tab at the bottom of screen, click on **Download Template**.
-    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX template files that contain
+    - After selecting Enable from the Enable Template or Not, and clicking the Download Template, then you can download CSV and XLSX and XLS template files that contain
       template replacements.
     - In template file, enter replacement data to specify in replacement key, including receiver mail address and name.
 2. **Upload Recipient File** to upload the created file.
-    - Files containing template data can be uploaded by up to 500,000 people and up to 30MB.
+    - Files containing template data can be uploaded by up to 30MB.
     - If there is an error in template data, error information appears. Check and correct any errors.
     - Errors display the total number of errors and their contents (up to 10).
         - **Type of Errors**
@@ -439,12 +439,26 @@ Registered webhooks can be checked in the **Webhook Registration List**.
 
 ## Retrieve Statistics
 
-You can view delivery statistics on ** Retrieve Statistics ** tab. You can view with conditions such as inquiry period, statistical breakdown (date, time, day
+You can view delivery statistics on the **Statistics** (old) tab. You can view with conditions such as inquiry period, statistical breakdown (date, time, day
 of the week), mail type (general, mass) and template.
 
 You can view by date, time zone and day of the week.
 
 ![email_24_20231023_en](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
+
+## Manage Statistical Event Keys
+You can manage statistical event keys on the Manage **Statistical Event Keys** tab. When you create it, you can set a name, description, and event collection period. If you do not set an event collection period, the collection period is set to indefinite. The created statistical event key can be set at the time of sending the message. The sending results of messages with statistical event keys set can be searched by statistical event key on the **Statistics** tab.
+
+<span id="stats"></span>
+
+## Query Statistics
+You can search for message received/viewed data collected in the last 30 days. In the console, select View **statistics**. You can retrieve statistics for messages, token enrollments, or deletions.
+
+1. You can set a time period as a search criteria.
+    - In addition to the Quick Set Duration button, you can manually set a minimum duration of 1 minute and a maximum duration of 30 days.
+2. Type lets you set how the graph is displayed.
+    - Default displays the graph in a type that is automatically optimized based on the set time period.
+3. In message statistics, you can search by statistical event key, templateid, and mail type.
 
 ## Sending Settings
 

@@ -1,6 +1,30 @@
 ## Notification > Email > Release Notes
+### March 26, 2024.
 
-### 2024. 02. 27.
+#### Added Features
+
+* [Console] Added the feature to manage templates - Modify Category/Template
+  * Added the feature to modify templates and categories, allowing you to modify selected items.
+  * You can select a category or template on `Manage Template` screen and drag it to any desired categories.
+
+#### Feature Updates
+
+* [API] API version update v2.1
+  * Changed Query API Response
+    * Added statistics event keys to responses from the query mail  API.
+  * Added API to query by statistical event key.
+    * Added a summation API to sum queried statistical data.
+* [API] Strengthen SPF validation logic
+  * SPF validation logic is to be strengthened.
+    * SPF validation fails if it is looked up more than 10 times.
+    * SPF validation fails if `~all` direction exists in the middle of spf records.
+    * If more than two SPF record exists, SPF validation fails.
+* [Console] Changed the file upload limit for mass mail recipients
+  * The limits on uploading recipient files have been changed. The maximum limit on recipients will now disappear.
+    * Previous: Mass mail recipient files can upload up to 500,000 people and up to 30 MB.
+    * Current: Mass mail recipient files can be uploaded up to 30 MB.
+
+### February 27, 2024
 
 #### Added Features
 
@@ -14,6 +38,7 @@
     * Added a menu to add a StatsId for use in the API and console.
 * [Console] Role segmentation
   * Added the feature to grant separate Email menu access and feature control permissions based on role.
+  * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
 
 #### Feature Updates
 
