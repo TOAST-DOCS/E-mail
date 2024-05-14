@@ -180,11 +180,3 @@
 |false|-9997|Can not read http message.|
 |false|-9998|Not exist API.|
 |false|-9999|Internal error.|
-|false|-6000|This request can't update status. Check status of this request.|
-|false|-6001|This request can't update status. Check status of this request.|
-|false|-7001|Metering data is not match. {}|
-|false|-7002|Metering and Billing are not matched diff: {}|
-|false|-7003|Metering request parameter is invalid. appKey and startDate are required.|
-|false|-80001|the upload file of receivers was failed.|
-|false|-80002|Not found file.|
-|false|-80003|Not found recipientList.|
