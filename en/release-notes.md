@@ -1,12 +1,11 @@
 ## Notification > Email > Release Notes
-### 2024. 05. 28
+### 2024. 05. 28.
 
 #### 기능 개선/변경
 
-* [API/Console] 예약 발송 최대 예약 가능 기간 변경
-  * 예약 발송 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
-  * 예약 발송 시간은 60일 이내로 설정할 수 있습니다.
-  * 예약 발송 조회 화면에서 예약 발송 시간을 60일 이내로 설정할 수 있습니다.
+* [API/Console] 예약 발송 시 최대 예약 가능 기간 변경
+    * 예약 발송 시 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
+    * 예약 발송 시간을 60일 이내로 설정할 수 있습니다.
 
 ### March 26, 2024.
 
@@ -120,8 +119,8 @@
 
 ### August 29, 2023
 #### Feature Updates
-* [Console] Prevention of duplicate requests upon mass 
-  * Improved to reject duplicate requests for mass delivery. 
+* [Console] Prevention of duplicate requests upon mass
+    * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
 * [Console] Backup data past the retention period
@@ -281,10 +280,10 @@
 
 * [Console] Added Mail Domain Management Tab
     - Main features are as follows:
-      - Manage Mail Domains
-      - Added features to register, verify, delete, and share mail domains.
-      - Protect Mail Domains
-      - Verified mail domains can be protected from third-party usage.
+        - Manage Mail Domains
+        - Added features to register, verify, delete, and share mail domains.
+        - Protect Mail Domains
+        - Verified mail domains can be protected from third-party usage.
 
 ### January 21, 2020
 

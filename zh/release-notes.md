@@ -1,65 +1,64 @@
 ## Notification > Email > Release Notes
-### 2024. 05. 28
+### 2024. 05. 28.
 
 #### 기능 개선/변경
 
-* [API/Console] 예약 발송 최대 예약 가능 기간 변경
-  * 예약 발송 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
-  * 예약 발송 시간은 60일 이내로 설정할 수 있습니다.
-  * 예약 발송 조회 화면에서 예약 발송 시간을 60일 이내로 설정할 수 있습니다.
+* [API/Console] 예약 발송 시 최대 예약 가능 기간 변경
+    * 예약 발송 시 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
+    * 예약 발송 시간을 60일 이내로 설정할 수 있습니다.
 
 ### March 26, 2024.
 
 #### Added Features
 
 * [Console] Added the feature to manage templates - Modify Category/Template
-  * Added the feature to modify templates and categories, allowing you to modify selected items.
-  * You can select a category or template on `Manage Template` screen and drag it to any desired categories.
+    * Added the feature to modify templates and categories, allowing you to modify selected items.
+    * You can select a category or template on `Manage Template` screen and drag it to any desired categories.
 
 #### Feature Updates
 
 * [API] API version update v2.1
-  * Changed Query API Response
-    * Added statistics event keys to responses from the query mail  API.
-  * Added API to query by statistical event key.
-    * Added a summation API to sum queried statistical data.
+    * Changed Query API Response
+        * Added statistics event keys to responses from the query mail  API.
+    * Added API to query by statistical event key.
+        * Added a summation API to sum queried statistical data.
 * [API] Strengthen SPF validation logic
-  * SPF validation logic is to be strengthened.
-    * SPF validation fails if it is looked up more than 10 times.
-    * SPF validation fails if `~all` direction exists in the middle of spf records.
-    * If more than two SPF record exists, SPF validation fails.
+    * SPF validation logic is to be strengthened.
+        * SPF validation fails if it is looked up more than 10 times.
+        * SPF validation fails if `~all` direction exists in the middle of spf records.
+        * If more than two SPF record exists, SPF validation fails.
 * [Console] Changed the file upload limit for mass mail recipients
-  * The limits on uploading recipient files have been changed. The maximum limit on recipients will now disappear.
-    * Previous: Mass mail recipient files can upload up to 500,000 people and up to 30 MB.
-    * Current: Mass mail recipient files can be uploaded up to 30 MB.
+    * The limits on uploading recipient files have been changed. The maximum limit on recipients will now disappear.
+        * Previous: Mass mail recipient files can upload up to 500,000 people and up to 30 MB.
+        * Current: Mass mail recipient files can be uploaded up to 30 MB.
 
 ### February 27, 2024
 
 #### Added Features
 
 * [API] Added StatsId field (v2.0 API)
-  * Added the StatsId field to mail delivery API request parameters for statistical classification.
+    * Added the StatsId field to mail delivery API request parameters for statistical classification.
 * [Console]
-  * Renewed the Query Statistics screen
-    * Changed the existing Query Statistics menu to (Old) Query Statistics.
-    * Added a menu to view statistics by event occurrence time.
-  * Added statistics event key settings menu
-    * Added a menu to add a StatsId for use in the API and console.
+    * Renewed the Query Statistics screen
+        * Changed the existing Query Statistics menu to (Old) Query Statistics.
+        * Added a menu to view statistics by event occurrence time.
+    * Added statistics event key settings menu
+        * Added a menu to add a StatsId for use in the API and console.
 * [Console] Role segmentation
-  * Added the feature to grant separate Email menu access and feature control permissions based on role.
-  * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
+    * Added the feature to grant separate Email menu access and feature control permissions based on role.
+    * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
 
 #### Feature Updates
 
 * [Console] Changed conditions for the mail delivery query
-  * Delivery query condition changes from `Received or not` to `Receive Type`.
-  * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
-  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * Delivery query condition changes from `Received or not` to `Receive Type`.
+    * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
 
 * [Console] Added SMTP response code field in mail delivery query
-  * Added SMTP response code field to mail delivery query
-  * SMTP response codes provide response codes for errors that occurred when sending mail.
-  * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * Added SMTP response code field to mail delivery query
+    * SMTP response codes provide response codes for errors that occurred when sending mail.
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
 
 ### Jan 31, 2024.
 
