@@ -1,13 +1,13 @@
 ## Notification > Email > Release Notes
-### 2024. 05. 28.
+### May 28, 2024
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [API/Console] 예약 발송 시 최대 예약 가능 기간 변경
-    * 예약 발송 시 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
-    * 예약 발송 및 조회 화면에서 예약 발송 시간을 최대 60일 이내로 설정할 수 있습니다.
+* [API/Console] Changed the maximum days for scheduled delivery
+    * Changed the maximum days for scheduled delivery from 30 days to 60 days.
+    * On the scheduled delivery and lookup screens, you can set a scheduled delivery time of up to 60 days.
 
-### March 26, 2024.
+### March 26, 2024
 
 #### Added Features
 
