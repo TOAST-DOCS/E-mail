@@ -1,5 +1,13 @@
 ## Notification > Email > Release Notes
-### March 26, 2024.
+### May 28, 2024
+
+#### Feature Updates
+
+* [API/Console] Changed the maximum days for scheduled delivery
+    * Changed the maximum days for scheduled delivery from 30 days to 60 days.
+    * On the scheduled delivery and lookup screens, you can set a scheduled delivery time of up to 60 days.
+
+### March 26, 2024
 
 #### Added Features
 
@@ -111,8 +119,8 @@
 
 ### August 29, 2023
 #### Feature Updates
-* [Console] Prevention of duplicate requests upon mass 
-  * Improved to reject duplicate requests for mass delivery. 
+* [Console] Prevention of duplicate requests upon mass
+    * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
 * [Console] Backup data past the retention period
@@ -272,10 +280,10 @@
 
 * [Console] Added Mail Domain Management Tab
     - Main features are as follows:
-      - Manage Mail Domains
-      - Added features to register, verify, delete, and share mail domains.
-      - Protect Mail Domains
-      - Verified mail domains can be protected from third-party usage.
+        - Manage Mail Domains
+        - Added features to register, verify, delete, and share mail domains.
+        - Protect Mail Domains
+        - Verified mail domains can be protected from third-party usage.
 
 ### January 21, 2020
 
