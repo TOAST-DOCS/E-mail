@@ -1737,10 +1737,6 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- fileId| Integer| 파일 ID|
 |-- fileName|   String| 파일 이름|
 
-[주의]
-
-* 파일을 업로드한 다음 템플릿에 첨부하면, 다른 템플릿에 그 파일을 첨부할 수 없습니다. 첨부된 파일을 수정하거나 새로 업로드한 후 첨부해야 합니다.
-
 ### 템플릿 수정
 
 #### 요청
