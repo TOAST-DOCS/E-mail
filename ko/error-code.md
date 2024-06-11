@@ -1,6 +1,6 @@
-## Notification > Email > 오류 코드
+## Notification > Email > Error Code
 
-### 오류 코드
+### Error Code
 
 | isSuccessful | resultCode | resultMessage                                                                                                              |
 |--------------|------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -11,12 +11,9 @@
 | false        | -1002      | Service is disabled                                                                                                        |
 | false        | -1003      | Invalid service parameter                                                                                                  |
 | false        | -1004      | Invalid secretKey.                                                                                                         |
-| false        | -1004      | The useYn field of the service is required                                                                                 |
 | false        | -1005      | Service is temporarily blocked                                                                                             |
 | false        | -1006      | Service is associated with a domain shared within the organization. Please proceed after canceling the sharing.            |
-| false        | -2000      | The template has wrong syntax or missing parameter.                                                                        |
-| false        | -2001      | {}                                                                                                                         |
-| false        | -2002      | {}                                                                                                                         |
+| false        | -1007      | The 'useYn' field of the service is required                                                                               |
 | false        | -2000      | Date format is invalid. {}: {}, Only supported {}                                                                          |
 | false        | -2001      | The 'receiverList' or 'receiver' is required.                                                                              |
 | false        | -2002      | The 'senderAddress' is required.                                                                                           |
@@ -55,8 +52,8 @@
 | false        | -2036      | The 'templateId' exceeds maximum length.                                                                                   |50 chars)|
 | false        | -2037      | The 'senderName' exceeds maximum length.                                                                                   |100 chars)|
 | false        | -2038      | The 'senderAddress' exceeds maximum length.                                                                                |100 chars)|
-| false        | -2039      | The 'senderName' exceeds maximum length.                                                                                   |100 chars)|
-| false        | -2040      | The 'senderAddress' exceeds maximum length.                                                                                |100 chars)|
+| false        | -2039      | The 'receiveName' exceeds maximum length.                                                                                  |100 chars)|
+| false        | -2040      | The 'receiveAddress' exceeds maximum length.                                                                               |100 chars)|
 | false        | -2041      | The 'fileName' exceeds maximum length.                                                                                     |100 chars)|
 | false        | -2042      | The 'createUser' exceeds maximum length.                                                                                   |50 chars)|
 | false        | -2043      | There are too much mail at this time. Please send it at another time.                                                      |
@@ -76,6 +73,8 @@
 | false        | -2057      | There is no receiver_address in the file.                                                                                  |
 | false        | -2058      | Reservation cancel request is failed.                                                                                      |
 | false        | -2059      | The 'statsId' exceeds maximum length.                                                                                      |8 chars)|
+| false        | -2060      | This request can't update status. Check status of this mass mail request.                                                  |8 chars)|
+| false        | -2061      | This request can't update status. Check status of this tag mail request.                                                   |8 chars)|
 | false        | -2100      | The 'templateId' is required.                                                                                              |
 | false        | -2101      | Already existed templateId.                                                                                                |
 | false        | -2102      | The 'templateName' is required.                                                                                            |
@@ -91,6 +90,9 @@
 | false        | -2113      | The one of the 'attachFileIdList' has already been attached to another template. attached templateId: {}, attachFileId: {} |
 | false        | -2114      | templateId should not contain reserved character                                                                           |/,?,:,<,>,%,&," + '"' + ",')|
 | false        | -2115      | Template is disabled. If you want to use a template, change the template status to enabled.                                |
+| false        | -2116      | The template has wrong syntax or missing parameter.                                                                        |
+| false        | -2117      | {}                                                                                                                         |
+| false        | -2118      | {}                                                                                                                         |
 | false        | -2200      | Invalid statistics search parameter.                                                                                       |
 | false        | -2201      | The 'from' must be before 'to'                                                                                             |
 | false        | -2202      | Invalid duration time.                                                                                                     |
@@ -112,7 +114,7 @@
 | false        | -2501      | Failed update result.                                                                                                      |
 | false        | -2502      | Not found the request. messageId: {}, seq:{}                                                                               |
 | false        | -2700      | Domain is empty.                                                                                                           |
-| false        | -2701      | Domain Verfication failed.                                                                                                 |{})|
+| false        | -2701      | Domain Verification failed.                                                                                                |{})|
 | false        | -2702      | Already existed domain.                                                                                                    |
 | false        | -2703      | Domain is not verified.                                                                                                    |
 | false        | -2704      | Domain is not Root Domain.                                                                                                 |
@@ -124,7 +126,7 @@
 | false        | -2710      | X-TC-ENVELOPE-FROM must be email format.                                                                                   |
 | false        | -2711      | Invalid domain parameter.                                                                                                  |
 | false        | -2712      | No regist domain                                                                                                           |
-| false        | -2713      | DKIM Verfication failed.                                                                                                   |
+| false        | -2713      | DKIM Verification failed.                                                                                                  |
 | false        | -2714      | Domain sharing failed.                                                                                                     |
 | false        | -2715      | DKIM deactivate Failed                                                                                                     |
 | false        | -2716      | DKIM activate Failed                                                                                                       |
@@ -135,7 +137,6 @@
 | false        | -2721      | SPF Record is duplicated. check your domain txt record.                                                                    |
 | false        | -2722      | SPF record could not be found because there were too many DNS lookups. DNS lookup limit is 10.                             |
 | false        | -2723      | Invalid all position SPF record. all position must be last position. check your domain txt record.                         |
-| false        | -3000      | The service is not allowed to request/download export file.                                                                |
 | false        | -3000      | Invalid add category parameter.                                                                                            |categoryName, useYn)|
 | false        | -3001      | Invalid category                                                                                                           |
 | false        | -3002      | Invalid modify category parameter.                                                                                         |categoryId, categoryName, useYn)|
@@ -155,6 +156,7 @@
 | false        | -4007      | Failed to download export file                                                                                             |
 | false        | -4008      | Failed to download import file                                                                                             |
 | false        | -4009      | Failed to importing file                                                                                                   |
+| false        | -4010      | The service is not allowed to request/download export file.                                                                |
 | false        | -5000      | Invalid parameter                                                                                                          |
 | false        | -5001      | Already activated appkey.                                                                                                  |
 | false        | -5002      | Not activated appkey.                                                                                                      |
