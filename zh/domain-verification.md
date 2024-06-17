@@ -77,4 +77,4 @@ nslookup -q=TXT <your.domain.name>
 3. Once activated, mail domain protection is complete, and that mail domain is not available to other projects during delivery.
 
 [주의]
-도메인 보호 기능은 도메인 단위로 적용됩니다. 비활성화시 해당 도메인을 인증한 모든 프로젝트의 보호 기능이 해제됩니다.
+도메인 보호 기능은 도메인 단위로 적용됩니다. 비활성화 시 해당 도메인을 인증한 모든 프로젝트의 보호 기능이 해제됩니다.
