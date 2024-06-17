@@ -69,7 +69,7 @@
 | false        | -2053      | Invalid reservation parameter                                                                                              |
 | false        | -2054      | There is no header in the file. Please check the file format.                                                              |
 | false        | -2055      | There is no receiver_address header in the file.                                                                           |
-| false        | -2056      | The                                                                                                                        |'startReadDate' and 'endReadDate') are required.|
+| false        | -2056      | The ('startReadDate' and 'endReadDate') are required.                                                                                                                       |'startReadDate' and 'endReadDate') are required.|
 | false        | -2057      | There is no receiver_address in the file.                                                                                  |
 | false        | -2058      | Reservation cancel request is failed.                                                                                      |
 | false        | -2059      | The 'statsId' exceeds maximum length.                                                                                      |8 chars)|
@@ -90,9 +90,6 @@
 | false        | -2113      | The one of the 'attachFileIdList' has already been attached to another template. attached templateId: {}, attachFileId: {} |
 | false        | -2114      | templateId should not contain reserved character                                                                           |/,?,:,<,>,%,&," + '"' + ",')|
 | false        | -2115      | Template is disabled. If you want to use a template, change the template status to enabled.                                |
-| false        | -2116      | The template has wrong syntax or missing parameter.                                                                        |
-| false        | -2117      | {}                                                                                                                         |
-| false        | -2118      | {}                                                                                                                         |
 | false        | -2200      | Invalid statistics search parameter.                                                                                       |
 | false        | -2201      | The 'from' must be before 'to'                                                                                             |
 | false        | -2202      | Invalid duration time.                                                                                                     |
