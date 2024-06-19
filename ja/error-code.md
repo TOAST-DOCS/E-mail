@@ -31,7 +31,7 @@
 | false        | -2014      | Up to 10 attachments including the template's are allowed.                                                                 |
 | false        | -2015      | The 'title' is required.                                                                                                   |
 | false        | -2016      | The 'body' is required.                                                                                                    |
-| false        | -2017      | The 'receiveMailAddress' is required.                                                                                      |
+| false        | -2017      | The 'receiveMailAddr' is required.                                                                                   |
 | false        | -2018      | The 'receiveType' is required.                                                                                             |
 | false        | -2019      | The 'receiveType' is invalid.                                                                                              |
 | false        | -2020      | The 'fileId' is invalid.                                                                                                   |
