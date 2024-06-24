@@ -1,4 +1,20 @@
 ## Notification > Email > Release Notes
+
+### June 25, 2024
+
+#### Feature Updates
+
+* [API] Changed the template attachment upload policy
+    * Changed the policy to allow for registration of multiple templates when uploading template attachments
+    * Previously, if you uploaded a file and then attached it to a template, you could not attach it to another template
+    * You can not attach the same file to multiple templates.
+
+* [API/CONSOLE] Changed the domain management policy
+    * Changed so that protection is automatically enabled when a domain is verified.
+    * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared the domain
+    * Domain protection is automatically enabled for domains that are already verified.
+    * To turn off domain protection, you can turn it off from the `Manage Domains` screen.
+     
 ### May 28, 2024
 
 #### Feature Updates

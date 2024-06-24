@@ -3216,10 +3216,6 @@ curl -X POST \
 |-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
-[Caution]
-
-* If a file is attached to a template after uploaded, the same file cannot be attached to another template: it must be modified or newly uploaded first, to be attached.  
-
 ### Modify Templates
 
 #### Request
