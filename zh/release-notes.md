@@ -1,35 +1,35 @@
 ## Notification > Email > Release Notes
 
-### 2024. 06. 25.
+### June 25, 2024
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [API] 템플릿 첨부 파일 업로드 정책 변경
-    * 템플릿 첨부 파일 업로드 시 여러 템플릿에 등록이 가능하도록 정책이 변경되었습니다.
-    * 기존에는 파일을 업로드한 다음 템플릿에 첨부하면, 다른 템플릿에 그 파일을 첨부할 수 없었습니다.
-    * 변경된 정책에 따라 동일한 파일을 여러 템플릿에 첨부할 수 있습니다.
+* [API] Changed the template attachment upload policy
+    * Changed the policy to allow for registration of multiple templates when uploading template attachments
+    * Previously, if you uploaded a file and then attached it to a template, you could not attach it to another template
+    * You can not attach the same file to multiple templates.
 
-* [Console] 마스킹 정책 변경
-    * 개인정보는 최소한만 노출되도록 이메일 주소 마스킹 정책이 변경되었습니다.
-    * 로컬 파트가 1자리인 경우 전체 마스킹 처리됩니다. (a@nhn.com → *@nhn.com)
-    * 로컬 파트가 3자리 이하인 경우 1자리까지만 노출됩니다. (aaa@nhn.com → a**@nhn.com)
-    * 로컬 파트가 4자리 이상인 경우 2자리까지만 노출됩니다. (aaaa@nhn.com → aa**@nhn.com)
+* [Console] Changed the masking policy
+    * Changed the email address masking policy to minimise the exposure of personal information
+    * If the local part is 1 digit, it is fully masked (a@nhn.com → *@nhn.com)
+    * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
+    * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
 
-* [API/CONSOLE] 도메인 관리 정책 변경
-    * 도메인 관리 정책이 변경되어 도메인 인증 시 보호 기능이 자동으로 활성화됩니다.
-    * 도메인 보호 기능이 활성화될 경우 해당 도메인을 인증받지 않거나 공유 받지 않은 프로젝트에서는 발송 요청이 제한됩니다.
-    * 이미 인증된 도메인은 자동으로 보호 기능이 활성화됩니다.
-    * 도메인 보호 기능을 해제하려면 `도메인 관리` 화면에서 보호 기능을 해제할 수 있습니다.
+* [API/CONSOLE] Changed the domain management policy
+    * Changed so that protection is automatically enabled when a domain is verified.
+    * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared the domain
+    * Domain protection is automatically enabled for domains that are already verified.
+    * To turn off domain protection, you can turn it off from the `Manage Domains` screen.
 
-### 2024. 05. 28.
+### May 28, 2024
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [API/Console] 예약 발송 시 최대 예약 가능 기간 변경
-    * 예약 발송 시 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
-    * 예약 발송 및 조회 화면에서 예약 발송 시간을 최대 60일 이내로 설정할 수 있습니다.
+* [API/Console] Changed the maximum days for scheduled delivery
+    * Changed the maximum days for scheduled delivery from 30 days to 60 days.
+    * On the scheduled delivery and lookup screens, you can set a scheduled delivery time of up to 60 days.
 
-### March 26, 2024.
+### March 26, 2024
 
 #### Added Features
 
@@ -68,7 +68,7 @@
         * Added a menu to add a StatsId for use in the API and console.
 * [Console] Role segmentation
     * Added the feature to grant separate Email menu access and feature control permissions based on role.
-    * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
+    * For more information, see the [Console User Guide](https://docs.nhncloud.com/en/nhncloud/en/console-guide/#_24).
 
 #### Feature Updates
 
@@ -115,8 +115,7 @@
 
 * [Console] Added DMARC authentication feature
     - DMARC authentication procedure is added.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending
-      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
 ### October 17, 2023.
 
@@ -141,14 +140,11 @@
     * The body of the mail is not included in the save target.
 
 ### August 29, 2023
-
 #### Feature Updates
-
 * [Console] Prevention of duplicate requests upon mass
     * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
-
 * [Console] Backup data past the retention period
     * Added a feature to backup data past the retention period.
     * The mail body is not included in the save target.
@@ -264,7 +260,6 @@
 #### Feature Updates
 
 [Console] Added webhook feature
-
 * Added [Manage Webhook] menu.
 * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
 * Event types that are currently supported are as follows.
