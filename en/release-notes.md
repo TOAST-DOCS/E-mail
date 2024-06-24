@@ -9,12 +9,6 @@
     * Previously, if you uploaded a file and then attached it to a template, you could not attach it to another template
     * You can not attach the same file to multiple templates.
 
-* [Console] Changed the masking policy
-    * Changed the email address masking policy to minimise the exposure of personal information
-    * If the local part is 1 digit, it is fully masked (a@nhn.com → *@nhn.com)
-    * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
-    * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
-
 * [API/CONSOLE] Changed the domain management policy
     * Changed so that protection is automatically enabled when a domain is verified.
     * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared the domain
