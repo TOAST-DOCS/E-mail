@@ -1,13 +1,29 @@
 ## Notification > Email > Release Notes
-### 2024. 05. 28.
 
-#### 기능 개선/변경
+### June 25, 2024
 
-* [API/Console] 예약 발송 시 최대 예약 가능 기간 변경
-    * 예약 발송 시 최대 예약 가능 기간이 30일에서 60일로 변경되었습니다.
-    * 예약 발송 및 조회 화면에서 예약 발송 시간을 최대 60일 이내로 설정할 수 있습니다.
+#### Feature Updates
 
-### March 26, 2024.
+* [API] Changed the template attachment upload policy
+    * Changed the policy to allow for registration of multiple templates when uploading template attachments
+    * Previously, if you uploaded a file and then attached it to a template, you could not attach it to another template
+    * You can not attach the same file to multiple templates.
+
+* [API/CONSOLE] Changed the domain management policy
+    * Changed so that protection is automatically enabled when a domain is verified.
+    * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared the domain
+    * Domain protection is automatically enabled for domains that are already verified.
+    * To turn off domain protection, you can turn it off from the `Manage Domains` screen.
+
+### May 28, 2024
+
+#### Feature Updates
+
+* [API/Console] Changed the maximum days for scheduled delivery
+    * Changed the maximum days for scheduled delivery from 30 days to 60 days.
+    * On the scheduled delivery and lookup screens, you can set a scheduled delivery time of up to 60 days.
+
+### March 26, 2024
 
 #### Added Features
 
@@ -46,7 +62,7 @@
         * Added a menu to add a StatsId for use in the API and console.
 * [Console] Role segmentation
     * Added the feature to grant separate Email menu access and feature control permissions based on role.
-    * For more information, see the [Console User Guide](https://docs.nhncloud.com/zh/nhncloud/zh/console-guide/#_24).
+    * For more information, see the [Console User Guide](https://docs.nhncloud.com/en/nhncloud/en/console-guide/#_24).
 
 #### Feature Updates
 
@@ -93,8 +109,7 @@
 
 * [Console] Added DMARC authentication feature
     - DMARC authentication procedure is added.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending
-      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
 ### October 17, 2023.
 
@@ -119,14 +134,11 @@
     * The body of the mail is not included in the save target.
 
 ### August 29, 2023
-
 #### Feature Updates
-
 * [Console] Prevention of duplicate requests upon mass
     * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
-
 * [Console] Backup data past the retention period
     * Added a feature to backup data past the retention period.
     * The mail body is not included in the save target.
@@ -242,7 +254,6 @@
 #### Feature Updates
 
 [Console] Added webhook feature
-
 * Added [Manage Webhook] menu.
 * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
 * Event types that are currently supported are as follows.

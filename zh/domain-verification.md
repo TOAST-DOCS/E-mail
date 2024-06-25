@@ -70,9 +70,12 @@ nslookup -q=TXT <your.domain.name>
 
 ![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_en.png)
 
-Once you have registered and verified ownership for the mail domain, you can enable protection feature.
+The protection is automatically activated when the mail domain is registered and ownership is verified. If you don't want to activate the protection, you can disable the feature manually.
 
 1. Click **Protection Status > Protect** for the mail domain item for which you want to enable protection feature.
 2. **Apply Protection Guide**, click on **Protect** to activate the feature.
 3. Once activated, mail domain protection is complete, and that mail domain is not available to other projects during delivery.
+
+[Caution]
+The domain protection feature is applied on a domain basis. Once deactiveated, the protection feature is turned off in all the projects that verified the domain.
 
