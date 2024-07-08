@@ -1,5 +1,15 @@
 ## Notification > Email > Release Notes
 
+### July 23, 2024
+
+#### Feature Updates
+
+* [Console] Changed the masking policy
+  * Changed the email address masking policy to minimise the exposure of personal information
+  * If the local part is  digit, it is fully masked (a@nhn.com → *@nhn.com)
+  * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
+  * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
+
 ### June 25, 2024
 
 #### Feature Updates
