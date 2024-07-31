@@ -5,10 +5,10 @@
 #### Feature Updates
 
 * [Console] Changed the masking policy
-  * Changed the email address masking policy to minimise the exposure of personal information
-  * If the local part is  digit, it is fully masked (a@nhn.com → *@nhn.com)
-  * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
-  * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
+    * Changed the email address masking policy to minimise the exposure of personal information
+    * If the local part is digit, it is fully masked (a@nhn.com → *@nhn.com)
+    * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
+    * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
 
 ### June 25, 2024
 
@@ -45,7 +45,7 @@
 
 * [API] API version update v2.1
     * Changed Query API Response
-        * Added statistics event keys to responses from the query mail  API.
+        * Added statistics event keys to responses from the query mail API.
     * Added API to query by statistical event key.
         * Added a summation API to sum queried statistical data.
 * [API] Strengthen SPF validation logic
@@ -79,12 +79,14 @@
 * [Console] Changed conditions for the mail delivery query
     * Delivery query condition changes from `Received or not` to `Receive Type`.
     * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
-    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail
+      Delivery** screens.
 
 * [Console] Added SMTP response code field in mail delivery query
     * Added SMTP response code field to mail delivery query
     * SMTP response codes provide response codes for errors that occurred when sending mail.
-    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail
+      Delivery** screens.
 
 ### Jan 31, 2024.
 
@@ -119,7 +121,8 @@
 
 * [Console] Added DMARC authentication feature
     - DMARC authentication procedure is added.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
 ### October 17, 2023.
 
@@ -144,11 +147,14 @@
     * The body of the mail is not included in the save target.
 
 ### August 29, 2023
+
 #### Feature Updates
+
 * [Console] Prevention of duplicate requests upon mass
     * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
+
 * [Console] Backup data past the retention period
     * Added a feature to backup data past the retention period.
     * The mail body is not included in the save target.
@@ -264,6 +270,7 @@
 #### Feature Updates
 
 [Console] Added webhook feature
+
 * Added [Manage Webhook] menu.
 * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
 * Event types that are currently supported are as follows.
