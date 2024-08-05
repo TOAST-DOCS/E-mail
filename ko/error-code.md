@@ -134,6 +134,7 @@
 | false        | -2721      | SPF Record is duplicated. check your domain txt record.                                                                    |
 | false        | -2722      | SPF record could not be found because there were too many DNS lookups. DNS lookup limit is 10.                             |
 | false        | -2723      | Invalid all position SPF record. all position must be last position. check your domain txt record.                         |
+| false        | -2726      | DNS LookUp failed. lookup failed message: {}                                                                               |
 | false        | -3000      | Invalid add category parameter. (categoryName, useYn)                                                                      |
 | false        | -3001      | Invalid category                                                                                                           |
 | false        | -3002      | Invalid modify category parameter. (categoryId, categoryName, useYn)                                                       |
