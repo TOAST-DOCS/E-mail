@@ -1,14 +1,40 @@
 ## Notification > Email > Release Notes
 
+### August 27, 2024
+
+#### Feature Updates
+
+* [Console] Improved statistical event handling
+    * Improved the duplicate processing of statistical data during email sending.
+    * Categorized the 'Receive' events into 'Received' and 'Failed to receive'.
+        * ‘Received' event is when email has been successfully delivered to the recipient.
+        * ‘Failed to receive’ event is when email is not delivered to the recipient (e.g., Soft Bounce, Hard Bounce).
+* [Console] Improved template preview feature.
+    * Improved preview feature for FreeMarker templates.
+    * When applying template parameters, if some parameters are not applied, they appear as empty values and preview is
+      available.
+* [Console] Added error codes for failed DNS queries
+    * Added new error codes for DNS queries that fail during Domain Ownership Authentication, SPF Authentication, DKIM
+      Authentication, and DMARC Authentication to provide a clearer indication of the cause.
+    * This is to help developers and operators quickly diagnose and respond to DNS-related issues by better providing
+      the information needed for troubleshooting.
+    * Major changes
+        * Error code: -2726
+        * Error message: DNS LookUp failed. lookup failed message: {}
+            * {} contains the error message that occurred during the DNS query, so you can determine the specific reason
+              for the failure. For example, it could be a domain misspelling, a network error, or a text record
+              misspelling.
+    * You can see the error code in real time through the developer tools.
+
 ### July 23, 2024
 
 #### Feature Updates
 
 * [Console] Changed the masking policy
-  * Changed the email address masking policy to minimise the exposure of personal information
-  * If the local part is  digit, it is fully masked (a@nhn.com → *@nhn.com)
-  * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
-  * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
+    * Changed the email address masking policy to minimise the exposure of personal information
+    * If the local part is digit, it is fully masked (a@nhn.com → *@nhn.com)
+    * If the local part is 3 digits or less, only 1 digit is exposed (aaa@nhn.com → a**@nhn.com)
+    * If the local part is 4 digits or more, only 2 digits are exposed (aaaa@nhn.com → aa**@nhn.com)
 
 ### June 25, 2024
 
@@ -21,10 +47,11 @@
 
 * [API/CONSOLE] Changed the domain management policy
     * Changed so that protection is automatically enabled when a domain is verified.
-    * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared the domain
+    * When domain protection is enabled, outgoing requests are restricted for projects that have not verified or shared
+      the domain
     * Domain protection is automatically enabled for domains that are already verified.
     * To turn off domain protection, you can turn it off from the `Manage Domains` screen.
-     
+
 ### May 28, 2024
 
 #### Feature Updates
@@ -45,7 +72,7 @@
 
 * [API] API version update v2.1
     * Changed Query API Response
-        * Added statistics event keys to responses from the query mail  API.
+        * Added statistics event keys to responses from the query mail API.
     * Added API to query by statistical event key.
         * Added a summation API to sum queried statistical data.
 * [API] Strengthen SPF validation logic
@@ -78,13 +105,18 @@
 
 * [Console] Changed conditions for the mail delivery query
     * Delivery query condition changes from `Received or not` to `Receive Type`.
-    * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "Failed-(Hard Bounce)".
-    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * The conditions change from "All", "Received", "Not Received" to "All", "Success", "Failed-(Soft Bounce)", "
+      Failed-(Hard Bounce)".
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk
+      Mail Delivery**, **Retrieve Tagged Mail
+      Delivery** screens.
 
 * [Console] Added SMTP response code field in mail delivery query
     * Added SMTP response code field to mail delivery query
     * SMTP response codes provide response codes for errors that occurred when sending mail.
-    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk Mail Delivery**, **Retrieve Tagged Mail Delivery** screens.
+    * This feature applies to the **Retrieve by Mail Request**, **Retrieve Scheduled Mail Delivery**, **Retrieve Bulk
+      Mail Delivery**, **Retrieve Tagged Mail
+      Delivery** screens.
 
 ### Jan 31, 2024.
 
@@ -92,14 +124,18 @@
 
 * [Console] Added mail sending status
     - Added "Authentication failed (SST7)" to mail sending status.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+    - On February 1, 2024, changes
+      to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result
+      in sending
       being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
     - If the sending is restricted, the sending status will be 'Authentication failed (SST7)'.
 
 #### Feature Updates
 
 * [API/SMTP] Respond to changes to Gmail email sender guidelines
-    * On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result in sending
+    * On February 1, 2024, changes
+      to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k)will result
+      in sending
       being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
     * When sending to an unauthenticated sending domain, the sending status will be 'Authentication failed (SST7)'.
 
@@ -119,7 +155,10 @@
 
 * [Console] Added DMARC authentication feature
     - DMARC authentication procedure is added.
-    - On February 1, 2024, changes to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result in sending being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
+    - On February 1, 2024, changes
+      to [Gmail email sender guidelines](https://support.google.com/mail/answer/81126?hl=ko#requirements-5k) will result
+      in sending
+      being restricted if you don't perform all three SPF, DKIM, and DMARC authentication.
 
 ### October 17, 2023.
 
@@ -127,7 +166,8 @@
 
 * [Console] Settings for mail retrieve defaults
     * Added the feature to reset the delivery/request/schedule date fields upon entering the mail retrieve screen.
-    * This feature applies to the “Retrieve by Mail Request”, “Retrieve Scheduled Mail Delivery”, “Retrieve Bulk Mail Delivery”, and “Retrieve Tagged Mail
+    * This feature applies to the “Retrieve by Mail Request”, “Retrieve Scheduled Mail Delivery”, “Retrieve Bulk Mail
+      Delivery”, and “Retrieve Tagged Mail
       Delivery” screens.
 
 ### August 29, 2023
@@ -144,11 +184,14 @@
     * The body of the mail is not included in the save target.
 
 ### August 29, 2023
+
 #### Feature Updates
+
 * [Console] Prevention of duplicate requests upon mass
     * Improved to reject duplicate requests for mass delivery.
 
 ### Added Features
+
 * [Console] Backup data past the retention period
     * Added a feature to backup data past the retention period.
     * The mail body is not included in the save target.
@@ -159,9 +202,11 @@
 
 * [Console] Changed mail domain management screen
     * Deleted the Date and Time of Verification, Date and Time of Protection, Date and Time of Check SPF Record field.
-    * You can check the deleted fields as a tooltip by hovering over the **Verified or Not, Protected or not, SPF Record or Not** respectively.
+    * You can check the deleted fields as a tooltip by hovering over the **Verified or Not, Protected or not, SPF Record
+      or Not** respectively.
 * [Console] Added additional information in Retrieve by Mail Request → Request to download search results
-    * Added Mail Sequence, Template ID, DSN Message information to the request file content for mail delivery detail queries.
+    * Added Mail Sequence, Template ID, DSN Message information to the request file content for mail delivery detail
+      queries.
 
 ### June 27, 2023
 
@@ -176,12 +221,14 @@
 #### Feature Updates
 
 * [API] Added retention period validty of attachments
-    * Improved from failing at send time after a successful mail request with an expired file attachment to failing at request time when sending.
+    * Improved from failing at send time after a successful mail request with an expired file attachment to failing at
+      request time when sending.
 
 #### Bug Fixes
 
 * [Console] Fixes some CSS conflicts when registering email templates
-    * Fixed an issue where, when registering email templates, CSS conflicts of some tags cause an incorrect display in the preview.
+    * Fixed an issue where, when registering email templates, CSS conflicts of some tags cause an incorrect display in
+      the preview.
 
 ### April 25, 2023
 
@@ -191,12 +238,14 @@
     * Changed the domain for the API/SMTP interface from cloud.toast.com to nhncloudservice.com.
         * API: api-mail.cloud.toast.com → email.api.nhncloudservice.com
         * SMTP: smtp-mail.cloud.toast.com → smtp-mail.nhncloudservice.com
-    * When using the API/SMTP interface, you must change the domain. If you keep using the existing domain, delivery may be restricted in the future.
+    * When using the API/SMTP interface, you must change the domain. If you keep using the existing domain, delivery may
+      be restricted in the future.
 
 #### Bug Fixes
 
 * [Console] Fixed an issue where common.code.null appears when searching for recipients of mass delivery
-    * Fixed an issue where, when searching the list of recipients by mail after mass delivery, common.code.null appears in some status code.
+    * Fixed an issue where, when searching the list of recipients by mail after mass delivery, common.code.null appears
+      in some status code.
 
 #### Added Features
 
@@ -206,17 +255,20 @@
 ### March 28, 2023
 
 * [Console] Changed the date limit on query
-    * Changed the date limit from 30 days to 31 days for mass delivery queries, tagged mailing queries, and queries by regular mail recipient address.
+    * Changed the date limit from 30 days to 31 days for mass delivery queries, tagged mailing queries, and queries by
+      regular mail recipient address.
 * Improved to select file extensions when downloading requested files
     * CSV, XLSX
 * Improved display of mass delivery results
-    * Changed from displaying successful delivery to displaying delivery failure if there is no data sent normally for mass delivery.
+    * Changed from displaying successful delivery to displaying delivery failure if there is no data sent normally for
+      mass delivery.
 
 ### October 25, 2022
 
 #### Bug Fixes
 
-* [SMTP] Fixed an issue where, when both text/plain and text/HTML messages are included, only the text/pain message are sent
+* [SMTP] Fixed an issue where, when both text/plain and text/HTML messages are included, only the text/pain message are
+  sent
 
 ### February 22, 2022
 
@@ -264,6 +316,7 @@
 #### Feature Updates
 
 [Console] Added webhook feature
+
 * Added [Manage Webhook] menu.
 * When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.
 * Event types that are currently supported are as follows.
@@ -324,7 +377,8 @@
 
 * [API] API Version Updated to v1.6
 * [API] User-Input Data Supported for Templates
-    * When you use a template, user-input sender information, title, and body text are preferred for application than template data.
+    * When you use a template, user-input sender information, title, and body text are preferred for application than
+      template data.
     * For more details, see [Send Mails API](./api-guide/#_1)
 
 ### October 29, 2019
@@ -354,7 +408,8 @@
     * Register, Modify, and Delete Templates are available on APIs.
     * For more details, see [Manage Templates API](./api-guide/#template).
 * [API] Added Manage Category API
-    * Use categories to classify and manage templates. You may specify categories to be included when a template is created.
+    * Use categories to classify and manage templates. You may specify categories to be included when a template is
+      created.
     * Register, Modify, Delete, and Query Categories are available on APIs.
     * For more details, see [Manage Category API](./api-guide/#category).
 
@@ -655,8 +710,10 @@
 #### 기능 개선/변경
 
 * [Console] 대량 발송 기능 개선
-    * 템플릿 파일 업로드 개선: 엑셀과 같은 일부 편집기에서 편집 이력이 있는 셀의 경우 셀 데이터가 없을 경우에도 빈 문자열 데이터가 포함되어 저장되었습니다. 입력 범위 밖의 빈 문자열의 경우 템플릿 파일 업로드 시 유효성 검사에서 무시하도록 변경되었습니다.
-    * 유의 안내 문구 추가: 엑셀과 같은 일부 편집기에서 CSV 템플릿 파일을 작성할 경우 유니코드 정보가 저장되지 않아 문자가 깨지는 이슈가 있었습니다. 해당 이슈에 대한 내용을 템플릿 다운로드와 발송 예약 시 유의 안내 문구가 표시되었습니다.
+    * 템플릿 파일 업로드 개선: 엑셀과 같은 일부 편집기에서 편집 이력이 있는 셀의 경우 셀 데이터가 없을 경우에도 빈 문자열 데이터가 포함되어 저장되었습니다. 입력 범위 밖의 빈 문자열의 경우 템플릿 파일
+      업로드 시 유효성 검사에서 무시하도록 변경되었습니다.
+    * 유의 안내 문구 추가: 엑셀과 같은 일부 편집기에서 CSV 템플릿 파일을 작성할 경우 유니코드 정보가 저장되지 않아 문자가 깨지는 이슈가 있었습니다. 해당 이슈에 대한 내용을 템플릿 다운로드와 발송 예약
+      시 유의 안내 문구가 표시되었습니다.
 
 #### 버그 수정
 
@@ -697,8 +754,10 @@
 * [Console] 템플릿 관리 > 템플릿에 첨부파일 용량을 파일당 10MB로 제한하는 기능 추가 (템플릿 하나당 총 3개파일 총 30MB까지 업로드 가능)
 * [Console] 메일발송/ 템플릿 관리 탭 내에 본문 에디터 기능 중 글머리기호, 번호매기기 기능 사용 시 에디터에서 제대로 표시되지 않던 오류 수정
 * [Console] 메일 발송 > 메일발송 시 첨부파일 오류 후 취소 시에도 동일한 경고 발생하는 현상 수정
-    * 메일발송 > 메일발송 시 첨부파일 업로드 제한개수(3개)가 초과되어 개수제한경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 개수제한 경고가 발생되는 현상이 수정되었습니다.
-    * 메일발송 > 메일발송 시 첨부파일 업로드 제한용량(10MB)이 초과되어 용량제한 경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 용량제한 경고가 발생되는 현상이 수정되었습니다.
+    * 메일발송 > 메일발송 시 첨부파일 업로드 제한개수(3개)가 초과되어 개수제한경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 개수제한 경고가 발생되는 현상이
+      수정되었습니다.
+    * 메일발송 > 메일발송 시 첨부파일 업로드 제한용량(10MB)이 초과되어 용량제한 경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 용량제한 경고가 발생되는 현상이
+      수정되었습니다.
 
 ### 2016. 08. 04.
 

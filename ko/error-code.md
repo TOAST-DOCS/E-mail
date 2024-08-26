@@ -31,13 +31,13 @@
 | false        | -2014      | Up to 10 attachments including the template's are allowed.                                                                 |
 | false        | -2015      | The 'title' is required.                                                                                                   |
 | false        | -2016      | The 'body' is required.                                                                                                    |
-| false        | -2017      | The 'receiveMailAddr' is required.                                                                                   |
+| false        | -2017      | The 'receiveMailAddr' is required.                                                                                         |
 | false        | -2018      | The 'receiveType' is required.                                                                                             |
 | false        | -2019      | The 'receiveType' is invalid.                                                                                              |
 | false        | -2020      | The 'fileId' is invalid.                                                                                                   |
 | false        | -2021      | The size of total files is too large.                                                                                      |
 | false        | -2022      | Invalid provisioned resource.                                                                                              |
-| false        | -2023      | For advertising mail,                                                                                                      |광고), |AD), or |広告) phrases must be placed in front of the title.|
+| false        | -2023      | For advertising mail, (광고), (AD), or (広告) phrases must be placed in front of the title.                                  |
 | false        | -2024      | Invalid file extension.                                                                                                    |
 | false        | -2025      | The 'userId' is required.                                                                                                  |
 | false        | -2026      | The file is not exist.                                                                                                     |
@@ -47,34 +47,34 @@
 | false        | -2030      | The 'customHeaders' contains an invalid name or body.                                                                      |
 | false        | -2031      | You can not send in past than requested. Please update the 'requestDate'.                                                  |
 | false        | -2032      | All of receivers are failed to send.                                                                                       |
-| false        | -2034      | The 'title' exceeds maximum length.                                                                                        |998 chars)|
-| false        | -2035      | The 'userId' exceeds maximum length.                                                                                       |50 chars)|
-| false        | -2036      | The 'templateId' exceeds maximum length.                                                                                   |50 chars)|
-| false        | -2037      | The 'senderName' exceeds maximum length.                                                                                   |100 chars)|
-| false        | -2038      | The 'senderAddress' exceeds maximum length.                                                                                |100 chars)|
-| false        | -2039      | The 'receiveName' exceeds maximum length.                                                                                  |100 chars)|
-| false        | -2040      | The 'receiveAddress' exceeds maximum length.                                                                               |100 chars)|
-| false        | -2041      | The 'fileName' exceeds maximum length.                                                                                     |100 chars)|
-| false        | -2042      | The 'createUser' exceeds maximum length.                                                                                   |50 chars)|
+| false        | -2034      | The 'title' exceeds maximum length. (998 chars)                                                                            |
+| false        | -2035      | The 'userId' exceeds maximum length. (50 chars)                                                                            |
+| false        | -2036      | The 'templateId' exceeds maximum length. (50 chars)                                                                        |
+| false        | -2037      | The 'senderName' exceeds maximum length. (100 chars)                                                                       |
+| false        | -2038      | The 'senderAddress' exceeds maximum length. (100 chars)                                                                    |
+| false        | -2039      | The 'receiveName' exceeds maximum length. (100 chars)                                                                      |
+| false        | -2040      | The 'receiveAddress' exceeds maximum length. (100 chars)                                                                   |
+| false        | -2041      | The 'fileName' exceeds maximum length. (100 chars)                                                                         |
+| false        | -2042      | The 'createUser' exceeds maximum length. (50 chars)                                                                        |
 | false        | -2043      | There are too much mail at this time. Please send it at another time.                                                      |
 | false        | -2044      | The 'fileName' is required.                                                                                                |
 | false        | -2045      | The 'fileBody' is required.                                                                                                |
 | false        | -2046      | The '{}' can have only 'Y' or 'N' values. {}: {}                                                                           |
-| false        | -2047      | The 'senderGroupingKey' exceeds maximum length.                                                                            |100 chars)|
+| false        | -2047      | The 'senderGroupingKey' exceeds maximum length. (100 chars)                                                                |
 | false        | -2048      | You can set the size up to 1000. pageSize: {}                                                                              |
-| false        | -2049      | The 'requestId' or                                                                                                         |'startSendDate' and 'endSendDate') are required.|
+| false        | -2049      | The 'requestId' or ('startSendDate' and 'endSendDate') are required.                                                       |
 | false        | -2050      | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.                        |
 | false        | -2051      | Email Format is wrong. {}                                                                                                  |
 | false        | -2052      | the 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                           |
 | false        | -2053      | Invalid reservation parameter                                                                                              |
 | false        | -2054      | There is no header in the file. Please check the file format.                                                              |
 | false        | -2055      | There is no receiver_address header in the file.                                                                           |
-| false        | -2056      | The ('startReadDate' and 'endReadDate') are required.                                                                                                                       |'startReadDate' and 'endReadDate') are required.|
+| false        | -2056      | The ('startReadDate' and 'endReadDate') are required.                                                                      |
 | false        | -2057      | There is no receiver_address in the file.                                                                                  |
 | false        | -2058      | Reservation cancel request is failed.                                                                                      |
-| false        | -2059      | The 'statsId' exceeds maximum length.                                                                                      |8 chars)|
-| false        | -2060      | This request can't update status. Check status of this mass mail request.                                                  |8 chars)|
-| false        | -2061      | This request can't update status. Check status of this tag mail request.                                                   |8 chars)|
+| false        | -2059      | The 'statsId' exceeds maximum length. (8 chars)                                                                            |
+| false        | -2060      | This request can't update status. Check status of this mass mail request.                                                  |
+| false        | -2061      | This request can't update status. Check status of this tag mail request.                                                   |
 | false        | -2100      | The 'templateId' is required.                                                                                              |
 | false        | -2101      | Already existed templateId.                                                                                                |
 | false        | -2102      | The 'templateName' is required.                                                                                            |
@@ -88,7 +88,7 @@
 | false        | -2111      | A template with attachments is not supported. templateId: {}                                                               |
 | false        | -2112      | The 'title' is required.                                                                                                   |
 | false        | -2113      | The one of the 'attachFileIdList' has already been attached to another template. attached templateId: {}, attachFileId: {} |
-| false        | -2114      | templateId should not contain reserved character                                                                           |/,?,:,<,>,%,&," + '"' + ",')|
+| false        | -2114      | templateId should not contain reserved character (/,?,:,<,>,%,&," + '"' + ",')                                             |
 | false        | -2115      | Template is disabled. If you want to use a template, change the template status to enabled.                                |
 | false        | -2200      | Invalid statistics search parameter.                                                                                       |
 | false        | -2201      | The 'from' must be before 'to'                                                                                             |
@@ -111,7 +111,7 @@
 | false        | -2501      | Failed update result.                                                                                                      |
 | false        | -2502      | Not found the request. messageId: {}, seq:{}                                                                               |
 | false        | -2700      | Domain is empty.                                                                                                           |
-| false        | -2701      | Domain Verification failed.                                                                                                |{})|
+| false        | -2701      | Domain Verification failed. ({})                                                                                           |
 | false        | -2702      | Already existed domain.                                                                                                    |
 | false        | -2703      | Domain is not verified.                                                                                                    |
 | false        | -2704      | Domain is not Root Domain.                                                                                                 |
@@ -119,7 +119,7 @@
 | false        | -2706      | Subdomain must not be root                                                                                                 |
 | false        | -2707      | Invalid subdomain parameter.                                                                                               |
 | false        | -2708      | No regist subdomain                                                                                                        |
-| false        | -2709      | No same root domain.                                                                                                       |senderAddress, X-TC-ENVELOPE-FROM)|
+| false        | -2709      | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                                   |
 | false        | -2710      | X-TC-ENVELOPE-FROM must be email format.                                                                                   |
 | false        | -2711      | Invalid domain parameter.                                                                                                  |
 | false        | -2712      | No regist domain                                                                                                           |
@@ -134,9 +134,10 @@
 | false        | -2721      | SPF Record is duplicated. check your domain txt record.                                                                    |
 | false        | -2722      | SPF record could not be found because there were too many DNS lookups. DNS lookup limit is 10.                             |
 | false        | -2723      | Invalid all position SPF record. all position must be last position. check your domain txt record.                         |
-| false        | -3000      | Invalid add category parameter.                                                                                            |categoryName, useYn)|
+| false        | -2726      | DNS LookUp failed. lookup failed message: {}                                                                               |
+| false        | -3000      | Invalid add category parameter. (categoryName, useYn)                                                                      |
 | false        | -3001      | Invalid category                                                                                                           |
-| false        | -3002      | Invalid modify category parameter.                                                                                         |categoryId, categoryName, useYn)|
+| false        | -3002      | Invalid modify category parameter. (categoryId, categoryName, useYn)                                                       |
 | false        | -3003      | The 'categoryName' is required.                                                                                            |
 | false        | -3004      | The 'categoryName' can't exceed 200 characters.                                                                            |
 | false        | -3005      | The 'categoryDesc' can't exceed 1,000 characters.                                                                          |
@@ -169,7 +170,7 @@
 | false        | -7001      | Invalid parameter.                                                                                                         |
 | false        | -7002      | The 'tagExpression' is required.                                                                                           |
 | false        | -7003      | Uploaded file is empty.                                                                                                    |
-| false        | -7004      | The 'uid' is required, and can not contain the comma character                                                             |,).|
+| false        | -7004      | The 'uid' is required, and can not contain the comma character (,).                                                        |
 | false        | -7005      | Invalid email address.                                                                                                     |
 | false        | -7006      | The 'uids' is required                                                                                                     |
 | false        | -8000      | It failed to read that files                                                                                               |
