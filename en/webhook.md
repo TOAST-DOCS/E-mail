@@ -87,6 +87,7 @@ Hook data per event type when generating a POST request to the URL defined in th
 |- resultDate|	String| Date and time of receiving |
 |- dsnCode|	String| Delivery Status Notification (DSN) status code |
 |- dsnMessage|	String| Delivery Status Notification (DSN) status message |
+|- senderGroupingKey |	String| 발신자 그룹키 |
 |- _links|	Object|	Link |
 |- self|	Object|	- |
 |- href|	String|	Query Message API link |
@@ -108,6 +109,7 @@ Hook data per event type when generating a POST request to the URL defined in th
     "resultDate":"2020-09-09T11:25:10.000+09:00",
     "dsnCode":"2.5.0",
     "dsnMessage":"SUCCESS",
+    "senderGroupKey":"groupKey",
     "_links":{
         "self":{
             "href":"https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
