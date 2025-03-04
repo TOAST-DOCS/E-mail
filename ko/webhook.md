@@ -87,7 +87,7 @@ curl -X POST \
 |- resultDate|	String| 수신 일시 |
 |- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
 |- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
-| - senderGroupingKey |	String| 발신자 그룹키 |
+| - senderGroupingKey |	String| 발신자 그룹 키 |
 |- _links|	Object|	링크 |
 |- self|	Object|	- |
 |- href|	String|	메시지 조회 API 링크 |

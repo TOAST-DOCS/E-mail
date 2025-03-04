@@ -1244,9 +1244,9 @@ curl -X GET \
 | - mailStatusUpdatedDate | String| 메일 발송 상태 코드 업데이트 일시                                                                   |
 | - resultDate | String| 수신 일시                                                                                 |
 | - openedDate | String| 읽은 일시                                                                                 |
-| - dsnCode   | String| DSN(Delivery Status Notification) 상태 코드                                               |
-| - dsnMessage | String| DSN(Delivery Status Notification) 상태 메시지                                              |
-| - senderGroupingKey | String| 발송자 그룹키                                                                               |
+| - dsnCode   | String| DSN(delivery status notification) 상태 코드                                               |
+| - dsnMessage | String| DSN(delivery status notification) 상태 메시지                                              |
+| - senderGroupingKey | String| 발송자 그룹 키                                                                               |
 
 ### 대량 메일 리스트 조회
 
