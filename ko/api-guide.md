@@ -1238,7 +1238,7 @@ curl -X GET \
 | data        |	Object| 	데이터 영역                                                                               |
 | - requestId | String| 요청 ID                                                                                 |
 | - mailSeq   | Integer| 메일 순번                                                                                 |
-| - mailStatusCode |	String| 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
+| - mailStatusCode |	String| 발송 상태 코드 <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
 | - mailStatusName |	String| 	발송 상태 명                                                                              |
 | - requestDate | String| 요청 일시                                                                                 |
 | - mailStatusUpdatedDate | String| 메일 발송 상태 코드 업데이트 일시                                                                   |
