@@ -532,7 +532,7 @@ curl -X POST \
 |-- #key#|	String|	X|	치환 키 (##key##)|
 |-- #value#|	Object|	X|	치환 키에 매핑되는 Value값|
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header) ( 최대 100자 )|
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|senderGroupingKey| String| X| 발신자 그룹 키(최대 100자 )|
 |userId|	String|	X|	발송 구분자 ex)admin,system ( 최대 50자 )|
 |statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
 
