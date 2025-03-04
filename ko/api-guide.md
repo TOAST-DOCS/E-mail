@@ -1169,7 +1169,7 @@ curl -X GET \
 | 값                         | 	타입      | 	설명 |
 |---------------------------|----------|-----|
 | startMailStatusUpdateDate | 	String  | O   |	메일 발송 상태 코드 업데이트 시작 시간(yyyy-MM-dd HH:mm:ss) |
-| endMailStatusUpdateDate   | 	String  | O   |	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)     |
+| endMailStatusUpdateDate   | 	String  | O   |	메일 발송 상태 코드 업데이트 종료 시간(yyyy-MM-dd HH:mm:ss)     |
 | mailStatusCode            | 	Integer | X   | 발송 상태 코드 <br/> SST0: 발송 준비, <br/> SST2 :발송 완료, SST3: 발송 실패, SST7: 미인증 |
 | messageType               | 	String  | X   |메세지 발송 유형 (일반, 광고, 인증)           |
 | pageNum                   | 	Integer | 	X  |	페이지 번호 1(기본값)|
