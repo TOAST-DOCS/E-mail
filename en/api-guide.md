@@ -1156,15 +1156,34 @@ curl -X GET \
 | -- senderGroupingKey|	String  | Sender's group key                                           |
 |-- statsId| String| Key for statistics data grouping |
 
-### 업데이트 결과 조회
+### 메일 발송 최종 상태 업데이트 조회
+
+- 일반 메일 발송시 메일 발송 상태 코드 업데이트가 완료된 메일 목록을 조회합니다.
+- 메일 발송 상태 코드 업데이트 시작 시간과 종료 시간을 기준으로 조회합니다.
+- 조회되는 메일 목록은 최종 상태 코드 업데이트가 완료된 메일 목록입니다.
+
+#### 최종 상태 코드
+
+- SST2: 발송완료
+- SST3: 발송실패
+- SST5: 수신거부
+- SST7: 미인증
+- SST8: 화이트리스트로 인한 실패
+
+#### [주의]
+
+- SST2(발송완료) 상태 코드는 발송 처리 완료 시간이 아닌 최종 상태 코드 업데이트 시간을 기준으로 조회됩니다.
+    - 최종 상태 코드가 업데이트 되는 시점은 수신자의 메일 서버로부터 발송 결과를 수신한 시점입니다.
+- SST3(발송실패) 상태 코드는 발송 처리 실패 시간이 아닌 최종 상태 코드 업데이트 시간을 기준으로 조회됩니다.
+    - 발송실패의 경우 서비스에서 최종적으로 발송 실패로 판단한 시점에 최종 상태 코드가 업데이트 됩니다.
 
 #### 요청
 
 [URL]
 
-|Http method|	URI|
-|---|---|
-|GET| /email/v2.1/appKeys/{appKey}/sender/update-mails|
+| Http method | 	URI                                             |
+|-------------|--------------------------------------------------|
+| GET         | /email/v2.1/appKeys/{appKey}/sender/update-mails |
 
 [Query parameter]
 
@@ -1185,11 +1204,12 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
-|---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+| 값            | 	타입     | 	필수 | 	설명                                           |
+|--------------|---------|-----|-----------------------------------------------|
+| X-Secret-Key | 	String | O   | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
 #### cURL
+
 ```
 curl -X GET \
 'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/update-mails \
@@ -1227,28 +1247,28 @@ curl -X GET \
     ]
   }
 }
-  
+
 
 ```
 
-| 값           |	타입| 	설명                                                                                   |
-|-------------|---|---------------------------------------------------------------------------------------|
-| header      |	Object| 	헤더 영역                                                                                |
-| - isSuccessful |	Boolean| 	성공 여부                                                                                |
-| - resultCode |	Integer| 	실패 코드                                                                                |
-| - resultMessage |	String| 	실패 메시지                                                                               |
-| data        |	Object| 	데이터 영역                                                                               |
-| - requestId | String| 요청 ID                                                                                 |
-| - mailSeq   | Integer| 메일 순번                                                                                 |
-| - mailStatusCode |	String| 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| - mailStatusName |	String| 	발송 상태 명                                                                              |
-| - requestDate | String| 요청 일시                                                                                 |
-| - mailStatusUpdatedDate | String| 메일 발송 상태 코드 업데이트 일시                                                                   |
-| - resultDate | String| 수신 일시                                                                                 |
-| - openedDate | String| 읽은 일시                                                                                 |
-| - dsnCode   | String| DSN(Delivery Status Notification) 상태 코드                                               |
-| - dsnMessage | String| DSN(Delivery Status Notification) 상태 메시지                                              |
-| - senderGroupingKey | String| 발송자 그룹키                                                                               |
+| 값                       | 	타입      | 	설명                                                                                   |
+|-------------------------|----------|---------------------------------------------------------------------------------------|
+| header                  | 	Object  | 	헤더 영역                                                                                |
+| - isSuccessful          | 	Boolean | 	성공 여부                                                                                |
+| - resultCode            | 	Integer | 	실패 코드                                                                                |
+| - resultMessage         | 	String  | 	실패 메시지                                                                               |
+| data                    | 	Object  | 	데이터 영역                                                                               |
+| - requestId             | String   | 요청 ID                                                                                 |
+| - mailSeq               | Integer  | 메일 순번                                                                                 |
+| - mailStatusCode        | 	String  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
+| - mailStatusName        | 	String  | 	발송 상태 명                                                                              |
+| - requestDate           | String   | 요청 일시                                                                                 |
+| - mailStatusUpdatedDate | String   | 메일 발송 상태 코드 업데이트 일시                                                                   |
+| - resultDate            | String   | 수신 일시                                                                                 |
+| - openedDate            | String   | 읽은 일시                                                                                 |
+| - dsnCode               | String   | DSN(Delivery Status Notification) 상태 코드                                               |
+| - dsnMessage            | String   | DSN(Delivery Status Notification) 상태 메시지                                              |
+| - senderGroupingKey     | String   | 발송자 그룹키                                                                               |
 
 ### Query Mass Delivery List
 
