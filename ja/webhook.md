@@ -87,6 +87,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
 |- resultDate|	String| 受信日時 |
 |- dsnCode|	String| DSN(Delivery Status Notification) ステータスコード |
 |- dsnMessage|	String| DSN(Delivery Status Notification) ステータスメッセージ |
+|- senderGroupingKey |	String| 발신자 그룹키 |
 |- _links|	Object|	リンク |
 |- self|	Object|	- |
 |- href|	String|	メッセージ照会APIリンク |
@@ -108,6 +109,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
     "resultDate":"2020-09-09T11:25:10.000+09:00",
     "dsnCode":"2.5.0",
     "dsnMessage":"SUCCESS",
+    "senderGroupKey":"groupKey",
     "_links":{
         "self":{
             "href":"https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"

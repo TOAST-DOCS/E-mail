@@ -532,6 +532,7 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
+|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 

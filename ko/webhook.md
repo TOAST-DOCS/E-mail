@@ -87,6 +87,7 @@ curl -X POST \
 |- resultDate|	String| 수신 일시 |
 |- dsnCode|	String| DSN(Delivery Status Notification) 상태 코드 |
 |- dsnMessage|	String| DSN(Delivery Status Notification) 상태 메시지 |
+| - senderGroupingKey |	String| 발신자 그룹 키 |
 |- _links|	Object|	링크 |
 |- self|	Object|	- |
 |- href|	String|	메시지 조회 API 링크 |
@@ -108,6 +109,7 @@ curl -X POST \
     "resultDate":"2020-09-09T11:25:10.000+09:00",
     "dsnCode":"2.5.0",
     "dsnMessage":"SUCCESS",
+    "senderGroupKey":"groupKey",     
     "_links":{
         "self":{
             "href":"https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
