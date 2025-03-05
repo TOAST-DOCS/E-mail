@@ -1160,6 +1160,100 @@ curl -X GET \
 |-- statsId| String| 統計データグルーピングのためのキー |
 
 
+### 업데이트 결과 조회
+
+#### 요청
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v2.1/appKeys/{appKey}/sender/update-mails|
+
+[Query parameter]
+
+| 값                         | 	타입      | 	설명 |
+|---------------------------|----------|-----|
+| startMailStatusUpdateDate | 	String  | O   |	메일 발송 상태 코드 업데이트 시작 시간 (yyyy-MM-dd HH:mm:ss) |
+| endMailStatusUpdateDate   | 	String  | O   |	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)     |
+| mailStatusCode            | 	Integer | X   | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패|
+| messageType               | 	String  | X   |메세지 발송 유형 (일반, 광고, 인증)           |
+| pageNum                   | 	Integer | 	X  |	페이지 번호 1(기본값)|
+| pageSize                  | 	Integer | 	X  |	조회 건수 15(기본값)|
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+|값|	타입|	필수|	설명|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+
+#### cURL
+```
+curl -X GET \
+'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/update-mails \
+-H 'Content-Type: application/json;charset=UTF-8' \
+-H 'X-Secret-Key: '"${SECRET_KEY}"''
+```
+
+#### 응답
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "body": {
+    "pageNum": 1,
+    "pageSize": 10,
+    "totalCount": 1,
+    "data": [
+      {
+        "requestId": "20250101000000ABCDEFG0",
+        "mailSeq": 0,
+        "mailStatusCode": "SST2",
+        "mailStatusName": "발송 성공",
+        "requestDate": "2015-01-01 00:00:00",
+        "mailStatusUpdatedDate": "",
+        "resultDate": "2019-01-01 00:00:00",
+        "openedDate": "2019-01-01 00:00:01",
+        "dsnCode": "2.5.0",
+        "dsnMessage": "SUCCESS",
+        "senderGroupingKey": "groupKey"
+      }
+    ]
+  }
+}
+  
+
+```
+
+| 값           |	타입| 	설명                                                                                   |
+|-------------|---|---------------------------------------------------------------------------------------|
+| header      |	Object| 	헤더 영역                                                                                |
+| - isSuccessful |	Boolean| 	성공 여부                                                                                |
+| - resultCode |	Integer| 	실패 코드                                                                                |
+| - resultMessage |	String| 	실패 메시지                                                                               |
+| data        |	Object| 	데이터 영역                                                                               |
+| - requestId | String| 요청 ID                                                                                 |
+| - mailSeq   | Integer| 메일 순번                                                                                 |
+| - mailStatusCode |	String| 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
+| - mailStatusName |	String| 	발송 상태 명                                                                              |
+| - requestDate | String| 요청 일시                                                                                 |
+| - mailStatusUpdatedDate | String| 메일 발송 상태 코드 업데이트 일시                                                                   |
+| - resultDate | String| 수신 일시                                                                                 |
+| - openedDate | String| 읽은 일시                                                                                 |
+| - dsnCode   | String| DSN(Delivery Status Notification) 상태 코드                                               |
+| - dsnMessage | String| DSN(Delivery Status Notification) 상태 메시지                                              |
+| - senderGroupingKey | String| 발송자 그룹키                                                                               |
+
 ### 大量メールリスト照会
 
 #### リクエスト
