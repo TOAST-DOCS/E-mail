@@ -61,27 +61,30 @@ Hook data per event type when generating a POST request to the URL defined in th
 |- createdDateTime|	String| Date of unsubscribe request<br>\* yyyy-MM-dd'T'HH:mm:ss.SSSXXX|
 
 ```json
-"hooks":[
+{
+  "hooks": [
     {
-        "hookId":"202007271010101010sadasdavas",
-        "receiveMailAddr":"help@toast.com",
-        "createdDateTime":"2020-09-09T11:25:10.000+09:00"
+      "hookId": "202007271010101010sadasdavas",
+      "receiveMailAddr": "help@toast.com",
+      "createdDateTime": "2020-09-09T11:25:10.000+09:00"
     }
-]
+  ]
+}
 ```
 
 #### Update the message sending result code
+
+- 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
+
 |Value|	Type|	Descriptions|
 |---|---|---|
 |hooks|	List\<Map\> | Data when a webhook event occurs |
 |- messageType|	String| Mail type<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
 |- requestId|	String| Request ID |
 |- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Mail order |
-|- senderName|	String| Sender name |
 |- senderAddress|	String| Sender email address |
-|- receiveName|	String| Recipient name |
 |- receiveMailAddr|	String| Recipient email address |
-|- mailStatusCode|	String| Delivery status code <br/> SST0: ready to deliver, SST1: in delivery, <br/> SST2: Sent successfully, SST3: Sent unsuccessfully, SST7: Unauthorized|
+|- mailStatusCode|	String| Delivery status code <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패        |
 |- requestDate|	String| Date and time of request |
 |- createDate|	String| Date and time of creation |
 |- resultDate|	String| Date and time of receiving |
@@ -94,28 +97,28 @@ Hook data per event type when generating a POST request to the URL defined in th
 |- hookId|	String| A unique ID created when an event occurs in a service |
 
 ```json
-"hooks":[
+{
+  "hooks": [
     {
-    "messageType":"NORMAL_MAIL",
-    "requestId":"20190101000000ABCDEFG0",
-    "mailSeq":"0",
-    "senderName":"NHN Cloud",
-    "senderAddress":"sender@nhncloud.com",
-    "receiveName":"NHN Cloud",
-    "receiveMailAddr":"receiver@nhncloud.com",
-    "mailStatusCode":"SST2",
-    "requestDate":"2020-09-09T11:25:10.000+09:00",
-    "createDate":"2020-09-09T11:25:10.000+09:00",
-    "resultDate":"2020-09-09T11:25:10.000+09:00",
-    "dsnCode":"2.5.0",
-    "dsnMessage":"SUCCESS",
-    "senderGroupKey":"groupKey",
-    "_links":{
-        "self":{
-            "href":"https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
+      "messageType": "NORMAL_MAIL",
+      "requestId": "20190101000000ABCDEFG0",
+      "mailSeq": "0",
+      "senderAddress": "sender@nhncloud.com",
+      "receiveMailAddr": "receiver@nhncloud.com",
+      "mailStatusCode": "SST2",
+      "requestDate": "2020-09-09T11:25:10.000+09:00",
+      "createDate": "2020-09-09T11:25:10.000+09:00",
+      "resultDate": "2020-09-09T11:25:10.000+09:00",
+      "dsnCode": "2.5.0",
+      "dsnMessage": "SUCCESS",
+      "senderGroupKey": "groupKey",
+      "_links": {
+        "self": {
+          "href": "https://email.api.nhncloudservice.com/email/v2.0/appKeys/hVYsda0xPcasTT5hC6z/sender/mail/20190101000000ABCDEFG0/0"
         }
-    },
-    "hookId": "202007271010101010sadasdavas"
+      },
+      "hookId": "202007271010101010sadasdavas"
     }
-]
+  ]
+}
 ```
