@@ -409,7 +409,7 @@ Webフック登録時に下記の設定値を入力します。
 - 対象URL
     - イベント発生時にデータを受け取るURLです。
         - プロトコルはHTTPSのみサポートします。
-    - POSTリクエストの仕様は[Webhook](./api-guide/#webhook)を参照してください。
+    - POSTリクエストの仕様は[Webhook](./webhook)を参照してください。
 - 署名
     - 定義された署名鍵はPOSTリクエスト時にX-Toast-Webhook-Signatureヘッダの値として含まれます。
 

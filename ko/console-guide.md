@@ -409,7 +409,7 @@ UID는 태그에 등록하여 다수의 대상자에게 쉽게 메일을 발송�
 - 대상 URL
     - 이벤트 발생 시 데이터를 전달 받을 URL입니다.
         - 프로토콜은 HTTPS만 지원합니다.
-    - POST 요청에 대한 명세는 [웹훅](./api-guide/#webhook)를 참고하세요.
+    - POST 요청에 대한 명세는 [웹훅](./webhook)를 참고하세요.
 - 서명
     - 정의된 서명 키는 POST 요청 시 X-Toast-Webhook-Signature 헤더의 값으로 포함됩니다.
 

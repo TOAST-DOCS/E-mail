@@ -430,7 +430,7 @@ When registering for webhook, enter the settings below.
 - Target URL
     - It is URL to receive data when an event occurs.
         - Supporting protocol is HTTPS only.
-    - Refer to [Web Hook](./api-guide/#webhook) for details on POST requests.
+    - Refer to [Web Hook](./webhook) for details on POST requests.
 - Signature
     - Defined signature key is included as the value in the X-Toast-Webhook-Signature header upon POST request.
 
