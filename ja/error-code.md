@@ -75,6 +75,7 @@
 | false        | -2059      | The 'statsId' exceeds maximum length. (8 chars)                                                                            |
 | false        | -2060      | This request can't update status. Check status of this mass mail request.                                                  |
 | false        | -2061      | This request can't update status. Check status of this tag mail request.                                                   |
+| false        | -2062     | 'startMailStatusUpdateDate' and 'endMailStatusUpdateDate' are required.                                                     |
 | false        | -2100      | The 'templateId' is required.                                                                                              |
 | false        | -2101      | Already existed templateId.                                                                                                |
 | false        | -2102      | The 'templateName' is required.                                                                                            |
