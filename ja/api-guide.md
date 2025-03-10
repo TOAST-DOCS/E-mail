@@ -532,7 +532,7 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 ) |
+|senderGroupingKey| String| X| 発信者グループキー(最大100文字) |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
@@ -1160,24 +1160,24 @@ curl -X GET \
 |-- statsId| String| 統計データグルーピングのためのキー |
 
 
-### 메일 발송 업데이트 완료 목록 조회
-- 일반 메일 발송시 메일 발송 상태 코드 업데이트가 완료된 메일 목록을 조회합니다.
-- 메일 발송 상태 코드 업데이트 시작 시간과 종료 시간을 기준으로 조회합니다.
-- 조회되는 메일 목록은 메일 발송 상태 코드 업데이트가 완료된 메일 목록입니다.
+### メール送信アップデート完了リスト照会
+- 一般メール送信時にメール送信ステータスコードのアップデートが完了したメールリストを照会します。
+- メール送信ステータスコードアップデート開始時間と終了時間を基準に照会します。
+- 照会されるメールリストはメール、送信ステータスコードのアップデートが完了したメールリストです。
 
-#### 조회 가능 메일 발송 상태 코드
-- SST2: 발송완료
-- SST3: 발송실패
-- SST5: 수신거부
-- SST7: 미인증
-- SST8: 화이트리스트로 인한 실패
+#### 照会可能メール送信ステータスコード
+- SST2:送信完了
+- SST3:送信失敗
+- SST5:受信拒否
+- SST7:未認証
+- SST8:ホワイトリストによる失敗
 
-#### [주의]
-- SST2(발송완료) 상태 코드는 발송 처리 완료 시간이 아닌 수신 완료 시간을 기준으로 조회됩니다.
-	- 발송 처리가 지연될 경우 발송 처리 완료 시간과 수신 완료 시간이 다를 수 있습니다.
-- SST3(발송실패) 상태 코드는 서비스에서 최종적으로 발송 실패로 판단한 시점에 최종 상태 코드가 업데이트 됩니다.
+#### [注意]
+- SST2(送信完了)ステータスコードは送信処理完了時間ではなく、受信完了時間を基準に照会されます。
+	- 送信処理が遅延する場合、送信処理完了時間と受信完了時間が異なる場合があります。
+- SST3(送信失敗)ステータスコードはサービスで最終的に送信失敗と判断した時点で最終ステータスコードがアップデートされます。
 
-#### 요청
+#### リクエスト
 
 [URL]
 
@@ -1187,14 +1187,14 @@ curl -X GET \
 
 [Query parameter]
 
-| 값                         | 	타입      | 필수 | 	설명                                                                                   |
+| 値                       | 	タイプ    | 必須 | 	説明                                                                                 |
 |---------------------------|----------|----|---------------------------------------------------------------------------------------|
-| startMailStatusUpdateDate | 	String  | O  | 	메일 발송 상태 코드 업데이트 시작 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| endMailStatusUpdateDate   | 	String  | O  | 	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| mailStatusCode            | 	Integer | X  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| messageType               | 	String  | X  | 메세지 발송 유형 (일반, 광고, 인증)                                                                |
-| pageNum                   | 	Integer | 	X | 	페이지 번호 1(기본값)                                                                        |
-| pageSize                  | 	Integer | 	X | 	조회 건수 15(기본값)                                                                        |
+| startMailStatusUpdateDate | 	String  | O  | 	メール送信ステータスコードのアップデート開始時間(yyyy-MM-dd HH:mm:ss)                                         |
+| endMailStatusUpdateDate   | 	String  | O  | 	メール送信ステータスコードアップデート終了時間(yyyy-MM-dd HH:mm:ss)                                         |
+| mailStatusCode            | 	Integer | X  | 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
+| messageType               | 	String  | X  | メッセージ送信タイプ(一般、広告、認証)                                                                |
+| pageNum                   | 	Integer | 	X | 	ページ番号1(デフォルト値)                                                                        |
+| pageSize                  | 	Integer | 	X | 	照会件数15(デフォルト値)                                                                        |
 
 [Header]
 
@@ -1204,9 +1204,9 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
 #### cURL
 ```
@@ -1216,7 +1216,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
-#### 응답
+#### レスポンス
 
 ```json
 {
@@ -1234,7 +1234,7 @@ curl -X GET \
         "requestId": "20250101000000ABCDEFG0",
         "mailSeq": 0,
         "mailStatusCode": "SST2",
-        "mailStatusName": "발송 성공",
+        "mailStatusName": "送信成功",
         "requestDate": "2015-01-01 00:00:00",
         "mailStatusUpdatedDate": "",
         "resultDate": "2019-01-01 00:00:00",
@@ -1246,28 +1246,29 @@ curl -X GET \
     ]
   }
 }
-  
+
 
 ```
 
-| 값           |	타입| 	설명                                                                                   |
+| 値         |	タイプ| 	説明                                                                                 |
 |-------------|---|---------------------------------------------------------------------------------------|
-| header      |	Object| 	헤더 영역                                                                                |
-| - isSuccessful |	Boolean| 	성공 여부                                                                                |
-| - resultCode |	Integer| 	실패 코드                                                                                |
-| - resultMessage |	String| 	실패 메시지                                                                               |
-| data        |	Object| 	데이터 영역                                                                               |
-| - requestId | String| 요청 ID                                                                                 |
-| - mailSeq   | Integer| 메일 순번                                                                                 |
-| - mailStatusCode |	String| 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| - mailStatusName |	String| 	발송 상태 명                                                                              |
-| - requestDate | String| 요청 일시                                                                                 |
-| - mailStatusUpdatedDate | String| 메일 발송 상태 코드 업데이트 일시                                                                   |
-| - resultDate | String| 수신 일시                                                                                 |
-| - openedDate | String| 읽은 일시                                                                                 |
-| - dsnCode   | String| DSN(Delivery Status Notification) 상태 코드                                               |
-| - dsnMessage | String| DSN(Delivery Status Notification) 상태 메시지                                              |
-| - senderGroupingKey | String| 발송자 그룹키                                                                               |
+| header      |	Object| 	ヘッダ領域                                                                              |
+| - isSuccessful |	Boolean| 	成否                                                                              |
+| - resultCode |	Integer| 	失敗コード                                                                              |
+| - resultMessage |	String| 	失敗メッセージ                                                                             |
+| data        |	Object| 	データ領域                                                                             |
+| - requestId | String| リクエストID                                                                                 |
+| - mailSeq   | Integer| メールの順番                                                                                |
+| - mailStatusCode |	String| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
+| - mailStatusName |	String| 	送信ステータス名                                                                             |
+| - requestDate | String| リクエスト日時                                                                               |
+| - mailStatusUpdatedDate | String| メール送信ステータスコードアップデート日時                                                                 |
+| - resultDate | String| 受信日時                                                                               |
+| - openedDate | String| 既読日時                                                                               |
+| - dsnCode   | String| DSN(Delivery Status Notification)ステータスコード                                             |
+| - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ                                            |
+| - senderGroupingKey | String| 送信者グループキー                                                                              |
+
 
 ### 大量メールリスト照会
 
@@ -1756,7 +1757,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データをグループ化するためのキー |
 
 ### タグメールの送信受信者照会
 
@@ -1869,7 +1870,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データをグループ化するためのキー |
 
 ### タグメール送信詳細照会
 
