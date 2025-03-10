@@ -1269,6 +1269,7 @@ curl -X GET \
 | - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ                                            |
 | - senderGroupingKey | String| 送信者グループキー                                                                              |
 
+
 ### 大量メールリスト照会
 
 #### リクエスト

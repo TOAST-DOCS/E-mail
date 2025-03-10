@@ -537,6 +537,7 @@ curl -X POST \
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
+
 [注意]
 
 
