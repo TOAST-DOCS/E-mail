@@ -532,6 +532,7 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
+|senderGroupingKey| String| X| 発信者グループキー(最大100文字) |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
@@ -1159,6 +1160,116 @@ curl -X GET \
 |-- statsId| String| 統計データグルーピングのためのキー |
 
 
+### メール送信アップデート完了リスト照会
+- 一般メール送信時にメール送信ステータスコードのアップデートが完了したメールリストを照会します。
+- メール送信ステータスコードアップデート開始時間と終了時間を基準に照会します。
+- 照会されるメールリストはメール、送信ステータスコードのアップデートが完了したメールリストです。
+
+#### 照会可能メール送信ステータスコード
+- SST2:送信完了
+- SST3:送信失敗
+- SST5:受信拒否
+- SST7:未認証
+- SST8:ホワイトリストによる失敗
+
+#### [注意]
+- SST2(送信完了)ステータスコードは送信処理完了時間ではなく、受信完了時間を基準に照会されます。
+	- 送信処理が遅延する場合、送信処理完了時間と受信完了時間が異なる場合があります。
+- SST3(送信失敗)ステータスコードはサービスで最終的に送信失敗と判断した時点で最終ステータスコードがアップデートされます。
+
+#### リクエスト
+
+[URL]
+
+|Http method|	URI|
+|---|---|
+|GET| /email/v2.1/appKeys/{appKey}/sender/update-mails|
+
+[Query parameter]
+
+| 値                       | 	タイプ    | 必須 | 	説明                                                                                 |
+|---------------------------|----------|----|---------------------------------------------------------------------------------------|
+| startMailStatusUpdateDate | 	String  | O  | 	メール送信ステータスコードのアップデート開始時間(yyyy-MM-dd HH:mm:ss)                                         |
+| endMailStatusUpdateDate   | 	String  | O  | 	メール送信ステータスコードアップデート終了時間(yyyy-MM-dd HH:mm:ss)                                         |
+| mailStatusCode            | 	Integer | X  | 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
+| messageType               | 	String  | X  | メッセージ送信タイプ(一般、広告、認証)                                                                |
+| pageNum                   | 	Integer | 	X | 	ページ番号1(デフォルト値)                                                                        |
+| pageSize                  | 	Integer | 	X | 	照会件数15(デフォルト値)                                                                        |
+
+[Header]
+
+```
+{
+  "X-Secret-Key": String
+}
+```
+
+|値|	タイプ|	必須|	説明|
+|---|---|---|---|
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+
+#### cURL
+```
+curl -X GET \
+'https://email.api.nhncloudservice.com/email/v2.1/appKeys/'"${APP_KEY}"'/sender/update-mails \
+-H 'Content-Type: application/json;charset=UTF-8' \
+-H 'X-Secret-Key: '"${SECRET_KEY}"''
+```
+
+#### レスポンス
+
+```json
+{
+  "header": {
+    "isSuccessful": true,
+    "resultCode": 0,
+    "resultMessage": "SUCCESS"
+  },
+  "body": {
+    "pageNum": 1,
+    "pageSize": 10,
+    "totalCount": 1,
+    "data": [
+      {
+        "requestId": "20250101000000ABCDEFG0",
+        "mailSeq": 0,
+        "mailStatusCode": "SST2",
+        "mailStatusName": "送信成功",
+        "requestDate": "2015-01-01 00:00:00",
+        "mailStatusUpdatedDate": "",
+        "resultDate": "2019-01-01 00:00:00",
+        "openedDate": "2019-01-01 00:00:01",
+        "dsnCode": "2.5.0",
+        "dsnMessage": "SUCCESS",
+        "senderGroupingKey": "groupKey"
+      }
+    ]
+  }
+}
+
+
+```
+
+| 値         |	タイプ| 	説明                                                                                 |
+|-------------|---|---------------------------------------------------------------------------------------|
+| header      |	Object| 	ヘッダ領域                                                                              |
+| - isSuccessful |	Boolean| 	成否                                                                              |
+| - resultCode |	Integer| 	失敗コード                                                                              |
+| - resultMessage |	String| 	失敗メッセージ                                                                             |
+| data        |	Object| 	データ領域                                                                             |
+| - requestId | String| リクエストID                                                                                 |
+| - mailSeq   | Integer| メールの順番                                                                                |
+| - mailStatusCode |	String| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
+| - mailStatusName |	String| 	送信ステータス名                                                                             |
+| - requestDate | String| リクエスト日時                                                                               |
+| - mailStatusUpdatedDate | String| メール送信ステータスコードアップデート日時                                                                 |
+| - resultDate | String| 受信日時                                                                               |
+| - openedDate | String| 既読日時                                                                               |
+| - dsnCode   | String| DSN(Delivery Status Notification)ステータスコード                                             |
+| - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ                                            |
+| - senderGroupingKey | String| 送信者グループキー                                                                              |
+
+
 ### 大量メールリスト照会
 
 #### リクエスト
@@ -1646,7 +1757,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データをグループ化するためのキー |
 
 ### タグメールの送信受信者照会
 
@@ -1759,7 +1870,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+|-- statsId| String| 統計データをグループ化するためのキー |
 
 ### タグメール送信詳細照会
 
