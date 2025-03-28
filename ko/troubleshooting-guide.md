@@ -13,6 +13,21 @@ Because the Gmail Image Proxy service does not forward users' cookies, you can't
 #### 참조
 [Google Analytics > Email Tracking - Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/email)
 
+### Gmail 이메일 발신자 가이드라인 강화 (2024년 2월 1일 시행)
+2024년 2월 1일부터 Gmail 계정으로 하루에 5,000개 이상의 메일을 보내는 이메일 발신자에 대한 가이드라인이 강화되었습니다.
+- 메일 전송 한도(5,000개)를 계산할 때는 동일한 기본 도메인에서 전송된 모든 메일 수를 집계합니다.
+- 예를 들어 매일 개인 Gmail 계정으로 solarmora.com에서 2,500개의 메일을 보내고, promotions.solarmora.com에서 2,500개의 메일을 보내는 경우, 5,000개의 메일이 모두 동일한 기본 도메인(solarmora.com)에서 전송되었으므로 대량메일 발신자로 간주됩니다.
+- 위의 기준을 한 번 이상 충족한 발신자는 영구적으로 대량메일 발신자로 간주됩니다.
+
+NHN CLOUD Email 서비스를 사용하는 경우, 이 가이드라인을 준수하기 위해 다음 사항을 고려해 주시기 바랍니다.
+- 같은 메일에 다른 유형의 콘텐츠를 함께 포함하지 마세요. 예를 들어 구매 영수증 메일에 프로모션을 포함하지 마세요.
+- 메일 수신에 동의하지 않은 사용자에게 메일을 보내지 마세요. 이러한 수신자는 내 메일을 스팸으로 표시할 수 있으며, 향후 이러한 수신자에게 보내는 메일도 스팸으로 표시됩니다.
+- 발송시 발신자를 메일 유형별로 분류하여 발송하세요. 예를 들어, 구매 영수증 메일은 구매 영수증 발신자로, 프로모션 메일은 프로모션 발신자로 발송하세요.
+
+#### 참조
+- [이메일 발신자 가이드라인](https://support.google.com/a/answer/81126?hl=ko)
+- [이메일 발신자 가이드라인 FAQ](https://support.google.com/a/answer/14229414?sjid=4363325810454271147-NC)
+
 ### Gmail 낮은 평판(low reputation) 문제
 
 Gmail 평판(reputation)에 관한 간략한 가이드입니다.
