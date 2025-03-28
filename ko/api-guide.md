@@ -3,7 +3,10 @@
 ### v2.1 API 소개
 
 1. 조회 API 응답 변경
-	* 메일 조회 API의 응답에 statId가 추가되었습니다.
+    * 메일 조회 API의 응답에 statId가 추가되었습니다.
+2. 메일 발송 업데이트 완료 목록 조회 API 추가
+3. 인증, 광고메일 발송 요청 필드 추가
+    * senderGroupingKey 필드가 추가되었습니다.
 
 [API 도메인]
 
@@ -92,6 +95,8 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * 템플릿을 사용하는 경우 **senderAddress, title, body**는 필수 값이 아닙니다. 이 값을 입력하지 않는 경우 템플릿에 등록된 값을 사용합니다.
 * 템플릿을 사용하면서 **senderAddress, senderName, title, body, templateType**을 입력한다면 템플릿에 등록된 값보다 우선 적용됩니다.
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 [예시 1]
 ```
@@ -244,6 +249,8 @@ curl -X POST \
 
 * 템플릿을 사용하는 경우 **senderAddress, title, body**는 필수 값이 아닙니다. 이 값을 입력하지 않는 경우 템플릿에 등록된 값을 사용합니다.
 * 템플릿을 사용하면서 **senderAddress, senderName, title, body, templateType**을 입력한다면 템플릿에 등록된 값보다 우선 적용됩니다.
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 [예시 1]
 ```
@@ -538,6 +545,8 @@ curl -X POST \
 
 * 템플릿을 사용하는 경우 **senderAddress, title, body**는 필수 값이 아닙니다. 이 값을 입력하지 않는 경우 템플릿에 등록된 값을 사용합니다.
 * 템플릿을 사용하면서 **senderAddress, senderName, title, body, templateType**을 입력한다면 템플릿에 등록된 값보다 우선 적용됩니다.
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 #### 일반 메일과 다른 점
 인증 메일 성격상 다음과 같이 다른 특성들이 있습니다.
@@ -828,6 +837,8 @@ curl -X POST \
 #### FreeMarker 타입
 * [FreeMarker 템플릿 엔진](https://freemarker.apache.org/)을 지원합니다.
 * 템플릿 언어를 사용하여 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
+* FreeMarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 ```
 * title : ${title_name}님 안녕하세요 !!
 * body : ${body_content} 발송합니다.
