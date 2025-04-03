@@ -79,25 +79,27 @@ curl -X POST \
 
 #### 메시지 발송 결과 코드 업데이트
 
-| 값                   | 	타입          | 	설명                                                                                                                                                  |
-|---------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| hooks               | 	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                      |
+- 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
+
+| 값                   | 	타입          | 	설명                                                                                                                                                   |
+|---------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| hooks               | 	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                       |
 | - messageType       | 	String      | 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH |
-| - requestId         | 	String      | 요청 ID                                                                                                                                                |
-| - mailSeq           | 	Integer     | 메일 순번                                                                                                                                                |
-| - senderAddress     | 	String      | 발신자 메일 주소                                                                                                                                            |
-| - receiveMailAddr   | 	String      | 수신자 메일 주소                                                                                                                                            |
-| - mailStatusCode    | 	String      | 발송 상태 코드                                                           |
-| - requestDate       | 	String      | 요청 일시                                                                                                                                                |
-| - createDate        | 	String      | 생성 일시                                                                                                                                                |
-| - resultDate        | 	String      | 수신 일시                                                                                                                                                |
-| - dsnCode           | 	String      | DSN(Delivery Status Notification) 상태 코드                                                                                                              |
-| - dsnMessage        | 	String      | DSN(Delivery Status Notification) 상태 메시지                                                                                                             |
-| - senderGroupingKey | 	String      | 발신자 그룹 키                                                                                                                                             |
-| - _links            | 	Object      | 	링크                                                                                                                                                  |
-| - self              | 	Object      | 	-                                                                                                                                                   |
-| - href              | 	String      | 	메시지 조회 API 링크                                                                                                                                       |
-| - hookId            | 	String      | 서비스에서 이벤트가 발생할 때 생성되는 고유 ID                                                                                                                          |
+| - requestId         | 	String      | 요청 ID                                                                                                                                                 |
+| - mailSeq           | 	Integer     | 메일 순번                                                                                                                                                 |
+| - senderAddress     | 	String      | 발신자 메일 주소                                                                                                                                             |
+| - receiveMailAddr   | 	String      | 수신자 메일 주소                                                                                                                                             |
+| - mailStatusCode    | 	String      | 발송 상태 코드 <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패                                                            |
+| - requestDate       | 	String      | 요청 일시                                                                                                                                                 |
+| - createDate        | 	String      | 생성 일시                                                                                                                                                 |
+| - resultDate        | 	String      | 수신 일시                                                                                                                                                 |
+| - dsnCode           | 	String      | DSN(Delivery Status Notification) 상태 코드                                                                                                               |
+| - dsnMessage        | 	String      | DSN(Delivery Status Notification) 상태 메시지                                                                                                              |
+| - senderGroupingKey | 	String      | 발신자 그룹 키                                                                                                                                              |
+| - _links            | 	Object      | 	링크                                                                                                                                                   |
+| - self              | 	Object      | 	-                                                                                                                                                    |
+| - href              | 	String      | 	메시지 조회 API 링크                                                                                                                                        |
+| - hookId            | 	String      | 서비스에서 이벤트가 발생할 때 생성되는 고유 ID                                                                                                                           |
 
 ```json
 {
