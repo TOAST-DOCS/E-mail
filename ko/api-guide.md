@@ -343,7 +343,7 @@ curl -X POST \
 #### 광고 메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있습니다.
 * 자세한 내용은 [[광고성 메일 발송](./console-guide/#_3)]를 참고해주세요.
-* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=ko)]에 대응하여 gmail.com으로 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
+* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=ko)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
     * 해당 링크는 수신 거부 링크로 자동으로 치환됩니다.
     * 별도 URL을 사용하고 싶으신 경우 customHeaders에 'List-Unsubscribe' 헤더를 추가해 사용하실 수 있습니다.
     * 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/)를 참고하십시오.
