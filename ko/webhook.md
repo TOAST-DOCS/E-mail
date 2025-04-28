@@ -79,6 +79,8 @@ curl -X POST \
 
 #### 메시지 발송 결과 코드 업데이트
 
+- 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
+
 | 값                   | 	타입          | 	설명                                                                                                                                                   |
 |---------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | hooks               | 	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                       |
@@ -87,7 +89,7 @@ curl -X POST \
 | - mailSeq           | 	Integer     | 메일 순번                                                                                                                                                 |
 | - senderAddress     | 	String      | 발신자 메일 주소                                                                                                                                             |
 | - receiveMailAddr   | 	String      | 수신자 메일 주소                                                                                                                                             |
-| - mailStatusCode    | 	String      | 발송 상태 코드                                                            |
+| - mailStatusCode    | 	String      | 발송 상태 코드 <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패                                                            |
 | - requestDate       | 	String      | 요청 일시                                                                                                                                                 |
 | - createDate        | 	String      | 생성 일시                                                                                                                                                 |
 | - resultDate        | 	String      | 수신 일시                                                                                                                                                 |
