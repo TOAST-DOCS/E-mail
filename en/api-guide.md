@@ -4,6 +4,9 @@
 
 1. Changed query API response
 	* Added statId to the response of the mail query API.
+2. 메일 발송 업데이트 완료 목록 조회 API 추가
+3. 인증, 광고메일 발송 요청 필드 추가
+    * senderGroupingKey 필드가 추가되었습니다.
 
 [API Domain]
 
@@ -91,6 +94,8 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
 * On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 [Example 1]
 ```
@@ -340,7 +345,11 @@ curl -X POST \
 
 - The title must include the (AD) phrase. 
 - For more details, see [Send Advertising Mails](./console-guide/#_3).
-
+* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=en)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
+    * 해당 링크는 수신 거부 링크로 자동으로 치환됩니다.
+    * 별도 URL을 사용하고 싶으신 경우 customHeaders에 'List-Unsubscribe' 헤더를 추가해 사용하실 수 있습니다.
+    * 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/)를 참고하십시오.
+  
 [URL]
 
 |Http method|	URI|
@@ -542,6 +551,8 @@ curl -X POST \
 
 * On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
 * On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 #### Differences from General Mails 
 
@@ -830,6 +841,9 @@ curl -X POST \
 #### FreeMarker Type
 * [FreeMarker Template Engine](https://freemarker.apache.org/) is supported.
 * You may use a template language to replace with user-defined **templateParameter**. 
+* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
+    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
+
 ```
 * title: Hello, ${title_name}!!
 * body: We send ${body_content}.
@@ -1191,7 +1205,7 @@ curl -X GET \
 | startMailStatusUpdateDate | 	String  | O  | 	메일 발송 상태 코드 업데이트 시작 시간 (yyyy-MM-dd HH:mm:ss)                                         |
 | endMailStatusUpdateDate   | 	String  | O  | 	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)                                         |
 | mailStatusCode            | 	Integer | X  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| messageType               | 	String  | X  | 메세지 발송 유형 (일반, 광고, 인증)                                                                |
+| messageType               | 	String  | X  | 메세지 발송 유형 (NORMAL: 일반, DM: 광고, AUTH: 인증)                                                                |
 | pageNum                   | 	Integer | 	X | 	페이지 번호 1(기본값)                                                                        |
 | pageSize                  | 	Integer | 	X | 	조회 건수 15(기본값)                                                                        |
 
