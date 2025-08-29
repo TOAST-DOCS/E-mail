@@ -345,11 +345,11 @@ Click **Share > Settings** button to share the domain. Main features are the fol
     * After being authenticated by one project, you can share the domain by using the sharing feature and entering the email service app key for another
       project.
 
-### 반송 메일 설정
+### Set up Returned Email
 
-**반송 설정** 버튼을 클릭해 반송 메일을 설정할 수 있습니다.
-반송 메일은 메일 발송 시 수신자의 메일 서비스에서 메일을 수신하지 못했을 때 발송되는 메일입니다.
-메일 주소를 no-reply@{도메인} 또는 noreply@{도메인}으로 설정할 경우 반송 설정과 관련없이 반송 메일이 발송되지 않습니다.
+You can set returned email by clicking **Set up Return** button.
+A returned email is an email sent when the recipient's email service does not receive the email when it is sent.
+If you set your email address to no-reply@{domain} or noreply@{domain}, returned emails will not be sent regardless of your return settings.
 
 ### Register Sub-domains
 

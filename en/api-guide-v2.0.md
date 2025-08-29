@@ -536,7 +536,7 @@ curl -X POST \
 | -- #key#            | String | X        | Replacement key (##key##)                                    |
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
 | customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|senderGroupingKey| String| X| Sender group key ( up to 100 characters )|
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 | statsId             | String | X        | Statistics ID (not included in the delivery search conditions)|
 

@@ -74,7 +74,7 @@ Hook data per event type when generating a POST request to the URL defined in th
 
 #### Update the message sending result code
 
-- 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
+- The reception date, status code, and status message are only provided when the status is Sent (SST2).
 
 |Value|	Type|	Descriptions|
 |---|---|---|
@@ -84,13 +84,13 @@ Hook data per event type when generating a POST request to the URL defined in th
 |- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Mail order |
 |- senderAddress|	String| Sender email address |
 |- receiveMailAddr|	String| Recipient email address |
-|- mailStatusCode|	String| Delivery status code <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패        |
+|- mailStatusCode|	String| Delivery status code <br/> SST2: sent, SST3: send failed, <br/> SST5: opt out, SST7: unauthorized, SST8: failed due to whitelist        |
 |- requestDate|	String| Date and time of request |
 |- createDate|	String| Date and time of creation |
 |- resultDate|	String| Date and time of receiving |
 |- dsnCode|	String| Delivery Status Notification (DSN) status code |
 |- dsnMessage|	String| Delivery Status Notification (DSN) status message |
-|- senderGroupingKey |	String| 발신자 그룹키 |
+|- senderGroupingKey |	String| Sender group key |
 |- _links|	Object|	Link |
 |- self|	Object|	- |
 |- href|	String|	Query Message API link |

@@ -37,32 +37,38 @@
         * 사용자가 업로드한 파일이 처리되는 시점에 요청 이벤트가 발생합니다.
     * 일부 중복으로 처리되는 통계 이벤트를 개선하였습니다.
 
-### 2025. 03. 11
+### March 11, 2025
 
-#### 기능 추가
+#### Added Features
 
-* [API] 메일 발송 업데이트 완료 목록 조회 API 추가
-    * Email 서비스에서 발송 처리가 완료된 메일의 발송 상태를 조회할 수 있는 API가 추가되었습니다.
-    * 해당 API는 메시지 발송 결과 업데이트 시간 기준으로 검색됩니다.
-    * 발송 결과가 업데이트되는 기준은 다음과 같습니다.
-        * 메일이 수신 완료될 경우 (수신 SMTP에서 수신 완료 응답을 받은 경우)
-        * 메일 발송 처리간 발송 실패 처리된 경우(수신 거부, 화이트리스트 등)
-* [CONSOLE] 반송메일 설정 옵션 기능 추가
-    * 반송메일 설정 옵션을 추가하여 반송메일 수신 여부를 설정할 수 있습니다.
-    * no-reply, noreply를 메일 주소로 설정하면 설정과 관련없이 반송메일을 수신하지 않습니다.
-* [API] v2.1 광고 메일 발송/인증 메일 발송 API senderGroupingKey 추가
-    * 광고 메일 발송/인증 메일 발송 API에 senderGroupingKey를 추가하여 발신자 그룹키를 설정할 수 있습니다.
+* [API] Added API for viewing the list of completed mail delivery updates
+    * An API has been added to check the sending status of emails that have been sent through the Email service.
+    * This API searches based on the update time of the message delivery result.
+    * The criteria for updating the delivery results are as follows:
+        * When the email is received (when a reception completion response is received from the receiving SMTP)
+        * When the email is processed as a failure during the sending process (opt out, whitelist, etc.)
+* [CONSOLE] Added a returned email setting option
+    * You can set whether or not to receive returned emails by adding a returned email setting option.
+    * no-reply, If you set noreply as your email address, you will not receive returned emails regardless of your settings.
+* [API] Added v2.1 senderGroupingKey to advertising email sending/authentication email sending API
+    * You can set the sender group key by adding senderGroupingKey to the advertising email sending/authentication email sending API.
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [API] 메일 읽음 이벤트 처리 오류 수정
-    * 일부 상황에서 메일 발송이 완료되지 않은 상태에서 읽음 처리되는 문제를 개선하였습니다.
-* [CONSOLE] Freemarker 템플릿 미리보기 기능 개선
-    * Freemarker 템플릿 미리보기시 템플릿 파라미터를 전체 적용하지 않을 경우 적용하지 않은 파라미터를 확인할 수 있도록 개선하였습니다.
-* [API] 템플릿 발송 유효성 개선
-    * 템플릿 발송 시 템플릿 파라미터가 누락된 경우에도 템플릿 원문이 발송되는 문제를 개선하였습니다.
-    * 템플릿 발송 시 템플릿 파라미터가 누락된 경우 발송이 실패처리 됩니다.
-
+* [API] Fixed an error in handling the mail read event
+    * Improved an issue where, in some situations, emails would be marked as read before being sent.
+* [CONSOLE] Improved Freemarker template preview feature
+    * When previewing a Freemarker template, we have improved the ability to check unapplied parameters when not applying all template parameters.
+* [API] Improved template delivery validity
+    * We have improved the issue where the original template text is sent even when template parameters are missing when sending a template.
+    * If template parameters are missing when sending a template, the delivery will fail.
+* [API] Added webhook delivery status
+    * Added a condition for the delivery status code when a webhook is sent.
+    * The followings are delivery status codes added:
+        * SST3: send failed
+        * SST4: opt out
+        * SST7: unauthorized
+        * SST8: send failed (filtering due to whitelist)
 
 ### August 27, 2024
 

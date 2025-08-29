@@ -543,7 +543,7 @@ curl -X POST \
 | -- #key#            | String | X        | Replacement key (##key##)                                    |
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
 | customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|senderGroupingKey| String| X| Sender group key ( up to 100 characters )|
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 | statsId             | String | X        | Statistics ID (not included in the delivery search conditions)|
 
@@ -1170,27 +1170,27 @@ curl -X GET \
 | -- senderGroupingKey|	String  | Sender's group key                                           |
 |-- statsId| String| Key for statistics data grouping |
 
-### 메일 발송 업데이트 완료 목록 조회
+### View the List of Updated Mail Delivery
 
-- 일반 메일 발송시 메일 발송 상태 코드 업데이트가 완료된 메일 목록을 조회합니다.
-- 메일 발송 상태 코드 업데이트 시작 시간과 종료 시간을 기준으로 조회합니다.
-- 조회되는 메일 목록은 메일 발송 상태 코드 업데이트가 완료된 메일 목록입니다.
+- When sending a regular email, check the list of emails for which the email delivery status code has been updated.
+- View by start and end times for mail delivery status code updates.
+- The list of emails being viewed is a list of emails for which the email delivery status code has been updated.
 
-#### 조회 가능 메일 발송 상태 코드
+#### Status Codes for Viewable Mail Delivery
 
-- SST2: 발송완료
-- SST3: 발송실패
-- SST5: 수신거부
-- SST7: 미인증
-- SST8: 화이트리스트로 인한 실패
+- SST2: sent
+- SST3: send failed
+- SST5: opt out
+- SST7: unauthorized
+- SST8: failed due to whitelist
 
-#### [주의]
-- SST2(발송완료) 상태 코드는 발송 처리 완료 시간이 아닌 수신 완료 시간을 기준으로 조회됩니다.
-    - 발송 처리가 지연될 경우 발송 처리 완료 시간과 수신 완료 시간이 다를 수 있습니다.
-- SST3(발송실패) 상태 코드는 서비스에서 최종적으로 발송 실패로 판단한 시점에 최종 상태 코드가 업데이트 됩니다.
+#### [Caution]
+- SST2(sent) status codes are viewed based on the time of receipt, not the time of delivery completion.
+    - If there is a delay in the delivery process, the time of completion of delivery and the time of completion of receipt may differ.
+- SST3(send failed) status code is updated to the final status code when the service finally determines that the delivery has failed.
 
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -1200,14 +1200,14 @@ curl -X GET \
 
 [Query parameter]
 
-| 값                         | 	타입      | 필수 | 	설명                                                                                   |
+| Value                         | 	Type      | Required | 	Description                                                                                   |
 |---------------------------|----------|----|---------------------------------------------------------------------------------------|
-| startMailStatusUpdateDate | 	String  | O  | 	메일 발송 상태 코드 업데이트 시작 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| endMailStatusUpdateDate   | 	String  | O  | 	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| mailStatusCode            | 	Integer | X  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| messageType               | 	String  | X  | 메세지 발송 유형 (NORMAL: 일반, DM: 광고, AUTH: 인증)                                                                |
-| pageNum                   | 	Integer | 	X | 	페이지 번호 1(기본값)                                                                        |
-| pageSize                  | 	Integer | 	X | 	조회 건수 15(기본값)                                                                        |
+| startMailStatusUpdateDate | 	String  | O  | 	Start time for updating mail delivery status code (yyyy-MM-dd HH:mm:ss)                                         |
+| endMailStatusUpdateDate   | 	String  | O  | 	End time for updating mail delivery status code (yyyy-MM-dd HH:mm:ss)                                         |
+| mailStatusCode            | 	Integer | X  | Delivery status code <br/> SST2:sent, SST3:send failed,  <br/> SST5:opt out, SST7: unauthorized, SST8: Failed due to whitelist |
+| messageType               | 	String  | X  | Message delivery type (NORMAL: common, DM: advertising, AUTH: authorized)                                                                |
+| pageNum                   | 	Integer | 	X | 	Page number 1(Default)                                                                        |
+| pageSize                  | 	Integer | 	X | 	Number of views 15(Default)                                                                        |
 
 [Header]
 
@@ -1217,9 +1217,9 @@ curl -X GET \
 }
 ```
 
-| 값            | 	타입     | 	필수 | 	설명                                           |
+| Value            | 	Type     | 	Required | 	Description                                           |
 |--------------|---------|-----|-----------------------------------------------|
-| X-Secret-Key | 	String | O   | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+| X-Secret-Key | 	String | O   | Unique secretKey [[Note](./api-guide/#secret-key)] |
 
 #### cURL
 
@@ -1230,7 +1230,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
-#### 응답
+#### Response
 
 ```json
 {
@@ -1264,24 +1264,24 @@ curl -X GET \
 
 ```
 
-| 값                       | 	타입      | 	설명                                                                                   |
+| Value                       | 	Type      | 	Description                                                                                   |
 |-------------------------|----------|---------------------------------------------------------------------------------------|
-| header                  | 	Object  | 	헤더 영역                                                                                |
-| - isSuccessful          | 	Boolean | 	성공 여부                                                                                |
-| - resultCode            | 	Integer | 	실패 코드                                                                                |
-| - resultMessage         | 	String  | 	실패 메시지                                                                               |
-| data                    | 	Object  | 	데이터 영역                                                                               |
-| - requestId             | String   | 요청 ID                                                                                 |
-| - mailSeq               | Integer  | 메일 순번                                                                                 |
-| - mailStatusCode        | 	String  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| - mailStatusName        | 	String  | 	발송 상태 명                                                                              |
-| - requestDate           | String   | 요청 일시                                                                                 |
-| - mailStatusUpdatedDate | String   | 메일 발송 상태 코드 업데이트 일시                                                                   |
-| - resultDate            | String   | 수신 일시                                                                                 |
-| - openedDate            | String   | 읽은 일시                                                                                 |
-| - dsnCode               | String   | DSN(Delivery Status Notification) 상태 코드                                               |
-| - dsnMessage            | String   | DSN(Delivery Status Notification) 상태 메시지                                              |
-| - senderGroupingKey     | String   | 발송자 그룹키                                                                               |
+| header                  | 	Object  | 	Header Area                                                                                |
+| - isSuccessful          | 	Boolean | 	Success status                                                                                |
+| - resultCode            | 	Integer | 	Failure code                                                                                |
+| - resultMessage         | 	String  | 	Failure message                                                                               |
+| data                    | 	Object  | 	Data area                                                                               |
+| - requestId             | String   | Request ID                                                                                 |
+| - mailSeq               | Integer  | Mail order number                                                                                 |
+| - mailStatusCode        | 	String  | Delivery status code <br/> SST2:sent, SST3:send failed,  <br/> SST5:opt out, SST7: unauthorized, SST8: failed due to whitelist |
+| - mailStatusName        | 	String  | 	delivery status name                                                                              |
+| - requestDate           | String   | Request date                                                                                 |
+| - mailStatusUpdatedDate | String   | Code update date for mail delivery status                                                                   |
+| - resultDate            | String   | Date of receipt                                                                                 |
+| - openedDate            | String   | Date of reading                                                                                 |
+| - dsnCode               | String   | DSN(Delivery Status Notification) status code                                               |
+| - dsnMessage            | String   | DSN(Delivery Status Notification) status message                                              |
+| - senderGroupingKey     | String   | Sender group key                                                                               |
 
 ### Query Mass Delivery List
 
