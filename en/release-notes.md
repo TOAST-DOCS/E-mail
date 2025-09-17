@@ -1,13 +1,28 @@
 ## Notification > Email > Release Notes
 
+### September 23, 2025
+
+#### Feature Updates
+
+* [Console] Added a "Read" field when downloading search results from a delivery history
+    * A "Read Status" field has been added to the download results for general delivery history search results.
+    * This allows you to more easily check and analyze recipients' email read status.
+    * Read status information, previously unavailable in the search results download feature, allows you to more accurately measure the effectiveness of your email delivery.
+
+#### Bug Fixes
+
+* [SMTP] Improved subdomain verification logic
+    * Fixed an authentication failure issue that occurred when sending email to an SMTP subdomain has been fixed.
+    * Improved the issue that emails were not sent due to authentication failure despite completing SPF, DKIM, and DMARC authentication for the subdomain.
+
 ### May 27, 2025
 
 #### Feature Updates
 
 * [Console] Improved notification details for opt out
     * Improved notification detilas exposed when an email recipient clicks the opt out link.
-    * Before change: the recipient's address and the opt out button were exposed.
-    * After change: the sender and the date and time of the opt out are exposed.
+    * AS-IS: the recipient's address and the opt out button were exposed.
+    * TO-BE: the sender and the date and time of the opt out are exposed.
     * If you send it in the format of "Sender name <sender email>", the sender name and sender email will be displayed when you click the opt out link.
         * If you do not enter a sender name, only the sent email will be displayed.
     * This feature applies to emails sent after May 27th and does not apply to emails already sent.
@@ -18,8 +33,8 @@
 
 * [API] Changed One-click opt-out policy
     * The one-click opt-out feature policy has been changed in accordance with the enhanced Gmail sender guidelines.
-    * Before change: a one-click opt-out feature is now available for all emails sent to a recipient.
-    * After change: a one-click opt-out feature is provided only for advertising emails sent to recipients.
+    * AS-IS: a one-click opt-out feature is now available for all emails sent to a recipient.
+    * TO-BE: a one-click opt-out feature is provided only for advertising emails sent to recipients.
     * If you want to use one-click opt-out for regular emails and authentication emails, you can do so by adding 
       `List-Unsubscribe-Post: List-Unsubscribe=One-Click` to customHeaders.
         * At this time, the one-click opt-out URL must be created by the user, and the service does not provide an automatically generated link internally.
@@ -56,7 +71,7 @@
 #### Feature Updates
 
 * [API] Fixed an error in handling the mail read event
-    * Improved an issue where, in some situations, emails would be marked as read before being sent.
+    * Improved an issue where, in some situations, emails would be marked as read TO-BEbeing sent.
 * [CONSOLE] Improved a feature to preview Freemarker tempate
     * When previewing a Freemarker template, we have improved the ability to check which parameters were not applied when not applying all template parameters.
 * [API] Improved template sending validity
