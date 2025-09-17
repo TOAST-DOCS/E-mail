@@ -1,6 +1,6 @@
 ## Notification > Email > Release Notes
 
-### Septem 23, 2025
+### September 23, 2025
 
 #### Feature Updates
 
