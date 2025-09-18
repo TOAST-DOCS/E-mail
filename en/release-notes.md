@@ -1,67 +1,82 @@
 ## Notification > Email > Release Notes
 
-### 2025. 05. 27
+### September 23, 2025
 
-#### 기능 개선/변경
+#### Feature Updates
 
-* [Console] 수신 거부시 고지 내용 개선
-    * 메일 수신자가 수신 거부 링크를 클릭할 경우 노출되는 고지 내용이 개선되었습니다.
-    * 변경 전: 수신자의 주소와 수신 거부 버튼이 노출되었습니다.
-    * 변경 후: 발신자와 수신 거부 일시가 노출됩니다.
-    * "발신자 이름<발신 메일>" 형태로 발송할 경우 수신 거부 링크 클릭 시 발신자 이름과 발신 메일이 노출됩니다.
-        * 발신자 이름을 입력하지 않을 경우 발신 메일만 노출됩니다.
-    * 해당 기능은 5월 27일 이후 발송된 메일에 대해 적용되며 기 발송된 메일에는 적용되지 않습니다.
+* [Console] Added a "Read" field when downloading search results from a delivery history
+    * A "Read Status" field has been added to the download results for general delivery history search results.
+    * This allows you to more easily check and analyze recipients' email read status.
+    * Read status information, previously unavailable in the search results download feature, allows you to more accurately measure the effectiveness of your email delivery.
 
-### 2025. 04. 29
+#### Bug Fixes
 
-#### 기능 개선/변경
+* [SMTP] Improved subdomain verification logic
+    * Fixed an authentication failure issue that occurred when sending email to an SMTP subdomain has been fixed.
+    * Improved the issue that emails were not sent due to authentication failure despite completing SPF, DKIM, and DMARC authentication for the subdomain.
 
-* [API] 원클릭 수신 거부 기능 정책 변경
-    * gmail 발신자 가이드라인 강화에 따라 추가된 원클릭 수신 거부 기능 정책이 변경되었습니다.
-    * 변경 전: 수신자에게 보내는 전체 메일에 대해 원클릭 수신 거부 기능이 제공되었습니다.
-    * 변경 후: 수신자에게 보내는 메일 중 광고 메일에 한하여 원클릭 수신 거부 기능이 제공됩니다.
-    * 일반 메일, 인증 메일에 원클릭 수신 거부를 사용하고 싶으신 경우, customHeaders에
-      `List-Unsubscribe-Post: List-Unsubscribe=One-Click`를 추가하여 사용하실 수 있습니다.
-        * 이 때, 원클릭 수신 거부 URL은 사용자가 직접 작성해야 하며, 서비스에서 내부적으로 자동으로 생성된 링크를 제공하지 않습니다.
+### May 27, 2025
 
-* [API] 웹훅 발송 상태 추가
-    * 웹훅이 발송되는 발송 상태 코드 조건이 추가되었습니다.
-    * 추가되는 발송 상태 코드는 다음과 같습니다.
-        * SST3: 발송 실패
-        * SST4: 수신 거부
-        * SST7: 미인증
-        * SST8: 발송 실패(화이트리스트로 인한 필터링)
+#### Feature Updates
 
-* [Console] 대량 발송 통계 처리 기준 변경 및 오류 개선
-    * 대량 발송시 통계 처리 기준이 변경되었습니다.
-        * 사용자가 업로드한 파일이 처리되는 시점에 요청 이벤트가 발생합니다.
-    * 일부 중복으로 처리되는 통계 이벤트를 개선하였습니다.
+* [Console] Improved notification details for opt out
+    * Improved notification detilas exposed when an email recipient clicks the opt out link.
+    * AS-IS: the recipient's address and the opt out button were exposed.
+    * TO-BE: the sender and the date and time of the opt out are exposed.
+    * If you send it in the format of "Sender name <sender email>", the sender name and sender email will be displayed when you click the opt out link.
+        * If you do not enter a sender name, only the sent email will be displayed.
+    * This feature applies to emails sent after May 27th and does not apply to emails already sent.
 
-### 2025. 03. 11
+### April 29, 2025
 
-#### 기능 추가
+#### Feature Updates
 
-* [API] 메일 발송 업데이트 완료 목록 조회 API 추가
-    * Email 서비스에서 발송 처리가 완료된 메일의 발송 상태를 조회할 수 있는 API가 추가되었습니다.
-    * 해당 API는 메시지 발송 결과 업데이트 시간 기준으로 검색됩니다.
-    * 발송 결과가 업데이트되는 기준은 다음과 같습니다.
-        * 메일이 수신 완료될 경우 (수신 SMTP에서 수신 완료 응답을 받은 경우)
-        * 메일 발송 처리간 발송 실패 처리된 경우(수신 거부, 화이트리스트 등)
-* [CONSOLE] 반송메일 설정 옵션 기능 추가
-    * 반송메일 설정 옵션을 추가하여 반송메일 수신 여부를 설정할 수 있습니다.
-    * no-reply, noreply를 메일 주소로 설정하면 설정과 관련없이 반송메일을 수신하지 않습니다.
-* [API] v2.1 광고 메일 발송/인증 메일 발송 API senderGroupingKey 추가
-    * 광고 메일 발송/인증 메일 발송 API에 senderGroupingKey를 추가하여 발신자 그룹키를 설정할 수 있습니다.
+* [API] Changed One-click opt-out policy
+    * The one-click opt-out feature policy has been changed in accordance with the enhanced Gmail sender guidelines.
+    * AS-IS: a one-click opt-out feature is now available for all emails sent to a recipient.
+    * TO-BE: a one-click opt-out feature is provided only for advertising emails sent to recipients.
+    * If you want to use one-click opt-out for regular emails and authentication emails, you can do so by adding 
+      `List-Unsubscribe-Post: List-Unsubscribe=One-Click` to customHeaders.
+        * At this time, the one-click opt-out URL must be created by the user, and the service does not provide an automatically generated link internally.
 
-#### 기능 개선/변경
+* [API] Added webhook sending status
+    * Added a condition for the sending status code when a webhook is sent.
+    * Added sending status codes are as follows:
+        * SST3: send failed
+        * SST4: opt out
+        * SST7: unauthenticated
+        * SST8: send failed (filtering by whitelist)
 
-* [API] 메일 읽음 이벤트 처리 오류 수정
-    * 일부 상황에서 메일 발송이 완료되지 않은 상태에서 읽음 처리되는 문제를 개선하였습니다.
-* [CONSOLE] Freemarker 템플릿 미리보기 기능 개선
-    * Freemarker 템플릿 미리보기시 템플릿 파라미터를 전체 적용하지 않을 경우 적용하지 않은 파라미터를 확인할 수 있도록 개선하였습니다.
-* [API] 템플릿 발송 유효성 개선
-    * 템플릿 발송 시 템플릿 파라미터가 누락된 경우에도 템플릿 원문이 발송되는 문제를 개선하였습니다.
-    * 템플릿 발송 시 템플릿 파라미터가 누락된 경우 발송이 실패처리 됩니다.
+* [Console] Changed mass delivery statistics processing criteria and improved errors
+    * The statistics processing criteria for mass delivery is changed.
+        * The request event is processed when a file uploaded by a user is processed.
+    * Improved some statistical events that were being processed as duplicates.
+
+### March 11, 2025
+
+#### Added Features
+
+* [API] Added API for viewing the list of completed mail delivery updates
+    * Added an API for checking the sending status of emails that have been sent through the Email service.
+    * This API searches based on the update time of the message sending result.
+    * The criteria for updating the sending results are as follows:
+        * When the mail has been received (when a reception completion response is received from the receiving SMTP)
+        * When the email is processed as a failure during the sending process, such as opt out, whitelist
+* [CONSOLE] Added a feature to set up bounced email settings
+    * You can set whether or not to receive bounced emails by adding a bounced email settings option.
+    * If you set no-reply or noreply as your email address, you will not receive bounced emails regardless of whether or not you have bounce settings enabled.
+* [API] Added v2.1 advertising email sending/authentication email sending API senderGroupingKey
+    * You can set the sender group key by adding senderGroupingKey to the advertising email sending/authentication email sending API.
+
+#### Feature Updates
+
+* [API] Fixed an error in handling the mail read event
+    * Improved an issue where, in some situations, emails would be marked as read TO-BEbeing sent.
+* [CONSOLE] Improved a feature to preview Freemarker tempate
+    * When previewing a Freemarker template, we have improved the ability to check which parameters were not applied when not applying all template parameters.
+* [API] Improved template sending validity
+    * Improved the issue where the original template text is sent even when template parameters are missing when sending a template.
+    * If template parameters are missing when sending a template, the sending will fail.
 
 
 ### August 27, 2024
