@@ -2398,7 +2398,7 @@ curl -X POST \
 
 |値| タイプ| 最大文字数| 必須| 説明|
 |---|---|---|---|---|
-|fileName|  String| 100|O| ファイル名 |
+|fileName|  String| - |O| ファイル名 |
 |fileBody|  Byte[]| - |O| ファイルのバイト[]値 |
 |userId|    String| 50|X| ユーザーID |
 
