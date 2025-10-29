@@ -186,7 +186,7 @@ curl -X POST \
 |- data|	Object|	X|	데이터 영역|
 |-- requestId|	String|	X|	요청 ID|
 |-- results|	List|	X|	발송 결과|
-|--- receiveMailAddr|	String|	O|	수신자 메일 주소|
+|--- receiveMailAddr|	String|	X|	수신자 메일 주소|
 |--- receiveName|	String|	X|	수신자 명|
 |--- receiveType|	String|	O|	수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조)|
 |--- resultCode|	Integer|	O|	수신자 발송 요청 결과 코드|
