@@ -2398,11 +2398,11 @@ curl -X POST \
 
 [Request body]
 
-|값|	타입|	최대 길이| 필수|	설명|
-|---|---|---|---|---|
-|fileName|	String|	100|O|	파일이름|
-|fileBody|	Byte[]|	- |O|	파일의 Byte[] 값|
-|userId|	String|	50|X|	유저 ID|
+|값|	타입| 	최대 길이 | 필수|	설명|
+|---|---|--------|---|---|
+|fileName|	String| 	-     |O|	파일이름|
+|fileBody|	Byte[]| 	-     |O|	파일의 Byte[] 값|
+|userId|	String| 	50    |X|	유저 ID|
 
 #### cURL
 ```
