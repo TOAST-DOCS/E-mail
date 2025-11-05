@@ -343,7 +343,7 @@ curl -X POST \
 #### 광고 메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있습니다.
 * 자세한 내용은 [[광고성 메일 발송](./console-guide/#_3)]를 참고해주세요.
-* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=ko)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
+* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=ko)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신 거부 링크가 필수로 포함됩니다.
     * 해당 링크는 수신 거부 링크로 자동으로 치환됩니다.
     * 별도 URL을 사용하고 싶으신 경우 customHeaders에 'List-Unsubscribe' 헤더를 추가해 사용하실 수 있습니다.
     * 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/)를 참고하십시오.
@@ -683,7 +683,7 @@ curl -X POST \
 | adYn  | String | X|광고 여부 'N'(기본값) |
 | autoSendYn  | String | X|자동 발송 여부 'Y'(기본값) |
 | attachFileIdList  | List:Integer | X|첨부 파일 리스트 |
-| tagExpression  | List:String | O| 태그 표현식 (태그 ID 포함) |
+| tagExpression  | List:String | O| 태그 표현식(태그 ID 포함) |
 |customHeaders| Map| X| [사용자 지정 헤더](./console-guide/#custom-header)|
 | userId  | String | X|발송 구분자 ex)admin,system|
 |statsId| String  | X | 통계 ID(발신 검색 조건에는 포함되지 않습니다.) |
@@ -1178,7 +1178,7 @@ curl -X GET \
 #### 조회 가능 메일 발송 상태 코드
 - SST2: 발송 완료
 - SST3: 발송 실패
-- SST5: 수신거부
+- SST5: 수신 거부
 - SST7: 미인증
 - SST8: 화이트리스트로 인한 실패
 
@@ -1616,7 +1616,7 @@ curl -X GET \
 |-- mailStatusCode | String  |	O| 메일 상태 코드 <br/> SST0:발송 준비, SST1:발송 중,  <br/> SST2:발송 완료, SST3: 발송 실패, SST7: 미인증 |
 |-- mailStatusName | String  |	O| 메일 상태명 |
 |-- requestDate | String  |	O| 요청 시간 |
-|-- senderName | String  |	X| 발신자 명 |
+|-- senderName | String  |	X| 발신자명 |
 |-- senderAddress | String  |	X| 발신자 주소 |
 |-- resultId | String  |	X| SMTP ID |
 |-- resultDate | String  |	X| 실제 발송 시간 |
@@ -1636,7 +1636,7 @@ curl -X GET \
 |--- dsnCode| String|	X| DSN(Delivery Status Notification) 상태 코드|
 |--- dsnMessage| String|	X| DSN(Delivery Status Notification) 상태 메시지 |
 |-- attachFileList | List  |	O| 첨부 파일 리스트 |
-|--- fileType|	String|	O|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|--- fileType|	String|	O|	첨부 파일 타입(MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| Integer|	O| 파일 ID|
 |--- fileName|	String|	O|	첨부 파일 이름|
 |--- filePath|	String|	O|	첨부 파일 경로|
@@ -1754,19 +1754,19 @@ curl -X GET \
 |- totalCount|	Integer|	O|	총 데이터 건수|
 |- data|	List|	X|	데이터 영역|
 |-- requestId | String  |	O| 요청 ID |
-|-- requestIp |  String  |	X| 요청 아이피 |
+|-- requestIp |  String  |	X| 요청 IP |
 |-- requestDate |  String  |	O| 요청 시간 |
 |-- tagSendStatus |  String  |	O| 발송 상태 코드 <br/> WAIT: 대기, READY: 발송 준비, <br/>SENDREADY: 발송 준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송 중, COMPLETE: 발송 완료, <br/>FAIL: 발송 실패, CANCEL: 발송취소 |
-|-- tagSendStatusName |  String  |	O| 발송상태명 |
-|-- tagExpression |  List:String  |	O| 태그 표현식 (태그 ID 포함) |
+|-- tagSendStatusName |  String  |	O| 발송 상태명 |
+|-- tagExpression |  List:String  |	O| 태그 표현식(태그 ID 포함) |
 |-- templateId |  String  |	X| 템플릿 ID |
 |-- templateName |  String  |	X| 템플릿명 |
 |-- senderName |  String  |	X| 발신자명 |
-|-- senderMailAddress |  String  |	X| 발신자주소 |
+|-- senderMailAddress |  String  |	X| 발신자 이메일 주소 |
 |-- title |  String  |	X| 제목 |
 |-- body |  String  |	X| 내용 |
-|-- attachYn |  String  |	O| 첨부 파일여부 |
-|-- adYn |  String  |	O| 광고여부 |
+|-- attachYn |  String  |	O| 첨부 파일 여부 |
+|-- adYn |  String  |	O| 광고 여부 |
 |-- createUser |  String  |	X| 생성자 |
 |-- createDate |  String  |	O| 생성 일시 |
 |-- updateUser |  String  |	X| 수정자 |
@@ -1871,7 +1871,7 @@ curl -X GET \
 |- data|	Collection|	O|	데이터 영역|
 |-- requestId | String  |	O| 요청 ID |
 |-- mailSequence | Integer  |	O| 메일 순번 |
-|-- receiveMail | String  |	O| 수신자주소 |
+|-- receiveMail | String  |	O| 수신자 주소 |
 |-- mailStatusCode | String  |	O| 메일 상태 코드 <br/> SST0:발송 준비, SST1:발송 중,  <br/> SST2:발송 완료, SST3: 발송 실패, SST7: 미인증|
 |-- mailStatusName | String  |	O| 메일 상태명 |
 |-- resultId | String  |	X| SMTP ID |
@@ -1996,7 +1996,7 @@ curl -X GET \
 |-- mailStatusName | String  |	O| 메일 상태명 |
 |-- requestDate | String  |	O| 요청 시간 |
 |-- resultDate | String  |	X| 결과 시간 |
-|-- senderName | String  |	X| 발신자 명 |
+|-- senderName | String  |	X| 발신자명 |
 |-- senderMail | String  |	X| 발신자 주소 |
 |-- resultId | String  |	X| SMTP ID |
 |-- title | String  |	X| 제목 |
@@ -2013,7 +2013,7 @@ curl -X GET \
 |--- dsnMessage| String|	X| DSN(Delivery Status Notification) 상태 메시지 |
 |--- mailSequence | String  |	O| 메일 순번 |
 |-- attachFileList | List  |	O| 첨부 파일 리스트 |
-|--- fileType|	AttachFileType|	O|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|--- fileType|	AttachFileType|	O|	첨부 파일 타입(MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
 |--- fileId| Integer|	O| 파일 ID|
 |--- fileName|	String|	O|	첨부 파일 이름|
 |--- filePath|	String|	O|	첨부 파일 경로|
@@ -2136,7 +2136,7 @@ curl -X GET \
 |-- requestDate|	String|	O|	요청 시간|
 |-- mailStatusCode|	String|	O|	메일 상태 코드 <br/> SST0: 발송 준비, SST1: 발송 중  <br/> SST2: 발송 완료, SST3: 발송 실패 <br/> SST4: 예약 대기, SST7: 미인증 |
 |-- mailStatusName|	String|	O|	메일 상태 이름|
-|-- senderGroupingKey|	String|	X|	발신자 그룹 키 (최대 100자) |
+|-- senderGroupingKey|	String|	X|	발신자 그룹 키(최대 100자) |
 |-- statsId| String|	X| 통계 데이터 그룹핑을 위한 키 |
 
 
@@ -2263,7 +2263,7 @@ curl -X GET \
 |--- fileSize|	Integer|	O|	첨부 파일 크기(byte)|
 |--- createDate|	String|	O|	생성 일시|
 |-- customHeaders|	Map|	O|	[사용자 지정 헤더](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	X|	발신자 그룹 키 (최대 100자) |
+|-- senderGroupingKey|	String|	X|	발신자 그룹 키(최대 100자) |
 |-- statsId| String|	X| 통계 데이터 그룹핑을 위한 키 |
 
 ### 예약 발송 취소 - 요청별
@@ -3081,10 +3081,10 @@ curl -X GET \
 |- data|	List|	X|	데이터 영역|
 |-- templateId|	String|	O|	템플릿 ID|
 |-- categoryId|	Integer|	O|	카테고리 ID|
-|-- categoryName|	String|	O|	카테고리 명|
+|-- categoryName|	String|	O|	카테고리명|
 |-- templateName|	String|	O|	템플릿명|
 |-- templateDesc|	String|	X|	템플릿 설명|
-|-- useYn|	String|	O|	사용여부|
+|-- useYn|	String|	O|	사용 여부|
 |-- delYn|	String|	O|	삭제 여부|
 |-- title|	String|	O|	메일 제목|
 |-- createDate|	String|	O|	생성 일시|
@@ -3179,7 +3179,7 @@ curl -X GET \
 |-- categoryName|	String|	O|	카테고리명|
 |-- templateName|	String|	O|	템플릿명|
 |-- templateDesc|	String|	X|	템플릿 설명|
-|-- useYn|	String|	O|	사용여부 (Y= 사용중, N= 사용안함)|
+|-- useYn|	String|	O|	사용 여부 (Y= 사용 중, N= 사용 안 함)|
 |-- delYn|	String|	O|	삭제 여부(Y= 삭제, N= 삭제 아님)|
 |-- sendMailAddress|	String|	X|	발신 메일 주소|
 |-- title|	String|	O|	메일 제목|
@@ -3188,8 +3188,8 @@ curl -X GET \
 |-- createDate|	String|	O|	생성 일시|
 |-- updateDate|	String|	O|	수정 일시|
 |-- attachFileList|	List|	O|	첨부 파일 리스트|
-|--- fileType|	String|	O|	첨부 파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| Integer|	O| 파일 ID (기본값 -1)|
+|--- fileType|	String|	O|	첨부 파일 타입(MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
+|--- fileId| Integer|	O| 파일 ID(기본값 -1)|
 |--- fileName|	String|	O|	첨부 파일 이름|
 |--- filePath|	String|	O|	첨부 파일 경로|
 |--- fileSize|	Integer|	O|	첨부 파일 크기(byte)|
@@ -3889,8 +3889,8 @@ curl -X GET \
 |---- createdDate | String |	O| 태그 생성 일시 |
 |---- updatedDate | String |	O| 태그 수정 일시 |
 |--- contacts | List |	O| 연락처 리스트 |
-|---- contactType | String |	O| 연락처 타입 (EMAIL_ADDRESS)|
-|---- contact | String |	O| 연락처 (메일 주소)) |
+|---- contactType | String |	O| 연락처 타입(EMAIL_ADDRESS)|
+|---- contact | String |	O| 연락처(메일 주소) |
 |---- createdDate | String |	O| 연락처 생성 일시 |
 |-- isLast | Boolean |	O| 마지막 리스트 여부 |
 |-- totalCount | Integer |	O| 총 데이터 건수  |
@@ -3980,7 +3980,7 @@ curl -X GET \
 |--- updatedDate | String |	O| 태그 수정 일시 |
 |-- contacts | List |	O| 연락처 리스트 |
 |--- contactType | String |	O| 연락처 타입 |
-|--- contact | String |	O| 연락처 (메일 주소)) |
+|--- contact | String |	O| 연락처(메일 주소) |
 |--- createdDate | String |	O| 연락처 생성 일시 |
 
 ### UID 등록
@@ -4339,7 +4339,7 @@ curl -X GET \
 |-- sentCount | Long |	O| 발송 카운트 |
 |-- receivedCount | Long |	O| 수신 카운트 |
 |-- openedCount | Long |	O| 오픈 카운트 |
-|-- sentRate | String |	O| 발송율 |
+|-- sentRate | String |	O| 발송률 |
 |-- receivedRate | String |	O| 수신율 |
 |-- openedRate | String |	O| 오픈율 |
 
@@ -4377,7 +4377,7 @@ curl -X GET \
 
 |값|	타입|	필수| 설명|
 |---|---|---|---|
-|mailAddress|	String|	X| 수신거부 목록에 등록되어 있는 이메일 주소|
+|mailAddress|	String|	X| 수신 거부 목록에 등록되어 있는 이메일 주소|
 |startBlockDate|	String|	X| 수신 거부 시작값 (yyyy-MM-dd HH:mm:ss)|
 |endBlockDate|	String|	X| 수신 거부 종료값 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
@@ -4420,8 +4420,8 @@ curl -X GET \
 |body|	Object|	X|	본문 영역|
 |- totalCount|	Integer|	O|	총 데이터 건수|
 |- data|	List|	O|	데이터 영역|
-|-- mailAddress | String |	O| 수신거부 이메일 주소 |
-|-- blockDate | String |	O| 수신거부 날짜 (yyyy-MM-dd HH:mm:ss.S) |
+|-- mailAddress | String |	O| 수신 거부 이메일 주소 |
+|-- blockDate | String |	O| 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss.S) |
 
 ### 수신 거부 등록
 
@@ -4455,8 +4455,8 @@ curl -X GET \
 
 |값|	타입|	필수 | 설명|
 |---|---|---|---|
-| blockReceiverList |  ㅣList | O | 수신거부 리스트 |
-| - mailAddress | String | O | 수신거부 이메일 주소 |
+| blockReceiverList |  ㅣList | O | 수신 거부 리스트 |
+| - mailAddress | String | O | 수신 거부 이메일 주소 |
 | - blockDate | String | X | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss) |
 
 #### cURL
@@ -4525,8 +4525,8 @@ curl -X POST \
 |값|	타입|	필수 | 설명|
 |---|---|---|---|
 | deleted | Boolean | O | 수신 거부 삭제를 명시하는 필드 |
-| blockReceiverList |  ㅣList | O | 수신거부 리스트 |
-| - mailAddress | String | O | 수신거부 이메일 주소 |
+| blockReceiverList |  ㅣList | O | 수신 거부 리스트 |
+| - mailAddress | String | O | 수신 거부 이메일 주소 |
 
 #### cURL
 ```
