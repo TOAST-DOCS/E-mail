@@ -109,6 +109,8 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
               address.
             - If no data is entered
             - When receiver mail address or replacement data is not entered.
+            - When uploading a CSV recipient file, the character set must be set to UTF-8.
+3. If you have a delivery time you want, enter it in the **Scheduled Delivery** field.         
 3. To choose time of delivery, specify it **Scheduled Delivery**.
 4. Click **Attached File** and upload attached files.
 5. **Enter the title and message content**.

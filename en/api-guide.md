@@ -3,10 +3,10 @@
 ### v2.1 API Overview
 
 1. Changed query API response
-	* Added statId to the response of the mail query API.
-2. 메일 발송 업데이트 완료 목록 조회 API 추가
-3. 인증, 광고메일 발송 요청 필드 추가
-    * senderGroupingKey 필드가 추가되었습니다.
+	* Added statId to the response of the email query API.
+2. Added API to view the list of completed email delivery updates
+3. Added the field for requesting to send authentication and advertising email
+    * Added senderGroupingKey field.
 
 [API Domain]
 
@@ -94,8 +94,8 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
 * On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
+* When using a template of the Freemarker type, all template parameters must be replaced for the email to be sent.
+    * Sending the email will fail if there is parameters that are not replaced.
 
 [Example 1]
 ```
@@ -136,11 +136,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "customer1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "customer2",
             "receiveType": "MRT1"
         }
     ],
@@ -175,21 +175,21 @@ curl -X POST \
 }
 ```
 
-| Value               | Type    | Description                                             |
-| ------------------- | ------- | ------------------------------------------------------- |
-| header              | Object  | Header area                                             |
-| - isSuccessful      | Boolean | Successful or not                                       |
-| - resultCode        | Integer | Failure code                                            |
-| - resultMessage     | String  | Failure message                                         |
-| body                | Object  | Body area                                               |
-| - data              | Object  | Data area                                               |
-| -- requestId        | String  | Request ID                                              |
-| -- results          | List    | Delivery result                                         |
-| --- receiveMailAddr | String  | Recipient's mail address                                |
-| --- receiveName     | String  | Recipient's name                                        |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
-| --- resultCode      | Integer | Result code of recipient delivery request               |
-| --- resultMessage   | String  | Result message of recipient delivery request            |
+| Value               | Type    | Not Null|	Description                                             |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                             |
+| - isSuccessful      | Boolean | O|	Successful or not                                       |
+| - resultCode        | Integer | O|	Failure code                                            |
+| - resultMessage     | String  | O|	Failure message                                         |
+| body                | Object  | X|	Body area                                               |
+| - data              | Object  | X|	Data area                                               |
+| -- requestId        | String  | X|	Request ID                                              |
+| -- results          | List    | X|	Delivery result                                         |
+| --- receiveMailAddr | String  | X|	Recipient's mail address                                |
+| --- receiveName     | String  | X|	Recipient's name                                        |
+| --- receiveType     | String  | O|	Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
+| --- resultCode      | Integer | O|	Result code of recipient delivery request               |
+| --- resultMessage   | String  | O|	Result message of recipient delivery request            |
 
 
 ### Send Individual Mails
@@ -258,13 +258,13 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "sendername",
+    "title": "sample title",
+    "body": "sample content",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "customer1"
         }
     ],
     "userId": "USER",
@@ -320,20 +320,20 @@ curl -X POST \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- results          | List    | Delivery result                                              |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
-| --- resultCode      | Integer | Result code of recipient delivery request                    |
+| Value               | Type    | Not Null|	Description                                                  |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - data              | Object  | X|	Data area                                                    |
+| -- requestId        | String  | X|	Request ID                                                   |
+| -- results          | List    | X|	Delivery result                                              |
+| --- receiveMailAddr | String  | O|	Recipient's mail address                                     |
+| --- receiveName     | String  | X|	Recipient's name                                             |
+| --- receiveType     | String  | O|	Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
+| --- resultCode      | Integer | O|	Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
 
@@ -345,10 +345,10 @@ curl -X POST \
 
 - The title must include the (AD) phrase. 
 - For more details, see [Send Advertising Mails](./console-guide/#_3).
-* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=en)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
-    * 해당 링크는 수신 거부 링크로 자동으로 치환됩니다.
-    * 별도 URL을 사용하고 싶으신 경우 customHeaders에 'List-Unsubscribe' 헤더를 추가해 사용하실 수 있습니다.
-    * 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/)를 참고하십시오.
+* In response to [[Enhanced Gmail sender Guideline](https://support.google.com/a/answer/81126?hl=en)], which will be implemented starting in February 2024, a one-click unsubscribe link will be required when sending marketing and opt-in emails to gmail.com.
+    * This link will automatically be replaced with an unsubscribe link.
+    * If you wish to use a separate URL, you can do so by adding the "List-Unsubscribe" header to customHeaders.
+    * For more information, refer to the [Troubleshooting Guide](./troubleshooting-guide/).
   
 [URL]
 
@@ -382,16 +382,16 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "sendername",
+    "title": "(ads) sample title",
+    "body": "sample content <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "customer1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "customer2",
             "receiveType": "MRT1"
         }
     ],
@@ -413,11 +413,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "customer1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "customer2",
             "receiveType": "MRT1"
         }
     ],
@@ -462,13 +462,13 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "sendername",
+    "title": "(ads) sample title",
+    "body": "sample content <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "customer1"
         }
     ],
     "userId": "USER",
@@ -543,7 +543,7 @@ curl -X POST \
 | -- #key#            | String | X        | Replacement key (##key##)                                    |
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
 | customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|senderGroupingKey| String| X| Sender group key (up to 100 characters )|
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 | statsId             | String | X        | Statistics ID (not included in the delivery search conditions)|
 
@@ -551,8 +551,8 @@ curl -X POST \
 
 * On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
 * On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
+* When using a template of the Freemarker type, all template parameters must be replaced for the email to be sent.
+    * Sending the email will fail if there is parameters that are not replaced.
 
 #### Differences from General Mails 
 
@@ -569,12 +569,12 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "sendername",
+    "title": "sample title",
+    "body": "sample content",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "고객1"
+        "receiveName": "customer1"
     },
     "userId": "USER",
     "statsId": "statsId"
@@ -627,21 +627,21 @@ curl -X POST \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- results          | List    | Delivery result                                              |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- receiveName     | String  | Recipient's name                                             |
-| --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
-| --- resultCode      | Integer | Result code of recipient delivery request                    |
-| --- resultMessage   | String  | Result message of recipient delivery request                 |
+| Value               | Type    | Not Null|	Description                                                  |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - data              | Object  | X|	Data area                                                    |
+| -- requestId        | String  | X|	Request ID                                                   |
+| -- results          | List    | X|	Delivery result                                              |
+| --- receiveMailAddr | String  | O|	Recipient's mail address                                     |
+| --- receiveName     | String  | X|	Recipient's name                                             |
+| --- receiveType     | String  | O|	Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
+| --- resultCode      | Integer | O|	Result code of recipient delivery request                    |
+| --- resultMessage   | String  | O|	Result message of recipient delivery request                 |
 
 ### Send Tagged Mails
 
@@ -697,9 +697,9 @@ curl -X POST \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "sendername",
+    "title": "sample title",
+    "body": "sample content",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
     "userId": "USER",
@@ -738,15 +738,15 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
-| body            | Object  | Body area         |
-| - data          | Object  | Data area         |
-| -- requestId    | String  | Request ID        |
+| Value           | Type    | Not Null|	Description       |
+|---|---|---|---|
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | X|	Failure message   |
+| body            | Object  | X|	Body area         |
+| - data          | Object  | X|	Data area         |
+| -- requestId    | String  | X|	Request ID        |
 
 ### Upload Attached Files 
 
@@ -815,16 +815,16 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
-| body            | Object  | Body area         |
-| - data          | Object  | Data area         |
-| -- fileId       | Integer  | File ID           |
-| -- fileName     | String  | File name         |
+| Value           | Type    | Not Null|	Description       |
+|---|---|---|---|
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
+| body            | Object  | X|	Body area         |
+| - data          | Object  | X|	Data area         |
+| -- fileId       | Integer  | O|	File ID           |
+| -- fileName     | String  | O|	File name         |
 
 ### Title/Body Replacement
 
@@ -841,8 +841,8 @@ curl -X POST \
 #### FreeMarker Type
 * [FreeMarker Template Engine](https://freemarker.apache.org/) is supported.
 * You may use a template language to replace with user-defined **templateParameter**. 
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
+* When using a template of the Freemarker type, all template parameters must be replaced for the email to be sent.
+    * Sending the email will fail if there is parameters that are not replaced.
 
 ```
 * title: Hello, ${title_name}!!
@@ -992,39 +992,39 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| - pageSize          | Integer | Number of queried data                                       |
-| - totalCount        | Integer | Number of total data                                         |
-| - data              | List    | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- mailSeq          | String  | Mail sequence                                                |
-| -- requestDate      | String  | Date and time of sending                                     |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- senderName       | String  | Sender's name                                                |
-| -- senderAddress    | String  | Sender's mail address                                        |
-| -- title            | String  | Title                                                        |
-| -- mailStatusCode   | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
-| -- mailStatusName   | String  | Name of delivery status                                      |
-| -- isReceived       | Boolean | Received or Not                                              |
-| -- resultDate       | String  | Date and Time of Receiving                                   |
-| -- isOpened         | Boolean | Opened or Not                                                |
-| -- openedDate       | String  | Date and Time of Opening                                     |
-| -- receiveMailAddr  | String  | Recipient's mail address                                     |
-| -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
-| -- receiveTypeName  | String  | Name of recipient type                                       |
-| -- receiveName      | String  | Name of recipient                                            |
-| -- senderGroupingKey| String  | Sender's group key                                           |
-| -- dsnCode| String| DSN(Delivery Status Notification) Status Code |
-| -- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-|-- statsId| String| Key for statistics data grouping |
+| Value               | Type    | Not Null|	Description                                                  |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - pageNum           | Integer | O|	Current page number                                          |
+| - pageSize          | Integer | O|	Number of queried data                                       |
+| - totalCount        | Integer | O|	Number of total data                                         |
+| - data              | List    | O|	Data area                                                    |
+| -- requestId        | String  | O|	Request ID                                                   |
+| -- mailSeq          | String  | O|	Mail sequence                                                |
+| -- requestDate      | String  | O|	Date and time of sending                                     |
+| -- templateId       | String  | X|	Template ID                                                  |
+| -- templateName     | String  | X|	Template name                                                |
+| -- senderName       | String  | X|	Sender's name                                                |
+| -- senderAddress    | String  | O|	Sender's mail address                                        |
+| -- title            | String  | X|	Title                                                        |
+| -- mailStatusCode   | String  | O|	Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
+| -- mailStatusName   | String  | O|	Name of delivery status                                      |
+| -- isReceived       | Boolean | X|	Received or Not                                              |
+| -- resultDate       | String  | X|	Date and Time of Receiving                                   |
+| -- isOpened         | Boolean | X|	Opened or Not                                                |
+| -- openedDate       | String  | X|	Date and Time of Opening                                     |
+| -- receiveMailAddr  | String  | O|	Recipient's mail address                                     |
+| -- receiveType      | String  | O|	Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
+| -- receiveTypeName  | String  | O|	Name of recipient type                                       |
+| -- receiveName      | String  | X|	Name of recipient                                            |
+| -- senderGroupingKey| String  | X|	Sender's group key                                           |
+| -- dsnCode| String|	X| DSN(Delivery Status Notification) Status Code |
+| -- dsnMessage| String|	X| DSN(Delivery Status Notification) Status Message |
+|-- statsId| String|	X| Key for statistics data grouping |
 
 
 ### Query Mail Delivery Details
@@ -1125,72 +1125,72 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- mailSeq          | Integer | Mail sequence                                                |
-| -- requestIp        | String  | Request IP                                                   |
-| -- requestDate      | String  | Date and time of requesting                                  |
-| -- mailStatusCode   | String  | Delivery status                                              |
-| -- mailStatusName   | String  | Name of delivery status                                      |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- senderName       | String  | Sender's name                                                |
-| -- senderAddress    | String  | Sender's mail address                                        |
-| -- resultId         | String  | Mail delivery ID                                             |
-| -- title            | String  | Mail title                                                   |
-| -- body             | String  | Mail body                                                    |
-| -- receiverList     | List    | List of recipients                                           |
-| --- requestId       | String  | Request ID                                                   |
-| --- mailSeq         | Integer | Mail sequence                                                |
-| --- receiveType     | String  | Recipient type <br/>MRT0: to , MRT1: cc, MRT2: bcc            |
-| --- receiveTypeName | String  | Name of recipient type                                       |
-| --- receiveName     | String  | Recipient's name                                             |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- isReceived      | Boolean | Received or Not                                              |
-| --- resultDate      | String  | Date and Time of Receiving                                   |
-| --- isOpened        | Boolean | Opened or Not                                                |
-| --- openedDate      | String  | Date and Time of Opening                                     |
-| --- dsnCode| String| DSN(Delivery Status Notification) Status Code |
-| --- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-| -- attachFileList   | List    | List of attached files                                       |
-| --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | Integer  | File ID                                                      |
-| --- fileName        | String  | Name of attached file                                        |
-| --- filePath        | String  | Path of attached file                                        |
-| --- fileSize        | Integer | Size of attached file (byte)                                 |
-| --- createDate      | String  | Date and time of creation                                    |
-| -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
-| -- senderGroupingKey|	String  | Sender's group key                                           |
-|-- statsId| String| Key for statistics data grouping |
+| Value               | Type    | Not Null|	Description                                                  |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - data              | Object  | O|	Data area                                                    |
+| -- requestId        | String  | O|	Request ID                                                   |
+| -- mailSeq          | Integer | O|	Mail sequence                                                |
+| -- requestIp        | String  | O|	Request IP                                                   |
+| -- requestDate      | String  | O|	Date and time of requesting                                  |
+| -- mailStatusCode   | String  | O|	Delivery status                                              |
+| -- mailStatusName   | String  | O|	Name of delivery status                                      |
+| -- templateId       | String  | X|	Template ID                                                  |
+| -- templateName     | String  | X|	Template name                                                |
+| -- senderName       | String  | X|	Sender's name                                                |
+| -- senderAddress    | String  | O|	Sender's mail address                                        |
+| -- resultId         | String  | X|	Mail delivery ID                                             |
+| -- title            | String  | X|	Mail title                                                   |
+| -- body             | String  | X|	Mail body                                                    |
+| -- receiverList     | List    | O|	List of recipients                                           |
+| --- requestId       | String  | O|	Request ID                                                   |
+| --- mailSeq         | Integer | O|	Mail sequence                                                |
+| --- receiveType     | String  | O|	Recipient type <br/>MRT0: to , MRT1: cc, MRT2: bcc            |
+| --- receiveTypeName | String  | O|	Name of recipient type                                       |
+| --- receiveName     | String  | X|	Recipient's name                                             |
+| --- receiveMailAddr | String  | O|	Recipient's mail address                                     |
+| --- isReceived      | Boolean | O|	Received or Not                                              |
+| --- resultDate      | String  | X|	Date and Time of Receiving                                   |
+| --- isOpened        | Boolean | O|	Opened or Not                                                |
+| --- openedDate      | String  | X|	Date and Time of Opening                                     |
+| --- dsnCode| String| X|	DSN(Delivery Status Notification) Status Code |
+| --- dsnMessage| String| X|	DSN(Delivery Status Notification) Status Message |
+| -- attachFileList   | List    | X|	List of attached files                                       |
+| --- fileType        | String  | O|	Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
+| --- fileId          | Integer  | O|	File ID                                                      |
+| --- fileName        | String  | O|	Name of attached file                                        |
+| --- filePath        | String  | O|	Path of attached file                                        |
+| --- fileSize        | Integer | O|	Size of attached file (byte)                                 |
+| --- createDate      | String  | O|	Date and time of creation                                    |
+| -- customHeaders    | Map     | X|	[Custom Header](./console-guide/#custom-header)                   |
+| -- senderGroupingKey|	String  | X|	Sender's group key                                           |
+|-- statsId| String| X|	Key for statistics data grouping |
 
-### 메일 발송 업데이트 완료 목록 조회
+### View the List of Completed Email Delivery Updates
 
-- 일반 메일 발송시 메일 발송 상태 코드 업데이트가 완료된 메일 목록을 조회합니다.
-- 메일 발송 상태 코드 업데이트 시작 시간과 종료 시간을 기준으로 조회합니다.
-- 조회되는 메일 목록은 메일 발송 상태 코드 업데이트가 완료된 메일 목록입니다.
+- When sending a regular email, a list of emails with updated status codes is displayed.
+- Searches are based on the start and end times of the email status code update.
+- The list of emails displayed is a list of emails with updated status codes.
 
-#### 조회 가능 메일 발송 상태 코드
+#### Trackable Email Delivery Status Codes
 
-- SST2: 발송완료
-- SST3: 발송실패
-- SST5: 수신거부
-- SST7: 미인증
-- SST8: 화이트리스트로 인한 실패
+- SST2: Sent
+- SST3: Sent Failed
+- SST5: Rejected
+- SST7: Unverified
+- SST8: Failed due to whitelist
 
-#### [주의]
-- SST2(발송완료) 상태 코드는 발송 처리 완료 시간이 아닌 수신 완료 시간을 기준으로 조회됩니다.
-    - 발송 처리가 지연될 경우 발송 처리 완료 시간과 수신 완료 시간이 다를 수 있습니다.
-- SST3(발송실패) 상태 코드는 서비스에서 최종적으로 발송 실패로 판단한 시점에 최종 상태 코드가 업데이트 됩니다.
+#### [Caution]
+- The SST2 (Sent) status code is based on the time of receipt, not the time of delivery.
+- If delivery processing is delayed, the time of delivery and delivery may differ.
+- The SST3 (Sent Failed) status code is updated when the service ultimately determines delivery failure.
 
 
-#### 요청
+#### Request
 
 [URL]
 
@@ -1200,14 +1200,14 @@ curl -X GET \
 
 [Query parameter]
 
-| 값                         | 	타입      | 필수 | 	설명                                                                                   |
+| Value                         | 	Type      | Required | 	Description                                                                                   |
 |---------------------------|----------|----|---------------------------------------------------------------------------------------|
-| startMailStatusUpdateDate | 	String  | O  | 	메일 발송 상태 코드 업데이트 시작 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| endMailStatusUpdateDate   | 	String  | O  | 	메일 발송 상태 코드 업데이트 종료 시간 (yyyy-MM-dd HH:mm:ss)                                         |
-| mailStatusCode            | 	Integer | X  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| messageType               | 	String  | X  | 메세지 발송 유형 (NORMAL: 일반, DM: 광고, AUTH: 인증)                                                                |
-| pageNum                   | 	Integer | 	X | 	페이지 번호 1(기본값)                                                                        |
-| pageSize                  | 	Integer | 	X | 	조회 건수 15(기본값)                                                                        |
+| startMailStatusUpdateDate | String | O | Start time of email sending status code update (yyyy-MM-dd HH:mm:ss) |
+| endMailStatusUpdateDate | String | O | End time of email sending status code update (yyyy-MM-dd HH:mm:ss) |
+| mailStatusCode | Integer | X | Sending status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failed due to whitelist |
+| messageType | String | X | Message sending type (NORMAL: General, DM: Advertisement, AUTH: Authenticated)                                                      |
+| pageNum                   | 	Integer | 	X | 	Page number 1(Default)                                                                        |
+| pageSize                  | 	Integer | 	X | 	No. of views 15(Default)                                                                        |
 
 [Header]
 
@@ -1217,9 +1217,9 @@ curl -X GET \
 }
 ```
 
-| 값            | 	타입     | 	필수 | 	설명                                           |
+| Value            | 	Type     | 	Required | 	Description                                           |
 |--------------|---------|-----|-----------------------------------------------|
-| X-Secret-Key | 	String | O   | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+| X-Secret-Key | 	String | O   | Unique secretKey [[Notes](./api-guide/#secret-key)] |
 
 #### cURL
 
@@ -1230,7 +1230,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
-#### 응답
+#### Response
 
 ```json
 {
@@ -1264,24 +1264,24 @@ curl -X GET \
 
 ```
 
-| 값                       | 	타입      | 	설명                                                                                   |
+| Value                       | 	Type      | 	Description                                                                                   |
 |-------------------------|----------|---------------------------------------------------------------------------------------|
-| header                  | 	Object  | 	헤더 영역                                                                                |
-| - isSuccessful          | 	Boolean | 	성공 여부                                                                                |
-| - resultCode            | 	Integer | 	실패 코드                                                                                |
-| - resultMessage         | 	String  | 	실패 메시지                                                                               |
-| data                    | 	Object  | 	데이터 영역                                                                               |
-| - requestId             | String   | 요청 ID                                                                                 |
-| - mailSeq               | Integer  | 메일 순번                                                                                 |
-| - mailStatusCode        | 	String  | 발송 상태 코드 <br/> SST2:발송완료, SST3:발송실패,  <br/> SST5:수신거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패 |
-| - mailStatusName        | 	String  | 	발송 상태 명                                                                              |
-| - requestDate           | String   | 요청 일시                                                                                 |
-| - mailStatusUpdatedDate | String   | 메일 발송 상태 코드 업데이트 일시                                                                   |
-| - resultDate            | String   | 수신 일시                                                                                 |
-| - openedDate            | String   | 읽은 일시                                                                                 |
-| - dsnCode               | String   | DSN(Delivery Status Notification) 상태 코드                                               |
-| - dsnMessage            | String   | DSN(Delivery Status Notification) 상태 메시지                                              |
-| - senderGroupingKey     | String   | 발송자 그룹키                                                                               |
+| header                  | 	Object  | 	Header area                                                                                |
+| - isSuccessful          | 	Boolean | 	Success                                                                                |
+| - resultCode            | 	Integer | 	Failure code                                                                                |
+| - resultMessage         | 	String  | 	Failure message                                                                               |
+| data                    | 	Object  | 	Data area                                                                               |
+| - requestId             | String   | Request ID                                                                                 |
+| - mailSeq               | Integer  | Email order name                                                                                 |
+| - mailStatusCode        | 	String  | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
+| - mailStatusName        | 	String  | 	Delivery status name                                                                              |
+| - requestDate           | String   | Request date and time                                                                                 |
+| - mailStatusUpdatedDate | String   | Email delivery status code update date 일시                                                                   |
+| - resultDate            | String   | Received date and time                                                                                 |
+| - openedDate            | String   | Read data and time                                                                                 |
+| - dsnCode               | String   | DSN(Delivery Status Notification) Status code                                               |
+| - dsnMessage            | String   | DSN(Delivery Status Notification) Status message                                              |
+| - senderGroupingKey     | String   | Sender group key                                                                               |
 
 ### Query Mass Delivery List
 
@@ -1368,31 +1368,31 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Descriptions|
-|---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- pageNum|	Integer|	Current page number|
-|- pageSize|	Integer|	The number of data queried |
-|- totalCount|	Integer|	Total number of data|
-|- data|	Object|	Scope of data|
-|-- requestId| String| Request ID|
-|-- requestDate| String| Date and time of request|
-|-- sendStatus|	String|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|
-|-- sendStatusName|	String|	Name of send status |
-|-- templateId|	String|	Template ID|
-|-- templateName|	String|	Template name|
-|-- senderName|	String|	Sender name|
-|-- senderAddress|	String|	Sender mail address|
-|-- title|	String|	Title|
-|-- body|	String|	Content|
-|-- adYn |  String  | Advertisement or not |
-|-- createDate |  String  | Created date |
-|-- updateDate |  String  | Modified date |
-|-- statsId| String| Key for statistics data grouping |
+|Value|	Type|	Not Null|	Descriptions|
+|---|---|---|---|
+|header|	Object|	O|	Header area|
+|- isSuccessful|	Boolean|	O|	Successful or not|
+|- resultCode|	Integer|	O|	Failure code|
+|- resultMessage|	String|	O|	Failure message|
+|body|	Object|	X|	Body area|
+|- pageNum|	Integer|	X|	Current page number|
+|- pageSize|	Integer|	X|	The number of data queried |
+|- totalCount|	Integer|	X|	Total number of data|
+|- data|	Object|	X|	Scope of data|
+|-- requestId| String| O|	Request ID|
+|-- requestDate| String| O|	Date and time of request|
+|-- sendStatus|	String|	O|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|
+|-- sendStatusName|	String|	O|	Name of send status |
+|-- templateId|	String|	X|	Template ID|
+|-- templateName|	String|	X|	Template name|
+|-- senderName|	String|	X|	Sender name|
+|-- senderAddress|	String|	X|	Sender mail address|
+|-- title|	String|	X|	Title|
+|-- body|	String|	X|	Content|
+|-- adYn |  String  | O|	Advertisement or not |
+|-- createDate |  String  | O|	Created date |
+|-- updateDate |  String  | X|	Modified date |
+|-- statsId| String| X|	Key for statistics data grouping |
 
 ### Query Recipient for Mass Delivery
 
@@ -1482,35 +1482,35 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Descriptions|
-|---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- pageNum|	Integer|	Current page number|
-|-pageSize|	Integer|	The number of data queried |
-|- totalCount|	Integer|	Total number of data|
-|- data|	List|	Scope of data|
-|-- requestId | String  | Request ID |
-|-- mailSeq | Integer  | Mail order |
-|-- mailStatusCode | String  | Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved|
-|-- mailStatusName | String  | Mail status name |
-|-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	Recipient type<br/>MRT0 : Recipient , MRT1 : CC, MRT2 : BCC|
-|-- receiveTypeName|	String|	Recipient type name|
-|-- receiveName|	String|	Recipient name|
-|-- receiveMailAddr|	String|	Recipient email address|
-|-- isReceived| Boolean| Received or not |
-|-- resultDate| String| Date and time of receiving|
-|-- isOpened| Boolean| Opened or not |
-|-- openedDate| String| Date and time of open|
-|-- dsnCode| String| Delivery Status Notification (DSN) status code|
-|-- dsnMessage| String| Delivery Status Notification (DSN) status message |
-|-- createDate |  String  | Created date |
-|-- updateDate |  String  | Modified date |
-|-- statsId| String| Key for statistics data grouping |
+|Value|	Type|	Not Null|	Descriptions|
+|---|---|---|---|
+|header|	Object|	O|	Header area|
+|- isSuccessful|	Boolean|	O|	Successful or not|
+|- resultCode|	Integer|	O|	Failure code|
+|- resultMessage|	String|	O|	Failure message|
+|body|	Object|	X|	Body area|
+|- pageNum|	Integer|	O|	Current page number|
+|-pageSize|	Integer|	O|	The number of data queried |
+|- totalCount|	Integer|	O|	Total number of data|
+|- data|	List|	X|	Scope of data|
+|-- requestId | String  | O|	Request ID |
+|-- mailSeq | Integer  | O|	Mail order |
+|-- mailStatusCode | String  | O|	Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved|
+|-- mailStatusName | String  | O|	Mail status name |
+|-- resultId | String  | X|	SMTP ID |
+|-- receiveType|	String|	O|	Recipient type<br/>MRT0 : Recipient , MRT1 : CC, MRT2 : BCC|
+|-- receiveTypeName|	String|	O|	Recipient type name|
+|-- receiveName|	String|	X|	Recipient name|
+|-- receiveMailAddr|	String|	O|	Recipient email address|
+|-- isReceived| Boolean| O|	Received or not |
+|-- resultDate| String| X|	Date and time of receiving|
+|-- isOpened| Boolean| O|	Opened or not |
+|-- openedDate| String| X|	Date and time of open|
+|-- dsnCode| String| X|	Delivery Status Notification (DSN) status code|
+|-- dsnMessage| String| X|	Delivery Status Notification (DSN) status message |
+|-- createDate |  String  | O|	Created date |
+|-- updateDate |  String  | O|	Modified date |
+|-- statsId| String| X|	Key for statistics data grouping |
 
 ### Query Mass Delivery Details
 
@@ -1605,47 +1605,47 @@ curl -X GET \
 }
 ```
 
-|Value|	Type|	Descriptions|
-|---|---|---|
-|header|	Object|	Header area|
-|- isSuccessful|	Boolean|	Successful or not|
-|- resultCode|	Integer|	Failure code|
-|- resultMessage|	String|	Failure message|
-|body|	Object|	Body area|
-|- data|	List|	Scope of data|
-|-- requestId  | String  | Request ID |
-|-- templateId | String  | Template ID |
-|-- templateName | String  | Template name |
-|-- mailStatusCode | String  | Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved |
-|-- mailStatusName | String  | Mail status name |
-|-- requestDate | String  | Request time |
-|-- senderName | String  | Sender name |
-|-- senderAddress | String  | Sender address |
-|-- resultId | String  | SMTP ID |
-|-- resultDate | String  | Actual sending time |
-|-- title | String  | Title |
-|-- body | String  | Content |
-|-- customHeaders|	Map|	[Customer Header](./console-guide/#custom-header) |
-|-- receiverList | List| List of recipients|
-|--- requestId | String  | Request ID |
-|--- mailSeq | Integer  | Mail order |
-|--- receiveType | String  | Recipient type(MRT0 : recipient , MRT1 : CC, MRT2 : BCC) |
-|--- receiveTypeName | String  | Recipient type name |
-|--- receiveMailAddr | String  | Recipient email address |
-|--- isReceived| Boolean| Received or not |
-|--- resultDate| String| Date and time of receiving|
-|--- isOpened| Boolean| Opened or not |
-|--- openedDate| String| Date and time of open|
-|--- dsnCode| String| Delivery Status Notification (DSN) status code|
-|--- dsnMessage| String| Delivery Status Notification (DSN) status message |
-|-- attachFileList | List  | Attached file list |
-|--- fileType|	String|	Attached file type(MAIL: files attached to mail, TEMPLATE: files attached to template)|
-|--- fileId| Integer| File ID|
-|--- fileName|	String|	Attached file name|
-|--- filePath|	String|	Attached file path|
-|--- fileSize|	Integer|	Attached file size(byte)|
-|--- createDate|	String|	Date and time of creation|
-|-- statsId| String| Key for statistics data grouping |
+|Value|	Type|	Not Null|	Descriptions|
+|---|---|---|---|
+|header|	Object|	O|	Header area|
+|- isSuccessful|	Boolean|	O|	Successful or not|
+|- resultCode|	Integer|	O|	Failure code|
+|- resultMessage|	String|	O|	Failure message|
+|body|	Object|	X|	Body area|
+|- data|	List|	X|	Scope of data|
+|-- requestId  | String  | O|	Request ID |
+|-- templateId | String  | X|	Template ID |
+|-- templateName | String  | X|	Template name |
+|-- mailStatusCode | String  | O|	Mail status code <br/> SST0:ready to send, SST1:sending,  <br/> SST2:Complete to send, SST3: Fail to send, SST7: Not approved |
+|-- mailStatusName | String  | O|	Mail status name |
+|-- requestDate | String  | O|	Request time |
+|-- senderName | String  | X|	Sender name |
+|-- senderAddress | String  | X|	Sender address |
+|-- resultId | String  | X|	SMTP ID |
+|-- resultDate | String  | X|	Actual sending time |
+|-- title | String  | X|	Title |
+|-- body | String  | X|	Content |
+|-- customHeaders|	Map|	X|	[Customer Header](./console-guide/#custom-header) |
+|-- receiverList | List| O|	List of recipients|
+|--- requestId | String  | O|	Request ID |
+|--- mailSeq | Integer  | O|	Mail order |
+|--- receiveType | String  | O|	Recipient type(MRT0 : recipient , MRT1 : CC, MRT2 : BCC) |
+|--- receiveTypeName | String  | O|	Recipient type name |
+|--- receiveMailAddr | String  | O|	Recipient email address |
+|--- isReceived| Boolean| O|	Received or not |
+|--- resultDate| String| X|	Date and time of receiving|
+|--- isOpened| Boolean| O|	Opened or not |
+|--- openedDate| String| X|	Date and time of open|
+|--- dsnCode| String| X|	Delivery Status Notification (DSN) status code|
+|--- dsnMessage| String| X|	Delivery Status Notification (DSN) status message |
+|-- attachFileList | List  | O|	Attached file list |
+|--- fileType|	String|	O|	Attached file type(MAIL: files attached to mail, TEMPLATE: files attached to template)|
+|--- fileId| Integer| O|	File ID|
+|--- fileName|	String|	O|	Attached file name|
+|--- filePath|	String|	O|	Attached file path|
+|--- fileSize|	Integer|	O|	Attached file size(byte)|
+|--- createDate|	String|	O|	Date and time of creation|
+|-- statsId| String| X|	Key for statistics data grouping |
 
 ### Query Request for Tagged Mail Delivery
 
@@ -1741,35 +1741,35 @@ curl -X GET \
 }
 ```
 
-| Value            | Type        | Description                                                  |
-| ---------------- | ----------- | ------------------------------------------------------------ |
-| header           | Object      | Header area                                                  |
-| - isSuccessful   | Boolean     | Successful or not                                            |
-| - resultCode     | Integer     | Failure code                                                 |
-| - resultMessage  | String      | Failure message                                              |
-| body             | Object      | Body area                                                    |
-| - pageNum        | Integer     | Current page number                                          |
-| -pageSize        | Integer     | Number of queried data                                       |
-| - totalCount     | Integer     | Total number of data                                         |
-| - data           | List        | Data area                                                    |
-| -- requestId     | String      | Request ID                                                   |
-| -- requestIp     | String      | Request IP                                                   |
-| -- requestDate   | String      | Request time                                                 |
-| -- tagSendStatus | String      | Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
-| -- tagExpression | List:String | Tag expression (including Tag ID)                                               |
-| -- templateId    | String      | Template ID                                                  |
-| -- templateName  | String      | Template name                                                |
-| -- senderName    | String      | Sender's name                                                |
-| -- senderMail    | String      | Sender's address                                             |
-| -- title         | String      | Title                                                        |
-| -- body          | String      | Body                                                         |
-| -- attachYn      | String      | Attached or not                                              |
-| -- adYn          | String      | Ad or not                                                    |
-| -- createUser    | String      | Creator                                                      |
-| -- createDate    | String      | Date and time of creation                                    |
-| -- updateUser    | String      | Modifier                                                     |
-| -- updateDate    | String      | Date and time of modification                                |
-|-- statsId| String| 통계 데이터 그룹핑을 위한 키 |
+| Value            | Type        | Not Null|	Description                                                  |
+| ---------------- | ----------- | ------------------------------------------------------------ |---|
+| header           | Object      | O|	Header area                                                  |
+| - isSuccessful   | Boolean     | O|	Successful or not                                            |
+| - resultCode     | Integer     | O|	Failure code                                                 |
+| - resultMessage  | String      | O|	Failure message                                              |
+| body             | Object      | X|	Body area                                                    |
+| - pageNum        | Integer     | O|	Current page number                                          |
+| -pageSize        | Integer     | O|	Number of queried data                                       |
+| - totalCount     | Integer     | O|	Total number of data                                         |
+| - data           | List        | O|	Data area                                                    |
+| -- requestId     | String      | O|	Request ID                                                   |
+| -- requestIp     | String      | X|	Request IP                                                   |
+| -- requestDate   | String      | O|	Request time                                                 |
+| -- tagSendStatus | String      | O|	Delivery status code   WAIT: Waiting, READY: Ready,  SENDREADY: Ready for Delivery, SENDWAIT: Waiting for Delivery, SENDING: Delivering, COMPLETE: Delivery Completed,  FAIL: Delivery Failed, CANCEL: Delivery Canceled |
+| -- tagExpression | List:String | O|	Tag expression (including Tag ID)                                               |
+| -- templateId    | String      | X|	Template ID                                                  |
+| -- templateName  | String      | X|	Template name                                                |
+| -- senderName    | String      | X|	Sender's name                                                |
+| -- senderMail    | String      | X|	Sender's address                                             |
+| -- title         | String      | X|	Title                                                        |
+| -- body          | String      | X|	Body                                                         |
+| -- attachYn      | String      | O|	Attached or not                                              |
+| -- adYn          | String      | O|	Ad or not                                                    |
+| -- createUser    | String      | X|	Creator                                                      |
+| -- createDate    | String      | O|	Date and time of creation                                    |
+| -- updateUser    | String      | X|	Modifier                                                     |
+| -- updateDate    | String      | X|	Date and time of modification                                |
+|-- statsId| String|  X|Keys for grouping statistical data |
 
 ### Query Recipients of Tagged Mail Delivery
 
@@ -1857,33 +1857,33 @@ curl -X GET \
 }
 ```
 
-| Value             | Type    | Description                                                  |
-| ----------------- | ------- | ------------------------------------------------------------ |
-| header            | Object  | Header area                                                  |
-| - isSuccessful    | Boolean | Successful or not                                            |
-| - resultCode      | Integer | Failure code                                                 |
-| - resultMessage   | String  | Failure message                                              |
-| body              | Object  | Body area                                                    |
-| - pageNum         | Integer | Current page number                                          |
-| -pageSize         | Integer | Number of queried data                                       |
-| - totalCount      | Integer | Total number of data                                         |
-| - data            | List    | Data area                                                    |
-| -- requestId      | String  | Request ID                                                   |
-| -- mailSequence   | Integer | Mail sequence                                                |
-| -- receiveMail    | String  | Recipient's address                                          |
-| -- mailStatusCode | String  | Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
-| -- mailStatusName | String  | Name of mail status                                          |
-| -- resultId       | String  | SMTP ID                                                      |
-| -- resultDate     | String  | Time of actual delivery                                      |
-| -- readYn         | String  | Read or not                                                  |
-| -- readDate       | String  | Read time                                                    |
-| -- dsnCode| String| DSN(Delivery Status Notification) Status Code |
-| -- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-| -- createUser     | String  | Creator                                                      |
-| -- createDate     | String  | Date and time of creation                                    |
-| -- updateUser     | String  | Modifier                                                     |
-| -- updateDate     | String  | Date and time of modification                                |
-|-- statsId| String| Key for statistics data grouping |
+| Value             | Type    | Not Null|	Description                                                  |
+| ----------------- | ------- | ------------------------------------------------------------ |---|
+| header            | Object  | O|	Header area                                                  |
+| - isSuccessful    | Boolean | O|	Successful or not                                            |
+| - resultCode      | Integer | O|	Failure code                                                 |
+| - resultMessage   | String  | O|	Failure message                                              |
+| body              | Object  | X|	Body area                                                    |
+| - pageNum         | Integer | O|	Current page number                                          |
+| -pageSize         | Integer | O|	Number of queried data                                       |
+| - totalCount      | Integer | O|	Total number of data                                         |
+| - data            | List    | O|	Data area                                                    |
+| -- requestId      | String  | O|	Request ID                                                   |
+| -- mailSequence   | Integer | O|	Mail sequence                                                |
+| -- receiveMail    | String  | O|	Recipient's address                                          |
+| -- mailStatusCode | String  | O|	Delivery status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
+| -- mailStatusName | String  | O|	Name of mail status                                          |
+| -- resultId       | String  | X|	SMTP ID                                                      |
+| -- resultDate     | String  | X|	Time of actual delivery                                      |
+| -- readYn         | String  | X|	Read or not                                                  |
+| -- readDate       | String  | X|	Read time                                                    |
+| -- dsnCode| String| X|	DSN(Delivery Status Notification) Status Code |
+| -- dsnMessage| String| X|	DSN(Delivery Status Notification) Status Message |
+| -- createUser     | String  | X|	Creator                                                      |
+| -- createDate     | String  | O|	Date and time of creation                                    |
+| -- updateUser     | String  | X|	Modifier                                                     |
+| -- updateDate     | String  | X|	Date and time of modification                                |
+|-- statsId| String| X|	Key for statistics data grouping |
 
 ### Query Details of Tagged Mail Delivery
 
@@ -1979,49 +1979,49 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| -pageSize           | Integer | Number of queried data                                       |
-| - totalCount        | Integer | Total number of data                                         |
-| - data              | List    | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- requestIp        | String  | Request IP                                                   |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- mailStatusCode   | String  | Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
-| -- mailStatusName   | String  | Name of mail status                                          |
-| -- requestDate      | String  | Request time                                                 |
-| -- resultDate       | String  | Result time                                                  |
-| -- senderName       | String  | Sender's name                                                |
-| -- senderMail       | String  | Sender's address                                             |
-| -- resultId         | String  | SMTP ID                                                      |
-| -- title            | String  | Title                                                        |
-| -- body             | String  | Body                                                         |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ | ------- |
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - pageNum           | Integer | O|	Current page number                                          |
+| -pageSize           | Integer | O|	Number of queried data                                       |
+| - totalCount        | Integer | O|	Total number of data                                         |
+| - data              | List    | X|	Data area                                                    |
+| -- requestId        | String  | X|	Request ID                                                   |
+| -- requestIp        | String  | X|	Request IP                                                   |
+| -- templateId       | String  | X|	Template ID                                                  |
+| -- templateName     | String  | X|	Template name                                                |
+| -- mailStatusCode   | String  | O|	Mail status code   SST0: Preparing Delivery, SST1: Delivering,    SST2: Delivery Completed, SST3: Delivery Failed, SST7: Not Authenticated |
+| -- mailStatusName   | String  | O|	Name of mail status                                          |
+| -- requestDate      | String  | O|	Request time                                                 |
+| -- resultDate       | String  | X|	Result time                                                  |
+| -- senderName       | String  | X|	Sender's name                                                |
+| -- senderMail       | String  | X|	Sender's address                                             |
+| -- resultId         | String  | X|	SMTP ID                                                      |
+| -- title            | String  | X|	Title                                                        |
+| -- body             | String  | X|	Body                                                         |
 | -- receivers        | List    | List of recipients                                           |
-| --- requestId       | String  | Request ID                                                   |
-| --- receiveType     | String  | Type of recipients (MRT0: recipient, MRT1: Cc, MRT2: Bcc)    |
-| --- receiveTypeName | String  | Name of recipient type                                       |
-| --- receiveMailAddr | String  | Recipient's mail address                                     |
-| --- readYn          | String  | Read or not                                                  |
-| --- readDate        | String  | Read time                                                    |
-| --- dsnCode| String| DSN(Delivery Status Notification) Status Code |
-| --- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
-| --- mailSequence    | Integer | Mail sequence                                                |
-| -- attachFileList   | List    | List of attached files                                       |
-| --- fileType        | String  | Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
-| --- fileId          | Integer  | File ID                                                      |
-| --- fileName        | String  | Name of attached file                                        |
-| --- filePath        | String  | Path of attached file                                        |
-| --- fileSize        | Integer | Size of attached file (byte)                                 |
-| --- createDate      | String  | Date and time of creation                                    |
-| -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
-|-- statsId| String| Key for statistical data grouping |
+| --- requestId       | String  | O|	Request ID                                                   |
+| --- receiveType     | String  | O|	Type of recipients (MRT0: recipient, MRT1: Cc, MRT2: Bcc)    |
+| --- receiveTypeName | String  | X|	Name of recipient type                                       |
+| --- receiveMailAddr | String  | O|	Recipient's mail address                                     |
+| --- readYn          | String  | X|	Read or not                                                  |
+| --- readDate        | String  | X|	Read time                                                    |
+| --- dsnCode| String| X|	DSN(Delivery Status Notification) Status Code |
+| --- dsnMessage| String| X|	DSN(Delivery Status Notification) Status Message |
+| --- mailSequence    | Integer | O|	Mail sequence                                                |
+| -- attachFileList   | List    | O|	List of attached files                                       |
+| --- fileType        | String  | O|	Type of attached file (MAIL: files attached to mail, TEMPLATE: files attached to template) |
+| --- fileId          | Integer  | O|	File ID                                                      |
+| --- fileName        | String  | O|	Name of attached file                                        |
+| --- filePath        | String  | O|	Path of attached file                                        |
+| --- fileSize        | Integer | O|	Size of attached file (byte)                                 |
+| --- createDate      | String  | O|	Date and time of creation                                    |
+| -- customHeaders    | Map     | X|	[Custom Header](./console-guide/#custom-header)                   |
+|-- statsId| String| X|	Key for statistical data grouping |
 
 
 ## Scheduled Delivery Management
@@ -2112,33 +2112,33 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-|---|---|---|
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| - pageSize          | Integer | Number of queried data                                       |
-| - totalCount        | Integer | Number of total data                                         |
-| - data              | List    | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- mailSeq          | Integer | Mail sequence                                                |
-| -- title            | String  | Title                                                        |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- senderAddress    | String  | Sender's mail address                                        |
-| -- senderName       | String  | Sender's name                                                |
-| -- receiveMailAddr  | String  | Recipient's mail address                                     |
-| -- receiveName      | String  | Name of recipient                                            |
-| -- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
-| -- receiveTypeName  | String  | Name of recipient type                                       |
-| -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
-| -- mailStatusName   | String  | Name of delivery status                                      |
-| -- senderGroupingKey| String  | Sender's group key                                           |
-|-- statsId| String| Key for statistical data grouping |
+| Value               | Type    | Not Null|	Description                                                  |
+|---|---|---|---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | X|	Body area                                                    |
+| - pageNum           | Integer | O|	Current page number                                          |
+| - pageSize          | Integer | O|	Number of queried data                                       |
+| - totalCount        | Integer | O|	Number of total data                                         |
+| - data              | List    | X|	Data area                                                    |
+| -- requestId        | String  | O|	Request ID                                                   |
+| -- mailSeq          | Integer | O|	Mail sequence                                                |
+| -- title            | String  | X|	Title                                                        |
+| -- templateId       | String  | X|	Template ID                                                  |
+| -- templateName     | String  | X|	Template name                                                |
+| -- senderAddress    | String  | X|	Sender's mail address                                        |
+| -- senderName       | String  | X|	Sender's name                                                |
+| -- receiveMailAddr  | String  | O|	Recipient's mail address                                     |
+| -- receiveName      | String  | O|	Name of recipient                                            |
+| -- receiveType      | String  | O|	Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
+| -- receiveTypeName  | String  | X|	Name of recipient type                                       |
+| -- requestDate      | String  | O|	Date and time of sending                                     |
+| -- mailStatusCode   | String  | O|	Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting, SST7: Not Authenticated     |
+| -- mailStatusName   | String  | O|	Name of delivery status                                      |
+| -- senderGroupingKey| String  | X|	Sender's group key                                           |
+|-- statsId| String| X|	Key for statistical data grouping |
 
 
 ### Query Detail Scheduled Delivery
@@ -2230,41 +2230,42 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- requestId        | String  | Request ID                                                   |
-| -- mailSeq          | Integer | Mail sequence                                                |
-| -- title            | String  | Mail title                                                   |
-| -- body             | String  | Mail body                                                    |
-| -- templateId       | String  | Template ID                                                  |
-| -- templateName     | String  | Template name                                                |
-| -- senderAddress    | String  | Sender's mail address                                        |
-| -- senderName       | String  | Sender's name                                                |
-| -- requestDate      | String  | Date and time of sending                                     |
-| -- mailStatusCode   | String  | Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting , SST7: Not Authenticated    |
-| -- mailStatusName   | String  | Name of delivery status                                      |
-| -- receiverList     | List    | List of recipients                                           |
-| --- requestId        | String  | Request ID                                                   |
-| --- mailSeq          | Integer | Mail sequence                                                |
-| --- receiveType      | String  | Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
-| --- receiveName      | String  | Name of recipient                                            |
-| --- receiveTypeName  | String  | Name of recipient type                                       |
-| --- receiveMailAddr  | String  | Recipient's mail address                                     |
-| -- attachFileList   | List    | List of attached files                                       |
-| --- fileType        | String  | Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
-| --- fileId          | Integer  | File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
-| --- fileName        | String  | Name of attached file                                        |
-| --- filePath        | String  | Path of attached file                                        |
-| --- fileSize        | Integer | Size of attached file (byte)                                 |
-| --- createDate      | String  | Date and time of creation                                    |
-| -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
-| -- senderGroupingKey| String  | Sender's group key                                           |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |---|
+| header              | Object  | X|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | O|	Body area                                                    |
+| - data              | Object  | X|	Data area                                                    |
+| -- requestId        | String  | O|	Request ID                                                   |
+| -- mailSeq          | Integer | O|	Mail sequence                                                |
+| -- title            | String  | X|	Mail title                                                   |
+| -- body             | String  | X|	Mail body                                                    |
+| -- templateId       | String  | X|	Template ID                                                  |
+| -- templateName     | String  | X|	Template name                                                |
+| -- senderAddress    | String  | X|	Sender's mail address                                        |
+| -- senderName       | String  | X|	Sender's name                                                |
+| -- requestDate      | String  | O|	Date and time of sending                                     |
+| -- mailStatusCode   | String  | O|	Delivery status code<br/>SST0: Preparing Delivery, SST1: Delivering<br/>SST2: Delivery Completed, SST3: Delivery Failed<br/>SST4: Scheduled Waiting , SST7: Not Authenticated    |
+| -- mailStatusName   | String  | O|	Name of delivery status                                      |
+| -- receiverList     | List    | O|	List of recipients                                           |
+| --- requestId        | String  | O|	Request ID                                                   |
+| --- mailSeq          | Integer | O|	Mail sequence                                                |
+| --- receiveType      | String  | O|	Recipient type  (MRT0: recipient, MRT1: cc, MRT2: bcc)       |
+| --- receiveName      | String  | X|	Name of recipient                                            |
+| --- receiveTypeName  | String  | O|	Name of recipient type                                       |
+| --- receiveMailAddr  | String  | O|	Recipient's mail address                                     |
+| -- attachFileList   | List    | O|	List of attached files                                       |
+| --- fileType        | String  | O|	Type of attached files <br/>MAIL: files attached to mail, TEMPLATE: files attached to template|
+| --- fileId          | Integer  | O|	File ID <br/> Attachments uploaded through the v1.0, v1.1 APIs are marked with a file ID value of -1 |
+| --- fileName        | String  | O|	Name of attached file                                        |
+| --- filePath        | String  | O|	Path of attached file                                        |
+| --- fileSize        | Integer | O|	Size of attached file (byte)                                 |
+| --- createDate      | String  | O|	Date and time of creation                                    |
+| -- customHeaders    | Map     | O|	[Custom Header](./console-guide/#custom-header)                   |
+| -- senderGroupingKey| String  | X|	Sender's group key (up to 100 characters)                                           |
+|-- statsId| String|	X| Keys for grouping statistical data |
 
 
 ### Cancel Scheduled Delivery by Request
@@ -2315,12 +2316,12 @@ curl -X PUT \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
 
 ### Cancel Scheduled Delivery by recipient
 #### Request
@@ -2371,12 +2372,12 @@ curl -X PUT \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |---|
+| header              | Object  | O|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
 
 ### Cancel Scheduled Delivery - Multiple Filter
 #### Request
@@ -2471,17 +2472,17 @@ curl -X PUT \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - data              | Object  | Data area                                                    |
-| -- reservationCancelId|	String |	Schedule Cancellation ID|
-| -- requestedDateTime|	String|	Time for Schedule Cancellation(yyyy-MM-dd HH:mm:ss)|
-| -- reservationCancelStatus|	String|	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule  <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |---|
+| header              | Object  | X|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | O|	Body area                                                    |
+| - data              | Object  | X|	Data area                                                    |
+| -- reservationCancelId|	String |	O|	Schedule Cancellation ID|
+| -- requestedDateTime|	String|	O|	Time for Schedule Cancellation(yyyy-MM-dd HH:mm:ss)|
+| -- reservationCancelStatus|	String|	O|	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule  <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
 
 
 ### List Request of Scheduled Delivery Cancellation - Multiple Filter
@@ -2570,27 +2571,27 @@ curl -X GET \
 }
 ```
 
-| Value               | Type    | Description                                                  |
-| ------------------- | ------- | ------------------------------------------------------------ |
-| header              | Object  | Header area                                                  |
-| - isSuccessful      | Boolean | Successful or not                                            |
-| - resultCode        | Integer | Failure code                                                 |
-| - resultMessage     | String  | Failure message                                              |
-| body                | Object  | Body area                                                    |
-| - pageNum           | Integer | Current page number                                          |
-| - pageSize          | Integer | Number of queried data                                       |
-| - totalCount        | Integer | Number of total data                                         |
-| - data              | List    | Data area                                                    |
-|-- reservationCancelId|	String | Schedule Cancellation ID |
-|-- searchParameter | Map<String, Object> | Request Parameter for Schedule Cancellation |
-|-- requestedDateTime|	String | Request Time for Schedule Cancellation|
-|-- completedDateTime|	String | Request End Time for Schedule Cancellation |
-|-- reservationCancelStatus|	String| 	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
-|-- totalCount | Integer |  Number of Scheduled Cancellation Targets |
-|-- successCount | Integer |Number of Successful Schedule Cancellation |
-|-- createUser |	String| Requester of Scheduled Cancellation	|
-|-- createdDateTime | String | Request Creation Time for Schedule Cancellation |
-|-- updatedDateTime | String | Modified Time for Scheduled Cancellation  |
+| Value               | Type    | Not Null|	Description                                                  |
+| ------------------- | ------- | ------------------------------------------------------------ |---|
+| header              | Object  | X|	Header area                                                  |
+| - isSuccessful      | Boolean | O|	Successful or not                                            |
+| - resultCode        | Integer | O|	Failure code                                                 |
+| - resultMessage     | String  | O|	Failure message                                              |
+| body                | Object  | O|	Body area                                                    |
+| - pageNum           | Integer | O|	Current page number                                          |
+| - pageSize          | Integer | O|	Number of queried data                                       |
+| - totalCount        | Integer | O|	Number of total data                                         |
+| - data              | List    | X|	Data area                                                    |
+|-- reservationCancelId|	String | O|	Schedule Cancellation ID |
+|-- searchParameter | Map<String, Object> | O|	Request Parameter for Schedule Cancellation |
+|-- requestedDateTime|	String | O|	Request Time for Schedule Cancellation|
+|-- completedDateTime|	String | X|	Request End Time for Schedule Cancellation |
+|-- reservationCancelStatus|	String| 	O|	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
+|-- totalCount | Integer |  O|	Number of Scheduled Cancellation Targets |
+|-- successCount | Integer |O|	Number of Successful Schedule Cancellation |
+|-- createUser |	String| 	X| Requester of Scheduled Cancellation	|
+|-- createdDateTime | String | X|	Request Creation Time for Schedule Cancellation |
+|-- updatedDateTime | String | X|	Modified Time for Scheduled Cancellation  |
 
 <p id="category"></p>
 
@@ -2672,27 +2673,27 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- pageNum|	Integer| Current page number |
-|- pageSize|	Integer| Queried data count |
-|- totalCount|	Integer| Total data count |
-|- data|	List| Data area |
-|-- categoryId|	Integer| Category ID |
-|-- categoryParentId|	Integer| Parent category ID (0, for the highest-level category) |
-|-- depth|	Integer| Depth (0, for the highest-level category) |
-|-- categoryName|	String| Category name |
-|-- categoryDesc|	String| Category description |
-|-- useYn|	String| Use or not |
-|-- createUser|	String| Creator |
-|-- createDate|	String| Date and time of creation |
-|-- updateUser|	String| Modifier |
-|-- updateDate|	String| Date and time of modification |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| X|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| O|	Body area |
+|- pageNum|	Integer| O|	Current page number |
+|- pageSize|	Integer| O|	Queried data count |
+|- totalCount|	Integer| O|	Total data count |
+|- data|	List| X|	Data area |
+|-- categoryId|	Integer| O|	Category ID |
+|-- categoryParentId|	Integer| O|	Parent category ID (0, for the highest-level category) |
+|-- depth|	Integer| O|	Depth (0, for the highest-level category) |
+|-- categoryName|	String| O|	Category name |
+|-- categoryDesc|	String| X|	Category description |
+|-- useYn|	String| O|	Use or not |
+|-- createUser|	String| X|	Creator |
+|-- createDate|	String| O|	Date and time of creation |
+|-- updateUser|	String| X|	Modifier |
+|-- updateDate|	String| X|	Date and time of modification |
 
 ### Query Details 
 
@@ -2757,24 +2758,24 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	List| Data area |
-|-- categoryId|	Integer| Category ID |
-|-- categoryParentId|	Integer| Parent category ID (0, for the highest-level category) |
-|-- depth|	Integer| Depth (0, for the highest-level category) |
-|-- categoryName|	String| Category name |
-|-- categoryDesc|	String| Category description |
-|-- useYn|	String| Use or not |
-|-- createUser|	String| Creator |
-|-- createDate|	String| Date and time of creation |
-|-- updateUser|	String| Modifier |
-|-- updateDate|	String| Date and time of modification |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| X|	Body area |
+|- data|	List| O|	Data area |
+|-- categoryId|	Integer| O|	Category ID |
+|-- categoryParentId|	Integer| O|	Parent category ID (0, for the highest-level category) |
+|-- depth|	Integer| O|	Depth (0, for the highest-level category) |
+|-- categoryName|	String| O|	Category name |
+|-- categoryDesc|	String| X|	Category description |
+|-- useYn|	String| O|	Use or not |
+|-- createUser|	String| X|	Creator |
+|-- createDate|	String| O|	Date and time of creation |
+|-- updateUser|	String| X|	Modifier |
+|-- updateDate|	String| X|	Date and time of modification |
 
 
 ### Register
@@ -2849,15 +2850,15 @@ curl -X POST \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	Object| Data area |
-|-- categoryId|	Integer| Cateogry ID |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| X|	Body area |
+|- data|	Object| O|	Data area |
+|-- categoryId|	Integer| O|	Cateogry ID |
 
 
 ### Modify
@@ -2925,12 +2926,12 @@ curl -X PUT \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
 
 ### Delete
 
@@ -2982,12 +2983,12 @@ curl -X DELETE \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
 
 <p id="template"></p>
 
@@ -3069,27 +3070,27 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- pageNum|	Integer| Current page number |
-|- pageSize|	Integer| Number of queried data |
-|- totalCount|	Integer| Total number of data |
-|- data|	List| Data area |
-|-- templateId|	String| Template ID |
-|-- categoryId|	Integer| Category ID |
-|-- categoryName|	String| Category name |
-|-- templateName|	String| Template name |
-|-- templateDesc|	String| Template description |
-|-- useYn|	String| Use or not |
-|-- delYn|	String| Delete or not |
-|-- title|	String| Title |
-|-- createDate|	String| Date and time of creation |
-|-- updateDate|	String| Date and time of modification |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| X|	Body area |
+|- pageNum|	Integer| O|	Current page number |
+|- pageSize|	Integer| O|	Number of queried data |
+|- totalCount|	Integer| O|	Total number of data |
+|- data|	List| X|	Data area |
+|-- templateId|	String| O|	Template ID |
+|-- categoryId|	Integer| O|	Category ID |
+|-- categoryName|	String| O|	Category name |
+|-- templateName|	String| O|	Template name |
+|-- templateDesc|	String| X|	Template description |
+|-- useYn|	String| O|	Use or not |
+|-- delYn|	String| O|	Delete or not |
+|-- title|	String| O|	Title |
+|-- createDate|	String| O|	Date and time of creation |
+|-- updateDate|	String| O|	Date and time of modification |
 
 ### Query Template Details
 
@@ -3167,34 +3168,34 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	List| Data area |
-|-- templateId|	String| Template ID |
-|-- categoryId|	Integer| Category ID |
-|-- categoryName|	String| Category name |
-|-- templateName|	String| Template name |
-|-- templateDesc|	String| Template description |
-|-- useYn|	String| Use or not (Y= In use, N= Not in use) |
-|-- delYn|	String| Delete or not (Y= Delete, N= Not delete) |
-|-- sendMailAddress|	String| Sender's mail address |
-|-- title|	String| Mail address |
-|-- templateType|	String| Template type <br/>DEFAULT(default), FREEMARKER) |
-|-- body|	String| Body |
-|-- createDate|	String| Date and time of creation |
-|-- updateDate|	String| Date and time of modification |
-|-- attachFileList|	List| List of attached files |
-|--- fileType|	String| Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
-|--- fileId| Integer| File ID |
-|--- fileName|	String| Name of attached file |
-|--- filePath|	String| Path of attached file |
-|--- fileSize|	Integer| Size of attached file (byte) |
-|--- createDate|	String| Date and time of creation |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| X|	Body area |
+|- data|	List| O|	Data area |
+|-- templateId|	String| O|	Template ID |
+|-- categoryId|	Integer| O|	Category ID |
+|-- categoryName|	String| O|	Category name |
+|-- templateName|	String| O|	Template name |
+|-- templateDesc|	String| X|	Template description |
+|-- useYn|	String| O|	Use or not (Y= In use, N= Not in use) |
+|-- delYn|	String| O|	Delete or not (Y= Delete, N= Not delete) |
+|-- sendMailAddress|	String| X|	Sender's mail address |
+|-- title|	String| O|	Mail address |
+|-- templateType|	String| O|	Template type <br/>DEFAULT(default), FREEMARKER) |
+|-- body|	String| X|	Body |
+|-- createDate|	String| O|	Date and time of creation |
+|-- updateDate|	String| O|	Date and time of modification |
+|-- attachFileList|	List| O|	List of attached files |
+|--- fileType|	String| O|	Attachment type (MAIL: Files attached to mail, TEMPLATE: Files attached to template) |
+|--- fileId| Integer| O|	File ID |
+|--- fileName|	String| O|	Name of attached file |
+|--- filePath|	String| O|	Path of attached file |
+|--- fileSize|	Integer| O|	Size of attached file (byte) |
+|--- createDate|	String| O|	Date and time of creation |
 
 ### Register Templates 
 
@@ -3276,12 +3277,12 @@ curl -X POST \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|    Object| Header area |
-|- isSuccessful|    Boolean| Successful or not |
-|- resultCode|  Integer| Failure code |
-|- resultMessage|   String| Failure message |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|    Object| 	O|Header area |
+|- isSuccessful|    Boolean| 	O|Successful or not |
+|- resultCode|  Integer| 	O|Failure code |
+|- resultMessage|   String| 	O|Failure message |
 
 ### Upload Attached Files 
 
@@ -3314,7 +3315,7 @@ curl -X POST \
 [Request body]
 
 |Value| Type | Max Length | Required | Description |
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 |fileName|  String| - |O| File name |
 |fileBody|  Byte[]| - |O| Byte [] value |
 |userId|    String| 50|X| User ID |
@@ -3350,16 +3351,16 @@ curl -X POST \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|    Object| Header area |
-|- isSuccessful|    Boolean| Successful or not |
-|- resultCode|  Integer| Failure code |
-|- resultMessage|   String| Failure message |
-|body|  Object| Body area |
-|- data|    Object| Data area |
-|-- fileId| Integer| File ID |
-|-- fileName|   String| File name |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|    Object| O|	Header area |
+|- isSuccessful|    Boolean| O|	Successful or not |
+|- resultCode|  Integer| O|	Failure code |
+|- resultMessage|   String| O|	Failure message |
+|body|  Object| X|	Body area |
+|- data|    Object| X|	Data area |
+|-- fileId| Integer| O|	File ID |
+|-- fileName|   String| O|	File name |
 
 ### Modify Templates
 
@@ -3571,18 +3572,18 @@ curl -X GET \
 }
 ```
 
-| Value           | Type    | Description                   |
-| --------------- | ------- | ----------------------------- |
-| header          | Object  | Header area                   |
-| - isSuccessful  | Boolean | Successful or not             |
-| - resultCode    | Integer | Failure code                  |
-| - resultMessage | String  | Failure message               |
-| body            | Object  | Body area                     |
-| - data          | List    | Data area                     |
-| -- tagId        | String  | Tag ID                        |
-| -- tagName      | String  | Tag name                      |
-| -- createdDate  | String  | Date and time of creation     |
-| -- updatedDate  | String  | Date and time of modification |
+| Value           | Type    | Not Null|	Description                   |
+| --------------- | ------- | ------- |----------------------------- |
+| header          | Object  | O|	Header area                   |
+| - isSuccessful  | Boolean | O|	Successful or not             |
+| - resultCode    | Integer | O|	Failure code                  |
+| - resultMessage | String  | O|	Failure message               |
+| body            | Object  | X|	Body area                     |
+| - data          | List    | X|	Data area                     |
+| -- tagId        | String  | O|	Tag ID                        |
+| -- tagName      | String  | O|	Tag name                      |
+| -- createdDate  | String  | O|	Date and time of creation     |
+| -- updatedDate  | String  | O|	Date and time of modification |
 
 ### Register Tags
 
@@ -3646,22 +3647,22 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
-| body            | Object  | Body area         |
-| - data          | List    | Data area         |
-| -- tagId        | String  | Tag ID            |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
+| body            | Object  | X|	Body area         |
+| - data          | List    | O|	Data area         |
+| -- tagId        | String  | O|	Tag ID            |
 
 ##### Description
-- 태그는 최대 2,048개까지 생성할 수 있습니다.
+- You can create up to 2,048 tags.
 
-##### 태그에 UID 추가 생성
-- 태그에 UID를 추가(append)하는 것으로, 기존에 있던 UID를 추가하면 UID의 태그는 늘어납니다.
-- 한 UID에 태그를 16개까지 추가할 수 있습니다.
+##### Adding a UID to a Tag
+- This method adds a UID to a tag. If you add an existing UID, the tag of the UID will increase.
+- Up to 16 tags can be added to a single UID.
 
 
 ### Modify Tags
@@ -3724,12 +3725,12 @@ curl -X PUT \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ### Delete Tags	
 
@@ -3781,12 +3782,12 @@ curl -X DELETE \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ## UID Management
 
@@ -3873,27 +3874,27 @@ curl -X GET \
 }
 ```
 
-| Value            | Type    | Description                       |
-| ---------------- | ------- | --------------------------------- |
-| header           | Object  | Header area                       |
-| - isSuccessful   | Boolean | Successful or not                 |
-| - resultCode     | Integer | Failure code                      |
-| - resultMessage  | String  | Failure message                   |
-| body             | Object  | Body area                         |
-| - data           | List    | Data area                         |
-| -- uids          | List    | List of UIDs                      |
-| --- uid          | String  | UID                               |
-| --- tags         | List    | List of tag information           |
-| ---- tagId       | String  | Tag ID                            |
-| ---- tagName     | String  | Tag name                          |
-| ---- createDate  | String  | Date and time of tag creation     |
-| ---- updateDate  | String  | Date and time of tag modification |
-| --- contacts     | List    | List of contacts                  |
-| ---- contactType | String  | Contact type (EMAIL_ADDRESS)      |
-| ---- contact     | String  | Contact (mail address)            |
-| ---- createDate  | String  | Date and time of contact creation |
-| -- isLast        | Boolean | Last on list or not               |
-| -- totalCount    | Integer | Total number of data              |
+| Value            | Type    | Not Null|	Description                       |
+| ---------------- | ------- | ------- |--------------------------------- |
+| header           | Object  | O|	Header area                       |
+| - isSuccessful   | Boolean | O|	Successful or not                 |
+| - resultCode     | Integer | O|	Failure code                      |
+| - resultMessage  | String  | O|	Failure message                   |
+| body             | Object  | X|	Body area                         |
+| - data           | List    | X|	Data area                         |
+| -- uids          | List    | O|	List of UIDs                      |
+| --- uid          | String  | O|	UID                               |
+| --- tags         | List    | O|	List of tag information           |
+| ---- tagId       | String  | O|	Tag ID                            |
+| ---- tagName     | String  | O|	Tag name                          |
+| ---- createDate  | String  | O|	Date and time of tag creation     |
+| ---- updateDate  | String  | O|	Date and time of tag modification |
+| --- contacts     | List    | O|	List of contacts                  |
+| ---- contactType | String  | O|	Contact type (EMAIL_ADDRESS)      |
+| ---- contact     | String  | O|	Contact (mail address)            |
+| ---- createDate  | String  | O|	Date and time of contact creation |
+| -- isLast        | Boolean | O|	Last on list or not               |
+| -- totalCount    | Integer | O|	Total number of data              |
 
 ### Get UIDs
 
@@ -3964,24 +3965,24 @@ curl -X GET \
 }
 ```
 
-| Value           | Type    | Description                       |
-| --------------- | ------- | --------------------------------- |
-| header          | Object  | Header are                        |
-| - isSuccessful  | Boolean | Successful or not                 |
-| - resultCode    | Integer | Failure code                      |
-| - resultMessage | String  | Failure message                   |
-| body            | Object  | Body area                         |
-| - data          | List    | Data area                         |
-| -- uid          | String  | UID                               |
-| -- tags         | List    | List of tag information           |
-| --- tagId       | String  | Tag ID                            |
-| --- tagName     | String  | Tag name                          |
-| --- createDate  | String  | Date and time of tag creation     |
-| --- updateDate  | String  | Date and time of tag modification |
-| -- contacts     | List    | List of contacts                  |
-| --- contactType | String  | Contact type                      |
-| --- contact     | String  | Contact (mail address)            |
-| --- createDate  | String  | Date and time of contact creation |
+| Value           | Type    | Not Null|	Description                       |
+| --------------- | ------- | ------- |--------------------------------- |
+| header          | Object  | O|	Header are                        |
+| - isSuccessful  | Boolean | O|	Successful or not                 |
+| - resultCode    | Integer | O|	Failure code                      |
+| - resultMessage | String  | O|	Failure message                   |
+| body            | Object  | X|	Body area                         |
+| - data          | List    | X|	Data area                         |
+| -- uid          | String  | O|	UID                               |
+| -- tags         | List    | O|	List of tag information           |
+| --- tagId       | String  | O|	Tag ID                            |
+| --- tagName     | String  | O|	Tag name                          |
+| --- createDate  | String  | O|	Date and time of tag creation     |
+| --- updateDate  | String  | O|	Date and time of tag modification |
+| -- contacts     | List    | O|	List of contacts                  |
+| --- contactType | String  | O|	Contact type                      |
+| --- contact     | String  | O|	Contact (mail address)            |
+| --- createDate  | String  | O|	Date and time of contact creation |
 
 ### Register UIDs
 
@@ -4060,12 +4061,12 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ### Delete UIDs
 
@@ -4117,12 +4118,12 @@ curl -X DELETE \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ### Register Mail Addresses
 
@@ -4183,12 +4184,12 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ### Delete Mail Addresses
 
@@ -4241,12 +4242,12 @@ curl -X DELETE \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ## Query Statistics	
 
@@ -4323,22 +4324,22 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Description |
-|---|---|---|
-|header|	Object| Header area |
-|- isSuccessful|	Boolean| Successful or not |
-|- resultCode|	Integer| Failure code |
-|- resultMessage|	String| Failure message |
-|body|	Object| Body area |
-|- data|	List| Data area |
-|-- divisionName | String | Statistical criteria (date/time/day) |
-|-- requestedCount | Long | Number of delivery requests |
-|-- sentCount | Long | Number of deliveries |
-|-- receivedCount | Long | Number of receipts |
-|-- openedCount | Long | Number of openings |
-|-- sentRate | String | Delivery rate |
-|-- receivedRate | String | Receiving rate |
-|-- openedRate | String | Opening rate |
+|Value| Type | Not Null|	Description |
+|---|---|---|---|
+|header|	Object| O|	Header area |
+|- isSuccessful|	Boolean| O|	Successful or not |
+|- resultCode|	Integer| O|	Failure code |
+|- resultMessage|	String| O|	Failure message |
+|body|	Object| X|	Body area |
+|- data|	List| O|	Data area |
+|-- divisionName | String | O|	Statistical criteria (date/time/day) |
+|-- requestedCount | Long | O|	Number of delivery requests |
+|-- sentCount | Long | O|	Number of deliveries |
+|-- receivedCount | Long | O|	Number of receipts |
+|-- openedCount | Long | O|	Number of openings |
+|-- sentRate | String | O|	Delivery rate |
+|-- receivedRate | String | O|	Receiving rate |
+|-- openedRate | String | O|	Opening rate |
 
 ## Rejection Management
 
@@ -4408,19 +4409,19 @@ curl -X GET \
 }
 ```
 
-| Value           | Type    | Description                               |
-| --------------- | ------- | ----------------------------------------- |
-| header          | Object  | Header area                               |
-| - isSuccessful  | Boolean | Successful or not                         |
-| - resultCode    | Integer | Failure code                              |
-| - resultMessage | String  | Failure message                           |
-| body            | Object  | Body area                                 |
-| - pageNum       | Integer | Current page number                       |
-| -pageSize       | Integer | Number of queried data                    |
-| - totalCount    | Integer | Total number of data                      |
-| - data          | List    | Data area                                 |
-| -- mailAddress  | String  | Email address to reject                   |
-| -- blockDate    | String  | Date of rejection (yyyy-MM-dd HH:mm:ss.S) |
+| Value           | Type    | Not Null|	Description                               |
+| --------------- | ------- | ------- |----------------------------------------- |
+| header          | Object  | O|	Header area                               |
+| - isSuccessful  | Boolean | O|	Successful or not                         |
+| - resultCode    | Integer | O|	Failure code                              |
+| - resultMessage | String  | O|	Failure message                           |
+| body            | Object  | X|	Body area                                 |
+| - pageNum       | Integer | O|	Current page number                       |
+| -pageSize       | Integer | O|	Number of queried data                    |
+| - totalCount    | Integer | O|	Total number of data                      |
+| - data          | List    | O|	Data area                                 |
+| -- mailAddress  | String  | O|	Email address to reject                   |
+| -- blockDate    | String  | O|	Date of rejection (yyyy-MM-dd HH:mm:ss.S) |
 
 ### Register Rejections
 
@@ -4485,12 +4486,12 @@ curl -X POST \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ### Delete Rejections
 
@@ -4555,12 +4556,12 @@ curl -X PUT \
 }
 ```
 
-| Value           | Type    | Description       |
-| --------------- | ------- | ----------------- |
-| header          | Object  | Header area       |
-| - isSuccessful  | Boolean | Successful or not |
-| - resultCode    | Integer | Failure code      |
-| - resultMessage | String  | Failure message   |
+| Value           | Type    | Not Null|	Description       |
+| --------------- | ------- | ------- |----------------- |
+| header          | Object  | O|	Header area       |
+| - isSuccessful  | Boolean | O|	Successful or not |
+| - resultCode    | Integer | O|	Failure code      |
+| - resultMessage | String  | O|	Failure message   |
 
 ## Statistics
 ### Query Statistics
@@ -4636,21 +4637,21 @@ curl -X GET \
 }
 ```
 
-| Value                       | 	Type      | 	Descriptions                                                      |
-|-------------------------|----------|----------------------------------------------------------|
-| header                  | 	Object  | 	Header area                                                   |
-| - isSuccessful          | 	Boolean | 	Successful or not                                                   |
-| - resultCode            | 	Integer | 	Failure code                                                   |
-| - resultMessage         | 	String  | 	Failure message                                                  |
-| stats                   | 	Object  | 	Body area                                                   |
-| - eventDateTime         | 	String  | 	Event occurrence time                                               |
-| - events                | 	List    | 	Scope of data                                                  |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue} is the value of statsCriteria entered as a query condition. |
-| --- REQUESTED           | 	Integer | The number of requested cases                                                    |
-| --- SENT                | 	Integer | 	The number of sent cases                                                   |
-| --- SENT_FAILED         | 	Integer | 	The number of failure cases                                                   |
-| --- RECEIVED            | 	Integer | 	The number of success cases                                                   |
-| --- OPENED              | 	Integer | 	The number of opened cases                                                   |
+| Value                       | 	Type      | 	Not Null|	Descriptions                                                      |
+|-------------------------|----------|----------------------------------------------------------|----------|
+| header                  | 	Object  | 		O|Header area                                                   |
+| - isSuccessful          | 	Boolean | 		O|Successful or not                                                   |
+| - resultCode            | 	Integer | 		O|Failure code                                                   |
+| - resultMessage         | 	String  | 		O|Failure message                                                  |
+| stats                   | 	Object  | 		X|Body area                                                   |
+| - eventDateTime         | 	String  | 		X|Event occurrence time                                               |
+| - events                | 	List    | 		X|Scope of data                                                  |
+| -- {statsCriteriaValue} | 	String  | 		X|{statsCriteriaValue} is the value of statsCriteria entered as a query condition. |
+| --- REQUESTED           | 	Integer | 	X|The number of requested cases                                                    |
+| --- SENT                | 	Integer | 		X|The number of sent cases                                                   |
+| --- SENT_FAILED         | 	Integer | 		X|The number of failure cases                                                   |
+| --- RECEIVED            | 	Integer | 		X|The number of success cases                                                   |
+| --- OPENED              | 	Integer | 		X|The number of opened cases                                                   |
 
 ### Query Statistical Totals
 #### Request
@@ -4722,15 +4723,15 @@ curl -X GET \
 }
 ```
 
-| Value                                   | 	Type      | 	Descriptions        |
-|-------------------------------------|----------|------------|
-| header                              | 	Object  | 	Header area     |
-| - isSuccessful                      | 	Boolean | 	Successful or not     |
-| - resultCode                        | 	Integer | 	Failure code     |
-| - resultMessage                     | 	String  | 	Failure message    |
-| total                               | 	Object  | 	Body area     |
-| - {statsCriteriaValue}.REQUESTED   | 	Integer | The number of requested cases      |
-| - {statsCriteriaValue}.SENT        | 	Integer | 	The number of sent cases     |
-| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	The number of failure cases     |
-| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	The number of success cases     |
-| - {statsCriteriaValue}.OPENED      | 	Integer | 	The number of opened cases     |
+| Value                                   | 	Type      | 	Not Null|Descriptions        |
+|-------------------------------------|----------|------------|------------|
+| header                              | 	Object  | 		O|Header area     |
+| - isSuccessful                      | 	Boolean | 		O|Successful or not     |
+| - resultCode                        | 	Integer | 		O|Failure code     |
+| - resultMessage                     | 	String  | 		O|Failure message    |
+| total                               | 	Object  | 		X|Body area     |
+| - {statsCriteriaValue}.REQUESTED   | 	Integer | 	X|The number of requested cases      |
+| - {statsCriteriaValue}.SENT        | 	Integer | 		X|The number of sent cases     |
+| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 		X|The number of failure cases     |
+| - {statsCriteriaValue}.RECEIVED    | 	Integer | 		X|The number of success cases     |
+| - {statsCriteriaValue}.OPENED      | 	Integer | 		X|The number of opened cases     |
