@@ -817,7 +817,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー|
 
-#### v1.5에서 달라진 사항
+#### v1.5からの変更点
 
 * 発信者グループキーフィールド**senderGroupingKey**を追加しました。
 * 受信者リストのフィールドの名前を**receiverList**に変更しました。
@@ -1702,11 +1702,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 [Request body]
 
-|値| タイプ| 最大文字数| 必須| 説明|
-|---|---|---|---|---|
-|fileName|  String| - |O| ファイル名 |
-|fileBody|  Byte[]| - |O| ファイルのバイト[]値 |
-|userId|    String| 50|X| ユーザーID |
+|値|	タイプ| 	最大長 | 必須|	説明|
+|---|---|--------|---|---|
+|fileName|	String| 	-     |O|	ファイル名|
+|fileBody|	Byte[]| 	-     |O|	ファイルのByte[]値|
+|userId|	String| 	50    |X|	ユーザーID|
 
 [例]
 ``` sh

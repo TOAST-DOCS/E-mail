@@ -70,16 +70,16 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -99,11 +99,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -209,13 +209,13 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "顧客1"
         }
     ],
     "userId": "USER"
@@ -231,7 +231,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "templateParameter": {
                 "key": "value"
             }
@@ -309,16 +309,16 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "送信者名",
+    "title": "(広告)サンプルタイトル",
+    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -338,11 +338,11 @@ curl -X POST \
     },
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "receiveType": "MRT0"
         }, {
             "receiveMailAddr": "customer2@example.com",
-            "receiveName": "고객2",
+            "receiveName": "顧客2",
             "receiveType": "MRT1"
         }
     ],
@@ -367,13 +367,13 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "(광고) 샘플 타이틀",
-    "body": "샘플 내용 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
+    "senderName": "送信者名",
+    "title": "(広告)サンプルタイトル",
+    "body": "サンプル内容 <br /> ##BLOCK_RECEIVER_LINK## <br />##EN_BLOCK_RECEIVER_LINK##",
     "attachFileIdList": [1, 2],
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1"
+            "receiveName": "顧客1"
         }
     ],
     "userId": "USER"
@@ -389,7 +389,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiverList": [{
             "receiveMailAddr": "customer1@example.com",
-            "receiveName": "고객1",
+            "receiveName": "顧客1",
             "templateParameter": {
                 "key": "value"
             }
@@ -452,12 +452,12 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "고객1"
+        "receiveName": "顧客1"
     },
     "userId": "USER"
 }'
@@ -472,7 +472,7 @@ curl -X POST \
     "templateId": "TEMPLATE1",
     "receiver": {
         "receiveMailAddr": "customer1@example.com",
-        "receiveName": "고객1",
+        "receiveName": "顧客1",
         "templateParameter": {
             "key": "value"
         }
@@ -568,9 +568,9 @@ curl -X POST \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -d '{
     "senderAddress": "support@example.com",
-    "senderName": "발송자이름",
-    "title": "샘플 타이틀",
-    "body": "샘플 내용",
+    "senderName": "送信者名",
+    "title": "サンプルタイトル",
+    "body": "サンプル内容",
     "attachFileIdList": [1, 2],
     "tagExpression": ["tag1", "AND", "tag2"],
     "userId": "USER"
@@ -1369,10 +1369,10 @@ curl -X GET \
             "receiveMailAddr":"receiver@example.com",
             "receiveName":"receiverName",
             "receiveType":"MRT0",
-            "receiveTypeName":"받는사람",
+            "receiveTypeName":"受信者",
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
-            "mailStatusName":"예약대기",
+            "mailStatusName":"予約待ち",
             "senderGroupingKey":"senderKey"
          }
       ]
@@ -1452,13 +1452,13 @@ curl -X GET \
          "senderName":"senderName",
          "requestDate":"2020-06-05 00:00:00",
          "mailStatusCode":"SST4",
-         "mailStatusName":"예약대기",
+         "mailStatusName":"予約待ち",
          "receivers":[
             {
                "requestId":"202006050000008j6bx5Q1",
                "mailSeq":0,
                "receiveType":"MRT0",
-               "receiveTypeName":"받는사람",
+               "receiveTypeName":"受信者",
                "receiveName":"receiverName",
                "receiveMailAddr":"receiver@example.com"
             }
@@ -1491,7 +1491,7 @@ curl -X GET \
 |body|	Object|	本文領域|
 |- data|	Object|	データ領域|
 |-- requestId| String| リクエストID|
-|-- mailSeq|	Integer| メールの順番 순번 |
+|-- mailSeq|	Integer| メールの順番 |
 |-- title|	String| タイトル |
 |-- body|	String| 内容 |
 |-- templateId|	String|	テンプレートID|
@@ -1787,7 +1787,7 @@ curl -X GET \
 |-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
 |-- totalCount | Integer | 予約キャンセル対象件数 |
 |-- successCount | Integer | 予約キャンセル成功件数 |
-|-- createUser | Integer | 예약 취소 요청자 |
+|-- createUser | Integer | 予約キャンセルリクエスト者 |
 |-- createdDateTime | String | 予約キャンセルリクエスト作成時間 |
 |-- updatedDateTime | String | 予約キャンセル修正時間 |
 
@@ -2396,11 +2396,12 @@ curl -X POST \
 
 [Request body]
 
-|値| タイプ| 最大文字数| 必須| 説明|
-|---|---|---|---|---|
-|fileName|  String| - |O| ファイル名 |
-|fileBody|  Byte[]| - |O| ファイルのバイト[]値 |
-|userId|    String| 50|X| ユーザーID |
+
+|値|	タイプ| 	最大長 | 必須|	説明|
+|---|---|--------|---|---|
+|fileName|	String| 	-     |O|	ファイル名|
+|fileBody|	Byte[]| 	-     |O|	ファイルのByte[]値|
+|userId|	String| 	50    |X|	ユーザーID|
 
 #### cURL
 ```
