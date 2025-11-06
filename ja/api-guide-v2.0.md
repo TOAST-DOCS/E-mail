@@ -1,10 +1,10 @@
 ## Notification > Email > API v2.0ガイド
 
-### v2.0 API紹介
+### v2.0 APIの紹介
 
-1. シークレットキー認証導入
-	* v2.0 API呼び出し時ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
-2. 大量送信照会API追加
+1. シークレットキー認証の導入
+	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
+2. 大量送信照会APIの追加
 	* 大量送信件に対する照会APIが追加されました。
 
 
@@ -22,13 +22,13 @@ Content-Type: application/json;charset=UTF-8
 <p id="secret-key"></p>
 
 ### Secret Key
-- コンソールで確認できます。
-- Secret Keyが必要なAPIを呼び出す時、ヘッダに下記のように設定して呼び出す必要があります。
+- コンソールで確認可能です。
+- Secret Keyが必要なAPIを呼び出す際、ヘッダに以下のように設定して呼び出す必要があります。
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
 ```
-**CONSOLE > Notification > Email > URL & AppKey**で確認/作成できます。
+**CONSOLE > Notification > Email > URL & AppKey** で確認/作成できます。
 
 
 [curl例注意事項]
@@ -533,13 +533,12 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー(最大100文字) |
+|senderGroupingKey| String| X| 送信者グループキー (最大100文字) |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 
 [注意]
-
 
 * テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
 * テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
@@ -1180,14 +1179,14 @@ curl -X GET \
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
 |requestId|	String|	O|	リクエストID|
-|startSendDate|	String|	O|	送信日開始値(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	送信日終了値(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	発信メールアドレス|
-|senderName|	String|	X|	発信者名|
+|startSendDate|	String|	O|	送信日の開始値(yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	送信日の終了値(yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	送信メールアドレス|
+|senderName|	String|	X|	送信者名|
 |templateId|	String|	X|	テンプレートID|
 |sendStatus|	String|	X|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
-|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
-|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
+|pageNum|	Integer|	X|	ページ番号 1(デフォルト)|
+|pageSize|	Integer|	X|	照会件数 15(デフォルト)|
 
 [Header]
 
@@ -1260,15 +1259,15 @@ curl -X GET \
 |-- sendStatusName|	String|	送信ステータス名|
 |-- templateId|	String|	テンプレートID|
 |-- templateName|	String|	テンプレート名|
-|-- senderName|	String|	発信者名|
-|-- senderAddress|	String|	発信者メールアドレス|
-|-- title|	String|	メールタイトル|
-|-- body|	String|	メール内容|
+|-- senderName|	String|	送信者名|
+|-- senderAddress|	String|	送信者のメールアドレス|
+|-- title|	String|	メールの件名|
+|-- body|	String|	メールの内容|
 |-- adYn |  String  | 広告かどうか |
 |-- createDate |  String  | 作成日時 |
 |-- updateDate |  String  | 修正日時 |
 
-### 大量メール送信受信者照会
+### 大量メール送信の受信者照会
 
 #### リクエスト
 
@@ -1303,11 +1302,11 @@ curl -X GET \
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
 |receiveMailAddr|	String|	X|	受信メールアドレス|
-|startReceiveDate|	String|	X|	受信日開始値(yyyy-MM-dd HH:mm:ss)|
-|endReceiveDate|	String|	X|	受信日終了値(yyyy-MM-dd HH:mm:ss)|
+|startReceiveDate|	String|	X|	受信日の開始値(yyyy-MM-dd HH:mm:ss)|
+|endReceiveDate|	String|	X|	受信日の終了値(yyyy-MM-dd HH:mm:ss)|
 |mailStatusCode|	String|	X|	送信ステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7:未認証|
-|pageNum|	Integer|	X|	ページ番号1(デフォルト値)|
-|pageSize|	Integer|	X|	照会件数15(デフォルト値)|
+|pageNum|	Integer|	X|	ページ番号 1(デフォルト)|
+|pageSize|	Integer|	X|	照会件数 15(デフォルト)|
 
 #### cURL
 ```
@@ -1367,15 +1366,15 @@ curl -X GET \
 |- totalCount|	Integer|	総データ件数|
 |- data|	List|	データ領域|
 |-- requestId | String  | リクエストID |
-|-- mailSeq | Integer  | メール順番 |
+|-- mailSeq | Integer  | メール通し番号 |
 |-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7:未認証|
-|-- mailStatusName | String  | メールステータス名 |
+|-- mailStatusName | String  | メールステータス名 |
 |-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	受信者タイプ<br/>MRT0 :受信者、 MRT1 :CC、 MRT2 : BCC|
+|-- receiveType|	String|	受信者タイプ<br/>MRT0 : 宛先 , MRT1 : CC, MRT2 : BCC|
 |-- receiveTypeName|	String|	受信者タイプ名|
 |-- receiveName|	String|	受信者名|
-|-- receiveMailAddr|	String|	受信者メールアドレス|
-|-- isReceived| Boolean| 受信の有無 |
+|-- receiveMailAddr|	String|	受信者のメールアドレス|
+|-- isReceived| Boolean| 受信したかどうか |
 |-- resultDate| String| 受信日時|
 |-- isOpened| Boolean| 既読かどうか |
 |-- openedDate| String| 既読日時|
@@ -1384,7 +1383,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateDate |  String  | 修正日時 |
 
-### 大量メール送信詳細照会
+### 大量メール送信の詳細照会
 
 #### リクエスト
 
@@ -1400,7 +1399,7 @@ curl -X GET \
 |---|---|---|
 |appKey|	String|	固有のappKey|
 |requestId|	String|	リクエストID|
-|mailSeq|	Integer|	メール順番|
+|mailSeq|	Integer|	メール通し番号|
 
 [Header]
 
@@ -1476,46 +1475,46 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ| 	説明                                                                       |
+|値|	タイプ| 	説明                                                                        |
 |---|---|-----------------------------------------------------------------------------|
-|header|	Object| 	ヘッダ領域                                                                    |
-|- isSuccessful|	Boolean| 	成否                                                                    |
-|- resultCode|	Integer| 	失敗コード                                                                    |
-|- resultMessage|	String| 	失敗メッセージ                                                                   |
-|body|	Object| 	本文領域                                                                    |
-|- data|	List| 	データ領域                                                                   |
+|header|	Object| 	ヘッダ領域                                                                     |
+|- isSuccessful|	Boolean| 	成否                                                                     |
+|- resultCode|	Integer| 	失敗コード                                                                     |
+|- resultMessage|	String| 	失敗メッセージ                                                                    |
+|body|	Object| 	本文領域                                                                     |
+|- data|	List| 	データ領域                                                                    |
 |-- requestId  | String  | リクエストID                                                                       |
 |-- templateId | String  | テンプレートID                                                                      |
-|-- templateName | String  | テンプレート名                                                                     |
+|-- templateName | String  | テンプレート名                                                                      |
 |-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7:未認証 |
-|-- mailStatusName | String  | メールステータス名                                                                   |
-|-- requestDate | String  | リクエスト時間                                                                     |
-|-- senderName | String  | 発信者名                                                                      |
-|-- senderAddress | String  | 発信者アドレス                                                                    |
+|-- mailStatusName | String  | メールステータス名 |
+|-- requestDate | String  | リクエスト時間                                                                      |
+|-- senderName | String  | 送信者名 |
+|-- senderAddress | String  | 送信者アドレス |
 |-- resultId | String  | SMTP ID                                                                     |
-|-- resultDate | String  | 実際の送信時間                                                                  |
-|-- title | String  | タイトル                                                                        |
-|-- body | String  | 内容                                                                        |
+|-- resultDate | String  | 実際の送信時間 |
+|-- title | String  | 件名 |
+|-- body | String  | 内容                                                                         |
 |-- customHeaders|	Map| 	[ユーザー指定ヘッダ](./console-guide/#custom-header)                                |
-|-- receiverList | List| 受信者リスト                                                                   |
+|-- receiverList | List| 受信者リスト                                                                    |
 |--- requestId | String  | リクエストID                                                                       |
-|--- mailSeq | Integer  | メールの順番                                                                      |
-|--- receiveType | String  | 受信者タイプ(MRT0 :受信者、 MRT1 :参照、 MRT2 : BCC)                               |
-|--- receiveTypeName | String  | 受信者タイプ名                                                                   |
-|--- receiveMailAddr | String  | 受信者メールアドレス                                                                 |
-|--- isReceived| Boolean| 受信の有無                                                                      |
-|--- resultDate| String| 受信日時                                                                     |
-|--- isOpened| Boolean| 既読かどうか                                                                      |
-|--- openedDate| String| 既読日時                                                                     |
-|--- dsnCode| String| DSN(Delivery Status Notification)ステータスコード                                   |
-|--- dsnMessage| String| DSN(Delivery Status Notification)ステータスメッセージ                                  |
-|-- attachFileList | List  | 添付ファイルリスト                                                                  |
+|--- mailSeq | Integer  | メール通し番号                                                                       |
+|--- receiveType | String  | 受信者タイプ (MRT0 : 宛先 , MRT1 : CC, MRT2 : BCC) |
+|--- receiveTypeName | String  | 受信者タイプ名                                                                    |
+|--- receiveMailAddr | String  | 受信者のメールアドレス |
+|--- isReceived| Boolean| 受信したかどうか |
+|--- resultDate| String| 受信日時                                                                      |
+|--- isOpened| Boolean| 既読かどうか |
+|--- openedDate| String| 既読日時 |
+|--- dsnCode| String| DSN(Delivery Status Notification)ステータスコード                                    |
+|--- dsnMessage| String| DSN(Delivery Status Notification)ステータスメッセージ |
+|-- attachFileList | List  | 添付ファイルリスト                                                                   |
 |--- fileType|	String| 	添付ファイルタイプ(MAIL:メールに添付されたファイル、 TEMPLATE:テンプレートに添付されたファイル)                          |
 |--- fileId| Integer| ファイルID                                                                       |
-|--- fileName|	String| 	添付ファイル名                                                                  |
-|--- filePath|	String| 	添付ファイルパス                                                                  |
+|--- fileName|	String| 	添付ファイル名                                                                   |
+|--- filePath|	String| 	添付ファイルパス                                                                   |
 |--- fileSize|	Integer| 	添付ファイルサイズ(byte)                                                             |
-|--- createDate|	String| 	作成日時                                                                    |
+|--- createDate|	String| 	作成日時                                                                     |
 
 
 ### タグメール送信リクエストの照会
@@ -1965,7 +1964,7 @@ curl -X GET \
             "receiveTypeName":"受信者",
             "requestDate":"2020-06-05 17:53:00",
             "mailStatusCode":"SST4",
-            "mailStatusName":"予約待機",
+            "mailStatusName":"予約待ち",
             "senderGroupingKey":"senderKey"
          }
       ]
@@ -2058,7 +2057,7 @@ curl -X GET \
          "senderName":"senderName",
          "requestDate":"2020-06-05 00:00:00",
          "mailStatusCode":"SST4",
-         "mailStatusName":"予約待機",
+         "mailStatusName":"予約待ち",
          "receivers":[
             {
                "requestId":"202006050000008j6bx5Q1",
@@ -3170,11 +3169,11 @@ curl -X POST \
 
 [Request body]
 
-|値| タイプ| 最大文字数| 必須| 説明|
-|---|---|---|---|---|
-|fileName|  String| 100|O| ファイル名 |
-|fileBody|  Byte[]| - |O| ファイルのバイト[]値 |
-|userId|    String| 50|X| ユーザーID |
+|値|	タイプ| 	最大長 | 必須|	説明|
+|---|---|--------|---|---|
+|fileName|	String| 	-     |O|	ファイル名|
+|fileBody|	Byte[]| 	-     |O|	ファイルのByte[]値|
+|userId|	String| 	50    |X|	ユーザーID|
 
 #### cURL
 ```
