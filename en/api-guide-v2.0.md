@@ -3171,7 +3171,7 @@ curl -X POST \
 
 |Value| Type | Max Length | Required | Description |
 |---|---|---|---|---|
-|fileName|  String| 100|O| File name |
+|fileName|  String| - |O| File name |
 |fileBody|  Byte[]| - |O| Byte [] value |
 |userId|    String| 50|X| User ID |
 

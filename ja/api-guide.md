@@ -1,12 +1,11 @@
 ## Notification > Email > API v2.1ガイド
 
-### v2.1 API紹介
+### v2.1 APIの紹介
 
-1. 조회 API 응답 변경
-    * 메일 조회 API의 응답에 statId가 추가되었습니다.
-2. 메일 발송 업데이트 완료 목록 조회 API 추가
-3. 인증, 광고메일 발송 요청 필드 추가
-    * senderGroupingKey 필드가 추가되었습니다.
+1.シークレットキー認証の導入
+	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
+2. 大量送信照会API追加
+	* 大量送信件の照会APIが追加されました。
 
 [APIドメイン]
 
@@ -94,8 +93,6 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
 * テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 [例1]
 ```
@@ -248,8 +245,6 @@ curl -X POST \
 
 * テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
 * テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 [例1]
 ```
@@ -344,10 +339,6 @@ curl -X POST \
 #### 広告メール送信時の注意事項
 * タイトルに必ず(広告)文言を挿入する必要があります。
 * 詳細は[[広告性メール送信](./console-guide/#_3)]を参照してください。
-* 2024년 2월부터 시행된 [[Gmail 이메일 발신자 가이드라인 강화](https://support.google.com/a/answer/81126?hl=ja)]에 대응하여 gmail.com으로 마케팅 및 수신 동의 메일 발송시 원 클릭 수신거부 링크가 필수로 포함됩니다.
-    * 해당 링크는 수신 거부 링크로 자동으로 치환됩니다.
-    * 별도 URL을 사용하고 싶으신 경우 customHeaders에 'List-Unsubscribe' 헤더를 추가해 사용하실 수 있습니다.
-    * 자세한 내용은 [문제 해결 가이드](./troubleshooting-guide/)를 참고하십시오.
 
 [URL]
 
@@ -541,7 +532,7 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー(最大100文字) |
+|senderGroupingKey| String| X| 送信者グループキー (最大100文字) |
 |userId|	String|	X|	送信セパレータ ex)admin,system|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
@@ -549,8 +540,6 @@ curl -X POST \
 
 * テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
 * テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
 
 #### 一般メールと異なる点
 認証メールの性格上、次のように異なる特性があります。
@@ -842,12 +831,8 @@ curl -X POST \
 ```
 
 #### FreeMarkerタイプ
-
 * [FreeMarkerテンプレートエンジン](https://freemarker.apache.org/)をサポートします。
 * テンプレート言語を使用してユーザーが入力した**templateParameter**に置換できます。
-* Freemarker 타입의 템플릿을 사용할 경우, 모든 템플릿 파라미터가 치환되어야 메일이 발송됩니다.
-    * 치환되지 않은 파라미터가 있을 경우, 메일 발송이 실패합니다.
-
 ```
 * title：${title_name}さん、こんにちは！
 * body：${body_content}送信します。
@@ -1175,22 +1160,22 @@ curl -X GET \
 |-- statsId| String| 統計データグルーピングのためのキー |
 
 
-### メール送信アップデート完了リスト照会
-- 一般メール送信時にメール送信ステータスコードのアップデートが完了したメールリストを照会します。
-- メール送信ステータスコードアップデート開始時間と終了時間を基準に照会します。
-- 照会されるメールリストはメール、送信ステータスコードのアップデートが完了したメールリストです。
+### メール送信アップデート完了一覧の照会
+- 一般メール送信時、メール送信ステータスコードのアップデートが完了したメール一覧を照会します。
+- メール送信ステータスコードのアップデート開始時間と終了時間を基準に照会します。
+- 照会されるメール一覧は、メール送信ステータスコードのアップデートが完了したメール一覧です。
 
-#### 照会可能メール送信ステータスコード
-- SST2:送信完了
-- SST3:送信失敗
-- SST5:受信拒否
-- SST7:未認証
-- SST8:ホワイトリストによる失敗
+#### 照会可能なメール送信ステータスコード
+- SST2: 送信完了
+- SST3: 送信失敗
+- SST5: 受信拒否
+- SST7: 未認証
+- SST8: ホワイトリストによる失敗
 
 #### [注意]
-- SST2(送信完了)ステータスコードは送信処理完了時間ではなく、受信完了時間を基準に照会されます。
-	- 送信処理が遅延する場合、送信処理完了時間と受信完了時間が異なる場合があります。
-- SST3(送信失敗)ステータスコードはサービスで最終的に送信失敗と判断した時点で最終ステータスコードがアップデートされます。
+- SST2(送信完了)ステータスコードは、送信処理完了時間ではなく、受信完了時間を基準に照会されます。
+	- 送信処理が遅延した場合、送信処理完了時間と受信完了時間が異なることがあります。
+- SST3(送信失敗)ステータスコードは、サービス側で最終的に送信失敗と判断した時点で、最終ステータスコードがアップデートされます。
 
 #### リクエスト
 
@@ -1202,14 +1187,14 @@ curl -X GET \
 
 [Query parameter]
 
-| 値                       | 	タイプ    | 必須 | 	説明                                                                                 |
+| 値                        | 	タイプ     | 必須 | 	説明                                                                                  |
 |---------------------------|----------|----|---------------------------------------------------------------------------------------|
 | startMailStatusUpdateDate | 	String  | O  | 	メール送信ステータスコードのアップデート開始時間(yyyy-MM-dd HH:mm:ss)                                         |
-| endMailStatusUpdateDate   | 	String  | O  | 	メール送信ステータスコードアップデート終了時間(yyyy-MM-dd HH:mm:ss)                                         |
+| endMailStatusUpdateDate   | 	String  | O  | 	メール送信ステータスコードのアップデート終了時間(yyyy-MM-dd HH:mm:ss)                                         |
 | mailStatusCode            | 	Integer | X  | 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
 | messageType               | 	String  | X  | メッセージ送信タイプ(一般、広告、認証)                                                                |
-| pageNum                   | 	Integer | 	X | 	ページ番号1(デフォルト値)                                                                        |
-| pageSize                  | 	Integer | 	X | 	照会件数15(デフォルト値)                                                                        |
+| pageNum                   | 	Integer | 	X | 	ページ番号1(デフォルト)                                                                        |
+| pageSize                  | 	Integer | 	X | 	照会件数15(デフォルト)                                                                        |
 
 [Header]
 
@@ -1261,29 +1246,28 @@ curl -X GET \
     ]
   }
 }
-
+  
 
 ```
 
-| 値         |	タイプ| 	説明                                                                                 |
+| 値          |	タイプ| 	説明                                                                                  |
 |-------------|---|---------------------------------------------------------------------------------------|
-| header      |	Object| 	ヘッダ領域                                                                              |
-| - isSuccessful |	Boolean| 	成否                                                                              |
-| - resultCode |	Integer| 	失敗コード                                                                              |
-| - resultMessage |	String| 	失敗メッセージ                                                                             |
-| data        |	Object| 	データ領域                                                                             |
+| header      |	Object| 	ヘッダ領域                                                                               |
+| - isSuccessful |	Boolean| 	成否                                                                               |
+| - resultCode |	Integer| 	失敗コード                                                                               |
+| - resultMessage |	String| 	失敗メッセージ                                                                              |
+| data        |	Object| 	データ領域                                                                              |
 | - requestId | String| リクエストID                                                                                 |
-| - mailSeq   | Integer| メールの順番                                                                                |
-| - mailStatusCode |	String| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7:未認証、 SST8:ホワイトリストによる失敗 |
-| - mailStatusName |	String| 	送信ステータス名                                                                             |
-| - requestDate | String| リクエスト日時                                                                               |
-| - mailStatusUpdatedDate | String| メール送信ステータスコードアップデート日時                                                                 |
-| - resultDate | String| 受信日時                                                                               |
-| - openedDate | String| 既読日時                                                                               |
-| - dsnCode   | String| DSN(Delivery Status Notification)ステータスコード                                             |
-| - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ                                            |
-| - senderGroupingKey | String| 送信者グループキー                                                                              |
-
+| - mailSeq   | Integer| メール通し番号                                                                                 |
+| - mailStatusCode |	String| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7: 未認証、 SST8: ホワイトリストによる失敗 |
+| - mailStatusName |	String| 	送信ステータス名	|
+| - requestDate | String| リクエスト日時                                                                                |
+| - mailStatusUpdatedDate | String| メール送信ステータスコードのアップデート日時 |
+| - resultDate | String| 受信日時                                                                                |
+| - openedDate | String| 既読日時 |
+| - dsnCode   | String| DSN(Delivery Status Notification)ステータスコード                                              |
+| - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ |
+| - senderGroupingKey | String| 送信者グループキー |
 
 ### 大量メールリスト照会
 
@@ -1772,7 +1756,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データをグループ化するためのキー |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 ### タグメールの送信受信者照会
 
@@ -1885,7 +1869,7 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateUser |  String  | 修正者 |
 |-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データをグループ化するためのキー |
+|-- statsId| String| 統計データグルーピングのためのキー |
 
 ### タグメール送信詳細照会
 
@@ -3315,7 +3299,7 @@ curl -X POST \
 
 |値| タイプ| 最大文字数| 必須| 説明|
 |---|---|---|---|---|
-|fileName|  String| 100|O| ファイル名 |
+|fileName|  String| - |O| ファイル名 |
 |fileBody|  Byte[]| - |O| ファイルのバイト[]値 |
 |userId|    String| 50|X| ユーザーID |
 
