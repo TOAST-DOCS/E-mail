@@ -1723,10 +1723,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 [Request body]
 
 |Value| Type | Max Length | Required | Description |
-|---|---|---|---|---|
-|fileName|  String| 100|O| File name |
-|fileBody|  Byte[]| - |O| Byte [] value |
-|userId|    String| 50|X| User ID |
+|---|---|------------|---|---|
+|fileName|  String| -          |O| File name |
+|fileBody|  Byte[]| -          |O| Byte [] value |
+|userId|    String| 50         |X| User ID |
 
 [Example]
 
