@@ -42,7 +42,7 @@
 | 도메인   | false | -2718 | 이미 공유된 도메인입니다.                                                    | Already shared domain.                                                                                          |
 | 도메인   | false | -2719 | 이 도메인은 다른 조직 사용자와 공유되지 않습니다.                                      | This domain is not sharing another organization user.                                                           |
 | 도메인   | false | -2720 | DMARC 레코드가 비어 있습니다.                                               | DMARC record is empty.                                                                                          |
-| 도메인   | false | -2721 | SPF 레코드가 중복되었습니다. 도메인 txt 레코드를 확인하세요.                             | SPF Record is duplicated. check your domain txt record.                                                         |
+| 도메인   | false | -2721 | SPF 레코드가 중복되었습니다. 도메인 txt 레코드를 확인하세요.                             | SPF record is duplicated. check your domain txt record.                                                         |
 | 도메인   | false | -2722 | DNS 조회가 너무 많아 SPF 레코드를 찾을 수 없습니다. DNS 조회 제한은 10입니다.               | SPF record could not be found because there were too many DNS lookups. DNS lookup limit is 10.                  |
 | 도메인   | false | -2723 | 유효하지 않은 all 위치 SPF 레코드입니다. all은 마지막 위치여야 합니다. 도메인 txt 레코드를 확인하세요. | Invalid all position SPF record. all position must be last position. check your domain txt record.              |
 | 도메인   | false | -2726 | DNS 조회에 실패했습니다.                                                   | DNS LookUp failed. lookup failed message: {}                                                                    |

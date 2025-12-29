@@ -132,7 +132,7 @@
 | false        | -2718      | Already shared domain.                                                                                                     |
 | false        | -2719      | This domain is not sharing another organization user.                                                                      |
 | false        | -2720      | DMARC record is empty.                                                                                                     |
-| false        | -2721      | SPF Record is duplicated. check your domain txt record.                                                                    |
+| false        | -2721      | SPF record is duplicated. check your domain txt record.                                                                    |
 | false        | -2722      | SPF record could not be found because there were too many DNS lookups. DNS lookup limit is 10.                             |
 | false        | -2723      | Invalid all position SPF record. all position must be last position. check your domain txt record.                         |
 | false        | -2726      | DNS LookUp failed. lookup failed message: {}                                                                               |
