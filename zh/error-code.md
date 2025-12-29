@@ -64,9 +64,9 @@
 | false        | -2048      | You can set the size up to 1000. pageSize: {}                                                                              |
 | false        | -2049      | The 'requestId' or ('startSendDate' and 'endSendDate') are required.                                                       |
 | false        | -2050      | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.                        |
-| false        | -2051      | Email Format is wrong. {}                                                                                                  |
-| false        | -2052      | the 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                           |
-| false        | -2053      | Invalid reservation parameter                                                                                              |
+| false        | -2051      | Email format is wrong. {}                                                                                                  |
+| false        | -2052      | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                           |
+| false        | -2053      | Invalid reservation parameter.                                                                                              |
 | false        | -2054      | There is no header in the file. Please check the file format.                                                              |
 | false        | -2055      | There is no receiver_address header in the file.                                                                           |
 | false        | -2056      | The ('startReadDate' and 'endReadDate') are required.                                                                      |
@@ -119,15 +119,15 @@
 | false        | -2705      | Already verified domain.                                                                                                   |
 | false        | -2706      | Subdomain must not be root                                                                                                 |
 | false        | -2707      | Invalid subdomain parameter.                                                                                               |
-| false        | -2708      | No regist subdomain.                                                                                                        |
+| false        | -2708      | No registered subdomain.                                                                                                        |
 | false        | -2709      | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                                   |
 | false        | -2710      | X-TC-ENVELOPE-FROM must be email format.                                                                                   |
 | false        | -2711      | Invalid domain parameter.                                                                                                  |
-| false        | -2712      | No regist domain.                                                                                                           |
-| false        | -2713      | DKIM Verification failed.                                                                                                  |
+| false        | -2712      | No registered domain.                                                                                                           |
+| false        | -2713      | DKIM verification failed.                                                                                                  |
 | false        | -2714      | Domain sharing failed.                                                                                                     |
-| false        | -2715      | DKIM deactivate Failed.                                                                                                     |
-| false        | -2716      | DKIM activate Failed.                                                                                                       |
+| false        | -2715      | DKIM deactivate failed.                                                                                                     |
+| false        | -2716      | DKIM activate failed.                                                                                                       |
 | false        | -2717      | Root Domain is not verified.                                                                                               |
 | false        | -2718      | Already shared domain.                                                                                                     |
 | false        | -2719      | This domain is not sharing another organization user.                                                                      |

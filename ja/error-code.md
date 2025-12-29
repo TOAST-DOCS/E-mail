@@ -14,11 +14,11 @@
 | 공통    | false | -1005 | 서비스가 일시적으로 차단되었습니다.                                               | Service is temporarily blocked.                                                                                  |
 | 공통    | false | -1007 | 서비스의 'useYn' 필드는 필수입니다.                                           | The 'useYn' field of the service is required.                                                                    |
 | 공통    | false | -2000 | 날짜 형식이 유효하지 않습니다.                                                 | Date format is invalid. {}: {}, Only supported {}.                                                               |
-| 공통    | false | -2028 | 행 수 제한을 초과했습니다. 최대 50,000행까지 처리할 수 있습니다.                          | Limit of rows is exceeded. It can handle up to 50,000 rows.                                                     |
+| 공통    | false | -2028 | 행 개수 제한을 초과했습니다. 최대 50,000행까지 처리할 수 있습니다.                          | Limit of rows is exceeded. It can handle up to 50,000 rows.                                                     |
 | 공통    | false | -2046 | 'Y' 또는 'N' 값만 가질 수 있습니다.                                          | The '{}' can have only 'Y' or 'N' values. {}: {}.                                                                |
 | 공통    | false | -5000 | 유효하지 않은 파라미터입니다.                                                  | Invalid parameter.                                                                                               |
 | 공통    | false | -5001 | 이미 활성화된 appKey입니다.                                                | Already activated appKey.                                                                                       |
-| 공통    | false | -5002 | 활성화되지 않은 apkey입니다.                                                | Not activated appKey.                                                                                           |
+| 공통    | false | -5002 | 활성화되지 않은 appkey입니다.                                                | Not activated appKey.                                                                                           |
 | 공통    | false | -5003 | 존재하지 않는 appKey입니다.                                                | Not exist appKey.                                                                                               |
 | 공통    | false | -9993 | 요청 바인딩 오류입니다.                                                     | Binding the requests error.                                                                                     |
 | 공통    | false | -9994 | 클라이언트 예외입니다.                                                      | Client exception.                                                                                               |
@@ -34,10 +34,10 @@
 | 도메인   | false | -2706 | 서브도메인은 루트일 수 없습니다.                                                | Subdomain must not be root                                                                                      |
 | 도메인   | false | -2707 | 유효하지 않은 서브도메인 파라미터입니다.                                            | Invalid subdomain parameter.                                                                                    |
 | 도메인   | false | -2711 | 유효하지 않은 도메인 파라미터입니다.                                              | Invalid domain parameter.                                                                                       |
-| 도메인   | false | -2713 | DKIM 인증에 실패했습니다.                                                  | DKIM Verification failed.                                                                                       |
+| 도메인   | false | -2713 | DKIM 인증에 실패했습니다.                                                  | DKIM verification failed.                                                                                       |
 | 도메인   | false | -2714 | 도메인 공유에 실패했습니다.                                                   | Domain sharing failed.                                                                                          |
-| 도메인   | false | -2715 | DKIM 비활성화에 실패했습니다.                                                | DKIM deactivate Failed.                                                                                          |
-| 도메인   | false | -2716 | DKIM 활성화에 실패했습니다.                                                 | DKIM activate Failed.                                                                                            |
+| 도메인   | false | -2715 | DKIM 비활성화에 실패했습니다.                                                | DKIM deactivate failed.                                                                                          |
+| 도메인   | false | -2716 | DKIM 활성화에 실패했습니다.                                                 | DKIM activate failed.                                                                                            |
 | 도메인   | false | -2717 | 루트 도메인이 인증되지 않았습니다.                                               | Root Domain is not verified.                                                                                    |
 | 도메인   | false | -2718 | 이미 공유된 도메인입니다.                                                    | Already shared domain.                                                                                          |
 | 도메인   | false | -2719 | 이 도메인은 다른 조직 사용자와 공유되지 않습니다.                                      | This domain is not sharing another organization user.                                                           |
@@ -88,9 +88,9 @@
 | 발송/조회 | false | -2048 | 최대 1000까지 설정할 수 있습니다.                                             | You can set the size up to 1000. pageSize: {}                                                                   |
 | 발송/조회 | false | -2049 | 'requestId' 또는 ('startSendDate'와 'endSendDate')는 필수입니다.           | The 'requestId' or ('startSendDate' and 'endSendDate') are required.                                            |
 | 발송/조회 | false | -2050 | {}는 다른 NHN Cloud 프로젝트에 의해 보호되고 있습니다. 발신 도메인 인증 후 사용하세요.           | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.             |
-| 발송/조회 | false | -2051 | 이메일 형식이 잘못되었습니다. {}                                               | Email Format is wrong. {}                                                                                       |
-| 발송/조회 | false | -2052 | 'requestDate'는 60일 이내여야 합니다. 'requestDate'를 업데이트하세요.              | the 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                |
-| 발송/조회 | false | -2053 | 유효하지 않은 예약 파라미터입니다.                                               | Invalid reservation parameter                                                                                   |
+| 발송/조회 | false | -2051 | 이메일 형식이 잘못되었습니다. {}                                               | Email format is wrong. {}                                                                                       |
+| 발송/조회 | false | -2052 | 'requestDate'는 60일 이내여야 합니다. 'requestDate'를 업데이트하세요.              | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                |
+| 발송/조회 | false | -2053 | 유효하지 않은 예약 파라미터입니다.                                               | Invalid reservation parameter.                                                                                   |
 | 발송/조회 | false | -2054 | 파일에 헤더가 없습니다. 파일 형식을 확인하세요.                                       | There is no header in the file. Please check the file format.                                                   |
 | 발송/조회 | false | -2055 | 파일에 receiver_address 헤더가 없습니다.                                    | There is no receiver_address header in the file.                                                                |
 | 발송/조회 | false | -2056 | ('startReadDate'와 'endReadDate')는 필수입니다.                          | The ('startReadDate' and 'endReadDate') are required.                                                           |
@@ -108,10 +108,10 @@
 | 발송/조회 | false | -2115 | 템플릿이 비활성화되어 있습니다. 템플릿을 사용하려면 템플릿 상태를 활성화로 변경하세요.                  | Template is disabled. If you want to use a template, change the template status to enabled.                     |
 | 발송/조회 | false | -2701 | 도메인 인증에 실패했습니다.                                                   | Domain Verification failed. ({})                                                                                |
 | 발송/조회 | false | -2703 | 도메인이 인증되지 않았습니다.                                                  | Domain is not verified.                                                                                         |
-| 발송/조회 | false | -2708 | 등록되지 않은 서브도메인입니다.                                                 | No regist subdomain.                                                                                             |
+| 발송/조회 | false | -2708 | 등록되지 않은 서브도메인입니다.                                                 | No registered subdomain.                                                                                             |
 | 발송/조회 | false | -2709 | 동일한 루트 도메인이 아닙니다. (senderAddress, X-TC-ENVELOPE-FROM)             | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                        |
 | 발송/조회 | false | -2710 | X-TC-ENVELOPE-FROM은 이메일 형식이어야 합니다.                                | X-TC-ENVELOPE-FROM must be email format.                                                                        |
-| 발송/조회 | false | -2712 | 등록되지 않은 도메인입니다.                                                   | No regist domain.                                                                                                |
+| 발송/조회 | false | -2712 | 등록되지 않은 도메인입니다.                                                   | No registered domain.                                                                                                |
 | 발송/조회 | false | -3001 | 유효하지 않은 카테고리입니다.                                                  | Invalid category.                                                                                                |
 | 발송/조회 | false | -4000 | Excel 파일을 찾을 수 없습니다.                                              | Not found excel file.                                                                                           |
 | 발송/조회 | false | -4001 | 유효하지 않은 파라미터입니다. {}                                               | Invalid parameter. {}                                                                                           |
