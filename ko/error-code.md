@@ -31,7 +31,7 @@
 | 도메인   | false | -2700 | 도메인이 비어 있습니다.                                                     | Domain is empty.                                                                                                |
 | 도메인   | false | -2702 | 이미 존재하는 도메인입니다.                                                   | Already existed domain.                                                                                         |
 | 도메인   | false | -2704 | 도메인이 루트 도메인이 아닙니다.                                                | Domain is not Root Domain.                                                                                      |
-| 도메인   | false | -2706 | 서브도메인은 루트일 수 없습니다.                                                | Subdomain must not be root                                                                                      |
+| 도메인   | false | -2706 | 서브도메인은 루트일 수 없습니다.                                                | Subdomain must not be root.                                                                                     |
 | 도메인   | false | -2707 | 유효하지 않은 서브도메인 파라미터입니다.                                            | Invalid subdomain parameter.                                                                                    |
 | 도메인   | false | -2711 | 유효하지 않은 도메인 파라미터입니다.                                              | Invalid domain parameter.                                                                                       |
 | 도메인   | false | -2713 | DKIM 인증에 실패했습니다.                                                  | DKIM verification failed.                                                                                       |
@@ -104,7 +104,7 @@
 | 발송/조회 | false | -2108 | 'categoryId'는 필수입니다.                                              | The 'categoryId' is required.                                                                                   |
 | 발송/조회 | false | -2109 | 유효하지 않은 API 요청입니다. replace 파라미터를 확인하세요.                           | Invalid Api Request. Check the replace parameter.                                                               |
 | 발송/조회 | false | -2111 | 첨부 파일이 있는 템플릿은 지원되지 않습니다.                                         | A template with attachments is not supported. templateId: {}                                                    |
-| 발송/조회 | false | -2114 | templateId는 예약 문자(/,?,:,<,>,%,&,",')를 포함할 수 없습니다.                 | templateId should not contain reserved character (/,?,:,<,>,%,&," + '"' + ",')                                  |
+| 발송/조회 | false | -2114 | templateId는 예약 문자(/,?,:,<,>,%,&,",')를 포함할 수 없습니다.                 | templateId should not contain reserved character. (/,?,:,<,>,%,&," + '"' + ",')                                  |
 | 발송/조회 | false | -2115 | 템플릿이 비활성화되어 있습니다. 템플릿을 사용하려면 템플릿 상태를 활성화로 변경하세요.                  | Template is disabled. If you want to use a template, change the template status to enabled.                     |
 | 발송/조회 | false | -2701 | 도메인 인증에 실패했습니다.                                                   | Domain Verification failed. ({})                                                                                |
 | 발송/조회 | false | -2703 | 도메인이 인증되지 않았습니다.                                                  | Domain is not verified.                                                                                         |

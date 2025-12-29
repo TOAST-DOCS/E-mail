@@ -89,7 +89,7 @@
 | false        | -2111      | A template with attachments is not supported. templateId: {}                                                               |
 | false        | -2112      | The 'title' is required.                                                                                                   |
 | false        | -2113      | The one of the 'attachFileIdList' has already been attached to another template. attached templateId: {}, attachFileId: {} |
-| false        | -2114      | templateId should not contain reserved character (/,?,:,<,>,%,&," + '"' + ",')                                             |
+| false        | -2114      | templateId should not contain reserved character. (/,?,:,<,>,%,&," + '"' + ",')                                             |
 | false        | -2115      | Template is disabled. If you want to use a template, change the template status to enabled.                                |
 | false        | -2200      | Invalid statistics search parameter.                                                                                       |
 | false        | -2201      | The 'from' must be before 'to'.                                                                                             |
@@ -117,7 +117,7 @@
 | false        | -2703      | Domain is not verified.                                                                                                    |
 | false        | -2704      | Domain is not Root Domain.                                                                                                 |
 | false        | -2705      | Already verified domain.                                                                                                   |
-| false        | -2706      | Subdomain must not be root                                                                                                 |
+| false        | -2706      | Subdomain must not be root.                                                                                                |
 | false        | -2707      | Invalid subdomain parameter.                                                                                               |
 | false        | -2708      | No registered subdomain.                                                                                                        |
 | false        | -2709      | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                                   |
