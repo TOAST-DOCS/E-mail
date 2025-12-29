@@ -7,14 +7,14 @@
 | true         | 0          | success                                                                                                                    |
 | true         | 1000       | Some of your requests are successful.                                                                                      |
 | false        | -1000      | Invalid appKey.                                                                                                            |
-| false        | -1001      | Service is not exist                                                                                                       |
-| false        | -1002      | Service is disabled                                                                                                        |
-| false        | -1003      | Invalid service parameter                                                                                                  |
+| false        | -1001      | Service is not exist.                                                                                                       |
+| false        | -1002      | Service is disabled.                                                                                                        |
+| false        | -1003      | Invalid service parameter.                                                                                                  |
 | false        | -1004      | Invalid secretKey.                                                                                                         |
-| false        | -1005      | Service is temporarily blocked                                                                                             |
+| false        | -1005      | Service is temporarily blocked.                                                                                             |
 | false        | -1006      | Service is associated with a domain shared within the organization. Please proceed after canceling the sharing.            |
-| false        | -1007      | The 'useYn' field of the service is required                                                                               |
-| false        | -2000      | Date format is invalid. {}: {}, Only supported {}                                                                          |
+| false        | -1007      | The 'useYn' field of the service is required.                                                                               |
+| false        | -2000      | Date format is invalid. {}: {}, Only supported {}.                                                                          |
 | false        | -2001      | The 'receiverList' or 'receiver' is required.                                                                              |
 | false        | -2002      | The 'senderAddress' is required.                                                                                           |
 | false        | -2003      | Invalid attach file name.                                                                                                  |
@@ -27,7 +27,7 @@
 | false        | -2010      | Sender Email Format is wrong.                                                                                              |
 | false        | -2011      | Receiver Email Format is wrong.                                                                                            |
 | false        | -2012      | The maximum number of recipients is 1000.                                                                                  |
-| false        | -2013      | The file size is less than 30M                                                                                             |
+| false        | -2013      | The file size is less than 30M.                                                                                             |
 | false        | -2014      | Up to 10 attachments including the template's are allowed.                                                                 |
 | false        | -2015      | The 'title' is required.                                                                                                   |
 | false        | -2016      | The 'body' is required.                                                                                                    |
@@ -59,7 +59,7 @@
 | false        | -2043      | There are too much mail at this time. Please send it at another time.                                                      |
 | false        | -2044      | The 'fileName' is required.                                                                                                |
 | false        | -2045      | The 'fileBody' is required.                                                                                                |
-| false        | -2046      | The '{}' can have only 'Y' or 'N' values. {}: {}                                                                           |
+| false        | -2046      | The '{}' can have only 'Y' or 'N' values. {}: {}.                                                                           |
 | false        | -2047      | The 'senderGroupingKey' exceeds maximum length. (100 chars)                                                                |
 | false        | -2048      | You can set the size up to 1000. pageSize: {}                                                                              |
 | false        | -2049      | The 'requestId' or ('startSendDate' and 'endSendDate') are required.                                                       |
@@ -92,7 +92,7 @@
 | false        | -2114      | templateId should not contain reserved character (/,?,:,<,>,%,&," + '"' + ",')                                             |
 | false        | -2115      | Template is disabled. If you want to use a template, change the template status to enabled.                                |
 | false        | -2200      | Invalid statistics search parameter.                                                                                       |
-| false        | -2201      | The 'from' must be before 'to'                                                                                             |
+| false        | -2201      | The 'from' must be before 'to'.                                                                                             |
 | false        | -2202      | Invalid duration time.                                                                                                     |
 | false        | -2203      | The 'from' and 'to' are required.                                                                                          |
 | false        | -2204      | The 'searchType' is required.                                                                                              |
@@ -119,15 +119,15 @@
 | false        | -2705      | Already verified domain.                                                                                                   |
 | false        | -2706      | Subdomain must not be root                                                                                                 |
 | false        | -2707      | Invalid subdomain parameter.                                                                                               |
-| false        | -2708      | No regist subdomain                                                                                                        |
+| false        | -2708      | No regist subdomain.                                                                                                        |
 | false        | -2709      | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                                   |
 | false        | -2710      | X-TC-ENVELOPE-FROM must be email format.                                                                                   |
 | false        | -2711      | Invalid domain parameter.                                                                                                  |
-| false        | -2712      | No regist domain                                                                                                           |
+| false        | -2712      | No regist domain.                                                                                                           |
 | false        | -2713      | DKIM Verification failed.                                                                                                  |
 | false        | -2714      | Domain sharing failed.                                                                                                     |
-| false        | -2715      | DKIM deactivate Failed                                                                                                     |
-| false        | -2716      | DKIM activate Failed                                                                                                       |
+| false        | -2715      | DKIM deactivate Failed.                                                                                                     |
+| false        | -2716      | DKIM activate Failed.                                                                                                       |
 | false        | -2717      | Root Domain is not verified.                                                                                               |
 | false        | -2718      | Already shared domain.                                                                                                     |
 | false        | -2719      | This domain is not sharing another organization user.                                                                      |
@@ -137,7 +137,7 @@
 | false        | -2723      | Invalid all position SPF record. all position must be last position. check your domain txt record.                         |
 | false        | -2726      | DNS LookUp failed. lookup failed message: {}                                                                               |
 | false        | -3000      | Invalid add category parameter. (categoryName, useYn)                                                                      |
-| false        | -3001      | Invalid category                                                                                                           |
+| false        | -3001      | Invalid category.                                                                                                           |
 | false        | -3002      | Invalid modify category parameter. (categoryId, categoryName, useYn)                                                       |
 | false        | -3003      | The 'categoryName' is required.                                                                                            |
 | false        | -3004      | The 'categoryName' can't exceed 200 characters.                                                                            |
@@ -147,16 +147,16 @@
 | false        | -3008      | Category does not exist.                                                                                                   |
 | false        | -4000      | Not found excel file.                                                                                                      |
 | false        | -4001      | Invalid parameter. {}                                                                                                      |
-| false        | -4002      | Failed to upload export file                                                                                               |
-| false        | -4003      | Failed to import file                                                                                                      |
-| false        | -4004      | Failed to get export file list count                                                                                       |
-| false        | -4005      | Failed to get export file list                                                                                             |
-| false        | -4006      | Failed to get import file info                                                                                             |
-| false        | -4007      | Failed to download export file                                                                                             |
-| false        | -4008      | Failed to download import file                                                                                             |
-| false        | -4009      | Failed to importing file                                                                                                   |
+| false        | -4002      | Failed to upload export file.                                                                                               |
+| false        | -4003      | Failed to import file.                                                                                                      |
+| false        | -4004      | Failed to get export file list. count.                                                                                       |
+| false        | -4005      | Failed to get export file list.                                                                                             |
+| false        | -4006      | Failed to get import file info.                                                                                             |
+| false        | -4007      | Failed to download export file.                                                                                             |
+| false        | -4008      | Failed to download import file.                                                                                             |
+| false        | -4009      | Failed to importing file.                                                                                                   |
 | false        | -4010      | The service is not allowed to request/download export file.                                                                |
-| false        | -5000      | Invalid parameter                                                                                                          |
+| false        | -5000      | Invalid parameter.                                                                                                          |
 | false        | -5001      | Already activated appkey.                                                                                                  |
 | false        | -5002      | Not activated appkey.                                                                                                      |
 | false        | -5003      | Not exist appkey.                                                                                                          |
@@ -167,13 +167,13 @@
 | false        | -6002      | Invalid provisioned parameter.                                                                                             |
 | false        | -6003      | Invalid provisioned group resource                                                                                         |
 | false        | -6004      | Invalid provisioned group parameter.                                                                                       |
-| false        | -7000      | Fail to call Tag API                                                                                                       |
+| false        | -7000      | Fail to call Tag API.                                                                                                       |
 | false        | -7001      | Invalid parameter.                                                                                                         |
 | false        | -7002      | The 'tagExpression' is required.                                                                                           |
 | false        | -7003      | Uploaded file is empty.                                                                                                    |
 | false        | -7004      | The 'uid' is required, and can not contain the comma character (,).                                                        |
 | false        | -7005      | Invalid email address.                                                                                                     |
-| false        | -7006      | The 'uids' is required                                                                                                     |
+| false        | -7006      | The 'uids' is required.                                                                                                     |
 | false        | -8000      | It failed to read that files                                                                                               |
 | false        | -9993      | Binding the requests error.                                                                                                |
 | false        | -9994      | Client exception.                                                                                                          |

@@ -7,16 +7,16 @@
 | 공통    | true  | 0     | 성공                                                                | success                                                                                                         |
 | 공통    | true  | 1000  | 일부 요청이 성공했습니다.                                                    | Some of your requests are successful.                                                                           |
 | 공통    | false | -1000 | 유효하지 않은 appKey입니다.                                                | Invalid appKey.                                                                                                 |
-| 공통    | false | -1001 | 서비스가 존재하지 않습니다.                                                   | Service is not exist                                                                                            |
-| 공통    | false | -1002 | 서비스가 비활성화되어 있습니다.                                                 | Service is disabled                                                                                             |
-| 공통    | false | -1003 | 유효하지 않은 서비스 파라미터입니다.                                              | Invalid service parameter                                                                                       |
+| 공통    | false | -1001 | 서비스가 존재하지 않습니다.                                                   | Service is not exist.                                                                                            |
+| 공통    | false | -1002 | 서비스가 비활성화되어 있습니다.                                                 | Service is disabled.                                                                                             |
+| 공통    | false | -1003 | 유효하지 않은 서비스 파라미터입니다.                                              | Invalid service parameter.                                                                                       |
 | 공통    | false | -1004 | 유효하지 않은 secretKey입니다.                                             | Invalid secretKey.                                                                                              |
-| 공통    | false | -1005 | 서비스가 일시적으로 차단되었습니다.                                               | Service is temporarily blocked                                                                                  |
-| 공통    | false | -1007 | 서비스의 'useYn' 필드는 필수입니다.                                           | The 'useYn' field of the service is required                                                                    |
-| 공통    | false | -2000 | 날짜 형식이 유효하지 않습니다.                                                 | Date format is invalid. {}: {}, Only supported {}                                                               |
+| 공통    | false | -1005 | 서비스가 일시적으로 차단되었습니다.                                               | Service is temporarily blocked.                                                                                  |
+| 공통    | false | -1007 | 서비스의 'useYn' 필드는 필수입니다.                                           | The 'useYn' field of the service is required.                                                                    |
+| 공통    | false | -2000 | 날짜 형식이 유효하지 않습니다.                                                 | Date format is invalid. {}: {}, Only supported {}.                                                               |
 | 공통    | false | -2028 | 행 수 제한을 초과했습니다. 최대 50,000행까지 처리할 수 있습니다.                          | Limit of rows is exceeded. It can handle up to 50,000 rows.                                                     |
-| 공통    | false | -2046 | 'Y' 또는 'N' 값만 가질 수 있습니다.                                          | The '{}' can have only 'Y' or 'N' values. {}: {}                                                                |
-| 공통    | false | -5000 | 유효하지 않은 파라미터입니다.                                                  | Invalid parameter                                                                                               |
+| 공통    | false | -2046 | 'Y' 또는 'N' 값만 가질 수 있습니다.                                          | The '{}' can have only 'Y' or 'N' values. {}: {}.                                                                |
+| 공통    | false | -5000 | 유효하지 않은 파라미터입니다.                                                  | Invalid parameter.                                                                                               |
 | 공통    | false | -5001 | 이미 활성화된 appKey입니다.                                                | Already activated appKey.                                                                                       |
 | 공통    | false | -5002 | 활성화되지 않은 apkey입니다.                                                | Not activated appKey.                                                                                           |
 | 공통    | false | -5003 | 존재하지 않는 appKey입니다.                                                | Not exist appKey.                                                                                               |
@@ -36,8 +36,8 @@
 | 도메인   | false | -2711 | 유효하지 않은 도메인 파라미터입니다.                                              | Invalid domain parameter.                                                                                       |
 | 도메인   | false | -2713 | DKIM 인증에 실패했습니다.                                                  | DKIM Verification failed.                                                                                       |
 | 도메인   | false | -2714 | 도메인 공유에 실패했습니다.                                                   | Domain sharing failed.                                                                                          |
-| 도메인   | false | -2715 | DKIM 비활성화에 실패했습니다.                                                | DKIM deactivate Failed                                                                                          |
-| 도메인   | false | -2716 | DKIM 활성화에 실패했습니다.                                                 | DKIM activate Failed                                                                                            |
+| 도메인   | false | -2715 | DKIM 비활성화에 실패했습니다.                                                | DKIM deactivate Failed.                                                                                          |
+| 도메인   | false | -2716 | DKIM 활성화에 실패했습니다.                                                 | DKIM activate Failed.                                                                                            |
 | 도메인   | false | -2717 | 루트 도메인이 인증되지 않았습니다.                                               | Root Domain is not verified.                                                                                    |
 | 도메인   | false | -2718 | 이미 공유된 도메인입니다.                                                    | Already shared domain.                                                                                          |
 | 도메인   | false | -2719 | 이 도메인은 다른 조직 사용자와 공유되지 않습니다.                                      | This domain is not sharing another organization user.                                                           |
@@ -57,7 +57,7 @@
 | 발송/조회 | false | -2010 | 발신자 이메일 형식이 잘못되었습니다.                                              | Sender Email Format is wrong.                                                                                   |
 | 발송/조회 | false | -2011 | 수신자 이메일 형식이 잘못되었습니다.                                              | Receiver Email Format is wrong.                                                                                 |
 | 발송/조회 | false | -2012 | 최대 수신자 수는 1000명입니다.                                               | The maximum number of recipients is 1000.                                                                       |
-| 발송/조회 | false | -2013 | 파일 크기는 30M 이하여야 합니다.                                              | The file size is less than 30M                                                                                  |
+| 발송/조회 | false | -2013 | 파일 크기는 30M 이하여야 합니다.                                              | The file size is less than 30M.                                                                                  |
 | 발송/조회 | false | -2014 | 템플릿 첨부 파일을 포함하여 최대 10개까지 허용됩니다.                                   | Up to 10 attachments including the template's are allowed.                                                      |
 | 발송/조회 | false | -2015 | 'title'은 필수입니다.                                                   | The 'title' is required.                                                                                        |
 | 발송/조회 | false | -2016 | 'body'는 필수입니다.                                                    | The 'body' is required.                                                                                         |
@@ -108,21 +108,21 @@
 | 발송/조회 | false | -2115 | 템플릿이 비활성화되어 있습니다. 템플릿을 사용하려면 템플릿 상태를 활성화로 변경하세요.                  | Template is disabled. If you want to use a template, change the template status to enabled.                     |
 | 발송/조회 | false | -2701 | 도메인 인증에 실패했습니다.                                                   | Domain Verification failed. ({})                                                                                |
 | 발송/조회 | false | -2703 | 도메인이 인증되지 않았습니다.                                                  | Domain is not verified.                                                                                         |
-| 발송/조회 | false | -2708 | 등록되지 않은 서브도메인입니다.                                                 | No regist subdomain                                                                                             |
+| 발송/조회 | false | -2708 | 등록되지 않은 서브도메인입니다.                                                 | No regist subdomain.                                                                                             |
 | 발송/조회 | false | -2709 | 동일한 루트 도메인이 아닙니다. (senderAddress, X-TC-ENVELOPE-FROM)             | No same root domain. (senderAddress, X-TC-ENVELOPE-FROM)                                                        |
 | 발송/조회 | false | -2710 | X-TC-ENVELOPE-FROM은 이메일 형식이어야 합니다.                                | X-TC-ENVELOPE-FROM must be email format.                                                                        |
-| 발송/조회 | false | -2712 | 등록되지 않은 도메인입니다.                                                   | No regist domain                                                                                                |
-| 발송/조회 | false | -3001 | 유효하지 않은 카테고리입니다.                                                  | Invalid category                                                                                                |
+| 발송/조회 | false | -2712 | 등록되지 않은 도메인입니다.                                                   | No regist domain.                                                                                                |
+| 발송/조회 | false | -3001 | 유효하지 않은 카테고리입니다.                                                  | Invalid category.                                                                                                |
 | 발송/조회 | false | -4000 | Excel 파일을 찾을 수 없습니다.                                              | Not found excel file.                                                                                           |
 | 발송/조회 | false | -4001 | 유효하지 않은 파라미터입니다. {}                                               | Invalid parameter. {}                                                                                           |
-| 발송/조회 | false | -4002 | 내보내기 파일 업로드에 실패했습니다.                                              | Failed to upload export file                                                                                    |
-| 발송/조회 | false | -4003 | 파일 가져오기에 실패했습니다.                                                  | Failed to import file                                                                                           |
-| 발송/조회 | false | -4004 | 내보내기 파일 목록 수 조회에 실패했습니다.                                          | Failed to get export file list count                                                                            |
-| 발송/조회 | false | -4005 | 내보내기 파일 목록 조회에 실패했습니다.                                            | Failed to get export file list                                                                                  |
-| 발송/조회 | false | -4006 | 가져오기 파일 정보 조회에 실패했습니다.                                            | Failed to get import file info                                                                                  |
-| 발송/조회 | false | -4007 | 내보내기 파일 다운로드에 실패했습니다.                                             | Failed to download export file                                                                                  |
-| 발송/조회 | false | -4008 | 가져오기 파일 다운로드에 실패했습니다.                                             | Failed to download import file                                                                                  |
-| 발송/조회 | false | -4009 | 파일 가져오기에 실패했습니다.                                                  | Failed to importing file                                                                                        |
+| 발송/조회 | false | -4002 | 내보내기 파일 업로드에 실패했습니다.                                              | Failed to upload export file.                                                                                    |
+| 발송/조회 | false | -4003 | 파일 가져오기에 실패했습니다.                                                  | Failed to import file.                                                                                           |
+| 발송/조회 | false | -4004 | 내보내기 파일 목록 수 조회에 실패했습니다.                                          | Failed to get export file list. count.                                                                            |
+| 발송/조회 | false | -4005 | 내보내기 파일 목록 조회에 실패했습니다.                                            | Failed to get export file list.                                                                                  |
+| 발송/조회 | false | -4006 | 가져오기 파일 정보 조회에 실패했습니다.                                            | Failed to get import file info.                                                                                  |
+| 발송/조회 | false | -4007 | 내보내기 파일 다운로드에 실패했습니다.                                             | Failed to download export file.                                                                                  |
+| 발송/조회 | false | -4008 | 가져오기 파일 다운로드에 실패했습니다.                                             | Failed to download import file.                                                                                  |
+| 발송/조회 | false | -4009 | 파일 가져오기에 실패했습니다.                                                  | Failed to importing file.                                                                                        |
 | 발송/조회 | false | -4010 | 서비스가 내보내기 파일 요청/다운로드를 허용하지 않습니다.                                  | The service is not allowed to request/download export file.                                                     |
 | 템플릿   | false | -2100 | 'templateId'는 필수입니다.                                              | The 'templateId' is required.                                                                                   |
 | 템플릿   | false | -2102 | 'templateName'은 필수입니다.                                            | The 'templateName' is required.                                                                                 |
@@ -131,7 +131,7 @@
 | 템플릿   | false | -2110 | TemplateId는 50자 이하여야 합니다.                                         | TemplateId must be 50 characters or less.                                                                       |
 | 템플릿   | false | -2112 | 'title'은 필수입니다.                                                   | The 'title' is required.                                                                                        |
 | 통계    | false | -2200 | 유효하지 않은 통계 검색 파라미터입니다.                                            | Invalid statistics search parameter.                                                                            |
-| 통계    | false | -2201 | 'from'은 'to'보다 이전이어야 합니다.                                         | The 'from' must be before 'to'                                                                                  |
+| 통계    | false | -2201 | 'from'은 'to'보다 이전이어야 합니다.                                         | The 'from' must be before 'to'.                                                                                  |
 | 통계    | false | -2202 | 유효하지 않은 기간입니다.                                                    | Invalid duration time.                                                                                          |
 | 통계    | false | -2203 | 'from'과 'to'는 필수입니다.                                              | The 'from' and 'to' are required.                                                                               |
 | 통계    | false | -2204 | 'searchType'은 필수입니다.                                              | The 'searchType' is required.                                                                                   |
@@ -147,8 +147,8 @@
 | 수신거부  | false | -2308 | 유효하지 않은 이메일 주소입니다.                                                | Invalid email address.                                                                                          |
 | 수신거부  | false | -2309 | 수신 거부 추가에 실패했습니다.                                                 | BlockReceiver add failed.                                                                                       |
 | 수신거부  | false | -2310 | 중복된 수신 거부입니다.                                                     | Duplicate BlockReceiver.                                                                                        |
-| 태그    | false | -7000 | Tag API 호출에 실패했습니다.                                               | Fail to call Tag API                                                                                            |
+| 태그    | false | -7000 | Tag API 호출에 실패했습니다.                                               | Fail to call Tag API.                                                                                            |
 | 태그    | false | -7003 | 업로드된 파일이 비어 있습니다.                                                 | Uploaded file is empty.                                                                                         |
 | 태그    | false | -7004 | 'uid'는 필수이며 쉼표(,)를 포함할 수 없습니다.                                    | The 'uid' is required, and can not contain the comma character (,).                                             |
 | 태그    | false | -7005 | 유효하지 않은 이메일 주소입니다.                                                | Invalid email address.                                                                                          |
-| 태그    | false | -7006 | 'uids'는 필수입니다.                                                    | The 'uids' is required                                                                                          |
+| 태그    | false | -7006 | 'uids'는 필수입니다.                                                    | The 'uids' is required.                                                                                          |
