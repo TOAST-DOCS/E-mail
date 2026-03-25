@@ -84,7 +84,7 @@ curl -X POST \
 | 값                   | 	타입          | 	설명                                                                                                                                                   |
 |---------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | hooks               | 	List\<Map\> | 웹훅 이벤트 발생 시 데이터                                                                                                                                       |
-| - messageType       | 	String      | 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH |
+| - messageType       | 	String      | 메일 타입<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH |
 | - requestId         | 	String      | 요청 ID                                                                                                                                                 |
 | - mailSeq           | 	Integer     | 메일 순번                                                                                                                                                 |
 | - senderAddress     | 	String      | 발신자 메일 주소                                                                                                                                             |
