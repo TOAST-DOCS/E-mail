@@ -84,7 +84,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
 | 値                 | 	タイプ        | 	説明                                                                                                                                                 |
 |---------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | hooks               | 	List\<Map\> | Webフックイベント発生時のデータ                                                                                                                                     |
-| - messageType       | 	String      | メールタイプ<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH |
+| - messageType       | 	String      | メールタイプ<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH |
 | - requestId         | 	String      | リクエストID                                                                                                                                                 |
 | - mailSeq           | 	Integer     | メールの順番                                                                                                                                                |
 | - senderAddress     | 	String      | 発信者メールアドレス                                                                                                                                           |

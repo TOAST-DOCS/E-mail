@@ -79,7 +79,7 @@ Hook data per event type when generating a POST request to the URL defined in th
 |Value|	Type|	Descriptions|
 |---|---|---|
 |hooks|	List\<Map\> | Data when a webhook event occurs |
-|- messageType|	String| Mail type<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH<br>TAG_MAIL<br>TAG_MAIL_AD<br>TAG_MAIL_AUTH  |
+|- messageType|	String| Mail type<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH  |
 |- requestId|	String| Request ID |
 |- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Mail order |
 |- senderAddress|	String| Sender email address |
