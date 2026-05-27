@@ -1,5 +1,17 @@
 ## Notification > Email > Release Notes
 
+### May 27, 2026
+
+#### Bug Fixes
+
+* [API] Improved unsubscribe link call failure issue
+    * Fixed an issue where the unsubscribe link in sent emails failed to be called in some cases.
+    * Previously sent unsubscribe links also work correctly after the fix.
+* [API] Improved handling of domains containing non-ASCII characters
+    * Changed to return an error response when a domain registration or email sending request is made with a domain containing non-ASCII characters such as accent marks (e.g., `münchen.de`).
+    * Sending stability is improved by blocking domain requests that do not comply with RFC 1123 standards (letters, numbers, hyphens, and periods).
+    * If you need to use an internationalized domain, convert it to Punycode format (e.g., `xn--mnchen-3ya.de`) before making the request.
+
 ### March 24, 2026
 #### Feature Updates
 * [Console, API] End of support for tag email sending
