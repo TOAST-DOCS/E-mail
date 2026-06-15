@@ -1,9 +1,15 @@
+<!-- pre-align:aligned sig=b75b4dc743c0 -->
+
 ## Notification > Email > ドメイン管理ガイド > DKIM
+
+<a id="what-is-dkimdomainkeys-identified-mail"></a>
 
 ### DKIM(domainkeys identified mail)とは？
 
 - DKIM(domainkeys identified mail)は、メール送信者がメールにデジタル署名をして送信者の真正性を確認し、送信中にメッセージが改ざんされていないことを確認できるメール認証方法です。
 - DKIMにより、スパム送信者やその他の悪意のある攻撃者がメールを偽造することを防止できます。
+
+<a id="structure-of-dkim"></a>
 
 ### DKIMの構造
 
@@ -11,6 +17,8 @@
 - 送信サーバーはメール送信時にメール送信者、受信者、件名、内容などを秘密鍵で署名します。この署名値をDKIM-Signatureヘッダ(Header)に追加します。
 - 受信サーバーは、DKIM-Signatureヘッダ内の"d="フィールドに記述されたドメインの公開鍵と署名アルゴリズム情報などを含むDKIMレコードを照会し、これらの値を利用して受信したメールDKIM-Signatureヘッダのデジタル署名を検証します。
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)では、DKIMレコードをTXTレコードとして登録することを推奨しており、NHN Cloud EmailではTXTレコードの認証および有効化機能を導入しました。
+
+<a id="structure-of-dkim-signature"></a>
 
 ### DKIM-Signatureの構造
 
@@ -21,6 +29,8 @@
 > h=from:to:subject:date;
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
 > b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
+
+<a id="dkim-signature-header"></a>
 
 #### DKIM-Signatureヘッダ
 
@@ -48,13 +58,19 @@
 - メール送信ドメインのDKIMレコードはtoast.\_domainkey.example.netです。
 - 受信サーバーはtoast.\_domainkey.example.netのDKIMレコードを照会してメールを認証します。
 
+<a id="how-to-register-authenticate-and-activate-dkim-records"></a>
+
 ### DKIMレコード登録および認証、有効化方法
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. メールドメインの登録および認証
 
 - DKIM認証は、メールドメインの登録と認証が完了した場合、Webコンソールで有効になります。
 - メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参照してください。
+
+<a id="register-dkim-records"></a>
 
 #### 2. DKIMレコードの登録
 
@@ -69,16 +85,22 @@
 - TXTレコードのDKIM設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
 - DKIM設定作業後、数時間程度経過してからメールを送信するのが安全です。
 
+<a id="dkim-authentication"></a>
+
 #### 3. DKIM認証
 
 - DKIMレコードが登録されたら、**認証**ボタンをクリックして認証を完了します。
 - 認証が完了すると、**認証**ボタンが**認証完了**に変更されます。
+
+<a id="dkim-activation"></a>
 
 #### 4. DKIM有効化
 
 - 認証に成功した場合、ポップアップ画面で**DKIM**タブを選択し、**有効化**をクリックしてDKIMを有効化します。
 
 ![email_202312_05_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_ja.png)
+
+<a id="test-dkim-authentication"></a>
 
 #### 5. DKIM認証をテストする
 
