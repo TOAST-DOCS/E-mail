@@ -1,16 +1,26 @@
+<!-- pre-align:aligned sig=d15204323aae -->
+
 ## Notification > Email > 도메인 관리 가이드 > SPF
+
+<a id="what-is-sender-policy-framework-spf"></a>
 
 ### SPF(sender policy framework)란?
 
 - SPF는 이메일 발송자의 신뢰성을 검증하기 위한 메커니즘으로, 이메일 서버가 특정 도메인에서 발송된 메일이 실제로 허가된 서버에서 왔는지 확인합니다.
 - 메일 발송 중 발신자의 DNS에 등록된 SPF 레코드를 확인하여 등록되지 않은 IP 주소에서 보낸 메일을 스팸 메일로 처리할 수 있습니다.
 
+<a id="spf-record-authentication-procedure"></a>
+
 ### SPF 레코드 인증 절차
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. 메일 도메인 등록 및 인증
 
 - SPF 레코드 검증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
 - 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](./domain-verification/)를 참고하십시오.
+
+<a id="nhn-cloud-spf-record-settings"></a>
 
 #### 2. NHN Cloud SPF 레코드 설정
 
@@ -23,12 +33,16 @@ v=spf1 include:_spfblocka.toast.com ~all
 - TXT 레코드의 SPF 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
 - SPF 설정 변경 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
 
+<a id="verifying-spf-records"></a>
+
 #### 3. SPF 레코드 검증
 
 - 인증 완료한 도메인의 SPF 레코드가 정상적으로 등록되었는지 확인합니다.
 - 등록이 완료되었을 경우 `SPF 검증 성공` 메시지가 표시됩니다.
 
 ![email_202312_06.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06.png)
+
+<a id="precautions"></a>
 
 ### 주의 사항
 
