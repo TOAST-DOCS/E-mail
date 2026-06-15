@@ -1,6 +1,10 @@
+<!-- pre-align:aligned sig=0c5ae4e6dd40 -->
+
 ## Notification > Email > Webhook Guide
 When a specific event occurs in the Email service, create POST request with the URL specified by the webhook settings.<br>
 The API documentation for the generated POST request.
+
+<a id="send-webhook"></a>
 
 ### Send Webhook
 
@@ -27,6 +31,8 @@ The API documentation for the generated POST request.
 |event|	String| Webhook event name<br>* UNSUBSCRIBE: Register an address to receive advertising emails |
 |hooks|	List\<Map\> | Data when a webhook event occurs<br>\* For more information, see  [Hook definitions by event type](./api-guide/#event-hooks). |
 
+<a id="curl"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -50,8 +56,12 @@ curl -X POST \
 
 <span id="event-hooks"></span>
 
+<a id="hook-definitions-by-event-type"></a>
+
 ### Hook definitions by event type
 Hook data per event type when generating a POST request to the URL defined in the webhook settings.
+<a id="register-an-address-to-receive-advertising-email"></a>
+
 #### Register an address to receive advertising email
 |Value|	Type|	Descriptions|
 |---|---|---|
@@ -71,6 +81,8 @@ Hook data per event type when generating a POST request to the URL defined in th
   ]
 }
 ```
+
+<a id="update-the-message-sending-result-code"></a>
 
 #### Update the message sending result code
 
