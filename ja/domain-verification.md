@@ -1,11 +1,19 @@
+<!-- pre-align:aligned sig=48712bc78a4a -->
+
 ## Notification > Email > ドメイン管理ガイド > ドメイン認証および保護
 
+<a id="enhanced-email-security-feature"></a>
+
 ### メールセキュリティ強化機能
+
+<a id="enhanced-mail-domain-protection-feature"></a>
 
 #### メールドメイン保護機能
 
 メールドメイン保護機能は、NHN Cloud Emailが提供するセキュリティ機能です。NHN Cloud Email内で自分が所有しているメールドメインを第三者が使用することを防止します。
 <br> NHN Cloud Emailコンソールでメールドメインを登録し、所有の有無が確認されると、承認されていない他のプロジェクトでは、そのメールドメインを使用してメールを送信することができなくなります。
+
+<a id="register-mail-domains-and-verify-ownership"></a>
 
 ### メールドメインの登録と所有権の確認
 
@@ -13,7 +21,11 @@
 - メールドメイン所有者は、NHN Cloud Emailから提供されたTXTレコードをメールドメインDNSに登録します。
 - NHN Cloud Emailは、メールドメインDNSのTXTレコードが一致するかどうかで所有権を確認します。
 
+<a id="mail-domain-authentication-and-protection-procedures"></a>
+
 ### メールドメインの認証および保護手順
+
+<a id="register-mail-domain"></a>
 
 #### メールドメインの登録
 
@@ -23,6 +35,8 @@
 2. **メールドメイン管理**タブに移動します。
 3. **メールドメイン登録**ボタンをクリックして、メール送信時に使用するドメインを登録します。 (最上位ドメインのみ登録可能)
 
+<a id="mail-domain-authentication-ownership-verification-procedure"></a>
+
 #### メールドメイン認証(所有権確認手続き)
 
 ![email_202312_01_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01_ja.png)
@@ -31,6 +45,8 @@
 2. 登録したメールドメインのDNSにTXTレコードを追加します。
 3. 追加したTXTレコードが反映されたら、**認証**をクリックしてメールドメインの所有権を認証します。
 4. SPFと同様に'nslookup'、'dig'コマンドを利用して所有確認のためのTXTレコードがメールドメインDNSに反映されたか確認できます。
+
+<a id="how-to-check-txt-record-in-dns"></a>
 
 #### DNSのTXTレコードを確認する方法
 
@@ -50,10 +66,14 @@ Windows環境
 nslookup -q=TXT <your.domain.name>
 ```
 
+<a id="sharing-domains"></a>
+
 ### ドメインを共有する
 
 - メールドメインを保護する前に、登録したドメインを他のプロジェクトで使用している場合はドメインの共有が必要です。
 - 共有せずにドメイン保護機能を有効にすると、共有されていないプロジェクトでメール送信は失敗します。 したがって、メールドメインを複数のプロジェクトで使う場合は必ず共有する必要があります。
+
+<a id="share-domains"></a>
 
 ### ドメイン共有
 
@@ -61,6 +81,8 @@ nslookup -q=TXT <your.domain.name>
 
 1. 登録したメールドメイン項目の**共有 > 設定**ボタンをクリックします。
    2.共有するプロジェクトに移動し、NHN Cloud Emailアプリキーを確認します。確認したアプリキーを登録します。共有が完了すると、リストにプロジェクト情報が表示されます。アプリキーは右上の**URL & Appkey**で確認できます。
+
+<a id="protecting-mail-domains"></a>
 
 ### メールドメインを保護する
 
