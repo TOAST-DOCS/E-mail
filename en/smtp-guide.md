@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=91a8c974f3b0 -->
+
 ## Notification > Email > SMTP Guide
 
 [SMTP 도메인]
@@ -11,18 +13,26 @@
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
+<a id="section-1"></a>
+
 ## 암호화 연결
+<a id="starttls"></a>
+
 ### STARTTLS 연결
 25, 587, 2587 포트를 통해 명시적 SSL을 사용하는 방법
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
+<a id="tls-wrapper"></a>
+
 ### TLS Wrapper 연결
 465, 2465 포트를 통해 암시적 SSL을 사용하는 방법
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
+
+<a id="smtp"></a>
 
 ## SMTP 자격 증명
 인증 메커니즘은 PLAIN, LOGIN 두 방식을 선택하여 사용 할 수 있습니다.</br>
@@ -32,6 +42,8 @@ openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 |---|---|
 | 사용자 이름 | NHN Cloud Email 서비스의 AppKey | 
 | 비밀번호 | NHN Cloud Email 서비스의 SecretKey | 
+
+<a id="plain"></a>
 
 ### PLAIN 인증 방식
 PLAIN 인증 방식은 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
@@ -58,6 +70,8 @@ ehlo a
 auth plain AEFwcEtleQBTZWNyZXRLZXk=
 235 Authentication Successful
 ```
+
+<a id="login"></a>
 
 ### LOGIN 인증 방식
 LOGIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
@@ -91,6 +105,8 @@ QXBwS2V5
 U2VjcmV0S2V5
 235 Authentication Successful
 ```
+
+<a id="smtp-1"></a>
 
 ### 용도별 메일 사용
 메일 용도에 따라 메일 타입을 지정할 수 있습니다.</br>
