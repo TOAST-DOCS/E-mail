@@ -1,15 +1,25 @@
+<!-- pre-align:aligned sig=d15204323aae -->
+
 ## Notification > Email > Domain Management Guide > SPF
+
+<a id="what-is-sender-policy-framework-spf"></a>
 
 ### What is sender policy framework (SPF)?
 - SPF is a mechanism to verify the reliability of email senders and the email server verifies that mail sent from particular domain is actually delivered from authorized server.
 - During mail delivery, you can check SPF records registered in the sender's DNS to treat mail from unregistered IP addresses as spam.
 
 
+<a id="spf-record-authentication-procedure"></a>
+
 ### SPF Record Authentication Procedure 
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. Mail Domain Registration and Authentication 
 - SPF record validation is enabled on web console when the mail domain is registered and authenticated. 
 - For detailed guide on mail domain authentication, refer to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](./domain-verification/).
+
+<a id="nhn-cloud-spf-record-settings"></a>
 
 #### 2. NHN Cloud SPF Record Settings
 - Register the following values in DNS's TXT record. Contact your DNS administrator for more information on how to register.
@@ -21,11 +31,15 @@ v=spf1 include:_spfblocka.toast.com ~all
 - Even if you finish changing SPF settings for TXT record, it will take up to 48 hours for DNS changes to take effect depending on DNS server situation.
 - It is safe to send email a few hours after you have changed the SPF settings.
 
+<a id="verifying-spf-records"></a>
+
 #### 3. Verifying SPF Records
 - Verify that the SPF records in the authenticated domain are registered successfully.
 - When registration is complete, the message `SPF Validation Success` is displayed.
 
 ![email_202312_06_en.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_en.png)
+
+<a id="precautions"></a>
 
 ### Precautions
 Section 10.1 "Processing Limits" of [RFC 4408](https://datatracker.ietf.org/doc/rfc4408/?include_text=1) specifies inter-DNS Lookup processing protocol.
