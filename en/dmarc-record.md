@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=ae0552ab7efd -->
+
 ## Notification > Email > Domain Management Guide > DMARC
+
+<a id="what-is-dmarc-domain-based-message-authentication-reporting-and-conformance"></a>
 
 ### What is DMARC (domain-based message authentication reporting and conformance)?
 
@@ -8,6 +12,8 @@ fraud using email spoofing.
 authenticates receiving mail. DMARC policy consists of using SPF and DKIM and what happens to mail processing when each authentication method fails.
 <br>Some mail services (ex. Gmail, Yahoo, etc.) recognize DMARC as spam and block delivery if DMARC not applied. We recommend using DMARC records for higher
 delivery rate between mail deliveries.
+
+<a id="record-structure-of-dmarc-dns"></a>
 
 ### Record Structure of DMARC DNS
 
@@ -36,6 +42,8 @@ will be authenticated by DMARC policy. |
 | rf | Optional | afrf (fixed) | Setup for the failure report (ruf) format.                                                                             |
 | ri | Optional | 86400 (default value, in seconds) | Period to count failures. A failure report (rua) is sent every set period.                                             |
 
+<a id="failure-policy-p-value-type"></a>
+
 #### Failure policy (p) value type
 
 | Failure Policy | Description | 
@@ -44,12 +52,16 @@ will be authenticated by DMARC policy. |
 | quarantine | Receiving server wants to spam failed mails. | 
 | reject | Return DMARC failed mail from the receiving server. Typically, the sender servers and receiving servers prefer the policy of status notification (DSN) responses during SMTP communication. |
 
+<a id="description-of-spf-and-dkim-alignment-aspf-adkim-values"></a>
+
 #### Description of SPF and DKIM alignment (aspf, adkim) values
 
 | Policy | Description | 
 | --- |------------------------------------------------------------------------------------------------- | 
 | s | Strict. The domain part must match completely. | 
 | r | Flexible (Relaxed). Also available with subdomains. For example, when 'd=example.com,' 'From: news.example.com' passes |
+
+<a id="description-of-values-for-criteria-fo-of-failure-report-generation"></a>
 
 ### Description of values for Criteria (fo) of failure report generation
 
@@ -62,7 +74,11 @@ will be authenticated by DMARC policy. |
 | d | Report when DKIM authentication failure. | 
 | s | Report when SPF authentication fails |
 
+<a id="dmarc-record-certification-procedure"></a>
+
 ### DMARC record certification procedure
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. Mail Domain Registration and Authentication
 
@@ -70,6 +86,8 @@ will be authenticated by DMARC policy. |
 - For detailed guide on mail domain authentication, refer
   to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](./domain-verification/)
   .
+
+<a id="dmarc-record-dns-registration"></a>
 
 #### 2. DMARC Record DNS Registration
 
@@ -84,10 +102,14 @@ will be authenticated by DMARC policy. |
 
 - Once registration is complete, you can use the 'nslookup' and 'dig' commands to see if the DMARC DNS records have been reflected in DNS.
 
+<a id="precautions"></a>
+
 #### Precautions
 
 - Even if you finish changing DMARC settings for TXT record, it will take up to 48 hours for DNS changes to take effect depending on DNS server situation.
 - It is safe to send an email in a few hours after DMARC setup.
+
+<a id="dmarc-authentication"></a>
 
 #### 3. DMARC Authentication
 
@@ -95,19 +117,27 @@ will be authenticated by DMARC policy. |
 - When authentication is complete, the phrase **Authenticated** is displayed.
   ![email\_202312\_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_en.png)
 
+<a id="example-of-dmarc-record-lookup-failure-screen"></a>
+
 #### Example of DMARC record lookup failure screen
 
 - If DMARC record lookup fails, the following screen is displayed.
 
 ![email\_202312\_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_en.png)
 
+<a id="precautions-2"></a>
+
 ### Precautions
+
+<a id="spf-related-guidelines"></a>
 
 #### 1. SPF-related Guidelines
 
 When referencing [RFC 7489](https://www.ietf.org/rfc/rfc7489.txt) document, some receiving servers may first implement DMARC authentication logic for SPF. DMARC
 authentication may fail if SPF record has a prefix - such as all. If DMARC authentication fails on some receiving servers, remove the prefix - such as all – in
 SPF record and try DMARC authentication again.
+
+<a id="dmarc-related-guidelines"></a>
 
 #### 2. DMARC-related Guidelines
 
