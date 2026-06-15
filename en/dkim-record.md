@@ -1,10 +1,16 @@
+<!-- pre-align:aligned sig=b75b4dc743c0 -->
+
 ## Notification > Email > Domain Management Guide > DKIM
+
+<a id="what-is-dkimdomainkeys-identified-mail"></a>
 
 ### What is DKIM(domainkeys identified mail)?
 
 - DKIM(domainkeys identified mail) is an email verification method that allows email senders to digitally sign email to verify the authenticity of the sender
   and ensure that the message is not tampered with during delivery.
 - DKIM prevents spam senders and other malicious attackers from falsifying emails.
+
+<a id="structure-of-dkim"></a>
 
 ### Structure of DKIM
 
@@ -16,6 +22,8 @@
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/) encourages DKIM records to be registered as TXT records, so NHN Cloud Email introduced TXT record
   authentication and activation features.
 
+<a id="structure-of-dkim-signature"></a>
+
 ### Structure of DKIM-Signature
 
 - The following is an example of DKIM signature (DKIM-Signature header) that is added to the email header when sending an email.
@@ -25,6 +33,8 @@
 > h=from:to:subject:date;
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
 > b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
+
+<a id="dkim-signature-header"></a>
 
 #### DKIM-Signature Header
 
@@ -56,7 +66,11 @@ DKIM Header example above has the following implications.
 - The DKIM record for the email sender domain is toast.\_domainkey.example.net .
 - Receiving server authenticates email by lookup DKIM record at toast.\_domainkey.example.net .
 
+<a id="how-to-register-authenticate-and-activate-dkim-records"></a>
+
 ### How to register, authenticate and activate DKIM records
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. Mail Domain Registration and Authentication
 
@@ -64,6 +78,8 @@ DKIM Header example above has the following implications.
 - For detailed guide on mail domain authentication, refer
   to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](./domain-verification/)
   .
+
+<a id="register-dkim-records"></a>
 
 #### 2. Register DKIM Records
 
@@ -78,16 +94,22 @@ DKIM Header example above has the following implications.
 - Even if you finish changing DKIM settings for TXT record, it will take up to 48 hours for DNS changes to take effect depending on the DNS server situation.
 - After DKIM setup, it is safe to send an email after a few hours.
 
+<a id="dkim-authentication"></a>
+
 #### 3. DKIM Authentication
 
 - If DKIM record is registered, click on **Authentication** button to complete the authentication.
 - When authentication is complete, the button **Authentication** changes to **Authenticated**.
+
+<a id="dkim-activation"></a>
 
 #### 4. DKIM Activation
 
 - If authentication is successful, select **DKIM** tab on pop-up screen and click on **Activate** to enable DKIM.
 
 ![email\_202312\_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_en.png)
+
+<a id="test-dkim-authentication"></a>
 
 #### 5. Test DKIM Authentication
 
