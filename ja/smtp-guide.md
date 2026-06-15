@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=91a8c974f3b0 -->
+
 ## Notification > Email > SMTPガイド
 
 [SMTPドメイン]
@@ -11,18 +13,26 @@
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
+<a id="section-1"></a>
+
 ## 暗号化接続
+<a id="starttls"></a>
+
 ### STARTTLS接続
 25、587、2587ポートを介して明示的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
+<a id="tls-wrapper"></a>
+
 ### TLS Wrapper接続
 465、2465ポートを介して暗黙的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
+
+<a id="smtp"></a>
 
 ## SMTP認証情報
 認証メカニズムはPLAIN、LOGINの2つの方式を選択して使用できます。</br>
@@ -32,6 +42,8 @@ openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 |---|---|
 | ユーザー名 | NHN Cloud EmailサービスのAppKey | 
 | パスワード | NHN Cloud EmailサービスのSecretKey | 
+
+<a id="plain"></a>
 
 ### PLAIN認証方式
 PLAIN認証方式は**ユーザー名**、**パスワード**を1行のBase64でエンコードして認証情報を試みます。</br>
@@ -58,6 +70,8 @@ ehlo a
 auth plain AEFwcEtleQBTZWNyZXRLZXk=
 235 Authentication Successful
 ```
+
+<a id="login"></a>
 
 ### LOGIN認証方式
 LOGIN認証方式は**ユーザー名**、**パスワード**をそれぞれBase64でエンコードして認証情報を試みます。</br>
@@ -91,6 +105,8 @@ QXBwS2V5
 U2VjcmV0S2V5
 235 Authentication Successful
 ```
+
+<a id="smtp-1"></a>
 
 ### 用途別メールの使用
 メールの用途に応じてメールタイプを指定できます。</br>
