@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=56a08ae36765 -->
+
 ## Notification > Email > API v2.0 가이드
+
+<a id="v20-api"></a>
 
 ### v2.0 API 소개
 
@@ -20,6 +24,8 @@ Content-Type: application/json;charset=UTF-8
 
 <p id="secret-key"></p>
 
+<a id="secret-key"></a>
+
 ### Secret Key
 - 콘솔에서 확인 가능합니다.
 - Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
@@ -33,9 +39,15 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * Windows cmd 에서는 curl 예시가 정상적으로 요청되지 않을 수 있습니다.
 
+<a id="mail-delivery"></a>
+
 ## 메일 발송
 
+<a id="send-general-mails"></a>
+
 ### 일반 메일 발송
+
+<a id="request"></a>
 
 #### 요청
 
@@ -147,6 +159,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response"></a>
+
 #### 응답
 
 ```json
@@ -189,9 +203,13 @@ curl -X POST \
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+<a id="send-individual-mails"></a>
+
 ### 개별 메일 발송
 
 * 수신자가 여러 명일 때 수신자 각각에게 메일을 발송하는 기능입니다. 여러 명에게 보내도 수신자에게는 본인만 표시됩니다.
+
+<a id="request-2"></a>
 
 #### 요청
 
@@ -290,6 +308,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response-2"></a>
+
 #### 응답
 
 ```json
@@ -332,8 +352,12 @@ curl -X POST \
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+<a id="sending-general-ad-mails"></a>
+
 ### 광고성 일반 메일 발송
 * 요청, 응답 정보는 일반 메일 발송과 동일합니다.
+
+<a id="caution-for-sending-ad-mails"></a>
 
 #### 광고 메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있습니다.
@@ -416,6 +440,8 @@ curl -X POST \
 ```
 
 
+<a id="sending-individual-ad-mails"></a>
+
 ### 광고성 개별 메일 발송
 
 * 요청, 응답 정보는 개별 메일 발송과 동일합니다.
@@ -487,7 +513,11 @@ curl -X POST \
 }'
 ```
 
+<a id="send-authenticated-mails"></a>
+
 ### 인증 메일 발송
+
+<a id="request-3"></a>
 
 #### 요청
 
@@ -542,6 +572,8 @@ curl -X POST \
 * 템플릿을 사용하는 경우 **senderAddress, title, body**는 필수 값이 아닙니다. 이 값을 입력하지 않는 경우 템플릿에 등록된 값을 사용합니다.
 * 템플릿을 사용하면서 **senderAddress, senderName, title, body, templateType**을 입력한다면 템플릿에 등록된 값보다 우선 적용됩니다.
 
+<a id="differences-from-general-mails"></a>
+
 #### 일반 메일과 다른 점
 인증 메일 성격상 다음과 같이 다른 특성들이 있습니다.
 
@@ -588,6 +620,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response-3"></a>
+
 #### 응답
 
 ```json
@@ -629,7 +663,11 @@ curl -X POST \
 |--- receiveType|	String|	수신자 타입 (MRT0 : 받는 사람 , MRT1 : 참조, MRT2 : 숨은 참조)|
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
+<a id="upload-attached-files"></a>
+
 ### 첨부파일 업로드
+
+<a id="request-4"></a>
 
 #### 요청
 
@@ -665,6 +703,8 @@ curl -X POST \
 |fileBody|	Byte[]|	O|	파일의 Byte[] 값|
 |createUser|	String|	X|	파일 업로드 유저 정보|
 
+<a id="curl"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -678,6 +718,8 @@ curl -X POST \
 }'
 ```
 
+
+<a id="response-4"></a>
 
 #### 응답
 
@@ -709,7 +751,11 @@ curl -X POST \
 |-- fileName|	String|	파일명|
 
 
+<a id="titlebody-replacement"></a>
+
 ### 제목/본문 치환
+
+<a id="default-type"></a>
 
 #### 기본 타입
 * (##치환 Key##) 형식으로 입력하면 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
@@ -721,6 +767,8 @@ curl -X POST \
 * body : test2 발송합니다.
 ```
 
+<a id="freemarker-type"></a>
+
 #### FreeMarker 타입
 * [FreeMarker 템플릿 엔진](https://freemarker.apache.org/)을 지원합니다.
 * 템플릿 언어를 사용하여 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
@@ -731,6 +779,8 @@ curl -X POST \
 * title : 클라우드고객1님 안녕하세요!!
 * body : test2 발송합니다.
 ```
+
+<a id="example-of-general-mail-request"></a>
 
 #### 일반 메일요청 예시
 ```json
@@ -748,6 +798,8 @@ curl -X POST \
     "userId" : "tester"
 }
 ```
+
+<a id="example-of-individual-mail-request"></a>
 
 #### 개별 메일요청 예시
 ```json
@@ -769,9 +821,15 @@ curl -X POST \
 }
 ```
 
+<a id="query-of-mails"></a>
+
 ## 메일 조회
 
+<a id="query-list-of-mail-deliveries"></a>
+
 ### 메일 발송 리스트 조회
+
+<a id="request-5"></a>
 
 #### 요청
 
@@ -821,6 +879,8 @@ curl -X POST \
 
 * **requestId** 또는 **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
 
+<a id="curl-2"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -828,6 +888,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-5"></a>
 
 #### 응답
 
@@ -905,7 +967,11 @@ curl -X GET \
 |-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
 
 
+<a id="query-mail-delivery-details"></a>
+
 ### 메일 발송 상세 조회
+
+<a id="request-6"></a>
 
 #### 요청
 
@@ -935,6 +1001,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-3"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -942,6 +1010,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-6"></a>
 
 #### 응답
 
@@ -1046,7 +1116,11 @@ curl -X GET \
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹 키 |
 
+<a id="query-of-mails-1"></a>
+
 ### 대량 메일 리스트 조회
+
+<a id="query-of-mails-1-1"></a>
 
 #### 요청
 
@@ -1088,6 +1162,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-4"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1095,6 +1171,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-1-2"></a>
 
 #### 응답
 
@@ -1155,7 +1233,11 @@ curl -X GET \
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
 
+<a id="query-of-mails-2"></a>
+
 ### 대량 메일 발송 수신자 조회
+
+<a id="query-of-mails-2-1"></a>
 
 #### 요청
 
@@ -1196,6 +1278,8 @@ curl -X GET \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="curl-5"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1203,6 +1287,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-2-2"></a>
 
 #### 응답
 
@@ -1271,7 +1357,11 @@ curl -X GET \
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
 
+<a id="query-of-mails-3"></a>
+
 ### 대량 메일 발송 상세 조회
+
+<a id="query-of-mails-3-1"></a>
 
 #### 요청
 
@@ -1301,6 +1391,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-6"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1308,6 +1400,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-3-2"></a>
 
 #### 응답
 
@@ -1403,9 +1497,15 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부 파일 크기(byte)|
 |--- createDate|	String|	생성 일시|
+<a id="scheduled-delivery-management"></a>
+
 ## 예약 관리
 
+<a id="list-scheduled-delivery"></a>
+
 ### 예약 발송 리스트 조회
+<a id="request-7"></a>
+
 #### 요청
 
 [URL]
@@ -1446,6 +1546,8 @@ curl -X GET \
 | pageNum | Integer | X | 페이지 번호 1(기본값) |
 | pageSize | Integer | X | 조회 건수 15(기본값) |
 
+<a id="curl-7"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1454,6 +1556,8 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
+
+<a id="response-7"></a>
 
 #### 응답
 
@@ -1519,7 +1623,11 @@ curl -X GET \
 |-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 
 
+<a id="query-detail-scheduled-delivery"></a>
+
 ### 예약 발송 상세 조회
+<a id="request-8"></a>
+
 #### 요청
 
 [URL]
@@ -1548,6 +1656,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-8"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1555,6 +1665,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-8"></a>
 
 #### 응답
 
@@ -1643,7 +1755,11 @@ curl -X GET \
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 
+<a id="cancel-scheduled-delivery-by-request"></a>
+
 ### 예약 발송 취소 - 요청별
+<a id="request-9"></a>
+
 #### 요청
 
 [URL]
@@ -1671,6 +1787,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-9"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1678,6 +1796,8 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-9"></a>
 
 #### 응답
 
@@ -1698,7 +1818,11 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<a id="cancel-scheduled-delivery-by-recipient"></a>
+
 ### 예약 발송 취소 - 수신자별
+<a id="request-10"></a>
+
 #### 요청
 
 [URL]
@@ -1727,6 +1851,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-10"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1734,6 +1860,8 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-10"></a>
 
 #### 응답
 
@@ -1754,7 +1882,11 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<a id="cancel-scheduled-delivery---multiple-filter"></a>
+
 ### 예약 발송 취소 - 다중 필터
+<a id="request-11"></a>
+
 #### 요청
 
 [URL]
@@ -1809,6 +1941,8 @@ curl -X PUT \
 
 * **startSendDate**, **endSendDate**, **updateUser** 요청 필드가 필수입니다.
 
+<a id="curl-11"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1827,6 +1961,8 @@ curl -X PUT \
     "updateUser": "UpdateUser"
 }'
 ```
+
+<a id="response-11"></a>
 
 #### 응답
 
@@ -1860,7 +1996,11 @@ curl -X PUT \
 |-- reservationCancelStatus|	String| 예약 취소 상태 </br>- READY: 예약 준비</br>- PROCESSING: 예약 취소 중</br>- COMPLETED: 예약 취소 완료</br>- FAILED: 예약 취소 실패|
 
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter"></a>
+
 ### 예약 발송 취소 요청 목록 검색 - 다중 필터
+<a id="request-12"></a>
+
 #### 요청
 
 [URL]
@@ -1897,6 +2037,8 @@ curl -X PUT \
 | pageNum | Integer | X | 페이지 번호 1(기본값) |
 | pageSize | Integer | X | 조회 건수 15(기본값) |
 
+<a id="curl-12"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1904,6 +2046,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-12"></a>
 
 #### 응답
 
@@ -1970,9 +2114,15 @@ curl -X GET \
 
 <p id="category"></p>
 
+<a id="category-management"></a>
+
 ## 카테고리 관리
 
+<a id="list"></a>
+
 ### 카테고리 목록 조회
+
+<a id="request-13"></a>
 
 #### 요청
 
@@ -2009,6 +2159,8 @@ curl -X GET \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="curl-13"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2016,6 +2168,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-13"></a>
 
 #### 응답
 
@@ -2070,7 +2224,11 @@ curl -X GET \
 |-- updateUser|	String|	수정자|
 |-- updateDate|	String|	수정 일시|
 
+<a id="query-details"></a>
+
 ### 카테고리 상세 조회
+
+<a id="request-14"></a>
 
 #### 요청
 
@@ -2099,6 +2257,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-14"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2106,6 +2266,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-14"></a>
 
 #### 응답
 
@@ -2153,7 +2315,11 @@ curl -X GET \
 |-- updateDate|	String|	수정 일시|
 
 
+<a id="register"></a>
+
 ### 카테고리 등록
+
+<a id="request-15"></a>
 
 #### 요청
 
@@ -2192,6 +2358,8 @@ curl -X GET \
 | useYn |	String| 1 |	X|	사용 여부 Y(기본값), N|
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="curl-15"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2207,6 +2375,8 @@ curl -X POST \
 }'
 ```
 
+
+<a id="response-15"></a>
 
 #### 응답
 
@@ -2236,7 +2406,11 @@ curl -X POST \
 |-- categoryId|	Integer|	카테고리 ID|
 
 
+<a id="modify"></a>
+
 ### 카테고리 수정
+
+<a id="request-16"></a>
 
 #### 요청
 
@@ -2274,6 +2448,8 @@ curl -X POST \
 | useYn |	String| 1 |	X|	사용 여부 Y, N|
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="curl-16"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -2287,6 +2463,8 @@ curl -X PUT \
     "userId": "USER"
 }'
 ```
+
+<a id="response-16"></a>
 
 #### 응답
 
@@ -2308,7 +2486,11 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<a id="delete"></a>
+
 ### 카테고리 삭제
+
+<a id="request-17"></a>
 
 #### 요청
 
@@ -2337,6 +2519,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-17"></a>
+
 #### cURL
 ```
 curl -X DELETE \
@@ -2344,6 +2528,8 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-17"></a>
 
 #### 응답
 
@@ -2367,9 +2553,15 @@ curl -X DELETE \
 
 <p id="template"></p>
 
+<a id="query-of-templates"></a>
+
 ## 템플릿 관리
 
+<a id="query-list-of-templates"></a>
+
 ### 템플릿 리스트 조회
+
+<a id="request-18"></a>
 
 #### 요청
 
@@ -2406,6 +2598,8 @@ curl -X DELETE \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="curl-18"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2413,6 +2607,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-18"></a>
 
 #### 응답
 
@@ -2467,7 +2663,11 @@ curl -X GET \
 |-- createDate|	String|	생성 일시|
 |-- updateDate|	String|	수정 일시|
 
+<a id="query-template-details"></a>
+
 ### 템플릿 상세 조회
+
+<a id="request-19"></a>
 
 #### 요청
 
@@ -2496,6 +2696,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-19"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2503,6 +2705,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-19"></a>
 
 #### 응답
 
@@ -2572,7 +2776,11 @@ curl -X GET \
 |--- fileSize|	Integer|	첨부 파일 크기(byte)|
 |--- createDate|	String|	생성 일시|
 
+<a id="register-templates"></a>
+
 ### 템플릿 등록
+
+<a id="request-20"></a>
 
 #### 요청
 
@@ -2617,6 +2825,8 @@ curl -X GET \
 | attachFileIdList | List<Integer> | - | X | 첨부 파일 ID(fileId) |
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="curl-20"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2638,6 +2848,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response-20"></a>
+
 #### 응답
 
 ```json
@@ -2658,7 +2870,11 @@ curl -X POST \
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
 
+<a id="upload-attached-files-2"></a>
+
 ### 템플릿 첨부 파일 업로드
+
+<a id="request-21"></a>
 
 #### 요청
 
@@ -2694,6 +2910,8 @@ curl -X POST \
 |fileBody|	Byte[]| 	-     |O|	파일의 Byte[] 값|
 |userId|	String| 	50    |X|	유저 ID|
 
+<a id="curl-21"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2706,6 +2924,8 @@ curl -X POST \
     "fileBody": []
 }'
 ```
+
+<a id="response-21"></a>
 
 #### 응답
 
@@ -2736,7 +2956,11 @@ curl -X POST \
 |-- fileId| Integer| 파일 ID|
 |-- fileName|   String| 파일 이름|
 
+<a id="modify-templates"></a>
+
 ### 템플릿 수정
+
+<a id="request-22"></a>
 
 #### 요청
 
@@ -2779,6 +3003,8 @@ curl -X POST \
 | attachFileIdList | List<Integer> | - | X | 첨부 파일 ID(fileId) |
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="curl-22"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -2797,6 +3023,8 @@ curl -X PUT \
     "userId": "USER"
 }'
 ```
+
+<a id="response-22"></a>
 
 #### 응답
 
@@ -2818,7 +3046,11 @@ curl -X PUT \
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
 
+<a id="delete-templates"></a>
+
 ### 템플릿 삭제
+
+<a id="request-23"></a>
 
 #### 요청
 
@@ -2847,6 +3079,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-23"></a>
+
 #### cURL
 ```
 curl -X DELETE \
@@ -2854,6 +3088,8 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-23"></a>
 
 #### 응답
 
@@ -2874,9 +3110,15 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| 성공 여부 |
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
+<a id="query-statistics"></a>
+
 ## 통계 조회
 
+<a id="query-daily-statistics"></a>
+
 ### 통합 통계 조회
+
+<a id="request-24"></a>
 
 #### 요청
 
@@ -2915,6 +3157,8 @@ curl -X DELETE \
 |adYn | String | X | 광고 여부<br>Y:광고, N:광고 아님<br>입력하지 않으면 전체|
 |templateId | String | X | 템플릿 ID |
 
+<a id="curl-24"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2923,6 +3167,8 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+
+<a id="response-24"></a>
 
 #### 응답
 
@@ -2967,9 +3213,15 @@ curl -X GET \
 |-- receivedRate | String | 수신율 |
 |-- openedRate | String | 오픈율 |
 
+<a id="rejection-management"></a>
+
 ## 수신 거부 관리
 
+<a id="query-rejections"></a>
+
 ### 수신 거부 조회
+
+<a id="request-25"></a>
 
 #### 요청
 
@@ -3007,6 +3259,8 @@ curl -X GET \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="curl-25"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -3014,6 +3268,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-25"></a>
 
 #### 응답
 ```json
@@ -3049,7 +3305,11 @@ curl -X GET \
 |-- mailAddress | String | 수신 거부 이메일 주소 |
 |-- blockDate | String | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss.S)
 
+<a id="register-rejections"></a>
+
 ### 수신 거부 등록
+
+<a id="request-26"></a>
 
 #### 요청
 
@@ -3085,6 +3345,8 @@ curl -X GET \
 | - mailAddress | String | O | 수신 거부 이메일 주소 |
 | - blockDate | String | X | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss) |
 
+<a id="curl-26"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -3099,6 +3361,8 @@ curl -X POST \
     ]
 }'
 ```
+
+<a id="response-26"></a>
 
 #### 응답
 ```json
@@ -3119,7 +3383,11 @@ curl -X POST \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
+<a id="delete-rejections"></a>
+
 ### 수신 거부 삭제
+<a id="request-27"></a>
+
 #### 요청
 
 [URL]
@@ -3154,6 +3422,8 @@ curl -X POST \
 | blockReceiverList |  ㅣList | O | 수신 거부 리스트 |
 | - mailAddress | String | O | 수신 거부 이메일 주소 |
 
+<a id="curl-27"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -3168,6 +3438,8 @@ curl -X PUT \
     ]
 }'
 ```
+
+<a id="response-27"></a>
 
 #### 응답
 ```json
