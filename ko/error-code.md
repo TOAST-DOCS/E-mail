@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=e34a5abcf80f -->
+
 ## Notification > Email > 오류 코드
+
+<a id="api-result-code"></a>
 
 ### API 결과 코드
 
