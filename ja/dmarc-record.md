@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=ae0552ab7efd -->
+
 ## Notification > Email > ドメイン管理ガイド > DMARC
+
+<a id="what-is-dmarc-domain-based-message-authentication-reporting-and-conformance"></a>
 
 ### DMARC (domain-based message authentication reporting and conformance)とは？
 
@@ -6,6 +10,8 @@
 <br>受信サーバーは、送信者アドレス(From)
 ドメインのDNSでDMARCレコードを照会します。DMARCレコードに定義されたポリシーに従って、受信サーバーは受信したメールを認証します。DMARCポリシーは、SPFとDKIMを使用するかどうか、それぞれの認証手段が失敗したときのメール処理方法はどうなるかで構成されています。
 <br>一部のメールサービス(ex. GmailやYahooなど)は、DMARCを適用しない場合、スパムメールとして認識し、送信をブロックします。メール送信間の高いメール到達率のためには、DMARCレコードを使用することを推奨します。
+
+<a id="record-structure-of-dmarc-dns"></a>
 
 ### DMARC DNSレコードの構造
 
@@ -33,6 +39,8 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 | rf | 任意 | afrf (固定)                | 失敗レポート(ruf)形式についての設定です。                                                                |
 | ri | 任意 | 86400 (単位秒、デフォルト値)       | 失敗を集計する期間です。設定された周期ごとに失敗レポート(rua)が送信されます。                                               |
 
+<a id="failure-policy-p-value-type"></a>
+
 #### 失敗ポリシー(p)値種類
 
 | 失敗ポリシー | 説明                                                                                                                         |
@@ -41,12 +49,16 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 | quarantine | 受信サーバーは失敗したメールをスパムとして処理することを望みます。                                                                                            |
 | reject | 受信サーバーでDMARC失敗が発生したメールを返送します。一般的に、送信サーバーと受信サーバーがSMTP通信時にDSN(Delivery Status Notification)レスポンスで行われることを好むポリシーです。 |
 
+<a id="description-of-spf-and-dkim-alignment-aspf-adkim-values"></a>
+
 #### SPFとDKIM アライメント (aspf, adkim)値の説明
 
 | ポリシー | 説明                                                                                |
 | --- |------------------------------------------------------------------------------------|
 | s | 厳格(Strict)です。ドメイン部分が完全に一致する必要があります。                                             |
 | r | 柔軟(Relexed)です。サブドメインも可能です。例えば'd=example.com'の場合、'From: news.example.com'通過 |
+
+<a id="description-of-values-for-criteria-fo-of-failure-report-generation"></a>
 
 ### 失敗レポート作成基準(fo)の値説明
 
@@ -59,13 +71,19 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 | d | DKIM認証に失敗した場合に報告します。 |
 | s | SPF認証に失敗した場合に報告します。 |
 
+<a id="dmarc-record-certification-procedure"></a>
+
 ### DMARCレコード検証手順
+
+<a id="mail-domain-registration-and-authentication"></a>
 
 #### 1. メールドメイン登録および認証
 
 - DMARCレコード検証はメールドメインが登録および認証が完了した場合、ウェブコンソールで有効になります。
 - メールドメイン認証関連詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参考してください。
+
+<a id="dmarc-record-dns-registration"></a>
 
 #### 2. DMARCレコードDNS登録
 
@@ -79,10 +97,14 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 
 - 登録が完了したら、'nslookup', 'dig'コマンドを利用してDMARC DNSレコードがDNSに反映されたか確認できます。
 
+<a id="precautions"></a>
+
 #### 注意事項
 
 - TXTレコードのDMARC設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
 - DMARC設定作業後、数時間程度経過してからメールを送信するのが安全です。
+
+<a id="dmarc-authentication"></a>
 
 #### 3.DMARC認証
 
@@ -90,18 +112,26 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 - 認証が完了すると、**認証完了**という文言が表示されます。
   ![email_202312_08_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_ja.png)
 
+<a id="example-of-dmarc-record-lookup-failure-screen"></a>
+
 #### DMARCレコード照会失敗画面例
 
 - DMARCレコード照会に失敗した場合、次のような画面が表示されます。
 
 ![email_202312_09_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_ja.png)
 
+<a id="precautions-2"></a>
+
 ### 注意事項
+
+<a id="spf-related-guidelines"></a>
 
 #### 1. SPF関連注意事項
 
 [RFC 7489](https://www.ietf.org/rfc/rfc7489.txt) 文書を参考にする場合、一部の受信サーバーでSPFをDMARC検証ロジックを先に実装できます。この時、SPFレコードに -all のような
 -接頭辞がある場合、DMARC認証に失敗することがあります。一部の受信サーバーでDMARC認証に失敗する場合、SPFレコードに -all のような -接頭辞を削除してDMARC認証を再試行してください。
+
+<a id="dmarc-related-guidelines"></a>
 
 #### 2. DMARC関連注意事項
 
