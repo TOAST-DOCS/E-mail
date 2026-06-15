@@ -1,6 +1,10 @@
+<!-- pre-align:aligned sig=f1bce70cc22e -->
+
 ## Notification > Email > サービスポリシー
 
 <span id='operation-policy'></span>
+<a id="sending-restriction-information"></a>
+
 ## 送信制限に関する案内
 
 * NHN Cloud Emailサービスは、メールのバウンス率が過度に高い場合、運用ポリシーに従って送信が制限されることがあります。
@@ -21,6 +25,14 @@
     * 送信失敗率が高い原因に該当する事項がないかを確認した後、改善措置を行ってください。
     * その後、[カスタマーサポート > お問い合わせ](https://www.nhncloud.com/kr/support/inquiry)から送信制限の解除をお問い合わせください。
     
+<a id="notice-on-delivery-delays"></a>
+
+## 送信遅延に関する案内
+
+<!-- TODO: translate body -->
+
+<a id="notice-of-personal-information-consignee"></a>
+
 ## 個人情報受託会社の告知に関する案内
 
 '「お客様」がNHN Cloud Emailサービスを利用する際、「お客様」と「当社」の間で個人情報の処理に関する業務委受託関係が発生するため、情報通信網法及び個人情報保護法に従い、委託者である「お客様」は個人情報処理方針を通じて「当社」に個人情報を委託した状況(受託者及び業務内容)を
