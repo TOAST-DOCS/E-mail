@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=56a08ae36765 -->
+
 ## Notification > Email > API v2.0 Guide
+
+<a id="v20-api"></a>
 
 ### v2.0 API 소개
 
@@ -21,6 +25,8 @@ Content-Type: application/json;charset=UTF-8
 
 <p id="secret-key"></p>
 
+<a id="secret-key"></a>
+
 ### Secret Key
 - 콘솔에서 확인 가능합니다.
 - Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
@@ -35,9 +41,15 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 - Curl Example may not be properly requested in Windows cmd.
 
+<a id="mail-delivery"></a>
+
 ## Mail Delivery
 
+<a id="send-general-mails"></a>
+
 ### Send General Mails
+
+<a id="request"></a>
 
 #### Request
 
@@ -146,6 +158,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response"></a>
+
 #### Response
 
 ```json
@@ -189,9 +203,13 @@ curl -X POST \
 | --- resultMessage   | String  | Result message of recipient delivery request            |
 
 
+<a id="send-individual-mails"></a>
+
 ### Send Individual Mails
 
 * Mails can be sent to each of many recipients. Even if a same mail is sent to many recipients, each recipient can find his or her name only.  
+
+<a id="request-2"></a>
 
 #### Request
 
@@ -291,6 +309,8 @@ curl -X POST \
 ```
 
 
+<a id="response-2"></a>
+
 #### Response
 
 ```json
@@ -334,9 +354,13 @@ curl -X POST \
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
 
+<a id="sending-general-ad-mails"></a>
+
 ### Sending General Ad Mails 
 
 * Request and response information is same as in sending general mails. 
+
+<a id="caution-for-sending-ad-mails"></a>
 
 #### Caution for Sending Ad Mails
 
@@ -419,6 +443,8 @@ curl -X POST \
 }'
 ```
 
+<a id="sending-individual-ad-mails"></a>
+
 ### Sending Individual Ad Mails
 
 * Request and response information is same as in sending individual mails.  
@@ -490,7 +516,11 @@ curl -X POST \
 }'
 ```
 
+<a id="send-authenticated-mails"></a>
+
 ### Send Authenticated Mails 
+
+<a id="request-3"></a>
 
 #### Request
 
@@ -545,6 +575,8 @@ curl -X POST \
 * On a template, **senderAddress, title, and body** are not required. These values, if left empty, can be replaced by registered values on template. 
 * On a template, **senderAddress, senderName, title, body, and templateType**, if available, are applied before template-registered values.
 
+<a id="differences-from-general-mails"></a>
+
 #### Differences from General Mails 
 
 Features of authenticated mails are as follows: 
@@ -592,6 +624,8 @@ curl -X POST \
 }'
 ```
 
+<a id="response-3"></a>
+
 #### Response
 
 ```json
@@ -633,7 +667,11 @@ curl -X POST \
 | --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
+<a id="upload-attached-files"></a>
+
 ### Upload Attached Files 
+
+<a id="request-4"></a>
 
 #### Request 
 
@@ -669,6 +707,8 @@ curl -X POST \
 | fileBody   | Byte[] | O        | Byte[]  of a file         |
 | createUser | String | X        | File uploader information |
 
+<a id="curl"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -681,6 +721,8 @@ curl -X POST \
     "fileBody": []
 }'
 ```
+
+<a id="response-4"></a>
 
 #### Response
 
@@ -711,7 +753,11 @@ curl -X POST \
 | -- fileId       | Integer  | File ID           |
 | -- fileName     | String  | File name         |
 
+<a id="titlebody-replacement"></a>
+
 ### Title/Body Replacement
+
+<a id="default-type"></a>
 
 #### Default Type
 * Enter in the (##Replacement Key##) format to replace with user-defined **templateParameter**.
@@ -723,6 +769,8 @@ curl -X POST \
 * body: We send test2.
 ```
 
+<a id="freemarker-type"></a>
+
 #### FreeMarker Type
 * [FreeMarker Template Engine](https://freemarker.apache.org/) is supported.
 * You may use a template language to replace with user-defined **templateParameter**. 
@@ -733,6 +781,8 @@ curl -X POST \
 * title: Hello, cloud customer1!!
 * body: We send test2.
 ```
+
+<a id="example-of-general-mail-request"></a>
 
 #### Example of General Mail Request 
 ```json
@@ -750,6 +800,8 @@ curl -X POST \
     "userId" : "tester"
 }
 ```
+
+<a id="example-of-individual-mail-request"></a>
 
 #### Example of Individual Mail Request
 ```json
@@ -771,9 +823,15 @@ curl -X POST \
 }
 ```
 
+<a id="query-of-mails"></a>
+
 ## Query of Mails
 
+<a id="query-list-of-mail-deliveries"></a>
+
 ### Query List of Mail Deliveries
+
+<a id="request-5"></a>
 
 #### Request
 
@@ -823,6 +881,8 @@ curl -X POST \
 
 * **requestId**, or **startSendDate** and **endSendDate** are required fields. 
 
+<a id="curl-2"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -830,6 +890,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-5"></a>
 
 #### Response
 
@@ -907,7 +969,11 @@ curl -X GET \
 | -- dsnMessage| String| DSN(Delivery Status Notification) Status Message |
 
 
+<a id="query-mail-delivery-details"></a>
+
 ### Query Mail Delivery Details
+
+<a id="request-6"></a>
 
 #### Request
 
@@ -937,6 +1003,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-3"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -944,6 +1012,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-6"></a>
 
 #### Response
 
@@ -1049,7 +1119,11 @@ curl -X GET \
 | -- senderGroupingKey|	String  | Sender's group key                                           |
 
 
+<a id="query-of-mails-1"></a>
+
 ### 대량 메일 리스트 조회
+
+<a id="query-of-mails-1-1"></a>
 
 #### 요청
 
@@ -1091,6 +1165,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-4"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1098,6 +1174,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-1-2"></a>
 
 #### 응답
 
@@ -1158,7 +1236,11 @@ curl -X GET \
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
 
+<a id="query-of-mails-2"></a>
+
 ### 대량 메일 발송 수신자 조회
+
+<a id="query-of-mails-2-1"></a>
 
 #### 요청
 
@@ -1199,6 +1281,8 @@ curl -X GET \
 |pageNum|	Integer|	X| 	페이지 번호 1(기본값)                                                              |
 |pageSize|	Integer|	X| 	조회 건수 15(기본값)                                                              |
 
+<a id="curl-5"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1206,6 +1290,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-2-2"></a>
 
 #### 응답
 
@@ -1274,7 +1360,11 @@ curl -X GET \
 |-- createDate |  String  | 생성 일시 |
 |-- updateDate |  String  | 수정 일시 |
 
+<a id="query-of-mails-3"></a>
+
 ### 대량 메일 발송 상세 조회
+
+<a id="query-of-mails-3-1"></a>
 
 #### 요청
 
@@ -1304,6 +1394,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
 
+<a id="curl-6"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1311,6 +1403,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="query-of-mails-3-2"></a>
 
 #### 응답
 
@@ -1406,9 +1500,15 @@ curl -X GET \
 |--- filePath|	String|	첨부파일 경로|
 |--- fileSize|	Integer|	첨부파일 크기 (byte)|
 |--- createDate|	String|	생성 일시|
+<a id="scheduled-delivery-management"></a>
+
 ## Scheduled Delivery Management
 
+<a id="list-scheduled-delivery"></a>
+
 ### List Scheduled Delivery
+<a id="request-7"></a>
+
 #### Request
 
 [URL]
@@ -1435,6 +1535,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-7"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1456,6 +1558,8 @@ curl -X GET \
 | templateId | String | X | Template ID |
 | pageNum|	Integer|	X| Page number (default: 1) |
 | pageSize|	Integer|	X| Number of queries (default: 15) |
+
+<a id="response-7"></a>
 
 #### Response
 
@@ -1520,7 +1624,11 @@ curl -X GET \
 | -- mailStatusName   | String  | Name of delivery status                                      |
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
+<a id="query-detail-scheduled-delivery"></a>
+
 ### Query Detail Scheduled Delivery
+<a id="request-8"></a>
+
 #### Request
 
 [URL]
@@ -1549,6 +1657,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-8"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1556,6 +1666,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-8"></a>
 
 #### Response
 
@@ -1645,7 +1757,11 @@ curl -X GET \
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
 
+<a id="cancel-scheduled-delivery-by-request"></a>
+
 ### Cancel Scheduled Delivery by Request
+<a id="request-9"></a>
+
 #### Request
 
 [URL]
@@ -1673,6 +1789,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-9"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1680,6 +1798,8 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-9"></a>
 
 #### Response
 
@@ -1700,7 +1820,11 @@ curl -X PUT \
 | - resultCode        | Integer | Failure code                                                 |
 | - resultMessage     | String  | Failure message                                              |
 
+<a id="cancel-scheduled-delivery-by-recipient"></a>
+
 ### Cancel Scheduled Delivery by recipient
+<a id="request-10"></a>
+
 #### Request
 
 [URL]
@@ -1729,6 +1853,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-10"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1736,6 +1862,8 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-10"></a>
 
 #### Response
 
@@ -1756,7 +1884,11 @@ curl -X PUT \
 | - resultCode        | Integer | Failure code                                                 |
 | - resultMessage     | String  | Failure message                                              |
 
+<a id="cancel-scheduled-delivery---multiple-filter"></a>
+
 ### Cancel Scheduled Delivery - Multiple Filter
+<a id="request-11"></a>
+
 #### Request
 
 [URL]
@@ -1811,6 +1943,8 @@ curl -X PUT \
 
 * **startSendDate**, **endSendDate**, **updateUser** are required fields.
 
+<a id="curl-11"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -1829,6 +1963,8 @@ curl -X PUT \
     "updateUser": "UpdateUser"
 }'
 ```
+
+<a id="response-11"></a>
 
 #### Response
 
@@ -1862,7 +1998,11 @@ curl -X PUT \
 | -- reservationCancelStatus|	String|	Status of Schedule Cancellation<br/>- READY : Preparing for Scheduling<br/>- PROCESSING : Cancelling Schedule  <br/>- COMPLETED : Schedule Cancellation Completed<br/>- FAILED : Schedule Cancellation Failed |
 
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter"></a>
+
 ### List Request of Scheduled Delivery Cancellation - Multiple Filter
+<a id="request-12"></a>
+
 #### Request
 
 [URL]
@@ -1899,6 +2039,8 @@ curl -X PUT \
 | pageNum|	Integer|	X| Page number (default: 1) |
 | pageSize|	Integer|	X| Number of queries (default: 15) |
 
+<a id="curl-12"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -1906,6 +2048,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-12"></a>
 
 #### Response
 
@@ -1973,9 +2117,15 @@ curl -X GET \
 
 <p id="category"></p>
 
+<a id="category-management"></a>
+
 ## Category Management 
 
+<a id="list"></a>
+
 ### List  
+
+<a id="request-13"></a>
 
 #### Request 
 
@@ -2012,6 +2162,8 @@ curl -X GET \
 |pageNum|	Integer|	X| Page number (default: 1) |
 |pageSize|	Integer|	X| Number of queries (default: 15) |
 
+<a id="curl-13"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2019,6 +2171,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-13"></a>
 
 #### Response 
 
@@ -2073,7 +2227,11 @@ curl -X GET \
 |-- updateUser|	String| Modifier |
 |-- updateDate|	String| Date and time of modification |
 
+<a id="query-details"></a>
+
 ### Query Details 
+
+<a id="request-14"></a>
 
 #### Request 
 
@@ -2102,6 +2260,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-14"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2109,6 +2269,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
+
+<a id="response-14"></a>
 
 #### Response
 
@@ -2156,7 +2318,11 @@ curl -X GET \
 |-- updateDate|	String| Date and time of modification |
 
 
+<a id="register"></a>
+
 ### Register
+
+<a id="request-15"></a>
 
 #### Request 
 
@@ -2195,6 +2361,8 @@ curl -X GET \
 | useYn |	String| 1 |	X| Use or not: Y (default), N |
 | userId | String | 50 | X | User ID |
 
+<a id="curl-15"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2210,6 +2378,8 @@ curl -X POST \
 }'
 ```
 
+
+<a id="response-15"></a>
 
 #### Response
 
@@ -2239,7 +2409,11 @@ curl -X POST \
 |-- categoryId|	Integer| Cateogry ID |
 
 
+<a id="modify"></a>
+
 ### Modify
+
+<a id="request-16"></a>
 
 #### Request 
 
@@ -2277,6 +2451,8 @@ curl -X POST \
 | useYn |	String| 1 |	X| Use or not: Y, N |
 | userId | String | 50 | X | User ID |
 
+<a id="curl-16"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -2290,6 +2466,8 @@ curl -X PUT \
     "userId": "USER"
 }'
 ```
+
+<a id="response-16"></a>
 
 #### Response
 
@@ -2311,7 +2489,11 @@ curl -X PUT \
 |- resultCode|	Integer| Failure code |
 |- resultMessage|	String| Failure message |
 
+<a id="delete"></a>
+
 ### Delete
+
+<a id="request-17"></a>
 
 #### Request
 
@@ -2340,6 +2522,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-17"></a>
+
 #### cURL
 ```
 curl -X DELETE \
@@ -2347,6 +2531,8 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-17"></a>
 
 #### Response
 
@@ -2370,9 +2556,15 @@ curl -X DELETE \
 
 <p id="template"></p>
 
+<a id="query-of-templates"></a>
+
 ## Query of Templates
 
+<a id="query-list-of-templates"></a>
+
 ### Query List of Templates
+
+<a id="request-18"></a>
 
 #### Request
 
@@ -2410,6 +2602,8 @@ curl -X DELETE \
 | pageSize   | Integer | X        | Number of queries (default: 15)    |
 | all        | Boolean | X        | Query list of all templates or not |
 
+<a id="curl-18"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2417,6 +2611,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-18"></a>
 
 #### Response
 
@@ -2471,7 +2667,11 @@ curl -X GET \
 |-- createDate|	String| Date and time of creation |
 |-- updateDate|	String| Date and time of modification |
 
+<a id="query-template-details"></a>
+
 ### Query Template Details
+
+<a id="request-19"></a>
 
 #### Request
 
@@ -2500,6 +2700,8 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-19"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2507,6 +2709,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-19"></a>
 
 #### Response
 
@@ -2576,7 +2780,11 @@ curl -X GET \
 |--- fileSize|	Integer| Size of attached file (byte) |
 |--- createDate|	String| Date and time of creation |
 
+<a id="register-templates"></a>
+
 ### Register Templates 
+
+<a id="request-20"></a>
 
 #### Request 
 
@@ -2620,6 +2828,8 @@ curl -X GET \
 | attachFileIdList | List<Integer> | - | X | Attached file ID (fileId) |
 | userId | String | 50 | X | User ID |
 
+<a id="curl-20"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2642,6 +2852,8 @@ curl -X POST \
 ```
 
 
+<a id="response-20"></a>
+
 #### Response
 
 ```json
@@ -2662,7 +2874,11 @@ curl -X POST \
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
 
+<a id="upload-attached-files-2"></a>
+
 ### Upload Attached Files 
+
+<a id="request-21"></a>
 
 #### Request
 
@@ -2698,6 +2914,8 @@ curl -X POST \
 |fileBody|  Byte[]| - |O| Byte [] value |
 |userId|    String| 50|X| User ID |
 
+<a id="curl-21"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -2710,6 +2928,8 @@ curl -X POST \
     "fileBody": []
 }'
 ```
+
+<a id="response-21"></a>
 
 #### Response
 
@@ -2740,7 +2960,11 @@ curl -X POST \
 |-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
+<a id="modify-templates"></a>
+
 ### Modify Templates
+
+<a id="request-22"></a>
 
 #### Request
 
@@ -2783,6 +3007,8 @@ curl -X POST \
 | attachFileIdList | List<Integer> | - | X | Attached file ID (fileId) |
 | userId | String | 50 | X | User ID |
 
+<a id="curl-22"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -2801,6 +3027,8 @@ curl -X PUT \
     "userId": "USER"
 }'
 ```
+
+<a id="response-22"></a>
 
 #### Response
 
@@ -2822,7 +3050,11 @@ curl -X PUT \
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
 
+<a id="delete-templates"></a>
+
 ### Delete Templates
+
+<a id="request-23"></a>
 
 #### Request
 
@@ -2851,6 +3083,8 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
 
+<a id="curl-23"></a>
+
 #### cURL
 ```
 curl -X DELETE \
@@ -2858,6 +3092,8 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-23"></a>
 
 #### Response
 
@@ -2878,9 +3114,15 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+<a id="query-statistics"></a>
+
 ## Query Statistics	
 
+<a id="query-daily-statistics"></a>
+
 ### Query Daily Statistics
+
+<a id="request-24"></a>
 
 #### Request
 
@@ -2919,6 +3161,8 @@ curl -X DELETE \
 |adYn | String | X | Ad or not<br>Y: Ad, N: Not an ad<br>All, if left blank |
 |templateId | String | X | Template ID |
 
+<a id="curl-24"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -2926,6 +3170,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-24"></a>
 
 #### Response
 
@@ -2970,9 +3216,15 @@ curl -X GET \
 |-- receivedRate | String | Receiving rate |
 |-- openedRate | String | Opening rate |
 
+<a id="rejection-management"></a>
+
 ## Rejection Management
 
+<a id="query-rejections"></a>
+
 ### Query Rejections
+
+<a id="request-25"></a>
 
 #### Request
 
@@ -3010,6 +3262,8 @@ curl -X GET \
 | pageNum     | Integer | X        | Page number (default: 1)                           |
 | pageSize    | Integer | X        | Number of queries (default: 15)                    |
 
+<a id="curl-25"></a>
+
 #### cURL
 ```
 curl -X GET \
@@ -3017,6 +3271,8 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8' \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
+
+<a id="response-25"></a>
 
 #### Response
 ```json
@@ -3052,7 +3308,11 @@ curl -X GET \
 | -- mailAddress  | String  | Email address to reject                   |
 | -- blockDate    | String  | Date of rejection (yyyy-MM-dd HH:mm:ss.S) |
 
+<a id="register-rejections"></a>
+
 ### Register Rejections
+
+<a id="request-26"></a>
 
 #### Request
 
@@ -3088,6 +3348,8 @@ curl -X GET \
 | - mailAddress     | String | O        | Email address to reject                 |
 | - blockDate       | String | X        | Date of rejection (yyyy-MM-dd HH:mm:ss) |
 
+<a id="curl-26"></a>
+
 #### cURL
 ```
 curl -X POST \
@@ -3102,6 +3364,8 @@ curl -X POST \
     ]
 }'
 ```
+
+<a id="response-26"></a>
 
 #### Response
 ```json
@@ -3122,7 +3386,11 @@ curl -X POST \
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
 
+<a id="delete-rejections"></a>
+
 ### Delete Rejections
+
+<a id="request-27"></a>
 
 #### Request
 
@@ -3158,6 +3426,8 @@ curl -X POST \
 | blockReceiverList | ㅣList  | O        | List of rejections                      |
 | - mailAddress     | String  | O        | Email address rejecting ads             |
 
+<a id="curl-27"></a>
+
 #### cURL
 ```
 curl -X PUT \
@@ -3172,6 +3442,8 @@ curl -X PUT \
     ]
 }'
 ```
+
+<a id="response-27"></a>
 
 #### Response
 ```json
