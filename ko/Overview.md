@@ -1,7 +1,11 @@
+<!-- pre-align:aligned sig=7fd103e2afa5 -->
+
 ## Notification > Email > 개요
 
 NHN Cloud Email 서비스를 사용하면 메일 발송, 예약 발송, 발송 내역 조회, 템플릿 관리 등 여러 기능을 사용할 수 있습니다. 
 또한 자체 발송 프로그램 및 관리 도구와 손쉽게 연동할 수 있도록 RESTful API를 제공합니다.
+
+<a id="main-features"></a>
 
 ## 주요 기능
 
@@ -21,6 +25,8 @@ NHN Cloud Email 서비스를 사용하면 메일 발송, 예약 발송, 발송 �
     \- 메일 전송 건별 상세 결과를 분석할 수 있습니다. 
 
 - 고객의 애플리케이션에서 사용할 수 있는 메일 발송과 조회 RESTful API를 사용할 수 있습니다.
+
+<a id="precautions-before-delivery"></a>
 
 ## 발송 전 유의 사항
 NHN Cloud Email 서비스를 사용해 발송한 이메일이 외부 이메일 서비스에서 스팸 메일로 처리되는 것을 방지하려면 다음 사항을 유의해야 합니다.
