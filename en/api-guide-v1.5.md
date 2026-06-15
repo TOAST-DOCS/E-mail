@@ -1,3 +1,5 @@
+<!-- pre-align:aligned sig=7fd573c335e4 -->
+
 ## Notification > Email > API v1.5 Guide
 
 [API Domain]
@@ -15,9 +17,15 @@ Content-Type: application/json;charset=UTF-8
 
 - Curl Example may not be properly requested in Windows cmd.
 
+<a id="mail-delivery"></a>
+
 ## Mail Delivery
 
+<a id="send-general-mails"></a>
+
 ### Send General Mails
+
+<a id="request"></a>
 
 #### Request
 
@@ -71,6 +79,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
+<a id="response"></a>
+
 #### Response
 
 ```
@@ -113,14 +123,20 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | --- resultCode      | Integer | Result code of recipient delivery request               |
 | --- resultMessage   | String  | Result message of recipient delivery request            |
 
+<a id="updated-for-v15"></a>
+
 #### Updated for v1.5
 
 * Added the Sender Group Key field. Setting is available by request.  
 * When it is requested for delivery, specify **senderGroupingKey** field to be made available to query request. 
 
+<a id="send-individual-mails"></a>
+
 ### Send Individual Mails
 
 * Mails can be sent to each of many recipients. Even if a same mail is sent to many recipients, each recipient can find his or her name only.  
+
+<a id="request-2"></a>
 
 #### Request
 
@@ -175,6 +191,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="response-2"></a>
+
 #### Response
 
 ```
@@ -217,14 +235,20 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
 
+<a id="updated-for-v15-2"></a>
+
 #### Updated for v1.5 
 
 * Added the Sender Group Key field. Setting is available by request.  
 * When it is requested for delivery, specify **senderGroupingKey** field to be made available to query request. 
 
+<a id="sending-general-ad-mails"></a>
+
 ### Sending General Ad Mails 
 
 * Request and response information is same as in sending general mails. 
+
+<a id="caution-for-sending-ad-mails"></a>
 
 #### Caution for Sending Ad Mails
 
@@ -248,6 +272,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"customer2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
+<a id="sending-individual-ad-mails"></a>
+
 ### Sending Individual Ad Mails
 
 * Request and response information is same as in sending individual mails.  
@@ -270,7 +296,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
+<a id="send-authenticated-mails"></a>
+
 ### Send Authenticated Mails 
+
+<a id="request-3"></a>
 
 #### Request
 
@@ -309,6 +339,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 - To use a template, title and body are not required (input values, if available, precede template values)
 
+<a id="differences-from-general-mails"></a>
+
 #### Differences from General Mails 
 
 Features of authenticated mails are as follows: 
@@ -327,6 +359,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"customer1","templateParameter":{"key":"value"}},"userId":"USER"}'
 ```
+
+<a id="response-3"></a>
 
 #### Response
 
@@ -356,7 +390,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | - data          | Object  | Data area                                                    |
 | -- requestId    | String  | Request ID                                                   |
 | -- statusCode   | String  | Request status code (Y: preparing for sending , N: Preparing for sending failed) |
+<a id="upload-attached-files"></a>
+
 ### Upload Attached Files 
+
+<a id="request-4"></a>
 
 #### Request 
 
@@ -394,6 +432,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
 ```
 
+<a id="response-4"></a>
+
 #### Response
 
 ```
@@ -423,7 +463,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | -- fileId       | Integer  | File ID           |
 | -- fileName     | String  | File name         |
 
+<a id="titlebody-replacement"></a>
+
 ### Title/Body Replacement
+
+<a id="default-type"></a>
 
 #### Default Type
 * Enter in the (##Replacement Key##) format to replace with user-defined **templateParameter**.
@@ -435,6 +479,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 * body: We send test2.
 ```
 
+<a id="freemarker-type"></a>
+
 #### FreeMarker Type
 * [FreeMarker Template Engine](https://freemarker.apache.org/) is supported.
 * You may use a template language to replace with user-defined **templateParameter**. 
@@ -445,6 +491,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 * title: Hello, cloud customer1!!
 * body: We send test2.
 ```
+
+<a id="example-of-general-mail-request"></a>
 
 #### Example of General Mail Request 
 ```
@@ -462,6 +510,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
     "userId" : "tester"
 }
 ```
+
+<a id="example-of-individual-mail-request"></a>
 
 #### Example of Individual Mail Request
 ```
@@ -483,9 +533,15 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 }
 ```
 
+<a id="query-of-mails"></a>
+
 ## Query of Mails
 
+<a id="query-list-of-mail-deliveries"></a>
+
 ### Query List of Mail Deliveries
+
+<a id="request-5"></a>
 
 #### Request
 
@@ -528,6 +584,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
+
+<a id="response-5"></a>
 
 #### Response
 
@@ -600,6 +658,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- receiveName      | String  | Name of recipient                                            |
 | -- senderGroupingKey| String  | Sender's group key                                           |
 
+<a id="updated-for-v15-3"></a>
+
 #### Updated for v1.5
 
 * Added **senderGroupingKey**, the sender group key field.
@@ -611,7 +671,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 * Changed the field name of sender's mail address into **senderAddress**.
 
 
+<a id="query-mail-delivery-details"></a>
+
 ### Query Mail Delivery Details
+
+<a id="request-6"></a>
 
 #### Request
 
@@ -634,6 +698,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
+
+<a id="response-6"></a>
 
 #### Response
 
@@ -734,6 +800,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
 
+<a id="updated-for-v15-4"></a>
+
 #### Updated for v1.5
 
 * Added **senderGroupingKey**, the sender group key field.
@@ -742,9 +810,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 * Changed the field name of opened or not for recipients into **isOpened**.
 * Changed the field name of the opened date time into **openedDate**.
 * Changed the field name of sender's mail address into **senderAddress**.
+<a id="category-management"></a>
+
 ## Category Management 
 
+<a id="list"></a>
+
 ### List  
+
+<a id="request-7"></a>
 
 #### Request 
 
@@ -774,6 +848,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 ``` sh
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
 ```
+
+<a id="response-7"></a>
 
 #### Response 
 
@@ -828,7 +904,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- updateUser|	String| Modifier |
 |-- updateDate|	String| Date and time of modification |
 
+<a id="query-details"></a>
+
 ### Query Details 
+
+<a id="request-8"></a>
 
 #### Request 
 
@@ -850,6 +930,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 ``` sh
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId}"
 ```
+
+<a id="response-8"></a>
 
 #### Response
 
@@ -897,7 +979,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- updateDate|	String| Date and time of modification |
 
 
+<a id="register"></a>
+
 ### Register
+
+<a id="request-9"></a>
 
 #### Request 
 
@@ -931,6 +1017,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="response-9"></a>
+
 #### Response
 
 ``` json
@@ -959,7 +1047,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- categoryId|	Integer| Cateogry ID |
 
 
+<a id="modify"></a>
+
 ### Modify
+
+<a id="request-10"></a>
 
 #### Request 
 
@@ -991,6 +1083,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
+<a id="response-10"></a>
+
 #### Response
 
 ``` json
@@ -1010,7 +1104,11 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 |- resultCode|	Integer| Failure code |
 |- resultMessage|	String| Failure message |
 
+<a id="delete"></a>
+
 ### Delete
+
+<a id="request-11"></a>
 
 #### Request
 
@@ -1033,6 +1131,8 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId}
 ```
 
+<a id="response-11"></a>
+
 #### Response
 
 ``` json
@@ -1054,9 +1154,15 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 
 <p id="template"></p>
 
+<a id="query-of-templates"></a>
+
 ## Query of Templates
 
+<a id="query-list-of-templates"></a>
+
 ### Query List of Templates
+
+<a id="request-12"></a>
 
 #### Request
 
@@ -1087,6 +1193,8 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
+
+<a id="response-12"></a>
 
 #### Response
 
@@ -1141,7 +1249,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- createDate|	String| Date and time of creation |
 |-- updateDate|	String| Date and time of modification |
 
+<a id="query-template-details"></a>
+
 ### Query Template Details
+
+<a id="request-13"></a>
 
 #### Request
 
@@ -1163,6 +1275,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId}"
 ```
+
+<a id="response-13"></a>
 
 #### Response
 
@@ -1232,7 +1346,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |--- fileSize|	Integer| Size of attached file (byte) |
 |--- createDate|	String| Date and time of creation |
 
+<a id="register-templates"></a>
+
 ### Register Templates 
+
+<a id="request-14"></a>
 
 #### Request 
 
@@ -1271,6 +1389,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="response-14"></a>
+
 #### Response
 
 ``` json
@@ -1290,7 +1410,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
 
+<a id="upload-attached-files-2"></a>
+
 ### Upload Attached Files 
+
+<a id="request-15"></a>
 
 #### Request
 
@@ -1319,6 +1443,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ``` sh
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
 ```
+
+<a id="response-15"></a>
 
 #### Response
 
@@ -1349,7 +1475,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- fileId| Integer| File ID |
 |-- fileName|   String| File name |
 
+<a id="modify-templates"></a>
+
 ### Modify Templates
+
+<a id="request-16"></a>
 
 #### Request
 
@@ -1386,6 +1516,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"template name","templateDesc":"template description","useYn":"Y","sendMailAddress":"test@nhn.com","title":"mail title","templateType":"DEFAULT","body":"mail body","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
+<a id="response-16"></a>
+
 #### Response
 
 ``` json
@@ -1405,7 +1537,11 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
 
+<a id="delete-templates"></a>
+
 ### Delete Templates
+
+<a id="request-17"></a>
 
 #### Request
 
@@ -1428,6 +1564,8 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId}
 ```
 
+<a id="response-17"></a>
+
 #### Response
 
 ``` json
@@ -1446,9 +1584,15 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+<a id="query-statistics"></a>
+
 ## Query Statistics	
 
+<a id="query-daily-statistics"></a>
+
 ### Query Daily Statistics
+
+<a id="request-18"></a>
 
 #### Request
 
@@ -1480,6 +1624,8 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
 ```
+
+<a id="response-18"></a>
 
 #### Response
 
@@ -1523,9 +1669,15 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- receivedRate | String | Receiving rate |
 |-- openedRate | String | Opening rate |
 
+<a id="rejection-management"></a>
+
 ## Rejection Management
 
+<a id="query-rejections"></a>
+
 ### Query Rejections
+
+<a id="request-19"></a>
 
 #### Request
 
@@ -1556,6 +1708,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 ```
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
 ```
+
+<a id="response-19"></a>
 
 #### Response
 ```
@@ -1591,7 +1745,11 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 | -- mailAddress  | String  | Email address to reject                   |
 | -- blockDate    | String  | Date of rejection (yyyy-MM-dd HH:mm:ss.S) |
 
+<a id="register-rejections"></a>
+
 ### Register Rejections
+
+<a id="request-20"></a>
 
 #### Request
 
@@ -1615,6 +1773,8 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
+<a id="response-20"></a>
+
 #### Response
 ```
 {
@@ -1632,7 +1792,11 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | - resultCode    | Integer | Failure code      |
 | - resultMessage | String  | Failure message   |
 
+<a id="delete-rejections"></a>
+
 ### Delete Rejections
+
+<a id="request-21"></a>
 
 #### Request
 
@@ -1655,6 +1819,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
 ```
+
+<a id="response-21"></a>
 
 #### Response
 ```
