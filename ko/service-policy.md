@@ -1,6 +1,10 @@
+<!-- pre-align:aligned sig=f1bce70cc22e -->
+
 ## Notification > Email > 서비스 정책
 
 <span id='operation-policy'></span>
+
+<a id="sending-restriction-information"></a>
 
 ## 발송 제한 안내
 
@@ -19,11 +23,15 @@
     - 반송이 발생하는 원인에 해당하는 사항이 있는지 확인한 뒤 개선 조치를 하세요.
     - 이후 [고객지원 > 문의하기](https://www.nhncloud.com/kr/support/inquiry)에서 발송 제한 해제를 문의하세요.
 
+<a id="notice-on-delivery-delays"></a>
+
 ## 발송 지연 관련 안내
 
 - 프로젝트를 활성화한 직후나 발송량을 늘려 가는 초기 구간에서는 발신 도메인의 발송 이력이 충분히 형성되지 않아 일부 메일이 지연되어 도달하거나 평소보다 발송 속도가 느리게 나타날 수 있습니다.
 - 발송 도메인의 SPF, DKIM, DMARC 인증을 완료하고 본 가이드의 정책을 준수했음에도 발송 지연이 지속된다면, [고객지원 > 문의하기](https://www.nhncloud.com/kr/support/inquiry)에서 발송 내역 확인을 요청해 주세요.
 - 도메인 인증 상태와 발송 내역을 확인한 뒤 결과를 안내합니다.
+
+<a id="notice-of-personal-information-consignee"></a>
 
 ## 개인정보 수탁사 고지 안내
 
