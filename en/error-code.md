@@ -1,4 +1,8 @@
+<!-- pre-align:aligned sig=e34a5abcf80f -->
+
 ## Notification > Email > Error Code
+
+<a id="api-result-code"></a>
 
 ### API Result Code
 
