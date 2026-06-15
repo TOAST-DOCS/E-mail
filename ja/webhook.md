@@ -1,7 +1,11 @@
+<!-- pre-align:aligned sig=0c5ae4e6dd40 -->
+
 ## Notification > Email > Webフック
 
 Emailサービス内で特定イベントが発生した時、Webフック設定に定義されたURLへPOSTリクエストを作成します。<br>
 作成されたPOSTリクエストについてのAPI文書です。
+
+<a id="send-webhook"></a>
 
 ### Webフック送信
 
@@ -28,6 +32,8 @@ Emailサービス内で特定イベントが発生した時、Webフック設定
 | event           | 	String      | Webフックイベント名<br>* UNSUBSCRIBE:広告メール受信アドレス登録                                            |
 | hooks           | 	List\<Map\> | Webフックイベント発生時のデータ<br>* 詳細な内容は[イベントタイプ別フック(hook)定義](./api-guide/#event-hooks)を参照してください。 |
 
+<a id="curl"></a>
+
 #### cURL
 
 ```
@@ -52,9 +58,13 @@ curl -X POST \
 
 <span id="event-hooks"></span>
 
+<a id="hook-definitions-by-event-type"></a>
+
 ### イベントタイプ別hooks定義
 
 Webフック設定に定義されたURLへPOSTリクエストを作成する時のイベントタイプ別フック(hook)データです。
+
+<a id="register-an-address-to-receive-advertising-email"></a>
 
 #### 広告メール受信アドレス登録
 
@@ -76,6 +86,8 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
   ]
 }
 ```
+
+<a id="update-the-message-sending-result-code"></a>
 
 #### メッセージの送信結果の更新
 
