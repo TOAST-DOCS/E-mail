@@ -1,7 +1,11 @@
+<!-- pre-align:aligned sig=7fd103e2afa5 -->
+
 ## Notification > Email > Overview
 
 In the NHN Cloud Email service, you can use a number of features, including mail delivery, sending scheduled delivery, checking delivery history and managing templates, etc.
 It also provides RESTful APIs for easy integration with proprietary delivery programs and management tools.
+
+<a id="main-features"></a>
 
 ## Main Features
 
@@ -21,6 +25,8 @@ It also provides RESTful APIs for easy integration with proprietary delivery pro
     - You can analyze detailed results for each mail delivery case.
 
 - You can use the mail delivery and view RESTful API available in customer’s applications.
+
+<a id="precautions-before-delivery"></a>
 
 ## Precautions Before Delivery
 To prevent emails sent using NHN Cloud Email service from being treated as spam by an external email service, you should keep in mind the following.
