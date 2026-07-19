@@ -1,12 +1,17 @@
-## Notification > Email > Domain Management Guide > DKIM
+<!-- pre-align:aligned sig=dc1c70fd114a -->
 
-### What is DKIM(domainkeys identified mail)?
+<a id="notification-email-domain-management-guide-dkim"></a>
+## Notification > Email > Domain Management Guide > DKIM { #notification-email-domain-management-guide-dkim }
+
+<a id="what-is-dkimdomainkeys-identified-mail"></a>
+### What is DKIM(domainkeys identified mail)? { #what-is-dkimdomainkeys-identified-mail }
 
 - DKIM(domainkeys identified mail) is an email verification method that allows email senders to digitally sign email to verify the authenticity of the sender
   and ensure that the message is not tampered with during delivery.
 - DKIM prevents spam senders and other malicious attackers from falsifying emails.
 
-### Structure of DKIM
+<a id="structure-of-dkim"></a>
+### Structure of DKIM { #structure-of-dkim }
 
 - DKIM uses a digital signature structure based on public key encryption.
 - When sending an email, the sending server signs the sender, receiver, title, content, etc. with a secret key. And adds this signature value to the
@@ -16,7 +21,8 @@
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/) encourages DKIM records to be registered as TXT records, so NHN Cloud Email introduced TXT record
   authentication and activation features.
 
-### Structure of DKIM-Signature
+<a id="structure-of-dkim-signature"></a>
+### Structure of DKIM-Signature { #structure-of-dkim-signature }
 
 - The following is an example of DKIM signature (DKIM-Signature header) that is added to the email header when sending an email.
 
@@ -26,6 +32,7 @@
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
 > b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
 
+<a id="structure-of-dkim-signature-dkim-signature-header"></a>
 #### DKIM-Signature Header
 
 - Describes the DKIM-Signature header field.
@@ -56,8 +63,10 @@ DKIM Header example above has the following implications.
 - The DKIM record for the email sender domain is toast.\_domainkey.example.net .
 - Receiving server authenticates email by lookup DKIM record at toast.\_domainkey.example.net .
 
-### How to register, authenticate and activate DKIM records
+<a id="how-to-register-authenticate-and-activate-dkim-records"></a>
+### How to register, authenticate and activate DKIM records { #how-to-register-authenticate-and-activate-dkim-records }
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-mail-domain-registration-and-authentication"></a>
 #### 1. Mail Domain Registration and Authentication
 
 - DKIM authentication is enabled on web console when the mail domain is registered and authenticated.
@@ -65,6 +74,7 @@ DKIM Header example above has the following implications.
   to [Notification > Email > Domain Management Guide > Domain Authentication and Protection](./domain-verification/)
   .
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-register-dkim-records"></a>
 #### 2. Register DKIM Records
 
 1. Navigate to **Manage Mail Domain** tab.
@@ -78,17 +88,20 @@ DKIM Header example above has the following implications.
 - Even if you finish changing DKIM settings for TXT record, it will take up to 48 hours for DNS changes to take effect depending on the DNS server situation.
 - After DKIM setup, it is safe to send an email after a few hours.
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
 #### 3. DKIM Authentication
 
 - If DKIM record is registered, click on **Authentication** button to complete the authentication.
 - When authentication is complete, the button **Authentication** changes to **Authenticated**.
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-dkim-activation"></a>
 #### 4. DKIM Activation
 
 - If authentication is successful, select **DKIM** tab on pop-up screen and click on **Activate** to enable DKIM.
 
 ![email\_202312\_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_en.png)
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-test-dkim-authentication"></a>
 #### 5. Test DKIM Authentication
 
 - If DKIM feature is authenticated and enabled, you can send an email to see if the DKIM is authenticated successfully.

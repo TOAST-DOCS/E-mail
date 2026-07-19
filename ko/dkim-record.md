@@ -1,18 +1,24 @@
-## Notification > Email > 도메인 관리 가이드 > DKIM
+<!-- pre-align:aligned sig=dc1c70fd114a -->
 
-### DKIM(domainkeys identified mail)이란?
+<a id="notification-email-domain-management-guide-dkim"></a>
+## Notification > Email > 도메인 관리 가이드 > DKIM { #notification-email-domain-management-guide-dkim }
+
+<a id="what-is-dkimdomainkeys-identified-mail"></a>
+### DKIM(domainkeys identified mail)이란? { #what-is-dkimdomainkeys-identified-mail }
 
 - DKIM(domainkeys identified mail)은 이메일 발신자가 이메일에 디지털 서명을 하여 발신자의 진위 여부를 확인하고 전송 중에 메시지가 변조되지 않았는지 확인할 수 있는 이메일 인증 방법입니다.
 - DKIM을 통해 스팸 발송자 및 기타 악의적인 공격자가 이메일을 위조하는 것을 방지할 수 있습니다.
 
-### DKIM의 구조
+<a id="structure-of-dkim"></a>
+### DKIM의 구조 { #structure-of-dkim }
 
 - DKIM은 공개 키 암호화를 기반으로 하는 디지털 서명 체계를 사용합니다.
 - 발송 서버는 이메일 발송 시 이메일 발송자, 수신자, 제목, 내용 등을 비밀 키로 서명합니다. 이 서명 값을 DKIM-Signature 헤더(Header)에 추가합니다.
 - 수신 서버는 DKIM-Signature 헤더 내 "d=" 필드로 기술된 도메인의 공개 키와 서명 알고리즘 정보 등이 담긴 DKIM 레코드를 조회하고 이 값들을 이용해 수신된 이메일 DKIM-Signature 헤더의 디지털 서명을 검증합니다.
 - [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376/)에서는 DKIM 레코드를 TXT 레코드로 등록하도록 권장하고 있어 NHN Cloud Email에서는 TXT 레코드 인증 및 활성화 기능을 도입하였습니다.
 
-### DKIM-Signature 구조
+<a id="structure-of-dkim-signature"></a>
+### DKIM-Signature 구조 { #structure-of-dkim-signature }
 
 - 다음은 이메일 발송 시 이메일 헤더에 추가되는 DKIM 서명(DKIM-Signature 헤더) 예입니다.
 
@@ -22,6 +28,7 @@
 > bh=MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI=;
 > b=dzdVyOfAKCdLXdJOc9G2q8LoXSlEniSbav+yuU4zGeeruD00lszZVoG4ZHRNiYzR
 
+<a id="structure-of-dkim-signature-dkim-signature-header"></a>
 #### DKIM-Signature 헤더
 
 - DKIM-Signature 헤더 필드에 대해 설명합니다.
@@ -48,13 +55,16 @@
 - 이메일 발송 도메인의 DKIM 레코드는 toast.\_domainkey.example.net입니다.
 - 수신 서버는 toast.\_domainkey.example.net의 DKIM 레코드를 조회해 이메일을 인증합니다.
 
-### DKIM 레코드 등록 및 인증, 활성화 방법
+<a id="how-to-register-authenticate-and-activate-dkim-records"></a>
+### DKIM 레코드 등록 및 인증, 활성화 방법 { #how-to-register-authenticate-and-activate-dkim-records }
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-mail-domain-registration-and-authentication"></a>
 #### 1. 메일 도메인 등록 및 인증
 
 - DKIM 인증은 메일 도메인이 등록 및 인증 완료되었을 경우 웹 콘솔에서 활성화됩니다.
 - 메일 도메인 인증 관련 상세 가이드는 [Notification > Email > 도메인 관리 가이드 > 도메인 인증 및 보호](./domain-verification/)를 참고하십시오.
   
+<a id="how-to-register-authenticate-and-activate-dkim-records-register-dkim-records"></a>
 #### 2. DKIM 레코드 등록
 
 1. **메일 도메인 관리** 탭으로 이동합니다.
@@ -68,17 +78,20 @@
 - TXT 레코드의 DKIM 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
 - DKIM 설정 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
 #### 3. DKIM 인증
 
 - DKIM 레코드가 등록되었다면 **인증** 버튼을 클릭해 인증을 완료합니다.
 - 인증이 완료될 경우 **인증** 버튼이 **인증 완료**로 변경됩니다.
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-dkim-activation"></a>
 #### 4. DKIM 활성화
 
 - 인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
 
 ![email_202312_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05.png)
 
+<a id="how-to-register-authenticate-and-activate-dkim-records-test-dkim-authentication"></a>
 #### 5. DKIM 인증 테스트하기
 
 - DKIM 기능이 인증 및 활성화 되었을 경우 이메일을 발송해 DKIM이 정상적으로 인증되는지 확인할 수 있습니다.

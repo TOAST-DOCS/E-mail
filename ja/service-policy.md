@@ -1,7 +1,16 @@
-## Notification > Email > サービスポリシー
+<!-- pre-align:aligned sig=110644a55903 -->
+
+<a id="notification-email-service-policy"></a>
+## 個人情報取扱受託者のご案内 { #notification-email-service-policy }
+
+<!-- TODO: translate body -->
+
+<a id="sending-restriction-information"></a>
+## Notification > Email > サービスポリシー { #sending-restriction-information }
 
 <span id='operation-policy'></span>
-## 送信制限に関する案内
+<a id="section-1"></a>
+## 送信制限に関する案内 { #section-1 }
 
 * NHN Cloud Emailサービスは、メールの送信失敗率が高すぎる場合、サービスの運営ポリシーに基づいて送信が制限されることがあることを案内します。
     * 送信失敗率とは、お客様が送信をリクエストしたメールアドレスのうち、受信SMTPサーバーからメールを伝達できない(返送または送信失敗率)と伝達されたメールアドレスの比率です。
@@ -19,4 +28,12 @@
 
 * 送信失敗率が高くてメールの送信が制限される場合は、以下の事項を確認してください。
     * 送信失敗率が高い原因に該当する事項がないかを確認した後、改善措置を行ってください。
-    * その後、[1:1問い合わせ](https://www.toast.com/kr/support/inquiry)より送信制限解除についてお問い合わせください。
+    * その後、[1:1問い合わせ](https://www.toast.com/kr/support/inquiry)より送信制限解除についてお問い合わせください。## 送信遅延に関するご案内
+
+<!-- TODO: translate body -->
+
+<a id="notice-of-personal-information-consignee"></a>
+## 個人情報受託業者に関するお知らせ { #notice-of-personal-information-consignee }
+
+<!-- TODO: translate body -->
+

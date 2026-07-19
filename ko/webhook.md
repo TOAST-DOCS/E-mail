@@ -1,9 +1,13 @@
-## Notification > Email > 웹훅 가이드
+<!-- pre-align:aligned sig=9c3cc5a6234a -->
+
+<a id="notification-email-webhook-guide"></a>
+## Notification > Email > 웹훅 가이드 { #notification-email-webhook-guide }
 
 Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 POST 요청을 생성합니다.<br>
 생성된 POST 요청에 대한 API 문서입니다.
 
-### 웹훅 발송
+<a id="send-webhook"></a>
+### 웹훅 발송 { #send-webhook }
 
 [URL]
 
@@ -28,6 +32,7 @@ Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 
 | event           | 	String      | 웹훅 이벤트명<br>* UNSUBSCRIBE: 광고 메일 수신 주소 등록                                              |
 | hooks           | 	List\<Map\> | 웹훅 이벤트 발생 시 데이터<br>* 상세한 내용은 [이벤트 유형별 훅(hook) 정의](./api-guide/#event-hooks)를 참고해 주세요. |
 
+<a id="send-webhook-curl"></a>
 #### cURL
 
 ```
@@ -52,10 +57,12 @@ curl -X POST \
 
 <span id="event-hooks"></span>
 
-### 이벤트 유형별 hooks 정의
+<a id="hook-definitions-by-event-type"></a>
+### 이벤트 유형별 hooks 정의 { #hook-definitions-by-event-type }
 
 웹훅 설정에 정의된 URL로 POST 요청을 생성할 때 이벤트 타입별 훅(hook) 데이터입니다.
 
+<a id="hook-definitions-by-event-type-register-an-address-to-receive-advertising-mail"></a>
 #### 광고 메일 수신 주소 등록
 
 | 값                 | 	타입          | 	설명                                           |
@@ -77,6 +84,7 @@ curl -X POST \
 }
 ```
 
+<a id="hook-definitions-by-event-type-update-the-message-sending-result-code"></a>
 #### 메시지 발송 결과 코드 업데이트
 
 - 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
