@@ -58,8 +58,10 @@ curl -X POST \
 <a id="hook-definitions-by-event-type"></a>
 ### Hook definitions by event type { #hook-definitions-by-event-type }
 Hook data per event type when generating a POST request to the URL defined in the webhook settings.
+
 <a id="hook-definitions-by-event-type-register-an-address-to-receive-advertising-mail"></a>
 #### Register an address to receive advertising mail
+
 |Value|	Type|	Descriptions|
 |---|---|---|
 |hooks|	List\<Map\> | Data when a webhook event occurs |
@@ -82,23 +84,23 @@ Hook data per event type when generating a POST request to the URL defined in th
 <a id="hook-definitions-by-event-type-update-the-message-sending-result-code"></a>
 #### Update the message sending result code
 
-- 수신 일시, 상태 코드, 상태 메세지는 발송 완료(SST2) 상태일 때만 제공됩니다.
+- The received date and time, status code, and status message are only provided when the delivery status is Completed (SST2).
 
 |Value|	Type|	Descriptions|
 |---|---|---|
 |hooks|	List\<Map\> | Data when a webhook event occurs |
 |- messageType|	String| Mail type<br>NORMAL_MAIL<br>NORMAL_MAIL_AD<br>NORMAL_MAIL_AUTH<br>MASS_MAIL<br>MASS_MAIL_AD<br>MASS_MAIL_AUTH  |
 |- requestId|	String| Request ID |
-|- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Mail order |
+|- mailSeq|	Maximum number of unavailable nodes. Minimum: 1, Maximum: Current number of nodes in the worker node group, Default: 1)| Email order |
 |- senderAddress|	String| Sender email address |
 |- receiveMailAddr|	String| Recipient email address |
-|- mailStatusCode|	String| Delivery status code <br/> SST2: 발송 완료, SST3: 발송 실패, <br/> SST5: 수신 거부, SST7: 미인증, SST8: 화이트리스트로 인한 실패        |
+|- mailStatusCode|	String| Delivery status code <br/> SST2: Completed, SST3: Failed, <br/> SST5: Unsubscribed, SST7: Unauthenticated, SST8: Failed due to allowlist        |
 |- requestDate|	String| Date and time of request |
 |- createDate|	String| Date and time of creation |
 |- resultDate|	String| Date and time of receiving |
 |- dsnCode|	String| Delivery Status Notification (DSN) status code |
 |- dsnMessage|	String| Delivery Status Notification (DSN) status message |
-|- senderGroupingKey |	String| 발신자 그룹키 |
+|- senderGroupingKey |	String| Sender group key ||
 |- _links|	Object|	Link |
 |- self|	Object|	- |
 |- href|	String|	Query Message API link |

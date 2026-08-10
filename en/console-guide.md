@@ -467,4 +467,4 @@ You can search for message received/viewed data collected in the last 30 days. I
 <a id="data-retention-period"></a>
 ### Data Retention Period { #data-retention-period }
 
-Based on retention policy, Email service keeps data for the recent 90 days only. Data that has expired has been deleted and cannot be viewed.
+* Retains the delivery history for the last 90 days in accordance with the data retention policy. Delivery history can be viewed during this period, and upon expiration of the retention period, data is deleted in accordance with applicable laws and regulations.

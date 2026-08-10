@@ -16,6 +16,7 @@
 ### 2026. 05. 27. { #notification-email-release-notes-1 }
 
 <a id="notification-email-release-notes-1-1"></a>
+
 #### 버그 수정
 
 * [API] 수신 거부 링크 호출 실패 문제 개선
@@ -29,6 +30,7 @@
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
+
 #### 기능 변경
 * [콘솔, API] 태그(Tag) 메일 발송 기능 지원 종료
     * 태그 관리, UID 관리, 태그 메일 발송 관련 기능의 지원이 종료됩니다.
