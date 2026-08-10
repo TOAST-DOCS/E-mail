@@ -5,17 +5,16 @@
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
 
-<a id="notification-email-release-notes-1"></a>
+<a id="august-25-2026"></a>
+### 2026. 08. 25. { #august-25-2026 }
 
-### 2026. 08. 25.
-
+<a id="august-25-2026-feature-updates"></a>
 #### 機能改善
 
 * [コンソール, API] ドメイン TLD 分類基準の改善
     * 最上位ドメイン (TLD) の分類基準を改善し、以前はサブドメインとして分類されていた一部のドメインが正常に分類されるよう修正しました。
 
 <a id="notification-email-release-notes-1"></a>
-
 ### 2026. 05. 27. { #notification-email-release-notes-1 }
 
 <!-- TODO: translate body -->
