@@ -23,14 +23,14 @@
     - Check whether there are any items that are the cause of the bounce rate and take corrective action.
     - Then, go to [Customer Support > Contact Us](https://www.nhncloud.com/en/support/inquiry) to ask about removing the sending restrictions.
 
-## Notice on Delivery Delays
+<a id="section-1"></a>
+## Notice on Delivery Delays { #section-1 }
 
 - Immediately after activating a project or during the initial phase of increasing sending volume, sending history for the sending domain may not be sufficiently established, which may cause some emails to arrive with delays or sending speed to be slower than usual.
 - If delivery delays persist even after completing SPF, DKIM, and DMARC authentication for the sending domain and complying with the policies in this guide, please request a delivery history review through [Customer Support > Contact Us](https://www.nhncloud.com/en/support/inquiry).
 - Results will be provided after verifying the domain authentication status and delivery history.
 
-<a id="section-1"></a>
-## Note on send delays { #section-1 }
+**Note on send delays { #section-1 }**
 
 <!-- TODO: translate body -->
 
