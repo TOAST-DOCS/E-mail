@@ -30,10 +30,6 @@
 - If delivery delays persist even after completing SPF, DKIM, and DMARC authentication for the sending domain and complying with the policies in this guide, please request a delivery history review through [Customer Support > Contact Us](https://www.nhncloud.com/en/support/inquiry).
 - Results will be provided after verifying the domain authentication status and delivery history.
 
-**Note on send delays { #section-1 }**
-
-<!-- TODO: translate body -->
-
 <a id="notice-of-personal-information-consignee"></a>
 ## Notice of Personal Information Consignee { #notice-of-personal-information-consignee }
 
