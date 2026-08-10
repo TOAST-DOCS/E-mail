@@ -5,17 +5,16 @@
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
 
-<a id="notification-email-release-notes-1"></a>
+<a id="august-25-2026"></a>
+### August 25, 2026 { #august-25-2026 }
 
-### August 25, 2026
-
+<a id="august-25-2026-feature-updates"></a>
 #### Feature Updates
 
 * [Console/API] Improved the domain TLD classification criteria
     * Improved the top-level domain (TLD) classification criteria so that some domains that were previously classified as subdomains are now correctly classified.
 
 <a id="notification-email-release-notes-1"></a>
-
 ### May 27, 2026 { #notification-email-release-notes-1 }
 
 <!-- TODO: translate body -->
