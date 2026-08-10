@@ -1,9 +1,13 @@
-## Notification > Email > 概要
+<!-- pre-align:aligned sig=f1c6692b0631 -->
+
+<a id="notification-email-overview"></a>
+## Notification > Email > 概要 { #notification-email-overview }
 
 Emailを使用すると、メール送信、予約送信、送信履歴照会、テンプレート管理機能を使用できます。
 <br>簡単に連携できるようにRESTful APIで使用できます。
 
-## 主な機能
+<a id="main-features"></a>
+## 主な機能 { #main-features }
 
 - 大量送信サポート
     - Excelファイルで受信者リストを入力し、大量にメールを送信できます。
@@ -16,7 +20,8 @@ Emailを使用すると、メール送信、予約送信、送信履歴照会、
 
 - 顧客のアプリケーションで使用できるメール送信と照会RESTful APIを使用できます。
 
-## 送信前の注意事項
+<a id="precautions-before-delivery"></a>
+## 送信前の注意事項 { #precautions-before-delivery }
 
 NHN Cloud Emailサービスを使用して送信したメールが、外部メールサービスでスパムメール処理されることを防止するには、次の事項に注意する必要があります。
 
@@ -30,40 +35,3 @@ SPFの設定方法は、[問題解決ガイド](./troubleshooting-guide/)を参�
 に保存されます。ひどい場合は受信速度が制限されたり、受信が拒否される場合があります。そのため、メールを大量に送信したい方は、次のガイドのドメイン評判管理方法を参照して、常にドメインの評判を高く維持できるように気をつける必要があります。<br>
 詳細は、[問題解決ガイド](./troubleshooting-guide/)を参照してください。
 
-## 参考
-
-### ユーザー指定ヘッダ(Custom header)
-
-* 受信メールにユーザー指定ヘッダを追加して送信できます。
-* NHN Cloud Emailサービスでは、[RFC 822](https://www.ietf.org/rfc/rfc0822.txt)で説明されている形式に沿ったヘッダを使用できます。
-
-#### リクエストできないヘッダ
-
-* From
-* To
-* Cc
-* Bcc
-* Date
-* Subject
-* Content-Disposition
-* Message-ID
-* Sender
-* Reply-To
-* Newsgroups
-* Content-ID
-* Content-MD5
-* MIME-Version
-* Content-Transfer-Encoding
-* Content-Description
-
-#### 構成
-
-| 用語 | 説明 |
-|---|---|
-|ヘッダ名| 追加するヘッダの名前。<br>英数字(a-z、A-Z、0-9)、ハイフン(-)のみ使用して1-50文字で作成します。 |
-|ヘッダ値| 追加するヘッダの値。 <br>1-1000バイトで作成します。<br>ASCIIではない文字はBase64にエンコードして送信します。 |
-
-### データ保管期間
-
-Emailサービスは保管ポリシーに従い、過去90日間のデータのみを保管します。
-保管期間が過ぎたデータは削除され、照会できません。

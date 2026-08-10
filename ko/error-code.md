@@ -1,6 +1,10 @@
-## Notification > Email > 오류 코드
+<!-- pre-align:aligned sig=1ee6def13f9a -->
 
-### API 결과 코드
+<a id="notification-email-error-code"></a>
+## Notification > Email > 오류 코드 { #notification-email-error-code }
+
+<a id="api-result-code"></a>
+### API 결과 코드 { #api-result-code }
 
 | 카테고리  | 성공 여부 | 결과 코드 | 결과 코드 메시지                                                         | API 응답 메시지                                                                                                      |
 |-------|-------|-------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|

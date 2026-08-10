@@ -1,7 +1,16 @@
-## Notification > Email > サービスポリシー
+<!-- pre-align:aligned sig=110644a55903 -->
+
+<a id="notification-email-service-policy"></a>
+## 個人情報取扱受託者のご案内 { #notification-email-service-policy }
+
+<!-- TODO: translate body -->
+
+<a id="sending-restriction-information"></a>
+## Notification > Email > サービスポリシー { #sending-restriction-information }
 
 <span id='operation-policy'></span>
-## 送信制限に関する案内
+<a id="section-1"></a>
+## 送信制限に関する案内 { #section-1 }
 
 * NHN Cloud Emailサービスは、メールのバウンス率が過度に高い場合、運用ポリシーに従って送信が制限されることがあります。
     * 送信失敗率とは、お客様が送信をリクエストしたメールアドレスのうち、受信SMTPサーバーからメールを送信できないと応答した(バウンスまたは送信失敗)メールアドレスの割合です。
@@ -19,17 +28,12 @@
 
 * 送信失敗率が高くてメールの送信が制限される場合は、以下の事項を確認してください。
     * 送信失敗率が高い原因に該当する事項がないかを確認した後、改善措置を行ってください。
-    * その後、[カスタマーサポート > お問い合わせ](https://www.nhncloud.com/kr/support/inquiry)から送信制限の解除をお問い合わせください。
-    
-## 個人情報受託会社の告知に関する案内
+    * その後、[1:1問い合わせ](https://www.toast.com/kr/support/inquiry)より送信制限解除についてお問い合わせください。## 送信遅延に関するご案内
 
-'「お客様」がNHN Cloud Emailサービスを利用する際、「お客様」と「当社」の間で個人情報の処理に関する業務委受託関係が発生するため、情報通信網法及び個人情報保護法に従い、委託者である「お客様」は個人情報処理方針を通じて「当社」に個人情報を委託した状況(受託者及び業務内容)を
-公開する必要があります。
+<!-- TODO: translate body -->
 
-これに伴い、「当社」では「お客様」がNHN Cloud Emailサービスを利用するにあたり、関連法令を遵守し、委託状況の未公開により過料などの不利益を受けないように次のようにガイドしています。
+<a id="notice-of-personal-information-consignee"></a>
+## 個人情報受託業者に関するお知らせ { #notice-of-personal-information-consignee }
 
-(例)<br>
-[個人情報受託会社の告知に関する案内]<br>
-Emailサービスをご利用の際は、お客様企業の「個人情報処理方針」 > 委託状況に以下の内容を表記してください。<br>
-受託会社：NHN Cloud株式会社<br>
-業務内容：メール送信代行    
+<!-- TODO: translate body -->
+

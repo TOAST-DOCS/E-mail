@@ -1,4 +1,7 @@
-## Notification > Email > API v1.6 가이드
+<!-- pre-align:aligned sig=b3f24a43659d -->
+
+<a id="notification-email-api-v16-guide"></a>
+## Notification > Email > API v1.6 가이드 { #notification-email-api-v16-guide }
 
 [API 도메인]
 
@@ -16,10 +19,13 @@ Content-Type: application/json;charset=UTF-8
 
 * Windows cmd 에서는 curl 예시가 정상적으로 요청되지 않을 수 있습니다.
 
-## 메일 발송
+<a id="mail-delivery"></a>
+## 메일 발송 { #mail-delivery }
 
-### 일반 메일 발송
+<a id="send-general-mails"></a>
+### 일반 메일 발송 { #send-general-mails }
 
+<a id="send-general-mails-request"></a>
 #### 요청
 
 [URL]
@@ -111,6 +117,7 @@ curl -X POST \
 }'
 ```
 
+<a id="send-general-mails-response"></a>
 #### 응답
 
 ```json
@@ -153,14 +160,17 @@ curl -X POST \
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+<a id="send-general-mails-updated-for-v16"></a>
 #### v1.6에서 달라진 사항
 
 * 템플릿을 사용하면서 요청 값을 입력하는 경우, 템플릿보다 사용자의 요청 값이 우선 적용됩니다.
 
-### 개별 메일 발송
+<a id="send-individual-mails"></a>
+### 개별 메일 발송 { #send-individual-mails }
 
 * 수신자가 여러 명일 때 수신자 각각에게 메일을 발송하는 기능입니다. 여러 명에게 보내도 수신자에게는 본인만 표시됩니다.
 
+<a id="send-individual-mails-request"></a>
 #### 요청
 
 [URL]
@@ -241,6 +251,7 @@ curl -X POST \
 }'
 ```
 
+<a id="send-individual-mails-response"></a>
 #### 응답
 
 ```json
@@ -283,13 +294,16 @@ curl -X POST \
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
 
+<a id="send-individual-mails-updated-for-v16"></a>
 #### v1.6에서 달라진 사항
 
 * 템플릿을 사용하면서 요청 값을 입력하는 경우, 템플릿보다 사용자의 요청 값이 우선 적용됩니다.
 
-### 광고성 일반 메일 발송
+<a id="sending-general-ad-mails"></a>
+### 광고성 일반 메일 발송 { #sending-general-ad-mails }
 * 요청, 응답 정보는 일반 메일 발송과 동일합니다.
 
+<a id="sending-general-ad-mails-caution-for-sending-ad-mails"></a>
 #### 광고 메일 전송 시 유의 사항
 * 제목에 반드시 (광고) 문구를 삽입하도록 강제하고 있습니다.
 * 자세한 내용은 [[광고성 메일 발송](./console-guide/#_3)]를 참고해주세요.
@@ -349,7 +363,8 @@ curl -X POST \
 ```
 
 
-### 광고성 개별 메일 발송
+<a id="sending-individual-ad-mails"></a>
+### 광고성 개별 메일 발송 { #sending-individual-ad-mails }
 
 * 요청, 응답 정보는 개별 메일 발송과 동일합니다.
 
@@ -398,8 +413,10 @@ curl -X POST \
 }'
 ```
 
-### 인증 메일 발송
+<a id="send-authenticated-mails"></a>
+### 인증 메일 발송 { #send-authenticated-mails }
 
+<a id="send-authenticated-mails-request"></a>
 #### 요청
 
 [URL]
@@ -438,6 +455,7 @@ curl -X POST \
 * 템플릿을 사용하는 경우 **senderAddress, title, body**는 필수 값이 아닙니다. 이 값을 입력하지 않는 경우 템플릿에 등록된 값을 사용합니다.
 * 템플릿을 사용하면서 **senderAddress, senderName, title, body, templateType**을 입력한다면 템플릿에 등록된 값보다 우선 적용됩니다.
 
+<a id="send-authenticated-mails-differences-from-general-mails"></a>
 #### 일반 메일과 다른 점
 인증 메일 성격상 다음과 같이 다른 특성들이 있습니다.
 
@@ -480,6 +498,7 @@ curl -X POST \
 }'
 ```
 
+<a id="send-authenticated-mails-response"></a>
 #### 응답
 
 ```json
@@ -521,8 +540,10 @@ curl -X POST \
 |--- receiveType|	String|	수신자 타입 (MRT0 : 받는 사람 , MRT1 : 참조, MRT2 : 숨은 참조) |
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
-### 첨부파일 업로드
+<a id="upload-attached-files"></a>
+### 첨부파일 업로드 { #upload-attached-files }
 
+<a id="upload-attached-files-request"></a>
 #### 요청
 
 [URL]
@@ -545,6 +566,7 @@ curl -X POST \
 |fileBody|	Byte[]|	O|	파일의 Byte[] 값|
 |createUser|	String|	X|	파일 업로드 유저 정보|
 
+<a id="upload-attached-files-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -558,6 +580,7 @@ curl -X POST \
 ```
 
 
+<a id="upload-attached-files-response"></a>
 #### 응답
 
 ```
@@ -588,8 +611,10 @@ curl -X POST \
 |-- fileName|	String|	파일명|
 
 
-### 제목/본문 치환
+<a id="titlebody-replacement"></a>
+### 제목/본문 치환 { #titlebody-replacement }
 
+<a id="titlebody-replacement-default-type"></a>
 #### 기본 타입
 * (##치환 Key##) 형식으로 입력하면 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
 ```
@@ -600,6 +625,7 @@ curl -X POST \
 * body : test2 발송합니다.
 ```
 
+<a id="titlebody-replacement-freemarker-type"></a>
 #### FreeMarker 타입
 * [FreeMarker 템플릿 엔진](https://freemarker.apache.org/)을 지원합니다.
 * 템플릿 언어를 사용하여 사용자가 입력한 **templateParameter**로 치환할 수 있습니다.
@@ -611,6 +637,7 @@ curl -X POST \
 * body : test2 발송합니다.
 ```
 
+<a id="titlebody-replacement-example-of-general-mail-request"></a>
 #### 일반 메일요청 예시
 ```json
 {
@@ -628,6 +655,7 @@ curl -X POST \
 }
 ```
 
+<a id="titlebody-replacement-example-of-individual-mail-request"></a>
 #### 개별 메일요청 예시
 ```json
 {
@@ -648,10 +676,13 @@ curl -X POST \
 }
 ```
 
-## 메일 조회
+<a id="query-of-mails"></a>
+## 메일 조회 { #query-of-mails }
 
-### 메일 발송 리스트 조회
+<a id="query-list-of-mail-deliveries"></a>
+### 메일 발송 리스트 조회 { #query-list-of-mail-deliveries }
 
+<a id="query-list-of-mail-deliveries-request"></a>
 #### 요청
 
 [URL]
@@ -688,6 +719,7 @@ curl -X POST \
 
 * **requestId** 또는 **startSendDate**, **endSendDate** 요청 필드가 필수입니다.
 
+<a id="query-list-of-mail-deliveries-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -695,6 +727,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-list-of-mail-deliveries-response"></a>
 #### 응답
 
 ```json
@@ -767,8 +800,10 @@ curl -X GET \
 |-- senderGroupingKey| String| 발신자 그룹 키                                                            |
 
 
-### 메일 발송 상세 조회
+<a id="query-mail-delivery-details"></a>
+### 메일 발송 상세 조회 { #query-mail-delivery-details }
 
+<a id="query-mail-delivery-details-request"></a>
 #### 요청
 
 [URL]
@@ -785,6 +820,7 @@ curl -X GET \
 |requestId|	String|	요청ID|
 |mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값)|
 
+<a id="query-mail-delivery-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -792,6 +828,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-mail-delivery-details-response"></a>
 #### 응답
 
 ```json
@@ -890,9 +927,12 @@ curl -X GET \
 |--- createDate|	String|	생성 일시|
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹 키 |
-## 예약 관리
+<a id="scheduled-delivery-management"></a>
+## 예약 관리 { #scheduled-delivery-management }
 
-### 예약 발송 리스트 조회
+<a id="list-scheduled-delivery"></a>
+### 예약 발송 리스트 조회 { #list-scheduled-delivery }
+<a id="list-scheduled-delivery-request"></a>
 #### 요청
 
 [URL]
@@ -921,6 +961,7 @@ curl -X GET \
 | pageNum | Integer | X | 페이지 번호 1(기본값) |
 | pageSize | Integer | X | 조회 건수 15(기본값) |
 
+<a id="list-scheduled-delivery-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -929,6 +970,7 @@ curl -X GET \
 ```
 
 
+<a id="list-scheduled-delivery-response"></a>
 #### 응답
 
 ```json
@@ -993,7 +1035,9 @@ curl -X GET \
 |-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 
 
-### 예약 발송 상세 조회
+<a id="query-detail-scheduled-delivery"></a>
+### 예약 발송 상세 조회 { #query-detail-scheduled-delivery }
+<a id="query-detail-scheduled-delivery-request"></a>
 #### 요청
 
 [URL]
@@ -1010,6 +1054,7 @@ curl -X GET \
 |requestId|	String|	요청 ID|
 |mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값) |
 
+<a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1017,6 +1062,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-detail-scheduled-delivery-response"></a>
 #### 응답
 
 ```json
@@ -1104,7 +1150,9 @@ curl -X GET \
 |-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	발신자 그룹 키 (최대 100자) |
 
-### 예약 발송 취소 - 요청별
+<a id="cancel-scheduled-delivery-by-request"></a>
+### 예약 발송 취소 - 요청별 { #cancel-scheduled-delivery-by-request }
+<a id="cancel-scheduled-delivery-by-request-request"></a>
 #### 요청
 
 [URL]
@@ -1120,6 +1168,7 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |requestId|	String|	요청 ID|
 
+<a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1127,6 +1176,7 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="cancel-scheduled-delivery-by-request-response"></a>
 #### 응답
 
 ```json
@@ -1146,7 +1196,9 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
-### 예약 발송 취소 - 수신자별
+<a id="cancel-scheduled-delivery-by-recipient"></a>
+### 예약 발송 취소 - 수신자별 { #cancel-scheduled-delivery-by-recipient }
+<a id="cancel-scheduled-delivery-by-recipient-request"></a>
 #### 요청
 
 [URL]
@@ -1163,6 +1215,7 @@ curl -X PUT \
 |requestId|	String|	요청 ID|
 |mailSeq|	Integer| 메일 순번 (메일 리스트 조회 시 반환되는 mailSeq 값) |
 
+<a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1170,6 +1223,7 @@ curl -X PUT \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="cancel-scheduled-delivery-by-recipient-response"></a>
 #### 응답
 
 ```json
@@ -1189,7 +1243,9 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
-### 예약 발송 취소 - 다중 필터
+<a id="cancel-scheduled-delivery---multiple-filter"></a>
+### 예약 발송 취소 - 다중 필터 { #cancel-scheduled-delivery---multiple-filter }
+<a id="cancel-scheduled-delivery---multiple-filter-request"></a>
 #### 요청
 
 [URL]
@@ -1232,6 +1288,7 @@ curl -X PUT \
 
 * **startSendDate**, **endSendDate**, **updateUser** 요청 필드가 필수입니다.
 
+<a id="cancel-scheduled-delivery---multiple-filter-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1250,6 +1307,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="cancel-scheduled-delivery---multiple-filter-response"></a>
 #### 응답
 
 ```json
@@ -1282,7 +1340,9 @@ curl -X PUT \
 |-- reservationCancelStatus|	String| 예약 취소 상태 </br>- READY: 예약 준비</br>- PROCESSING: 예약 취소 중</br>- COMPLETED: 예약 취소 완료</br>- FAILED: 예약 취소 실패|
 
 
-### 예약 발송 취소 요청 목록 검색 - 다중 필터
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter"></a>
+### 예약 발송 취소 요청 목록 검색 - 다중 필터 { #list-request-of-scheduled-delivery-cancellation---multiple-filter }
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-request"></a>
 #### 요청
 
 [URL]
@@ -1307,6 +1367,7 @@ curl -X PUT \
 | pageNum | Integer | X | 페이지 번호 1(기본값) |
 | pageSize | Integer | X | 조회 건수 15(기본값) |
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1314,6 +1375,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-response"></a>
 #### 응답
 
 ```json
@@ -1379,10 +1441,13 @@ curl -X GET \
 
 <p id="category"></p>
 
-## 카테고리 관리
+<a id="category-management"></a>
+## 카테고리 관리 { #category-management }
 
-### 카테고리 목록 조회
+<a id="list"></a>
+### 카테고리 목록 조회 { #list }
 
+<a id="list-request"></a>
 #### 요청
 
 [URL]
@@ -1406,6 +1471,7 @@ curl -X GET \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="list-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1413,6 +1479,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="list-response"></a>
 #### 응답
 
 ```json
@@ -1466,8 +1533,10 @@ curl -X GET \
 |-- updateUser|	String|	수정자|
 |-- updateDate|	String|	수정 일시|
 
-### 카테고리 상세 조회
+<a id="query-details"></a>
+### 카테고리 상세 조회 { #query-details }
 
+<a id="query-details-request"></a>
 #### 요청
 
 [URL]
@@ -1483,6 +1552,7 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |categoryId|	String|	카테고리 ID|
 
+<a id="query-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1490,6 +1560,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-details-response"></a>
 #### 응답
 
 ```json
@@ -1536,8 +1607,10 @@ curl -X GET \
 |-- updateDate|	String|	수정 일시|
 
 
-### 카테고리 등록
+<a id="register"></a>
+### 카테고리 등록 { #register }
 
+<a id="register-request"></a>
 #### 요청
 
 [URL]
@@ -1563,6 +1636,7 @@ curl -X GET \
 | useYn |	String| 1 |	X|	사용 여부 Y(기본값), N|
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="register-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -1578,6 +1652,7 @@ curl -X POST \
 ```
 
 
+<a id="register-response"></a>
 #### 응답
 
 ```json
@@ -1606,8 +1681,10 @@ curl -X POST \
 |-- categoryId|	Integer|	카테고리 ID|
 
 
-### 카테고리 수정
+<a id="modify"></a>
+### 카테고리 수정 { #modify }
 
+<a id="modify-request"></a>
 #### 요청
 
 [URL]
@@ -1632,6 +1709,7 @@ curl -X POST \
 | useYn |	String| 1 |	X|	사용 여부 Y, N|
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="modify-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1645,6 +1723,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="modify-response"></a>
 #### 응답
 
 ```json
@@ -1665,8 +1744,10 @@ curl -X PUT \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
-### 카테고리 삭제
+<a id="delete"></a>
+### 카테고리 삭제 { #delete }
 
+<a id="delete-request"></a>
 #### 요청
 
 [URL]
@@ -1682,6 +1763,7 @@ curl -X PUT \
 |appKey|	String|	고유의 appKey|
 |categoryId|	Integer|	카테고리 ID|
 
+<a id="delete-curl"></a>
 #### cURL
 ```
 curl -X DELETE \
@@ -1689,6 +1771,7 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="delete-response"></a>
 #### 응답
 
 ```json
@@ -1711,10 +1794,13 @@ curl -X DELETE \
 
 <p id="template"></p>
 
-## 템플릿 관리
+<a id="query-of-templates"></a>
+## 템플릿 관리 { #query-of-templates }
 
-### 템플릿 리스트 조회
+<a id="query-list-of-templates"></a>
+### 템플릿 리스트 조회 { #query-list-of-templates }
 
+<a id="query-list-of-templates-request"></a>
 #### 요청
 
 [URL]
@@ -1738,6 +1824,7 @@ curl -X DELETE \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="query-list-of-templates-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1745,6 +1832,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-list-of-templates-response"></a>
 #### 응답
 
 ```json
@@ -1798,8 +1886,10 @@ curl -X GET \
 |-- createDate|	String|	생성 일시|
 |-- updateDate|	String|	수정 일시|
 
-### 템플릿 상세 조회
+<a id="query-template-details"></a>
+### 템플릿 상세 조회 { #query-template-details }
 
+<a id="query-template-details-request"></a>
 #### 요청
 
 [URL]
@@ -1815,6 +1905,7 @@ curl -X GET \
 |appKey|	String|	고유의 appKey|
 |templateId|	String|	템플릿 ID|
 
+<a id="query-template-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1822,6 +1913,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-template-details-response"></a>
 #### 응답
 
 ```json
@@ -1890,8 +1982,10 @@ curl -X GET \
 |--- fileSize|	Integer|	첨부 파일 크기(byte)|
 |--- createDate|	String|	생성 일시|
 
-### 템플릿 등록
+<a id="register-templates"></a>
+### 템플릿 등록 { #register-templates }
 
+<a id="register-templates-request"></a>
 #### 요청
 
 [URL]
@@ -1923,6 +2017,7 @@ curl -X GET \
 | attachFileIdList | List<Integer> | - | X | 첨부 파일 ID(fileId) |
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="register-templates-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -1943,6 +2038,7 @@ curl -X POST \
 }'
 ```
 
+<a id="register-templates-response"></a>
 #### 응답
 
 ```json
@@ -1963,8 +2059,10 @@ curl -X POST \
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
 
-### 템플릿 첨부 파일 업로드
+<a id="query-of-templates-upload-attached-files"></a>
+### 템플릿 첨부 파일 업로드 { #query-of-templates-upload-attached-files }
 
+<a id="query-of-templates-upload-attached-files-request"></a>
 #### 요청
 
 [URL]
@@ -1987,6 +2085,7 @@ curl -X POST \
 |fileBody|	Byte[]| 	-     |O|	파일의 Byte[] 값|
 |userId|	String| 	50    |X|	유저 ID|
 
+<a id="query-of-templates-upload-attached-files-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -1999,6 +2098,7 @@ curl -X POST \
 }'
 ```
 
+<a id="query-of-templates-upload-attached-files-response"></a>
 #### 응답
 
 ```json
@@ -2028,8 +2128,10 @@ curl -X POST \
 |-- fileId| Integer| 파일 ID|
 |-- fileName|   String| 파일 이름|
 
-### 템플릿 수정
+<a id="modify-templates"></a>
+### 템플릿 수정 { #modify-templates }
 
+<a id="modify-templates-request"></a>
 #### 요청
 
 [URL]
@@ -2059,6 +2161,7 @@ curl -X POST \
 | attachFileIdList | List<Integer> | - | X | 첨부 파일 ID(fileId) |
 | userId | String | 50 | X | 사용자 ID |
 
+<a id="modify-templates-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -2077,6 +2180,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="modify-templates-response"></a>
 #### 응답
 
 ```json
@@ -2097,8 +2201,10 @@ curl -X PUT \
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
 
-### 템플릿 삭제
+<a id="delete-templates"></a>
+### 템플릿 삭제 { #delete-templates }
 
+<a id="delete-templates-request"></a>
 #### 요청
 
 [URL]
@@ -2114,6 +2220,7 @@ curl -X PUT \
 |appKey|	String|	고유의 appKey|
 |templateId|	String|	템플릿 ID|
 
+<a id="delete-templates-curl"></a>
 #### cURL
 ```
 curl -X DELETE \
@@ -2121,6 +2228,7 @@ curl -X DELETE \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="delete-templates-response"></a>
 #### 응답
 
 ```json
@@ -2140,10 +2248,13 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| 성공 여부 |
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
-## 통계 조회
+<a id="query-statistics"></a>
+## 통계 조회 { #query-statistics }
 
-### 통합 통계 조회
+<a id="query-daily-statistics"></a>
+### 통합 통계 조회 { #query-daily-statistics }
 
+<a id="query-daily-statistics-request"></a>
 #### 요청
 
 [URL]
@@ -2169,6 +2280,7 @@ curl -X DELETE \
 |adYn | String | X | 광고 여부<br>Y:광고, N:광고 아님<br>입력하지 않으면 전체|
 |templateId | String | X | 템플릿 ID |
 
+<a id="query-daily-statistics-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2177,6 +2289,7 @@ curl -X GET \
 ```
 
 
+<a id="query-daily-statistics-response"></a>
 #### 응답
 
 ```json
@@ -2220,10 +2333,13 @@ curl -X GET \
 |-- receivedRate | String | 수신율 |
 |-- openedRate | String | 오픈율 |
 
-## 수신 거부 관리
+<a id="rejection-management"></a>
+## 수신 거부 관리 { #rejection-management }
 
-### 수신 거부 조회
+<a id="query-rejections"></a>
+### 수신 거부 조회 { #query-rejections }
 
+<a id="query-rejections-request"></a>
 #### 요청
 
 [URL]
@@ -2248,6 +2364,7 @@ curl -X GET \
 |pageNum|	Integer|	X|	페이지 번호 1(기본값)|
 |pageSize|	Integer|	X|	조회 건수 15(기본값)|
 
+<a id="query-rejections-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2255,6 +2372,7 @@ curl -X GET \
 -H 'Content-Type: application/json;charset=UTF-8'
 ```
 
+<a id="query-rejections-response"></a>
 #### 응답
 ```json
 {
@@ -2289,8 +2407,10 @@ curl -X GET \
 |-- mailAddress | String | 수신 거부 이메일 주소 |
 |-- blockDate | String | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss.S)
 
-### 수신 거부 등록
+<a id="register-rejections"></a>
+### 수신 거부 등록 { #register-rejections }
 
+<a id="register-rejections-request"></a>
 #### 요청
 
 [URL]
@@ -2307,6 +2427,7 @@ curl -X GET \
 | - mailAddress | String | O | 수신 거부 이메일 주소 |
 | - blockDate | String | X | 수신 거부 날짜 (yyyy-MM-dd HH:mm:ss) |
 
+<a id="register-rejections-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -2321,6 +2442,7 @@ curl -X POST \
 }'
 ```
 
+<a id="register-rejections-response"></a>
 #### 응답
 ```json
 {
@@ -2340,7 +2462,9 @@ curl -X POST \
 |- resultCode|	Integer|	실패 코드|
 |- resultMessage|	String|	실패 메시지|
 
-### 수신 거부 삭제
+<a id="delete-rejections"></a>
+### 수신 거부 삭제 { #delete-rejections }
+<a id="delete-rejections-request"></a>
 #### 요청
 
 [URL]
@@ -2357,6 +2481,7 @@ curl -X POST \
 | blockReceiverList |  ㅣList | O | 수신 거부 리스트 |
 | - mailAddress | String | O | 수신 거부 이메일 주소 |
 
+<a id="delete-rejections-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -2371,6 +2496,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="delete-rejections-response"></a>
 #### 응답
 ```json
 {

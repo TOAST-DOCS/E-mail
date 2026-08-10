@@ -1,8 +1,13 @@
-## Notification > Email > Console Guide
+<!-- pre-align:aligned sig=f392043ebeea -->
 
-## Deliver Mails
+<a id="notification-email-console-guide"></a>
+## Notification > Email > Console Guide { #notification-email-console-guide }
 
-### General Mail Delivery
+<a id="deliver-mails"></a>
+## Deliver Mails { #deliver-mails }
+
+<a id="general-mail-delivery"></a>
+### General Mail Delivery { #general-mail-delivery }
 
 You can send an email by entering the recipient, title, content, attachment, and so on.
 For general mail delivery, you must enter the receiver directly.
@@ -23,7 +28,8 @@ For general mail delivery, you must enter the receiver directly.
 - You can attach up to 30MB, but it is recommended to attach it within 10MB because it may be rejected due to `exceeding the limit` or may result in a higher
   spam rating depending on the attachment restriction policy of incoming email system (gmail.com, naver.com, etc.).
 
-### Advertising Mail Deliver
+<a id="advertising-mail-deliver"></a>
+### Advertising Mail Deliver { #advertising-mail-deliver }
 
 You can deliver advertising mails.
 
@@ -42,6 +48,7 @@ You can deliver advertising mails.
 - Unsubscription link must be entered in Korean/English form and technical measures must be taken to decline receipt.
 - When sending advertising email, it will not send to users who are registered as Unsubscribed.
 
+<a id="advertising-mail-deliver-precautions-when-sending-advertising-emails"></a>
 #### Precautions When Sending Advertising Emails
 
 When sending commercial advertising email or business promotion email under the Information and Communication Network Act, the following must be
@@ -65,6 +72,7 @@ NHN Cloud provides the following technical measures for 'advertising mail' to co
 - It provides unsubscribe function in Korean and English so that the receiver can choose to decline to receive.
 - Advertising email will not send to users who are registered as Unsubscribe.
 
+<a id="advertising-mail-deliver-key-providing-as-unsubscription-link"></a>
 #### Key Providing as Unsubscription Link
 
 | Key | Phrase | Usage example |
@@ -74,7 +82,8 @@ NHN Cloud provides the following technical measures for 'advertising mail' to co
 | JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
-### Template Mail Delivery
+<a id="template-mail-delivery"></a>
+### Template Mail Delivery { #template-mail-delivery }
 
 You can use mail templates that was created in advance.
 
@@ -86,7 +95,8 @@ You can use mail templates that was created in advance.
 3. Click **Attached File** and upload attached files.
 4. In **Recipient** and **CC**, enter the email address that you want to send to.
 
-### Mass Delivery
+<a id="mass-delivery"></a>
+### Mass Delivery { #mass-delivery }
 
 You can send Mass Delivery mail through template file in Excel/CSV format. On the bottom tab, select ** Mass Delivery **.
 
@@ -118,18 +128,21 @@ You can send Mass Delivery mail through template file in Excel/CSV format. On th
     - check and proceed: **Check Mass delivery** tab to confirm mail receivers within 7 days before sending mail. (Not supported for scheduled sending.)
     - Send Immediately: Mail is sent immediately without confirming the mail receiver. On **Mass Delivery** tab, you can check delivery status.
 
-## Template Management
+<a id="template-management"></a>
+## Template Management { #template-management }
 
 After creating categories, you can classify and manage templates that you use to send mail.
 
-### Add/Modify Category
+<a id="addmodify-category"></a>
+### Add/Modify Category { #addmodify-category }
 
 ![email_07_20231023_en](https://static.toastoven.net/prod_email/email_07_20231023_en.png)
 
 - Click on **Add/Modify Category** button and you can add/modify category.
 - Make sure to click **Modify Category** while a category is selected.
 
-### Add/Modify Template
+<a id="addmodify-template"></a>
+### Add/Modify Template { #addmodify-template }
 
 ![email_08_20231023_en](https://static.toastoven.net/prod_email/email_08_20231023_en.png)
 
@@ -138,7 +151,8 @@ After creating categories, you can classify and manage templates that you use to
 - If want to enter to replace authentication number, order number, coupon code, points, etc., **enter by tying replacement key to ### in the title or contents**
   .
 
-## Unsubscription Management
+<a id="unsubscription-management"></a>
+## Unsubscription Management { #unsubscription-management }
 
 You can manage targets of Unsubscription On **Unsubscription management ** tab.
 
@@ -146,14 +160,16 @@ You can manage targets of Unsubscription On **Unsubscription management ** tab.
 
 You can View users who have declined to receive so far, and you can register or delete the Unsubscription by directly inputting or uploading file.
 
-### Register Directly as Unsubscription
+<a id="register-directly-as-unsubscription"></a>
+### Register Directly as Unsubscription { #register-directly-as-unsubscription }
 
 ![email_10_20231023_en](https://static.toastoven.net/prod_email/email_10_20231023_en.png)
 
 - On **Reregister Unsubscription** window, enter Email address of Unsubscription.
 - You can register up to 10 people by clicking on **Add** button.
 
-### Register by Uploading as Unsubscription File
+<a id="register-by-uploading-as-unsubscription-file"></a>
+### Register by Uploading as Unsubscription File { #register-by-uploading-as-unsubscription-file }
 
 ![email_11_20231023_en](https://static.toastoven.net/prod_email/email_11_20231023_en.png)
 
@@ -161,16 +177,19 @@ You can View users who have declined to receive so far, and you can register or 
 - Click **Register mail address batch** to upload the file.
 - When successfully uploaded **a total of n mail addresses has been verified.** phrase displays.
 
-### Delete Unsubscription
+<a id="delete-unsubscription"></a>
+### Delete Unsubscription { #delete-unsubscription }
 
 ![email_12_20231023_en](https://static.toastoven.net/prod_email/email_12_20231023_en.png)
 
 - Select Unsubscription email address you want to delete and click **Delete Unsubscription ** button.
 - Once deletion is complete, it can be seen on the ** Unsubscription Management** tab.
 
-## Retrieve Delivery
+<a id="retrieve-delivery"></a>
+## Retrieve Delivery { #retrieve-delivery }
 
-### Retrieve by Mail Request
+<a id="retrieve-by-mail-request"></a>
+### Retrieve by Mail Request { #retrieve-by-mail-request }
 
 On the **Retrieve by mail request** tab, you can view emails sent using conditions such as the date and time of delivery, date and time of receipt, template,
 status of delivery, etc.
@@ -184,7 +203,8 @@ status of delivery, etc.
 - Data shown on full screen can be downloaded to Excel.
 - You can check the status of your send request through the request status.
 
-### View Scheduled Delivery
+<a id="view-scheduled-delivery"></a>
+### View Scheduled Delivery { #view-scheduled-delivery }
 
 You can view mails that has been delivered on schedule under **View Scheduled Delivery** tab.
 
@@ -199,7 +219,8 @@ You can view mails that has been delivered on schedule under **View Scheduled De
     - If you are 10 minutes before the scheduled delivery time, the corresponding delivery history will be moved to View by mail request tab..
     - Once moved to View by mail request tab, you cannot cancel the delivery.
 
-### View Mass Delivery
+<a id="view-mass-delivery"></a>
+### View Mass Delivery { #view-mass-delivery }
 
 On **View Mass Delivery** tab, you can view or deliver or cancel to deliver mass delivery.
 
@@ -215,6 +236,7 @@ On **View Mass Delivery** tab, you can view or deliver or cancel to deliver mass
 - At progress status, you can check the status of your delivery request.
 - Data shown on full screen can be downloaded to Excel.
 
+<a id="view-mass-delivery-progress-status-of-mass-delivery"></a>
 #### Progress Status of Mass Delivery
 
 - Waiting: It is a status before reading recipient file data.
@@ -227,6 +249,7 @@ On **View Mass Delivery** tab, you can view or deliver or cancel to deliver mass
 - Delivery failed It is a status that the error happened during delivery. You can check delivery status by mail in view mail delivery status list.
 - Delivery cancels: It is a status that the user cancelled the delivery.
 
+<a id="view-mass-delivery-mail-delivery-status-by-recipient"></a>
 #### Mail Delivery Status by Recipient
 
 Select mass delivery (column on the list) to check delivery information of each received mail and the result.
@@ -237,7 +260,8 @@ On **View by recipient**, you can select the corresponding recipient to see if t
 
 ![email_17_20231023_en](https://static.toastoven.net/prod_email/email_17_20231023_en.png)
 
-## Manage Mail Domain
+<a id="manage-mail-domain"></a>
+## Manage Mail Domain { #manage-mail-domain }
 
 On the **Manage Mail Domain** tab, you can manage delivery mail domain. If delivery domain is owned by an individual or a company, it is a feature complete the
 potential problems that can be exploited by third parties.
@@ -248,12 +272,14 @@ potential problems that can be exploited by third parties.
 * It cannot be used unless the domain is owned by an individual or a company.
     * You cannot use the domain of companies that provide mail account issuance services such as Daum, Naver and Google.
 
-### Register Mail Domain
+<a id="register-mail-domain"></a>
+### Register Mail Domain { #register-mail-domain }
 
 Click on **Register Mail Domain** button to register the domain for use in mail delivery.
 For domain registration, only the root domain can be registered.
 
-### Authenticate Mail Domain
+<a id="authenticate-mail-domain"></a>
+### Authenticate Mail Domain { #authenticate-mail-domain }
 
 Click on **Authenticate** button to verify domain ownership.
 Register the token value issued at the time of domain registration in TXT record of the domain and click on **Authenticate** button.<br>
@@ -261,7 +287,8 @@ Register the token value issued at the time of domain registration in TXT record
 * Authentication fails if "toast-domain-verification={token}" value does not exist or does not match in TXT record in the domain.
 * After registering TXT record with a domain, it may take some time for the changes to propagate.
 
-### Protect Mail Domain
+<a id="protect-mail-domain"></a>
+### Protect Mail Domain { #protect-mail-domain }
 
 Click on the **Protect** button to protect the domain. When you protect the domain, the following applies.<br>
 
@@ -275,7 +302,8 @@ Click on the **Protect** button to protect the domain. When you protect the doma
 For more information about mail domain authentication and protection features, refer
 to [Domain Management Guide >Domain Authentication and Protection](./domain-verification/).
 
-### Share Mail Domain
+<a id="share-mail-domain"></a>
+### Share Mail Domain { #share-mail-domain }
 
 Click **Share > Settings** button to share the domain. Main features are the following.<br>
 
@@ -286,13 +314,15 @@ Click **Share > Settings** button to share the domain. Main features are the fol
     * After being authenticated by one project, you can share the domain by using the sharing feature and entering the email service app key for another
       project.
 
-### 반송 메일 설정
+<a id="manage-mail-domain-1"></a>
+### 반송 메일 설정 { #manage-mail-domain-1 }
 
 **반송 설정** 버튼을 클릭해 반송 메일을 설정할 수 있습니다.
 반송 메일은 메일 발송 시 수신자의 메일 서비스에서 메일을 수신하지 못했을 때 발송되는 메일입니다.
 메일 주소를 no-reply@{도메인} 또는 noreply@{도메인}으로 설정할 경우 반송 설정과 관련없이 반송 메일이 발송되지 않습니다.
 
-### Register Sub-domains
+<a id="register-sub-domains"></a>
+### Register Sub-domains { #register-sub-domains }
 
 Click on **Main Sub-domain > Settings** button to register a sub-domain.
 You can only register sub-domains of registered root domains.
@@ -311,7 +341,8 @@ Registered sub-domains are available with **Custom Header** feature when sending
 
 * For more information, refer to [custom header](./console-guide/#custom-header) guide.
 
-### SPF, DKIM, DMARC Authentication
+<a id="spf-dkim-dmarc-authentication"></a>
+### SPF, DKIM, DMARC Authentication { #spf-dkim-dmarc-authentication }
 
 Since it is sent with email address containing a user-owned domain through NHN Cloud Email service's Mail delivery (SMTP) server, additional settings are
 required in DNS where user-owned domain is serviced.
@@ -323,12 +354,14 @@ refer to **Domain Management Guide**.
 - [Domain Management Guide > DKIM](./dkim-record/)
 - [Domain Management Guide > DMARC](./dmarc-record/)
 
-## Webhook Management
+<a id="webhook-management"></a>
+## Webhook Management { #webhook-management }
 
 Webhook refers to a feature that informs you that a certain task has been done in the service. <br>
 When registering a web hook, if a specific event occurs within the email service, it generates HTTP POST request with URL defined in the webhook settings.
 Webhook settings can be managed from ** Webhook Management ** tab.
 
+<a id="webhook-management-register-webhook-settings"></a>
 #### Register Webhook Settings
 
 When registering for webhook, enter the settings below.
@@ -353,7 +386,8 @@ When registering for webhook, enter the settings below.
 
 Registered webhooks can be checked in the **Webhook Registration List**.
 
-## Retrieve Statistics
+<a id="retrieve-statistics"></a>
+## Retrieve Statistics { #retrieve-statistics }
 
 You can view delivery statistics on the **Statistics** (old) tab. You can view with conditions such as inquiry period, statistical breakdown (date, time, day
 of the week), mail type (general, mass) and template.
@@ -362,12 +396,14 @@ You can view by date, time zone and day of the week.
 
 ![email_24_20231023_en](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
 
-## Manage Statistical Event Keys
+<a id="manage-statistical-event-keys"></a>
+## Manage Statistical Event Keys { #manage-statistical-event-keys }
 You can manage statistical event keys on the Manage **Statistical Event Keys** tab. When you create it, you can set a name, description, and event collection period. If you do not set an event collection period, the collection period is set to indefinite. The created statistical event key can be set at the time of sending the message. The sending results of messages with statistical event keys set can be searched by statistical event key on the **Statistics** tab.
 
 <span id="stats"></span>
 
-## Query Statistics
+<a id="query-statistics"></a>
+## Query Statistics { #query-statistics }
 You can search for message received/viewed data collected in the last 30 days. In the console, select View **statistics**. You can retrieve statistics for messages, token enrollments, or deletions.
 
 1. You can set a time period as a search criteria.
@@ -376,8 +412,10 @@ You can search for message received/viewed data collected in the last 30 days. I
     - Default displays the graph in a type that is automatically optimized based on the set time period.
 3. In message statistics, you can search by statistical event key, templateid, and mail type.
 
-## Sending Settings
+<a id="sending-settings"></a>
+## Sending Settings { #sending-settings }
 
+<a id="sending-settings-backup-settings"></a>
 #### Backup Settings
 
 - Depending on the message retention period policy, you can back up sending history data that is older than 90 days.
@@ -386,14 +424,17 @@ You can search for message received/viewed data collected in the last 30 days. I
 
 <span id='personal-information-assignor'></span>
 
-## [Note]
+<a id="note"></a>
+## [Note] { #note }
 
-### Custom Header
+<a id="custom-header"></a>
+### Custom Header { #custom-header }
 
 * You can add a custom header to your receiving email and send it.
 * In NHN Cloud Email service, you can use headers that follow the format described on [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) in addition to the headers
   below.
 
+<a id="custom-header-header-unable-to-request"></a>
 #### Header Unable to Request
 
 * From
@@ -415,6 +456,7 @@ You can search for message received/viewed data collected in the last 30 days. I
 * In-Reply-To
 * References
 
+<a id="custom-header-configuration"></a>
 #### Configuration
 
 | Term | Description | 
@@ -422,6 +464,7 @@ You can search for message received/viewed data collected in the last 30 days. I
 |Header Name| The name of the header to add. <br>Write between 1-50 characters using only English letters and numbers (a-z, A-Z, 0-9) and hyphen (-). |
 |Header Value | Value of the header to be added. <br>Write between 1-1000 bytes. <br>For Non-ASCII characters, encode in Base64 and send. |
 
-### Data Retention Period
+<a id="data-retention-period"></a>
+### Data Retention Period { #data-retention-period }
 
 * Retains the delivery history for the last 90 days in accordance with the data retention policy. Delivery history can be viewed during this period, and upon expiration of the retention period, data is deleted in accordance with applicable laws and regulations.

@@ -1,8 +1,13 @@
-## Notification > Email > コンソール使用ガイド
+<!-- pre-align:aligned sig=f392043ebeea -->
 
-## メール送信
+<a id="notification-email-console-guide"></a>
+## Notification > Email > コンソール使用ガイド { #notification-email-console-guide }
 
-### 一般メール送信
+<a id="deliver-mails"></a>
+## メール送信 { #deliver-mails }
+
+<a id="general-mail-delivery"></a>
+### 一般メール送信 { #general-mail-delivery }
 
 受信者、件名、内容、添付ファイルなどを入力してメールを送信できます。
 一般メール送信の場合受信者を直接入力する必要があります。
@@ -22,7 +27,8 @@
 - 添付ファイルの合計は30MBを超えることはできません。
 - 最大30MBまで添付可能ですが、受信するメールシステム（gmail.com、naver.comなど）の添付ファイル制限ポリシーにより「制限超過」で拒否されたり、スパム判定率が高くなる可能性があるため、10MB以内で添付することを推奨します。
 
-### 広告性メールの送信
+<a id="advertising-mail-deliver"></a>
+### 広告性メールの送信 { #advertising-mail-deliver }
 
 広告性メールを送信できます。
 
@@ -41,6 +47,7 @@
 - 受信拒否リンクが日本語/英文の形で必ず入り、受信を拒否することができる技術的な措置をする必要があります。
 - 受信拒否に登録されたユーザーは、広告性メールの送信時に送信されません。
 
+<a id="advertising-mail-deliver-precautions-when-sending-advertising-emails"></a>
 #### 広告メール送信時の注意事項
 
 情報通信網法に基づき、商業性広告メールや企業広報メールを送信する場合、以下の事項を遵守する必要があります。([韓国インターネット振興院関連内容確認](https://spam.kisa.or.kr/spam/cm/cntnts/cntntsView.do?mi=1061&cntntsId=1086)) <br>
@@ -61,6 +68,7 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 - 受信者が受信拒否を選択できるように、日本語と英語の形で受信拒否機能を提供します。
 - 受信拒否対象メールアドレスには広告メールを送信しません。
 
+<a id="advertising-mail-deliver-key-providing-as-unsubscription-link"></a>
 #### 受信拒否リンクとして提供しているキー
 
 | キー | 文言 | 使用例 |
@@ -70,7 +78,8 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 | JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
-### テンプレートメールの送信
+<a id="template-mail-delivery"></a>
+### テンプレートメールの送信 { #template-mail-delivery }
 
 あらかじめ作成したメールテンプレートを使うことができます。
 
@@ -82,7 +91,8 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 3.**添付ファイルのアップロード**ボタンをクリックして添付ファイルをアップロードします。
 4. **受信者**と**CC**にメールアドレスを入力します。
 
-### 大量メール送信
+<a id="mass-delivery"></a>
+### 大量メール送信 { #mass-delivery }
 
 Excel/CSVフォーマットのテンプレートファイルを使用して大量メールを送信できます。下のタブで**大量送信**を選択します。
 
@@ -110,18 +120,21 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
     - 確認後進行：**大量メール送信照会**タブで7日以内にメール受信者確認後、メール送信を行います。(予約送信の場合はサポートされません。)
     - 即時送信：メール受信者を確認せずに即時送信を行います。送信状態は**大量メール送信**タブで結果を確認できます。
 
-## テンプレート管理
+<a id="template-management"></a>
+## テンプレート管理 { #template-management }
 
 カテゴリーを作成した後、メール送信時に使用するテンプレートを分類して管理できます。
 
-### カテゴリーの追加/修正
+<a id="addmodify-category"></a>
+### カテゴリーの追加/修正 { #addmodify-category }
 
 ![email_07_20231023](https://static.toastoven.net/prod_email/email_07_20231023_en.png)
 
 - **カテゴリー追加及び修正**ボタンをクリックすると、カテゴリーの追加/修正が可能です。
 - 必ずカテゴリーを選択した状態で**カテゴリーの追加/修正**ボタンをクリックする必要があります。
 
-### テンプレートの追加/修正
+<a id="addmodify-template"></a>
+### テンプレートの追加/修正 { #addmodify-template }
 
 ![email_08_20231023](https://static.toastoven.net/prod_email/email_08_20231023_en.png)
 
@@ -129,7 +142,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 - 必ずカテゴリーを選択した状態で**テンプレートの追加/修正**ボタンをクリックする必要があります。
 - 認証番号、注文番号、クーポンコード、ポイントなどを置換で入れたい場合、**件名または内容に'##key##'のように置換キーを##で囲んで入力**します。
 
-## 受信拒否管理
+<a id="unsubscription-management"></a>
+## 受信拒否管理 { #unsubscription-management }
 
 **受信拒否管理**タブで受信拒否対象を管理できます。
 
@@ -137,14 +151,16 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 現在までに受信拒否したユーザーを照会することができ、直接入力またはファイルアップロードにより受信拒否を登録または削除できます。
 
-### 受信拒否を直接入力で登録
+<a id="register-directly-as-unsubscription"></a>
+### 受信拒否を直接入力で登録 { #register-directly-as-unsubscription }
 
 ![email_10_20231023](https://static.toastoven.net/prod_email/email_10_20231023_en.png)
 
 - **受信拒否登録**ウィンドウで受信拒否メールアドレスを入力します。
 - **追加**ボタンをクリックして最大10人まで登録できます。
 
-### 受信拒否ファイルをアップロードして登録
+<a id="register-by-uploading-as-unsubscription-file"></a>
+### 受信拒否ファイルをアップロードして登録 { #register-by-uploading-as-unsubscription-file }
 
 ![email_11_20231023](https://static.toastoven.net/prod_email/email_11_20231023_en.png)
 
@@ -152,16 +168,19 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 - **メールアドレス一括登録**をクリックしてファイルをアップロードします。
 - 正常にアップロードされると、**合計n個のメールアドレスが確認されました。**という文言が表示されます。
 
-### 受信拒否の削除
+<a id="delete-unsubscription"></a>
+### 受信拒否の削除 { #delete-unsubscription }
 
 ![email_12_20231023](https://static.toastoven.net/prod_email/email_12_20231023_en.png)
 
 - 削除する受信拒否メールアドレスを選択し、**受信拒否削除**ボタンをクリックします。
 - 削除が完了すると、**受信拒否管理**タブで確認できます。
 
-## 送信照会
+<a id="retrieve-delivery"></a>
+## 送信照会 { #retrieve-delivery }
 
-### メールリクエスト別照会
+<a id="retrieve-by-mail-request"></a>
+### メールリクエスト別照会 { #retrieve-by-mail-request }
 
 **メールリクエスト別照会**タブで送信日時、受信日時、テンプレート、送信状態などの条件を利用して送信されたメールを照会できます。
 
@@ -174,7 +193,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 - 全画面に表示されるデータはExcelでダウンロードできます。
 - リクエスト状態から送信リクエストに対する状態を確認できます。
 
-### メール予約送信照会
+<a id="view-scheduled-delivery"></a>
+### メール予約送信照会 { #view-scheduled-delivery }
 
 **メール予約送信照会**タブで予約送信されたメールを照会できます。
 
@@ -188,7 +208,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
     - 予約送信時間10分前の場合、その送信履歴はメールリクエスト別照会タブに移動されます。
     - メールリクエスト別照会タブに移動された場合、送信のキャンセルはできません。
 
-### 大量メール送信照会
+<a id="view-mass-delivery"></a>
+### 大量メール送信照会 { #view-mass-delivery }
 
 **大量メール送信照会**タブでは、大量メール送信予約を照会したり、送信または送信をキャンセルできます。
 
@@ -202,6 +223,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 - 進行状態を通じて送信リクエストに対する状態を確認できます。
 - 全画面に表示されるデータはExcelでダウンロードできます。
 
+<a id="view-mass-delivery-progress-status-of-mass-delivery"></a>
 #### 大量メール送信の進行状態
 
 - 待機：受信者ファイルデータを読み込む作業を進める前の状態です。
@@ -213,6 +235,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 - 送信失敗：送信進行中にエラーが発生した状態です。メールごとの送信状態は、メール受信照会リストで確認できます。
 - 送信キャンセル：ユーザーがメールの送信をキャンセルした状態です。
 
+<a id="view-mass-delivery-mail-delivery-status-by-recipient"></a>
 #### 受信者別メール送信照会
 
 大量メール送信件(リストの行)を選択すると、下のリストで受信メール別の送信内容と送信結果を照会できます。
@@ -223,7 +246,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 ![email_17_20231023](https://static.toastoven.net/prod_email/email_17_20231023_en.png)
 
-## メールドメイン管理
+<a id="manage-mail-domain"></a>
+## メールドメイン管理 { #manage-mail-domain }
 
 **メールドメイン管理**タブで送信メールのドメインを管理できます。
 送信メールのドメインが個人または会社が所有するドメインの場合、第三者によって悪用される可能性がある問題を補完できる機能です。
@@ -234,12 +258,14 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 * 個人または会社が所有するドメインでない場合、使用ができません。
     * Daum, Naver, Googleなどのメールアカウント発行サービスを提供する企業のドメインは使用できません。
 
-### メールドメインの登録
+<a id="register-mail-domain"></a>
+### メールドメインの登録 { #register-mail-domain }
 
 **メインドメイン登録**ボタンをクリックして、送信メールに使用するドメインを登録できます。
 ドメインはルートドメインのみ登録できます。
 
-### メールドメイン認証
+<a id="authenticate-mail-domain"></a>
+### メールドメイン認証 { #authenticate-mail-domain }
 
 **認証する**ボタンをクリックして、ドメインの所有権を認証できます。
 ドメイン登録時に発行されたトークン値をドメインのTXTレコードに登録した後、**認証する**ボタンをクリックします。<br>
@@ -247,7 +273,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 * ドメインのTXTレコードに"toast-domain-verification={トークン}"の値が存在しないか、一致しない場合、認証に失敗します。
 * ドメインにTXTレコードを登録した後、変更が反映されるまで時間がかかる場合があります。
 
-### メールドメインの保護
+<a id="protect-mail-domain"></a>
+### メールドメインの保護 { #protect-mail-domain }
 
 **保護する**ボタンをクリックしてドメインを保護できます。
 ドメインを保護すると、以下の事項が適用されます。<br>
@@ -260,7 +287,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 メールドメイン認証と保護機能についてのより詳しい説明は、[ドメイン管理ガイド > ドメイン認証と保護](./domain-verification/)を参照してください。
 
-### メールドメインの共有
+<a id="share-mail-domain"></a>
+### メールドメインの共有 { #share-mail-domain }
 
 **共有 > 設定**ボタンをクリックすると、ドメインを共有できます。
 主な機能は次のとおりです。<br>
@@ -271,13 +299,15 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
     * 複数のプロジェクトに同じドメインを認証する際、認証プロセスを複数回行う必要がありません。<br>
     * 一つのプロジェクトで認証を受けた後、共有機能を利用して他のプロジェクトのメールサービスアプリキーを入力すると、ドメインの共有が可能です。
 
-### バウンスメール設定
+<a id="manage-mail-domain-1"></a>
+### バウンスメール設定 { #manage-mail-domain-1 }
 
 **バウンスメール設定**ボタンをクリックし、バウンスメールを設定できます。
 バウンスメールは、メール送信時に受信者のメールサービス側でメールを受信できなかった場合に送信されるメールです。
 メールアドレスをno-reply@{ドメイン}またはnoreply@{ドメイン}に設定した場合、バウンスメール設定とは関係なく、バウンスメールは送信されません。
 
-### サブドメインの登録
+<a id="register-sub-domains"></a>
+### サブドメインの登録 { #register-sub-domains }
 
 **メインサブドメイン > 設定**ボタンをクリックしてサブドメインを登録できます。
 登録されたルートドメインのサブドメインのみ登録できます。
@@ -296,7 +326,8 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 * 詳細は[ユーザー指定ヘッダ(custom header)](./console-guide/#custom-header)ガイドを参照してください。
 
-### SPF, DKIM, DMARC認証
+<a id="spf-dkim-dmarc-authentication"></a>
+### SPF, DKIM, DMARC認証 { #spf-dkim-dmarc-authentication }
 
 NHN Cloud Emailサービスのメール送信(SMTP)サーバーを通じてユーザー所有のドメインが含まれたメールアドレスで送信されるため、ユーザー所有のドメインがサービスされているDNSに追加設定が必要です。
 
@@ -307,11 +338,13 @@ DNS追加設定に関する詳細は**ドメイン管理ガイド**を参照し�
 - [ドメイン管理ガイド > DKIM](./dkim-record/)
 - [ドメイン管理ガイド > DMARC](./dmarc-record/)
 
-## Webフック管理
+<a id="webhook-management"></a>
+## Webフック管理 { #webhook-management }
 
 Webフックとは、サービスで何らかの操作が行われたことを知らせる機能を指します。<br>
 Webフックを登録する場合、Emailサービス内の特定のイベントが発生すると、Webフック設定で定義されたURLにHTTP POSTリクエストを生成します。Webフックの設定は**Webフックの管理**タブで管理できます。
 
+<a id="webhook-management-register-webhook-settings"></a>
 #### Webフック設定の登録
 
 Webフック登録時に下記の設定値を入力します。
@@ -335,7 +368,8 @@ Webフック登録時に下記の設定値を入力します。
 
 登録完了したWebフックは**Webフック登録リスト**で確認できます。
 
-## 統計情報照会
+<a id="retrieve-statistics"></a>
+## 統計情報照会 { #retrieve-statistics }
 
 **(旧)統計**タブで送信統計を確認できます。
 照会期間、統計区分（日付、時間、曜日）、メールタイプ（一般、大量）、テンプレートなどを条件として照会できます。
@@ -344,12 +378,14 @@ Webフック登録時に下記の設定値を入力します。
 
 ![email_24_20231023](https://static.toastoven.net/prod_email/email_24_20231023_en.png)
 
-## 統計イベントキーの管理
+<a id="manage-statistical-event-keys"></a>
+## 統計イベントキーの管理 { #manage-statistical-event-keys }
 **統計イベントキー管理**タブで統計イベントキーを管理できます。作成時に 名前、説明、イベント収集期間を設定できます。イベント収集期間を設定しない場合、収集期間は無期限に設定されます。作成された統計イベントキーは、メッセージ送信時に設定できます。統計イベントキーが設定されたメッセージの送信結果は**統計**タブにて統計イベントキーで検索できます。
 
 <span id="stats"></span>
 
-## 統計照会
+<a id="query-statistics"></a>
+## 統計照会 { #query-statistics }
 最近30日以内に収集されたメッセージの受信/確認データを検索できます。コンソールで**統計照会**を選択します。メッセージ、トークンの登録や削除に関する統計を検索できます。
 
 1. 期間を検索条件として設定できます。
@@ -358,8 +394,10 @@ Webフック登録時に下記の設定値を入力します。
     - デフォルトは、設定された期間に基づいて自動的に最適化されたタイプでグラフを表示します。
 3. メッセージ統計では、統計イベントキー、テンプレートID、メールタイプで検索できます。
 
-## 送信設定
+<a id="sending-settings"></a>
+## 送信設定 { #sending-settings }
 
+<a id="sending-settings-backup-settings"></a>
 #### バックアップ設定
 
 - メッセージの保管期間ポリシーに基づき、90日を過ぎた送信履歴データをバックアップできます。
@@ -367,13 +405,16 @@ Webフック登録時に下記の設定値を入力します。
 
 <span id='personal-information-assignor'></span>
 
-## 参考
+<a id="note"></a>
+## 参考 { #note }
 
-### ユーザー指定ヘッダ(Custom header)
+<a id="custom-header"></a>
+### ユーザー指定ヘッダ(Custom header) { #custom-header }
 
 * 受信メールにユーザー指定ヘッダを追加して送信できます。
 * NHN Cloud Emailサービスでは、下記のヘッダ以外に[RFC 822](https://www.ietf.org/rfc/rfc0822.txt)に記載された形式に従うヘッダーを使用できます。
 
+<a id="custom-header-header-unable-to-request"></a>
 #### リクエストできないヘッダ
 
 * From
@@ -395,6 +436,7 @@ Webフック登録時に下記の設定値を入力します。
 * In-Reply-To
 * References
 
+<a id="custom-header-configuration"></a>
 #### 構成
 
 | 用語 | 説明 |
@@ -402,6 +444,7 @@ Webフック登録時に下記の設定値を入力します。
 |ヘッダ名| 追加するヘッダの名前。<br>英字と数字(a-z, A-Z, 0-9)、ハイフン(-)だけを使用して1-50文字の間で作成してください。|
 |ヘッダ値| 追加するヘッダの値。<br>1-1000バイトの間で作成します。<br>ASCII以外の文字は、Base64でエンコードしてから送信します。|
 
-### データ保管期間
+<a id="data-retention-period"></a>
+### データ保管期間 { #data-retention-period }
 
 * データ保管ポリシーに従い、直近90日間の送信履歴を保管します。この期間中は送信履歴の照会が可能であり、保管期間が満了すると関連法令に従ってデータが削除されます。
