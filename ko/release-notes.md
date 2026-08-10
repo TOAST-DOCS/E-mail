@@ -3,6 +3,13 @@
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > 릴리스 노트 { #notification-email-release-notes }
 
+### 2026. 08. 25.
+
+#### 기능 개선
+
+* [콘솔, API] 도메인 TLD 분류 기준 개선
+    * 최상위 도메인(TLD) 분류 기준을 개선하여 기존에 서브도메인으로 분류되던 일부 도메인이 정상적으로 분류되도록 수정했습니다.
+
 <a id="notification-email-release-notes-1"></a>
 ### 2026. 05. 27. { #notification-email-release-notes-1 }
 
