@@ -3,8 +3,10 @@
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > 릴리스 노트 { #notification-email-release-notes }
 
-### 2026. 08. 25.
+<a id="august-25-2026"></a>
+### 2026. 08. 25. { #august-25-2026 }
 
+<a id="august-25-2026-feature-updates"></a>
 #### 기능 개선
 
 * [콘솔, API] 도메인 TLD 분류 기준 개선
