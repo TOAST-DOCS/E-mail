@@ -1,8 +1,13 @@
-## Notification > Email > 콘솔 사용 가이드
+<!-- pre-align:aligned sig=f392043ebeea -->
 
-## 메일 발송
+<a id="notification-email-console-guide"></a>
+## Notification > Email > 콘솔 사용 가이드 { #notification-email-console-guide }
 
-### 일반 메일 발송
+<a id="deliver-mails"></a>
+## 메일 발송 { #deliver-mails }
+
+<a id="general-mail-delivery"></a>
+### 일반 메일 발송 { #general-mail-delivery }
 
 받는 사람, 제목, 내용, 첨부 파일 등을 입력하여 메일을 발송할 수 있습니다.
 일반 메일 발송의 경우 수신자를 직접 입력해야 합니다.
@@ -22,7 +27,8 @@
 - 첨부 파일의 총합은 30MB를 넘어갈 수 없습니다.
 - 최대 30MB까지 첨부 가능하지만 수신하는 이메일 시스템(gmail.com, naver.com 등)의 첨부 파일 제한 정책에 따라 `제한 초과`로 거부되거나 스팸 판정률이 높아질 수 있으므로 10MB 이내로 첨부할 것을 권장합니다.
 
-### 광고성 메일 발송
+<a id="advertising-mail-deliver"></a>
+### 광고성 메일 발송 { #advertising-mail-deliver }
 
 광고성 메일을 발송할 수 있습니다.
 
@@ -41,6 +47,7 @@
 - 수신 거부 링크가 한글/영문 형태로 반드시 들어가야 하며, 수신을 거부할 수 있는 기술적 조치를 해야 합니다.
 - 수신 거부로 등록된 유저는 광고성 메일로 발송 시 발송되지 않습니다.
 
+<a id="advertising-mail-deliver-precautions-when-sending-advertising-emails"></a>
 #### 광고 메일 발송 시 유의 사항
 
 정보통신망법에 따라 상업성 광고 메일이나 업체 홍보 메일을 발송하는 경우, 아래 사항을 준수해야 합니다.([한국인터넷진흥원 관련 내용 확인](https://spam.kisa.or.kr/spam/cm/cntnts/cntntsView.do?mi=1061&cntntsId=1086)) <br>
@@ -61,6 +68,7 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 - 수신자가 수신 거부를 선택할 수 있도록 한글과 영문 형태로 수신 거부 기능을 제공합니다.
 - 수신 거부 대상 메일 주소에는 광고 메일을 발송하지 않습니다.
 
+<a id="advertising-mail-deliver-key-providing-as-unsubscription-link"></a>
 #### 수신 거부 링크로 제공하고 있는 키
 
 | 키 | 문구 | 사용 예시 |
@@ -70,7 +78,8 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 | JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
-### 템플릿 메일 발송
+<a id="template-mail-delivery"></a>
+### 템플릿 메일 발송 { #template-mail-delivery }
 
 미리 생성해 놓은 메일 템플릿을 사용할 수 있습니다.
 
@@ -82,7 +91,8 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 3. **첨부 파일 업로드** 버튼을 클릭하여 첨부 파일을 업로드합니다.
 4. **받는 사람**과 **참조**에 원하는 메일 주소를 입력합니다.
 
-### 대량 메일 발송
+<a id="mass-delivery"></a>
+### 대량 메일 발송 { #mass-delivery }
 
 Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 있습니다. 하단 탭에서 **대량 발송**을 선택합니다.
 
@@ -110,18 +120,21 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
     - 확인 후 진행 : **대량 메일 발송 조회** 탭에서 7일 이내에 메일 수신자 확인 후 메일 발송을 진행합니다. (예약 발송 시 지원하지 않습니다.)
     - 즉시 발송 : 메일 수신자를 확인하지 않고 즉시 발송을 진행합니다. 발송 상태는 **대량 메일 발송** 탭에서 결과를 확인할 수 있습니다.
 
-## 템플릿 관리
+<a id="template-management"></a>
+## 템플릿 관리 { #template-management }
 
 카테고리를 만든 후 메일 발송 시 사용하는 템플릿을 분류하여 관리할 수 있습니다.
 
-### 카테고리 추가/수정
+<a id="addmodify-category"></a>
+### 카테고리 추가/수정 { #addmodify-category }
 
 ![email_07_20231023](https://static.toastoven.net/prod_email/email_07_20231023.png)
 
 - **카테고리 추가 및 수정** 버튼 클릭 시 카테고리 추가/수정이 가능합니다.
 - 반드시 카테고리를 선택한 상태에서 **카테고리 추가/수정** 버튼을 클릭해야 합니다.
 
-### 템플릿 추가/수정
+<a id="addmodify-template"></a>
+### 템플릿 추가/수정 { #addmodify-template }
 
 ![email_08_20231023](https://static.toastoven.net/prod_email/email_08_20231023.png)
 
@@ -129,7 +142,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 - 반드시 카테고리를 선택한 상태에서 **템플릿 추가/수정** 버튼을 클릭해야 합니다.
 - 인증번호, 주문번호, 쿠폰코드, 포인트 등을 치환으로 넣고 싶으신 경우, **제목 또는 내용에 '##key##'와 같이 치환 키를 ##으로 묶어 입력**합니다.
 
-## 수신 거부 관리
+<a id="unsubscription-management"></a>
+## 수신 거부 관리 { #unsubscription-management }
 
 **수신 거부 관리** 탭에서 수신 거부 대상을 관리할 수 있습니다.
 
@@ -137,14 +151,16 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 현재까지 수신 거부한 사용자를 조회할 수 있으며, 직접 입력 또는 파일 업로드를 통해 수신 거부를 등록하거나 삭제할 수 있습니다.
 
-### 수신 거부 직접 입력으로 등록
+<a id="register-directly-as-unsubscription"></a>
+### 수신 거부 직접 입력으로 등록 { #register-directly-as-unsubscription }
 
 ![email_10_20231023](https://static.toastoven.net/prod_email/email_10_20231023.png)
 
 - **수신 거부 등록** 창에서 수신 거부 이메일 주소를 입력합니다.
 - **추가** 버튼을 클릭해 최대 10명까지 등록할 수 있습니다.
 
-### 수신 거부 파일 업로드로 등록
+<a id="register-by-uploading-as-unsubscription-file"></a>
+### 수신 거부 파일 업로드로 등록 { #register-by-uploading-as-unsubscription-file }
 
 ![email_11_20231023](https://static.toastoven.net/prod_email/email_11_20231023.png)
 
@@ -152,16 +168,19 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 - **메일 주소 일괄 등록**을 클릭해 파일을 업로드합니다.
 - 정상적으로 업로드되면 **총 n개의 메일 주소가 확인되었습니다.** 라는 문구가 나타납니다.
 
-### 수신 거부 삭제
+<a id="delete-unsubscription"></a>
+### 수신 거부 삭제 { #delete-unsubscription }
 
 ![email_12_20231023](https://static.toastoven.net/prod_email/email_12_20231023.png)
 
 - 삭제할 수신 거부 이메일 주소를 선택 후 **수신 거부 삭제** 버튼을 클릭합니다.
 - 삭제가 완료되면 **수신 거부 관리** 탭에서 확인할 수 있습니다.
 
-## 발송 조회
+<a id="retrieve-delivery"></a>
+## 발송 조회 { #retrieve-delivery }
 
-### 메일 요청별 조회
+<a id="retrieve-by-mail-request"></a>
+### 메일 요청별 조회 { #retrieve-by-mail-request }
 
 **메일 요청별 조회** 탭에서 발송 일시, 수신 일시, 템플릿, 발송 상태 등의 조건을 이용해 발송된 메일을 조회할 수 있습니다.
 
@@ -174,7 +193,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 - 전체화면에 보여지는 데이터는 엑셀로 다운로드 할 수 있습니다.
 - 요청 상태를 통해 발송 요청에 대한 상태를 확인할 수 있습니다.
 
-### 메일 예약 발송 조회
+<a id="view-scheduled-delivery"></a>
+### 메일 예약 발송 조회 { #view-scheduled-delivery }
 
 **메일 예약 발송 조회** 탭에서 예약 발송된 메일을 조회할 수 있습니다.
 
@@ -188,7 +208,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
     - 예약 발송 시간 10분 전인 경우, 해당 발송 내역은 메일 요청별 조회 탭으로 이동됩니다.
     - 메일 요청별 조회 탭으로 이동되는 경우, 발송 취소가 불가합니다.
 
-### 대량 메일 발송 조회
+<a id="view-mass-delivery"></a>
+### 대량 메일 발송 조회 { #view-mass-delivery }
 
 **대량 메일 발송 조회** 탭에서는 대량 메일 발송 예약을 조회하거나 발송 또는 발송을 취소할 수 있습니다.
 
@@ -202,6 +223,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 - 진행 상태를 통해 발송 요청에 대한 상태를 확인 할 수 있습니다.
 - 전체화면에 보여지는 데이터는 엑셀로 다운로드 할 수 있습니다.
 
+<a id="view-mass-delivery-progress-status-of-mass-delivery"></a>
 #### 대량 메일 발송 진행 상태
 
 - 대기: 수신자 파일 데이터를 읽는 작업을 진행하기 전 상태입니다.
@@ -213,6 +235,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 - 발송실패: 발송 진행 중 오류가 발생한 상태입니다. 메일별 발송 상태는 메일 수신 조회 목록에서 확인할 수 있습니다.
 - 발송취소: 사용자가 메일 발송을 취소한 상태입니다.
 
+<a id="view-mass-delivery-mail-delivery-status-by-recipient"></a>
 #### 수신자별 메일 발송 조회
 
 대량 메일 발송 건(리스트의 행) 선택하시면 하단의 리스트에서 수신 메일별 발송 내용과 발송 결과를 조회할 수 있습니다.
@@ -223,7 +246,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 ![email_17_20231023](https://static.toastoven.net/prod_email/email_17_20231023.png)
 
-## 메일 도메인 관리
+<a id="manage-mail-domain"></a>
+## 메일 도메인 관리 { #manage-mail-domain }
 
 **메일 도메인 관리** 탭에서 발송 메일 도메인을 관리할 수 있습니다.
 발송 메일의 도메인이 개인 혹은 회사에서 소유한 도메인 경우, 제 3자에 의해 악용될 수 있는 문제점을 보완할 수 있는 기능입니다.
@@ -234,12 +258,14 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 * 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
     * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
 
-### 메일 도메인 등록
+<a id="register-mail-domain"></a>
+### 메일 도메인 등록 { #register-mail-domain }
 
 **메인 도메인 등록** 버튼을 클릭해 발송 메일에서 사용할 도메인을 등록할 수 있습니다.
 도메인 등록은 루트 도메인만 등록 가능합니다.
 
-### 메일 도메인 인증
+<a id="authenticate-mail-domain"></a>
+### 메일 도메인 인증 { #authenticate-mail-domain }
 
 **인증하기** 버튼을 클릭해 도메인 소유권을 인증할 수 있습니다.
 도메인 등록 시 발급받은 토큰값을 도메인의 TXT 레코드에 등록한 후 **인증하기** 버튼을 클릭합니다.<br>
@@ -247,7 +273,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 * 도메인의 TXT 레코드에 "toast-domain-verification={토큰}"값이 존재하지 않거나 일치하지 않으면 인증에 실패합니다.
 * 도메인에 TXT 레코드를 등록한 후 변경 사항이 전파되기까지는 시간이 걸릴 수 있습니다.
 
-### 메일 도메인 보호
+<a id="protect-mail-domain"></a>
+### 메일 도메인 보호 { #protect-mail-domain }
 
 **보호하기** 버튼을 클릭해 도메인을 보호할 수 있습니다.
 도메인을 보호하면 아래 사항들이 적용됩니다.<br>
@@ -260,7 +287,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 메일 도메인 인증 및 보호 기능에 대한 보다 더 자세한 설명은 [도메인 관리 가이드 > 도메인 인증 및 보호](./domain-verification/)를 참고하세요.
 
-### 메일 도메인 공유
+<a id="share-mail-domain"></a>
+### 메일 도메인 공유 { #share-mail-domain }
 
 **공유 > 설정** 버튼을 클릭하면 도메인을 공유할 수 있습니다.
 주요 기능은 다음과 같습니다.<br>
@@ -271,13 +299,15 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
     * 프로젝트 여러 개에 동일한 도메인을 인증할 때 인증 과정을 여러 번 진행하지 않아도 됩니다.<br>
     * 한 프로젝트에서 인증받은 후 공유 기능을 활용해 다른 프로젝트의 이메일 서비스 앱키를 입력하면 도메인 공유가 가능합니다.
 
-### 반송 메일 설정
+<a id="manage-mail-domain-1"></a>
+### 반송 메일 설정 { #manage-mail-domain-1 }
 
 **반송 설정** 버튼을 클릭해 반송 메일을 보내도록 설정할 수 있습니다.
 반송 메일은 메일 발송 시 수신자의 메일 서비스에서 메일을 수신하지 못했을 때 발송되는 메일입니다.
 메일 주소를 no-reply@{도메인} 또는 noreply@{도메인}으로 설정할 경우 반송 설정 여부와 상관없이 반송 메일이 발송되지 않습니다.
 
-### 서브 도메인 등록
+<a id="register-sub-domains"></a>
+### 서브 도메인 등록 { #register-sub-domains }
 
 **메인 서브 도메인 > 설정** 버튼을 클릭해 서브 도메인을 등록할 수 있습니다.
 등록된 루트 도메인의 서브 도메인만 등록할 수 있습니다.
@@ -296,7 +326,8 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 * 보다 자세한 내용은 [사용자 지정 헤더(custom header)](./console-guide/#custom-header) 가이드를 참고하세요.
 
-### SPF, DKIM, DMARC 인증
+<a id="spf-dkim-dmarc-authentication"></a>
+### SPF, DKIM, DMARC 인증 { #spf-dkim-dmarc-authentication }
 
 NHN Cloud Email 서비스의 메일 발송(SMTP) 서버를 통해 사용자 소유의 도메인이 포함된 이메일 주소를 가지고 발송되는 것이므로, 사용자 소유의 도메인이 서비스되는 DNS에 추가 설정이 필요합니다.
 
@@ -307,11 +338,13 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 - [도메인 관리 가이드 > DKIM](./dkim-record/)
 - [도메인 관리 가이드 > DMARC](./dmarc-record/)
 
-## 웹훅 관리
+<a id="webhook-management"></a>
+## 웹훅 관리 { #webhook-management }
 
 웹훅이란, 서비스에서 어떠한 작업이 수행되었음을 알리는 기능을 말합니다. <br>
 웹훅을 등록할 경우 Email 서비스 내 특정 이벤트가 발생하면 웹훅 설정에 정의된 URL로 HTTP POST 요청을 생성합니다. 웹훅 설정은 **웹훅 관리** 탭에서 관리할 수 있습니다.
 
+<a id="webhook-management-register-webhook-settings"></a>
 #### 웹훅 설정 등록
 
 웹훅 등록 시 아래 설정 값을 입력합니다.
@@ -335,7 +368,8 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 
 등록 완료된 웹훅은 **웹훅 등록 목록**에서 확인 가능합니다.
 
-## 통계 정보 조회
+<a id="retrieve-statistics"></a>
+## 통계 정보 조회 { #retrieve-statistics }
 
 **(구)통계** 탭에서 발송 통계를 확인할 수 있습니다.
 조회 기간, 통계 구분(날짜, 시간, 요일), 메일 유형(일반, 대량), 템플릿 등을 조건으로 사용해 조회할 수 있습니다.
@@ -344,12 +378,14 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 
 ![email_24_20231023](https://static.toastoven.net/prod_email/email_24_20231023.png)
 
-## 통계 이벤트 키 관리
+<a id="manage-statistical-event-keys"></a>
+## 통계 이벤트 키 관리 { #manage-statistical-event-keys }
 **통계 이벤트 키 관리** 탭에서 통계 이벤트 키를 관리할 수 있습니다. 생성 시 이름, 설명, 이벤트 수집 기간을 설정할 수 있습니다. 이벤트 수집 기간을 설정하지 않으면 수집 기간은 무기한으로 설정됩니다. 생성된 통계 이벤트 키는 메시지 발송 시 설정할 수 있습니다. 통계 이벤트 키가 설정된 메시지들의 발송 결과는 **통계** 탭에서 통계 이벤트 키로 검색할 수 있습니다.
 
 <span id="stats"></span>
 
-## 통계 조회
+<a id="query-statistics"></a>
+## 통계 조회 { #query-statistics }
 최근 30일 내 수집된 메시지 수신/확인 데이터를 검색할 수 있습니다. 콘솔에서 **통계 조회**를 선택합니다. 메시지, 토큰 등록이나 삭제에 대한 통계를 검색할 수 있습니다.
 
 1. 기간을 검색 조건으로 설정할 수 있습니다.
@@ -358,8 +394,10 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
     - 기본은 설정된 기간에 따라 자동으로 최적화된 유형으로 그래프를 표시합니다.
 3. 메시지 통계에서는 통계 이벤트 키, 템플릿아이디, 메일 타입으로 검색할 수 있습니다.
 
-## 발송 설정
+<a id="sending-settings"></a>
+## 발송 설정 { #sending-settings }
 
+<a id="sending-settings-backup-settings"></a>
 #### 백업 설정
 
 - 메시지 보관 기간 정책에 따라 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
@@ -367,13 +405,16 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 
 <span id='personal-information-assignor'></span>
 
-## 참고
+<a id="note"></a>
+## 참고 { #note }
 
-### 사용자 지정 헤더(Custom header)
+<a id="custom-header"></a>
+### 사용자 지정 헤더(Custom header) { #custom-header }
 
 * 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
 * NHN Cloud Email 서비스에서는 아래 헤더 이외에 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt)에 설명된 형식을 따르는 헤더를 사용할 수 있습니다.
 
+<a id="custom-header-header-unable-to-request"></a>
 #### 요청할 수 없는 헤더
 
 * From
@@ -395,6 +436,7 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 * In-Reply-To
 * References
 
+<a id="custom-header-configuration"></a>
 #### 구성
 
 | 용어 | 설명 |
@@ -402,6 +444,7 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 |헤더 이름| 추가할 헤더의 이름. <br>영문과 숫자(a-z, A-Z, 0-9), 하이픈(-)만 사용해 1-50자 사이로 작성합니다. |
 |헤더값| 추가할 헤더의 값. <br>1-1000바이트 사이로 작성합니다. <br>ASCII가 아닌 문자는 Base64로 인코딩한 후 발송합니다. |
 
-### 데이터 보관 기간
+<a id="data-retention-period"></a>
+### 데이터 보관 기간 { #data-retention-period }
 
 * 데이터 보관 정책에 따라 최근 90일의 발송 이력을 보관합니다. 이 기간 동안 발송 내역 조회가 가능하며, 보관 기간이 만료되면 관련 법령에 따라 데이터를 삭제합니다.

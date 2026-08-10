@@ -1,9 +1,13 @@
-## Notification > Email > Webフック
+<!-- pre-align:aligned sig=9c3cc5a6234a -->
+
+<a id="notification-email-webhook-guide"></a>
+## Notification > Email > Webフック { #notification-email-webhook-guide }
 
 Emailサービス内で特定イベントが発生した時、Webフック設定に定義されたURLへPOSTリクエストを作成します。<br>
 作成されたPOSTリクエストについてのAPI文書です。
 
-### Webフック送信
+<a id="send-webhook"></a>
+### Webフック送信 { #send-webhook }
 
 [URL]
 
@@ -28,6 +32,7 @@ Emailサービス内で特定イベントが発生した時、Webフック設定
 | event           | 	String      | Webフックイベント名<br>* UNSUBSCRIBE:広告メール受信アドレス登録                                            |
 | hooks           | 	List\<Map\> | Webフックイベント発生時のデータ<br>* 詳細な内容は[イベントタイプ別フック(hook)定義](./api-guide/#event-hooks)を参照してください。 |
 
+<a id="send-webhook-curl"></a>
 #### cURL
 
 ```
@@ -52,10 +57,12 @@ curl -X POST \
 
 <span id="event-hooks"></span>
 
-### イベントタイプ別hooks定義
+<a id="hook-definitions-by-event-type"></a>
+### イベントタイプ別hooks定義 { #hook-definitions-by-event-type }
 
 Webフック設定に定義されたURLへPOSTリクエストを作成する時のイベントタイプ別フック(hook)データです。
 
+<a id="hook-definitions-by-event-type-register-an-address-to-receive-advertising-mail"></a>
 #### 広告メール受信アドレス登録
 
 | 値               | 	タイプ        | 	説明                                         |
@@ -77,6 +84,7 @@ Webフック設定に定義されたURLへPOSTリクエストを作成する時�
 }
 ```
 
+<a id="hook-definitions-by-event-type-update-the-message-sending-result-code"></a>
 #### メッセージの送信結果の更新
 
 '- 受信日時、ステータスコード、ステータスメッセージは送信完了(SST2)状態の時のみ提供されます。

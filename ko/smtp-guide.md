@@ -1,4 +1,7 @@
-## Notification > Email > SMTP Guide
+<!-- pre-align:aligned sig=6c7113775d99 -->
+
+<a id="notification-email-smtp-guide"></a>
+## Notification > Email > SMTP Guide { #notification-email-smtp-guide }
 
 [SMTP 도메인]
 
@@ -11,20 +14,24 @@
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
-## 암호화 연결
-### STARTTLS 연결
+<a id="section-1"></a>
+## 암호화 연결 { #section-1 }
+<a id="starttls"></a>
+### STARTTLS 연결 { #starttls }
 25, 587, 2587 포트를 통해 명시적 SSL을 사용하는 방법
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
-### TLS Wrapper 연결
+<a id="tls-wrapper"></a>
+### TLS Wrapper 연결 { #tls-wrapper }
 465, 2465 포트를 통해 암시적 SSL을 사용하는 방법
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
 
-## SMTP 자격 증명
+<a id="smtp"></a>
+## SMTP 자격 증명 { #smtp }
 인증 메커니즘은 PLAIN, LOGIN 두 방식을 선택하여 사용 할 수 있습니다.</br>
 인증 방식에 사용할 자격 증명은 아래 값을 참고합니다.
 
@@ -33,7 +40,8 @@ openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 | 사용자 이름 | NHN Cloud Email 서비스의 AppKey | 
 | 비밀번호 | NHN Cloud Email 서비스의 SecretKey | 
 
-### PLAIN 인증 방식
+<a id="plain"></a>
+### PLAIN 인증 방식 { #plain }
 PLAIN 인증 방식은 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩 하는 방법입니다.
 ```bash
@@ -59,7 +67,8 @@ auth plain AEFwcEtleQBTZWNyZXRLZXk=
 235 Authentication Successful
 ```
 
-### LOGIN 인증 방식
+<a id="login"></a>
+### LOGIN 인증 방식 { #login }
 LOGIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩 하는 방법입니다.
 ```bash
@@ -92,7 +101,8 @@ U2VjcmV0S2V5
 235 Authentication Successful
 ```
 
-### 용도별 메일 사용
+<a id="smtp-1"></a>
+### 용도별 메일 사용 { #smtp-1 }
 메일 용도에 따라 메일 타입을 지정할 수 있습니다.</br>
 메일 타입은 인증 시 Appkey와 함께 입력해 주시면 됩니다.</br>
 타입을 지정하지 않으면 normal 타입으로 메일이 발송됩니다.</br>
