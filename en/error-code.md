@@ -1,6 +1,10 @@
-## Notification > Email > Error Code
+<!-- pre-align:aligned sig=1ee6def13f9a -->
 
-### API Result Code
+<a id="notification-email-error-code"></a>
+## Notification > Email > Error Code { #notification-email-error-code }
+
+<a id="api-result-code"></a>
+### API Result Code { #api-result-code }
 
 | Category  | Success | Result code | Result code message                                                         | API response message                                                                                                      |
 |-------|-------|-------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|

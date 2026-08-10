@@ -1,9 +1,13 @@
-## Notification > Email > Overview
+<!-- pre-align:aligned sig=f1c6692b0631 -->
+
+<a id="notification-email-overview"></a>
+## Notification > Email > Overview { #notification-email-overview }
 
 In the NHN Cloud Email service, you can use a number of features, including mail delivery, sending scheduled delivery, checking delivery history and managing templates, etc.
 It also provides RESTful APIs for easy integration with proprietary delivery programs and management tools.
 
-## Main Features
+<a id="main-features"></a>
+## Main Features { #main-features }
 
 - Mass Delivery Support
     - You can enter a list of recipients in Excel file and send mail in bulk.
@@ -22,7 +26,8 @@ It also provides RESTful APIs for easy integration with proprietary delivery pro
 
 - You can use the mail delivery and view RESTful API available in customer’s applications.
 
-## Precautions Before Delivery
+<a id="precautions-before-delivery"></a>
+## Precautions Before Delivery { #precautions-before-delivery }
 To prevent emails sent using NHN Cloud Email service from being treated as spam by an external email service, you should keep in mind the following.
 
 First, DNS must be set up. <br/>

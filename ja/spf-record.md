@@ -1,18 +1,25 @@
-## Notification > Email > ドメイン管理ガイド > SPF
+<!-- pre-align:aligned sig=b814642717fc -->
 
-### SPF(sender policy framework)とは？
+<a id="notification-email-domain-management-guide-spf"></a>
+## Notification > Email > ドメイン管理ガイド > SPF { #notification-email-domain-management-guide-spf }
+
+<a id="what-is-sender-policy-framework-spf"></a>
+### SPF(sender policy framework)とは？ { #what-is-sender-policy-framework-spf }
 
 - SPFはメール送信者の信頼性を検証するためのメカニズムで、メールサーバーが特定のドメインから送信されたメールが実際に許可されたサーバーから来たかどうかを確認します。
 - メール送信中に送信者のDNSに登録されたSPFレコードを確認し、登録されていないIPアドレスから送信されたメールをスパムメールとして処理できます。
 
-### SPFレコード認証手順
+<a id="spf-record-authentication-procedure"></a>
+### SPFレコード認証手順 { #spf-record-authentication-procedure }
 
+<a id="spf-record-authentication-procedure-mail-domain-registration-and-authentication"></a>
 #### 1. メールドメイン登録および認証
 
 - SPFレコード検証は、メールドメインが登録および認証が完了した場合、Webコンソールで有効になります。
 - メールドメイン認証に関する詳細ガイドは[Notification > Email > ドメイン管理ガイド > ドメイン認証および保護](./domain-verification/)
   を参照してください。
 
+<a id="spf-record-authentication-procedure-nhn-cloud-spf-record-settings"></a>
 #### 2. NHN Cloud SPFレコード設定
 
 - 下記の値をDNSのTXTレコードに登録します。詳しい登録方法はDNS管理会社にお問い合わせください。
@@ -24,6 +31,7 @@ v=spf1 include:_spfblocka.toast.com ~all
 - TXTレコードのSPF設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
 - SPF設定変更作業後、数時間程度経過してからメールを送信するのが安全です。
 
+<a id="spf-record-authentication-procedure-verifying-spf-records"></a>
 #### 3. SPFレコードの検証
 
 - 認証完了したドメインのSPFレコードが正常に登録されたか確認します。
@@ -31,7 +39,8 @@ v=spf1 include:_spfblocka.toast.com ~all
 
 ![email_202312_06_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_ja.png)
 
-### 注意事項
+<a id="precautions"></a>
+### 注意事項 { #precautions }
 
 [RFC 4408](https://datatracker.ietf.org/doc/rfc4408/?include_text=1)のSection 10.1 "Processing Limits"にはDNS Lookup間の処理規約が記載されています。
 

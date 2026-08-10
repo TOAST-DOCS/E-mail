@@ -1,4 +1,7 @@
-## Notification > Email > SMTPガイド
+<!-- pre-align:aligned sig=6c7113775d99 -->
+
+<a id="notification-email-smtp-guide"></a>
+## Notification > Email > SMTPガイド { #notification-email-smtp-guide }
 
 [SMTPドメイン]
 
@@ -11,20 +14,24 @@
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
-## 暗号化接続
-### STARTTLS接続
+<a id="section-1"></a>
+## 暗号化接続 { #section-1 }
+<a id="starttls"></a>
+### STARTTLS接続 { #starttls }
 25、587、2587ポートを介して明示的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
-### TLS Wrapper接続
+<a id="tls-wrapper"></a>
+### TLS Wrapper接続 { #tls-wrapper }
 465、2465ポートを介して暗黙的SSLを使用する方法
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
 
-## SMTP認証情報
+<a id="smtp"></a>
+## SMTP認証情報 { #smtp }
 認証メカニズムはPLAIN、LOGINの2つの方式を選択して使用できます。</br>
 認証方式に使用する認証情報は以下の値を参照します。
 
@@ -33,7 +40,8 @@ openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 | ユーザー名 | NHN Cloud EmailサービスのAppKey | 
 | パスワード | NHN Cloud EmailサービスのSecretKey | 
 
-### PLAIN認証方式
+<a id="plain"></a>
+### PLAIN認証方式 { #plain }
 PLAIN認証方式は**ユーザー名**、**パスワード**を1行のBase64でエンコードして認証情報を試みます。</br>
 **ユーザー名**、**パスワード**を1行のBase64でエンコードする方法です。
 ```bash
@@ -59,7 +67,8 @@ auth plain AEFwcEtleQBTZWNyZXRLZXk=
 235 Authentication Successful
 ```
 
-### LOGIN認証方式
+<a id="login"></a>
+### LOGIN認証方式 { #login }
 LOGIN認証方式は**ユーザー名**、**パスワード**をそれぞれBase64でエンコードして認証情報を試みます。</br>
 **ユーザー名**、**パスワード**をそれぞれBase64でエンコードする方法です。
 ```bash
@@ -92,7 +101,8 @@ U2VjcmV0S2V5
 235 Authentication Successful
 ```
 
-### 用途別メールの使用
+<a id="smtp-1"></a>
+### 用途別メールの使用 { #smtp-1 }
 メールの用途に応じてメールタイプを指定できます。</br>
 メールタイプは認証時にAppkeyと一緒に入力してください。</br>
 タイプを指定しない場合、normalタイプでメールが送信されます。</br>
