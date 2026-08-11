@@ -1,16 +1,11 @@
 <!-- pre-align:aligned sig=110644a55903 -->
 
 <a id="notification-email-service-policy"></a>
-## 個人情報取扱受託者のご案内 { #notification-email-service-policy }
-
-<!-- TODO: translate body -->
-
-<a id="sending-restriction-information"></a>
-## Notification > Email > サービスポリシー { #sending-restriction-information }
+## Notification > Email > サービスポリシー { #notification-email-service-policy }
 
 <span id='operation-policy'></span>
-<a id="section-1"></a>
-## 送信制限に関する案内 { #section-1 }
+<a id="sending-restriction-information"></a>
+## 送信制限に関する案内 { #sending-restriction-information }
 
 * NHN Cloud Emailサービスは、メールのバウンス率が過度に高い場合、運用ポリシーに従って送信が制限されることがあります。
     * 送信失敗率とは、お客様が送信をリクエストしたメールアドレスのうち、受信SMTPサーバーからメールを送信できないと応答した(バウンスまたは送信失敗)メールアドレスの割合です。
@@ -28,12 +23,25 @@
 
 * 送信失敗率が高くてメールの送信が制限される場合は、以下の事項を確認してください。
     * 送信失敗率が高い原因に該当する事項がないかを確認した後、改善措置を行ってください。
-    * その後、[1:1問い合わせ](https://www.toast.com/kr/support/inquiry)より送信制限解除についてお問い合わせください。## 送信遅延に関するご案内
+    * その後、[1:1問い合わせ](https://www.toast.com/kr/support/inquiry)より送信制限解除についてお問い合わせください。
 
-<!-- TODO: translate body -->
+<a id="section-1"></a>
+## 送信遅延に関するご案内 { #section-1 }
+
+- プロジェクトを有効化した直後や送信量を増やしていく初期段階では、送信ドメインの送信履歴が十分に形成されておらず、一部のメールが遅延して到達したり、通常より送信速度が遅くなったりする場合があります。
+- 送信ドメインのSPF、DKIM、DMARC認証を完了し、本ガイドのポリシーに準拠していても送信遅延が続く場合は、[カスタマーサポート > お問い合わせ](https://www.nhncloud.com/kr/support/inquiry)から送信履歴の確認をリクエストしてください。
+- ドメイン認証状態と送信履歴を確認のうえ、結果をお知らせします。
 
 <a id="notice-of-personal-information-consignee"></a>
 ## 個人情報受託業者に関するお知らせ { #notice-of-personal-information-consignee }
 
-<!-- TODO: translate body -->
+「お客様」がNHN Cloud Emailサービスを利用する際、「お客様」と「当社」の間に個人情報処理業務の委託・受託関係が発生するため、情報通信網法および個人情報保護法に基づき、委託者である「お客様」は、個人情報処理方針において「当社」に個人情報を委託している現況(受託者および業務内容)を公開する必要があります。
+
+これに伴い、「当社」では、「お客様」がNHN Cloud Emailサービスを利用する際に関連法令を遵守し、委託現況の未公開による過怠料などの不利益を受けることがないよう、以下のとおりご案内いたします。
+
+(例)<br>
+[個人情報受託者に関するお知らせ]<br>
+Emailサービスをご利用の際は、お客様が運営する「個人情報処理方針」>委託現況に以下の内容を記載してください。<br>
+受託者: NHN Cloud Corp.<br>
+業務内容: メール送信代行
 
