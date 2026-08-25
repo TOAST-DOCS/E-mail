@@ -1,8 +1,12 @@
-## Notification > Email > Service Policy
+<!-- pre-align:aligned sig=110644a55903 -->
+
+<a id="notification-email-service-policy"></a>
+## Notification > Email > Service Policy { #notification-email-service-policy }
 
 <span id='operation-policy'></span>
 
-## Sending Restriction Information
+<a id="sending-restriction-information"></a>
+## Sending Restriction Information { #sending-restriction-information }
 
 - Please note that, in case of excessive email bounce rate, NHN Cloud Email service may be restricted from sending emails according to the service operation policy.
     - The bounce rate is the percentage of email addresses, out of all email addresses that a customer has requested to send to, for which the receiving SMTP server has responded that delivery is not possible (bounced or failed to send).
@@ -25,7 +29,13 @@
 - If delivery delays persist even after completing SPF, DKIM, and DMARC authentication for the sending domain and complying with the policies in this guide, please request a delivery history review through [Customer Support > Contact Us](https://www.nhncloud.com/en/support/inquiry).
 - Results will be provided after verifying the domain authentication status and delivery history.
 
-## Notice of Personal Information Consignee
+<a id="section-1"></a>
+## Note on send delays { #section-1 }
+
+<!-- TODO: translate body -->
+
+<a id="notice-of-personal-information-consignee"></a>
+## Notice of Personal Information Consignee { #notice-of-personal-information-consignee }
 
 When 'Customer' uses the NHN Cloud Email service, a business entrustment relationship arises between 'Customer' and 'Company' regarding the processing of personal information, and in accordance with the Information and Communications Network Act and the Personal Information Protection Act, 'Customer', as the consignor, must disclose the status of consigning personal information to 'Company' (the consignee and the contents of the business) through the Privacy Policy.
 

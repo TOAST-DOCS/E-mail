@@ -1,6 +1,10 @@
-## Notification > Email > エラーコード
+<!-- pre-align:aligned sig=1ee6def13f9a -->
 
-### API結果コード
+<a id="notification-email-error-code"></a>
+## Notification > Email > エラーコード { #notification-email-error-code }
+
+<a id="api-result-code"></a>
+### API結果コード { #api-result-code }
 
 | カテゴリ | 成否 | 結果コード | 結果コードメッセージ | APIレスポンスメッセージ |
 |-------|-------|-------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|

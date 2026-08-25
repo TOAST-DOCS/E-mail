@@ -1,6 +1,10 @@
-## Notification > Email > API v2.0ガイド
+<!-- pre-align:aligned sig=6dbb01fc078a -->
 
-### v2.0 APIの紹介
+<a id="notification-email-api-v20-guide"></a>
+## Notification > Email > API v2.0ガイド { #notification-email-api-v20-guide }
+
+<a id="v20-api"></a>
+### v2.0 APIの紹介 { #v20-api }
 
 1. シークレットキー認証の導入
 	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
@@ -21,7 +25,8 @@ Content-Type: application/json;charset=UTF-8
 
 <p id="secret-key"></p>
 
-### Secret Key
+<a id="secret-key"></a>
+### Secret Key { #secret-key }
 - コンソールで確認可能です。
 - Secret Keyが必要なAPIを呼び出す際、ヘッダに以下のように設定して呼び出す必要があります。
 ```
@@ -35,10 +40,13 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 * Windows cmdではcurl例が正常にリクエストされないことがあります。
 
-## メールの送信
+<a id="mail-delivery"></a>
+## メールの送信 { #mail-delivery }
 
-### 一般メールの送信
+<a id="send-general-mails"></a>
+### 一般メールの送信 { #send-general-mails }
 
+<a id="send-general-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -147,6 +155,7 @@ curl -X POST \
 }'
 ```
 
+<a id="send-general-mails-response"></a>
 #### レスポンス
 
 ```json
@@ -189,10 +198,12 @@ curl -X POST \
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
-### 個別メール送信
+<a id="send-individual-mails"></a>
+### 個別メール送信 { #send-individual-mails }
 
 * 受信者が複数人いる時、それぞれの受信者に個別にメールを送信する機能です。複数人に送っても、受信者には本人のみ表示されます。
 
+<a id="send-individual-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -291,6 +302,7 @@ curl -X POST \
 ```
 
 
+<a id="send-individual-mails-response"></a>
 #### レスポンス
 
 ```json
@@ -334,9 +346,11 @@ curl -X POST \
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
 
-### 広告性一般メール送信
+<a id="sending-general-ad-mails"></a>
+### 広告性一般メール送信 { #sending-general-ad-mails }
 * リクエスト、レスポンス情報は、一般メール送信と同じです。
 
+<a id="sending-general-ad-mails-caution-for-sending-ad-mails"></a>
 #### 広告メール送信時の注意事項
 * タイトルに必ず(広告)文言を挿入する必要があります。
 * 詳細は[[広告性メール送信](./console-guide/#_3)]を参照してください。
@@ -417,7 +431,8 @@ curl -X POST \
 }'
 ```
 
-### 広告性個別メール送信
+<a id="sending-individual-ad-mails"></a>
+### 広告性個別メール送信 { #sending-individual-ad-mails }
 
 * URLの最後のみad-eachMailに変わり、残りは個別メール送信と同じです。
 
@@ -488,8 +503,10 @@ curl -X POST \
 }'
 ```
 
-### 認証メールの送信
+<a id="send-authenticated-mails"></a>
+### 認証メールの送信 { #send-authenticated-mails }
 
+<a id="send-authenticated-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -543,6 +560,7 @@ curl -X POST \
 * テンプレートを使用する場合、**senderAddress、title、body**は必須値ではありません。この値を入力しない場合はテンプレートに登録された値を使用します。
 * テンプレートを使用しながら、**senderAddress、senderName、title、body、templateType**を入力する場合は、テンプレートに登録された値より優先して適用されます。
 
+<a id="send-authenticated-mails-differences-from-general-mails"></a>
 #### 一般メールと異なる点
 認証メールの性格上、次のように異なる特性があります。
 
@@ -589,6 +607,7 @@ curl -X POST \
 }'
 ```
 
+<a id="send-authenticated-mails-response"></a>
 #### レスポンス
 
 ```json
@@ -630,8 +649,10 @@ curl -X POST \
 |--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
-### 添付ファイルのアップロード
+<a id="upload-attached-files"></a>
+### 添付ファイルのアップロード { #upload-attached-files }
 
+<a id="upload-attached-files-request"></a>
 #### リクエスト
 
 [URL]
@@ -666,6 +687,7 @@ curl -X POST \
 |fileBody|	Byte[]|	O|	ファイルのByte[]値|
 |createUser|	String|	X|	ファイルアップロードユーザー情報|
 
+<a id="upload-attached-files-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -679,6 +701,7 @@ curl -X POST \
 }'
 ```
 
+<a id="upload-attached-files-response"></a>
 #### レスポンス
 
 ```
@@ -709,8 +732,10 @@ curl -X POST \
 |-- fileName|	String|	ファイル名|
 
 
-### タイトル/本文置換
+<a id="titlebody-replacement"></a>
+### タイトル/本文置換 { #titlebody-replacement }
 
+<a id="titlebody-replacement-default-type"></a>
 #### 基本タイプ
 * (##置換Key##)形式で入力すると、ユーザーが入力した**templateParameter**で置換できます。
 ```
@@ -721,6 +746,7 @@ curl -X POST \
 * body：test2送信します。
 ```
 
+<a id="titlebody-replacement-freemarker-type"></a>
 #### FreeMarkerタイプ
 * [FreeMarkerテンプレートエンジン](https://freemarker.apache.org/)をサポートします。
 * テンプレート言語を使用してユーザーが入力した**templateParameter**に置換できます。
@@ -732,6 +758,7 @@ curl -X POST \
 * body：test2送信します。
 ```
 
+<a id="titlebody-replacement-example-of-general-mail-request"></a>
 #### 一般メールのリクエスト例
 ```
 {
@@ -749,6 +776,7 @@ curl -X POST \
 }
 ```
 
+<a id="titlebody-replacement-example-of-individual-mail-request"></a>
 #### 個別メールのリクエスト例
 ```
 {
@@ -769,10 +797,13 @@ curl -X POST \
 }
 ```
 
-## メール照会
+<a id="query-of-mails"></a>
+## メール照会 { #query-of-mails }
 
-### メール送信リストの照会
+<a id="query-list-of-mail-deliveries"></a>
+### メール送信リストの照会 { #query-list-of-mail-deliveries }
 
+<a id="query-list-of-mail-deliveries-request"></a>
 #### リクエスト
 
 [URL]
@@ -821,6 +852,7 @@ curl -X POST \
 
 * **requestId**または**startSendDate**、**endSendDate**リクエストフィールドは必須です。
 
+<a id="query-list-of-mail-deliveries-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -829,6 +861,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-list-of-mail-deliveries-response"></a>
 #### レスポンス
 
 ``` json
@@ -905,8 +938,10 @@ curl -X GET \
 |-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
 
 
-### メール送信詳細の照会
+<a id="query-mail-delivery-details"></a>
+### メール送信詳細の照会 { #query-mail-delivery-details }
 
+<a id="query-mail-delivery-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -935,6 +970,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-mail-delivery-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -943,6 +979,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-mail-delivery-details-response"></a>
 #### レスポンス
 
 ``` json
@@ -1047,8 +1084,10 @@ curl -X GET \
 |-- senderGroupingKey|	String|	発信者グループキー|
 
 
-### 大量メールリスト照会
+<a id="query-of-mails-1"></a>
+### 大量メールリスト照会 { #query-of-mails-1 }
 
+<a id="query-of-mails-1-1"></a>
 #### リクエスト
 
 [URL]
@@ -1089,6 +1128,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-of-mails-1-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1097,6 +1137,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
+<a id="query-of-mails-1-2"></a>
 #### レスポンス
 
 ```json
@@ -1156,8 +1197,10 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateDate |  String  | 修正日時 |
 
-### 大量メール送信の受信者照会
+<a id="query-of-mails-2"></a>
+### 大量メール送信の受信者照会 { #query-of-mails-2 }
 
+<a id="query-of-mails-2-1"></a>
 #### リクエスト
 
 [URL]
@@ -1197,6 +1240,7 @@ curl -X GET \
 |pageNum|	Integer|	X|	ページ番号 1(デフォルト)|
 |pageSize|	Integer|	X|	照会件数 15(デフォルト)|
 
+<a id="query-of-mails-2-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1205,6 +1249,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
+<a id="query-of-mails-2-2"></a>
 #### レスポンス
 
 ```json
@@ -1272,8 +1317,10 @@ curl -X GET \
 |-- createDate |  String  | 作成日時 |
 |-- updateDate |  String  | 修正日時 |
 
-### 大量メール送信の詳細照会
+<a id="query-of-mails-3"></a>
+### 大量メール送信の詳細照会 { #query-of-mails-3 }
 
+<a id="query-of-mails-3-1"></a>
 #### リクエスト
 
 [URL]
@@ -1302,6 +1349,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-of-mails-3-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1310,6 +1358,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"'' 
 ```
 
+<a id="query-of-mails-3-2"></a>
 #### レスポンス
 
 ```json
@@ -1404,9 +1453,12 @@ curl -X GET \
 |--- filePath|	String| 	添付ファイルパス                                                                   |
 |--- fileSize|	Integer| 	添付ファイルサイズ(byte)                                                             |
 |--- createDate|	String| 	作成日時                                                                     |
-## 予約送信管理
+<a id="scheduled-delivery-management"></a>
+## 予約送信管理 { #scheduled-delivery-management }
 
-### 予約送信リストの照会
+<a id="list-scheduled-delivery"></a>
+### 予約送信リストの照会 { #list-scheduled-delivery }
+<a id="list-scheduled-delivery-request"></a>
 #### リクエスト
 
 [URL]
@@ -1447,6 +1499,7 @@ curl -X GET \
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 
+<a id="list-scheduled-delivery-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1455,6 +1508,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="list-scheduled-delivery-response"></a>
 #### レスポンス
 
 ```json
@@ -1518,7 +1572,9 @@ curl -X GET \
 |-- mailStatusName|	String|	送信ステータス名|
 |-- senderGroupingKey|	String|	発信者グループキー |
 
-### 予約送信の詳細照会
+<a id="query-detail-scheduled-delivery"></a>
+### 予約送信の詳細照会 { #query-detail-scheduled-delivery }
+<a id="query-detail-scheduled-delivery-request"></a>
 #### リクエスト
 
 [URL]
@@ -1547,6 +1603,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1555,6 +1612,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-detail-scheduled-delivery-response"></a>
 #### レスポンス
 
 ```json
@@ -1642,7 +1700,9 @@ curl -X GET \
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー |
 
-### 予約発送の取り消し - リクエスト別
+<a id="cancel-scheduled-delivery-by-request"></a>
+### 予約発送の取り消し - リクエスト別 { #cancel-scheduled-delivery-by-request }
+<a id="cancel-scheduled-delivery-by-request-request"></a>
 #### リクエスト
 
 [URL]
@@ -1670,6 +1730,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1678,6 +1739,7 @@ curl -X PUT \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="cancel-scheduled-delivery-by-request-response"></a>
 #### レスポンス
 
 ```json
@@ -1697,7 +1759,9 @@ curl -X PUT \
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### 予約発送の取り消し - 受信者別
+<a id="cancel-scheduled-delivery-by-recipient"></a>
+### 予約発送の取り消し - 受信者別 { #cancel-scheduled-delivery-by-recipient }
+<a id="cancel-scheduled-delivery-by-recipient-request"></a>
 #### リクエスト
 
 [URL]
@@ -1726,6 +1790,7 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1734,6 +1799,7 @@ curl -X PUT \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="cancel-scheduled-delivery-by-recipient-response"></a>
 #### レスポンス
 
 ```json
@@ -1753,7 +1819,9 @@ curl -X PUT \
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### 予約送信キャンセル - 多重フィルタ
+<a id="cancel-scheduled-delivery---multiple-filter"></a>
+### 予約送信キャンセル - 多重フィルタ { #cancel-scheduled-delivery---multiple-filter }
+<a id="cancel-scheduled-delivery---multiple-filter-request"></a>
 #### リクエスト
 
 [URL]
@@ -1808,6 +1876,7 @@ curl -X PUT \
 
 * **startSendDate**, **endSendDate**, **updateUser** リクエストフィールドは必須です。
 
+<a id="cancel-scheduled-delivery---multiple-filter-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -1827,6 +1896,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="cancel-scheduled-delivery---multiple-filter-response"></a>
 #### レスポンス
 
 ```json
@@ -1859,7 +1929,9 @@ curl -X PUT \
 |-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
 
 
-### 予約送信キャンセルリクエストリスト照会 - 多重フィルタ
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter"></a>
+### 予約送信キャンセルリクエストリスト照会 - 多重フィルタ { #list-request-of-scheduled-delivery-cancellation---multiple-filter }
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-request"></a>
 #### リクエスト
 
 [URL]
@@ -1896,6 +1968,7 @@ curl -X PUT \
 |pageNum|	Integer|	X|	ページ番号(デフォルト値：1)|
 |pageSize|	Integer|	X|	照会件数(デフォルト値：15)|
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -1904,6 +1977,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="list-request-of-scheduled-delivery-cancellation---multiple-filter-response"></a>
 #### レスポンス
 
 ```json
@@ -1970,10 +2044,13 @@ curl -X GET \
 
 <p id="category"></p>
 
-## カテゴリーの管理
+<a id="category-management"></a>
+## カテゴリーの管理 { #category-management }
 
-### カテゴリーリストの照会
+<a id="list"></a>
+### カテゴリーリストの照会 { #list }
 
+<a id="list-request"></a>
 #### リクエスト
 
 [URL]
@@ -2009,6 +2086,7 @@ curl -X GET \
 |pageNum|	Integer|	X|	ページ番号(デフォルト値：1)|
 |pageSize|	Integer|	X|	照会件数(デフォルト値：15)|
 
+<a id="list-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2017,6 +2095,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="list-response"></a>
 #### レスポンス
 
 ```json
@@ -2070,8 +2149,10 @@ curl -X GET \
 |-- updateUser|	String|	修正者|
 |-- updateDate|	String|	修正日時|
 
-### カテゴリー詳細照会
+<a id="query-details"></a>
+### カテゴリー詳細照会 { #query-details }
 
+<a id="query-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -2099,6 +2180,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2107,6 +2189,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-details-response"></a>
 #### レスポンス
 
 ```json
@@ -2153,8 +2236,10 @@ curl -X GET \
 |-- updateDate|	String|	修正日時|
 
 
-### カテゴリーの登録
+<a id="register"></a>
+### カテゴリーの登録 { #register }
 
+<a id="register-request"></a>
 #### リクエスト
 
 [URL]
@@ -2192,6 +2277,7 @@ curl -X GET \
 | useYn |	String| 1 |	X|	使用有無Y(デフォルト値)、N|
 | userId | String | 50 | X | ユーザーID |
 
+<a id="register-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -2207,6 +2293,7 @@ curl -X POST \
 }'
 ```
 
+<a id="register-response"></a>
 #### レスポンス
 
 ```json
@@ -2235,8 +2322,10 @@ curl -X POST \
 |-- categoryId|	Integer|	カテゴリーID|
 
 
-### カテゴリーの修正
+<a id="modify"></a>
+### カテゴリーの修正 { #modify }
 
+<a id="modify-request"></a>
 #### リクエスト
 
 [URL]
@@ -2273,6 +2362,7 @@ curl -X POST \
 | useYn |	String| 1 |	X|	使用有無Y、N|
 | userId | String | 50 | X | ユーザーID |
 
+<a id="modify-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -2287,6 +2377,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="modify-response"></a>
 #### レスポンス
 
 ```json
@@ -2307,8 +2398,10 @@ curl -X PUT \
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### カテゴリーの削除
+<a id="delete"></a>
+### カテゴリーの削除 { #delete }
 
+<a id="delete-request"></a>
 #### リクエスト
 
 [URL]
@@ -2336,6 +2429,7 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="delete-curl"></a>
 #### cURL
 ```
 curl -X DELETE \
@@ -2344,6 +2438,7 @@ curl -X DELETE \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="delete-response"></a>
 #### レスポンス
 
 ```json
@@ -2366,10 +2461,13 @@ curl -X DELETE \
 
 <p id="template"></p>
 
-## テンプレートの照会
+<a id="query-of-templates"></a>
+## テンプレートの照会 { #query-of-templates }
 
-### テンプレートリスト照会
+<a id="query-list-of-templates"></a>
+### テンプレートリスト照会 { #query-list-of-templates }
 
+<a id="query-list-of-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -2406,6 +2504,7 @@ curl -X DELETE \
 |pageSize|	Integer|	X|	照会件数(Default：15)|
 |all|	Boolean|	X|	全てのテンプレートリストを照会するかどうか|
 
+<a id="query-list-of-templates-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2414,6 +2513,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-list-of-templates-response"></a>
 #### レスポンス
 
 ```json
@@ -2467,8 +2567,10 @@ curl -X GET \
 |-- createDate|	String|	作成日時|
 |-- updateDate|	String|	修正日時|
 
-### テンプレート詳細照会
+<a id="query-template-details"></a>
+### テンプレート詳細照会 { #query-template-details }
 
+<a id="query-template-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -2496,6 +2598,7 @@ curl -X GET \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="query-template-details-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2504,6 +2607,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-template-details-response"></a>
 #### レスポンス
 
 ```json
@@ -2572,8 +2676,10 @@ curl -X GET \
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 
-### テンプレートの登録
+<a id="register-templates"></a>
+### テンプレートの登録 { #register-templates }
 
+<a id="register-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -2617,6 +2723,7 @@ curl -X GET \
 | attachFileIdList | List<Integer> | - | X | 添付ファイルID(fileId) |
 | userId | String | 50 | X | ユーザーID |
 
+<a id="register-templates-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -2638,6 +2745,7 @@ curl -X POST \
 }'
 ```
 
+<a id="register-templates-response"></a>
 #### レスポンス
 
 ```json
@@ -2658,8 +2766,10 @@ curl -X POST \
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
 
-### テンプレート添付ファイルのアップロード
+<a id="query-of-templates-upload-attached-files"></a>
+### テンプレート添付ファイルのアップロード { #query-of-templates-upload-attached-files }
 
+<a id="query-of-templates-upload-attached-files-request"></a>
 #### リクエスト
 
 [URL]
@@ -2695,6 +2805,7 @@ curl -X POST \
 |fileBody|	Byte[]| 	-     |O|	ファイルのByte[]値|
 |userId|	String| 	50    |X|	ユーザーID|
 
+<a id="query-of-templates-upload-attached-files-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -2708,6 +2819,7 @@ curl -X POST \
 }'
 ```
 
+<a id="query-of-templates-upload-attached-files-response"></a>
 #### レスポンス
 
 ```json
@@ -2737,8 +2849,10 @@ curl -X POST \
 |-- fileId| Integer| ファイルID|
 |-- fileName|   String| ファイル名|
 
-### テンプレートの修正
+<a id="modify-templates"></a>
+### テンプレートの修正 { #modify-templates }
 
+<a id="modify-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -2780,6 +2894,7 @@ curl -X POST \
 | attachFileIdList | List<Integer> | - | X | 添付ファイルID(fileId) |
 | userId | String | 50 | X | ユーザーID |
 
+<a id="modify-templates-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -2799,6 +2914,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="modify-templates-response"></a>
 #### レスポンス
 
 ```json
@@ -2819,8 +2935,10 @@ curl -X PUT \
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
 
-### テンプレートの削除
+<a id="delete-templates"></a>
+### テンプレートの削除 { #delete-templates }
 
+<a id="delete-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -2848,6 +2966,7 @@ curl -X PUT \
 |---|---|---|---|
 |X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
 
+<a id="delete-templates-curl"></a>
 #### cURL
 ```
 curl -X DELETE \
@@ -2856,6 +2975,7 @@ curl -X DELETE \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="delete-templates-response"></a>
 #### レスポンス
 
 ```json
@@ -2875,10 +2995,13 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| 成否 |
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
-## 統計照会
+<a id="query-statistics"></a>
+## 統計照会 { #query-statistics }
 
-### 統合統計照会
+<a id="query-daily-statistics"></a>
+### 統合統計照会 { #query-daily-statistics }
 
+<a id="query-daily-statistics-request"></a>
 #### リクエスト
 
 [URL]
@@ -2916,6 +3039,7 @@ curl -X DELETE \
 |adYn | String | X | 広告かどうか<br>Y：広告、N：広告ではない<br>入力しなければ全て|
 |templateId | String | X | テンプレートID |
 
+<a id="query-daily-statistics-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -2924,6 +3048,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-daily-statistics-response"></a>
 #### レスポンス
 
 ```json
@@ -2967,10 +3092,13 @@ curl -X GET \
 |-- receivedRate | String | 受信率 |
 |-- openedRate | String | 開封率 |
 
-## 受信拒否管理
+<a id="rejection-management"></a>
+## 受信拒否管理 { #rejection-management }
 
-### 受信拒否照会
+<a id="query-rejections"></a>
+### 受信拒否照会 { #query-rejections }
 
+<a id="query-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -3006,6 +3134,7 @@ curl -X GET \
 |endBlockDate|	String|	X| 受信拒否日終了値 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
+<a id="query-rejections-curl"></a>
 #### cURL
 ```
 curl -X GET \
@@ -3014,6 +3143,7 @@ curl -X GET \
 -H 'X-Secret-Key: '"${SECRET_KEY}"''
 ```
 
+<a id="query-rejections-response"></a>
 #### レスポンス
 ```json
 {
@@ -3048,8 +3178,10 @@ curl -X GET \
 |-- mailAddress | String | 受信拒否メールアドレス |
 |-- blockDate | String | 受信拒否日(yyyy-MM-dd HH:mm:ss.S)
 
-### 受信拒否登録
+<a id="register-rejections"></a>
+### 受信拒否登録 { #register-rejections }
 
+<a id="register-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -3084,6 +3216,7 @@ curl -X GET \
 | - mailAddress | String | O | 受信拒否メールアドレス |
 | - blockDate | String | X | 受信拒否日(yyyy-MM-dd HH:mm:ss) |
 
+<a id="register-rejections-curl"></a>
 #### cURL
 ```
 curl -X POST \
@@ -3099,6 +3232,7 @@ curl -X POST \
 }'
 ```
 
+<a id="register-rejections-response"></a>
 #### レスポンス
 ```json
 {
@@ -3118,7 +3252,9 @@ curl -X POST \
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### 受信拒否削除
+<a id="delete-rejections"></a>
+### 受信拒否削除 { #delete-rejections }
+<a id="delete-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -3153,6 +3289,7 @@ curl -X POST \
 | blockReceiverList | ㅣList | O | 受信拒否リスト |
 | - mailAddress | String | O | 受信拒否メールアドレス |
 
+<a id="delete-rejections-curl"></a>
 #### cURL
 ```
 curl -X PUT \
@@ -3168,6 +3305,7 @@ curl -X PUT \
 }'
 ```
 
+<a id="delete-rejections-response"></a>
 #### レスポンス
 ```json
 {

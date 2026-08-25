@@ -1,4 +1,7 @@
-## Notification > Email > API v1.5ガイド
+<!-- pre-align:aligned sig=d462b46f3021 -->
+
+<a id="notification-email-api-v15-guide"></a>
+## Notification > Email > API v1.5ガイド { #notification-email-api-v15-guide }
 
 [APIドメイン]
 
@@ -16,10 +19,13 @@ Content-Type: application/json;charset=UTF-8
 
 * Windows cmdではcurl例が正常にリクエストされないことがあります。
 
-## メールの送信
+<a id="mail-delivery"></a>
+## メールの送信 { #mail-delivery }
 
-### 一般メールの送信
+<a id="send-general-mails"></a>
+### 一般メールの送信 { #send-general-mails }
 
+<a id="send-general-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -72,6 +78,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
+<a id="send-general-mails-response"></a>
 #### レスポンス
 
 ```
@@ -114,15 +121,18 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
+<a id="send-general-mails-updated-for-v15"></a>
 #### v1.5の変更事項
 
 * 発信者グループキーフィールドを追加しました。リクエスト単位で設定できます。
 * 送信リクエストをする時、**senderGroupingKey**フィールドを指定して、リクエスト照会時に活用できます。
 
-### 個別メール送信
+<a id="send-individual-mails"></a>
+### 個別メール送信 { #send-individual-mails }
 
 * 受信者が複数人いる時、それぞれの受信者に個別にメールを送信する機能です。複数人に送っても、受信者には本人のみ表示されます。
 
+<a id="send-individual-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -175,6 +185,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="send-individual-mails-response"></a>
 #### レスポンス
 
 ```
@@ -218,14 +229,17 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
 
 
+<a id="send-individual-mails-updated-for-v15"></a>
 #### v1.5の変更事項
 
 * 発信者グループキーフィールドを追加しました。リクエスト単位で設定できます。
 * 送信リクエストをする時、**senderGroupingKey**フィールドを指定して、リクエスト照会時に活用できます。
 
-### 広告性一般メール送信
+<a id="sending-general-ad-mails"></a>
+### 広告性一般メール送信 { #sending-general-ad-mails }
 * リクエスト、レスポンス情報は、一般メール送信と同じです。
 
+<a id="sending-general-ad-mails-caution-for-sending-ad-mails"></a>
 #### 広告メール送信時の注意事項
 * タイトルに必ず(広告)文言を挿入する必要があります。
 * 詳細は[[広告性メール送信](./console-guide/#_3)]を参照してください。
@@ -246,7 +260,8 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/ad-mail -d '{"templateId":"TEMPLATE1","templateParameter":{"key":"value"},"receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","receiveType":"MRT0"},{"receiveMailAddr":"customer2@nhnent.com","receiveName":"顧客2","receiveType":"MRT1"}],"userId":"USER"}'
 ```
 
-### 広告性個別メール送信
+<a id="sending-individual-ad-mails"></a>
+### 広告性個別メール送信 { #sending-individual-ad-mails }
 
 * URLの最後のみad-eachMailに変わり、残りは個別メール送信と同じです。
 
@@ -266,8 +281,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/ad-eachMail -d '{"templateId":"TEMPLATE1","receiverList":[{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}}],"userId":"USER"}'
 ```
 
-### 認証メールの送信
+<a id="send-authenticated-mails"></a>
+### 認証メールの送信 { #send-authenticated-mails }
 
+<a id="send-authenticated-mails-request"></a>
 #### リクエスト
 
 [URL]
@@ -305,6 +322,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 
 * templateを使用する場合、title、bodyは必須から除外(入力時に入力された値がtemplateより優先適用)
 
+<a id="send-authenticated-mails-differences-from-general-mails"></a>
 #### 一般メールと異なる点
 認証メールの性格上、次のように異なる特性があります。
 
@@ -321,6 +339,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/auth-mail -d '{"templateId":"TEMPLATE1","receiver":{"receiveMailAddr":"customer1@nhnent.com","receiveName":"顧客1","templateParameter":{"key":"value"}},"userId":"USER"}'
 ```
 
+<a id="send-authenticated-mails-response"></a>
 #### レスポンス
 
 ```
@@ -349,8 +368,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- data|	Object|	データ領域|
 |-- requestId|	String|	リクエストID|
 |-- statusCode|	String|	リクエストステータスコード(Y：送信準備、N：送信準備失敗)|
-### 添付ファイルのアップロード
+<a id="upload-attached-files"></a>
+### 添付ファイルのアップロード { #upload-attached-files }
 
+<a id="upload-attached-files-request"></a>
 #### リクエスト
 
 [URL]
@@ -386,6 +407,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/attachfile/binaryUpload -d '{"fileName":"file.csv","createUser":"USER","fileBody":[]}'
 ```
 
+<a id="upload-attached-files-response"></a>
 #### レスポンス
 
 ```
@@ -416,8 +438,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- fileName|	String|	ファイル名|
 
 
-### タイトル/本文置換
+<a id="titlebody-replacement"></a>
+### タイトル/本文置換 { #titlebody-replacement }
 
+<a id="titlebody-replacement-default-type"></a>
 #### 基本タイプ
 * (##置換Key##)形式で入力すると、ユーザーが入力した**templateParameter**で置換できます。
 ```
@@ -428,6 +452,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 * body：test2送信します。
 ```
 
+<a id="titlebody-replacement-freemarker-type"></a>
 #### FreeMarkerタイプ
 * [FreeMarkerテンプレートエンジン](https://freemarker.apache.org/)をサポートします。
 * テンプレート言語を使用してユーザーが入力した**templateParameter**に置換できます。
@@ -439,6 +464,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 * body：test2送信します。
 ```
 
+<a id="titlebody-replacement-example-of-general-mail-request"></a>
 #### 一般メールのリクエスト例
 ```
 {
@@ -456,6 +482,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 }
 ```
 
+<a id="titlebody-replacement-example-of-individual-mail-request"></a>
 #### 個別メールのリクエスト例
 ```
 {
@@ -476,10 +503,13 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 }
 ```
 
-## メール照会
+<a id="query-of-mails"></a>
+## メール照会 { #query-of-mails }
 
-### メール送信リストの照会
+<a id="query-list-of-mail-deliveries"></a>
+### メール送信リストの照会 { #query-list-of-mail-deliveries }
 
+<a id="query-list-of-mail-deliveries-request"></a>
 #### リクエスト
 
 [URL]
@@ -521,6 +551,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mails?startSendDate=2018-03-01+00%3A00&endSendDate=2018-03-07+23%3A59&pageSize=10"
 ```
 
+<a id="query-list-of-mail-deliveries-response"></a>
 #### レスポンス
 
 ``` json
@@ -592,6 +623,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- receiveName| String| 受信者名|
 |-- senderGroupingKey| String| 発信者グループキー|
 
+<a id="query-list-of-mail-deliveries-updated-for-v15"></a>
 #### v1.5の変更事項
 
 * 発信者グループキーフィールド**senderGroupingKey**を追加しました。
@@ -603,8 +635,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 * 送信者のメールアドレスを表すフィールドの名前を**senderAddress**に変更しました。
 
 
-### メール送信詳細の照会
+<a id="query-mail-delivery-details"></a>
+### メール送信詳細の照会 { #query-mail-delivery-details }
 
+<a id="query-mail-delivery-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -626,6 +660,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/sender/mail/{requestId}/{mailSeq}"
 ```
 
+<a id="query-mail-delivery-details-response"></a>
 #### レスポンス
 
 ``` json
@@ -725,6 +760,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
 |-- senderGroupingKey|	String|	発信者グループキー|
 
+<a id="query-mail-delivery-details-updated-for-v15"></a>
 #### v1.5からの変更点
 
 * 発信者グループキーフィールド**senderGroupingKey**を追加しました。
@@ -733,10 +769,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 * 受信者の既読情報フィールドの名前を**isOpened**に変更しました。
 * 受信者の開封日時のフィールドの名前を**openedDate**に変更しました。
 * 送信者のメールアドレスを表すフィールドの名前を**senderAddress**に変更しました。
-## カテゴリーの管理
+<a id="category-management"></a>
+## カテゴリーの管理 { #category-management }
 
-### カテゴリーリストの照会
+<a id="list"></a>
+### カテゴリーリストの照会 { #list }
 
+<a id="list-request"></a>
 #### リクエスト
 
 [URL]
@@ -765,6 +804,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories?useYn=Y&categoryParentId=1&pageNum=1&pageSize=10"
 ```
 
+<a id="list-response"></a>
 #### レスポンス
 
 ``` json
@@ -818,8 +858,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- updateUser|	String|	修正者|
 |-- updateDate|	String|	修正日時|
 
-### カテゴリー詳細照会
+<a id="query-details"></a>
+### カテゴリー詳細照会 { #query-details }
 
+<a id="query-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -840,6 +882,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId}"
 ```
 
+<a id="query-details-response"></a>
 #### レスポンス
 
 ``` json
@@ -886,8 +929,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- updateDate|	String|	修正日時|
 
 
-### カテゴリーの登録
+<a id="register"></a>
+### カテゴリーの登録 { #register }
 
+<a id="register-request"></a>
 #### リクエスト
 
 [URL]
@@ -919,6 +964,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="register-response"></a>
 #### レスポンス
 
 ``` json
@@ -947,8 +993,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- categoryId|	Integer|	カテゴリーID|
 
 
-### カテゴリーの修正
+<a id="modify"></a>
+### カテゴリーの修正 { #modify }
 
+<a id="modify-request"></a>
 #### リクエスト
 
 [URL]
@@ -978,6 +1026,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId} -d '{"categoryName":"Category","categoryDesc":"Top Category","useYn":"Y","userId":"USER"}'
 ```
 
+<a id="modify-response"></a>
 #### レスポンス
 
 ``` json
@@ -997,8 +1046,10 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### カテゴリーの削除
+<a id="delete"></a>
+### カテゴリーの削除 { #delete }
 
+<a id="delete-request"></a>
 #### リクエスト
 
 [URL]
@@ -1019,6 +1070,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/categories/{categoryId}
 ```
 
+<a id="delete-response"></a>
 #### レスポンス
 
 ``` json
@@ -1040,10 +1092,13 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 
 <p id="template"></p>
 
-## テンプレートの照会
+<a id="query-of-templates"></a>
+## テンプレートの照会 { #query-of-templates }
 
-### テンプレートリスト照会
+<a id="query-list-of-templates"></a>
+### テンプレートリスト照会 { #query-list-of-templates }
 
+<a id="query-list-of-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -1073,6 +1128,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates?useYn=Y&pageNum=1&pageSize=10"
 ```
 
+<a id="query-list-of-templates-response"></a>
 #### レスポンス
 
 ```
@@ -1126,8 +1182,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- createDate|	String|	作成日時|
 |-- updateDate|	String|	修正日時|
 
-### テンプレート詳細照会
+<a id="query-template-details"></a>
+### テンプレート詳細照会 { #query-template-details }
 
+<a id="query-template-details-request"></a>
 #### リクエスト
 
 [URL]
@@ -1148,6 +1206,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId}"
 ```
 
+<a id="query-template-details-response"></a>
 #### レスポンス
 
 ```
@@ -1216,8 +1275,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |--- fileSize|	Integer|	添付ファイルサイズ(byte)|
 |--- createDate|	String|	作成日時|
 
-### テンプレートの登録
+<a id="register-templates"></a>
+### テンプレートの登録 { #register-templates }
 
+<a id="register-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -1255,6 +1316,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 ```
 
 
+<a id="register-templates-response"></a>
 #### レスポンス
 
 ``` json
@@ -1274,8 +1336,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
 
-### テンプレート添付ファイルのアップロード
+<a id="query-of-templates-upload-attached-files"></a>
+### テンプレート添付ファイルのアップロード { #query-of-templates-upload-attached-files }
 
+<a id="query-of-templates-upload-attached-files-request"></a>
 #### リクエスト
 
 [URL]
@@ -1303,6 +1367,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/attachfile/binaryUpload -d '{"fileName":"file.csv","userId":"USER","fileBody":[]}'
 ```
 
+<a id="query-of-templates-upload-attached-files-response"></a>
 #### レスポンス
 
 ``` json
@@ -1332,8 +1397,10 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |-- fileId| Integer| ファイルID|
 |-- fileName|   String| ファイル名|
 
-### テンプレートの修正
+<a id="modify-templates"></a>
+### テンプレートの修正 { #modify-templates }
 
+<a id="modify-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -1368,6 +1435,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId} -d '{"templateName":"テンプレート名","templateDesc":"テンプレートの説明","useYn":"Y","sendMailAddress":"test@nhn.com","title":"メールタイトル","templateType":"DEFAULT","body":"メールの内容","attachFileIdList":[1,2,3],"userId":"USER"}'
 ```
 
+<a id="modify-templates-response"></a>
 #### レスポンス
 
 ``` json
@@ -1387,8 +1455,10 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
 
-### テンプレートの削除
+<a id="delete-templates"></a>
+### テンプレートの削除 { #delete-templates }
 
+<a id="delete-templates-request"></a>
 #### リクエスト
 
 [URL]
@@ -1409,6 +1479,7 @@ curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.
 curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/templates/{templateId}
 ```
 
+<a id="delete-templates-response"></a>
 #### レスポンス
 
 ``` json
@@ -1427,10 +1498,13 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| 成否 |
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
-## 統計照会
+<a id="query-statistics"></a>
+## 統計照会 { #query-statistics }
 
-### 統合統計照会
+<a id="query-daily-statistics"></a>
+### 統合統計照会 { #query-daily-statistics }
 
+<a id="query-daily-statistics-request"></a>
 #### リクエスト
 
 [URL]
@@ -1461,6 +1535,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/statistics/view?from=2018-03-21+00%3A00&to=2018-03-23+00%3A00&searchType=DATE&mailTypes=NORMAL&adYn=Y&templateId=templateId1"
 ```
 
+<a id="query-daily-statistics-response"></a>
 #### レスポンス
 
 ```json
@@ -1503,10 +1578,13 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- receivedRate | String | 受信率 |
 |-- openedRate | String | 開封率 |
 
-## 受信拒否管理
+<a id="rejection-management"></a>
+## 受信拒否管理 { #rejection-management }
 
-### 受信拒否照会
+<a id="query-rejections"></a>
+### 受信拒否照会 { #query-rejections }
 
+<a id="query-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -1536,6 +1614,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers?mailAddress=customer1@nhnent.com&pageNum=1&pageSize=10"
 ```
 
+<a id="query-rejections-response"></a>
 #### レスポンス
 ```
 {
@@ -1570,8 +1649,10 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 |-- mailAddress | String | 受信拒否メールアドレス |
 |-- blockDate | String | 受信拒否日(yyyy-MM-dd HH:mm:ss.S)
 
-### 受信拒否登録
+<a id="register-rejections"></a>
+### 受信拒否登録 { #register-rejections }
 
+<a id="register-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -1593,6 +1674,7 @@ curl -X GET -H "Content-Type: application/json;charset=UTF-8" "https://email.api
 curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers -d '{"blockReceiverList":[{"mailAddress":"customer1@nhnent.com","blockDate":"2018-03-01 00:00:00"}]}'
 ```
 
+<a id="register-rejections-response"></a>
 #### レスポンス
 ```
 {
@@ -1610,7 +1692,9 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- resultCode|	Integer|	失敗コード|
 |- resultMessage|	String|	失敗メッセージ|
 
-### 受信拒否削除
+<a id="delete-rejections"></a>
+### 受信拒否削除 { #delete-rejections }
+<a id="delete-rejections-request"></a>
 #### リクエスト
 
 [URL]
@@ -1632,6 +1716,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 curl -X PUT -H "Content-Type: application/json;charset=UTF-8" https://email.api.nhncloudservice.com/email/v1.5/appKeys/{appKey}/block-receivers -d '{"deleted":true,"blockReceiverList":[{"mailAddress":"customer1@nhnent.com"}]}'
 ```
 
+<a id="delete-rejections-response"></a>
 #### レスポンス
 ```
 {
