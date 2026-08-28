@@ -400,8 +400,6 @@ You can view by date, time zone and day of the week.
 ## Manage Statistical Event Keys { #manage-statistical-event-keys }
 You can manage statistical event keys on the Manage **Statistical Event Keys** tab. When you create it, you can set a name, description, and event collection period. If you do not set an event collection period, the collection period is set to indefinite. The created statistical event key can be set at the time of sending the message. The sending results of messages with statistical event keys set can be searched by statistical event key on the **Statistics** tab.
 
-<span id="stats"></span>
-
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 You can search for message received/viewed data collected in the last 30 days. In the console, select View **statistics**. You can retrieve statistics for messages, token enrollments, or deletions.
@@ -421,8 +419,6 @@ You can search for message received/viewed data collected in the last 30 days. I
 - Depending on the message retention period policy, you can back up sending history data that is older than 90 days.
 - If you enter information about whether to back up messages, the file extension, and the storage to upload the file to, a file containing the backup date will
   be created in that storage.
-
-<span id='personal-information-assignor'></span>
 
 <a id="note"></a>
 ## [Note] { #note }
