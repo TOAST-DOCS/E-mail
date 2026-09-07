@@ -3,8 +3,6 @@
 <a id="notification-email-service-policy"></a>
 ## Notification > Email > Service Policy { #notification-email-service-policy }
 
-<span id='operation-policy'></span>
-
 <a id="sending-restriction-information"></a>
 ## Sending Restriction Information { #sending-restriction-information }
 
