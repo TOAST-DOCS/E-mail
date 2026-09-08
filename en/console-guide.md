@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=f392043ebeea -->
 
 <a id="notification-email-console-guide"></a>
@@ -409,6 +411,15 @@ You can search for message received/viewed data collected in the last 30 days. I
 2. Type lets you set how the graph is displayed.
     - Default displays the graph in a type that is automatically optimized based on the set time period.
 3. In message statistics, you can search by statistical event key, templateid, and mail type.
+
+!!! danger "Caution"
+    Difference between statistics count and billing count
+
+    The count provided in the Statistics menu is aggregated in real time at the time of delivery. Due to the nature of real-time aggregation, some items may not be reflected in the statistics.
+
+    The billing count is finalized each month through a separate verification process covering all delivery records. For this reason, the count in the Statistics menu may differ from the billing count, and the exact usage count is based on the billing records.
+
+    Therefore, for verifying billing amounts or reconciliation purposes, use the billing records instead of the count in the Statistics menu. Use the Statistics menu to check delivery trends and result distribution.
 
 <a id="sending-settings"></a>
 ## Sending Settings { #sending-settings }
