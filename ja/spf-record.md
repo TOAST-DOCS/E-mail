@@ -37,7 +37,7 @@ v=spf1 include:_spfblocka.toast.com ~all
 - 認証完了したドメインのSPFレコードが正常に登録されたか確認します。
 - 登録が完了すると、「SPF検証成功」というメッセージが表示されます。
 
-![email_202312_06_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06_ja.png)
+![email_202312_06_ja.png](../static/images/email_202312_06_ja.png)
 
 <a id="precautions"></a>
 ### 注意事項 { #precautions }

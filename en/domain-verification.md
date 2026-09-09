@@ -27,7 +27,7 @@ emails using that mail domain.
 <a id="mail-domain-authentication-and-protection-procedures-register-mail-domain"></a>
 #### Register mail domain
 
-![email_202312_00.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00_en.png)
+![email_202312_00.png](../static/images/email_202312_00_en.png)
 
 1. Navigate to email console.
 2. Navigate to **Manage Mail Domain** tab.
@@ -36,7 +36,7 @@ emails using that mail domain.
 <a id="mail-domain-authentication-and-protection-procedures-mail-domain-authentication-ownership-verification-procedure"></a>
 #### Mail domain authentication (ownership verification procedure)
 
-![email_202312_01.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01_en.png)
+![email_202312_01.png](../static/images/email_202312_01_en.png)
 
 1. Click **Authentication**. Created token is displayed in **Mail Domain Authentication** pop-up screen.
 2. Add TXT record to the registered mail domain DNS.
@@ -72,7 +72,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="share-domains"></a>
 ### Share Domains { #share-domains }
 
-![email_202312_02.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02_en.png)
+![email_202312_02.png](../static/images/email_202312_02_en.png)
 
 1. Click **Share>Settings** button for the mail domain item you registered.
 2. Navigate to the project you want to share and check NHN Cloud Email app key. Register the verified app key. When the sharing is complete, project information
@@ -81,7 +81,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="protecting-mail-domains"></a>
 ### Protecting Mail Domains { #protecting-mail-domains }
 
-![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_en.png)
+![email_202312_03.png](../static/images/email_202312_03_en.png)
 
 The protection is automatically activated when the mail domain is registered and ownership is verified. If you don't want to activate the protection, you can disable the feature manually.
 

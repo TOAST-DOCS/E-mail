@@ -72,7 +72,7 @@
 2. 登録された送信ドメインに**DKIM設定** ボタンをクリックします。
 3. 表示されたDKIMレコードをコピーして、送信指定ドメインDNSに登録します。
 
-![email_202312_04_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04_ja.png)
+![email_202312_04_ja.png](../static/images/email_202312_04_ja.png)
 
 ##### 注意事項
 
@@ -90,7 +90,7 @@
 
 - 認証に成功した場合、ポップアップ画面で**DKIM**タブを選択し、**有効化**をクリックしてDKIMを有効化します。
 
-![email_202312_05_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_ja.png)
+![email_202312_05_ja.png](../static/images/email_202312_05_ja.png)
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-test-dkim-authentication"></a>
 #### 5. DKIM認証をテストする

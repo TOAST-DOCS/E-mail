@@ -106,14 +106,14 @@ will be authenticated by DMARC policy. |
 
 - When DMARC record DNS registration is complete, perform DMARC authentication in DMARC administration pop-up.
 - When authentication is complete, the phrase **Authenticated** is displayed.
-  ![email\_202312\_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_en.png)
+  ![email\_202312\_08.png](../static/images/email_202312_08_en.png)
 
 <a id="dmarc-record-certification-procedure-example-of-dmarc-record-lookup-failure-screen"></a>
 #### Example of DMARC record lookup failure screen
 
 - If DMARC record lookup fails, the following screen is displayed.
 
-![email\_202312\_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_en.png)
+![email\_202312\_09.png](../static/images/email_202312_09_en.png)
 
 <a id="precautions"></a>
 ### Precautions { #precautions }

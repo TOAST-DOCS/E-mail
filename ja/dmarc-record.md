@@ -101,14 +101,14 @@ DMARCレコードに使われる値について説明します。詳細は[RFC 7
 
 - DMARCレコードのDNS登録が完了したら、DMARC管理ポップアップでDMARC認証を行います。
 - 認証が完了すると、**認証完了**という文言が表示されます。
-  ![email_202312_08_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08_ja.png)
+  ![email_202312_08_ja.png](../static/images/email_202312_08_ja.png)
 
 <a id="dmarc-record-certification-procedure-example-of-dmarc-record-lookup-failure-screen"></a>
 #### DMARCレコード照会失敗画面例
 
 - DMARCレコード照会に失敗した場合、次のような画面が表示されます。
 
-![email_202312_09_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09_ja.png)
+![email_202312_09_ja.png](../static/images/email_202312_09_ja.png)
 
 <a id="precautions"></a>
 ### 注意事項 { #precautions }
