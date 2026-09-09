@@ -36,7 +36,7 @@ v=spf1 include:_spfblocka.toast.com ~all
 - 인증 완료한 도메인의 SPF 레코드가 정상적으로 등록되었는지 확인합니다.
 - 등록이 완료되었을 경우 `SPF 검증 성공` 메시지가 표시됩니다.
 
-![email_202312_06.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_06.png)
+![email_202312_06.png](../static/images/email_202312_06.png)
 
 <a id="precautions"></a>
 ### 주의 사항 { #precautions }
