@@ -76,24 +76,24 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時が未入力の時は現在時間で送信(yyyy-MM-dd HH:mm:ss) |
-|title|	String|	O|	タイトル|
+|​senderAddress|	String|	O|	送信者のメールアドレス (最大 100 文字)|
+|senderName|	String|	X|	送信者名 (最大 100 文字)|
+|requestDate|	String|	X|	送信日時 (yyyy-MM-dd HH:mm:ss) <br/>現在日時(デフォルト) |
+|title|	String|	O|	タイトル (最大 998 文字)|
 |body|	String|	O|	内容|
-|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid|
-|templateId|	String|	X|	送信テンプレートID|
+|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid (ファイルアップロード時に file id を返します)|
+|templateId|	String|	X|	送信テンプレートID (最大 50 文字)|
 |templateType| String| X| テンプレートタイプ <br/>DEFAULT(default)、FREEMARKER)|
 |templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時に入力)|
-|- #key#|	String|	X|	置換キー(##key##)|
-|- #value#|	Object|	X|	置換キーにマッピングされるValue値|
+|- key|	String|	X|	置換キー(##key##)|
+|- value|	Object|	X|	置換キーにマッピングされるValue値|
 |receiverList|	List|	O|	受信者リスト<br/>最大1000人まで送信可能(受信者、CC含む)|
 |- receiveMailAddr|	String|	O|	受信者のメールアドレス|
 |- receiveName|	String|	X|	受信者名|
 |- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
+|senderGroupingKey| String| X| 発信者グループキー (最大 100 文字)|
+|userId|	String|	X|	送信セパレータ ex)admin,system (最大 50 文字)|
 | statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 
@@ -233,14 +233,14 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時、未入力時は現在時間で送信(yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	タイトル|
-|body|	String|	O|	内容|
-|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid|
-|templateType| String| X| テンプレートタイプ <br/>DEFAULT(default)、FREEMARKER)|
-|templateId|	String|	X|	送信テンプレートID|
+|senderAddress|	String|	O|	送信者メールアドレス（最大 100 文字）|
+|senderName|	String|	X|	送信者名（最大 100 文字）|
+|requestDate|	String|	X|	送信日時（yyyy-MM-dd HH:mm:ss）<br/>現在日時（デフォルト）|
+|title|	String|	O|	メールタイトル（最大 998 文字）|
+|body|	String|	O|	メール内容|
+|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid（ファイルアップロード時に file id を返す）|
+|templateId|	String|	X|	送信テンプレートID（最大 50 文字）|
+|templateType| String| X| テンプレートタイプ <br/>DEFAULT（デフォルト）、FREEMARKER）|
 |receiverList|	List|	O|	受信者リスト<br/>最大1000人まで送信可能|
 |- receiveMailAddr|	String|	O|	受信者のメールアドレス|
 |- receiveName|	String|	X|	受信者名|
@@ -248,9 +248,9 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
-|statsId| String |X| 統計ID(発信検索条件には含まれません) |
+|senderGroupingKey| String| X| 発信者グループキー（最大 100 文字）|
+|userId|	String|	X|	送信セパレータ ex)admin,system（最大 50 文字）|
+|statsId| String  | X | 統計ID(発信検索条件には含まれません) |
 
 [注意]
 
@@ -536,10 +536,10 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時、未入力時は現在時間で送信(yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	タイトル|
+|​senderAddress|	String|	O|	送信者のメール（最大 100 文字）|
+|senderName|	String|	X|	送信者名（最大 100 文字）|
+|requestDate|	String|	X|	送信日時 (yyyy-MM-dd HH:mm:ss) <br/>現在日時（デフォルト）|
+|title|	String|	O|	タイトル（最大 998 文字）|
 |body|	String|	O|	内容|
 |templateId|	String|	X|	送信テンプレートID|
 |receiver|	Object|	O|	受信者 |
@@ -548,9 +548,9 @@ curl -X POST \
 |- templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時の入力)|
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)（最大 100 文字）|
 |senderGroupingKey| String| X| 送信者グループキー (最大100文字) |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
+|userId|	String|	X|	送信セパレータ ex)admin,system（最大 50 文字）|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 [注意]
@@ -1226,7 +1226,7 @@ curl -X GET \
 |requestId|	String|	O|	リクエストID|
 |startSendDate|	String|	O|	送信日開始値(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	送信日終了値(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	送信メールアドレス|
+|senderAddress|	String|	X|	発信メールアドレス|
 |senderName|	String|	X|	送信者名|
 |templateId|	String|	X|	テンプレートID|
 |sendStatus|	String|	X|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|

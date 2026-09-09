@@ -85,6 +85,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER)|
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
@@ -1245,7 +1246,7 @@ curl -X GET \
 |requestId|	String|	O|	Request ID|
 |startSendDate|	String|	O|	Start value of send date(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	End value of send date (yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	Sender mail address|
+|senderAddress|	String|	X|	Sender email address|
 |senderName|	String|	X|	Sender name|
 |templateId|	String|	X|	Template ID|
 |sendStatus|	String|	X|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|

@@ -84,6 +84,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+| templateType | String | X | Template type <br/>DEFAULT (default), FREEMARKER) |
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
@@ -1471,9 +1472,9 @@ curl -X GET \
 
 [Path parameter]
 
-|Value| Type | Description |
+|Value|	Type|	Description|
 |---|---|---|
-|appKey|	String|	Original appKey|
+|appKey|	String|	Unique appKey|
 
 [Header]
 
@@ -1483,9 +1484,23 @@ curl -X GET \
 }
 ```
 
-|Value| Type | Required | Description |
+|Value|	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[Note](./api-guide/#secret-key)] |
+
+
+[Query parameter]
+
+|Value|	Type|	Required|	Description|
+|---|---|---|---|
+| requestId | String | X | Request ID |
+| startSendDate | String | X | Start time of delivery request (yyyy-MM-dd HH:mm:ss) |
+| endSendDate | String | X | End time of delivery request (yyyy-MM-dd HH:mm:ss) |
+| senderMail | String | X | Sender email address |
+| receiveMail | String | X | Recipient email address |
+| templateId | String | X | Template ID |
+| pageNum | Integer | X | Page number 1 (default) |
+| pageSize | Integer | X | Number of results to retrieve 15 (default) |
 
 <a id="list-scheduled-delivery-curl"></a>
 #### cURL
