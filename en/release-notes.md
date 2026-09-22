@@ -17,12 +17,16 @@
 <a id="notification-email-release-notes-1"></a>
 ### May 27, 2026 { #notification-email-release-notes-1 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-1-1"></a>
 #### Bug Fixes
 
-<!-- TODO: translate body -->
+* [API] Improved unsubscribe link call failure issue
+    * Fixed an issue where the unsubscribe link in sent emails failed to be called in some cases.
+    * Previously sent unsubscribe links also work correctly after the fix.
+* [API] Improved handling of domains containing non-ASCII characters
+    * Changed to return an error response when a domain registration or email sending request is made with a domain containing non-ASCII characters such as accent marks (e.g., `münchen.de`).
+    * Sending stability is improved by blocking domain requests that do not comply with RFC 1123 standards (letters, numbers, hyphens, and periods).
+    * If you need to use an internationalized domain, convert it to Punycode format (e.g., `xn--mnchen-3ya.de`) before making the request.
 
 <a id="march-24-2026"></a>
 ### March 24, 2026 { #march-24-2026 }
@@ -463,12 +467,11 @@
 <a id="notification-email-release-notes-2"></a>
 ### October 27, 2020 { #notification-email-release-notes-2 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-2-1"></a>
 #### Added Features
 
-<!-- TODO: translate body -->
+* [Console] Added a feature to cancel bulk mail delivery
+    * Added a feature to cancel mail that is being sent on the **Retrieve Mass Mail Delivery** tab.
 
 <a id="september-22-2020"></a>
 ### September 22, 2020 { #september-22-2020 }

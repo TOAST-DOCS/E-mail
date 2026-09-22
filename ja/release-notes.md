@@ -17,12 +17,16 @@
 <a id="notification-email-release-notes-1"></a>
 ### 2026. 05. 27. { #notification-email-release-notes-1 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-1-1"></a>
 #### バグ修正
 
-<!-- TODO: translate body -->
+* [API] 受信拒否リンク呼び出し失敗の問題を改善
+    * 送信済みメール内の受信拒否リンクをクリックした際、一部のケースで呼び出しが失敗していた問題が修正されました。
+    * 既存に送信済みの受信拒否リンクも、変更後は正常に動作します。
+* [API] 非ASCII文字を含むドメインの処理を改善
+    * アクセント記号などの非ASCII文字を含むドメイン（例: `münchen.de`）に対してドメイン登録を要求したり、メール送信を要求したりした場合、エラーレスポンスが返されるように変更されました。
+    * RFC 1123 の基準（英字、数字、ハイフン、ドット）に従わないドメインリクエストをブロックすることで、送信の安定性が向上します。
+    * 国際化ドメインを使用する必要がある場合は、Punycode（例: `xn--mnchen-3ya.de`）形式に変換してリクエストしてください。
 
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
@@ -423,12 +427,11 @@
 <a id="notification-email-release-notes-2"></a>
 ### 2020. 10. 27. { #notification-email-release-notes-2 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-2-1"></a>
 #### 機能追加
 
-<!-- TODO: translate body -->
+* [コンソール] 大量メール送信キャンセル機能の追加
+    * **[大量メール送信照会]** タブで、送信中の状態のメールをキャンセルできる機能が追加されました。
 
 <a id="september-22-2020"></a>
 ### 2020. 09. 22. { #september-22-2020 }
