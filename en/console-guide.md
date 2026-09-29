@@ -100,7 +100,7 @@ You can use mail templates that was created in advance.
 <a id="mass-delivery"></a>
 ### Mass Delivery { #mass-delivery }
 
-You can send Mass Delivery mail through template file in Excel/CSV format. On the bottom tab, select ** Mass Delivery **.
+You can send Mass Delivery mail through template file in Excel/CSV format. On the bottom tab, select **Mass Delivery**.
 
 ![email_04_20231023_en](https://static.toastoven.net/prod_email/email_04_20231023_en.png)
 ![email_05_20231023_en](https://static.toastoven.net/prod_email/email_05_20231023_en.png)
@@ -148,7 +148,7 @@ After creating categories, you can classify and manage templates that you use to
 
 ![email_08_20231023_en](https://static.toastoven.net/prod_email/email_08_20231023_en.png)
 
-- To add/modify template, you can click on **Add/ modify template ** button
+- To add/modify template, you can click on **Add/ modify template** button
 - Make sure to click **Add Templates** while a category is selected.
 - If want to enter to replace authentication number, order number, coupon code, points, etc., **enter by tying replacement key to ### in the title or contents**
   .
@@ -156,7 +156,7 @@ After creating categories, you can classify and manage templates that you use to
 <a id="unsubscription-management"></a>
 ## Unsubscription Management { #unsubscription-management }
 
-You can manage targets of Unsubscription On **Unsubscription management ** tab.
+You can manage targets of Unsubscription On **Unsubscription management** tab.
 
 ![email_09_20231023_en](https://static.toastoven.net/prod_email/email_09_20231023_en.png)
 
@@ -184,8 +184,8 @@ You can View users who have declined to receive so far, and you can register or 
 
 ![email_12_20231023_en](https://static.toastoven.net/prod_email/email_12_20231023_en.png)
 
-- Select Unsubscription email address you want to delete and click **Delete Unsubscription ** button.
-- Once deletion is complete, it can be seen on the ** Unsubscription Management** tab.
+- Select Unsubscription email address you want to delete and click **Delete Unsubscription** button.
+- Once deletion is complete, it can be seen on the **Unsubscription Management** tab.
 
 <a id="retrieve-delivery"></a>
 ## Retrieve Delivery { #retrieve-delivery }
@@ -361,7 +361,7 @@ refer to **Domain Management Guide**.
 
 Webhook refers to a feature that informs you that a certain task has been done in the service. <br>
 When registering a web hook, if a specific event occurs within the email service, it generates HTTP POST request with URL defined in the webhook settings.
-Webhook settings can be managed from ** Webhook Management ** tab.
+Webhook settings can be managed from **Webhook Management** tab.
 
 <a id="webhook-management-register-webhook-settings"></a>
 #### Register Webhook Settings
