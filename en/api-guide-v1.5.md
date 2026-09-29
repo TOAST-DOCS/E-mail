@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER)|
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
