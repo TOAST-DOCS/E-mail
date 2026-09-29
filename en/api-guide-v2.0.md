@@ -4,12 +4,12 @@
 ## Notification > Email > API v2.0 Guide { #notification-email-api-v20-guide }
 
 <a id="v20-api"></a>
-### v2.0 API 소개 { #v20-api }
+### Overview { #v20-api }
 
-1. 시크릿 키 인증 도입
-	* v2.0 API 호출 시 헤더에 [시크릿 키](./api-guide/#secret-key)를 설정해서 호출해야 합니다.
-2. 대량 발송 조회 API 추가
-	* 대량 발송건에 대한 조회 API가 추가되었습니다.
+1. Added secret key authentication
+	* When calling the v2.0 API, you must set the [Secret Key](./api-guide/#secret-key) in the header.
+2. Added Bulk Delivery Query API
+	* Added an API to query bulk delivery requests.
 
 
 [API Domain]
@@ -27,8 +27,8 @@ Content-Type: application/json;charset=UTF-8
 
 <a id="secret-key"></a>
 ### Secret Key { #secret-key }
-- 콘솔에서 확인 가능합니다.
-- Secret Key가 필요한 API를 호출할 때, 헤더에 아래와 같이 설정해서 호출해야 합니다.
+- You can check this in the console.
+- When calling an API that requires a Secret Key, you must set the header as follows before making the call.
 ```
 Header
 X-Secret-Key: [a-zA-Z0-9]{8}
@@ -554,7 +554,7 @@ curl -X POST \
 | -- #key#            | String | X        | Replacement key (##key##)                                    |
 | -- #value#          | Object | X        | Mapped value for replacement key                             |
 | customHeaders       | Map    | X        | [Custom Header](./console-guide/#custom-header)                   |
-|senderGroupingKey| String| X| 발신자 그룹키 ( 최대 100자 )|
+|senderGroupingKey| String| X| Sender group key (up to 100 characters)|
 | userId              | String | X        | Delimiter for delivery e.g.) admin,system                    |
 | statsId             | String | X        | Statistics ID (not included in the delivery search conditions)|
 
@@ -1088,7 +1088,7 @@ curl -X GET \
 
 
 <a id="query-of-mails-1"></a>
-### 대량 메일 리스트 조회 { #query-of-mails-1 }
+### List Bulk Mail { #query-of-mails-1 }
 
 <a id="query-of-mails-1-1"></a>
 #### 요청
@@ -1101,23 +1101,23 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+| Value | Type | Description |
 |---|---|---|
-|appKey|	String|	고유의 appKey|
+|appKey|	String|	Unique appkey|
 
 [Query parameter]
 
-|값|	타입|	필수|	설명|
+| Value | Type | Required | Description |
 |---|---|---|---|
-|requestId|	String|	O|	요청 ID|
-|startSendDate|	String|	O|	발송 날짜 시작 값(yyyy-MM-dd HH:mm:ss)|
-|endSendDate|	String|	O|	발송 날짜 종료 값(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	발신메일 주소|
-|senderName|	String|	X|	발신자 이름|
-|templateId|	String|	X|	템플릿 ID|
-|sendStatus|	String|	X|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
-|pageNum|	Integer|	X|	페이지 번호 1(기본값)|
-|pageSize|	Integer|	X|	조회 건수 15(기본값)|
+|requestId|	String|	O|	Request ID|
+|startSendDate|	String|	O|	Start date of delivery (yyyy-MM-dd HH:mm:ss)|
+|endSendDate|	String|	O|	End date of delivery (yyyy-MM-dd HH:mm:ss)|
+|senderMail|	String|	X|	Sender email address|
+|senderName|	String|	X|	Sender name|
+|templateId|	String|	X|	Template ID|
+|sendStatus|	String|	X|	Delivery status code <br/> WAIT: Waiting, READY: Ready to send, <br/>SENDREADY: Send ready, SENDWAIT: Send waiting, <br/>SENDING: Sending, COMPLETE: Sent, <br/>FAIL: Send failed, CANCEL: Send canceled|
+|pageNum|	Integer|	X|	Page number (default: 1)|
+|pageSize|	Integer|	X|	Number of queries (default: 15)|
 
 [Header]
 
@@ -1127,9 +1127,9 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+|Value|	Type|	Required|	Description|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | A unique secretKey [[see](./api-guide/#secret-key)] |
 
 <a id="query-of-mails-1-curl"></a>
 #### cURL
@@ -1175,33 +1175,33 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
+| Value | Type | Description |
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- pageNum|	Integer|	현재 페이지 번호|
-|- pageSize|	Integer|	조회된 데이터 건수|
-|- totalCount|	Integer|	총 데이터 건수|
-|- data|	Object|	데이터 영역|
-|-- requestId| String| 요청 ID|
-|-- requestDate| String| 요청 일시|
-|-- sendStatus|	String|	발송상태 코드 <br/> WAIT: 대기, READY: 발송준비, <br/>SENDREADY: 발송준비완료, SENDWAIT: 발송대기, <br/>SENDING: 발송중, COMPLETE: 발송완료, <br/>FAIL: 발송실패, CANCEL: 발송취소|
-|-- sendStatusName|	String|	발송 상태 명|
-|-- templateId|	String|	템플릿 ID|
-|-- templateName|	String|	템플릿 명|
-|-- senderName|	String|	발신자 이름|
-|-- senderAddress|	String|	발신자 메일주소|
-|-- title|	String|	메일 제목|
-|-- body|	String|	메일 내용|
-|-- adYn |  String  | 광고여부 |
-|-- createDate |  String  | 생성 일시 |
-|-- updateDate |  String  | 수정 일시 |
+|header|	Object|	Header area|
+|- isSuccessful|	Boolean|	Success|
+| resultCode | Integer | Failure code |
+|- resultMessage|	String|	Failure message|
+|body|	Object|	Body area|
+|- pageNum|	Integer|	Current page number|
+|- pageSize|	Integer|	Number of data entries retrieved|
+|- totalCount|	Integer|	Total number of data records|
+|- data|	Object|	Data area|
+|-- requestId| String| Request ID|
+|-- requestDate| String| Requested on|
+|-- sendStatus|	String|	Delivery status code <br/> WAIT: Waiting, READY: Ready to send, <br/>SENDREADY: Send ready, SENDWAIT: Send waiting, <br/>SENDING: Sending, COMPLETE: Sent, <br/>FAIL: Send failed, CANCEL: Send canceled|
+|-- sendStatusName|	String|	Send Status|
+|-- templateId|	String|	Template ID|
+|-- templateName|	String|	Template name|
+|-- senderName|	String|	Sender name|
+|-- senderAddress|	String|	Sender email address|
+|-- title|	String|	Mail Subject|
+|-- body|	String|	Contents|
+|-- adYn |  String  | Whether to show ads |
+|-- createDate |  String  | Creation time |
+|-- updateDate |  String  | Modified on |
 
 <a id="query-of-mails-2"></a>
-### 대량 메일 발송 수신자 조회 { #query-of-mails-2 }
+### Get a Mass Delivery Recipient { #query-of-mails-2 }
 
 <a id="query-of-mails-2-1"></a>
 #### 요청
@@ -1214,10 +1214,10 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+| Value | Type | Description |
 |---|---|---|
-|appKey|	String|	고유의 appKey|
-|requestId|	String|	요청 ID|
+|appKey|	String|	Unique appKey|
+|requestId|	String|	Request ID|
 
 [Header]
 
@@ -1227,21 +1227,21 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+| Value | Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | A unique secretKey [[See](./api-guide/#secret-key)] |
 
 
 [Query parameter]
 
-|값|	타입|	필수| 	설명                                                                         |
+| Value | Type | Required | Description |
 |---|---|---|-----------------------------------------------------------------------------|
-|receiveMailAddr|	String|	X| 	수신 메일 주소                                                                   |
-|startReceiveDate|	String|	X| 	수신 날짜 시작 값(yyyy-MM-dd HH:mm:ss)                                            |
-|endReceiveDate|	String|	X| 	수신 날짜 종료 값(yyyy-MM-dd HH:mm:ss)                                            |
-|mailStatusCode|	String|	X| 	발송상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
-|pageNum|	Integer|	X| 	페이지 번호 1(기본값)                                                              |
-|pageSize|	Integer|	X| 	조회 건수 15(기본값)                                                              |
+|receiveMailAddr|	String|	X| 	Recipient email address                                                                   |
+|startReceiveDate|	String|	X| 	Start date of receiving (yyyy-MM-dd HH:mm:ss)                                            |
+|endReceiveDate|	String|	X| 	End date of receipt (yyyy-MM-dd HH:mm:ss)                                            |
+|mailStatusCode|	String|	X| 	Delivery status code <br/> SST0: Ready to send, SST1: Sending,  <br/> SST2: Sent, SST3: Send failed, SST7: Unauthenticated |
+|pageNum|	Integer|	X| 	Page number, 1 (default)                                                              |
+|pageSize|	Integer|	X| 	Number of queries (default: 15)                                                              |
 
 <a id="query-of-mails-2-curl"></a>
 #### cURL
@@ -1291,37 +1291,37 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
+| Value | Type | Description |
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- pageNum|	Integer|	현재 페이지 번호|
-|-pageSize|	Integer|	조회된 데이터 건수|
-|- totalCount|	Integer|	총 데이터 건수|
-|- data|	List|	데이터 영역|
-|-- requestId | String  | 요청 ID |
-|-- mailSeq | Integer  | 메일 순번 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증|
-|-- mailStatusName | String  | 메일 상태명 |
+|header|	Object|	Header area|
+|- isSuccessful|	Boolean|	Success|
+|- resultCode|	Integer|	Failure code|
+|- resultMessage|	String|	Failure message|
+|body|	Object|	Body area|
+|- pageNum|	Integer|	Current page number|
+|-pageSize|	Integer|	Number of data entries retrieved|
+|- totalCount|	Integer|	Total number of data records|
+|- data|	List|	Data area|
+|-- requestId | String  | Request ID |
+|-- mailSeq | Integer  | Mail order |
+|-- mailStatusCode | String  | Mail status code <br/> SST0: Ready to send, SST1: Sending,  <br/> SST2: Sent, SST3: Send failed, SST7: Unauthenticated|
+|-- mailStatusName | String  | Mail Status Name |
 |-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	수신자 타입<br/>MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조|
-|-- receiveTypeName|	String|	수신자 타입 명|
-|-- receiveName|	String|	수신자 이름|
-|-- receiveMailAddr|	String|	수신자 메일 주소|
-|-- isReceived| Boolean| 수신 여부 |
-|-- resultDate| String| 수신 일시|
-|-- isOpened| Boolean| 읽음 여부 |
-|-- openedDate| String| 읽은 일시|
-|-- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|-- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- createDate |  String  | 생성 일시 |
-|-- updateDate |  String  | 수정 일시 |
+|-- receiveType|	String|	Recipient type<br/>MRT0: To, MRT1: CC, MRT2: BCC|
+|-- receiveTypeName|	String|	Recipient type name|
+|-- receiveName|	String|	Recipient name|
+|-- receiveMailAddr|	String|	Recipient email address|
+|-- isReceived| Boolean| Whether received |
+|-- resultDate| String| Received on|
+|-- isOpened| Boolean| Whether the message has been read |
+|-- openedDate| String| Date read|
+|-- dsnCode| String| Delivery Status Notification (DSN) status code|
+|-- dsnMessage| String| Delivery Status Notification (DSN) status message |
+|-- createDate |  String  | Creation time |
+|-- updateDate |  String  | Modified on |
 
 <a id="query-of-mails-3"></a>
-### 대량 메일 발송 상세 조회 { #query-of-mails-3 }
+### Retrieve Bulk Mail Delivery Details { #query-of-mails-3 }
 
 <a id="query-of-mails-3-1"></a>
 #### 요청
@@ -1334,11 +1334,11 @@ curl -X GET \
 
 [Path parameter]
 
-|값|	타입|	설명|
+|Value|	Type|	Description|
 |---|---|---|
-|appKey|	String|	고유의 appKey|
-|requestId|	String|	요청 ID|
-|mailSeq|	Integer|	메일 순번|
+|appKey|	String|	Unique appkey|
+|requestId|	String|	Request ID|
+|mailSeq|	Integer|	Mail sequence|
 
 [Header]
 
@@ -1348,9 +1348,9 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	필수|	설명|
+| Value | Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | 고유의 secretKey [[참고](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | A unique secretKey [[See](./api-guide/#secret-key)] |
 
 <a id="query-of-mails-3-curl"></a>
 #### cURL
@@ -1416,46 +1416,46 @@ curl -X GET \
 }
 ```
 
-|값|	타입|	설명|
+| Value | Type | Description |
 |---|---|---|
-|header|	Object|	헤더 영역|
-|- isSuccessful|	Boolean|	성공 여부|
-|- resultCode|	Integer|	실패 코드|
-|- resultMessage|	String|	실패 메시지|
-|body|	Object|	본문 영역|
-|- data|	List|	데이터 영역|
-|-- requestId  | String  | 요청 ID |
-|-- templateId | String  | 템플릿 ID |
-|-- templateName | String  | 템플릿 명 |
-|-- mailStatusCode | String  | 메일 상태 코드 <br/> SST0:발송준비, SST1:발송중,  <br/> SST2:발송완료, SST3: 발송실패, SST7: 미인증 |
-|-- mailStatusName | String  | 메일 상태 명 |
-|-- requestDate | String  | 요청 시간 |
-|-- senderName | String  | 발신자 명 |
-|-- senderAddress | String  | 발신자 주소 |
+|header|	Object|	Header area|
+|- isSuccessful|	Boolean|	Success|
+|- resultCode|	Integer|	Failure code|
+|- resultMessage|	String|	Failure message|
+|body|	Object|	Body area|
+|- data|	List|	Data area|
+|-- requestId  | String  | Request ID |
+|-- templateId | String  | Template ID |
+|-- templateName | String  | Template name |
+|-- mailStatusCode | String  | Mail status code <br/> SST0: Ready to send, SST1: Sending,  <br/> SST2: Sent, SST3: Send failed, SST7: Unauthenticated |
+|-- mailStatusName | String  | Mail status name |
+|-- requestDate | String  | Request time |
+|-- senderName | String  | Sender name |
+|-- senderAddress | String  | Sender address |
 |-- resultId | String  | SMTP ID |
-|-- resultDate | String  | 실제 발송 시간 |
-|-- title | String  | 제목 |
-|-- body | String  | 내용 |
-|-- customHeaders|	Map|	[사용자 지정 헤더](./console-guide/#custom-header) |
-|-- receiverList | List| 수신자 리스트|
-|--- requestId | String  | 요청 ID |
-|--- mailSeq | Integer  | 메일 순번 |
-|--- receiveType | String  | 수신자 타입 (MRT0 : 받는사람 , MRT1 : 참조, MRT2 : 숨은참조) |
-|--- receiveTypeName | String  | 수신자 타입명 |
-|--- receiveMailAddr | String  | 수신자 메일 주소 |
-|--- isReceived| Boolean| 수신 여부 |
-|--- resultDate| String| 수신 일시|
-|--- isOpened| Boolean| 읽음 여부 |
-|--- openedDate| String| 읽은 일시|
-|--- dsnCode| String| DSN(Delivery Status Notification) 상태 코드|
-|--- dsnMessage| String| DSN(Delivery Status Notification) 상태 메시지 |
-|-- attachFileList | List  | 첨부파일 리스트 |
-|--- fileType|	String|	첨부파일 타입 (MAIL: 메일에 첨부된 파일, TEMPLATE: 템플릿에 첨부된 파일)|
-|--- fileId| Integer| 파일 ID|
-|--- fileName|	String|	첨부파일 이름|
-|--- filePath|	String|	첨부파일 경로|
-|--- fileSize|	Integer|	첨부파일 크기 (byte)|
-|--- createDate|	String|	생성 일시|
+|-- resultDate | String  | Actual send time |
+|-- title | String  | Subject |
+|-- body | String  | Content |
+|-- customHeaders|	Map|	[Custom header](./console-guide/#custom-header) |
+|-- receiverList | List| List of recipients|
+|--- requestId | String  | Request ID |
+|--- mailSeq | Integer  | Mail order |
+|--- receiveType | String  | Recipient type (MRT0: To, MRT1: CC, MRT2: BCC) |
+|--- receiveTypeName | String  | Recipient type name |
+|--- receiveMailAddr | String  | Recipient email address |
+|--- isReceived| Boolean| Whether the message was received |
+|--- resultDate| String| Received on|
+|--- isOpened| Boolean| Whether the message has been read |
+|--- openedDate| String| Read on|
+|--- dsnCode| String| Delivery Status Notification (DSN) status code|
+|--- dsnMessage| String| Delivery Status Notification (DSN) status message |
+|-- attachFileList | List  | Attachments list |
+|--- fileType|	String|	Attachment file type (MAIL: file attached to a mail, TEMPLATE: file attached to a template)|
+|--- fileId| Integer| File ID|
+|--- fileName|	String|	Attachment name|
+|--- filePath|	String|	Attachment path|
+|--- fileSize|	Integer|	Attachment size (byte)|
+|--- createDate|	String|	Creation time|
 <a id="scheduled-delivery-management"></a>
 ## Scheduled Delivery Management { #scheduled-delivery-management }
 

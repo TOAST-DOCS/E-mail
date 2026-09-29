@@ -3,46 +3,46 @@
 <a id="notification-email-smtp-guide"></a>
 ## Notification > Email > SMTP Guide { #notification-email-smtp-guide }
 
-[SMTP 도메인]
+[SMTP Domain]
 
-|도메인 |
+|Domain |
 |---|
 |smtp-mail.nhncloudservice.com |
 
-| TLS/SSL | 포트 |
+| TLS/SSL | Port |
 |---|---|
 | STARTTLS | 25, 587, 2587 | 
 | TLS Wrapper | 465, 2465 | 
 
 <a id="section-1"></a>
-## 암호화 연결 { #section-1 }
+## Encryption Connection { #section-1 }
 <a id="starttls"></a>
-### STARTTLS 연결 { #starttls }
-25, 587, 2587 포트를 통해 명시적 SSL을 사용하는 방법
+### STARTTLS Connection { #starttls }
+How to use Explicit SSL on ports 25, 587, and 2587
 ```
 openssl s_client -crlf -quiet -starttls smtp -connect smtp-mail.nhncloudservice.com:587
 ```
 
 <a id="tls-wrapper"></a>
-### TLS Wrapper 연결 { #tls-wrapper }
-465, 2465 포트를 통해 암시적 SSL을 사용하는 방법
+### Connect TLS Wrapper { #tls-wrapper }
+How to use Implicit SSL via ports 465 and 2465
 ```
 openssl s_client -crlf -quiet -connect smtp-mail.nhncloudservice.com:465
 ```
 
 <a id="smtp"></a>
-## SMTP 자격 증명 { #smtp }
-인증 메커니즘은 PLAIN, LOGIN 두 방식을 선택하여 사용 할 수 있습니다.</br>
-인증 방식에 사용할 자격 증명은 아래 값을 참고합니다.
+## SMTP Credentials { #smtp }
+You can use the authentication mechanism by selecting either PLAIN or LOGIN.</br>
+Refer to the following values for the credentials to use with the authentication method.
 
-| 값 | 설명 |
+| Value | Description |
 |---|---|
-| 사용자 이름 | NHN Cloud Email 서비스의 AppKey | 
-| 비밀번호 | NHN Cloud Email 서비스의 SecretKey | 
+| User name | The service's AppKey |
+| Password | SecretKey of NHN Cloud Email service |
 
 <a id="plain"></a>
-### PLAIN 인증 방식 { #plain }
-PLAIN 인증 방식은 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
+### PLAIN Authentication Method { #plain }
+The PLAIN authentication method attempts to authenticate by encoding the **user name** and **password** in a single line of Base64.</br>
 **사용자 이름**, **비밀번호**를 한 줄의 Base64로 인코딩 하는 방법입니다.
 ```bash
 echo -ne "\0AppKey\0SecretKey" | openssl enc -base64
@@ -68,8 +68,8 @@ auth plain AEFwcEtleQBTZWNyZXRLZXk=
 ```
 
 <a id="login"></a>
-### LOGIN 인증 방식 { #login }
-LOGIN 인증 방식은 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩하여 자격 증명을 시도합니다.</br>
+### LOGIN authentication method { #login }
+The LOGIN authentication method attempts authentication by encoding the **user name** and **password** individually in Base64.</br>
 **사용자 이름**, **비밀번호**를 각각 Base64로 인코딩 하는 방법입니다.
 ```bash
 echo -n "AppKey" | openssl enc -base64
@@ -102,20 +102,20 @@ U2VjcmV0S2V5
 ```
 
 <a id="smtp-1"></a>
-### 용도별 메일 사용 { #smtp-1 }
-메일 용도에 따라 메일 타입을 지정할 수 있습니다.</br>
-메일 타입은 인증 시 Appkey와 함께 입력해 주시면 됩니다.</br>
-타입을 지정하지 않으면 normal 타입으로 메일이 발송됩니다.</br>
+### Mail Usage by Purpose { #smtp-1 }
+You can specify a mail type according to the purpose of the mail.</br>
+Enter the mail type along with the Appkey during authentication.</br>
+If you do not specify a type, the email is sent as the normal type.</br>
 </br>
 ex) appkey#mailType</br>
 </br>
-지정 가능한 타입은 아래와 같습니다.
+The following types can be specified.
 
-| 타입     | 설명    |
+| Type     | Description    |
 |--------|-------|
-| normal | 일반 메일 | 
-| auth   | 인증 메일 |
-| ad     | 광고 메일 |
+| normal | General mail |
+| auth   | Verification mail |
+| ad     | Promotional mail |
 
 ```bash
 # PLAIN 인증 방식

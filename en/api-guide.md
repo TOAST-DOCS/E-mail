@@ -1214,7 +1214,7 @@ curl -X GET \
 | - mailStatusCode        | 	String  | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
 | - mailStatusName        | 	String  | 	Delivery status name                                                                              |
 | - requestDate           | String   | Request date and time                                                                                 |
-| - mailStatusUpdatedDate | String   | Email delivery status code update date 일시                                                                   |
+| - mailStatusUpdatedDate | String   | Date and time when the email delivery status code was last updated                                                                                   |
 | - resultDate            | String   | Received date and time                                                                                 |
 | - openedDate            | String   | Read data and time                                                                                 |
 | - dsnCode               | String   | DSN(Delivery Status Notification) Status code                                               |

@@ -317,10 +317,10 @@ Click **Share > Settings** button to share the domain. Main features are the fol
       project.
 
 <a id="manage-mail-domain-1"></a>
-### 반송 메일 설정 { #manage-mail-domain-1 }
+### Bounced Mail Settings { #manage-mail-domain-1 }
 
 **반송 설정** 버튼을 클릭해 반송 메일을 설정할 수 있습니다.
-반송 메일은 메일 발송 시 수신자의 메일 서비스에서 메일을 수신하지 못했을 때 발송되는 메일입니다.
+A bounce mail is a mail that is sent when the recipient's mail service fails to receive a mail during mail delivery.
 메일 주소를 no-reply@{도메인} 또는 noreply@{도메인}으로 설정할 경우 반송 설정과 관련없이 반송 메일이 발송되지 않습니다.
 
 <a id="register-sub-domains"></a>

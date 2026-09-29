@@ -601,8 +601,8 @@
 <a id="01-29-1"></a>
 #### 기능 추가
 
-* [Console/API] 템플릿 아이디 길이 증가
-    * 템플릿 아이디 길이 제한이 기존 10글자에서 50글자로 변경되었습니다.
+* [Console/API] Longer template ID
+    * Allowed length of template ID has changed to 50 characters, from 10
 
 <a id="12-18"></a>
 ### 2018. 12. 18. { #12-18 }
@@ -610,9 +610,9 @@
 <a id="12-18-1"></a>
 #### 기능 추가
 
-* [Console] 템플릿 엔진 기능
-    * 제목과 내용에 FreeMarker 템플릿 언어(FreeMarker Template Language)를 활용하여 템플릿을 등록할 수 있습니다.
-    * 템플릿 언어를 사용한 템플릿을 사용하여 메일을 발송할 수 있습니다. 대량 메일 발송인 경우, 엑셀 파일에 템플릿 파라미터를 입력하여 치환할 수 있습니다.
+* [Console] Added template engine feature
+    * You can register a template by using the FreeMarker Template Language in the title and body.
+    * You can send mail using templates with the template language. For bulk mail delivery, you can substitute values by entering template parameters in an Excel file.
 
 <a id="11-27"></a>
 ### 2018. 11. 27. { #11-27 }
@@ -620,12 +620,12 @@
 <a id="11-27-1"></a>
 #### 기능 추가
 
-* [API] API 버전 업데이트 v1.4
-* [API] 템플릿 등록하지 않고 치환 기능 제공
-    * 미리 템플릿을 등록하지 않고 발송 요청 내에서 템플릿 파라미터를 활용하여 치환 기능을 사용할 수 있습니다.
-* [API] 템플릿 엔진 기능
-    * FreeMarker 템플릿 언어(FreeMarker Template Language)과 템플릿 파라미터를 활용하여 메일을 발송할 수 있습니다.
-    * 자세한 내용은 [제목/내용 치환](./api-guide/#_21)을 참고해 주세요.
+* [API] API Version Updated to v1.4
+* [API] Added a feature to substitute without registering a template
+    * You can use the substitution feature by using template parameters in a delivery request without registering a template in advance.
+* [API] Template Engine Feature
+    * You can send mail by using FreeMarker Template Language and template parameters.
+    * For more details, refer to [Title/Content Replacement](./api-guide/#_21).
 
 <a id="10-23"></a>
 ### 2018. 10. 23. { #10-23 }
@@ -633,15 +633,15 @@
 <a id="10-23-1"></a>
 #### 기능 추가
 
-* [API] API 버전 업데이트 v1.3
-* [API] 일반, 광고 메일 발송 API 응답 변경
-    * API v1.3부터 지원합니다.
-    * 발송하는 수신자 요청 중 일부만 유효해도 발송을 요청할 수 있습니다. (이전 버전은 1개의 수신자 요청이라도 유효하지 않다면 실패로 응답합니다.)
-    * 메일 발송 API 응답에 각 수신자에 대한 결과를 반환합니다. 사용자는 응답으로부터 성공한 수신자 정보와 실패한 수신자 정보를 확인할 수 있습니다.
-    * 자세한 내용은 [일반 메일 발송 API 응답](./api-guide-v1.3/#_4)과 [개별 메일 발송 API 응답](./api-guide-v1.3/#_7)을 참고해주세요.
-* [API] 통계 조회 API에 광고 여부 조건 추가
-    * 광고 메일과 광고가 아닌 메일을 구분하여 통계를 확인할 수 있습니다.
-    * 자세한 내용은 [통합 통계 조회 API](./api-guide-v1.3/#_83)을 참고해주세요.
+* [API] API Version Updated to v1.3
+* [API] Changed the standard and promotional mail delivery API response
+    * Supported in API v1.3 and later.
+    * You can request sending even if only some of the recipient requests are valid. (In previous versions, the request fails if even one recipient request is invalid.)
+    * The mail delivery API response returns results for each recipient. You can check the successful recipient information and the failed recipient information from the response.
+    * For more details, refer to [General Mail Delivery API Response](./api-guide-v1.3/#_4) and [Individual Mail Delivery API Response](./api-guide-v1.3/#_7).
+* [API] Added advertisement status as a filter condition for Search Statistics API
+    * You can view statistics by separating promotional mail from non-promotional mail.
+    * For more details, refer to [Integrated Statistics Query API](./api-guide-v1.3/#_83).
 
 <a id="09-18"></a>
 ### 2018. 09. 18. { #09-18 }
@@ -649,10 +649,10 @@
 <a id="09-18-1"></a>
 #### 기능 추가
 
-* [API] 인증 메일 발송 API 추가
-    * 메일 인증에 사용할 수 있는 인증 메일 발송 API를 제공합니다.
-    * 인증 메일 성격상 단건 발송만 가능하며, 첨부 파일을 지원하지 않습니다.
-    * 자세한 내용은 [인증 메일 발송 API](./api-guide-v1.2/#_11)를 참고해주세요.
+* [API] Added Verify Email Delivery API
+    * Provides a verification mail delivery API that can be used for mail authentication.
+    * Verification mail supports single sending only by its nature, and does not support attachments.
+    * For more details, refer to [Verification Mail Delivery API](./api-guide-v1.2/#_11).
 
 <a id="08-28"></a>
 ### 2018. 08. 28. { #08-28 }
@@ -660,15 +660,15 @@
 <a id="08-28-1"></a>
 #### 기능 추가
 
-* [API] API 버전 업데이트 v1.2
-* [API] 첨부 파일을 재사용할 수 있도록 구조 변경
-    * 첨부 파일을 한 번 발송하면 다시 동일한 ID로 발송할 수 있도록 구조를 개선하였습니다.
-    * [첨부 파일 업로드 API v1.2](./api-guide-v1.2/#_18)를 사용하여 업로드한 첨부 파일은 v1.2 발송 API 사용하여 메일을 발송 시 첨부 파일을 재사용할 수 있습니다.
-    * Toast Email에서 제공하는 모든 발송 API v1.2에서 사용할 수 있습니다.
-    * 버전이 업데이트된 API는 [API 가이드](./api-guide-v1.2/)의 각각 API 명세를 참고해주세요.
-* [API] 메일 주소 유효성 검사 강화
-    * 메일 ID와 도메인 형식이 잘못된 메일 주소를 요청할 경우 API에서 에러를 반환합니다.
-    * Toast Email에서 제공하는 모든 발송 API에 적용하였습니다.
+* [API] API Version Updated to v1.2
+* [API] Changed the structure to enable reuse of attachments
+    * Improved the structure to allow resending with the same ID after an attachment has been sent once.
+    * Attachments uploaded using the [Upload Attachment API v1.2](./api-guide-v1.2/#_18) can be reused as attachments when sending emails using the v1.2 sending API.
+    * All sending API v1.2 provided by Toast Email can be used.
+    * For updated API versions, refer to the respective API specifications in the [API Guide](./api-guide-v1.2/).
+* [API] Enhanced validation of email address
+    * The API returns an error if you request a mail address with an invalid mail ID or domain format.
+    * This applies to all Send APIs provided by Toast Email.
 
 <a id="06-26"></a>
 ### 2018. 06. 26. { #06-26 }
@@ -676,14 +676,14 @@
 <a id="06-26-1"></a>
 #### 기능 추가
 
-* [API] 사용자 지정 헤더 기능 추가
-    * 수신 이메일에 사용자 지정 헤더를 추가하여 발송할 수 있습니다.
-    * Toast Email에서 제공하는 모든 발송 API에 추가하여 사용할 수 있습니다.
-    * 사용자 지정 헤더를 지원하는 메일 상세 조회 API v1.1이 추가되었습니다.
-    * 자세한 내용은 [사용자 지정 헤더 (Custom header)(./console-guide/#custom-header)를 참고해주세요.
-    * 버전이 업데이트된 API는 [메일 발송 상세 조회](./api-guide-v1.1/#_26)와 [태그 메일 발송 상세 조회](./api-guide-v1.1/#_35)를 참고해주세요.
-* [API] 숨은 참조 기능 추가
-    * 일반 메일 발송 API에 발송수신자 타입이 추가되어 숨은 참조로 발송할 수 있습니다.
+* [API] Added the custom header feature
+    * You can send emails with custom headers added to the received email.
+    * You can use this in addition to all sending APIs provided by Toast Email.
+    * Added the Mail Query Details API v1.1, which supports custom headers.
+    * For more details, refer to [Custom Header](./console-guide/#custom-header).
+    * For information on the updated API version, refer to [Retrieve Mail Delivery Details](./api-guide-v1.1/#_26) and [Retrieve Tagged Mail Delivery Details](./api-guide-v1.1/#_35).
+* [API] Added the blind carbon copy (BCC) feature
+    * A recipient type has been added to the General Mail delivery API, allowing you to send mail with BCC (Blind Carbon Copy).
 
 <a id="04-24"></a>
 ### 2018. 04. 24. { #04-24 }
@@ -691,8 +691,8 @@
 <a id="04-24-1"></a>
 #### 기능 추가
 
-* [Console] 대량 발송 수신자 엑셀/CSV 업로드 파일 크기 제한
-    * 대량 메일 수신자 파일은 최대 1만 명, 그리고 3MB 까지 업로드할 수 있습니다.
+* [Console] File size restricted for uploading mass delivery recipient Excel/CSV files
+    * You can upload a bulk mail recipient file of up to 10,000 persons and up to 3 MB.
 
 <a id="03-22"></a>
 ### 2018. 03. 22. { #03-22 }
@@ -700,7 +700,7 @@
 <a id="03-22-1"></a>
 #### 기능 추가
 
-* [Console] 탭 UI 변경
+* [Console] Changed the tab UI
 
 <a id="02-22"></a>
 ### 2018. 02. 22. { #02-22 }
@@ -708,23 +708,23 @@
 <a id="02-22-1"></a>
 #### 기능 추가
 
-* [Console] 태그 메일 발송 기능 추가
-    * 태그와 UID를 등록하여 다수의 사용자를 대상으로 쉽게 메일을 발송할 수 있습니다.
-    * 수신자 정보 대신 태그를 선택하여 발송할 수 있는 기능 제공합니다.
-    * 자세한 내용은 [태그를 사용한 메일발송](./console-guide/#_6)를 참고해주세요.
-* [Console] 태그 메일 발송 내역 조회 화면 추가
-    * 태그를 사용하여 발송한 메일을 조회할 수 있는 화면을 제공합니다.
-    * 요청 정보, 수신자 정보, 그리고 발송한 메일을 상세 정보 조회가 가능합니다.
-    * 자세한 내용은 [태그 메일 발송 조회 탭](./console-guide/#_9)를 참고해주세요.
-* [Console] 태그, UID 관리 기능 추가
-    * 태그 메일 발송에 사용되는 태그와 UID에 대한 생성, 수정, 삭제 기능을 제공합니다.
-    * 자세한 내용은 [태그 관리](./console-guide/#_11), [UID 관리](./console-guide/#uid)를 참고해주세요.
-* [API] 태그 메일 발송, 조회 기능 추가
-    * 태그 메일을 발송하고 조회할 수 있는 API를 제공합니다.
-    * 자세한 내용은 [태그 메일발송](./api-guide-v1.0/#_29)를 참고해주세요.
-* [API] 태그, UID 관리 기능 추가
-    * 태그 메일 발송에 사용되는 태그와 UID를 생성, 수정, 삭제할 수 있는 API를 제공합니다.
-    * 자세한 내용은 [태그 관리](./api-guide-v1.0/#_45), [UID 관리](./api-guide-v1.0/#uid)를 참고해주세요.
+* [Console] Added tag mail delivery feature
+    * By registering tags and UIDs, you can easily send emails to multiple users.
+    * This feature allows you to send a message by selecting a tag instead of recipient info.
+    * For more details, refer to [Send Emails Using Tags](./console-guide/#_6).
+* [Console] Added the tagged mail delivery history page
+    * Provides a screen for querying mail sent using tags.
+    * You can retrieve details on the request info, recipient info, and sent mail.
+    * For more details, refer to [Query Tagged Email Delivery tab](./console-guide/#_9).
+* [Console] Added tag and UID management feature
+    * Provides features to create, modify, and delete tags and UIDs used for tag mail delivery.
+    * For more details, refer to [Tag Management](./console-guide/#_11), [UID Management](./console-guide/#uid).
+* [API] Added tag mail delivery and query features
+    * Provides an API to send and query tagged emails.
+    * For more details, refer to [Tag Mail Delivery](./api-guide-v1.0/#_29).
+* [API] Added Tag and UID Management Features
+    * Provides an API to create, modify, and delete tags and UIDs used for tag mail delivery.
+    * For more details, refer to [Manage Tags](./api-guide-v1.0/#_45), [Manage UIDs](./api-guide-v1.0/#uid).
 
 <a id="09-21"></a>
 ### 2017. 09. 21. { #09-21 }
@@ -732,11 +732,11 @@
 <a id="09-21-1"></a>
 #### 기능 추가
 
-* [Console] 통계 유형에 수신율 추가
-    * 통계 그래프 및 표에서 수신율 확인이 가능합니다.
-* [API] 통계 조회 API에 통계 유형 추가
-    * 일별 통계, 월별 통계, 통합 통계에 각각 수신율 정보가 추가됩니다.
-    * 자세한 사항은 [통계 조회](./api-guide-v1.0/#_72)를 참고해주세요.
+* [Console] Added reception rate to statistics types
+    * You can check the reception rate in statistics graphs and tables.
+* [API] Added statistics type to the Statistics Query API
+    * Reception rate information is added to Daily Statistics, Monthly Statistics, and Integrated Statistics respectively.
+    * For more details, refer to [Statistics Query](./api-guide-v1.0/#_72).
 
 <a id="08-24"></a>
 ### 2017. 08. 24. { #08-24 }
@@ -744,8 +744,8 @@
 <a id="08-24-1"></a>
 #### 버그 수정
 
-* [Console] 템플릿에서 이미지 가져올 시 비정상적으로 커지는 문제 수정
-    * 템플릿 본문에 이미지 태그를 넣은 경우, Console에서 템플릿 선택하여 가져올 시 비정상적으로 커지는 문제가 수정되었습니다.
+* [Console] Fixed an issue where the image size increases abnormally when importing an image from a template
+    * Fixed an issue where, when an image tag was included in the template body, selecting and importing the template in the Console caused it to expand abnormally.
 
 <a id="07-20"></a>
 ### 2017. 07. 20. { #07-20 }
@@ -753,24 +753,24 @@
 <a id="07-20-1"></a>
 #### 기능 추가
 
-* [Console] 수신거부 리스트 다운로드 기능 추가
-    * 수신거부 리스트를 csv 형태로 다운로드가 가능합니다.
-    * 다운로드 요청 파일 생성이 예약되고, 생성 후 일주일간 유지됩니다.
+* [Console] Added feature to download the unsubscribe list
+    * The rejection list can be downloaded in CSV format.
+    * A download request file is scheduled for creation and retained for one week after it is created.
 
 <a id="07-20-2"></a>
 #### 기능 개선
 
-* [Console] 첨부파일 업로드 시 확장자 체크
-    * 메일 발송, 템플릿 관리 시 첨부파일의 확장자가 제한됩니다.
-    * 제한되는 확장자 : js,exe,bat,cmd,com,cpl,scr,vbs,wsf
-* [API] 첨부파일 업로드 API 확장자 체크
-    * API로 첨부파일 업로드 시에도 확장자를 체크합니다.
+* [Console] Fixed the extension check when uploading an attachment
+    * File extension restrictions apply when sending mail or managing templates.
+    * Restricted extensions: js, exe, bat, cmd, com, cpl, scr, vbs, wsf
+* [API] Extension check added for the Upload Attachment API
+    * File extensions are also checked when uploading attachments via API.
 
 <a id="07-20-3"></a>
 #### 버그 수정
 
-* [Console] 대량 메일 발송 시 오픈 통계가 정상적으로 집계되지 않는 문제
-    * 대량 메일 발송 시 비 정상적으로 오픈률이 증가하는 현상이 있어 수정되었습니다.
+* [Console] Fixed an issue where open statistics were not properly aggregated during mass mail delivery
+    * Fixed an issue where the open rate increased abnormally during bulk mail delivery.
 
 <a id="06-22"></a>
 ### 2017. 06. 22. { #06-22 }
@@ -778,34 +778,34 @@
 <a id="06-22-1"></a>
 #### 기능 추가
 
-* [Console] 광고성 메일 발송 기능 추가
-    * 이제 이메일 상품에서 광고성 메일 발송이 가능합니다.
-    * 광고성 메일 발송을 위한 기능을 아래와 같이 제공합니다.
-        * 메일 제목에 "(광고)" 문구 추가
-        * 메일 본문에 수신거부 링크 삽입
-        * 수신 거부 링크 클릭 시 수신거부 할 수 있는 화면 제공
-        * 수신 거부된 대상자들에게 광고성 메일 발송 차단하는 기능 제공
-        * 수신 거부 대상자를 관리할 수 있는 화면 제공(다운로드 기능은 추후 제공 예정)
-    * 자세항 사항은 [광고성 메일 발송](./console-guide/#_3)[수신 거부 관리](./console-guide/#_13)를 참고해주세요.
-* [API] 광고성 메일 발송 기능 추가
-    * 광고성 메일인 경우 별도로 제공되는 API를 사용할 수 있습니다.
-    * 다음과 같은 기능을 제공합니다.
-        * 제목에 "(광고)"가 필수로 들어가야 합니다.
-        * 수신거부로 등록된 대상자에게는 메일 발송을 하지 않습니다.
-* [API] 수신거부 관리 기능 추가
-    * 수신 거부 유저를 조회/등록/삭제 할 수 있는 API를 제공합니다.
-    * 자세항 사항은 [수신 거부 관리](./api-guide-v1.0/#_82)를 참고해주세요.
-* [API] 통합 통계 조회 기능 추가
-    * 날짜별/시간대별/요일별로 조회 할수 있는 API가 추가됩니다.
-    * 자세항 사항은 [통합 통계 조회](./api-guide-v1.0/#_79)를 참고해주세요.
+* [Console] Added a feature to send advertising mail
+    * You can now send advertising emails from the Email product.
+    * The following features are provided for advertising mail delivery.
+        * Added "(Advertisement)" text to the email subject
+        * Insert an opt-out link in the mail body
+        * Provides a screen to unsubscribe when clicking the unsubscribe link
+        * Provides a feature to block advertising mail delivery to recipients who have opted out
+        * Provided a screen to manage unsubscribed recipients (the download feature will be available in a future update)
+    * For more details, refer to [Send Advertising Mail](./console-guide/#_3) and [Manage Unsubscribes](./console-guide/#_13).
+* [API] Added advertising mail delivery feature
+    * For advertising emails, you can use a separately provided API.
+    * Functions are provided as follows.
+        * "(Ad)" must be included in the subject line.
+        * Mail delivery is not performed for recipients registered as unsubscribed.
+* [API] Added opt-out management feature
+    * Provides an API to query/register/delete opt-out users.
+    * For more details, refer to [Manage Unsubscribes](./api-guide-v1.0/#_82).
+* [API] Added integrated statistics retrieval feature
+    * Added APIs to query by date, time zone, and day of the week.
+    * For more information, refer to [Query Statistics](./api-guide-v1.0/#_79).
 
 <a id="06-22-2"></a>
 #### 기능 개선
 
-* [Console]통계 화면 개선
-    * 통계 화면이 개선되었습니다.
-    * 이제 날짜별, 시간대별, 요일별로 조회가 가능합니다.
-    * 자세항 사항은 [통계 정보 조회](./console-guide/#_17)를 참고해주세요.
+* [Console] Improved statistics screen
+    * Improved the statistics screen.
+    * You can now view data by date, time range, and day of the week.
+    * For more details, refer to [View stats](./console-guide/#_17).
 
 <a id="05-25"></a>
 ### 2017. 05. 25. { #05-25 }
@@ -813,15 +813,15 @@
 <a id="05-25-1"></a>
 #### 기능 추가
 
-* [Console] 이메일 미리보기 기능 추가
-    * 메일 발송 화면에서 발송 정보 및 본문 내용을 미리보기로 확인할 수 있습니다.
+* [Console] Added email preview feature
+    * On the mail delivery screen, you can preview the delivery information and body content.
 
 <a id="05-25-2"></a>
 #### 버그 수정
 
-* [Console] 대량 메일 예약 발송 이슈 수정
-    * 현상 : 대량 메일 예약 발송 시 현재 월이 넘어가는 경우 조회/발송이 되지 않는 이슈가 있었습니다.
-    * 해결 : 현재 월이 넘어가더라도 예약 발송이 가능하도록 수정되었습니다.(단, 예약 발송 가능 날짜는 3개월 이내 (5월에 등록 시 7월까지 예약 가능))
+* [Console] Fixed an issue with bulk mail scheduled delivery
+    * Fixed an issue where bulk mail scheduled delivery was not retrieved or sent when crossing into the next month.
+    * Fix: Updated so that scheduled sending is possible even past the current month. (Note: Scheduled sending is available within 3 months from the registration date (e.g., if registered in May, scheduling is available through July).)
 
 <a id="04-20"></a>
 ### 2017. 04. 20. { #04-20 }
@@ -831,20 +831,20 @@
 
 * [Console] <b>수신자명<이메일주소></b> 형식으로 발송이 가능
     * 발신자 주소에만 사용할 수 있었던 <b>수신자명<이메일주소></b> 형식을 수신자 주소에서도 사용이 가능합니다.
-* [API] 수신자명 지원
-    * API에서도 수신자명 필드가 추가되었습니다. 자세한 사항은 [메일 발송 문서](./api-guide-v1.0/#_2)를 참고해주세요.
-* [Console] 통계 화면 제공
-    * 일별/월별 통계 화면이 제공됩니다.
-    * 통계 정보는 2017년 4월 1일부터 수집됩니다.
-* [API] 통계 조회 기능 제공
-    * 일별/월별 통계 조회 API가 제공됩니다. 자세한 사항은 [통계 조회 문서](./api-guide-v1.0/#_72)를 참고해주세요.
+* [API] Recipient name support
+    * The recipient name field has also been added to the API. For more details, refer to [Mail Delivery](./api-guide-v1.0/#_2).
+* [Console] Statistics screen
+    * Daily/monthly statistics screens are provided.
+    * Statistics are collected from April 1, 2017.
+* [API] Added statistics retrieval feature
+    * Daily/monthly statistics query APIs are now available. For more details, refer to the [Statistics Query documentation](./api-guide-v1.0/#_72).
 
 <a id="04-20-2"></a>
 #### 기능 개선
 
-* [Console] 메일 발송 화면에 SPF 등록 안내 문구 추가
-    * 메일 발송 화면에 SPF 등록 안내 문구가 추가되었습니다.
-    * 자세한 내용은 메일 발송 > 발송메일 필드의 <b>SPF 안내</b> 부분을 확인해주세요.
+* [Console] Added SPF registration guidance text on the mail delivery screen
+    * Added an SPF registration guidance message to the mail delivery screen.
+    * For more details, please check the <b>SPF Guide</b> section in Mail Delivery > Sent Mail field.
 
 <a id="03-23"></a>
 ### 2017. 03. 23. { #03-23 }
@@ -852,17 +852,17 @@
 <a id="03-23-db"></a>
 #### DB 작업
 
-* DBMS 변경작업에 따라 다음과 같은 변경 사항이 있습니다.
-    * 일반/개별/대량 메일 발송 시 발급되는 request_id 길이가 변경됩니다.
-        * AS-iS : yyyyMMddHHmmssXXXXT (18,19글자)
-            * yyyyMMddHHmmss : 년/월/일/시/분/초
-            * XXXX : 0 ~ 9999 시퀀스
-            * T : 타입(예약 발송시에만 추가)
-        * TO-BE : yyyyMMddHHmmssXXXXAAAT (22글자)
-            * yyyyMMddHHmmss : 년/월/일/시/분/초
-            * XXXX : 0 ~ 9999 시퀀스
-            * AAA : 인스턴스당 고유 번호
-            * T : 타입(0:일반, 1:예약, 2:대량, 3:임시첨부파일)
+* The following changes have been made in accordance with DBMS modifications.
+    * The length of the request_id issued when sending standard/individual/bulk mail will be changed.
+        * AS-IS: yyyyMMddHHmmssXXXXT (18, 19 characters)
+            * yyyyMMddHHmmss : year/month/day/hour/minute/second
+            * XXXX : 0 ~ 9999 sequence
+            * T : Type (added only for scheduled delivery)
+        * TO-BE: yyyyMMddHHmmssXXXXAAAT (22 characters)
+            * yyyyMMddHHmmss : year/month/day/hour/minute/second
+            * XXXX : 0 ~ 9999 sequence
+            * AAA : Unique number per instance
+            * T : Type (0: Normal, 1: Scheduled, 2: Bulk, 3: Temporary attachment)
 
 <a id="02-23"></a>
 ### 2017. 02. 23. { #02-23 }
@@ -870,41 +870,41 @@
 <a id="02-23-1"></a>
 #### 기능 추가
 
-* [Console] 메일 요청별 조회 -> 메일 상세 조회 화면에서 수신 확인 여부 표시
-* [API] 메일발송 상세조회 API의 Response 필드 추가 ([문서링크](./api-guide-v1.0/#_26))
-    * 수신자 리스트(receivers) 항목의 수신여부(readYn), 수신날짜(readDate)
+* [Console] Added a field to display whether mail receipt is confirmed on the Query Mail Details page in Query by Mail Request
+* [API] Added a response field to the query mail sending details API ([Document Link](./api-guide-v1.0/#_26))
+    * `readYn` (read status) and `readDate` (read date) fields in the list of recipients (`receivers`)
 
 <a id="02-23-2"></a>
 #### 기능 개선/변경
 
-* [Console] 일반 발송 수신자 수 제한
-    * 수신자, 참조자 구분 없이 최대 1000명 까지 발송 가능합니다.
-* [API] 일반/개별 메일발송 수신자 수 제한
-    * 요청 하나당 수신자, 참조자 구분 없이 최대 1000명 까지 발송 가능합니다.
-* [Console] 첨부파일 업로드 및 발송 용량 제한
-    * 업로드하는 첨부파일 크기는 최대 10MB까지 가능합니다.
-    * 메일 발송 시 첨부파일들의 총 크기는 최대 10MB까지 가능합니다.
-* [API] 첨부파일 업로드 용량 제한
-    * 업로드하는 첨부파일 크기는 최대 10MB까지 가능합니다.
-* [API] 첨부파일 포함된 메일 발송 용량 제한
-    * 메일 발송 시 첨부파일들의 총 크기는 최대 10MB까지 가능합니다.
+* [Console] Restriction of Standard Send Recipient Count
+    * You can send to up to 1,000 recipients in total, with no distinction between recipients and CC recipients.
+* [API] Restriction of recipients added for general/individual email delivery
+    * Up to 1,000 people can be sent per request, with no distinction between recipients and CC (Carbon Copy) recipients.
+* [Console] File volume restricted for attachment upload and delivery
+    * Attachment sizes are allowed up to 10 MB.
+    * The total size of attachments when sending a mail is allowed up to 10 MB.
+* [API] File size limit for attachment upload
+    * Attachment sizes are allowed up to 10 MB.
+* [API] File volume restricted for mail delivery with attachments
+    * The total size of attachments for mail delivery is up to 10 MB.
 
 <a id="02-23-3"></a>
 #### 버그 수정
 
-* [Console] 예약발송 이슈 수정
-    * 현상 : 달이 넘어가는 날짜에 예약 발송 시 정상적으로 발송이 안되는 현상이 있었습니다.
-      예) 1월 30일 날 등록된 2월 1일 예약 발송 메일이 정상 동작하지 않음
-    * 해결 : 예약 일시에 상관 없이 모두 발송되도록 수정되었습니다.
-* [Console] 메일 발송 > 본문 내용에 이미지 URL로 사진 업로드시 메일 상세조회 이슈
-    * 현상 : 본문 내 이미지 추가 시 Width가 변경되는 현상(100%로 통일)이 있었습니다.
-    * 해결 : 본문 이미지 Width를 변경하지 않도록 수정되었습니다.(기본 Width 유지)
-* [Console] 메일요청별조회 > 템플릿 검색 이슈
-    * 현상 : 템플릿으로 메일검색 이후 초기화 시 템플릿 검색 조건이 사라지지 않았습니다.
-    * 해결 : 초기화 버튼 클릭 시 템플릿 검색 조건도 초기화되도록 수정되었습니다.
-* [API] 템플릿 등록시 카테고리ID 유효성 검사 체크로직 추가
-    * 현상 : 유효하지 않는 카테고리 ID로 템플릿 등록 시 정상적으로 등록되는 현상이 있었습니다.
-    * 해결 : 템플릿 등록 전 카테고리 ID의 유효성 여부를 판단합니다.
+* [Console] Fixed scheduled delivery issues
+    * Issue: When scheduled delivery was set for a date spanning across months, delivery did not proceed normally.
+      Example: An email scheduled for February 1 and registered on January 30 does not work as expected
+    * Fix: Modified so that messages are sent regardless of the scheduled date and time.
+* [Console] Mail Delivery > Fixed an issue with the mail detail query when uploading a photo using an image URL in the body content
+    * Fixed an issue where the Width changed when adding an image to the body (unified to 100%).
+    * Fixed: Modified so that the body image width is no longer changed (default width is maintained).
+* [Console] Fixed an issue with template search in query-by-mail-request
+    * Issue: After searching mail with a template and then initializing, the template search condition was not cleared.
+    * Fixed: Changed so that clicking the Initialize button also resets the template search conditions.
+* [API] Added category ID validation check logic when registering a template
+    * Issue: When registering a template with an invalid category ID, the template was registered successfully.
+    * Fix: Validates whether the category ID is valid before registering a template.
 
 <a id="12-22"></a>
 ### 2016. 12. 22. { #12-22 }
@@ -912,18 +912,18 @@
 <a id="12-22-1"></a>
 #### 기능 개선/변경
 
-* [Console] 발송 메일 명칭 통일
-    * 화면에 따라 보낸사람, 발송메일로 표시되던 명칭을 "발송메일" 명칭으로 통일하였습니다.
-* [Console] 메일발송 탭의 템플릿 선택 시 첨부파일 앞에 불필요한 체크박스를 제거
-* [API] 메일발송API 유효성검사 오류 추가
-    * title, body 없이 메일을 발송할 경우 API 오류를 반환하도록 변경되었습니다.
-    * receiveType에 MRT0(받는사람), MRT1(참조)이외의 값을 설정할 경우 API 오류를 반환하도록 변경되었습니다.
-    * receiveType을 입력하지 않을 경우 API 오류를 반환하도록 변경되었습니다.
+* [Console] Unified mail delivery naming
+    * Unified the label names that were displayed as "Sender" or "Sent Mail" depending on the screen under the single name "Sent Mail."
+* [Console] Removed an unnecessary checkbox before attachments when selecting a template on the Send Mail tab
+* [API] Added validation error for the mail sending API
+    * Changed to return an API error when sending an email without a title or body.
+    * Changed to return an API error if a value other than MRT0 (recipient) or MRT1 (CC) is set for receiveType.
+    * Changed to return an API error if receiveType is not entered.
 
 <a id="12-22-2"></a>
 #### 버그 수정
 
-* [Console] 메일 요청별 조회 탭의 수신일시가 발송일시로 출력되던 현상 수정
+* [Console] Fixed an issue where the received date and time was displayed as the sent date and time on the query by mail request tab
 
 <a id="12-08"></a>
 ### 2016. 12. 08. { #12-08 }
@@ -931,9 +931,9 @@
 <a id="12-08-1"></a>
 #### 버그 수정
 
-* [Console] 메일 발송 탭에서 템플릿 적용 시 첨부파일이 제한 개수(3개)를 초과하여 발송 가능하던 현상 수정
-    * 메일 발송 탭에서 메일 발송 시 템플릿 파일을 적용 할 경우 기존 첨부파일을 초기화하고 템플릿 파일이 우선 적용되도록 변경되었습니다.
-* [API] 파일 업로드 API로 파일 업로드 시 리턴 결과에 fileId가 null로 표시되고 requestId 값으로 넘어오던 현상 수정
+* [Console] Fixed an issue where attachments could be sent exceeding the limit (3 files) when applying a template on the mail delivery tab
+    * Changed so that when a template file is applied during mail delivery on the Mail Delivery tab, existing attachments are cleared and the template file takes priority.
+* [API] Fixed an issue where fileId was displayed as null and the value was returned as requestId in the result when uploading a file using the file upload API
 
 <a id="11-24"></a>
 ### 2016. 11. 24. { #11-24 }
@@ -941,17 +941,17 @@
 <a id="11-24-1"></a>
 #### 기능 개선/변경
 
-* [Console] 대량 발송 기능 개선
-    * 템플릿 파일 업로드 개선: 엑셀과 같은 일부 편집기에서 편집 이력이 있는 셀의 경우 셀 데이터가 없을 경우에도 빈 문자열 데이터가 포함되어 저장되었습니다. 입력 범위 밖의 빈 문자열의 경우 템플릿 파일
-      업로드 시 유효성 검사에서 무시하도록 변경되었습니다.
-    * 유의 안내 문구 추가: 엑셀과 같은 일부 편집기에서 CSV 템플릿 파일을 작성할 경우 유니코드 정보가 저장되지 않아 문자가 깨지는 이슈가 있었습니다. 해당 이슈에 대한 내용을 템플릿 다운로드와 발송 예약
-      시 유의 안내 문구가 표시되었습니다.
+* [Console] Improved the bulk delivery feature
+    * Uploading Template Files: In some editors, like excel, even when there is no available data for cell which has editing history, empty character string data are included in saving. Empty character strings which are not within the range of input are
+      Changed to ignore validation when uploading.
+    * Caution Messages Added: In some editors, like Excel, CSV template files are created and Unicode information is not saved, which results in broken characters. Cautions on such issue are to be provided for template downloads and scheduled sending.
+      A caution notice is displayed.
 
 <a id="11-24-2"></a>
 #### 버그 수정
 
-* [Console] 대량 발송 페이지 오류 수정
-    * 이벤트 오류 수정: 요청 리스트의 헤더를 클릭할 경우 '발송 요청 건을 선택 후 조회할 수 있습니다.' alert 가 표시되는 오류가 수정되었습니다.
+* [Console] Fixed error on the bulk delivery page
+    * Modified event errors: Modified the error in which an alert shows like 'Select a delivery request to query', at the click of the header of the request list.
 
 <a id="10-20"></a>
 ### 2016. 10. 20. { #10-20 }
@@ -959,10 +959,10 @@
 <a id="10-20-1"></a>
 #### 기능개선/변경
 
-* [Document] Developer's Guide 문서에 추가 설명과 예제 추가
-    * 일반 메일 발송/개별 메일 발송 API의 [Request body]에 요청 예제가 추가되었습니다.
-    * 치환 기능을 이용할 경우, 메일 내용 작성 방법과 API의 [Request body]에 요청 예제가 추가되었습니다.
-* [Document] Developer's Guide > 메일 발송의 [Request body]에 senderName 파라미터 추가
+* [Document] Added additional descriptions and examples to Developer's Guide
+    * Added request examples to the [Request Body] of the General Mail Delivery/Individual Mail Delivery APIs.
+    * When using the substitution feature, request examples have been added to the mail writing guide and the API [Request Body].
+* [Document] Developer's Guide > Mail delivery > Added senderName parameter to [Request body]
 
 <a id="10-06"></a>
 ### 2016. 10. 06. { #10-06 }
@@ -970,10 +970,10 @@
 <a id="10-06-1"></a>
 #### 버그 수정
 
-* [Console] 대량 메일 발송 탭에서 대량 메일 발송시 메일 발송은 정상적으로 발송되나 첨부파일이 포함되지 않는 버그 수정
-* [Console] 대량 메일 발송 탭에서 대량 메일 발송 중 오류 발생 시 발송 상태가 발송 실패로 변경되지 않는 오류 수정
-* [Console][API] 메일 발송시 월이 변경되는 시점에 메일 발송이 실패하는 버그 수정
-* [Console] 템플릿 관리 탭에서 존재하는 템플릿을 선택 후 신규 템플릿 생성할 경우 첨부파일 개 수가 초기화되지 않는 버그 수정
+* [Console] Fixed a bug where attachments were not included when sending bulk mail from the Bulk Mail Delivery tab, even though the mail itself was sent successfully
+* [Console] Fixed an error where the delivery status was not changed to Delivery failed when an error occurred during mass mail delivery on the Mass Mail Delivery tab
+* [Console][API] Fixed a bug where mail delivery failed when the month changed during delivery
+* [Console] Fixed a bug where the attachment count was not reset when creating a new template after selecting an existing template in the Template Management tab
 
 <a id="08-18"></a>
 ### 2016. 08. 18. { #08-18 }
@@ -981,23 +981,23 @@
 <a id="08-18-1"></a>
 #### 기능개선/변경
 
-* [Console] 파일업로드를 통한 대량메일발송 기능 개선
-    * CSV를 통한 대량메일발송 기능 추가 : 기존에 엑셀파일을 통해서만 제공하던 대량메일발송 기능을 CSV파일을 통해서도 발송 할 수 있도록 확장되었습니다. (CSV 템플릿 제공)
-    * 선택 적 대상자 확인 프로세스: 기존 엑셀파일 대량업로드 시 필수로 대상자를 확인해야 발송 할수 있었던 프로세스에서 선택적으로 대상자를 확인 할 수 있도록 개선되었습니다.
-    * 첨부파일 validation 강화 : 대상자 확인 프로세스를 생략하더라도 메일주소가 유효한지 누락 된 데이터는 없는지 등의 유효성 검사를 통해 첨부한 파일에 데이터 오류를 알려주는 기능이 추가되었습니다.
-    * 대량메일발송 탭 추가 : 대상자 확인후진행 선택 시 대량메일발송탭을 통해 대상자 확인 후 메일발송 진행하는 기능이 추가되었습니다. (발송진행, 발송취소, 발송 후 발송상태 확인)
-    * 참고 : Upcoming Products > Email > Getting Started > 파일 업로드를 통한 대량 메일발송 추가
+* [Console] Improved the bulk email sending feature via file upload
+    * Added mass email delivery via CSV: Mass email delivery, previously available only through Excel files, has been expanded to also support delivery via CSV files. (CSV template provided)
+    * Check Process of Selective Targets: Improved to allow selectively checking targets in the process where targets had to be confirmed before sending when performing a bulk Excel file upload.
+    * Enforced Attachment File Validation: Added a feature that notifies you of data errors in attached files through validation checks — such as whether email addresses are valid or whether any data is missing — even when the recipient verification process is skipped.
+    * Tab Added for Mass Email Delivery: Added a feature to check recipients and proceed with email delivery through the Mass Email Delivery tab when selecting Deliver after Check. (Send, Cancel Delivery, and check delivery status after sending)
+    * For reference: Upcoming Products > Email > Getting Started > Mass Mail Delivery via File Upload Added
 
 <a id="08-18-2"></a>
 #### 버그 수정
 
-* [Console] 템플릿 관리 > 템플릿에 첨부파일 용량을 파일당 10MB로 제한하는 기능 추가 (템플릿 하나당 총 3개파일 총 30MB까지 업로드 가능)
-* [Console] 메일발송/ 템플릿 관리 탭 내에 본문 에디터 기능 중 글머리기호, 번호매기기 기능 사용 시 에디터에서 제대로 표시되지 않던 오류 수정
-* [Console] 메일 발송 > 메일발송 시 첨부파일 오류 후 취소 시에도 동일한 경고 발생하는 현상 수정
-    * 메일발송 > 메일발송 시 첨부파일 업로드 제한개수(3개)가 초과되어 개수제한경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 개수제한 경고가 발생되는 현상이
-      수정되었습니다.
-    * 메일발송 > 메일발송 시 첨부파일 업로드 제한용량(10MB)이 초과되어 용량제한 경고가 노출 된 후 추가로 파일을 첨부하려고 시도하면 파일탐색기에서 선택 취소시에도 용량제한 경고가 발생되는 현상이
-      수정되었습니다.
+* [Console] Added the feature to limit attachment file size to 10 MB per file in Template Management > Templates (up to 3 files per template, with a total of 30 MB uploadable)
+* [Console] Fixed an error where bullet points and numbered lists in the body editor were not displayed correctly in the editor, within the Mail Delivery/Template Management tab
+* [Console] Fixed an issue where the same warning occurred when canceling after an attachment error in Mail delivery > mail delivery
+    * Mail Delivery > Fixed an issue where, when sending mail, if the attachment upload limit (up to 3) was exceeded and the count limit warning was displayed, attempting to attach additional files would trigger the count limit warning even after canceling the selection in the file explorer.
+      Modified.
+    * Mail Delivery > Fixed an issue where, when attempting to attach an additional file after the attachment upload size limit (10 MB) was exceeded during mail delivery and a size limit warning was displayed, the size limit warning would still appear even after canceling the file selection in the file browser.
+      Modified.
 
 <a id="08-04"></a>
 ### 2016. 08. 04. { #08-04 }
@@ -1005,10 +1005,10 @@
 <a id="08-04-1"></a>
 #### 기능개선/변경
 
-* [Console] 메일 발송조회 성능개선 작업 (인덱스 변경/ 반정규화 작업)
-* [Console] 국제화처리 적용
+* [Console] Improved mail delivery query performance (index changes/denormalization)
+* [Console] Applied globalization
 
 <a id="08-04-2"></a>
 #### 버그 수정
 
-* [Console] 수신자 리스트 파일을 2회 이상 업로드 시도 시 Progress loadbar 무한로딩되는 현상수정
+* [Console] Fixed an issue where the progress load bar continued loading indefinitely when uploading a recipient list file more than once

@@ -4,47 +4,47 @@
 ## Notification > Email > Troubleshooting Guide { #notification-email-troubleshooting-guide }
 
 <a id="gmail-2024-2-1"></a>
-### Gmail 이메일 발신자 가이드라인 강화 (2024년 2월 1일 시행) { #gmail-2024-2-1 }
-2024년 2월 1일부터 Gmail 계정으로 하루에 5,000개 이상의 메일을 보내는 이메일 발신자에 대한 가이드라인이 강화되었습니다.
+### Gmail Email Sender Guideline Updates (Effective February 1, 2024) { #gmail-2024-2-1 }
+Starting February 1, 2024, guidelines have been strengthened for email senders who send 5,000 or more emails per day to Gmail accounts.
 
 <a id="gmail-2024-2-1-1"></a>
 #### 대량메일 발신자 기준
-- 메일 전송 한도(5,000개)를 계산할 때는 동일한 기본 도메인에서 전송된 모든 메일 수를 집계합니다.
-- 예를 들어 매일 개인 Gmail 계정으로 `solarmora.com`에서 2,500개의 메일을 보내고, `promotions.solarmora.com`에서 2,500개의 메일을 보내는 경우, 5,000개의 메일이 모두 동일한 기본 도메인(`solarmora.com`)에서 전송되었으므로 대량메일 발신자로 간주됩니다.
-- 위의 기준을 한 번 이상 충족한 발신자는 영구적으로 대량메일 발신자로 간주됩니다.
+- When calculating the mail sending limit (5,000), all mail sent from the same base domain is counted in aggregate.
+- For example, if you send 2,500 emails from `solarmora.com` and 2,500 emails from `promotions.solarmora.com` to personal Gmail accounts every day, all 5,000 emails are considered to have been sent from the same primary domain (`solarmora.com`), so you are classified as a bulk sender.
+- A sender who has met the above criteria at least once is permanently considered a bulk mail sender.
 
 <a id="gmail-2024-2-1-2"></a>
 #### 원클릭 수신 거부
-하루에 5,000개가 넘는 메일을 보내는 경우 마케팅 및 수신 동의 메일은 원클릭 수신 거부를 지원해야 합니다.
-NHN Cloud Email 서비스는 Gmail 메일에 원클릭 수신 거부 기능을 제공합니다.
+If you send more than 5,000 emails per day, marketing emails and emails requiring consent to receive must support one-click unsubscribe.
+NHN Cloud Email service provides a one-click unsubscribe feature for Gmail.
 
-추가되는 헤더는 다음과 같습니다.
+The added headers are as follows.
 >List-Unsubscribe-Post: List-Unsubscribe=One-Click
 >
 >List-Unsubscribe: <https://solarmora.com/unsubscribe/example>
 
-사용자가 수신자가 원클릭 수신 거부를 사용하여 수신을 거부하면 다음과 같은 POST 요청이 전송됩니다.
+When a recipient unsubscribes using one-click unsubscribe, the following POST request is sent.
 >"POST /unsubscribe/example HTTP/1.1
 > Host: solarmora.com
 > Content-Type: application/x-www-form-urlencoded
 > Content-Length: 26
 > List-Unsubscribe=One-Click"
 
-수신 거부 옵션도 사용할 수 있지만 원클릭 수신 거부를 대체하지는 않습니다.
+The unsubscribe option is also available, but it does not replace one-click unsubscribe.
 
 
 <a id="gmail-2024-2-1-3"></a>
 #### 안정적인 메일 발송을 위한 필수 가이드라인
-NHN Cloud Email 서비스를 사용하는 경우 다음 사항을 고려해 주시기 바랍니다.
-- 발신 도메인에 SPF, DKIM, DMARC 레코드를 추가하고 인증을 완료하세요. 인증에 실패할 경우 Gmail로의 메일 발송이 제한될 수 있습니다.
-- 같은 메일에 다른 유형의 콘텐츠를 함께 포함하지 마세요. 예를 들어 구매 영수증 메일에 프로모션을 포함하지 마세요.
-- 메일 수신에 동의하지 않은 사용자에게 메일을 보내지 마세요. 이러한 수신자는 내 메일을 스팸으로 표시할 수 있으며, 향후 이러한 수신자에게 보내는 메일도 스팸으로 표시됩니다.
-- 발송 시 발신자를 메일 유형별로 분류하여 발송하세요. 예를 들어, 구매 영수증 메일은 구매 영수증 발신자로, 프로모션 메일은 프로모션 발신자로 발송하세요.
+When using the NHN Cloud Email service, please consider the following.
+- Add SPF, DKIM, and DMARC records to your sending domain and complete the authentication. If authentication fails, mail delivery to Gmail may be restricted.
+- Do not include different types of content in the same email. For example, do not include promotions in a purchase receipt email.
+- Don't send mail to users who have not agreed to receive mail. These recipients may mark your mail as spam, and future mail sent to these recipients may also be marked as spam.
+- When sending mail, classify the sender by mail type. For example, send purchase receipt emails from a purchase receipt sender, and promotional emails from a promotional sender.
 
 <a id="gmail-2024-2-1-4"></a>
 #### 참조
-- [이메일 발신자 가이드라인](https://support.google.com/a/answer/81126?hl=en)
-- [이메일 발신자 가이드라인 FAQ](https://support.google.com/a/answer/14229414?sjid=4363325810454271147-NC)
+- [Email Sender Guidelines](https://support.google.com/a/answer/81126?hl=en)
+- [Email Sender Guidelines FAQ](https://support.google.com/a/answer/14229414?sjid=4363325810454271147-NC)
 
 <a id="about-receiving-emails-in-gmail"></a>
 ### About Receiving Emails in Gmail { #about-receiving-emails-in-gmail }
