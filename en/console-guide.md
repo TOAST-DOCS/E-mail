@@ -79,9 +79,9 @@ NHN Cloud provides the following technical measures for 'advertising mail' to co
 
 | Key | Phrase | Usage example |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you don’t want to receive the mail, click on ##BLOCK_RECEIVER_LINK##. |
-| | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you don’t want to receive the mail, click on ##BLOCK_RECEIVER_LINK##. |
+| | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -270,7 +270,7 @@ potential problems that can be exploited by third parties.
 
 * It is not a mandatory feature to use the email service.
     * You can use the email service without registering a domain, but there are some restrictions on using the service.
-    * For more information, see [Caution before Delivery](./Overview/#_2/).
+    * For more information, see [Caution before Delivery](./Overview/#precautions-before-delivery).
 * It cannot be used unless the domain is owned by an individual or a company.
     * You cannot use the domain of companies that provide mail account issuance services such as Daum, Naver and Google.
 
@@ -341,7 +341,7 @@ Registered sub-domains are available with **Custom Header** feature when sending
             * <i>(e.g.,)</i> If you requested to send an email To: test@toast.com , X-TC-ENVELOPE- FROM: to test@cs.toast.com
                 * Send a return mail from the recipient mail service to test@cs.toast.com mail address
 
-* For more information, refer to [custom header](./console-guide/#custom-header) guide.
+* For more information, refer to [custom header](#custom-header) guide.
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC Authentication { #spf-dkim-dmarc-authentication }
