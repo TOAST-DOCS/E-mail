@@ -75,7 +75,7 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 
 | キー | 文言 | 使用例 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [受信拒否](#template-management) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
 | JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
