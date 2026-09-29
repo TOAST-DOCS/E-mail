@@ -71,7 +71,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 
 [Request body]
@@ -232,7 +232,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -359,7 +359,7 @@ curl -X POST \
 #### Caution for Sending Ad Mails
 
 - The title must include the (AD) phrase. 
-- For more details, see [Send Advertising Mails](./console-guide/#_3).
+- For more details, see [Send Advertising Mails](./console-guide/#advertising-mail-deliver).
 * In response to [[Enhanced Gmail sender Guideline](https://support.google.com/a/answer/81126?hl=en)], which will be implemented starting in February 2024, a one-click unsubscribe link will be required when sending marketing and opt-in emails to gmail.com.
     * This link will automatically be replaced with an unsubscribe link.
     * If you wish to use a separate URL, you can do so by adding the "List-Unsubscribe" header to customHeaders.
@@ -387,7 +387,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Example 1]
 ```
@@ -468,7 +468,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Example 1]
 ```
@@ -541,7 +541,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 
 [Request Body]
@@ -690,7 +690,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -843,7 +843,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -985,7 +985,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-mail-delivery-details-curl"></a>
 #### cURL
@@ -1155,7 +1155,7 @@ curl -X GET \
 
 | Value            | 	Type     | 	Required | 	Description                                           |
 |--------------|---------|-----|-----------------------------------------------|
-| X-Secret-Key | 	String | O   | Unique secretKey [[Notes](./api-guide/#secret-key)] |
+| X-Secret-Key | 	String | O   | Unique secretKey [[Notes](#secret-key)] |
 
 <a id="view-the-list-of-completed-email-delivery-updates-curl"></a>
 #### cURL
@@ -1263,7 +1263,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 <a id="query-mass-delivery-list-curl"></a>
 #### cURL
@@ -1365,7 +1365,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]
@@ -1488,7 +1488,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 <a id="query-mass-delivery-details-curl"></a>
 #### cURL
@@ -1626,7 +1626,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -1747,7 +1747,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
@@ -1877,7 +1877,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
@@ -1937,7 +1937,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
@@ -1995,7 +1995,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2105,7 +2105,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -2223,7 +2223,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -2326,7 +2326,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-details-curl"></a>
 #### cURL
@@ -2413,7 +2413,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2500,7 +2500,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2576,7 +2576,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="delete-curl"></a>
 #### cURL
@@ -2641,7 +2641,7 @@ curl -X DELETE \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -2744,7 +2744,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-template-details-curl"></a>
 #### cURL
@@ -2853,7 +2853,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2943,7 +2943,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -3026,7 +3026,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -3112,7 +3112,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="delete-templates-curl"></a>
 #### cURL
@@ -3174,7 +3174,7 @@ curl -X DELETE \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -3271,7 +3271,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -3355,7 +3355,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -3429,7 +3429,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -3504,7 +3504,7 @@ curl -X PUT \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]
@@ -3596,7 +3596,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]

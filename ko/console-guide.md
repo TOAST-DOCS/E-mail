@@ -73,9 +73,9 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 
 | 키 | 문구 | 사용 예시 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [수신거부](#unsubscription-management) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -254,7 +254,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 * 이메일 서비스를 이용하기 위해 필수로 진행해야 하는 부분은 아닙니다.
     * 도메인을 등록하지 않고도 이메일 서비스를 이용할 수 있으나 서비스 이용에 일부 제한 사항이 있습니다.
-    * 자세한 내용은 [발송 전 유의 사항](./Overview/#_2/)을 참고하세요.
+    * 자세한 내용은 [발송 전 유의 사항](./Overview/#precautions-before-delivery)을 참고하세요.
 * 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
     * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
 
@@ -324,7 +324,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
             * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
                 * 수신 측 메일 서비스에서 test@cs.toast.com 메일 주소로 반송 메일 발송
 
-* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](./console-guide/#custom-header) 가이드를 참고하세요.
+* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](#custom-header) 가이드를 참고하세요.
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC 인증 { #spf-dkim-dmarc-authentication }

@@ -75,9 +75,9 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 
 | キー | 文言 | 使用例 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [受信拒否](#template-management) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -256,7 +256,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 * メールサービスを利用するために必ず行わなければならない部分ではありません。
     * ドメインを登録しなくてもメールサービスを利用できますが、サービスの利用に一部制限があります。
-    * 詳細は[送信前の注意事項](./Overview/#_2/)を参照してください。
+    * 詳細は[送信前の注意事項](./Overview/#precautions-before-delivery)を参照してください。
 * 個人または会社が所有するドメインでない場合、使用ができません。
     * Daum, Naver, Googleなどのメールアカウント発行サービスを提供する企業のドメインは使用できません。
 
@@ -326,7 +326,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
             * 例)受信者：test@toast.com, X-TC-ENVELOPE-FROM：test@cs.toast.comにメール送信をリクエストした場合
                 * 受信側のメールサービスでtest@cs.toast.comメールアドレスに返信メールを送信
 
-* 詳細は[ユーザー指定ヘッダ(custom header)](./console-guide/#custom-header)ガイドを参照してください。
+* 詳細は[ユーザー指定ヘッダ(custom header)](#custom-header)ガイドを参照してください。
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC認証 { #spf-dkim-dmarc-authentication }

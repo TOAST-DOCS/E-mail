@@ -7,7 +7,7 @@
 ### v2.1 APIの紹介 { #v21-api-overview }
 
 1.シークレットキー認証の導入
-	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
+	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](#secret-key)を設定して呼び出す必要があります。
 2. 大量送信照会API追加
 	* 大量送信件の照会APIが追加されました。
 
@@ -70,7 +70,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -227,7 +227,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -376,7 +376,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [例1]
 ```
@@ -457,7 +457,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [例1]
 ```
@@ -530,7 +530,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -675,7 +675,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -826,7 +826,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -968,7 +968,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mail-delivery-details-curl"></a>
 #### cURL
@@ -1136,7 +1136,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="view-the-list-of-completed-email-delivery-updates-curl"></a>
 #### cURL
@@ -1243,7 +1243,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mass-delivery-list-curl"></a>
 #### cURL
@@ -1345,7 +1345,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]
@@ -1468,7 +1468,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mass-delivery-details-curl"></a>
 #### cURL
@@ -1606,7 +1606,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]
@@ -1727,7 +1727,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
@@ -1856,7 +1856,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
@@ -1916,7 +1916,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
@@ -1974,7 +1974,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2084,7 +2084,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2203,7 +2203,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2306,7 +2306,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-details-curl"></a>
 #### cURL
@@ -2393,7 +2393,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2479,7 +2479,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2555,7 +2555,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="delete-curl"></a>
 #### cURL
@@ -2620,7 +2620,7 @@ curl -X DELETE \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2724,7 +2724,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-template-details-curl"></a>
 #### cURL
@@ -2833,7 +2833,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2922,7 +2922,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3005,7 +3005,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3091,7 +3091,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="delete-templates-curl"></a>
 #### cURL
@@ -3153,7 +3153,7 @@ curl -X DELETE \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3250,7 +3250,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3333,7 +3333,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3406,7 +3406,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3481,7 +3481,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3572,7 +3572,7 @@ https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?ev
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]

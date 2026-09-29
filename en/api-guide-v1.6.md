@@ -308,7 +308,7 @@ curl -X POST \
 #### Caution for Sending Ad Mails
 
 - The title must include the (AD) phrase. 
-- For more details, see [Send Advertising Mails](./console-guide/#_3).
+- For more details, see [Send Advertising Mails](./console-guide/#advertising-mail-deliver).
 
 [URL]
 
