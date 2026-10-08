@@ -647,6 +647,7 @@ curl -X POST \
 |--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |--- resultCode|	Integer|	受信者送信リクエスト結果コード|
 |--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
+
 <a id="upload-attached-files"></a>
 ### 添付ファイルのアップロード { #upload-attached-files }
 
@@ -1576,6 +1577,7 @@ curl -X GET \
 |--- fileSize|	Integer| 	添付ファイルのサイズ(byte)                                                             |
 |--- createDate|	String| 	作成日時                                                                     |
 |-- statsId| String| 統計データグルーピングのためのキー |
+
 <a id="scheduled-delivery-management"></a>
 ## 予約送信管理 { #scheduled-delivery-management }
 
@@ -3122,6 +3124,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| 成否 |
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
+
 <a id="query-statistics"></a>
 ## 統計照会 { #query-statistics }
 
@@ -3261,6 +3264,7 @@ curl -X GET \
 |endBlockDate|	String|	X| 受信拒否日終了値 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
+
 <a id="query-rejections-curl"></a>
 #### cURL
 ```

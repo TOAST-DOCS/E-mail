@@ -381,6 +381,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |--- receiveType|	String|	수신자 타입 (MRT0 : 받는 사람 , MRT1 : 참조, MRT2 : 숨은 참조)|
 |--- resultCode|	Integer|	수신자 발송 요청 결과 코드|
 |--- resultMessage|	String|	수신자 발송 요청 결과 메시지|
+
 <a id="upload-attached-files"></a>
 ### 첨부파일 업로드 { #upload-attached-files }
 
@@ -1503,6 +1504,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| 성공 여부 |
 |- resultCode|  Integer|    실패 코드|
 |- resultMessage|   String| 실패 메시지|
+
 <a id="query-statistics"></a>
 ## 통계 조회 { #query-statistics }
 
