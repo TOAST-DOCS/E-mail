@@ -662,6 +662,7 @@ curl -X POST \
 | --- receiveType     | String  | O|	Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
 | --- resultCode      | Integer | O|	Result code of recipient delivery request                    |
 | --- resultMessage   | String  | O|	Result message of recipient delivery request                 |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -1596,6 +1597,7 @@ curl -X GET \
 |--- fileSize|	Integer|	O|	Attached file size(byte)|
 |--- createDate|	String|	O|	Date and time of creation|
 |-- statsId| String| X|	Key for statistics data grouping |
+
 <a id="scheduled-delivery-management"></a>
 ## Scheduled Delivery Management { #scheduled-delivery-management }
 
@@ -2948,7 +2950,7 @@ curl -X POST \
 [Request body]
 
 |Value| Type | Max Length | Required | Description |
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 |fileName|  String| - |O| File name |
 |fileBody|  Byte[]| - |O| Byte [] value |
 |userId|    String| 50|X| User ID |
@@ -3143,6 +3145,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 

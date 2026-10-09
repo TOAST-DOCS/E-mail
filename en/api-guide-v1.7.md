@@ -534,6 +534,7 @@ curl -X POST \
 | --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -927,6 +928,7 @@ curl -X GET \
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
+
 <a id="scheduled-delivery-management"></a>
 ## Scheduled Delivery Management { #scheduled-delivery-management }
 
@@ -2263,6 +2265,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 

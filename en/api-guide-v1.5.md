@@ -376,6 +376,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | - data          | Object  | Data area                                                    |
 | -- requestId    | String  | Request ID                                                   |
 | -- statusCode   | String  | Request status code (Y: preparing for sending , N: Preparing for sending failed) |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -1518,6 +1519,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 

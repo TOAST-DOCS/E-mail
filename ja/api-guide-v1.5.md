@@ -368,6 +368,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 |- data|	Object|	データ領域|
 |-- requestId|	String|	リクエストID|
 |-- statusCode|	String|	リクエストステータスコード(Y：送信準備、N：送信準備失敗)|
+
 <a id="upload-attached-files"></a>
 ### 添付ファイルのアップロード { #upload-attached-files }
 
@@ -1498,6 +1499,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| 成否 |
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
+
 <a id="query-statistics"></a>
 ## 統計照会 { #query-statistics }
 
