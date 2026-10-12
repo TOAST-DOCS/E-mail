@@ -143,7 +143,7 @@
 | 수신거부  | false | -2301 | 파라미터 크기가 유효하지 않습니다.                                               | Parameter size is invalid.                                                                                      |
 | 수신거부  | false | -2302 | 파라미터 값이 유효하지 않습니다.                                                | Parameter value is invalid.                                                                                     |
 | 수신거부  | false | -2303 | 리스트 크기는 1000 이하여야 합니다.                                            | The size of list must be 1000 or fewer.                                                                         |
-| 수신거부  | false | -2304 | 이미 등록된 번호입니다.                                                     | It is already registered number.                                                                                |
+| 수신거부  | false | -2304 | 이미 수신 거부된 이메일 주소입니다.                                             | The email address is already unsubscribed.                                                                      |
 | 수신거부  | false | -2305 | 'blockReceiverList'는 필수입니다.                                       | The 'blockReceiverList' is required.                                                                            |
 | 수신거부  | false | -2306 | 유효하지 않은 업로드 파일입니다.                                                | Invalid upload file.                                                                                            |
 | 수신거부  | false | -2307 | 파일 읽기에 실패했습니다.                                                    | Fail to read files.                                                                                             |
