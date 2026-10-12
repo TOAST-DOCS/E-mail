@@ -3,6 +3,14 @@
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > 릴리스 노트 { #notification-email-release-notes }
 
+### 2026. 10. 27.
+
+#### 버그 수정
+
+* [콘솔, API] DKIM 인증 실패 문제 개선
+    * DKIM 레코드를 DNS에 등록하기 전에 인증을 시도한 경우, 이후 레코드를 정상 등록해도 일정 시간 동안 인증에 계속 실패하던 문제가 수정되었습니다.
+    * 레코드가 DNS에 반영되면 바로 다시 인증할 수 있습니다.
+
 <a id="august-25-2026"></a>
 ### 2026. 08. 25. { #august-25-2026 }
 
