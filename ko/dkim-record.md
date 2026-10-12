@@ -77,6 +77,7 @@
 
 - TXT 레코드의 DKIM 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
 - DKIM 설정 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
+- DNS에 레코드가 반영되기 전에 인증에 실패했더라도, 반영된 후 **인증** 버튼을 다시 클릭하면 인증할 수 있습니다.
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
 #### 3. DKIM 인증
