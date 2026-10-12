@@ -25,7 +25,7 @@
 | 공통    | false | -5002 | 활성화되지 않은 appkey입니다.                                                | Not activated appKey.                                                                                           |
 | 공통    | false | -5003 | 존재하지 않는 appKey입니다.                                                | Not exist appKey.                                                                                               |
 | 공통    | false | -9993 | 요청 바인딩 오류입니다.                                                     | Binding the requests error.                                                                                     |
-| 공통    | false | -9994 | 클라이언트 예외입니다.                                                      | Client exception.                                                                                               |
+| 공통    | false | -9994 | 클라이언트 예외입니다.                                                      | {} |
 | 공통    | false | -9995 | 유효하지 않은 요청입니다.                                                    | Invalid request. {}                                                                                             |
 | 공통    | false | -9996 | 'application/json' 타입의 콘텐츠만 지원합니다.                                | It supports only the content of a type 'application/json'.                                                      |
 | 공통    | false | -9997 | HTTP 메시지를 읽을 수 없습니다.                                              | Can not read http message.                                                                                      |
@@ -56,7 +56,7 @@
 | 발송/조회 | false | -2004 | 파일을 찾을 수 없습니다.                                                    | Not found the file. attachFileId: {}                                                                            |
 | 발송/조회 | false | -2006 | 데이터가 존재하지 않습니다.                                                   | Not exist data.                                                                                                 |
 | 발송/조회 | false | -2007 | 'requestId'가 유효하지 않습니다.                                           | The 'requestId' is invalid.                                                                                     |
-| 발송/조회 | false | -2008 | 첨부 파일 업로드 오류입니다.                                                  | Upload attach file error.                                                                                       |
+| 발송/조회 | false | -2008 | 첨부 파일 업로드 오류입니다.                                                  | Upload attach file error. or The file upload failed due to an internal error. |
 | 발송/조회 | false | -2009 | 'requestId' 또는 'startSendDate'는 필수입니다.                            | The 'requestId' or 'startSendDate' is required.                                                                 |
 | 발송/조회 | false | -2010 | 발신자 이메일 형식이 잘못되었습니다.                                              | Sender Email Format is wrong.                                                                                   |
 | 발송/조회 | false | -2011 | 수신자 이메일 형식이 잘못되었습니다.                                              | Receiver Email Format is wrong.                                                                                 |
@@ -68,7 +68,7 @@
 | 발송/조회 | false | -2017 | 'receiveMailAddr'은 필수입니다.                                         | The 'receiveMailAddr' is required.                                                                              |
 | 발송/조회 | false | -2018 | 'receiveType'은 필수입니다.                                             | The 'receiveType' is required.                                                                                  |
 | 발송/조회 | false | -2019 | 'receiveType'이 유효하지 않습니다.                                         | The 'receiveType' is invalid.                                                                                   |
-| 발송/조회 | false | -2020 | 'fileId'가 유효하지 않습니다.                                              | The 'fileId' is invalid.                                                                                        |
+| 발송/조회 | false | -2020 | 'fileId'가 유효하지 않습니다.                                              | The 'fileId' is invalid. or There is no matching data with file id. The file id in the 'attachFileIdList' : {} |
 | 발송/조회 | false | -2021 | 전체 파일 크기가 너무 큽니다.                                                 | The size of total files is too large.                                                                           |
 | 발송/조회 | false | -2023 | 광고 메일의 경우 제목 앞에 (광고), (AD) 또는 (広告) 문구를 배치해야 합니다.                  | For advertising mail, (광고), (AD), or (広告) phrases must be placed in front of the title.                         |
 | 발송/조회 | false | -2024 | 유효하지 않은 파일 확장자입니다.                                                | Invalid file extension.                                                                                         |
@@ -82,7 +82,7 @@
 | 발송/조회 | false | -2037 | 'senderName'이 최대 길이를 초과했습니다. (100자)                               | The 'senderName' exceeds maximum length. (100 chars)                                                            |
 | 발송/조회 | false | -2038 | 'senderAddress'가 최대 길이를 초과했습니다. (100자)                            | The 'senderAddress' exceeds maximum length. (100 chars)                                                         |
 | 발송/조회 | false | -2039 | 'receiveName'이 최대 길이를 초과했습니다. (100자)                              | The 'receiveName' exceeds maximum length. (100 chars)                                                           |
-| 발송/조회 | false | -2040 | 'receiveAddress'가 최대 길이를 초과했습니다. (100자)                           | The 'receiveAddress' exceeds maximum length. (100 chars)                                                        |
+| 발송/조회 | false | -2040 | 'receiveMailAddr'이 최대 길이를 초과했습니다. (100자)                          | The 'receiveMailAddr' exceeds maximum length. (100 chars)                                                       |
 | 발송/조회 | false | -2041 | 'fileName'이 최대 길이를 초과했습니다. (100자)                                 | The 'fileName' exceeds maximum length. (100 chars)                                                              |
 | 발송/조회 | false | -2042 | 'createUser'가 최대 길이를 초과했습니다. (50자)                                | The 'createUser' exceeds maximum length. (50 chars)                                                             |
 | 발송/조회 | false | -2043 | 현재 메일이 너무 많습니다. 다른 시간에 발송하세요.                                     | There are too much mail at this time. Please send it at another time.                                           |
@@ -94,7 +94,7 @@
 | 발송/조회 | false | -2050 | {}는 다른 NHN Cloud 프로젝트에 의해 보호되고 있습니다. 발신 도메인 인증 후 사용하세요.           | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.             |
 | 발송/조회 | false | -2051 | 이메일 형식이 잘못되었습니다. {}                                               | Email format is wrong. {}                                                                                       |
 | 발송/조회 | false | -2052 | 'requestDate'는 60일 이내여야 합니다. 'requestDate'를 업데이트하세요.              | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                |
-| 발송/조회 | false | -2053 | 유효하지 않은 예약 파라미터입니다.                                               | Invalid reservation parameter.                                                                                   |
+| 발송/조회 | false | -2053 | 유효하지 않은 예약 파라미터입니다.                                               | searchParameter and updateUser is empty. or startSendDate&#124;endSendDate is empty in searchParameter. |
 | 발송/조회 | false | -2054 | 파일에 헤더가 없습니다. 파일 형식을 확인하세요.                                       | There is no header in the file. Please check the file format.                                                   |
 | 발송/조회 | false | -2055 | 파일에 receiver_address 헤더가 없습니다.                                    | There is no receiver_address header in the file.                                                                |
 | 발송/조회 | false | -2056 | ('startReadDate'와 'endReadDate')는 필수입니다.                          | The ('startReadDate' and 'endReadDate') are required.                                                           |
