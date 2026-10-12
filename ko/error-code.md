@@ -95,8 +95,8 @@
 | 발송/조회 | false | -2051 | 이메일 형식이 잘못되었습니다. {}                                               | Email format is wrong. {}                                                                                       |
 | 발송/조회 | false | -2052 | 'requestDate'는 60일 이내여야 합니다. 'requestDate'를 업데이트하세요.              | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                |
 | 발송/조회 | false | -2053 | 유효하지 않은 예약 파라미터입니다.                                               | searchParameter and updateUser is empty. or startSendDate&#124;endSendDate is empty in searchParameter. |
-| 발송/조회 | false | -2054 | 파일에 헤더가 없습니다. 파일 형식을 확인하세요.                                       | There is no header in the file. Please check the file format.                                                   |
-| 발송/조회 | false | -2055 | 파일에 receiver_address 헤더가 없습니다.                                    | There is no receiver_address header in the file.                                                                |
+| 발송/조회 | false | -2054 | 파일에 receiver_address 헤더가 없습니다. | There is no receiver_address header in the file. |
+| 발송/조회 | false | -2055 | receiver_address 값이 비어 있습니다. | The receiver_address value is empty. |
 | 발송/조회 | false | -2056 | ('startReadDate'와 'endReadDate')는 필수입니다.                          | The ('startReadDate' and 'endReadDate') are required.                                                           |
 | 발송/조회 | false | -2058 | 예약 취소 요청이 실패했습니다.                                                 | Reservation cancel request is failed.                                                                           |
 | 발송/조회 | false | -2059 | 'statsId'가 최대 길이를 초과했습니다. (8자)                                    | The 'statsId' exceeds maximum length. (8 chars)                                                                 |
