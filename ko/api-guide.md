@@ -3397,6 +3397,10 @@ curl -X POST \
 |- resultCode|	Integer|	O|	실패 코드|
 |- resultMessage|	String|	O|	실패 메시지|
 
+* 이메일 주소 형식이 잘못된 항목은 등록되지 않습니다.
+    * 일부 항목만 형식이 잘못된 경우, 올바른 주소만 등록되고 결과 코드 1000(`Some of your requests are successful.`)이 반환됩니다.
+    * 모든 항목의 형식이 잘못된 경우 결과 코드 -2308이 반환됩니다.
+
 <a id="delete-rejections"></a>
 ### 수신 거부 삭제 { #delete-rejections }
 <a id="delete-rejections-request"></a>
