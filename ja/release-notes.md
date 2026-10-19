@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=8e711388a601 -->
+<!-- pre-align:aligned sig=5e96df9969ae -->
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
