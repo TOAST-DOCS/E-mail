@@ -1,9 +1,22 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=8e711388a601 -->
+<!-- pre-align:aligned sig=5e96df9969ae -->
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
+<a id="october-27-2026"></a>
+### 2026. 10. 27. { #october-27-2026 }
+
+<a id="october-27-2026-bug-fixes"></a>
+#### バグ修正
+
+* [コンソール、API] DKIM認証失敗の問題を修正
+    * DKIMレコードをDNSに登録する前に認証を試みた場合、その後レコードを正常に登録しても一定時間認証に継続して失敗する問題が修正されました。
+    * レコードがDNSに反映されると、すぐに再認証できます。
+* [API] 受信拒否登録時のメールアドレス形式検証を追加
+    * 受信拒否登録・修正APIで、形式が正しくないメールアドレスは登録されません。
+    * 形式が正しくないアドレスが一部含まれている場合、正しいアドレスのみ登録され、結果コード1000(一部のリクエストが成功しました。)が返されます。
+    * すべてのアドレスの形式が正しくない場合、エラーコード-2308が返されます。
 
 <a id="august-25-2026"></a>
 ### 2026. 08. 25. { #august-25-2026 }
@@ -31,7 +44,6 @@
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
-
 #### 機能変更
 * [コンソール、API] タグ(Tag)メール送信機能のサポート終了
     * タグ管理、UID管理、タグメール送信関連機能のサポートが終了します。

@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=3fdc9ceab57d -->
 
 <a id="notification-email-api-v21-guide"></a>
@@ -1203,24 +1205,24 @@ curl -X GET \
 
 ```
 
-| Value                       | 	Type      | 	Description                                                                                   |
-|-------------------------|----------|---------------------------------------------------------------------------------------|
-| header                  | 	Object  | 	Header area                                                                                |
-| - isSuccessful          | 	Boolean | 	Success                                                                                |
-| - resultCode            | 	Integer | 	Failure code                                                                                |
-| - resultMessage         | 	String  | 	Failure message                                                                               |
-| data                    | 	Object  | 	Data area                                                                               |
-| - requestId             | String   | Request ID                                                                                 |
-| - mailSeq               | Integer  | Email order name                                                                                 |
-| - mailStatusCode        | 	String  | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
-| - mailStatusName        | 	String  | 	Delivery status name                                                                              |
-| - requestDate           | String   | Request date and time                                                                                 |
-| - mailStatusUpdatedDate | String   | Email delivery status code update date 일시                                                                   |
-| - resultDate            | String   | Received date and time                                                                                 |
-| - openedDate            | String   | Read data and time                                                                                 |
-| - dsnCode               | String   | DSN(Delivery Status Notification) Status code                                               |
-| - dsnMessage            | String   | DSN(Delivery Status Notification) Status message                                              |
-| - senderGroupingKey     | String   | Sender group key                                                                               |
+| Value | Type | Not Null | Description |
+|---|---|---|---|
+| header | Object | O | Header area |
+| - isSuccessful | Boolean | O | Success |
+| - resultCode | Integer | O | Failure code |
+| - resultMessage | String | O | Failure message |
+| data | Object | X | Data area |
+| - requestId | String | O | Request ID |
+| - mailSeq | Integer | O | Email order name |
+| - mailStatusCode | String | O | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
+| - mailStatusName | String | O | Delivery status name |
+| - requestDate | String | O | Request date and time |
+| - mailStatusUpdatedDate | String | O | Email delivery status code update date and time |
+| - resultDate | String | X | Received date and time |
+| - openedDate | String | X | Read date and time |
+| - dsnCode | String | X | DSN(Delivery Status Notification) Status code |
+| - dsnMessage | String | X | DSN(Delivery Status Notification) Status message |
+| - senderGroupingKey | String | X | Sender group key |
 
 <a id="query-mass-delivery-list"></a>
 ### Query Mass Delivery List { #query-mass-delivery-list }
@@ -3323,8 +3325,6 @@ curl -X GET \
 | - resultCode    | Integer | O|	Failure code                              |
 | - resultMessage | String  | O|	Failure message                           |
 | body            | Object  | X|	Body area                                 |
-| - pageNum       | Integer | O|	Current page number                       |
-| -pageSize       | Integer | O|	Number of queried data                    |
 | - totalCount    | Integer | O|	Total number of data                      |
 | - data          | List    | O|	Data area                                 |
 | -- mailAddress  | String  | O|	Email address to reject                   |
@@ -3403,6 +3403,10 @@ curl -X POST \
 | - isSuccessful  | Boolean | O|	Successful or not |
 | - resultCode    | Integer | O|	Failure code      |
 | - resultMessage | String  | O|	Failure message   |
+
+* Items with an invalid email address format are not registered.
+    * If only some items have an invalid format, only the valid addresses are registered and result code 1000 (`Some of your requests are successful.`) is returned.
+    * If all items have an invalid format, result code -2308 is returned.
 
 <a id="delete-rejections"></a>
 ### Delete Rejections { #delete-rejections }
