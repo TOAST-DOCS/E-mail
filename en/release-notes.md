@@ -4,6 +4,17 @@
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
+### October 27, 2026
+
+#### Bug Fixes
+
+* [Console, API] Fixed DKIM authentication failure issue
+    * Fixed an issue where, if authentication was attempted before registering a DKIM record in DNS, authentication continued to fail for a period of time even after the record was properly registered.
+    * Once the record is reflected in DNS, you can immediately attempt authentication again.
+* [API] Added email address format validation for unsubscribe registration
+    * The unsubscribe registration/modification API does not register email addresses with an invalid format.
+    * If some addresses have an invalid format, only the valid addresses are registered and result code 1000 (Some requests succeeded.) is returned.
+    * If all addresses have an invalid format, error code -2308 is returned.
 
 <a id="august-25-2026"></a>
 ### August 25, 2026 { #august-25-2026 }
