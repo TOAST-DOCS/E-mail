@@ -4,8 +4,10 @@
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
-### October 27, 2026
+<a id="october-27-2026"></a>
+### October 27, 2026 { #october-27-2026 }
 
+<a id="october-27-2026-bug-fixes"></a>
 #### Bug Fixes
 
 * [Console, API] Fixed DKIM authentication failure issue
@@ -42,7 +44,6 @@
 <a id="march-24-2026"></a>
 ### March 24, 2026 { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
-
 #### Feature Updates
 * [Console, API] End of support for tag email sending
     * Support for tag management, UID management, and tag email delivery features has ended.
