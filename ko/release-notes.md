@@ -1,4 +1,4 @@
-<!-- pre-align:aligned sig=8e711388a601 -->
+<!-- pre-align:aligned sig=5e96df9969ae -->
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > 릴리스 노트 { #notification-email-release-notes }
