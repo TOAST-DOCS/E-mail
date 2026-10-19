@@ -4,8 +4,10 @@
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
-### 2026. 10. 27.
+<a id="october-27-2026"></a>
+### 2026. 10. 27. { #october-27-2026 }
 
+<a id="october-27-2026-bug-fixes"></a>
 #### バグ修正
 
 * [コンソール、API] DKIM認証失敗の問題を修正
@@ -42,7 +44,6 @@
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
-
 #### 機能変更
 * [コンソール、API] タグ(Tag)メール送信機能のサポート終了
     * タグ管理、UID管理、タグメール送信関連機能のサポートが終了します。
