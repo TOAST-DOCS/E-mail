@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=1ee6def13f9a -->
 
 <a id="notification-email-error-code"></a>
@@ -25,7 +27,7 @@
 | General    | false | -5002 | Not activated appKey.                                                | Not activated appKey.                                                                                           |
 | General    | false | -5003 | appkey does not exist.                                                | Not exist appKey.                                                                                               |
 | General    | false | -9993 | Request binding error.                                                     | Binding the requests error.                                                                                     |
-| General    | false | -9994 | Client exception.                                                      | Client exception.                                                                                               |
+| General    | false | -9994 | Client exception.                                                      | {}                                                                                               |
 | General    | false | -9995 | Invalid request.                                                    | Invalid request. {}                                                                                             |
 | General    | false | -9996 | Only support the contents of 'application/json' type.                                | It supports only the content of a type 'application/json'.                                                      |
 | General    | false | -9997 | Cannot read the HTTP message.                                              | Can not read http message.                                                                                      |
@@ -56,7 +58,7 @@
 | Request/Retrieval | false | -2004 | Cannot find the file.                                                    | Not found the file. attachFileId: {}                                                                            |
 | Request/Retrieval | false | -2006 | Data does not exist.                                                   | Not exist data.                                                                                                 |
 | Request/Retrieval | false | -2007 | The "requestId" is invalid.                                           | The 'requestId' is invalid.                                                                                     |
-| Request/Retrieval | false | -2008 | Error uploading the attachment.                                                  | Upload attach file error.                                                                                       |
+| Request/Retrieval | false | -2008 | Error uploading the attachment.                                                  | Upload attach file error. or The file upload failed due to an internal error.                                                                                       |
 | Request/Retrieval | false | -2009 | The "requestId" or "startSendDate" is required.                            | The 'requestId' or 'startSendDate' is required.                                                                 |
 | Request/Retrieval | false | -2010 | The sender email format is wrong.                                              | Sender Email Format is wrong.                                                                                   |
 | Request/Retrieval | false | -2011 | Invalid receiver email format.                                              | Receiver Email Format is wrong.                                                                                 |
@@ -68,7 +70,7 @@
 | Request/Retrieval | false | -2017 | The "receiveMailAddr" is required.                                         | The 'receiveMailAddr' is required.                                                                              |
 | Request/Retrieval | false | -2018 | The "receiveType" is required.                                              | The 'receiveType' is required.                                                                                  |
 | Request/Retrieval | false | -2019 | Invalid "receiveType".                                         | The 'receiveType' is invalid.                                                                                   |
-| Request/Retrieval | false | -2020 | Invalid "fileId".                                              | The 'fileId' is invalid.                                                                                        |
+| Request/Retrieval | false | -2020 | Invalid "fileId".                                              | The 'fileId' is invalid. or There is no matching data with file id. The file id in the 'attachFileIdList' : {}                                                                                        |
 | Request/Retrieval | false | -2021 | The size of total files is too large.                                                 | The size of total files is too large.                                                                           |
 | Request/Retrieval | false | -2023 | For advertising mail, (광고), (AD), or (広告) phrases must be placed in front of the title.                  | For advertising mail, (광고), (AD), or (広告) phrases must be placed in front of the title.                         |
 | Request/Retrieval | false | -2024 | Invalid file extension.                                                | Invalid file extension.                                                                                         |
@@ -82,7 +84,7 @@
 | Request/Retrieval | false | -2037 | The "senderName" exceeds maximum length. (100 chars)                               | The 'senderName' exceeds maximum length. (100 chars)                                                            |
 | Request/Retrieval | false | -2038 | The "senderAddress" exceeds maximum length. (100 chars)                             | The 'senderAddress' exceeds maximum length. (100 chars)                                                         |
 | Request/Retrieval | false | -2039 | The "receiveName" exceeds maximum length. (100 chars)                              | The 'receiveName' exceeds maximum length. (100 chars)                                                           |
-| Request/Retrieval | false | -2040 | The "receiveAddress" exceeds maximum length. (100 chars)                           | The 'receiveAddress' exceeds maximum length. (100 chars)                                                        |
+| Send/Retrieve | false | -2040 | The 'receiveMailAddr' exceeds maximum length. (100 chars)                          | The 'receiveMailAddr' exceeds maximum length. (100 chars)                                                        |
 | Request/Retrieval | false | -2041 | The "fileName" exceeds maximum length. (100 chars)                                 | The 'fileName' exceeds maximum length. (100 chars)                                                              |
 | Request/Retrieval | false | -2042 | The "createUser" exceeds maximum length. (50 chars)                                 | The 'createUser' exceeds maximum length. (50 chars)                                                             |
 | Request/Retrieval | false | -2043 | Too much emails at this time. Please send it at another time.                                     | There are too much mail at this time. Please send it at another time.                                           |
@@ -94,9 +96,9 @@
 | Request/Retrieval | false | -2050 | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.           | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain.             |
 | Request/Retrieval | false | -2051 | Invalid email format. {}                                               | Email format is wrong. {}                                                                                       |
 | Request/Retrieval | false | -2052 | The "requestDate" must be filed within 60 days. Please update the "requestDate".              | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'.                                |
-| Request/Retrieval | false | -2053 | Invalid reservation parameter.                                               | Invalid reservation parameter.                                                                                   |
-| Request/Retrieval | false | -2054 | No header in the file. Please check the file format.                                       | There is no header in the file. Please check the file format.                                                   |
-| Request/Retrieval | false | -2055 | No receiver_address header in the file.                                    | There is no receiver_address header in the file.                                                                |
+| Request/Retrieval | false | -2053 | Invalid reservation parameter.                                               | searchParameter and updateUser is empty. or startSendDate&#124;endSendDate is empty in searchParameter.                                                                                   |
+| Send/Retrieve | false | -2054 | There is no receiver_address header in the file.                                       | There is no receiver_address header in the file.                                                   |
+| Send/Retrieve | false | -2055 | The receiver_address value is empty.                                    | The receiver_address value is empty.                                                                |
 | Request/Retrieval | false | -2056 | ("startReadDate" and "endReadDate") are required.                          | The ('startReadDate' and 'endReadDate') are required.                                                           |
 | Request/Retrieval | false | -2058 | Failed to request cancelling the reservation.                                                 | Reservation cancel request is failed.                                                                           |
 | Request/Retrieval | false | -2059 | The "statsId" exceeds maximum length. (8 chars)                                    | The 'statsId' exceeds maximum length. (8 chars)                                                                 |
@@ -143,7 +145,7 @@
 | Opt-out  | false | -2301 | Parameter size is invalid.                                               | Parameter size is invalid.                                                                                      |
 | Opt-out  | false | -2302 | Parameter value is invalid.                                                | Parameter value is invalid.                                                                                     |
 | Opt-out  | false | -2303 | The size of list must be 1,000 or fewer.                                            | The size of list must be 1,000 or fewer.                                                                         |
-| Opt-out  | false | -2304 | Already registered number.                                                     | It is already registered number.                                                                                |
+| Opt-out  | false | -2304 | The email address is already unsubscribed.                                             | The email address is already unsubscribed.                                                                                |
 | Opt-out  | false | -2305 | The "blockReceiverList" is required.                                       | The 'blockReceiverList' is required.                                                                            |
 | Opt-out  | false | -2306 | Invalid upload file.                                                | Invalid upload file.                                                                                            |
 | Opt-out  | false | -2307 | Failed to read files.                                                    | Fail to read files.                                                                                             |
