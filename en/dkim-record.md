@@ -41,7 +41,7 @@
 - For more detailed description of the DKIM-Signature structure, refer to [RFC 6376](https://datatracker.ietf.org/doc/html/rfc6376).
 
 | Field |Required or not | Value | Description |
-| ---- | --- | --- |
+| ---- | --- | --- | --- |
 | v | Required | 1 | Version. |
 | a | Required | sha-256 | algorithm used for DKIM signature. |
 | s | Required | - | It is Selector. Sender domain can use multiple DKIMs. Therefore, the DKIM-Signature header should inform the receiving server which public key should be used for authentication. For example, if the Selector is 'toast', the receiving server checks the DKIM record in the DNS of 'toast._domainkey.example.com'. |
@@ -52,18 +52,6 @@
 | d | Required | - | The domain. Used along with the Selector (s) to look up the DKIM record in DNS for DKIM signature verification. It can differ from MAIL FROM (5321.From) and From (5322.From). However, if it differs, the mail may be classified as suspicious. |
 | t | Optional | - | The DKIM signature creation time. The format is Unix Time — the elapsed time in seconds since January 1, 1970, 00:00:00 UTC (Coordinated Universal Time). e.g., Unix time for June 8, 2020, 3:47:17 PM: 1591631237 seconds |
 | x | Optional | - | The DKIM signature expiration time. The format is the same as the signature creation time (t). |
-
-public key this signature should use to authenticate. For example, if the Selector is 'toast', the receiving server checks DKIM record in the DNS of '
-toast.\_domainkey.example.com '. |
-| h | Required | - | - | Header to sign. Headers are identified by colons (:). |
-| b | Required | - | - | The value of headers defined in the header (h) to be signed. Encoded to Base64\. |
-| bh | required | - | - | signed value of the body of email. |
-| l | Optional | - | - The length of the body used for body signature (b). Use the entire body unless otherwise defined. |
-| d || Required | - | - | Domain. Used to lookup DNS for DKIM records to verify DKIM signatures with Selector(s). It may be different from MAIL FROM (5321.From)
-and From (5322.From). However, if it is different, it can be classified as suspicious mail. |
-| t | Optional | - | Date and Time that DKIM Signature generated. The format is Unix Time. 0 second: 0 minute: 0 hour on January 1, 1970, value that converted
-to seconds of elapsed time from UTC (agreed world time). Example, June 8, 2020 at 3hour:47minutes:17seconds PM Unix time: 1591631237 seconds |
-| x | Optional | - | Date and time that DKIM signature expired. Format is equal to the date and time (t) of signature generation. |
 
 DKIM Header example above has the following implications.
 
@@ -97,7 +85,6 @@ DKIM Header example above has the following implications.
 
 - Even if you finish changing DKIM settings for TXT record, it will take up to 48 hours for DNS changes to take effect depending on the DNS server situation.
 - After DKIM setup, it is safe to send an email after a few hours.
-
 - Even if verification fails before the record is propagated to DNS, you can verify by clicking the **Verify** button again after it has been propagated.
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>

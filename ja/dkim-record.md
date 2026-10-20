@@ -80,7 +80,6 @@
 
 - TXTレコードのDKIM設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
 - DKIM設定作業後、数時間程度経過してからメールを送信するのが安全です。
-
 - DNSにレコードが反映される前に認証に失敗した場合でも、反映された後に**認証**ボタンを再度クリックすると認証できます。
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
