@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=f392043ebeea -->
 
 <a id="notification-email-console-guide"></a>
@@ -73,9 +75,9 @@ NHN Cloudは、情報通信網法を遵守するため、「広告メール」�
 
 | キー | 文言 | 使用例 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合は ##BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -254,7 +256,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
 
 * メールサービスを利用するために必ず行わなければならない部分ではありません。
     * ドメインを登録しなくてもメールサービスを利用できますが、サービスの利用に一部制限があります。
-    * 詳細は[送信前の注意事項](./Overview/#_2/)を参照してください。
+    * 詳細は[送信前の注意事項](./Overview/#precautions-before-delivery)を参照してください。
 * 個人または会社が所有するドメインでない場合、使用ができません。
     * Daum, Naver, Googleなどのメールアカウント発行サービスを提供する企業のドメインは使用できません。
 
@@ -324,7 +326,7 @@ Excel/CSVフォーマットのテンプレートファイルを使用して大�
             * 例)受信者：test@toast.com, X-TC-ENVELOPE-FROM：test@cs.toast.comにメール送信をリクエストした場合
                 * 受信側のメールサービスでtest@cs.toast.comメールアドレスに返信メールを送信
 
-* 詳細は[ユーザー指定ヘッダ(custom header)](./console-guide/#custom-header)ガイドを参照してください。
+* 詳細は[ユーザー指定ヘッダ(custom header)](#custom-header)ガイドを参照してください。
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC認証 { #spf-dkim-dmarc-authentication }
@@ -382,8 +384,6 @@ Webフック登録時に下記の設定値を入力します。
 ## 統計イベントキーの管理 { #manage-statistical-event-keys }
 **統計イベントキー管理**タブで統計イベントキーを管理できます。作成時に 名前、説明、イベント収集期間を設定できます。イベント収集期間を設定しない場合、収集期間は無期限に設定されます。作成された統計イベントキーは、メッセージ送信時に設定できます。統計イベントキーが設定されたメッセージの送信結果は**統計**タブにて統計イベントキーで検索できます。
 
-<span id="stats"></span>
-
 <a id="query-statistics"></a>
 ## 統計照会 { #query-statistics }
 最近30日以内に収集されたメッセージの受信/確認データを検索できます。コンソールで**統計照会**を選択します。メッセージ、トークンの登録や削除に関する統計を検索できます。
@@ -394,6 +394,15 @@ Webフック登録時に下記の設定値を入力します。
     - デフォルトは、設定された期間に基づいて自動的に最適化されたタイプでグラフを表示します。
 3. メッセージ統計では、統計イベントキー、テンプレートID、メールタイプで検索できます。
 
+!!! danger "注意"
+    統計件数と請求件数の差異
+
+    統計メニューで提供する件数は、送信時点にリアルタイムで集計された値です。リアルタイム集計の特性上、一部の件数が統計に反映されない場合があります。
+
+    請求件数は毎月、送信履歴全体を対象に別途の確認手続きを経て確定されます。そのため、統計メニューの件数と請求件数には差異が生じる場合があり、正確な利用件数は請求履歴を基準とします。
+
+    したがって、請求金額の確認や精算照合の目的では、統計メニューの件数の代わりに請求履歴をご利用ください。統計メニューは、送信傾向と結果分布を確認する用途にご活用ください。
+
 <a id="sending-settings"></a>
 ## 送信設定 { #sending-settings }
 
@@ -402,8 +411,6 @@ Webフック登録時に下記の設定値を入力します。
 
 - メッセージの保管期間ポリシーに基づき、90日を過ぎた送信履歴データをバックアップできます。
 - バックアップの使用有無、ファイル拡張子、ファイルをアップロードするストレージ情報を入力すると、そのストレージにバックアップ日を含むファイルが作成されます。
-
-<span id='personal-information-assignor'></span>
 
 <a id="note"></a>
 ## 参考 { #note }

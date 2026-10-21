@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=f392043ebeea -->
 
 <a id="notification-email-console-guide"></a>
@@ -77,9 +79,9 @@ NHN Cloud provides the following technical measures for 'advertising mail' to co
 
 | Key | Phrase | Usage example |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you don’t want to receive the mail, click on ##BLOCK_RECEIVER_LINK##. |
-| | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you don’t want to receive the mail, click on ##BLOCK_RECEIVER_LINK##. |
+| | EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -98,7 +100,7 @@ You can use mail templates that was created in advance.
 <a id="mass-delivery"></a>
 ### Mass Delivery { #mass-delivery }
 
-You can send Mass Delivery mail through template file in Excel/CSV format. On the bottom tab, select ** Mass Delivery **.
+You can send Mass Delivery mail through template file in Excel/CSV format. On the bottom tab, select **Mass Delivery**.
 
 ![email_04_20231023_en](https://static.toastoven.net/prod_email/email_04_20231023_en.png)
 ![email_05_20231023_en](https://static.toastoven.net/prod_email/email_05_20231023_en.png)
@@ -146,7 +148,7 @@ After creating categories, you can classify and manage templates that you use to
 
 ![email_08_20231023_en](https://static.toastoven.net/prod_email/email_08_20231023_en.png)
 
-- To add/modify template, you can click on **Add/ modify template ** button
+- To add/modify template, you can click on **Add/ modify template** button
 - Make sure to click **Add Templates** while a category is selected.
 - If want to enter to replace authentication number, order number, coupon code, points, etc., **enter by tying replacement key to ### in the title or contents**
   .
@@ -154,7 +156,7 @@ After creating categories, you can classify and manage templates that you use to
 <a id="unsubscription-management"></a>
 ## Unsubscription Management { #unsubscription-management }
 
-You can manage targets of Unsubscription On **Unsubscription management ** tab.
+You can manage targets of Unsubscription On **Unsubscription management** tab.
 
 ![email_09_20231023_en](https://static.toastoven.net/prod_email/email_09_20231023_en.png)
 
@@ -182,8 +184,8 @@ You can View users who have declined to receive so far, and you can register or 
 
 ![email_12_20231023_en](https://static.toastoven.net/prod_email/email_12_20231023_en.png)
 
-- Select Unsubscription email address you want to delete and click **Delete Unsubscription ** button.
-- Once deletion is complete, it can be seen on the ** Unsubscription Management** tab.
+- Select Unsubscription email address you want to delete and click **Delete Unsubscription** button.
+- Once deletion is complete, it can be seen on the **Unsubscription Management** tab.
 
 <a id="retrieve-delivery"></a>
 ## Retrieve Delivery { #retrieve-delivery }
@@ -268,7 +270,7 @@ potential problems that can be exploited by third parties.
 
 * It is not a mandatory feature to use the email service.
     * You can use the email service without registering a domain, but there are some restrictions on using the service.
-    * For more information, see [Caution before Delivery](./Overview/#_2/).
+    * For more information, see [Caution before Delivery](./Overview/#precautions-before-delivery).
 * It cannot be used unless the domain is owned by an individual or a company.
     * You cannot use the domain of companies that provide mail account issuance services such as Daum, Naver and Google.
 
@@ -339,7 +341,7 @@ Registered sub-domains are available with **Custom Header** feature when sending
             * <i>(e.g.,)</i> If you requested to send an email To: test@toast.com , X-TC-ENVELOPE- FROM: to test@cs.toast.com
                 * Send a return mail from the recipient mail service to test@cs.toast.com mail address
 
-* For more information, refer to [custom header](./console-guide/#custom-header) guide.
+* For more information, refer to [custom header](#custom-header) guide.
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC Authentication { #spf-dkim-dmarc-authentication }
@@ -359,7 +361,7 @@ refer to **Domain Management Guide**.
 
 Webhook refers to a feature that informs you that a certain task has been done in the service. <br>
 When registering a web hook, if a specific event occurs within the email service, it generates HTTP POST request with URL defined in the webhook settings.
-Webhook settings can be managed from ** Webhook Management ** tab.
+Webhook settings can be managed from **Webhook Management** tab.
 
 <a id="webhook-management-register-webhook-settings"></a>
 #### Register Webhook Settings
@@ -400,8 +402,6 @@ You can view by date, time zone and day of the week.
 ## Manage Statistical Event Keys { #manage-statistical-event-keys }
 You can manage statistical event keys on the Manage **Statistical Event Keys** tab. When you create it, you can set a name, description, and event collection period. If you do not set an event collection period, the collection period is set to indefinite. The created statistical event key can be set at the time of sending the message. The sending results of messages with statistical event keys set can be searched by statistical event key on the **Statistics** tab.
 
-<span id="stats"></span>
-
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 You can search for message received/viewed data collected in the last 30 days. In the console, select View **statistics**. You can retrieve statistics for messages, token enrollments, or deletions.
@@ -412,6 +412,15 @@ You can search for message received/viewed data collected in the last 30 days. I
     - Default displays the graph in a type that is automatically optimized based on the set time period.
 3. In message statistics, you can search by statistical event key, templateid, and mail type.
 
+!!! danger "Caution"
+    Difference between statistics count and billing count
+
+    The count provided in the Statistics menu is aggregated in real time at the time of delivery. Due to the nature of real-time aggregation, some items may not be reflected in the statistics.
+
+    The billing count is finalized each month through a separate verification process covering all delivery records. For this reason, the count in the Statistics menu may differ from the billing count, and the exact usage count is based on the billing records.
+
+    Therefore, for verifying billing amounts or reconciliation purposes, use the billing records instead of the count in the Statistics menu. Use the Statistics menu to check delivery trends and result distribution.
+
 <a id="sending-settings"></a>
 ## Sending Settings { #sending-settings }
 
@@ -421,8 +430,6 @@ You can search for message received/viewed data collected in the last 30 days. I
 - Depending on the message retention period policy, you can back up sending history data that is older than 90 days.
 - If you enter information about whether to back up messages, the file extension, and the storage to upload the file to, a file containing the backup date will
   be created in that storage.
-
-<span id='personal-information-assignor'></span>
 
 <a id="note"></a>
 ## [Note] { #note }

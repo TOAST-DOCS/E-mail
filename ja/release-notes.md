@@ -1,9 +1,22 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=8e711388a601 -->
+<!-- pre-align:aligned sig=5e96df9969ae -->
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
+<a id="october-27-2026"></a>
+### 2026. 10. 27. { #october-27-2026 }
+
+<a id="october-27-2026-bug-fixes"></a>
+#### バグ修正
+
+* [コンソール、API] DKIM認証失敗の問題を修正
+    * DKIMレコードをDNSに登録する前に認証を試みた場合、その後レコードを正常に登録しても一定時間認証に継続して失敗する問題が修正されました。
+    * レコードがDNSに反映されると、すぐに再認証できます。
+* [API] 受信拒否登録時のメールアドレス形式検証を追加
+    * 受信拒否登録・修正APIで、形式が正しくないメールアドレスは登録されません。
+    * 形式が正しくないアドレスが一部含まれている場合、正しいアドレスのみ登録され、結果コード1000(一部のリクエストが成功しました。)が返されます。
+    * すべてのアドレスの形式が正しくない場合、エラーコード-2308が返されます。
 
 <a id="august-25-2026"></a>
 ### 2026. 08. 25. { #august-25-2026 }
@@ -17,17 +30,20 @@
 <a id="notification-email-release-notes-1"></a>
 ### 2026. 05. 27. { #notification-email-release-notes-1 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-1-1"></a>
 #### バグ修正
 
-<!-- TODO: translate body -->
+* [API] 受信拒否リンク呼び出し失敗の問題を改善
+    * 送信済みメール内の受信拒否リンクをクリックした際、一部のケースで呼び出しが失敗していた問題が修正されました。
+    * 既存に送信済みの受信拒否リンクも、変更後は正常に動作します。
+* [API] 非ASCII文字を含むドメインの処理を改善
+    * アクセント記号などの非ASCII文字を含むドメイン（例: `münchen.de`）に対してドメイン登録を要求したり、メール送信を要求したりした場合、エラーレスポンスが返されるように変更されました。
+    * RFC 1123 の基準（英字、数字、ハイフン、ドット）に従わないドメインリクエストをブロックすることで、送信の安定性が向上します。
+    * 国際化ドメインを使用する必要がある場合は、Punycode（例: `xn--mnchen-3ya.de`）形式に変換してリクエストしてください。
 
 <a id="march-24-2026"></a>
 ### 2026. 03. 24. { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
-
 #### 機能変更
 * [コンソール、API] タグ(Tag)メール送信機能のサポート終了
     * タグ管理、UID管理、タグメール送信関連機能のサポートが終了します。
@@ -423,12 +439,11 @@
 <a id="notification-email-release-notes-2"></a>
 ### 2020. 10. 27. { #notification-email-release-notes-2 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-2-1"></a>
 #### 機能追加
 
-<!-- TODO: translate body -->
+* [コンソール] 大量メール送信キャンセル機能の追加
+    * **[大量メール送信照会]** タブで、送信中の状態のメールをキャンセルできる機能が追加されました。
 
 <a id="september-22-2020"></a>
 ### 2020. 09. 22. { #september-22-2020 }
@@ -442,7 +457,7 @@
         * 現在サポートしているイベントタイプは次のとおりです。
             * 広告メール受信拒否アドレス登録
                 * 広告性メール送信時に含まれる受信拒否リンクで受信者が受信拒否した場合、Webフック機能が動作します。
-        * 詳細な内容は[Webフック管理](./console-guide/#webhook)を参照してください。
+        * 詳細な内容は[Webフック管理](./console-guide/#webhook-management)を参照してください。
 
 <a id="august-25-2020"></a>
 ### 2020. 08. 25. { #august-25-2020 }
@@ -477,7 +492,7 @@
 
 * [コンソール] DKIM機能を追加
     * メール送信時、メールが改ざんされていないかを受信側で検証できるDKIM機能を追加しました。
-    * 詳細は[DKIMガイド](./console-guide/#dkim)を参照してください。
+    * 詳細は[DKIMガイド](./console-guide/#spf-dkim-dmarc-authentication)を参照してください。
 
 <a id="march-24-2020"></a>
 ### 2020. 03. 24. { #march-24-2020 }
@@ -741,7 +756,7 @@
         * 受信拒否リンクをクリック時に受信拒否できる画面を提供
         * 受信拒否された対象者に広告性メール送信をブロックする機能提供
         * 受信拒否対象者を管理できる画面提供(ダウンロード機能は今後提供予定)
-    * 詳細は[広告性メール送信](./console-guide/#_3)[受信拒否管理](./console-guide/#_13)をご覧ください。
+    * 詳細は[広告性メール送信](./console-guide/#_3)[受信拒否管理](./console-guide/#unsubscription-management)をご覧ください。
 * [API]広告性メール送信機能を追加
     * 広告性メールの場合、別途提供されるAPIを使用できます。
     * 次のような機能を提供します。
@@ -760,7 +775,7 @@
 * [コンソール]統計画面改善
     * 統計画面が改善されました。
     * 日別、時間帯別、曜日別に照会できるようになります。
-    * 詳細は[統計情報照会](./console-guide/#_17)をご覧ください。
+    * 詳細は[統計情報照会](./console-guide/#retrieve-statistics)をご覧ください。
 
 <a id="05-25"></a>
 ### 2017. 05. 25. { #05-25 }

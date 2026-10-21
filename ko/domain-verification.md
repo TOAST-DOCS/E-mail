@@ -25,7 +25,7 @@
 <a id="mail-domain-authentication-and-protection-procedures-register-mail-domain"></a>
 #### 메일 도메인 등록
 
-![email_202312_00.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00.png)
+![email_202312_00.png](../static/images/email_202312_00.png)
 
 1. Email 콘솔로 이동합니다.
 2. **메일 도메인 관리** 탭으로 이동합니다.
@@ -34,7 +34,7 @@
 <a id="mail-domain-authentication-and-protection-procedures-mail-domain-authentication-ownership-verification-procedure"></a>
 #### 메일 도메인 인증(소유권 확인 절차)
 
-![email_202312_01.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01.png)
+![email_202312_01.png](../static/images/email_202312_01.png)
 
 1. **인증**을 클릭합니다. **메일 도메인 인증** 팝업 화면에 생성된 토큰이 표시됩니다.
 2. 등록한 메일 도메인 DNS에 TXT 레코드를 추가합니다.
@@ -69,7 +69,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="share-domains"></a>
 ### 도메인 공유 { #share-domains }
 
-![email_202312_02.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02.png)
+![email_202312_02.png](../static/images/email_202312_02.png)
 
 1. 등록한 메일 도메인 항목의 **공유 > 설정** 버튼을 클릭합니다.
 2. 공유할 프로젝트로 이동 후 NHN Cloud Email 앱키를 확인합니다. 확인된 앱키를 등록합니다. 공유가 완료되면 목록에 프로젝트 정보가 표시됩니다. 앱키는 우측 상단 **URL & Appkey**에서 확인할 수 있습니다.
@@ -77,7 +77,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="protecting-mail-domains"></a>
 ### 메일 도메인 보호하기 { #protecting-mail-domains }
 
-![email_202312_03.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03.png)
+![email_202312_03.png](../static/images/email_202312_03.png)
 
 메일 도메인 등록, 소유권 확인이 완료될 경우 보호 기능이 자동 활성화 됩니다. 보호 기능 활성화를 원하지 않는 경우 수동으로 비활성화할 수 있습니다.
 

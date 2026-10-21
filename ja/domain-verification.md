@@ -25,7 +25,7 @@
 <a id="mail-domain-authentication-and-protection-procedures-register-mail-domain"></a>
 #### メールドメインの登録
 
-![email_202312_00_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_00_ja.png)
+![email_202312_00_ja.png](../static/images/email_202312_00_ja.png)
 
 1. Emailコンソールに移動します。
 2. **メールドメイン管理**タブに移動します。
@@ -34,7 +34,7 @@
 <a id="mail-domain-authentication-and-protection-procedures-mail-domain-authentication-ownership-verification-procedure"></a>
 #### メールドメイン認証(所有権確認手続き)
 
-![email_202312_01_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_01_ja.png)
+![email_202312_01_ja.png](../static/images/email_202312_01_ja.png)
 
 1. **認証**をクリックします。**メールドメイン認証**ポップアップ画面に作成されたトークンが表示されます。
 2. 登録したメールドメインのDNSにTXTレコードを追加します。
@@ -69,7 +69,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="share-domains"></a>
 ### ドメイン共有 { #share-domains }
 
-![email_202312_02_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_02_ja.png)
+![email_202312_02_ja.png](../static/images/email_202312_02_ja.png)
 
 1. 登録したメールドメイン項目の**共有 > 設定**ボタンをクリックします。
    2.共有するプロジェクトに移動し、NHN Cloud Emailアプリキーを確認します。確認したアプリキーを登録します。共有が完了すると、リストにプロジェクト情報が表示されます。アプリキーは右上の**URL & Appkey**で確認できます。
@@ -77,7 +77,7 @@ nslookup -q=TXT <your.domain.name>
 <a id="protecting-mail-domains"></a>
 ### メールドメインを保護する { #protecting-mail-domains }
 
-![email_202312_03_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_03_ja.png)
+![email_202312_03_ja.png](../static/images/email_202312_03_ja.png)
 
 メールドメインの登録、所有権確認が完了すると、保護機能が自動的に有効になります。保護機能を有効にしたくない場合は、手動で無効にできます。
 
