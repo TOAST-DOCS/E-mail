@@ -71,12 +71,13 @@
 2. 등록된 발송 도메인에 **DKIM 설정** 버튼을 클릭합니다.
 3. 표시된 DKIM 레코드를 복사해 발송 지정된 도메인 DNS에 등록합니다.
 
-![email_202312_04.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04.png)
+![email_202312_04.png](../static/images/email_202312_04.png)
 
 ##### 주의 사항
 
 - TXT 레코드의 DKIM 설정 변경 작업이 끝나더라도 DNS 서버 상황에 따라 DNS 변경 내용이 적용되기까지 최대 48시간이 소요됩니다.
 - DKIM 설정 작업 후, 몇 시간 정도 지난 다음에 이메일을 발송하는 것이 안전합니다.
+- DNS에 레코드가 반영되기 전에 인증에 실패했더라도, 반영된 후 **인증** 버튼을 다시 클릭하면 인증할 수 있습니다.
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
 #### 3. DKIM 인증
@@ -89,7 +90,7 @@
 
 - 인증에 성공한 경우 팝업 화면에서 **DKIM** 탭을 선택한 뒤 **활성화**를 클릭해 DKIM을 활성화합니다.
 
-![email_202312_05.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05.png)
+![email_202312_05.png](../static/images/email_202312_05.png)
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-test-dkim-authentication"></a>
 #### 5. DKIM 인증 테스트하기

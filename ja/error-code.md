@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=1ee6def13f9a -->
 
 <a id="notification-email-error-code"></a>
@@ -25,7 +27,7 @@
 | 共通 | false | -5002 | 有効化されていないappKeyです。 | Not activated appKey. |
 | 共通   | false | -5003 | 存在しないappKeyです。                                                | Not exist appKey.                                                                                               |
 | 共通   | false | -9993 | リクエストバインディングエラーです。                                                     | Binding the requests error.                                                                                     |
-| 共通   | false | -9994 | クライアント例外です。                                                      | Client exception.                                                                                               |
+| 共通   | false | -9994 | クライアント例外です。                                                      | {}                                                                                               |
 | 共通 | false | -9995 | 無効なリクエストです。 | Invalid request. {} |
 | 共通 | false | -9996 | 'application/json' タイプのコンテンツのみサポートします。 | It supports only the content of a type 'application/json'. |
 | 共通 | false | -9997 | HTTPメッセージを読み取れません。 | Can not read http message. |
@@ -56,7 +58,7 @@
 | 送信/照会 | false | -2004 | ファイルが見つかりません。                                                    | Not found the file. attachFileId: {}                                                                            |
 | 送信/照会 | false | -2006 | データが存在しません。                                                   | Not exist data.                                                                                                 |
 | 送信/照会 | false | -2007 | 'requestId' が無効です。 | The 'requestId' is invalid. |
-| 送信/照会 | false | -2008 | 添付ファイルのアップロードエラーです。 | Upload attach file error. |
+| 送信/照会 | false | -2008 | 添付ファイルのアップロードエラーです。 | Upload attach file error. or The file upload failed due to an internal error. |
 | 送信/照会 | false | -2009 | 'requestId' または 'startSendDate' は必須です。 | The 'requestId' or 'startSendDate' is required. |
 | 送信/照会 | false | -2010 | 送信者のメール形式が正しくありません。 | Sender Email Format is wrong. |
 | 送信/照会 | false | -2011 | 受信者のメール形式が正しくありません。 | Receiver Email Format is wrong. |
@@ -68,7 +70,7 @@
 | 送信/照会 | false | -2017 | 'receiveMailAddr' は必須です。 | The 'receiveMailAddr' is required. |
 | 送信/照会 | false | -2018 | 'receiveType' は必須です。 | The 'receiveType' is required. |
 | 送信/照会 | false | -2019 | 'receiveType' が無効です。 | The 'receiveType' is invalid. |
-| 送信/照会 | false | -2020 | 'fileId' が無効です。 | The 'fileId' is invalid. |
+| 送信/照会 | false | -2020 | 'fileId' が無効です。 | The 'fileId' is invalid. or There is no matching data with file id. The file id in the 'attachFileIdList' : {} |
 | 送信/照会 | false | -2021 | 全体のファイルサイズが大きすぎます。 | The size of total files is too large. |
 | 送信/照会 | false | -2023 | 広告メールの場合、件名の前に (広告)、(AD) などの文言を配置する必要があります。 | For advertising mail, (광고), (AD), or (広告) phrases must be placed in front of the title. |
 | 送信/照会 | false | -2024 | 無効なファイル拡張子です。 | Invalid file extension. |
@@ -82,7 +84,7 @@
 | 送信/照会 | false | -2037 | 'senderName' が最大長を超えました。(100文字) | The 'senderName' exceeds maximum length. (100 chars) |
 | 送信/照会 | false | -2038 | 'senderAddress' が最大長を超えました。(100文字) | The 'senderAddress' exceeds maximum length. (100 chars) |
 | 送信/照会 | false | -2039 | 'receiveName' が最大長を超えました。(100文字) | The 'receiveName' exceeds maximum length. (100 chars) |
-| 送信/照会 | false | -2040 | 'receiveAddress' が最大長を超えました。(100文字) | The 'receiveAddress' exceeds maximum length. (100 chars) |
+| 送信/照会 | false | -2040 | 'receiveMailAddr'が最大長を超えました。(100文字) | The 'receiveMailAddr' exceeds maximum length. (100 chars) |
 | 送信/照会 | false | -2041 | 'fileName' が最大長を超えました。(100文字) | The 'fileName' exceeds maximum length. (100 chars) |
 | 送信/照会 | false | -2042 | 'createUser' が最大長を超えました。(50文字) | The 'createUser' exceeds maximum length. (50 chars) |
 | 送信/照会 | false | -2043 | 現在、メールが多すぎます。別の時間に送信してください。 | There are too much mail at this time. Please send it at another time. |
@@ -94,9 +96,9 @@
 | 送信/照会 | false | -2050 | {} は他のNHN Cloudプロジェクトによって保護されています。発信ドメイン認証後に使用してください。 | The {} was protected by another nhn cloud project. Please use it after verifying the sender domain. |
 | 送信/照会 | false | -2051 | メール形式が正しくありません。 {}                                               | Email format is wrong. {}                                                                                       |
 | 送信/照会 | false | -2052 | 'requestDate' は60日以内である必要があります。'requestDate' を更新してください。 | The 'requestDate' must be filed within 60 days. Please update the 'requestDate'. |
-| 送信/照会 | false | -2053 | 無効な予約パラメータです。 | Invalid reservation parameter. |
-| 送信/照会 | false | -2054 | ファイルにヘッダがありません。ファイル形式を確認してください。 | There is no header in the file. Please check the file format. |
-| 送信/照会 | false | -2055 | ファイルに receiver_address ヘッダがありません。 | There is no receiver_address header in the file. |
+| 送信/照会 | false | -2053 | 無効な予約パラメータです。 | searchParameter and updateUser is empty. or startSendDate&#124;endSendDate is empty in searchParameter. |
+| 送信/照会 | false | -2054 | ファイルにreceiver_addressヘッダがありません。 | There is no receiver_address header in the file. |
+| 送信/照会 | false | -2055 | receiver_addressの値が空です。 | The receiver_address value is empty. |
 | 送信/照会 | false | -2056 | ('startReadDate' と 'endReadDate') は必須です。 | The ('startReadDate' and 'endReadDate') are required. |
 | 送信/照会 | false | -2058 | 予約キャンセルリクエストに失敗しました。 | Reservation cancel request is failed. |
 | 送信/照会 | false | -2059 | 'statsId' が最大長を超えました。(8文字) | The 'statsId' exceeds maximum length. (8 chars) |
@@ -143,7 +145,7 @@
 | 受信拒否 | false | -2301 | パラメータサイズが無効です。 | Parameter size is invalid. |
 | 受信拒否 | false | -2302 | パラメータ値が無効です。 | Parameter value is invalid. |
 | 受信拒否 | false | -2303 | リストサイズは1000以下である必要があります。 | The size of list must be 1000 or fewer. |
-| 受信拒否 | false | -2304 | すでに登録された番号です。                                                     | It is already registered number.                                                                                |
+| 受信拒否 | false | -2304 | すでに受信拒否されたメールアドレスです。                                                     | The email address is already unsubscribed.                                                                                |
 | 受信拒否 | false | -2305 | 'blockReceiverList' は必須です。 | The 'blockReceiverList' is required. |
 | 受信拒否 | false | -2306 | 無効なアップロードファイルです。 | Invalid upload file. |
 | 受信拒否 | false | -2307 | ファイルの読み込みに失敗しました。 | Fail to read files. |

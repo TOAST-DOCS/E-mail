@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER)|
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
@@ -243,7 +244,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 #### Caution for Sending Ad Mails
 
 - The title must include the (AD) phrase. 
-- For more details, see [Send Advertising Mails](./console-guide/#_3).
+- For more details, see [Send Advertising Mails](./console-guide/#advertising-mail-deliver).
 
 [URL]
 
@@ -375,6 +376,7 @@ curl -X POST -H "Content-Type: application/json;charset=UTF-8" https://email.api
 | - data          | Object  | Data area                                                    |
 | -- requestId    | String  | Request ID                                                   |
 | -- statusCode   | String  | Request status code (Y: preparing for sending , N: Preparing for sending failed) |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -1517,6 +1519,7 @@ curl -X DELETE -H "Content-Type: application/json;charset=UTF-8" https://email.a
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 
