@@ -30,7 +30,7 @@ Emailサービス内で特定イベントが発生した時、Webフック設定
 | productName     | 	String      | 	Webフックイベントが発生したサービス名                                                                   |
 | appKey          | 	String      | Webフックイベントが発生したサービスアプリキー                                                                  |
 | event           | 	String      | Webフックイベント名<br>* UNSUBSCRIBE:広告メール受信アドレス登録                                            |
-| hooks           | 	List\<Map\> | Webフックイベント発生時のデータ<br>* 詳細な内容は[イベントタイプ別フック(hook)定義](./api-guide/#event-hooks)を参照してください。 |
+| hooks           | 	List\<Map\> | Webフックイベント発生時のデータ<br>* 詳細な内容は[イベントタイプ別フック(hook)定義](#hook-definitions-by-event-type)を参照してください。 |
 
 <a id="send-webhook-curl"></a>
 #### cURL
@@ -54,8 +54,6 @@ curl -X POST \
         ]
     }'
 ```
-
-<span id="event-hooks"></span>
 
 <a id="hook-definitions-by-event-type"></a>
 ### イベントタイプ別hooks定義 { #hook-definitions-by-event-type }

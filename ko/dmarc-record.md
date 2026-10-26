@@ -100,14 +100,14 @@ DMARC 레코드에 사용되는 값에 대해 설명합니다. 더 자세한 내
 
 - DMARC 레코드 DNS 등록이 완료되면 DMARC 관리 팝업에서 DMARC 인증을 수행합니다.
 - 인증이 완료될 경우, **인증 완료** 라는 문구가 표시됩니다.
-  ![email_202312_08.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_08.png)
+  ![email_202312_08.png](../static/images/email_202312_08.png)
 
 <a id="dmarc-record-certification-procedure-example-of-dmarc-record-lookup-failure-screen"></a>
 #### DMARC 레코드 조회 실패 화면 예시
 
 - DMARC 레코드 조회 실패 시 다음과 같은 화면이 표시됩니다.
 
-![email_202312_09.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_09.png)
+![email_202312_09.png](../static/images/email_202312_09.png)
 
 <a id="precautions"></a>
 ### 주의 사항 { #precautions }

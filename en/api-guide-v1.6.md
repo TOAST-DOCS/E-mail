@@ -50,6 +50,7 @@ Content-Type: application/json;charset=UTF-8
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER)|
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
@@ -307,7 +308,7 @@ curl -X POST \
 #### Caution for Sending Ad Mails
 
 - The title must include the (AD) phrase. 
-- For more details, see [Send Advertising Mails](./console-guide/#_3).
+- For more details, see [Send Advertising Mails](./console-guide/#advertising-mail-deliver).
 
 [URL]
 
@@ -541,6 +542,7 @@ curl -X POST \
 | --- receiveType     | String  | Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc)|
 | --- resultCode      | Integer | Result code of recipient delivery request                    |
 | --- resultMessage   | String  | Result message of recipient delivery request                 |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -926,6 +928,7 @@ curl -X GET \
 | --- createDate      | String  | Date and time of creation                                    |
 | -- customHeaders    | Map     | [Custom Header](./console-guide/#custom-header)                   |
 | -- senderGroupingKey|	String  | Sender's group key                                           |
+
 <a id="scheduled-delivery-management"></a>
 ## Scheduled Delivery Management { #scheduled-delivery-management }
 
@@ -942,9 +945,23 @@ curl -X GET \
 
 [Path parameter]
 
-|Value| Type | Description |
+|Value|	Type|	Description|
 |---|---|---|
-|appKey|	String|	Original appKey|
+|appKey|	String|	Unique appKey|
+
+
+[Query parameter]
+
+|Value|	Type|	Required|	Description|
+|---|---|---|---|
+| requestId | String | X | Request ID |
+| startSendDate | String | X | Start time of delivery request (yyyy-MM-dd HH:mm:ss) |
+| endSendDate | String | X | End time of delivery request (yyyy-MM-dd HH:mm:ss) |
+| senderMail | String | X | Sender email address |
+| receiveMail | String | X | Recipient email address |
+| templateId | String | X | Template ID |
+| pageNum | Integer | X | Page number 1 (default) |
+| pageSize | Integer | X | Number of results to retrieve 15 (default) |
 
 <a id="list-scheduled-delivery-curl"></a>
 #### cURL
@@ -2248,6 +2265,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 

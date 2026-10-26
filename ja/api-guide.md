@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=3fdc9ceab57d -->
 
 <a id="notification-email-api-v21-guide"></a>
@@ -7,7 +9,7 @@
 ### v2.1 APIの紹介 { #v21-api-overview }
 
 1.シークレットキー認証の導入
-	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](./api-guide/#secret-key)を設定して呼び出す必要があります。
+	* v2.0 APIを呼び出す際、ヘッダに[シークレットキー](#secret-key)を設定して呼び出す必要があります。
 2. 大量送信照会API追加
 	* 大量送信件の照会APIが追加されました。
 
@@ -70,30 +72,30 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時が未入力の時は現在時間で送信(yyyy-MM-dd HH:mm:ss) |
-|title|	String|	O|	タイトル|
+|​senderAddress|	String|	O|	送信者のメールアドレス (最大 100 文字)|
+|senderName|	String|	X|	送信者名 (最大 100 文字)|
+|requestDate|	String|	X|	送信日時 (yyyy-MM-dd HH:mm:ss) <br/>現在日時(デフォルト) |
+|title|	String|	O|	タイトル (最大 998 文字)|
 |body|	String|	O|	内容|
-|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid|
-|templateId|	String|	X|	送信テンプレートID|
+|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid (ファイルアップロード時に file id を返します)|
+|templateId|	String|	X|	送信テンプレートID (最大 50 文字)|
 |templateType| String| X| テンプレートタイプ <br/>DEFAULT(default)、FREEMARKER)|
 |templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時に入力)|
-|- #key#|	String|	X|	置換キー(##key##)|
-|- #value#|	Object|	X|	置換キーにマッピングされるValue値|
+|- key|	String|	X|	置換キー(##key##)|
+|- value|	Object|	X|	置換キーにマッピングされるValue値|
 |receiverList|	List|	O|	受信者リスト<br/>最大1000人まで送信可能(受信者、CC含む)|
 |- receiveMailAddr|	String|	O|	受信者のメールアドレス|
 |- receiveName|	String|	X|	受信者名|
 |- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
+|senderGroupingKey| String| X| 発信者グループキー (最大 100 文字)|
+|userId|	String|	X|	送信セパレータ ex)admin,system (最大 50 文字)|
 | statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 
@@ -181,21 +183,21 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- requestId|	String|	リクエストID|
-|-- results|	List|	送信結果|
-|--- receiveMailAddr|	String|	受信者のメールアドレス|
-|--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|--- resultCode|	Integer|	受信者送信リクエスト結果コード|
-|--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId|	String|	X|	リクエストID|
+|-- results|	List|	X|	送信結果|
+|--- receiveMailAddr|	String|	X|	受信者のメールアドレス|
+|--- receiveName|	String|	X|	受信者名|
+|--- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|--- resultCode|	Integer|	O|	受信者送信リクエスト結果コード|
+|--- resultMessage|	String|	O|	受信者送信リクエスト結果メッセージ|
 
 <a id="send-individual-mails"></a>
 ### 個別メール送信 { #send-individual-mails }
@@ -209,7 +211,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/eachMail||
+|POST|	/email/v2.1/appKeys/{appKey}/sender/eachMail|
 
 [Path parameter]
 
@@ -227,20 +229,20 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時、未入力時は現在時間で送信(yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	タイトル|
-|body|	String|	O|	内容|
-|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid|
-|templateType| String| X| テンプレートタイプ <br/>DEFAULT(default)、FREEMARKER)|
-|templateId|	String|	X|	送信テンプレートID|
+|senderAddress|	String|	O|	送信者メールアドレス（最大 100 文字）|
+|senderName|	String|	X|	送信者名（最大 100 文字）|
+|requestDate|	String|	X|	送信日時（yyyy-MM-dd HH:mm:ss）<br/>現在日時（デフォルト）|
+|title|	String|	O|	メールタイトル（最大 998 文字）|
+|body|	String|	O|	メール内容|
+|attachFileIdList|	List:Integer|	X|	アップロードした添付ファイルid（ファイルアップロード時に file id を返す）|
+|templateId|	String|	X|	送信テンプレートID（最大 50 文字）|
+|templateType| String| X| テンプレートタイプ <br/>DEFAULT（デフォルト）、FREEMARKER）|
 |receiverList|	List|	O|	受信者リスト<br/>最大1000人まで送信可能|
 |- receiveMailAddr|	String|	O|	受信者のメールアドレス|
 |- receiveName|	String|	X|	受信者名|
@@ -248,9 +250,9 @@ curl -X POST \
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
 |customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
-|senderGroupingKey| String| X| 発信者グループキー |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
-|statsId| String |X| 統計ID(発信検索条件には含まれません) |
+|senderGroupingKey| String| X| 発信者グループキー（最大 100 文字）|
+|userId|	String|	X|	送信セパレータ ex)admin,system（最大 50 文字）|
+|statsId| String  | X | 統計ID(発信検索条件には含まれません) |
 
 [注意]
 
@@ -328,21 +330,21 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- requestId|	String|	リクエストID|
-|-- results|	List|	送信結果|
-|--- receiveMailAddr|	String|	受信者のメールアドレス|
-|--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|--- resultCode|	Integer|	受信者送信リクエスト結果コード|
-|--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId|	String|	X|	リクエストID|
+|-- results|	List|	X|	送信結果|
+|--- receiveMailAddr|	String|	O|	受信者のメールアドレス|
+|--- receiveName|	String|	X|	受信者名|
+|--- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|--- resultCode|	Integer|	O|	受信者送信リクエスト結果コード|
+|--- resultMessage|	String|	O|	受信者送信リクエスト結果メッセージ|
 
 
 <a id="sending-general-ad-mails"></a>
@@ -376,7 +378,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [例1]
 ```
@@ -457,7 +459,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [例1]
 ```
@@ -512,7 +514,7 @@ curl -X POST \
 
 |Http method|	URI|
 |---|---|
-|POST|	/email/v2.1/appKeys/{appKey}/sender/auth-mail||
+|POST|	/email/v2.1/appKeys/{appKey}/sender/auth-mail|
 
 [Path parameter]
 
@@ -530,16 +532,16 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|​senderAddress|	String|	O|	送信者のメール|
-|senderName|	String|	X|	送信者名|
-|requestDate|	String|	X|	送信日時、未入力時は現在時間で送信(yyyy-MM-dd HH:mm:ss)|
-|title|	String|	O|	タイトル|
+|​senderAddress|	String|	O|	送信者のメール（最大 100 文字）|
+|senderName|	String|	X|	送信者名（最大 100 文字）|
+|requestDate|	String|	X|	送信日時 (yyyy-MM-dd HH:mm:ss) <br/>現在日時（デフォルト）|
+|title|	String|	O|	タイトル（最大 998 文字）|
 |body|	String|	O|	内容|
 |templateId|	String|	X|	送信テンプレートID|
 |receiver|	Object|	O|	受信者 |
@@ -548,9 +550,9 @@ curl -X POST \
 |- templateParameter|	Object|	X|	置換パラメータ(メールのタイトル/内容置換時の入力)|
 |-- #key#|	String|	X|	置換キー(##key##)|
 |-- #value#|	Object|	X|	置換キーにマッピングされるValue値|
-|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)|
+|customHeaders| Map| X| [ユーザー指定ヘッダ](./console-guide/#custom-header)（最大 100 文字）|
 |senderGroupingKey| String| X| 送信者グループキー (最大100文字) |
-|userId|	String|	X|	送信セパレータ ex)admin,system|
+|userId|	String|	X|	送信セパレータ ex)admin,system（最大 50 文字）|
 |statsId| String |X| 統計ID(発信検索条件には含まれません) |
 
 [注意]
@@ -632,21 +634,22 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- requestId|	String|	リクエストID|
-|-- results|	List|	送信結果|
-|--- receiveMailAddr|	String|	受信者のメールアドレス|
-|--- receiveName|	String|	受信者名|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|--- resultCode|	Integer|	受信者送信リクエスト結果コード|
-|--- resultMessage|	String|	受信者送信リクエスト結果メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId|	String|	X|	リクエストID|
+|-- results|	List|	X|	送信結果|
+|--- receiveMailAddr|	String|	O|	受信者のメールアドレス|
+|--- receiveName|	String|	X|	受信者名|
+|--- receiveType|	String|	O|	受信者タイプ (MRT0：受信者、MRT1：CC (Carbon Copy)、MRT2：BCC (Blind Carbon Copy))|
+|--- resultCode|	Integer|	O|	受信者送信リクエスト結果コード|
+|--- resultMessage|	String|	O|	受信者送信リクエスト結果メッセージ|
+
 <a id="upload-attached-files"></a>
 ### 添付ファイルのアップロード { #upload-attached-files }
 
@@ -675,7 +678,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -718,16 +721,16 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- fileId|	Integer|	ファイルID|
-|-- fileName|	String|	ファイル名|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- fileId|	Integer|	O|	ファイルID|
+|-- fileName|	String|	O|	ファイル名|
 
 
 <a id="titlebody-replacement"></a>
@@ -826,7 +829,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -903,39 +906,39 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- requestId|	String|	リクエストID|
-|-- mailSeq|	Integer|	メールの順番|
-|-- requestDate|	String|	送信日時|
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderName|	String|	送信者名|
-|-- senderAddress|	String|	送信者のメールアドレス|
-|-- title|	String|	メールのタイトル|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
-|-- mailStatusName|	String|	送信ステータス名|
-|-- isReceived|	Boolean|	受信情報|
-|-- resultDate|	String|	受信日時|
-|-- isOpened| Boolean| 既読情報 |
-|-- openedDate| String| 開封日時|
-|-- receiveMailAddr|	String|	受信者のメールアドレス|
-|-- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|-- receiveTypeName| String| 受信者タイプ名|
-|-- receiveName| String| 受信者名|
-|-- senderGroupingKey| String| 発信者グループキー|
-|-- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|-- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|- pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- requestId|	String|	O|	リクエストID|
+|-- mailSeq|	Integer|	O|	1つのリクエストで複数のメールを送信した場合、各メールに付与される順番|
+|-- requestDate|	String|	O|	送信日時|
+|-- templateId|	String|	X|	テンプレートID|
+|-- templateName|	String|	X|	テンプレート名|
+|-- senderName|	String|	X|	送信者名|
+|-- senderAddress|	String|	O|	送信者のメールアドレス|
+|-- title|	String|	X|	メールのタイトル|
+|-- mailStatusCode|	String|	O|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：未認証|
+|-- mailStatusName|	String|	O|	送信ステータス名|
+|-- isReceived|	Boolean|	X|	受信情報|
+|-- resultDate|	String|	X|	受信日時|
+|-- isOpened| Boolean|	X| 既読情報 |
+|-- openedDate| String|	X| 開封日時|
+|-- receiveMailAddr|	String|	O|	受信者のメールアドレス|
+|-- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|-- receiveTypeName| String|	O| 受信者タイプ名|
+|-- receiveName| String|	X| 受信者名|
+|-- senderGroupingKey| String|	X| 発信者グループキー|
+|-- dsnCode| String|	X| DSN(Delivery Status Notification) ステータスコード|
+|-- dsnMessage| String|	X| DSN(Delivery Status Notification) ステータスメッセージ |
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
 
 
 <a id="query-mail-delivery-details"></a>
@@ -968,7 +971,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mail-delivery-details-curl"></a>
 #### cURL
@@ -1040,50 +1043,50 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- requestId| String| リクエストID|
-|-- mailSeq| Integer| メールの順番|
-|-- requestIp| String| リクエストIP|
-|-- requestDate| String| リクエスト時間|
-|-- mailStatusCode|	String| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、 SST7：認証なし|
-|-- mailStatusName|	String|	送信ステータス名|
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderName|	String|	送信者名|
-|-- senderAddress|	String|	送信者のアドレス|
-|-- resultId|	String|	送信結果ID|
-|-- title|	String|	タイトル|
-|-- body|	String|	内容|
-|-- receiverList|	List|	受信者リスト|
-|--- requestId|	String|	リクエストID|
-|--- mailSeq|	Integer|	メールの順番|
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|--- receiveTypeName| String| 受信者タイプ名|
-|--- receiveName| String| 受信者名|
-|--- receiveMailAddr|	String|	受信者メールアドレス|
-|--- isReceived| Boolean| 受信情報|
-|--- resultDate| String| 受信日時|
-|--- isOpened| Boolean| 既読情報|
-|--- openedDate| String| 開封日時|
-|--- dsnCode| String| DSN(Delivery Status Notification) ステータスコード|
-|--- dsnMessage| String| DSN(Delivery Status Notification) ステータスメッセージ |
-|-- attachFileList|	List| 添付ファイルリスト|
-|--- fileType|	String|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
-|--- fileId| Integer| ファイルID|
-|--- fileName|	String|	添付ファイル名|
-|--- filePath|	String|	添付ファイルパス|
-|--- fileSize|	Integer| 添付ファイルサイズ(byte)|
-|--- createDate|	String|	作成日時|
-|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	発信者グループキー|
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId| String|	O| リクエストID|
+|-- mailSeq| Integer|	O| メールの順番|
+|-- requestIp| String|	O| リクエストIP|
+|-- requestDate| String|	O| リクエスト日時|
+|-- mailStatusCode|	String|	O| 送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗、SST7：未認証|
+|-- mailStatusName|	String|	O|	送信ステータス名|
+|-- templateId|	String|	X|	テンプレートID|
+|-- templateName|	String|	X|	テンプレート名|
+|-- senderName|	String|	X|	送信者名|
+|-- senderAddress|	String|	O|	送信者のメールアドレス|
+|-- resultId|	String|	X|	メール送信ID|
+|-- title|	String|	X|	メール件名|
+|-- body|	String|	X|	メールの内容|
+|-- receiverList|	List|	X|	受信者リスト|
+|--- requestId|	String|	O|	リクエストID|
+|--- mailSeq|	Integer|	O|	メールの順番|
+|--- receiveType|	String|	O|	受信者タイプ<br/>MRT0：受信者、MRT1：CC、MRT2：BCC|
+|--- receiveTypeName|	String|	O|	受信者タイプ名|
+|--- receiveName|	String|	X|	受信者名|
+|--- receiveMailAddr|	String|	O|	受信者メールアドレス|
+|--- isReceived| Boolean|	O| 受信情報|
+|--- resultDate| String|	X| 受信日時|
+|--- isOpened| Boolean|	O| 既読情報|
+|--- openedDate| String|	X| 開封日時|
+|--- dsnCode| String|	X| DSN(Delivery Status Notification) ステータスコード|
+|--- dsnMessage| String|	X| DSN(Delivery Status Notification) ステータスメッセージ |
+|-- attachFileList|	List|	X| 添付ファイルリスト|
+|--- fileType|	String|	O|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
+|--- fileId| Integer|	O| ファイルID|
+|--- fileName|	String|	O|	添付ファイル名|
+|--- filePath|	String|	O|	添付ファイルパス|
+|--- fileSize|	Integer|	O|	添付ファイルサイズ(byte)|
+|--- createDate|	String|	O|	作成日時|
+|-- customHeaders|	Map|	X|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
+|-- senderGroupingKey|	String|	X|	発信者グループキー |
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
 
 
 <a id="view-the-list-of-completed-email-delivery-updates"></a>
@@ -1136,7 +1139,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="view-the-list-of-completed-email-delivery-updates-curl"></a>
 #### cURL
@@ -1182,24 +1185,24 @@ curl -X GET \
 
 ```
 
-| 値          |	タイプ| 	説明                                                                                  |
-|-------------|---|---------------------------------------------------------------------------------------|
-| header      |	Object| 	ヘッダ領域                                                                               |
-| - isSuccessful |	Boolean| 	成否                                                                               |
-| - resultCode |	Integer| 	失敗コード                                                                               |
-| - resultMessage |	String| 	失敗メッセージ                                                                              |
-| data        |	Object| 	データ領域                                                                              |
-| - requestId | String| リクエストID                                                                                 |
-| - mailSeq   | Integer| メール通し番号                                                                                 |
-| - mailStatusCode |	String| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7: 未認証、 SST8: ホワイトリストによる失敗 |
-| - mailStatusName |	String| 	送信ステータス名	|
-| - requestDate | String| リクエスト日時                                                                                |
-| - mailStatusUpdatedDate | String| メール送信ステータスコードのアップデート日時 |
-| - resultDate | String| 受信日時                                                                                |
-| - openedDate | String| 既読日時 |
-| - dsnCode   | String| DSN(Delivery Status Notification)ステータスコード                                              |
-| - dsnMessage | String| DSN(Delivery Status Notification)ステータスメッセージ |
-| - senderGroupingKey | String| 送信者グループキー |
+| 値          |	タイプ| 	Not Null|	説明                                                                                  |
+|-------------|---|---|---------------------------------------------------------------------------------|
+| header      |	Object| 	O| 	ヘッダ領域                                                                               |
+| - isSuccessful |	Boolean| 	O| 	成否                                                                               |
+| - resultCode |	Integer| 	O| 	失敗コード                                                                               |
+| - resultMessage |	String| 	O| 	失敗メッセージ                                                                              |
+| data        |	Object| 	X| 	データ領域                                                                              |
+| - requestId | String| 	O| リクエストID                                                                                 |
+| - mailSeq   | Integer| 	O| メール通し番号                                                                                 |
+| - mailStatusCode |	String| 	O| 送信ステータスコード <br/> SST2:送信完了、 SST3:送信失敗、  <br/> SST5:受信拒否、 SST7: 未認証、 SST8: ホワイトリストによる失敗 |
+| - mailStatusName |	String| 	O| 	送信ステータス名	|
+| - requestDate | String| 	O| リクエスト日時                                                                                |
+| - mailStatusUpdatedDate | String| 	O| メール送信ステータスコードのアップデート日時 |
+| - resultDate | String| 	X| 受信日時                                                                                |
+| - openedDate | String| 	X| 既読日時 |
+| - dsnCode   | String| 	X| DSN(Delivery Status Notification)ステータスコード                                              |
+| - dsnMessage | String| 	X| DSN(Delivery Status Notification)ステータスメッセージ |
+| - senderGroupingKey | String| 	X| 送信者グループキー |
 
 <a id="query-mass-delivery-list"></a>
 ### 大量メールリスト照会 { #query-mass-delivery-list }
@@ -1226,7 +1229,7 @@ curl -X GET \
 |requestId|	String|	O|	リクエストID|
 |startSendDate|	String|	O|	送信日開始値(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	送信日終了値(yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	送信メールアドレス|
+|senderAddress|	String|	X|	発信メールアドレス|
 |senderName|	String|	X|	送信者名|
 |templateId|	String|	X|	テンプレートID|
 |sendStatus|	String|	X|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
@@ -1243,7 +1246,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mass-delivery-list-curl"></a>
 #### cURL
@@ -1290,31 +1293,31 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	Object|	データ領域|
-|-- requestId| String| リクエストID|
-|-- requestDate| String| リクエスト日時|
-|-- sendStatus|	String|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
-|-- sendStatusName|	String|	送信ステータス名|
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderName|	String|	送信者名|
-|-- senderAddress|	String|	送信者メールアドレス|
-|-- title|	String|	メールタイトル|
-|-- body|	String|	メール内容|
-|-- adYn |  String  | 広告かどうか |
-|-- createDate |  String  | 作成日時 |
-|-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	X|	現在のページ番号|
+|- pageSize|	Integer|	X|	照会されたデータ件数|
+|- totalCount|	Integer|	X|	総データ件数|
+|- data|	Object|	X|	データ領域|
+|-- requestId| String|	O| リクエストID|
+|-- requestDate| String|	O| リクエスト日時|
+|-- sendStatus|	String|	O|	送信ステータスコード <br/> WAIT:待機、 READY:送信準備、 <br/>SENDREADY:送信準備完了、 SENDWAIT:送信待機、 <br/>SENDING:送信中、 COMPLETE:送信完了、 <br/>FAIL:送信失敗、 CANCEL:送信キャンセル|
+|-- sendStatusName|	String|	O|	送信ステータス名|
+|-- templateId|	String|	X|	テンプレートID|
+|-- templateName|	String|	X|	テンプレート名|
+|-- senderName|	String|	X|	送信者名|
+|-- senderAddress|	String|	X|	送信者メールアドレス|
+|-- title|	String|	X|	メールタイトル|
+|-- body|	String|	X|	メール内容|
+|-- adYn |  String  |	O| 広告かどうか |
+|-- createDate |  String  |	O| 作成日時 |
+|-- updateDate |  String  |	X| 修正日時 |
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
 
 <a id="query-recipient-for-mass-delivery"></a>
 ### 大量メール送信受信者照会 { #query-recipient-for-mass-delivery }
@@ -1345,7 +1348,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]
@@ -1408,35 +1411,35 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|-pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- requestId | String  | リクエストID |
-|-- mailSeq | Integer  | メール順番 |
-|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
-|-- mailStatusName | String  | メール状態名 |
-|-- resultId | String  | SMTP ID |
-|-- receiveType|	String|	受信者タイプ<br/>MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC|
-|-- receiveTypeName|	String|	受信者タイプ 名|
-|-- receiveName|	String|	受信者名|
-|-- receiveMailAddr|	String|	受信者メールアドレス|
-|-- isReceived| Boolean| 受信したかどうか |
-|-- resultDate| String| 受信日時|
-|-- isOpened| Boolean| 既読かどうか |
-|-- openedDate| String| 既読日時|
-|-- dsnCode| String| DSN(Delivery Status Notification)ステータスコード|
-|-- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ |
-|-- createDate |  String  | 作成日時 |
-|-- updateDate |  String  | 修正日時 |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|-pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- requestId | String  |	O| リクエストID |
+|-- mailSeq | Integer  |	O| メール順番 |
+|-- mailStatusCode | String  |	O| メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証|
+|-- mailStatusName | String  |	O| メール状態名 |
+|-- resultId | String  |	X| SMTP ID |
+|-- receiveType|	String|	O|	受信者タイプ<br/>MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC|
+|-- receiveTypeName|	String|	O|	受信者タイプ 名|
+|-- receiveName|	String|	X|	受信者名|
+|-- receiveMailAddr|	String|	O|	受信者メールアドレス|
+|-- isReceived| Boolean|	O| 受信したかどうか |
+|-- resultDate| String|	X| 受信日時|
+|-- isOpened| Boolean|	O| 既読かどうか |
+|-- openedDate| String|	X| 既読日時|
+|-- dsnCode| String|	X| DSN(Delivery Status Notification)ステータスコード|
+|-- dsnMessage| String|	X| DSN(Delivery Status Notification)状態メッセージ |
+|-- createDate |  String  |	O| 作成日時 |
+|-- updateDate |  String  |	O| 修正日時 |
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
 
 <a id="query-mass-delivery-details"></a>
 ### 大量メール送信詳細照会 { #query-mass-delivery-details }
@@ -1468,7 +1471,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-mass-delivery-details-curl"></a>
 #### cURL
@@ -1535,47 +1538,48 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ| 	説明                                                                        |
-|---|---|-----------------------------------------------------------------------------|
-|header|	Object| 	ヘッダ領域                                                                     |
-|- isSuccessful|	Boolean| 	成否                                                                     |
-|- resultCode|	Integer| 	失敗コード                                                                     |
-|- resultMessage|	String| 	失敗メッセージ                                                                    |
-|body|	Object| 	本文領域                                                                     |
-|- data|	List| 	データ領域                                                                    |
-|-- requestId  | String  | リクエストID                                                                       |
-|-- templateId | String  | テンプレートID                                                                      |
-|-- templateName | String  | テンプレート名                                                                       |
-|-- mailStatusCode | String  | メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証 |
-|-- mailStatusName | String  | メール状態名                                                                    |
-|-- requestDate | String  | リクエスト時間                                                                      |
-|-- senderName | String  | 送信者名                                                                       |
-|-- senderAddress | String  | 送信者アドレス                                                                     |
-|-- resultId | String  | SMTP ID                                                                     |
-|-- resultDate | String  | 実際の送信時間                                                                   |
-|-- title | String  | タイトル                                                                         |
-|-- body | String  | 内容                                                                         |
-|-- customHeaders|	Map| 	[ユーザー指定ヘッダ](./console-guide/#custom-header)                                |
-|-- receiverList | List| 受信者リスト                                                                    |
-|--- requestId | String  | リクエストID                                                                       |
-|--- mailSeq | Integer  | メールの順番                                                                       |
-|--- receiveType | String  | 受信者タイプ(MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC)                               |
-|--- receiveTypeName | String  | 受信者タイプ名                                                                    |
-|--- receiveMailAddr | String  | 受信者メールアドレス                                                                  |
-|--- isReceived| Boolean| 受信したかどうか                                                                       |
-|--- resultDate| String| 受信日時                                                                      |
-|--- isOpened| Boolean| 既読かどうか                                                                       |
-|--- openedDate| String| 既読日時                                                                      |
-|--- dsnCode| String| DSN(Delivery Status Notification)ステータスコード                                    |
-|--- dsnMessage| String| DSN(Delivery Status Notification)状態メッセージ                                   |
-|-- attachFileList | List  | 添付ファイルリスト                                                                   |
-|--- fileType|	String| 	添付ファイルタイプ(MAIL:メールに添付されたファイル、 TEMPLATE:テンプレートに添付されたファイル)                          |
-|--- fileId| Integer| ファイルID                                                                       |
-|--- fileName|	String| 	添付ファイルの名前                                                                   |
-|--- filePath|	String| 	添付ファイルのパス                                                                   |
-|--- fileSize|	Integer| 	添付ファイルのサイズ(byte)                                                             |
-|--- createDate|	String| 	作成日時                                                                     |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId  | String  |	O| リクエストID |
+|-- templateId | String  |	X| テンプレートID |
+|-- templateName | String  |	X| テンプレート名 |
+|-- mailStatusCode | String  |	O| メールステータスコード <br/> SST0:送信準備、 SST1:送信中、  <br/> SST2:送信完了、 SST3:送信失敗、 SST7: 未認証 |
+|-- mailStatusName | String  |	O| メール状態名 |
+|-- requestDate | String  |	O| リクエスト時間 |
+|-- senderName | String  |	X| 送信者名 |
+|-- senderAddress | String  |	X| 送信者アドレス |
+|-- resultId | String  |	X| SMTP ID |
+|-- resultDate | String  |	X| 実際の送信時間 |
+|-- title | String  |	X| タイトル |
+|-- body | String  |	X| 内容 |
+|-- customHeaders|	Map|	X|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
+|-- receiverList | List|	O| 受信者リスト|
+|--- requestId | String  |	O| リクエストID |
+|--- mailSeq | Integer  |	O| メールの順番 |
+|--- receiveType | String  |	O| 受信者タイプ(MRT0 : 受信者 , MRT1 :CC、 MRT2 : BCC) |
+|--- receiveTypeName | String  |	O| 受信者タイプ名 |
+|--- receiveMailAddr | String  |	O| 受信者メールアドレス |
+|--- isReceived| Boolean|	O| 受信したかどうか |
+|--- resultDate| String|	X| 受信日時|
+|--- isOpened| Boolean|	O| 既読かどうか |
+|--- openedDate| String|	X| 既読日時|
+|--- dsnCode| String|	X| DSN(Delivery Status Notification)ステータスコード|
+|--- dsnMessage| String|	X| DSN(Delivery Status Notification)状態メッセージ |
+|-- attachFileList | List  |	O| 添付ファイルリスト |
+|--- fileType|	String|	O|	添付ファイルタイプ(MAIL:メールに添付されたファイル、 TEMPLATE:テンプレートに添付されたファイル)|
+|--- fileId| Integer|	O| ファイルID|
+|--- fileName|	String|	O|	添付ファイルの名前|
+|--- filePath|	String|	O|	添付ファイルのパス|
+|--- fileSize|	Integer|	O|	添付ファイルのサイズ(byte)|
+|--- createDate|	String|	O|	作成日時|
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
+
 <a id="scheduled-delivery-management"></a>
 ## 予約送信管理 { #scheduled-delivery-management }
 
@@ -1606,7 +1610,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]
@@ -1669,33 +1673,33 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- requestId|	String | リクエストID |
-|-- mailSeq|	Integer| メールの順番 |
-|-- title|	String| メールのタイトル |
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderAddress|	String|	送信者のメールアドレス|
-|-- senderName|	String|	送信者名|
-|-- receiveMailAddr|	String|	受信者のメールアドレス|
-|-- receiveName|	String|	受信者名|
-|-- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|-- receiveTypeName|	String|	受信者タイプ名|
-|-- requestDate|	String|	送信日時|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
-|-- mailStatusName|	String|	送信ステータス名|
-|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
-|--- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|- pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- requestId|	String |	O| リクエストID |
+|-- mailSeq|	Integer|	O| メールの順番 |
+|-- title|	String|	X| メールのタイトル |
+|-- templateId|	String|	X|	テンプレートID|
+|-- templateName|	String|	X|	テンプレート名|
+|-- senderAddress|	String|	X|	送信者のメールアドレス|
+|-- senderName|	String|	X|	送信者名|
+|-- receiveMailAddr|	String|	O|	受信者のメールアドレス|
+|-- receiveName|	String|	X|	受信者名|
+|-- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|-- receiveTypeName|	String|	O|	受信者タイプ名|
+|-- requestDate|	String|	O|	送信日時|
+|-- mailStatusCode|	String|	O|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
+|-- mailStatusName|	String|	O|	送信ステータス名|
+|-- senderGroupingKey|	String|	X|	送信者グループキー(最大100文字) |
+|--- statsId| String|	X| 統計データグルーピングのためのキー |
 
 
 <a id="query-detail-scheduled-delivery"></a>
@@ -1727,7 +1731,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
@@ -1791,42 +1795,42 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- requestId| String| リクエストID|
-|-- mailSeq|	Integer| メールの順番 |
-|-- title|	String| タイトル |
-|-- body|	String| 内容 |
-|-- templateId|	String|	テンプレートID|
-|-- templateName|	String|	テンプレート名|
-|-- senderAddress|	String|	送信者のアドレス|
-|-- senderName|	String|	送信者名|
-|-- requestDate|	String|	リクエスト時間|
-|-- mailStatusCode|	String|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：認証なし|
-|-- mailStatusName|	String|	送信ステータス名|
-|-- receiverLis | List | 受信者リスト |
-|--- requestId|	String | リクエストID |
-|--- mailSeq|	Integer| メールの順番 |
-|--- receiveType|	String|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
-|--- receiveName|	String|	受信者名|
-|--- receiveTypeName|	String|	受信者タイプ名|
-|--- receiveMailAddr|	String|	受信者メールアドレス|
-|-- attachFileList|	List| 添付ファイルリスト|
-|--- fileType|	String|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
-|--- fileId| Integer| ファイルID|
-|--- fileName|	String|	添付ファイル名|
-|--- filePath|	String|	添付ファイルパス|
-|--- fileSize|	Integer| 添付ファイルサイズ(byte)|
-|--- createDate|	String|	作成日時|
-|-- customHeaders|	Map|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
-|-- senderGroupingKey|	String|	送信者グループキー(最大100文字) |
-|-- statsId| String| 統計データグルーピングのためのキー |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- requestId| String| O| リクエストID|
+|-- mailSeq|	Integer|	O| メールの順番 |
+|-- title|	String|	X| メールのタイトル |
+|-- body|	String|	X| メールの本文 |
+|-- templateId|	String|	X|	テンプレートID|
+|-- templateName|	String|	X|	テンプレート名|
+|-- senderAddress|	String|	X|	送信者のメールアドレス|
+|-- senderName|	String|	X|	送信者名|
+|-- requestDate|	String|	O|	リクエスト時間|
+|-- mailStatusCode|	String|	O|	送信ステータスコード<br/> SST0：送信準備、SST1：送信中 <br/> SST2：送信完了、SST3：送信失敗<br/>SST4: 予約待ち、 SST7：未認証|
+|-- mailStatusName|	String|	O|	送信ステータス名|
+|-- receivers | List |	O| 受信者リスト |
+|--- requestId|	String |	O| リクエストID |
+|--- mailSeq|	Integer|	O| メールの順番 |
+|--- receiveType|	String|	O|	受信者タイプ(MRT0：受信者、MRT1：CC、MRT2：BCC)|
+|--- receiveName|	String|	X|	受信者名|
+|--- receiveTypeName|	String|	O|	受信者タイプ名|
+|--- receiveMailAddr|	String|	O|	受信者メールアドレス|
+|-- attachFileList|	List|	O| 添付ファイルリスト|
+|--- fileType|	String|	O|	添付ファイルタイプ <br/>MAIL: メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル|
+|--- fileId| Integer|	O| ファイルID <br/> v1.0、v1.1 APIを通じてアップロードされた添付ファイルはファイルID値が-1と表示されます。|
+|--- fileName|	String|	O|	添付ファイル名|
+|--- filePath|	String|	O|	添付ファイルパス|
+|--- fileSize|	Integer|	O|	添付ファイルサイズ(byte)|
+|--- createDate|	String|	O|	作成日時|
+|-- customHeaders|	Map|	O|	[ユーザー指定ヘッダ](./console-guide/#custom-header) |
+|-- senderGroupingKey|	String|	X|	送信者グループキー(最大100文字) |
+|-- statsId| String|	X| 統計データグルーピングのためのキー |
 
 <a id="cancel-scheduled-delivery-by-request"></a>
 ### 予約発送の取り消し - リクエスト別 { #cancel-scheduled-delivery-by-request }
@@ -1856,7 +1860,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
@@ -1880,12 +1884,12 @@ curl -X PUT \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
 
 <a id="cancel-scheduled-delivery-by-recipient"></a>
 ### 予約発送の取り消し - 受信者別 { #cancel-scheduled-delivery-by-recipient }
@@ -1916,7 +1920,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
@@ -1940,12 +1944,12 @@ curl -X PUT \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
 
 <a id="cancel-scheduled-delivery---multiple-filter"></a>
 ### 予約送信キャンセル - 多重フィルタ { #cancel-scheduled-delivery---multiple-filter }
@@ -1974,7 +1978,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2044,17 +2048,17 @@ curl -X PUT \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- reservationCancelId|	String | 予約キャンセルID |
-|-- requestedDateTime|	String| 予約キャンセルリクエスト時間(yyyy-MM-dd HH:mm:ss) |
-|-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	X|	データ領域|
+|-- reservationCancelId|	String |	O| 予約キャンセルID |
+|-- requestedDateTime|	String|	O| 予約キャンセル時間(yyyy-MM-dd HH:mm:ss) |
+|-- reservationCancelStatus|	String|	O| 予約キャンセル状態 </br>- READY: 予約準備</br>- PROCESSING: 予約キャンセル中</br>- COMPLETED: 予約キャンセル完了</br>- FAILED: 予約キャンセル失敗|
 
 
 <a id="list-request-of-scheduled-delivery-cancellation---multiple-filter"></a>
@@ -2084,7 +2088,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2147,27 +2151,27 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- reservationCancelId|	String | 予約キャンセルID |
-|-- searchParameter | Map<String, Object> | 予約キャンセルリクエストパラメータ |
-|-- requestedDateTime|	String | 予約キャンセルリクエスト時間|
-|-- completedDateTime|	String | 予約キャンセル完了時間 |
-|-- reservationCancelStatus|	String| 予約キャンセル状態<br/>- READY :予約準備<br/>- PROCESSING :予約キャンセル中<br/>- COMPLETED :予約キャンセル完了<br/>- FAILED :予約キャンセル失敗|
-|-- totalCount | Integer | 予約キャンセル対象件数 |
-|-- successCount | Integer | 予約キャンセル成功件数 |
-|-- createUser | Integer | 予約キャンセル要求者 |
-|-- createdDateTime | String | 予約キャンセルリクエスト作成時間 |
-|-- updatedDateTime | String | 予約キャンセル修正時間 |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|- pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- reservationCancelId|	String |	O| 予約キャンセルID |
+|-- searchParameter | Map<String, Object> |	O| 予約キャンセルリクエストパラメータ |
+|-- requestedDateTime|	String |	O| 予約キャンセルリクエスト時間 |
+|-- completedDateTime|	String |	X| 予約キャンセル完了時間 |
+|-- reservationCancelStatus|	ReservationCancelStatus|	O| 予約キャンセル状態 </br>- READY: 予約準備</br>- PROCESSING: 予約キャンセル中</br>- COMPLETED: 予約キャンセル完了</br>- FAILED: 予約キャンセル失敗|
+|-- totalCount | Integer |	O| 予約キャンセル対象件数 |
+|-- successCount | Integer |	O| 予約キャンセル成功件数 |
+|-- createUser | String |	X| 予約キャンセル要求者 |
+|-- createdDateTime | String |	X| 予約キャンセルリクエスト作成時間 |
+|-- updatedDateTime | String |	X| 予約キャンセル修正時間 |
 
 
 <p id="category"></p>
@@ -2203,7 +2207,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2255,27 +2259,27 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- categoryId|	Integer|	カテゴリーID|
-|-- categoryParentId|	Integer| 親カテゴリーID(最上位カテゴリーの場合は0)|
-|-- depth|	Integer| 深さ(depth)(最上位カテゴリーの場合は0) |
-|-- categoryName|	String|	カテゴリー名|
-|-- categoryDesc|	String|	カテゴリーの説明|
-|-- useYn|	String|	使用有無|
-|-- createUser|	String|	作成者|
-|-- createDate|	String|	作成日時|
-|-- updateUser|	String|	修正者|
-|-- updateDate|	String|	修正日時|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|- pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- categoryId|	Integer|	O|	カテゴリーID|
+|-- categoryParentId|	Integer|	O| 親カテゴリーID(最上位カテゴリーの場合は0)|
+|-- depth|	Integer|	O| depth (最上位カテゴリーの場合は0) |
+|-- categoryName|	String|	O|	カテゴリー名|
+|-- categoryDesc|	String|	X|	カテゴリーの説明|
+|-- useYn|	String|	O|	使用有無|
+|-- createUser|	String|	X|	作成者|
+|-- createDate|	String|	O|	作成日時|
+|-- updateUser|	String|	X|	修正者|
+|-- updateDate|	String|	X|	修正日時|
 
 <a id="query-details"></a>
 ### カテゴリー詳細照会 { #query-details }
@@ -2306,7 +2310,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-details-curl"></a>
 #### cURL
@@ -2344,24 +2348,24 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	List|	データ領域|
-|-- categoryId|	Integer|	カテゴリーID|
-|-- categoryParentId|	Integer| 親カテゴリーID(最上位カテゴリーの場合は0)|
-|-- depth|	Integer| 深さ(depth)(最上位カテゴリーの場合は0) |
-|-- categoryName|	String|	カテゴリー名|
-|-- categoryDesc|	String|	カテゴリーの説明|
-|-- useYn|	String|	使用有無|
-|-- createUser|	String|	作成者|
-|-- createDate|	String|	作成日時|
-|-- updateUser|	String|	修正者|
-|-- updateDate|	String|	修正日時|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	O|	データ領域|
+|-- categoryId|	Integer|	O|	カテゴリーID|
+|-- categoryParentId|	Integer|	O| 親カテゴリーID(最上位カテゴリーの場合は0)|
+|-- depth|	Integer|	O| depth (最上位カテゴリーの場合は0) |
+|-- categoryName|	String|	O|	カテゴリー名|
+|-- categoryDesc|	String|	X|	カテゴリーの説明|
+|-- useYn|	String|	O|	使用有無|
+|-- createUser|	String|	X|	作成者|
+|-- createDate|	String|	O|	作成日時|
+|-- updateUser|	String|	X|	修正者|
+|-- updateDate|	String|	X|	修正日時|
 
 
 <a id="register"></a>
@@ -2393,7 +2397,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2439,15 +2443,15 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	Object|	データ領域|
-|-- categoryId|	Integer|	カテゴリーID|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	O|	データ領域|
+|-- categoryId|	Integer|	O|	カテゴリーID|
 
 
 <a id="modify"></a>
@@ -2479,7 +2483,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2519,12 +2523,12 @@ curl -X PUT \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean| 成否 |
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O| 成否 |
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
 
 <a id="delete"></a>
 ### カテゴリーの削除 { #delete }
@@ -2555,7 +2559,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="delete-curl"></a>
 #### cURL
@@ -2580,12 +2584,12 @@ curl -X DELETE \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
 
 <p id="template"></p>
 
@@ -2620,7 +2624,7 @@ curl -X DELETE \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -2630,7 +2634,6 @@ curl -X DELETE \
 |useYn|	String|	X|	使用有無(Y/N)|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
-|all|	Boolean|	X|	全てのテンプレートリストを照会するかどうか|
 
 <a id="query-list-of-templates-curl"></a>
 #### cURL
@@ -2673,27 +2676,27 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|- pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- templateId|	String|	テンプレートID|
-|-- categoryId|	Integer|	カテゴリーID|
-|-- categoryName|	String|	カテゴリー名|
-|-- templateName|	String|	テンプレート名|
-|-- templateDesc|	String|	テンプレートの説明|
-|-- useYn|	String|	使用有無|
-|-- delYn|	String|	削除されているかどうか|
-|-- title|	String|	メールのタイトル|
-|-- createDate|	String|	作成日時|
-|-- updateDate|	String|	修正日時|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- pageNum|	Integer|	O|	現在のページ番号|
+|- pageSize|	Integer|	O|	照会されたデータ件数|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	X|	データ領域|
+|-- templateId|	String|	O|	テンプレートID|
+|-- categoryId|	Integer|	O|	カテゴリーID|
+|-- categoryName|	String|	O|	カテゴリー名|
+|-- templateName|	String|	O|	テンプレート名|
+|-- templateDesc|	String|	X|	テンプレートの説明|
+|-- useYn|	String|	O|	使用有無|
+|-- delYn|	String|	O|	削除されているかどうか|
+|-- title|	String|	O|	メールのタイトル|
+|-- createDate|	String|	O|	作成日時|
+|-- updateDate|	String|	X|	修正日時|
 
 <a id="query-template-details"></a>
 ### テンプレート詳細照会 { #query-template-details }
@@ -2724,7 +2727,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="query-template-details-curl"></a>
 #### cURL
@@ -2775,34 +2778,34 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	List|	データ領域|
-|-- templateId|	String|	テンプレートID|
-|-- categoryId|	Integer|	カテゴリーID|
-|-- categoryName|	String|	カテゴリー名|
-|-- templateName|	String|	テンプレート名|
-|-- templateDesc|	String|	テンプレートの説明|
-|-- useYn|	String|	使用有無(Y=使用中、N=使用しない)|
-|-- delYn|	String|	削除されているかどうか(Y=削除、N=削除されていない)|
-|-- sendMailAddress|	String|	送信メールアドレス|
-|-- title|	String|	メールアドレス|
-|-- templateType|	String|	テンプレートタイプ <br/>DEFAULT(default)、FREEMARKER)|
-|-- body|	String|	メール内容|
-|-- createDate|	String|	作成日時|
-|-- updateDate|	String|	修正日時|
-|-- attachFileList|	List|	添付ファイルリスト|
-|--- fileType|	String|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
-|--- fileId| Integer| ファイルID|
-|--- fileName|	String|	添付ファイル名|
-|--- filePath|	String|	添付ファイルパス|
-|--- fileSize|	Integer|	添付ファイルサイズ(byte)|
-|--- createDate|	String|	作成日時|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	Object|	O|	データ領域|
+|-- templateId|	String|	O|	テンプレートID|
+|-- categoryId|	Integer|	O|	カテゴリーID|
+|-- categoryName|	String|	O|	カテゴリー名|
+|-- templateName|	String|	O|	テンプレート名|
+|-- templateDesc|	String|	X|	テンプレートの説明|
+|-- useYn|	String|	O|	使用有無(Y=使用中、N=使用しない)|
+|-- delYn|	String|	O|	削除されているかどうか(Y=削除、N=削除されていない)|
+|-- sendMailAddress|	String|	X|	送信メールアドレス|
+|-- title|	String|	O|	メールタイトル|
+|-- templateType|	String|	O|	テンプレートタイプ <br/>DEFAULT(デフォルト)、FREEMARKER)|
+|-- body|	String|	X|	メール内容|
+|-- createDate|	String|	O|	作成日時|
+|-- updateDate|	String|	O|	修正日時|
+|-- attachFileList|	List|	O|	添付ファイルリスト|
+|--- fileType|	String|	O|	添付ファイルタイプ(MAIL：メールに添付されたファイル、TEMPLATE：テンプレートに添付されたファイル)|
+|--- fileId| Integer|	O|	ファイルID(デフォルト -1)|
+|--- fileName|	String|	O|	添付ファイル名|
+|--- filePath|	String|	O|	添付ファイルパス|
+|--- fileSize|	Integer|	O|	添付ファイルサイズ(byte)|
+|--- createDate|	String|	O|	作成日時|
 
 <a id="register-templates"></a>
 ### テンプレートの登録 { #register-templates }
@@ -2833,7 +2836,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2887,12 +2890,12 @@ curl -X POST \
 }
 ```
 
-|値| タイプ| 説明|
-|---|---|---|
-|header|    Object| ヘッダ領域|
-|- isSuccessful|    Boolean| 成否 |
-|- resultCode|  Integer|  失敗コード|
-|- resultMessage|   String| 失敗メッセージ|
+|値| タイプ| Not Null| 説明|
+|---|---|---|---|
+|header|    Object|	O| ヘッダ領域|
+|- isSuccessful|    Boolean|	O| 成否 |
+|- resultCode|  Integer|	O|    失敗コード|
+|- resultMessage|   String|	O| 失敗メッセージ|
 
 <a id="query-of-templates-upload-attached-files"></a>
 ### テンプレート添付ファイルのアップロード { #query-of-templates-upload-attached-files }
@@ -2922,7 +2925,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -2965,16 +2968,16 @@ curl -X POST \
 }
 ```
 
-|値| タイプ| 説明|
-|---|---|---|
-|header|    Object| ヘッダ領域|
-|- isSuccessful|    Boolean| 成否 |
-|- resultCode|  Integer|  失敗コード|
-|- resultMessage|   String| 失敗メッセージ|
-|body|  Object| 本文領域|
-|- data|    Object| データ領域|
-|-- fileId| Integer| ファイルID|
-|-- fileName|   String| ファイル名|
+|値| タイプ| Not Null| 説明|
+|---|---|---|---|
+|header|    Object| O| ヘッダ領域|
+|- isSuccessful|    Boolean| O| 成否 |
+|- resultCode|  Integer| O| 失敗コード|
+|- resultMessage|   String| O| 失敗メッセージ|
+|body|  Object| X| 本文領域|
+|- data|    Object| X| データ領域|
+|-- fileId| Integer| O| ファイルID|
+|-- fileName|   String| O| ファイル名|
 
 <a id="modify-templates"></a>
 ### テンプレートの修正 { #modify-templates }
@@ -3005,7 +3008,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3091,7 +3094,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 <a id="delete-templates-curl"></a>
 #### cURL
@@ -3122,6 +3125,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| 成否 |
 |- resultCode|  Integer|  失敗コード|
 |- resultMessage|   String| 失敗メッセージ|
+
 <a id="query-statistics"></a>
 ## 統計照会 { #query-statistics }
 
@@ -3153,7 +3157,7 @@ curl -X DELETE \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3202,22 +3206,22 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- data|	List|	データ領域|
-|-- divisionName | String | 統計基準(日付/時間/曜日) |
-|-- requestedCount | Long | 送信リクエストカウント |
-|-- sentCount | Long | 送信カウント |
-|-- receivedCount | Long | 受信カウント |
-|-- openedCount | Long | 開封カウント |
-|-- sentRate | String | 送信率 |
-|-- receivedRate | String | 受信率 |
-|-- openedRate | String | 開封率 |
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- data|	List|	O|	データ領域|
+|-- divisionName | String |	O| 統計基準(日付/時間/曜日) |
+|-- requestedCount | Long |	O| 送信リクエストカウント |
+|-- sentCount | Long |	O| 送信カウント |
+|-- receivedCount | Long |	O| 受信カウント |
+|-- openedCount | Long |	O| 開封カウント |
+|-- sentRate | String |	O| 送信率 |
+|-- receivedRate | String |	O| 受信率 |
+|-- openedRate | String |	O| 開封率 |
 
 <a id="rejection-management"></a>
 ## 受信拒否管理 { #rejection-management }
@@ -3250,7 +3254,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3261,6 +3265,7 @@ curl -X GET \
 |endBlockDate|	String|	X| 受信拒否日終了値 (yyyy-MM-dd HH:mm:ss)|
 |pageNum|	Integer|	X|	ページ番号(Default：1)|
 |pageSize|	Integer|	X|	照会件数(Default：15)|
+
 <a id="query-rejections-curl"></a>
 #### cURL
 ```
@@ -3291,19 +3296,17 @@ curl -X GET \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
-|body|	Object|	本文領域|
-|- pageNum|	Integer|	現在のページ番号|
-|-pageSize|	Integer|	照会されたデータ件数|
-|- totalCount|	Integer|	総データ件数|
-|- data|	List|	データ領域|
-|-- mailAddress | String | 受信拒否メールアドレス |
-|-- blockDate | String | 受信拒否日(yyyy-MM-dd HH:mm:ss.S)
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+|body|	Object|	X|	本文領域|
+|- totalCount|	Integer|	O|	総データ件数|
+|- data|	List|	O|	データ領域|
+|-- mailAddress | String |	O| 受信拒否メールアドレス |
+|-- blockDate | String |	O| 受信拒否日(yyyy-MM-dd HH:mm:ss.S) |
 
 <a id="register-rejections"></a>
 ### 受信拒否登録 { #register-rejections }
@@ -3333,7 +3336,7 @@ curl -X GET \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3372,12 +3375,16 @@ curl -X POST \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
+
+* メールアドレスの形式が正しくない項目は登録されません。
+    * 一部の項目のみ形式が正しくない場合、正しいアドレスのみ登録され、結果コード1000(`Some of your requests are successful.`)が返されます。
+    * すべての項目の形式が正しくない場合、結果コード-2308が返されます。
 
 <a id="delete-rejections"></a>
 ### 受信拒否削除 { #delete-rejections }
@@ -3406,7 +3413,7 @@ curl -X POST \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Request body]
 
@@ -3445,12 +3452,12 @@ curl -X PUT \
 }
 ```
 
-|値|	タイプ|	説明|
-|---|---|---|
-|header|	Object|	ヘッダ領域|
-|- isSuccessful|	Boolean|	成否|
-|- resultCode|	Integer|	失敗コード|
-|- resultMessage|	String|	失敗メッセージ|
+|値|	タイプ|	Not Null|	説明|
+|---|---|---|---|
+|header|	Object|	O|	ヘッダ領域|
+|- isSuccessful|	Boolean|	O|	成否|
+|- resultCode|	Integer|	O|	失敗コード|
+|- resultMessage|	String|	O|	失敗メッセージ|
 
 <a id="statistics"></a>
 ## 統計 { #statistics }
@@ -3481,7 +3488,7 @@ curl -X PUT \
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 [Query parameter]
 
@@ -3529,21 +3536,21 @@ https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?ev
 }
 ```
 
-| 値                      | 	タイプ     | 	説明                                                     |
-|-------------------------|----------|----------------------------------------------------------|
-| header                  | 	Object  | 	ヘッダ領域                                                  |
-| - isSuccessful          | 	Boolean | 	成否                                                  |
-| - resultCode            | 	Integer | 	失敗コード                                                  |
-| - resultMessage         | 	String  | 	失敗メッセージ                                                 |
-| stats                   | 	Object  | 	本文領域                                                  |
-| - eventDateTime         | 	String  | 	イベント発生時間                                              |
-| - events                | 	List    | 	データ領域                                                 |
-| -- {statsCriteriaValue} | 	String  | 	{statsCriteriaValue}は照会条件として入力したstatsCriteriaの値です。 |
-| --- REQUESTED           | 	Integer | リクエスト件数                                                   |
-| --- SENT                | 	Integer | 	送信件数                                                  |
-| --- SENT_FAILED         | 	Integer | 	失敗件数                                                  |
-| --- RECEIVED            | 	Integer | 	成功件数                                                  |
-| --- OPENED              | 	Integer | 	読んだ件数                                                  |
+| 値                      | 	タイプ     | 	Not Null| 	説明                                                     |
+|-------------------------|----------|---|----------------------------------------------------------|
+| header                  | 	Object  |	O| 	ヘッダ領域                                                  |
+| - isSuccessful          | 	Boolean |	O| 	成否                                                  |
+| - resultCode            | 	Integer |	O| 	失敗コード                                                  |
+| - resultMessage         | 	String  |	O| 	失敗メッセージ                                                 |
+| stats                   | 	Object  |	X| 	本文領域                                                  |
+| - eventDateTime         | 	String  |	X| 	イベント発生時間                                              |
+| - events                | 	List    |	X| 	データ領域                                                 |
+| -- {statsCriteriaValue} | 	String  |	X| 	{statsCriteriaValue}は照会条件として入力したstatsCriteriaの値です。 |
+| --- REQUESTED           | 	Integer |	X| リクエスト件数                                                   |
+| --- SENT                | 	Integer |	X| 	送信件数                                                  |
+| --- SENT_FAILED         | 	Integer |	X| 	失敗件数                                                  |
+| --- RECEIVED            | 	Integer |	X| 	成功件数                                                  |
+| --- OPENED              | 	Integer |	X| 	読んだ件数                                                  |
 
 <a id="query-statistical-totals"></a>
 ### 統計合計照会 { #query-statistical-totals }
@@ -3572,7 +3579,7 @@ https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?ev
 
 |値|	タイプ|	必須|	説明|
 |---|---|---|---|
-|X-Secret-Key|	String| O | 固有のsecretKey [[参考](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | 固有のsecretKey [[参考](#secret-key)] |
 
 
 [Query parameter]
@@ -3618,15 +3625,15 @@ https://email.api.nhncloudservice.com/email/v2.1/appkeys/'"${APP_KEY}"'/stats?ev
 }
 ```
 
-| 値                                  | 	タイプ     | 	説明       |
-|-------------------------------------|----------|------------|
-| header                              | 	Object  | 	ヘッダ領域    |
-| - isSuccessful                      | 	Boolean | 	成否    |
-| - resultCode                        | 	Integer | 	失敗コード    |
-| - resultMessage                     | 	String  | 	失敗メッセージ   |
-| total                               | 	Object  | 	本文領域    |
-| - {statsCriteriaValue}.REQUESTED   | 	Integer | リクエスト件数     |
-| - {statsCriteriaValue}.SENT        | 	Integer | 	送信件数    |
-| - {statsCriteriaValue}.SENT_FAILED | 	Integer | 	失敗件数    |
-| - {statsCriteriaValue}.RECEIVED    | 	Integer | 	成功件数    |
-| - {statsCriteriaValue}.OPENED      | 	Integer | 	読んだ件数    |
+| 値                                  | 	タイプ     | 	Not Null| 	説明       |
+|-------------------------------------|----------|---|------------|
+| header                              | 	Object  |	O| 	ヘッダ領域    |
+| - isSuccessful                      | 	Boolean |	O| 	成否    |
+| - resultCode                        | 	Integer |	O| 	失敗コード    |
+| - resultMessage                     | 	String  |	O| 	失敗メッセージ   |
+| total                               | 	Object  |	X| 	本文領域    |
+| - {statsCriteriaValue}.REQUESTED   | 	Integer |	X| リクエスト件数     |
+| - {statsCriteriaValue}.SENT        | 	Integer |	X| 	送信件数    |
+| - {statsCriteriaValue}.SENT_FAILED | 	Integer |	X| 	失敗件数    |
+| - {statsCriteriaValue}.RECEIVED    | 	Integer |	X| 	成功件数    |
+| - {statsCriteriaValue}.OPENED      | 	Integer |	X| 	読んだ件数    |

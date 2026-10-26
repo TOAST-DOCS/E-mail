@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=3fdc9ceab57d -->
 
 <a id="notification-email-api-v21-guide"></a>
@@ -71,7 +73,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 
 [Request body]
@@ -85,6 +87,7 @@ X-Secret-Key: [a-zA-Z0-9]{8}
 | body              | String      | O        | Body                                                         |
 | attachFileIdList  | List:String | X        | ID of uploaded attachment                                    |
 | templateId        | String      | X        | ID of delivery template                                      |
+|templateType| String| X| Template type <br/>DEFAULT(default), FREEMARKER)|
 | templateParameter | Object      | X        | Replacement parameter (to enter mail title/body for replacement) |
 | - #key#           | String      | X        | Replacement key (##key##)                                    |
 | - #value#         | Object      | X        | Mapped value for replacement key                             |
@@ -231,7 +234,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -358,7 +361,7 @@ curl -X POST \
 #### Caution for Sending Ad Mails
 
 - The title must include the (AD) phrase. 
-- For more details, see [Send Advertising Mails](./console-guide/#_3).
+- For more details, see [Send Advertising Mails](./console-guide/#advertising-mail-deliver).
 * In response to [[Enhanced Gmail sender Guideline](https://support.google.com/a/answer/81126?hl=en)], which will be implemented starting in February 2024, a one-click unsubscribe link will be required when sending marketing and opt-in emails to gmail.com.
     * This link will automatically be replaced with an unsubscribe link.
     * If you wish to use a separate URL, you can do so by adding the "List-Unsubscribe" header to customHeaders.
@@ -386,7 +389,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Example 1]
 ```
@@ -467,7 +470,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Example 1]
 ```
@@ -540,7 +543,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 
 [Request Body]
@@ -661,6 +664,7 @@ curl -X POST \
 | --- receiveType     | String  | O|	Recipient type (MRT0: recipients , MRT1: Cc, MRT2: Bcc) |
 | --- resultCode      | Integer | O|	Result code of recipient delivery request                    |
 | --- resultMessage   | String  | O|	Result message of recipient delivery request                 |
+
 <a id="upload-attached-files"></a>
 ### Upload Attached Files { #upload-attached-files }
 
@@ -689,7 +693,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -842,7 +846,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -984,7 +988,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-mail-delivery-details-curl"></a>
 #### cURL
@@ -1154,7 +1158,7 @@ curl -X GET \
 
 | Value            | 	Type     | 	Required | 	Description                                           |
 |--------------|---------|-----|-----------------------------------------------|
-| X-Secret-Key | 	String | O   | Unique secretKey [[Notes](./api-guide/#secret-key)] |
+| X-Secret-Key | 	String | O   | Unique secretKey [[Notes](#secret-key)] |
 
 <a id="view-the-list-of-completed-email-delivery-updates-curl"></a>
 #### cURL
@@ -1201,24 +1205,24 @@ curl -X GET \
 
 ```
 
-| Value                       | 	Type      | 	Description                                                                                   |
-|-------------------------|----------|---------------------------------------------------------------------------------------|
-| header                  | 	Object  | 	Header area                                                                                |
-| - isSuccessful          | 	Boolean | 	Success                                                                                |
-| - resultCode            | 	Integer | 	Failure code                                                                                |
-| - resultMessage         | 	String  | 	Failure message                                                                               |
-| data                    | 	Object  | 	Data area                                                                               |
-| - requestId             | String   | Request ID                                                                                 |
-| - mailSeq               | Integer  | Email order name                                                                                 |
-| - mailStatusCode        | 	String  | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
-| - mailStatusName        | 	String  | 	Delivery status name                                                                              |
-| - requestDate           | String   | Request date and time                                                                                 |
-| - mailStatusUpdatedDate | String   | Email delivery status code update date 일시                                                                   |
-| - resultDate            | String   | Received date and time                                                                                 |
-| - openedDate            | String   | Read data and time                                                                                 |
-| - dsnCode               | String   | DSN(Delivery Status Notification) Status code                                               |
-| - dsnMessage            | String   | DSN(Delivery Status Notification) Status message                                              |
-| - senderGroupingKey     | String   | Sender group key                                                                               |
+| Value | Type | Not Null | Description |
+|---|---|---|---|
+| header | Object | O | Header area |
+| - isSuccessful | Boolean | O | Success |
+| - resultCode | Integer | O | Failure code |
+| - resultMessage | String | O | Failure message |
+| data | Object | X | Data area |
+| - requestId | String | O | Request ID |
+| - mailSeq | Integer | O | Email order name |
+| - mailStatusCode | String | O | Delivery status code <br/> SST2: Sent, SST3: Sent Failed, <br/> SST5: Rejected, SST7: Unverified, SST8: Failure due to whitelist |
+| - mailStatusName | String | O | Delivery status name |
+| - requestDate | String | O | Request date and time |
+| - mailStatusUpdatedDate | String | O | Email delivery status code update date and time |
+| - resultDate | String | X | Received date and time |
+| - openedDate | String | X | Read date and time |
+| - dsnCode | String | X | DSN(Delivery Status Notification) Status code |
+| - dsnMessage | String | X | DSN(Delivery Status Notification) Status message |
+| - senderGroupingKey | String | X | Sender group key |
 
 <a id="query-mass-delivery-list"></a>
 ### Query Mass Delivery List { #query-mass-delivery-list }
@@ -1245,7 +1249,7 @@ curl -X GET \
 |requestId|	String|	O|	Request ID|
 |startSendDate|	String|	O|	Start value of send date(yyyy-MM-dd HH:mm:ss)|
 |endSendDate|	String|	O|	End value of send date (yyyy-MM-dd HH:mm:ss)|
-|senderMail|	String|	X|	Sender mail address|
+|senderAddress|	String|	X|	Sender email address|
 |senderName|	String|	X|	Sender name|
 |templateId|	String|	X|	Template ID|
 |sendStatus|	String|	X|	Send status code <br/> WAIT: wait, READY: ready to send, <br/>SENDREADY: Complete ready to send, SENDWAIT: Wait to send <br/>SENDING: sending, COMPLETE: Complete to send, <br/>FAIL: fail to send, CANCEL: cancel to send|
@@ -1262,7 +1266,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 <a id="query-mass-delivery-list-curl"></a>
 #### cURL
@@ -1364,7 +1368,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]
@@ -1487,7 +1491,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 <a id="query-mass-delivery-details-curl"></a>
 #### cURL
@@ -1595,6 +1599,7 @@ curl -X GET \
 |--- fileSize|	Integer|	O|	Attached file size(byte)|
 |--- createDate|	String|	O|	Date and time of creation|
 |-- statsId| String| X|	Key for statistics data grouping |
+
 <a id="scheduled-delivery-management"></a>
 ## Scheduled Delivery Management { #scheduled-delivery-management }
 
@@ -1625,7 +1630,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -1746,7 +1751,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-detail-scheduled-delivery-curl"></a>
 #### cURL
@@ -1876,7 +1881,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-request-curl"></a>
 #### cURL
@@ -1936,7 +1941,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="cancel-scheduled-delivery-by-recipient-curl"></a>
 #### cURL
@@ -1994,7 +1999,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2104,7 +2109,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -2222,7 +2227,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query parameter]
 
@@ -2325,7 +2330,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-details-curl"></a>
 #### cURL
@@ -2412,7 +2417,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2499,7 +2504,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2575,7 +2580,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="delete-curl"></a>
 #### cURL
@@ -2640,7 +2645,7 @@ curl -X DELETE \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -2743,7 +2748,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="query-template-details-curl"></a>
 #### cURL
@@ -2852,7 +2857,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -2942,12 +2947,12 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
 |Value| Type | Max Length | Required | Description |
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 |fileName|  String| - |O| File name |
 |fileBody|  Byte[]| - |O| Byte [] value |
 |userId|    String| 50|X| User ID |
@@ -3025,7 +3030,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request body]
 
@@ -3111,7 +3116,7 @@ curl -X PUT \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 <a id="delete-templates-curl"></a>
 #### cURL
@@ -3142,6 +3147,7 @@ curl -X DELETE \
 |- isSuccessful|    Boolean| Successful or not |
 |- resultCode|  Integer| Failure code |
 |- resultMessage|   String| Failure message |
+
 <a id="query-statistics"></a>
 ## Query Statistics { #query-statistics }
 
@@ -3173,7 +3179,7 @@ curl -X DELETE \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -3270,7 +3276,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Query Parameter]
 
@@ -3319,8 +3325,6 @@ curl -X GET \
 | - resultCode    | Integer | O|	Failure code                              |
 | - resultMessage | String  | O|	Failure message                           |
 | body            | Object  | X|	Body area                                 |
-| - pageNum       | Integer | O|	Current page number                       |
-| -pageSize       | Integer | O|	Number of queried data                    |
 | - totalCount    | Integer | O|	Total number of data                      |
 | - data          | List    | O|	Data area                                 |
 | -- mailAddress  | String  | O|	Email address to reject                   |
@@ -3354,7 +3358,7 @@ curl -X GET \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -3400,6 +3404,10 @@ curl -X POST \
 | - resultCode    | Integer | O|	Failure code      |
 | - resultMessage | String  | O|	Failure message   |
 
+* Items with an invalid email address format are not registered.
+    * If only some items have an invalid format, only the valid addresses are registered and result code 1000 (`Some of your requests are successful.`) is returned.
+    * If all items have an invalid format, result code -2308 is returned.
+
 <a id="delete-rejections"></a>
 ### Delete Rejections { #delete-rejections }
 
@@ -3428,7 +3436,7 @@ curl -X POST \
 
 |Value| Type | Required | Description |
 |---|---|---|---|
-|X-Secret-Key|	String| O | Original secretKey [[Note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Original secretKey [[Note](#secret-key)] |
 
 [Request Body]
 
@@ -3503,7 +3511,7 @@ curl -X PUT \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]
@@ -3595,7 +3603,7 @@ curl -X GET \
 
 |Value|	Type|	Required|	Descriptions|
 |---|---|---|---|
-|X-Secret-Key|	String| O | Unique secretKey [[note](./api-guide/#secret-key)] |
+|X-Secret-Key|	String| O | Unique secretKey [[note](#secret-key)] |
 
 
 [Query parameter]
