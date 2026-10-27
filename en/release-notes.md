@@ -1,9 +1,22 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=8e711388a601 -->
+<!-- pre-align:aligned sig=5e96df9969ae -->
 
 <a id="notification-email-release-notes"></a>
 ## Notification > Email > Release Notes { #notification-email-release-notes }
+<a id="october-27-2026"></a>
+### October 27, 2026 { #october-27-2026 }
+
+<a id="october-27-2026-bug-fixes"></a>
+#### Bug Fixes
+
+* [Console, API] Fixed DKIM authentication failure issue
+    * Fixed an issue where, if authentication was attempted before registering a DKIM record in DNS, authentication continued to fail for a period of time even after the record was properly registered.
+    * Once the record is reflected in DNS, you can immediately attempt authentication again.
+* [API] Added email address format validation for unsubscribe registration
+    * The unsubscribe registration/modification API does not register email addresses with an invalid format.
+    * If some addresses have an invalid format, only the valid addresses are registered and result code 1000 (Some requests succeeded.) is returned.
+    * If all addresses have an invalid format, error code -2308 is returned.
 
 <a id="august-25-2026"></a>
 ### August 25, 2026 { #august-25-2026 }
@@ -17,17 +30,20 @@
 <a id="notification-email-release-notes-1"></a>
 ### May 27, 2026 { #notification-email-release-notes-1 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-1-1"></a>
 #### Bug Fixes
 
-<!-- TODO: translate body -->
+* [API] Improved unsubscribe link call failure issue
+    * Fixed an issue where the unsubscribe link in sent emails failed to be called in some cases.
+    * Previously sent unsubscribe links also work correctly after the fix.
+* [API] Improved handling of domains containing non-ASCII characters
+    * Changed to return an error response when a domain registration or email sending request is made with a domain containing non-ASCII characters such as accent marks (e.g., `münchen.de`).
+    * Sending stability is improved by blocking domain requests that do not comply with RFC 1123 standards (letters, numbers, hyphens, and periods).
+    * If you need to use an internationalized domain, convert it to Punycode format (e.g., `xn--mnchen-3ya.de`) before making the request.
 
 <a id="march-24-2026"></a>
 ### March 24, 2026 { #march-24-2026 }
 <a id="march-24-2026-feature-updates"></a>
-
 #### Feature Updates
 * [Console, API] End of support for tag email sending
     * Support for tag management, UID management, and tag email delivery features has ended.
@@ -463,12 +479,11 @@
 <a id="notification-email-release-notes-2"></a>
 ### October 27, 2020 { #notification-email-release-notes-2 }
 
-<!-- TODO: translate body -->
-
 <a id="notification-email-release-notes-2-1"></a>
 #### Added Features
 
-<!-- TODO: translate body -->
+* [Console] Added a feature to cancel bulk mail delivery
+    * Added a feature to cancel mail that is being sent on the **Retrieve Mass Mail Delivery** tab.
 
 <a id="september-22-2020"></a>
 ### September 22, 2020 { #september-22-2020 }
@@ -483,7 +498,7 @@
 * Event types that are currently supported are as follows.
 * Register recipient addresses that reject advertising mails
 * When a recipient rejects an advertising mail by using a link included in the mail, the webhook feature starts to work.
-* For more details, refer to [Manage Webhook](./console-guide/#webhook).
+* For more details, refer to [Manage Webhook](./console-guide/#webhook-management).
 
 <a id="august-25-2020"></a>
 ### August 25, 2020 { #august-25-2020 }
@@ -518,7 +533,7 @@
 
 * [Console] Added DKIM
     * The features of DomainKeys Identified Mail have been added to check if receiving email is forged.
-    * For more details, see [DKIM Guide](./console-guide/#dkim).
+    * For more details, see [DKIM Guide](./console-guide/#spf-dkim-dmarc-authentication).
 
 <a id="march-24-2020"></a>
 ### March 24, 2020 { #march-24-2020 }
@@ -552,7 +567,7 @@
 * [API] User-Input Data Supported for Templates
     * When you use a template, user-input sender information, title, and body text are preferred for application than
       template data.
-    * For more details, see [Send Mails API](./api-guide/#_1)
+    * For more details, see [Send Mails API](./api-guide/#mail-delivery)
 
 <a id="october-29-2019"></a>
 ### October 29, 2019 { #october-29-2019 }
@@ -572,10 +587,10 @@
 * [API] API version updated to v1.5
 * [API] Added Features for Sender's Group Key
     * Send mails, when requested, by specifying sender's group key, which helps to query request.
-    * For more details, see [Send Mail API](./api-guide/#_1) and [Query Mail API](./api-guide/#_25).
+    * For more details, see [Send Mail API](./api-guide/#mail-delivery) and [Query Mail API](./api-guide/#query-of-mails).
 * [API] Added Receive or Not Field
     * Query request details to see if the mail has been received, as well as received time.
-    * For more details, see [Query Mail Delivery Details API](./api-guide/#_29).
+    * For more details, see [Query Mail Delivery Details API](./api-guide/#query-mail-delivery-details).
 
 <a id="july-23-2019"></a>
 ### July 23, 2019 { #july-23-2019 }
@@ -783,7 +798,7 @@
         * 수신 거부 링크 클릭 시 수신거부 할 수 있는 화면 제공
         * 수신 거부된 대상자들에게 광고성 메일 발송 차단하는 기능 제공
         * 수신 거부 대상자를 관리할 수 있는 화면 제공(다운로드 기능은 추후 제공 예정)
-    * 자세항 사항은 [광고성 메일 발송](./console-guide/#_3)[수신 거부 관리](./console-guide/#_13)를 참고해주세요.
+    * 자세항 사항은 [광고성 메일 발송](./console-guide/#advertising-mail-deliver)[수신 거부 관리](./console-guide/#unsubscription-management)를 참고해주세요.
 * [API] 광고성 메일 발송 기능 추가
     * 광고성 메일인 경우 별도로 제공되는 API를 사용할 수 있습니다.
     * 다음과 같은 기능을 제공합니다.
@@ -802,7 +817,7 @@
 * [Console]통계 화면 개선
     * 통계 화면이 개선되었습니다.
     * 이제 날짜별, 시간대별, 요일별로 조회가 가능합니다.
-    * 자세항 사항은 [통계 정보 조회](./console-guide/#_17)를 참고해주세요.
+    * 자세항 사항은 [통계 정보 조회](./console-guide/#retrieve-statistics)를 참고해주세요.
 
 <a id="05-25"></a>
 ### 2017. 05. 25. { #05-25 }

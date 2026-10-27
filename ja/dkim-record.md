@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=dc1c70fd114a -->
 
 <a id="notification-email-domain-management-guide-dkim"></a>
@@ -72,12 +74,13 @@
 2. 登録された送信ドメインに**DKIM設定** ボタンをクリックします。
 3. 表示されたDKIMレコードをコピーして、送信指定ドメインDNSに登録します。
 
-![email_202312_04_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_04_ja.png)
+![email_202312_04_ja.png](../static/images/email_202312_04_ja.png)
 
 ##### 注意事項
 
 - TXTレコードのDKIM設定変更作業が終わっても、DNSサーバーの状況により、DNS変更内容が適用されるまで最大48時間かかります。
 - DKIM設定作業後、数時間程度経過してからメールを送信するのが安全です。
+- DNSにレコードが反映される前に認証に失敗した場合でも、反映された後に**認証**ボタンを再度クリックすると認証できます。
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-dkim-authentication"></a>
 #### 3. DKIM認証
@@ -90,7 +93,7 @@
 
 - 認証に成功した場合、ポップアップ画面で**DKIM**タブを選択し、**有効化**をクリックしてDKIMを有効化します。
 
-![email_202312_05_ja.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_email/email_202312_05_ja.png)
+![email_202312_05_ja.png](../static/images/email_202312_05_ja.png)
 
 <a id="how-to-register-authenticate-and-activate-dkim-records-test-dkim-authentication"></a>
 #### 5. DKIM認証をテストする

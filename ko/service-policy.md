@@ -3,8 +3,6 @@
 <a id="notification-email-service-policy"></a>
 ## Notification > Email > 서비스 정책 { #notification-email-service-policy }
 
-<span id='operation-policy'></span>
-
 <a id="sending-restriction-information"></a>
 ## 발송 제한 안내 { #sending-restriction-information }
 

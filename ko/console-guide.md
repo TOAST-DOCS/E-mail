@@ -73,9 +73,9 @@ NHN Cloud는 정보통신망법을 준수할 수 있도록, '광고 메일'에 �
 
 | 키 | 문구 | 사용 예시 |
 |-------------------------| - |-------------------------------------------------------------------------------------------------------------------------------|
-| BLOCK_RECEIVER_LINK | [수신거부](#) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
-| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
-| JA_BLOCK_RECEIVER_LINK | [受信拒否](#) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
+| BLOCK_RECEIVER_LINK | [수신거부](#unsubscription-management) | 메일 수신을 원치 않으시면 ##BLOCK_RECEIVER_LINK##를 클릭하세요. |
+| EN_BLOCK_RECEIVER_LINK | [Unsubscription](#unsubscription-management) | If you no longer wish to receive these emails, please click the ##EN_BLOCK_RECEIVER_LINK##. |
+| JA_BLOCK_RECEIVER_LINK | [受信拒否](#unsubscription-management) | メールの受信を希望しない場合、##JA_BLOCK_RECEIVER_LINK##をクリックしてください。 |
 | BLOCK_RECEIVER_LINK_URL | - | If you no longer wish to receive these emails, please `<a href='##BLOCK_RECEIVER_LINK_URL##' target='_blank'>click here</a>`. |
 
 <a id="template-mail-delivery"></a>
@@ -254,7 +254,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
 
 * 이메일 서비스를 이용하기 위해 필수로 진행해야 하는 부분은 아닙니다.
     * 도메인을 등록하지 않고도 이메일 서비스를 이용할 수 있으나 서비스 이용에 일부 제한 사항이 있습니다.
-    * 자세한 내용은 [발송 전 유의 사항](./Overview/#_2/)을 참고하세요.
+    * 자세한 내용은 [발송 전 유의 사항](./Overview/#precautions-before-delivery)을 참고하세요.
 * 개인 혹은 회사에서 소유한 도메인이 아닌 경우 사용이 불가능합니다.
     * 다음, 네이버, Google 등의 메일 계정 발급 서비스를 제공하는 업체의 도메인은 사용할 수 없습니다.
 
@@ -324,7 +324,7 @@ Excel/CSV 포맷의 템플릿 파일을 통해 대량 메일을 발송할 수 �
             * 예) 받는 사람: test@toast.com, X-TC-ENVELOPE-FROM: test@cs.toast.com으로 메일 발송을 요청한 경우
                 * 수신 측 메일 서비스에서 test@cs.toast.com 메일 주소로 반송 메일 발송
 
-* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](./console-guide/#custom-header) 가이드를 참고하세요.
+* 보다 자세한 내용은 [사용자 지정 헤더(custom header)](#custom-header) 가이드를 참고하세요.
 
 <a id="spf-dkim-dmarc-authentication"></a>
 ### SPF, DKIM, DMARC 인증 { #spf-dkim-dmarc-authentication }
@@ -382,8 +382,6 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 ## 통계 이벤트 키 관리 { #manage-statistical-event-keys }
 **통계 이벤트 키 관리** 탭에서 통계 이벤트 키를 관리할 수 있습니다. 생성 시 이름, 설명, 이벤트 수집 기간을 설정할 수 있습니다. 이벤트 수집 기간을 설정하지 않으면 수집 기간은 무기한으로 설정됩니다. 생성된 통계 이벤트 키는 메시지 발송 시 설정할 수 있습니다. 통계 이벤트 키가 설정된 메시지들의 발송 결과는 **통계** 탭에서 통계 이벤트 키로 검색할 수 있습니다.
 
-<span id="stats"></span>
-
 <a id="query-statistics"></a>
 ## 통계 조회 { #query-statistics }
 최근 30일 내 수집된 메시지 수신/확인 데이터를 검색할 수 있습니다. 콘솔에서 **통계 조회**를 선택합니다. 메시지, 토큰 등록이나 삭제에 대한 통계를 검색할 수 있습니다.
@@ -394,6 +392,15 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
     - 기본은 설정된 기간에 따라 자동으로 최적화된 유형으로 그래프를 표시합니다.
 3. 메시지 통계에서는 통계 이벤트 키, 템플릿아이디, 메일 타입으로 검색할 수 있습니다.
 
+!!! danger "주의"
+    통계 건수와 청구 건수의 차이
+
+    통계 메뉴에서 제공하는 건수는 발송 시점에 실시간으로 집계된 값입니다. 실시간 집계의 특성상 일부 건이 통계에 반영되지 않을 수 있습니다.
+
+    청구 건수는 매월 발송 내역 전체를 대상으로 별도의 확인 절차를 거쳐 확정됩니다. 이 때문에 통계 메뉴의 건수와 청구 건수는 차이가 있을 수 있으며, 정확한 이용 건수는 청구 내역을 기준으로 합니다.
+
+    따라서 청구 금액 확인이나 정산 대사 목적으로는 통계 메뉴의 건수 대신 청구 내역을 이용하세요. 통계 메뉴는 발송 추이와 결과 분포를 확인하는 용도로 활용하세요.
+
 <a id="sending-settings"></a>
 ## 발송 설정 { #sending-settings }
 
@@ -402,8 +409,6 @@ DNS 추가 설정 관련 자세한 내용은 **도메인 관리 가이드**를 �
 
 - 메시지 보관 기간 정책에 따라 90일이 지난 발송 이력 데이터를 백업할 수 있습니다.
 - 백업 사용 여부, 파일 확장자, 파일을 업로드할 저장소 정보를 입력하면 해당 저장소에 백업 일자가 포함된 파일이 생성됩니다.
-
-<span id='personal-information-assignor'></span>
 
 <a id="note"></a>
 ## 참고 { #note }

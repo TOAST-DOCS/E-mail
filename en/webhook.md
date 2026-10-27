@@ -29,7 +29,7 @@ The API documentation for the generated POST request.
 |productName|	String|	The name of the service where a webhook event occurred |
 |appKey|	String| The service appkey where the webhook event occurred |
 |event|	String| Webhook event name<br>* UNSUBSCRIBE: Register an address to receive advertising emails |
-|hooks|	List\<Map\> | Data when a webhook event occurs<br>\* For more information, see  [Hook definitions by event type](./api-guide/#event-hooks). |
+|hooks|	List\<Map\> | Data when a webhook event occurs<br>\* For more information, see  [Hook definitions by event type](#hook-definitions-by-event-type). |
 
 <a id="send-webhook-curl"></a>
 #### cURL
@@ -52,8 +52,6 @@ curl -X POST \
         ]
     }'
 ```
-
-<span id="event-hooks"></span>
 
 <a id="hook-definitions-by-event-type"></a>
 ### Hook definitions by event type { #hook-definitions-by-event-type }
